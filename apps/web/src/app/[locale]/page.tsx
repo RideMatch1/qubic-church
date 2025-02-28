@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import dynamic from 'next/dynamic'
 
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { InstallationBox } from '@/components/installation-box'
@@ -20,12 +19,11 @@ import {
 } from '@/components/page-header'
 
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { Vortex } from '@/components/vortex'
 
 export const dynamicParams = true
 
-const Vortex = dynamic(() => import('../../components/ui/vortex'), {
-  ssr: false,
-})
+
 
 export default async function IndexPage({
   params,
