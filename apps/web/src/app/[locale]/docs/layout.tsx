@@ -8,17 +8,18 @@ import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 
 interface DocsLayoutProps {
   children: React.ReactNode
-  params: {
+  params: Promise<{
     locale: LocaleOptions
-  }
+  }>
 }
 
 export const dynamicParams = true
 
-export default async function DocsLayout({
-  children,
-  params,
-}: DocsLayoutProps) {
+export default async function DocsLayout(props: DocsLayoutProps) {
+  const params = await props.params
+
+  const { children } = props
+
   setRequestLocale(params.locale)
 
   const docsConfig = await getServerDocsConfig({ locale: params.locale })

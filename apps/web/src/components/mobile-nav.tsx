@@ -21,7 +21,7 @@ import { usePathname } from '@/navigation'
 import { Button } from './ui/button'
 
 interface MobileNavProps {
-  menuLinks: JSX.Element
+  menuLinks: React.ReactElement
 
   messages: {
     menu: string

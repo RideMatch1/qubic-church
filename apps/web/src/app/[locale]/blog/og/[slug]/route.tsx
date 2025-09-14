@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { ImageResponse } from 'next/og'
 
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
@@ -11,13 +9,14 @@ import { siteConfig } from '@/config/site'
 import { getFonts } from '@/lib/fonts'
 
 interface BlogOgProps {
-  params: { slug: string; locale: LocaleOptions }
+  params: Promise<{ slug: string; locale: LocaleOptions }>
 }
 
 export const runtime = 'edge'
 export const dynamicParams = true
 
-export async function GET(_: NextRequest, { params }: BlogOgProps) {
+export async function GET(_: NextRequest, props: BlogOgProps) {
+  const params = await props.params
   const post = getBlogPostBySlugAndLocale(params.slug, params.locale)
 
   if (!post) {
@@ -27,6 +26,24 @@ export async function GET(_: NextRequest, { params }: BlogOgProps) {
   }
 
   const { bold, regular } = await getFonts()
+
+  const fonts = []
+  if (regular) {
+    fonts.push({
+      name: 'Geist',
+      data: regular,
+      style: 'normal' as const,
+      weight: 400 as const,
+    })
+  }
+  if (bold) {
+    fonts.push({
+      name: 'Geist',
+      data: bold,
+      style: 'normal' as const,
+      weight: 700 as const,
+    })
+  }
 
   return new ImageResponse(
     (
@@ -47,20 +64,7 @@ export async function GET(_: NextRequest, { params }: BlogOgProps) {
     ),
     {
       ...siteConfig.og.size,
-      fonts: [
-        {
-          name: 'Geist',
-          data: regular,
-          style: 'normal',
-          weight: 400,
-        },
-        {
-          name: 'Geist',
-          data: bold,
-          style: 'normal',
-          weight: 700,
-        },
-      ],
+      fonts,
     }
   )
 }
@@ -117,17 +121,4 @@ function getBlogPostBySlugAndLocale(slug: string, locale: LocaleOptions) {
 
     return slugs.join('/') === slug && postLocale === locale
   })
-}
-
-export async function generateStaticParams(): Promise<BlogOgProps['params'][]> {
-  const blog = allBlogs.map((blog) => {
-    const [locale, ...slugs] = blog.slugAsParams.split('/')
-
-    return {
-      slug: slugs.join('/'),
-      locale: locale as LocaleOptions,
-    }
-  })
-
-  return blog
 }

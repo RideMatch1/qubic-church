@@ -23,13 +23,10 @@ import { Vortex } from '@/components/vortex'
 
 export const dynamicParams = true
 
-
-
-export default async function IndexPage({
-  params,
-}: {
-  params: { locale: LocaleOptions }
+export default async function IndexPage(props: {
+  params: Promise<{ locale: LocaleOptions }>
 }) {
+  const params = await props.params
   setRequestLocale(params.locale)
 
   const t = await getTranslations()

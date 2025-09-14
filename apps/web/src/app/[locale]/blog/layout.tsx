@@ -4,17 +4,18 @@ import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 
 interface BlogLayoutProps {
   children: React.ReactNode
-  params: {
+  params: Promise<{
     locale: LocaleOptions
-  }
+  }>
 }
 
 export const dynamicParams = true
 
-export default async function BlogLayout({
-  children,
-  params,
-}: BlogLayoutProps) {
+export default async function BlogLayout(props: BlogLayoutProps) {
+  const params = await props.params
+
+  const { children } = props
+
   setRequestLocale(params.locale)
 
   return (

@@ -1,13 +1,13 @@
-const { createContentlayerPlugin } = require('next-contentlayer2')
+import { createContentlayerPlugin } from 'next-contentlayer2'
+import createNextIntlPlugin from 'next-intl/plugin'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
 }
 
 const withContentlayer = createContentlayerPlugin({})
 
-const withNextIntl = require('next-intl/plugin')('./src/i18n')
+const withNextIntl = createNextIntlPlugin('./src/i18n')
 
-module.exports = withNextIntl(withContentlayer(nextConfig))
+export default withNextIntl(withContentlayer(nextConfig))

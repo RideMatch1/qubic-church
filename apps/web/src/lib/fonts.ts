@@ -10,18 +10,26 @@ export const fontMono = FontMono({
 })
 
 export async function getFonts() {
-  const [bold, regular] = await Promise.all([
-    fetch(new URL(absoluteUrl('/fonts/Geist-Bold.ttf'), import.meta.url)).then(
-      (res) => res.arrayBuffer()
-    ),
+  try {
+    const [bold, regular] = await Promise.all([
+      fetch(new URL(absoluteUrl('/fonts/Geist-Bold.ttf')), {
+        cache: 'force-cache',
+      }).then((res) => res.arrayBuffer()),
 
-    fetch(
-      new URL(absoluteUrl('/fonts/Geist-Regular.ttf'), import.meta.url)
-    ).then((res) => res.arrayBuffer()),
-  ])
+      fetch(new URL(absoluteUrl('/fonts/Geist-Regular.ttf')), {
+        cache: 'force-cache',
+      }).then((res) => res.arrayBuffer()),
+    ])
 
-  return {
-    bold,
-    regular,
+    return {
+      bold,
+      regular,
+    }
+  } catch (error) {
+    console.warn('Failed to load fonts, using fallback:', error)
+    return {
+      bold: null,
+      regular: null,
+    }
   }
 }

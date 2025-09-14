@@ -17,16 +17,15 @@ import { NextIntlClientProvider } from 'next-intl'
 
 interface AppLayoutProps {
   children: React.ReactNode
-  params: {
+  params: Promise<{
     locale: LocaleOptions
-  }
+  }>
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: LocaleOptions }
+export async function generateMetadata(props: {
+  params: Promise<{ locale: LocaleOptions }>
 }): Promise<Metadata> {
+  const params = await props.params
   setRequestLocale(params.locale || defaultLocale)
 
   return {
@@ -113,7 +112,11 @@ export const viewport: Viewport = {
   ],
 }
 
-export default function RootLayout({ children, params }: AppLayoutProps) {
+export default async function RootLayout(props: AppLayoutProps) {
+  const params = await props.params
+
+  const { children } = props
+
   setRequestLocale(params.locale)
 
   return (
