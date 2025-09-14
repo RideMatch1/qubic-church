@@ -30,7 +30,6 @@ export const TextGenerateEffect = ({
         delay: stagger(0.2),
       }
     )
-    // eslint-disable-next-line
   }, [animate, duration, filter])
 
   const renderWords = () => {

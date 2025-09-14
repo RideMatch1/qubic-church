@@ -244,7 +244,6 @@ export default function (props: VortexProps) {
         resize(canvas, ctx)
       }
     })
-    // eslint-disable-next-line
     // biome-ignore lint/correctness/useExhaustiveDependencies: <>
   }, [resize, setup])
 
