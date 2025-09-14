@@ -1,5 +1,6 @@
-import { GeistSans } from 'geist/font/sans'
 import { JetBrains_Mono as FontMono } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+
 import { absoluteUrl } from './utils'
 
 export const fontSans = GeistSans
@@ -14,11 +15,11 @@ export async function getFonts() {
     const [bold, regular] = await Promise.all([
       fetch(new URL(absoluteUrl('/fonts/Geist-Bold.ttf')), {
         cache: 'force-cache',
-      }).then((res) => res.arrayBuffer()),
+      }).then(res => res.arrayBuffer()),
 
       fetch(new URL(absoluteUrl('/fonts/Geist-Regular.ttf')), {
         cache: 'force-cache',
-      }).then((res) => res.arrayBuffer()),
+      }).then(res => res.arrayBuffer()),
     ])
 
     return {

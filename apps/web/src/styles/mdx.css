@@ -1,6 +1,6 @@
 pre {
-  overflow-x: auto;
   padding: 1rem 0;
+  overflow-x: auto;
 }
 
 pre [data-line] {
@@ -40,8 +40,8 @@ code[data-line-numbers] {
 }
 
 code[data-line-numbers] > [data-line]::before {
-  counter-increment: line;
   content: counter(line);
+  counter-increment: line;
   @apply inline-block w-4 mr-4 text-right text-gray-500;
 }
 
@@ -59,8 +59,8 @@ code[data-line-numbers] > [data-line]::before {
 }
 
 [data-highlighted-chars] {
-  @apply bg-zinc-600/50 rounded;
   box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+  @apply bg-zinc-600/50 rounded;
 }
 
 [data-chars-id] {

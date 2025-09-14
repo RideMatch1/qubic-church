@@ -1,18 +1,18 @@
 'use client'
 
+import { type PointerEvent, useMemo, useState } from 'react'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { ChevronDown } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { type PointerEvent, useMemo, useState } from 'react'
 
-import { Button } from '@/components/ui/button'
 import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
+import { Button } from '@/components/ui/button'
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuContent,
 } from './ui/dropdown-menu'
 
 interface ThemeModeToggleProps {
@@ -49,15 +49,15 @@ export function ThemeModeToggle({ messages }: ThemeModeToggleProps) {
   }
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+    <DropdownMenu modal={false} onOpenChange={setOpen} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
           aria-expanded={open}
           className="group pointer-events-auto relative flex w-fit gap-1 px-2 py-4"
           onClick={() => isMobile && openDropdown()}
           onPointerEnter={() => !isMobile && openDropdown()}
-          onPointerLeave={(event) => !isMobile && closeDropdown(event)}
+          onPointerLeave={event => !isMobile && closeDropdown(event)}
+          variant="ghost"
         >
           <SunIcon className="size-[1.2rem] rotate-0 scale-100 transition-all dark:hidden dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="hidden size-[1.2rem] rotate-90 scale-0 transition-all dark:flex dark:rotate-0 dark:scale-100" />
@@ -69,18 +69,18 @@ export function ThemeModeToggle({ messages }: ThemeModeToggleProps) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="flex flex-col items-center"
         align="center"
-        role="menu"
+        className="flex flex-col items-center"
+        onCloseAutoFocus={e => e.preventDefault()}
         onPointerLeave={closeDropdown}
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        role="menu"
       >
         <div className="w-full">
           {themes.map(({ label, value }) => (
             <DropdownMenuItem
+              disabled={theme === value}
               key={value}
               onClick={() => setTheme(value)}
-              disabled={theme === value}
             >
               {label}
             </DropdownMenuItem>

@@ -1,23 +1,23 @@
-import { allDocs } from 'contentlayer/generated'
-import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import type { Metadata } from 'next'
 
 import '@/styles/mdx.css'
 
-import { DocBreadcrumb } from '@/components/docs/breadcrumb'
-import { DocHeading } from '@/components/docs/heading'
-import { DocLinks } from '@/components/docs/links'
-import { Mdx } from '@/components/docs/mdx'
-import { DocumentNotFound } from '@/components/docs/not-found'
-import { DocsPager } from '@/components/docs/pager'
 import { DashboardTableOfContents } from '@/components/docs/toc'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { defaultLocale } from '@/config/i18n'
-import { siteConfig } from '@/config/site'
-import type { DocPageProps } from '@/lib/opendocs/types/docs'
-import { getDocFromParams } from '@/lib/opendocs/utils/doc'
+import { DocumentNotFound } from '@/components/docs/not-found'
 import { getTableOfContents } from '@/lib/opendocs/utils/toc'
+import type { DocPageProps } from '@/lib/opendocs/types/docs'
+import { DocBreadcrumb } from '@/components/docs/breadcrumb'
+import { getDocFromParams } from '@/lib/opendocs/utils/doc'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { DocHeading } from '@/components/docs/heading'
+import { DocsPager } from '@/components/docs/pager'
+import { DocLinks } from '@/components/docs/links'
+import { allDocs } from 'contentlayer/generated'
+import { defaultLocale } from '@/config/i18n'
+import { Mdx } from '@/components/docs/mdx'
+import { siteConfig } from '@/config/site'
 import { absoluteUrl } from '@/lib/utils'
 
 export const dynamicParams = true
@@ -68,8 +68,10 @@ export async function generateMetadata(props: {
   }
 }
 
-export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
-  const docs = allDocs.map((doc) => {
+export async function generateStaticParams(): Promise<
+  DocPageProps['params'][]
+> {
+  const docs = allDocs.map(doc => {
     const [locale, ...slugs] = doc.slugAsParams.split('/')
 
     return {
@@ -81,7 +83,9 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
   return docs
 }
 
-export default async function DocPage(props: { params: Promise<DocPageProps['params']> }) {
+export default async function DocPage(props: {
+  params: Promise<DocPageProps['params']>
+}) {
   const params = await props.params
   setRequestLocale(params.locale || defaultLocale)
 
@@ -127,13 +131,13 @@ export default async function DocPage(props: { params: Promise<DocPageProps['par
             <ScrollArea className="pb-10">
               <div className="sticky top-16 -mt-10 h-fit py-12">
                 <DashboardTableOfContents
-                  toc={toc}
-                  sourceFilePath={doc._raw.sourceFilePath}
                   messages={{
                     onThisPage: t('on_this_page'),
                     editPageOnGitHub: t('edit_page_on_github'),
                     startDiscussionOnGitHub: t('start_discussion_on_github'),
                   }}
+                  sourceFilePath={doc._raw.sourceFilePath}
+                  toc={toc}
                 />
               </div>
             </ScrollArea>

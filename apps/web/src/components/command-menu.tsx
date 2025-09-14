@@ -1,26 +1,28 @@
 'use client'
 
-import type { AlertDialogProps } from '@radix-ui/react-alert-dialog'
-import {
-  CircleIcon,
-  FileIcon,
-  FileTextIcon,
-  LaptopIcon,
-  MoonIcon,
-  SunIcon,
-} from '@radix-ui/react-icons'
-import { allBlogs } from 'contentlayer/generated'
-import { useLocale } from 'next-intl'
-import { useTheme } from 'next-themes'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
+import type { AlertDialogProps } from '@radix-ui/react-alert-dialog'
+import { useRouter } from '@/navigation'
+import { useTheme } from 'next-themes'
+import { useLocale } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import {
+  SunIcon,
+  FileIcon,
+  MoonIcon,
+  CircleIcon,
+  LaptopIcon,
+  FileTextIcon,
+} from '@radix-ui/react-icons'
+
 import { useBlogConfig } from '@/lib/opendocs/hooks/use-blog-config'
 import { useDocsConfig } from '@/lib/opendocs/hooks/use-docs-config'
-import type { NavItemWithChildren } from '@/lib/opendocs/types/nav'
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
+import type { NavItemWithChildren } from '@/lib/opendocs/types/nav'
+import { allBlogs } from 'contentlayer/generated'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { useRouter } from '@/navigation'
+
 import {
   CommandDialog,
   CommandEmpty,
@@ -44,11 +46,21 @@ function DocsCommandMenu({
   const docsConfig = useDocsConfig()
 
   function renderItems(items: NavItemWithChildren[]) {
-    return items.map((navItem) => {
+    return items.map(navItem => {
       if (!navItem.href) {
         return (
-          <Fragment key={getObjectValueByLocale(navItem.title, docsConfig.currentLocale)}>
-            <CommandGroup heading={getObjectValueByLocale(navItem.title, docsConfig.currentLocale)}>
+          <Fragment
+            key={getObjectValueByLocale(
+              navItem.title,
+              docsConfig.currentLocale
+            )}
+          >
+            <CommandGroup
+              heading={getObjectValueByLocale(
+                navItem.title,
+                docsConfig.currentLocale
+              )}
+            >
               {renderItems(navItem.items)}
             </CommandGroup>
           </Fragment>
@@ -58,10 +70,13 @@ function DocsCommandMenu({
       return (
         <Fragment key={navItem.href}>
           <CommandItem
-            value={getObjectValueByLocale(navItem.title, docsConfig.currentLocale)}
             onSelect={() => {
               runCommand(() => router.push(navItem.href as string))
             }}
+            value={getObjectValueByLocale(
+              navItem.title,
+              docsConfig.currentLocale
+            )}
           >
             <div className="mr-2 flex size-4 items-center justify-center">
               <CircleIcon className="size-3" />
@@ -70,7 +85,9 @@ function DocsCommandMenu({
             {getObjectValueByLocale(navItem.title, docsConfig.currentLocale)}
           </CommandItem>
 
-          {navItem?.items?.length > 0 && <CommandGroup>{renderItems(navItem.items)}</CommandGroup>}
+          {navItem?.items?.length > 0 && (
+            <CommandGroup>{renderItems(navItem.items)}</CommandGroup>
+          )}
         </Fragment>
       )
     })
@@ -78,10 +95,13 @@ function DocsCommandMenu({
 
   return (
     <CommandGroup heading={messages.docs}>
-      {docsConfig.docs.sidebarNav.map((group) => (
+      {docsConfig.docs.sidebarNav.map(group => (
         <CommandGroup
+          heading={getObjectValueByLocale(
+            group.title,
+            docsConfig.currentLocale
+          )}
           key={getObjectValueByLocale(group.title, docsConfig.currentLocale)}
-          heading={getObjectValueByLocale(group.title, docsConfig.currentLocale)}
         >
           {renderItems(group.items)}
         </CommandGroup>
@@ -103,7 +123,7 @@ function BlogCommandMenu({
   const locale = useLocale()
 
   const posts = useMemo(() => {
-    return allBlogs.filter((post) => {
+    return allBlogs.filter(post => {
       const [postLocale] = post.slugAsParams.split('/')
 
       return postLocale === locale
@@ -112,16 +132,16 @@ function BlogCommandMenu({
 
   return (
     <CommandGroup heading={messages.blog}>
-      {posts.map((post) => (
+      {posts.map(post => (
         <CommandItem
           key={post._id}
-          value={`${post.title} ${post.excerpt} ${post.tags.join(' ')}`}
           onSelect={() => {
             const [, ...slugs] = post.slugAsParams.split('/')
             const slug = slugs.join('/')
 
             runCommand(() => router.push(`/blog/${slug}`))
           }}
+          value={`${post.title} ${post.excerpt} ${post.tags.join(' ')}`}
         >
           <div className="mx-1 flex size-4 items-center justify-center">
             <FileTextIcon className="size-4" />
@@ -175,7 +195,7 @@ export function CommandMenu({ messages, ...props }: CommandMenuProps) {
         }
 
         e.preventDefault()
-        setOpen((open) => !open)
+        setOpen(open => !open)
       }
     }
 
@@ -197,14 +217,16 @@ export function CommandMenu({ messages, ...props }: CommandMenuProps) {
   return (
     <>
       <Button
-        variant="outline"
         className={cn(
           'bg-card-primary text-muted-foreground relative h-8 w-full justify-start rounded-lg text-sm font-normal shadow-none sm:pr-12 md:w-40 lg:w-64'
         )}
         onClick={() => setOpen(true)}
+        variant="outline"
         {...props}
       >
-        <span className="hidden lg:inline-flex">{messages.searchDocumentation}...</span>
+        <span className="hidden lg:inline-flex">
+          {messages.searchDocumentation}...
+        </span>
 
         <span className="inline-flex lg:hidden">{messages.search}...</span>
 
@@ -213,7 +235,7 @@ export function CommandMenu({ messages, ...props }: CommandMenuProps) {
         </kbd>
       </Button>
 
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog onOpenChange={setOpen} open={open}>
         <CommandInput placeholder={`${messages.typeCommandOrSearch}...`} />
 
         <CommandList>
@@ -221,34 +243,42 @@ export function CommandMenu({ messages, ...props }: CommandMenuProps) {
 
           <CommandGroup heading="Links">
             {mainNavs
-              .filter((navitem) => !navitem.external)
-              .map((navItem) => (
+              .filter(navitem => !navitem.external)
+              .map(navItem => (
                 <CommandItem
                   key={navItem.href}
-                  value={getObjectValueByLocale(navItem.title, docsConfig.currentLocale)}
-                  onSelect={() => runCommand(() => router.push(navItem.href as string))}
+                  onSelect={() =>
+                    runCommand(() => router.push(navItem.href as string))
+                  }
+                  value={getObjectValueByLocale(
+                    navItem.title,
+                    docsConfig.currentLocale
+                  )}
                 >
                   <FileIcon className="mr-2 size-4" />
 
-                  {getObjectValueByLocale(navItem.title, docsConfig.currentLocale)}
+                  {getObjectValueByLocale(
+                    navItem.title,
+                    docsConfig.currentLocale
+                  )}
                 </CommandItem>
               ))}
           </CommandGroup>
 
           <DocsCommandMenu
-            runCommand={runCommand}
             messages={{
               docs: messages.docs,
             }}
+            runCommand={runCommand}
           />
 
           <CommandSeparator className="my-1" />
 
           <BlogCommandMenu
-            runCommand={runCommand}
             messages={{
               blog: messages.blog,
             }}
+            runCommand={runCommand}
           />
 
           <CommandSeparator className="my-1" />

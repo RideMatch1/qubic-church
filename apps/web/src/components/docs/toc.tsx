@@ -1,12 +1,12 @@
 'use client'
 
-import { ExternalLink } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 
+import type { TableOfContents } from '@/lib/opendocs/utils/toc'
+import { useMounted } from '@/lib/opendocs/hooks/use-mounted'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/config/site'
-import { useMounted } from '@/lib/opendocs/hooks/use-mounted'
-import type { TableOfContents } from '@/lib/opendocs/utils/toc'
 import { cn } from '@/lib/utils'
 
 interface DefaultTableOfContentItemsProps {
@@ -19,7 +19,8 @@ interface DefaultTableOfContentItemsProps {
   }
 }
 
-interface DashboardTableOfContentsProps extends DefaultTableOfContentItemsProps {
+interface DashboardTableOfContentsProps
+  extends DefaultTableOfContentItemsProps {
   toc: TableOfContents
 }
 
@@ -32,10 +33,10 @@ export function DashboardTableOfContents({
     () =>
       toc.items
         ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+            .flatMap(item => [item.url, item?.items?.map(item => item.url)])
             .flat()
             .filter(Boolean)
-            .map((id) => id?.split('#')[1])
+            .map(id => id?.split('#')[1])
         : [],
     [toc]
   )
@@ -46,7 +47,10 @@ export function DashboardTableOfContents({
   if (!toc?.items || !mounted) {
     return (
       <div className="space-y-2">
-        <DefaultTableOfContentItems messages={messages} sourceFilePath={sourceFilePath} />
+        <DefaultTableOfContentItems
+          messages={messages}
+          sourceFilePath={sourceFilePath}
+        />
       </div>
     )
   }
@@ -55,18 +59,24 @@ export function DashboardTableOfContents({
     <div className="space-y-2">
       <p className="font-medium">{messages.onThisPage}</p>
 
-      <Tree tree={toc} activeItem={activeHeading as string} />
+      <Tree activeItem={activeHeading as string} tree={toc} />
 
       <div className="py-4">
         <Separator />
       </div>
 
-      <DefaultTableOfContentItems messages={messages} sourceFilePath={sourceFilePath} />
+      <DefaultTableOfContentItems
+        messages={messages}
+        sourceFilePath={sourceFilePath}
+      />
     </div>
   )
 }
 
-function DefaultTableOfContentItems({ messages, sourceFilePath }: DefaultTableOfContentItemsProps) {
+function DefaultTableOfContentItems({
+  messages,
+  sourceFilePath,
+}: DefaultTableOfContentItemsProps) {
   return (
     <div className="mt-2 flex flex-col gap-1">
       <a
@@ -91,8 +101,8 @@ function useActiveItem(itemIds: string[]) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id)
           }
@@ -101,7 +111,7 @@ function useActiveItem(itemIds: string[]) {
       { rootMargin: '0% 0% -80% 0%' }
     )
 
-    itemIds?.forEach((id) => {
+    itemIds?.forEach(id => {
       const element = document.getElementById(id)
 
       if (element) {
@@ -110,7 +120,7 @@ function useActiveItem(itemIds: string[]) {
     })
 
     return () => {
-      itemIds?.forEach((id) => {
+      itemIds?.forEach(id => {
         const element = document.getElementById(id)
 
         if (element) {
@@ -134,21 +144,24 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
     <ul className={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
       {tree.items.map((item, index) => {
         return (
-          <li key={index} className={cn('mt-0 pt-2')}>
+          <li
+            className={cn('mt-0 pt-2')}
+            key={`${item.url}-${item.title}-${index}`}
+          >
             <a
-              href={item.url}
               className={cn(
                 'hover:text-foreground inline-block no-underline transition-colors',
                 item.url === `#${activeItem}`
                   ? 'text-foreground border-l-primary-active border-l-2 pl-2 font-medium'
                   : 'text-muted-foreground'
               )}
+              href={item.url}
             >
               {item.title}
             </a>
 
             {item.items?.length ? (
-              <Tree tree={item} level={level + 1} activeItem={activeItem} />
+              <Tree activeItem={activeItem} level={level + 1} tree={item} />
             ) : null}
           </li>
         )

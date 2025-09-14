@@ -1,5 +1,6 @@
 import { allBlogs, allDocs } from 'contentlayer/generated'
 import type { MetadataRoute } from 'next'
+
 import { locales } from '@/config/i18n'
 import { absoluteUrl } from '@/lib/utils'
 
@@ -12,7 +13,9 @@ export default function sitemap(): Sitemap {
       lastModified: new Date(),
 
       alternates: {
-        languages: Object.fromEntries(locales.map((locale) => [locale, absoluteUrl(`/${locale}`)])),
+        languages: Object.fromEntries(
+          locales.map(locale => [locale, absoluteUrl(`/${locale}`)])
+        ),
       },
     },
 
@@ -22,13 +25,13 @@ export default function sitemap(): Sitemap {
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [locale, absoluteUrl(`/${locale}/docs`)])
+          locales.map(locale => [locale, absoluteUrl(`/${locale}/docs`)])
         ),
       },
     },
   ]
 
-  const docPaths: Sitemap = allDocs.map((doc) => {
+  const docPaths: Sitemap = allDocs.map(doc => {
     const [, ...docSlugList] = doc.slugAsParams.split('/')
     const docSlug = docSlugList.join('/') || ''
 
@@ -38,13 +41,16 @@ export default function sitemap(): Sitemap {
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [locale, absoluteUrl(`/${locale}/docs/${docSlug}`)])
+          locales.map(locale => [
+            locale,
+            absoluteUrl(`/${locale}/docs/${docSlug}`),
+          ])
         ),
       },
     }
   })
 
-  const blogPaths: Sitemap = allBlogs.map((post) => {
+  const blogPaths: Sitemap = allBlogs.map(post => {
     const [, ...postSlugList] = post.slugAsParams.split('/')
     const postSlug = postSlugList.join('/') || ''
 
@@ -54,7 +60,10 @@ export default function sitemap(): Sitemap {
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [locale, absoluteUrl(`/${locale}/blog/${postSlug}`)])
+          locales.map(locale => [
+            locale,
+            absoluteUrl(`/${locale}/blog/${postSlug}`),
+          ])
         ),
       },
     }

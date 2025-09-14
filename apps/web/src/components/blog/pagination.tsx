@@ -27,7 +27,11 @@ interface PaginationProps {
   }
 }
 
-export function Pagination({ messages, numberOfPages, pagesToShow = 5 }: PaginationProps) {
+export function Pagination({
+  messages,
+  numberOfPages,
+  pagesToShow = 5,
+}: PaginationProps) {
   const searchParams = useSearchParams()
 
   const currentPage = useMemo(() => {
@@ -48,7 +52,7 @@ export function Pagination({ messages, numberOfPages, pagesToShow = 5 }: Paginat
     const endPages = [numberOfPages - 1, numberOfPages]
 
     const middlePages = [currentPage - 1, currentPage, currentPage + 1].filter(
-      (page) => page > 2 && page < numberOfPages - 1
+      page => page > 2 && page < numberOfPages - 1
     )
 
     const allPages = [...startPages, ...middlePages, ...endPages]
@@ -61,11 +65,11 @@ export function Pagination({ messages, numberOfPages, pagesToShow = 5 }: Paginat
       <PaginationContent className="flex flex-wrap items-end space-x-2 space-y-2 sm:space-x-3 sm:space-y-0">
         <PaginationItem>
           <PaginationPrevious
-            href={hasPreviousPage ? `?page=${currentPage - 1}` : '#'}
             aria-label={messages.go_to_previous_page}
             className={cn({
               'opacity-50 pointer-events-none': !hasPreviousPage,
             })}
+            href={hasPreviousPage ? `?page=${currentPage - 1}` : '#'}
           >
             {messages.previous}
           </PaginationPrevious>
@@ -74,14 +78,15 @@ export function Pagination({ messages, numberOfPages, pagesToShow = 5 }: Paginat
         {visiblePages.map((page, index) => {
           const isCurrentPage = page === currentPage
 
-          const shouldDisplayEllipsis = index > 0 && page !== (visiblePages[index - 1] || 0) + 1
+          const shouldDisplayEllipsis =
+            index > 0 && page !== (visiblePages[index - 1] || 0) + 1
 
           return (
             <PaginationItem
-              key={page}
               className={cn({
                 'opacity-50 pointer-events-none': isCurrentPage,
               })}
+              key={page}
             >
               {shouldDisplayEllipsis ? (
                 <PaginationEllipsis />
@@ -94,9 +99,9 @@ export function Pagination({ messages, numberOfPages, pagesToShow = 5 }: Paginat
 
         <PaginationItem>
           <PaginationNext
-            href={hasNextPage ? `?page=${currentPage + 1}` : '#'}
             aria-label={messages.go_to_next_page}
             className={cn({ 'opacity-50 pointer-events-none': !hasNextPage })}
+            href={hasNextPage ? `?page=${currentPage + 1}` : '#'}
           >
             {messages.next}
           </PaginationNext>

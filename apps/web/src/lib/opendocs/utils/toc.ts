@@ -1,6 +1,7 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: <> */
+import { visit } from 'unist-util-visit'
 import { toc } from 'mdast-util-toc'
 import { remark } from 'remark'
-import { visit } from 'unist-util-visit'
 
 const textTypes = ['text', 'emphasis', 'strong', 'inlineCode']
 
@@ -14,12 +15,14 @@ interface Items {
   items?: Item[]
 }
 
-function flattenNode(node: any) {
+function flattenNode(node: any): string {
   const p: string[] = []
 
-  visit(node, (node) => {
+  visit(node, (node: any) => {
     if (!textTypes.includes(node.type)) return
-    p.push(node.value)
+    if (node.value) {
+      p.push(node.value)
+    }
   })
 
   return p.join('')
@@ -31,7 +34,7 @@ function getItems(node: any, current: any): Items {
   }
 
   if (node.type === 'paragraph') {
-    visit(node, (item) => {
+    visit(node, (item: any) => {
       if (item.type === 'link') {
         current.url = item.url
         current.title = flattenNode(node)
@@ -46,14 +49,14 @@ function getItems(node: any, current: any): Items {
   }
 
   if (node.type === 'list') {
-    current.items = node.children.map((i: any) => getItems(i, {}))
+    current.items = node.children?.map((i: any) => getItems(i, {})) || []
 
     return current
   }
   if (node.type === 'listItem') {
-    const heading = getItems(node.children[0], {})
+    const heading = getItems(node.children?.[0], {})
 
-    if (node.children.length > 1) {
+    if (node.children && node.children.length > 1) {
       getItems(node.children[1], heading)
     }
 
@@ -72,7 +75,9 @@ const getToc = () => (node: any, file: any) => {
 
 export type TableOfContents = Items
 
-export async function getTableOfContents(content: string): Promise<TableOfContents> {
+export async function getTableOfContents(
+  content: string
+): Promise<TableOfContents> {
   const result = await remark().use(getToc).process(content)
 
   return result.data as TableOfContents

@@ -14,7 +14,7 @@ import { buttonVariants } from './ui/button'
 import { VersionDropdown } from './version-dropdown'
 
 const CommandMenu = dynamic(() =>
-  import('@/components/command-menu').then((mod) => mod.CommandMenu)
+  import('@/components/command-menu').then(mod => mod.CommandMenu)
 )
 
 export async function SiteHeader() {
@@ -31,11 +31,11 @@ export async function SiteHeader() {
         />
 
         <MobileNav
+          menuLinks={<SiteHeaderMenuLinks />}
           messages={{
             menu: t('words.menu'),
             toggleMenu: t('buttons.toggle_menu'),
           }}
-          menuLinks={<SiteHeaderMenuLinks />}
         />
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
@@ -81,7 +81,7 @@ export async function SiteHeader() {
             />
 
             <div className="phone:flex hidden items-center">
-              <Separator orientation="vertical" className="mx-1 h-5" />
+              <Separator className="mx-1 h-5" orientation="vertical" />
               <SiteHeaderMenuLinks />
             </div>
           </nav>
@@ -93,7 +93,7 @@ export async function SiteHeader() {
 
 export function SiteHeaderMenuLinks() {
   return (
-    <Link href={siteConfig.links.github.url} target="_blank" rel="noreferrer">
+    <Link href={siteConfig.links.github.url} rel="noreferrer" target="_blank">
       <div
         className={cn(
           buttonVariants({

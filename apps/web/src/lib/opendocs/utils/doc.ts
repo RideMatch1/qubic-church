@@ -1,9 +1,9 @@
-import { allDocs, type Doc } from 'contentlayer/generated'
-import { docsConfig } from '@/config/docs'
-import { defaultLocale } from '@/config/i18n'
-import type { DocPageProps } from '../types/docs'
 import type { NavItem, SidebarNavItem } from '../types/nav'
+import { allDocs, type Doc } from 'contentlayer/generated'
+import type { DocPageProps } from '../types/docs'
 import { getSlugWithoutLocale } from './locale'
+import { defaultLocale } from '@/config/i18n'
+import { docsConfig } from '@/config/docs'
 
 export function makeLocalizedSlug({ locale, slug }: DocPageProps['params']) {
   const _slug = slug?.join('/')
@@ -18,7 +18,7 @@ export async function getDocFromParams({
   params,
 }: DocPageProps): Promise<(Doc & { notAvailable: boolean }) | null> {
   let localizedSlug = makeLocalizedSlug(params)
-  let doc = allDocs.find((doc) => doc.slugAsParams === localizedSlug)
+  let doc = allDocs.find(doc => doc.slugAsParams === localizedSlug)
 
   if (!doc) {
     localizedSlug = makeLocalizedSlug({
@@ -26,7 +26,7 @@ export async function getDocFromParams({
       locale: defaultLocale,
     })
 
-    doc = allDocs.find((doc) => doc.slugAsParams === localizedSlug)
+    doc = allDocs.find(doc => doc.slugAsParams === localizedSlug)
 
     return doc ? { ...doc, notAvailable: true } : null
   }
@@ -61,7 +61,10 @@ export function getBreadcrumb(docSlug: string) {
     return null
   }
 
-  const makeBreadcrumb = (slug: string, config: typeof docsConfig): NavItem[] | null => {
+  const makeBreadcrumb = (
+    slug: string,
+    config: typeof docsConfig
+  ): NavItem[] | null => {
     for (const nav of config.sidebarNav) {
       const path = findBreadcrumbPath([nav], slug)
 

@@ -2,7 +2,10 @@ import { defaultLocale, locales } from '@/config/i18n'
 
 import type { LocaleOptions } from '../types/i18n'
 
-export function getObjectValueByLocale(obj: Record<string, string>, locale: LocaleOptions) {
+export function getObjectValueByLocale(
+  obj: Record<string, string>,
+  locale: LocaleOptions
+) {
   return String(obj?.[locale] || obj?.[defaultLocale])
 }
 

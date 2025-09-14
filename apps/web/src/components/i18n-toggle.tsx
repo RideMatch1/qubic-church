@@ -1,19 +1,21 @@
 'use client'
 
 import { ChevronDown, LanguagesIcon } from 'lucide-react'
-import { useLocale } from 'next-intl'
+import { usePathname, useRouter } from '@/navigation'
 import { type PointerEvent, useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { useLocale } from 'next-intl'
+
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { labels } from '@/config/i18n'
+
 import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import { usePathname, useRouter } from '@/navigation'
+import { Button } from '@/components/ui/button'
+import { labels } from '@/config/i18n'
 
 interface I18nToggleProps {
   messages: {
@@ -50,15 +52,15 @@ export function I18nToggle({ messages }: I18nToggleProps) {
   }
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+    <DropdownMenu modal={false} onOpenChange={setOpen} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
           aria-expanded={open}
           className="group pointer-events-auto relative flex w-fit gap-1 px-2"
           onClick={() => isMobile && openDropdown()}
           onPointerEnter={() => !isMobile && openDropdown()}
-          onPointerLeave={(event) => !isMobile && closeDropdown(event)}
+          onPointerLeave={event => !isMobile && closeDropdown(event)}
+          variant="ghost"
         >
           <LanguagesIcon className="size-[1.2rem] transition-all dark:rotate-0 dark:scale-100" />
 
@@ -70,18 +72,18 @@ export function I18nToggle({ messages }: I18nToggleProps) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="flex flex-col items-center"
         align="center"
-        role="menu"
+        className="flex flex-col items-center"
+        onCloseAutoFocus={e => e.preventDefault()}
         onPointerLeave={closeDropdown}
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        role="menu"
       >
         <div className="w-full">
           {locales.map(([locale, label]) => (
             <DropdownMenuItem
+              disabled={currentLocale === locale}
               key={locale}
               onClick={() => changeLocale(locale as LocaleOptions)}
-              disabled={currentLocale === locale}
             >
               {label}
             </DropdownMenuItem>

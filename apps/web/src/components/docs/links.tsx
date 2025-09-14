@@ -1,10 +1,10 @@
-import type { Doc } from 'contentlayer/generated'
-import { ExternalLinkIcon } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
+import { ExternalLinkIcon } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
-import { Link } from '@/navigation'
+import type { Doc } from 'contentlayer/generated'
 import { badgeVariants } from '../ui/badge'
+import { Link } from '@/navigation'
+import { cn } from '@/lib/utils'
 
 export async function DocLinks({ doc }: { doc: Doc }) {
   if (!doc?.links) {
@@ -17,10 +17,10 @@ export async function DocLinks({ doc }: { doc: Doc }) {
     <div className="flex items-center space-x-2 pt-4">
       {doc.links?.source && (
         <Link
-          href={doc.links.source}
-          target="_blank"
-          rel="noreferrer"
           className={cn(badgeVariants({ variant: 'secondary' }), 'gap-1')}
+          href={doc.links.source}
+          rel="noreferrer"
+          target="_blank"
         >
           {t('docs.source')}
 
@@ -30,10 +30,10 @@ export async function DocLinks({ doc }: { doc: Doc }) {
 
       {doc.links?.doc && (
         <Link
-          href={doc.links.doc}
-          target="_blank"
-          rel="noreferrer"
           className={cn(badgeVariants({ variant: 'secondary' }), 'gap-1')}
+          href={doc.links.doc}
+          rel="noreferrer"
+          target="_blank"
         >
           {t('docs.docs')}
 
@@ -43,10 +43,10 @@ export async function DocLinks({ doc }: { doc: Doc }) {
 
       {doc.links?.api && (
         <Link
-          href={doc.links.api}
-          target="_blank"
-          rel="noreferrer"
           className={cn(badgeVariants({ variant: 'secondary' }), 'gap-1')}
+          href={doc.links.api}
+          rel="noreferrer"
+          target="_blank"
         >
           {t('docs.api_reference')}
 
@@ -56,10 +56,10 @@ export async function DocLinks({ doc }: { doc: Doc }) {
 
       {doc.links?.blog && (
         <Link
-          href={doc.links.blog}
-          target="_blank"
-          rel="noreferrer"
           className={cn(badgeVariants({ variant: 'secondary' }), 'gap-1')}
+          href={doc.links.blog}
+          rel="noreferrer"
+          target="_blank"
         >
           {t('site.words.blog')}
 

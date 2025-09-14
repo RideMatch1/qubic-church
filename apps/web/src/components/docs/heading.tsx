@@ -1,8 +1,8 @@
-import type { Doc } from 'contentlayer/generated'
 import Balancer from 'react-wrap-balancer'
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 
 import { DocNotAvailableInThisLanguage } from './not-available'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import type { Doc } from 'contentlayer/generated'
 
 interface DocHeadingProps {
   doc: Doc & { notAvailable: boolean }
@@ -12,7 +12,9 @@ interface DocHeadingProps {
 export function DocHeading({ doc, locale }: DocHeadingProps) {
   return (
     <div className="space-y-2">
-      <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">{doc.title}</h1>
+      <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+        {doc.title}
+      </h1>
 
       {doc.description && (
         <p className="text-muted-foreground text-lg">

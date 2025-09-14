@@ -1,19 +1,20 @@
 'use client'
 
-import { Rss } from 'lucide-react'
-import ExternalLink from 'next/link'
-import { useLocale } from 'next-intl'
 import { type PointerEvent, useState } from 'react'
+import { useLocale } from 'next-intl'
+import ExternalLink from 'next/link'
+import { Rss } from 'lucide-react'
 
-import { Button, buttonVariants } from '@/components/ui/button'
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuContent,
 } from '@/components/ui/dropdown-menu'
-import { blogConfig } from '@/config/blog'
+
 import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { blogConfig } from '@/config/blog'
 import { cn } from '@/lib/utils'
 
 interface RSSToggleProps {
@@ -41,23 +42,26 @@ export function RSSToggle({ messages }: RSSToggleProps) {
   }
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+    <DropdownMenu modal={false} onOpenChange={setOpen} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          aria-expanded={open}
+          aria-label={messages.rss_feed}
           className={cn(
             'flex place-self-end transition-all group pointer-events-auto relative w-fit gap-1 px-2',
             buttonVariants({ variant: 'ghost' }),
             'hover:text-amber-600',
             'aria-expanded:text-amber-600'
           )}
-          aria-expanded={open}
-          aria-label={messages.rss_feed}
           onClick={() => isMobile && openDropdown()}
           onPointerEnter={() => !isMobile && openDropdown()}
-          onPointerLeave={(event) => !isMobile && closeDropdown(event)}
+          onPointerLeave={event => !isMobile && closeDropdown(event)}
+          variant="ghost"
         >
-          <Rss className="size-[1.2rem] transition-all dark:rotate-0 dark:scale-100" size={20} />
+          <Rss
+            className="size-[1.2rem] transition-all dark:rotate-0 dark:scale-100"
+            size={20}
+          />
 
           <span className="sr-only">{messages.rss_feed}</span>
           <span className="pointer-events-auto absolute z-10 block h-14 w-full" />
@@ -65,20 +69,20 @@ export function RSSToggle({ messages }: RSSToggleProps) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        role="menu"
         align="center"
-        onPointerLeave={closeDropdown}
         className="flex flex-col items-center"
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        onCloseAutoFocus={e => e.preventDefault()}
+        onPointerLeave={closeDropdown}
+        role="menu"
       >
         <div className="w-full">
           {blogConfig.rss.map(({ file, type }) => (
             <DropdownMenuItem asChild key={file}>
               <ExternalLink
-                target="_blank"
-                rel="noreferrer"
                 aria-label={type}
                 href={`/${currentLocale}/feed/${file}`}
+                rel="noreferrer"
+                target="_blank"
               >
                 {type}
               </ExternalLink>

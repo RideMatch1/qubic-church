@@ -1,7 +1,14 @@
-import type React from 'react'
 import type { PropsWithChildren } from 'react'
+import type React from 'react'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardTitle,
+  CardHeader,
+  CardContent,
+  CardDescription,
+} from '@/components/ui/card'
+
 import { cn } from '@/lib/utils'
 
 type FeaturedCardProps = PropsWithChildren<{

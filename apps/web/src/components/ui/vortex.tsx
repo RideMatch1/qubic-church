@@ -7,7 +7,7 @@ import { createNoise3D } from 'simplex-noise'
 import { cn } from '@/lib/utils'
 
 interface VortexProps {
-  children?: any
+  children?: React.ReactNode
   className?: string
   containerClassName?: string
   particleCount?: number
@@ -54,7 +54,8 @@ export default function (props: VortexProps) {
     const hm = 0.5 * m
     return Math.abs(((t + hm) % m) - hm) / hm
   }
-  const lerp = (n1: number, n2: number, speed: number): number => (1 - speed) * n1 + speed * n2
+  const lerp = (n1: number, n2: number, speed: number): number =>
+    (1 - speed) * n1 + speed * n2
 
   const setup = () => {
     const canvas = canvasRef.current
@@ -84,25 +85,15 @@ export default function (props: VortexProps) {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    let x
-    let y
-    let vx
-    let vy
-    let life
-    let ttl
-    let speed
-    let radius
-    let hue
-
-    x = rand(canvas.width)
-    y = center[1] + randRange(rangeY)
-    vx = 0
-    vy = 0
-    life = 0
-    ttl = baseTTL + rand(rangeTTL)
-    speed = baseSpeed + rand(rangeSpeed)
-    radius = baseRadius + rand(rangeRadius)
-    hue = baseHue + rand(rangeHue)
+    const x = rand(canvas.width)
+    const y = center[1] + randRange(rangeY)
+    const vx = 0
+    const vy = 0
+    const life = 0
+    const ttl = baseTTL + rand(rangeTTL)
+    const speed = baseSpeed + rand(rangeSpeed)
+    const radius = baseRadius + rand(rangeRadius)
+    const hue = baseHue + rand(rangeHue)
 
     particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i)
   }
@@ -140,42 +131,38 @@ export default function (props: VortexProps) {
     const i7 = 6 + i
     const i8 = 7 + i
     const i9 = 8 + i
-    let n
-    let x
-    let y
-    let vx
-    let vy
-    let life
-    let ttl
-    let speed
-    let x2
-    let y2
-    let radius
-    let hue
+    const x = particleProps[i]
+    const y = particleProps[i2]
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
+    const n = noise3D(x! * xOff, y! * yOff, tick * zOff) * noiseSteps * TAU
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
+    const vx = lerp(particleProps[i3]!, Math.cos(n), 0.5)
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
+    const vy = lerp(particleProps[i4]!, Math.sin(n), 0.5)
+    let life = particleProps[i5]
+    const ttl = particleProps[i6]
+    const speed = particleProps[i7]
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
+    const x2 = x! + vx * speed!
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
+    const y2 = y! + vy * speed!
+    const radius = particleProps[i8]
+    const hue = particleProps[i9]
 
-    x = particleProps[i]
-    y = particleProps[i2]
-    n = noise3D(x! * xOff, y! * yOff, tick * zOff) * noiseSteps * TAU
-    vx = lerp(particleProps[i3]!, Math.cos(n), 0.5)
-    vy = lerp(particleProps[i4]!, Math.sin(n), 0.5)
-    life = particleProps[i5]
-    ttl = particleProps[i6]
-    speed = particleProps[i7]
-    x2 = x! + vx * speed!
-    y2 = y! + vy * speed!
-    radius = particleProps[i8]
-    hue = particleProps[i9]
-
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
     drawParticle(x!, y!, x2, y2, life!, ttl!, radius!, hue!, ctx)
 
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
     life!++
 
     particleProps[i] = x2
     particleProps[i2] = y2
     particleProps[i3] = vx
     particleProps[i4] = vy
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
     particleProps[i5] = life!
 
+    // biome-ignore lint/style/noNonNullAssertion: Values are guaranteed to exist in particle array
     const bounds = checkBounds(x!, y!, canvas) || life! > ttl!
 
     bounds && initParticle(i)
@@ -208,7 +195,10 @@ export default function (props: VortexProps) {
     return x > canvas.width || x < 0 || y > canvas.height || y < 0
   }
 
-  const resize = (canvas: HTMLCanvasElement, _ctx?: CanvasRenderingContext2D) => {
+  const resize = (
+    canvas: HTMLCanvasElement,
+    _ctx?: CanvasRenderingContext2D
+  ) => {
     const { innerWidth, innerHeight } = window
 
     canvas.width = innerWidth
@@ -218,7 +208,10 @@ export default function (props: VortexProps) {
     center[1] = 0.5 * canvas.height
   }
 
-  const renderGlow = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+  const renderGlow = (
+    canvas: HTMLCanvasElement,
+    ctx: CanvasRenderingContext2D
+  ) => {
     ctx.save()
     ctx.filter = 'blur(8px) brightness(200%)'
     ctx.globalCompositeOperation = 'lighter'
@@ -232,7 +225,10 @@ export default function (props: VortexProps) {
     ctx.restore()
   }
 
-  const renderToScreen = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+  const renderToScreen = (
+    canvas: HTMLCanvasElement,
+    ctx: CanvasRenderingContext2D
+  ) => {
     ctx.save()
     ctx.globalCompositeOperation = 'lighter'
     ctx.drawImage(canvas, 0, 0)
@@ -249,6 +245,7 @@ export default function (props: VortexProps) {
       }
     })
     // eslint-disable-next-line
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <>
   }, [resize, setup])
 
   /**
@@ -260,15 +257,17 @@ export default function (props: VortexProps) {
   return (
     <div className={cn('relative h-full w-full', props.containerClassName)}>
       <motion.div
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        ref={containerRef}
         className="absolute h-full w-full inset-0 z-0 bg-transparent flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        ref={containerRef}
       >
         <canvas ref={canvasRef} />
       </motion.div>
 
-      <div className={cn('relative z-10', props.className)}>{props.children}</div>
+      <div className={cn('relative z-10', props.className)}>
+        {props.children}
+      </div>
     </div>
   )
 }

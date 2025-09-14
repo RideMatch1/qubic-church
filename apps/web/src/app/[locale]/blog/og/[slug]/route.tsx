@@ -1,22 +1,34 @@
+/** biome-ignore-all lint/performance/noImgElement: Using img elements for OG image generation */
 import { allBlogs, type Blog } from 'contentlayer/generated'
-import { ImageResponse } from 'next/og'
 import type { NextRequest } from 'next/server'
+import { ImageResponse } from 'next/og'
 
-import { siteConfig } from '@/config/site'
-import { getFonts } from '@/lib/fonts'
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { absoluteUrl, truncateText } from '@/lib/utils'
+import { siteConfig } from '@/config/site'
+import { getFonts } from '@/lib/fonts'
+
+export const runtime = 'edge'
+export const dynamicParams = true
 
 interface BlogOgProps {
   params: Promise<{ slug: string; locale: LocaleOptions }>
 }
 
-export const runtime = 'edge'
-export const dynamicParams = true
+export async function GET(
+  _: NextRequest,
+  context: { params: Promise<{ locale: string; slug: string }> }
+) {
+  const params = await context.params
 
-export async function GET(_: NextRequest, props: BlogOgProps) {
-  const params = await props.params
-  const post = getBlogPostBySlugAndLocale(params.slug, params.locale)
+  const blogProps: BlogOgProps = {
+    params: Promise.resolve({
+      slug: params.slug,
+      locale: params.locale as LocaleOptions,
+    }),
+  }
+  const typedParams = await blogProps.params
+  const post = getBlogPostBySlugAndLocale(typedParams.slug, typedParams.locale)
 
   if (!post) {
     return new ImageResponse(<Fallback src="/og.jpg" />, {
@@ -45,7 +57,9 @@ export async function GET(_: NextRequest, props: BlogOgProps) {
   }
 
   return new ImageResponse(
-    <div tw={`bg-black flex flex-col min-w-full h-[${siteConfig.og.size.height}px] relative`}>
+    <div
+      tw={`bg-black flex flex-col min-w-full h-[${siteConfig.og.size.height}px] relative`}
+    >
       <Background src="/og-background.jpg" />
 
       <div tw="my-10 mx-14 flex flex-col">
@@ -69,9 +83,9 @@ function Author({ post }: { post: Blog }) {
     <div tw="flex items-center pt-10">
       {post.author?.image && (
         <img
-          tw="w-20 h-20 rounded-full border-gray-800 border-4"
-          src={absoluteUrl(post.author?.image)}
           alt=""
+          src={absoluteUrl(post.author?.image)}
+          tw="w-20 h-20 rounded-full border-gray-800 border-4"
         />
       )}
 
@@ -81,11 +95,17 @@ function Author({ post }: { post: Blog }) {
 }
 
 function Background({ src }: { src: string }) {
-  return <img alt="" src={absoluteUrl(src)} tw="w-full h-full absolute left-0 top-0 opacity-70" />
+  return (
+    <img
+      alt=""
+      src={absoluteUrl(src)}
+      tw="w-full h-full absolute left-0 top-0 opacity-70"
+    />
+  )
 }
 
 function Logo({ src }: { src: string }) {
-  return <img tw="w-28 h-28 rounded-full" src={absoluteUrl(src)} alt="" />
+  return <img alt="" src={absoluteUrl(src)} tw="w-28 h-28 rounded-full" />
 }
 
 function Title({ children }: { children: string }) {
@@ -99,13 +119,13 @@ function Title({ children }: { children: string }) {
 function Fallback({ src }: { src: string }) {
   return (
     <div tw="flex w-full h-full">
-      <img src={absoluteUrl(src)} tw="w-full h-full" alt="" />
+      <img alt="" src={absoluteUrl(src)} tw="w-full h-full" />
     </div>
   )
 }
 
 function getBlogPostBySlugAndLocale(slug: string, locale: LocaleOptions) {
-  return allBlogs.find((post) => {
+  return allBlogs.find(post => {
     const [postLocale, ...slugs] = post.slugAsParams.split('/')
 
     return slugs.join('/') === slug && postLocale === locale

@@ -1,21 +1,26 @@
 'use client'
 
-import type { Blog } from 'contentlayer/generated'
-import { compareDesc } from 'date-fns'
 import { useSearchParams } from 'next/navigation'
-import { useMemo } from 'react'
 import Balancer from 'react-wrap-balancer'
-import { dateLocales } from '@/config/i18n'
+import { compareDesc } from 'date-fns'
+import { useMemo } from 'react'
+
+import {
+  getSlugWithoutLocale,
+  getObjectValueByLocale,
+} from '@/lib/opendocs/utils/locale'
+
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import { getObjectValueByLocale, getSlugWithoutLocale } from '@/lib/opendocs/utils/locale'
 import { cn, formatDate, truncateText } from '@/lib/utils'
-import { Link } from '@/navigation'
-import { buttonVariants } from '../ui/button'
-import { Card } from '../ui/card'
-import { Pagination } from './pagination'
 import { BlogPostItemTags } from './post-item-tags'
-import { ReadTime } from './read-time'
+import type { Blog } from 'contentlayer/generated'
+import { buttonVariants } from '../ui/button'
+import { dateLocales } from '@/config/i18n'
+import { Pagination } from './pagination'
 import { RSSToggle } from './rss-toggle'
+import { ReadTime } from './read-time'
+import { Link } from '@/navigation'
+import { Card } from '../ui/card'
 
 interface PaginatedBlogPostsProps {
   posts: Blog[]
@@ -53,7 +58,7 @@ export function PaginatedBlogPosts({
     let blogPosts = posts
 
     if (tag) {
-      blogPosts = blogPosts.filter((post) => post.tags?.includes(decodeURI(tag)))
+      blogPosts = blogPosts.filter(post => post.tags?.includes(decodeURI(tag)))
     }
 
     return blogPosts
@@ -62,7 +67,7 @@ export function PaginatedBlogPosts({
   const sortedPosts = useMemo(
     () =>
       blogPosts
-        .filter((post) => {
+        .filter(post => {
           const [localeFromSlug] = post.slugAsParams.split('/')
 
           return localeFromSlug === locale
@@ -95,30 +100,36 @@ export function PaginatedBlogPosts({
           'md:grid-cols-1': paginatedPosts.length < 2,
         })}
       >
-        {paginatedPosts.map((post) => {
+        {paginatedPosts.map(post => {
           const postLink = getSlugWithoutLocale(post.slug, 'blog')
 
           return (
             <Card
-              key={post._id}
               className="flex flex-col p-4 md:p-8 w-full h-full backdrop-blur-lg dark:bg-card-primary justify-between"
+              key={post._id}
             >
               <div>
                 <div className="flex items-center mb-2 text-xs text-muted-foreground justify-between gap-1">
                   <time dateTime={post.date}>
-                    {formatDate(post.date, getObjectValueByLocale(dateLocales, locale))}
+                    {formatDate(
+                      post.date,
+                      getObjectValueByLocale(dateLocales, locale)
+                    )}
                   </time>
 
                   <ReadTime
-                    time={post.readTimeInMinutes}
-                    variant="unstyled"
                     messages={{
                       min_read: messages.min_read,
                     }}
+                    time={post.readTimeInMinutes}
+                    variant="unstyled"
                   />
                 </div>
 
-                <Link href={postLink} className={cn('hover:opacity-65 transition-all')}>
+                <Link
+                  className={cn('hover:opacity-65 transition-all')}
+                  href={postLink}
+                >
                   <h1 className="text-xl py-2">
                     <Balancer>{post.title}</Balancer>
                   </h1>
@@ -132,12 +143,12 @@ export function PaginatedBlogPosts({
               <BlogPostItemTags post={post} />
 
               <Link
-                href={postLink}
                 className={cn(
                   'dark:hover:text-primary dark:text-primary-active transition-all',
                   buttonVariants({ variant: 'link' }),
                   'h-fit p-0 flex self-end mt-1'
                 )}
+                href={postLink}
               >
                 {messages.read_more}
               </Link>
@@ -146,7 +157,11 @@ export function PaginatedBlogPosts({
         })}
       </div>
 
-      <Pagination pagesToShow={10} messages={messages} numberOfPages={totalOfPages} />
+      <Pagination
+        messages={messages}
+        numberOfPages={totalOfPages}
+        pagesToShow={10}
+      />
     </main>
   )
 }

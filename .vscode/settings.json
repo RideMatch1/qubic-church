@@ -1,9 +1,4 @@
 {
-  "biome.rename": true,
-  "biome.enabled": true,
-  "biome.workingDirectories": ["apps/web"],
-  "biome.requireConfig": true,
-
   "tailwindCSS.experimental.configFile": {
     "apps/web/tailwind.config.ts": "apps/web/**"
   },
@@ -18,39 +13,30 @@
   "css.customData": [".vscode/css.json"],
 
   "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "explicit",
-      "source.organizeImports.biome": "explicit"
-    }
-  },
-
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "explicit",
-      "source.organizeImports.biome": "explicit"
-    }
-  },
-
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "explicit",
-      "source.organizeImports.biome": "explicit"
-    }
+    "editor.formatOnSave": true
   },
 
   "[json]": {
-    "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true
   },
 
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome",
+  "[typescript]": {
     "editor.formatOnSave": true
+  },
+
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+
+  "biome.enabled": true,
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  },
+
+  "editor.defaultFormatter": "biomejs.biome",
+
+  "editor.quickSuggestions": {
+    "strings": "on"
   }
 }

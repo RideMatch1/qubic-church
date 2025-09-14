@@ -11,10 +11,10 @@ export async function SiteFooter() {
         <p className="text-muted-foreground text-balance text-center text-sm leading-loose md:text-left">
           {t('created_by')}{' '}
           <a
-            href={siteConfig.author.site}
-            target="_blank"
-            rel="noreferrer"
             className="font-medium underline underline-offset-4"
+            href={siteConfig.author.site}
+            rel="noreferrer"
+            target="_blank"
           >
             {siteConfig.author.name}
           </a>

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "root": false,
   "vcs": {
     "enabled": true,
@@ -27,16 +27,26 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 100,
-    "attributePosition": "auto"
+    "lineWidth": 80
   },
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "off",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "off",
+        "useSortedProperties": "on"
+      }
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "correctness": {
         "noUnusedVariables": "error",
+        "noUnusedImports": "warn",
         "useExhaustiveDependencies": "warn"
       },
       "style": {
@@ -47,12 +57,13 @@
       },
       "suspicious": {
         "noExplicitAny": "warn",
-        "noArrayIndexKey": "warn"
+        "noArrayIndexKey": "warn",
+        "noUnknownAtRules": "off",
+        "noEmptyInterface": "off"
       },
       "complexity": {
-        "noBannedTypes": "error",
-        "noUselessFragments": "error",
-        "useFlatMap": "warn"
+        "noBannedTypes": "warn",
+        "noUselessFragments": "error"
       },
       "performance": {
         "noAccumulatingSpread": "warn"
@@ -67,6 +78,10 @@
   },
   "javascript": {
     "formatter": {
+      "arrowParentheses": "asNeeded",
+      "bracketSpacing": true,
+      "indentStyle": "space",
+      "jsxQuoteStyle": "double",
       "quoteStyle": "single",
       "semicolons": "asNeeded",
       "trailingCommas": "es5"

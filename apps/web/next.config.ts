@@ -1,8 +1,8 @@
 import { createContentlayerPlugin } from 'next-contentlayer2'
 import createNextIntlPlugin from 'next-intl/plugin'
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
 }
 

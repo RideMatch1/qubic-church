@@ -11,10 +11,13 @@ interface BlogPostBreadcrumbProps {
   }
 }
 
-export function BlogPostBreadcrumb({ post, messages }: BlogPostBreadcrumbProps) {
+export function BlogPostBreadcrumb({
+  post,
+  messages,
+}: BlogPostBreadcrumbProps) {
   return (
     <div className="text-muted-foreground mb-4 flex items-center space-x-1 text-sm">
-      <Link href="/blog" className="text-foreground hover:underline">
+      <Link className="text-foreground hover:underline" href="/blog">
         {messages.posts}
       </Link>
 
