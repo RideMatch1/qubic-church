@@ -1,6 +1,6 @@
 {
   "root": false,
-  "extends": "//",
+  "extends": ["@opendocs/biome-config"],
   "files": {
     "includes": [
       "**",
