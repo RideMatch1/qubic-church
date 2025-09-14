@@ -1,20 +1,17 @@
 'use client'
 
-import { DropdownMenuTriggerProps } from '@radix-ui/react-dropdown-menu'
+import type { DropdownMenuTriggerProps } from '@radix-ui/react-dropdown-menu'
 import { CheckIcon, CopyIcon } from '@radix-ui/react-icons'
 import { useCallback, useEffect, useState } from 'react'
-
-import type { NpmCommands } from '@/lib/opendocs/types/unist'
-
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuContent,
 } from '@/components/ui/dropdown-menu'
+import type { NpmCommands } from '@/lib/opendocs/types/unist'
+import { cn } from '@/lib/utils'
 
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
@@ -25,19 +22,14 @@ export async function copyToClipboardWithMeta(value: string) {
   navigator.clipboard.writeText(value)
 }
 
-export function CopyButton({
-  src,
-  value,
-  className,
-  ...props
-}: CopyButtonProps) {
+export function CopyButton({ src, value, className, ...props }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
       setHasCopied(false)
     }, 2000)
-  }, [hasCopied])
+  }, [])
 
   return (
     <Button
@@ -55,11 +47,7 @@ export function CopyButton({
     >
       <span className="sr-only">Copy</span>
 
-      {hasCopied ? (
-        <CheckIcon className="size-3" />
-      ) : (
-        <CopyIcon className="size-3" />
-      )}
+      {hasCopied ? <CheckIcon className="size-3" /> : <CopyIcon className="size-3" />}
     </Button>
   )
 }
@@ -70,27 +58,20 @@ interface CopyNpmCommandButtonProps extends DropdownMenuTriggerProps {
 
 const packageManagers = ['npm', 'yarn', 'pnpm', 'bun'] as const
 
-export function CopyNpmCommandButton({
-  commands,
-  className,
-  ...props
-}: CopyNpmCommandButtonProps) {
+export function CopyNpmCommandButton({ commands, className, ...props }: CopyNpmCommandButtonProps) {
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
       setHasCopied(false)
     }, 2000)
-  }, [hasCopied])
+  }, [])
 
-  const copyCommand = useCallback(
-    (value: string, pm: (typeof packageManagers)[number]) => {
-      copyToClipboardWithMeta(value)
+  const copyCommand = useCallback((value: string, _pm: (typeof packageManagers)[number]) => {
+    copyToClipboardWithMeta(value)
 
-      setHasCopied(true)
-    },
-    []
-  )
+    setHasCopied(true)
+  }, [])
 
   return (
     <DropdownMenu modal={false}>
@@ -103,11 +84,7 @@ export function CopyNpmCommandButton({
             className
           )}
         >
-          {hasCopied ? (
-            <CheckIcon className="size-3" />
-          ) : (
-            <CopyIcon className="size-3" />
-          )}
+          {hasCopied ? <CheckIcon className="size-3" /> : <CopyIcon className="size-3" />}
 
           <span className="sr-only">Copy</span>
         </Button>
@@ -122,9 +99,7 @@ export function CopyNpmCommandButton({
           return (
             <DropdownMenuItem
               key={packageManager}
-              onClick={() =>
-                copyCommand(commands[packageManagerKey], packageManager)
-              }
+              onClick={() => copyCommand(commands[packageManagerKey], packageManager)}
             >
               {packageManager}
             </DropdownMenuItem>

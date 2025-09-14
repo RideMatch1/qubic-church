@@ -1,9 +1,6 @@
 import { cn } from '@/lib/utils'
 
-export const code = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLElement>) => {
+export const code = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
   return (
     <code
       className={cn(

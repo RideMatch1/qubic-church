@@ -1,12 +1,8 @@
-import {
-  CopyButton,
-  CopyNpmCommandButton,
-} from './docs/mdx-components/copy-button'
+import type { NpmCommands } from '@/lib/opendocs/types/unist'
 
 import { highlightServerCode } from '@/lib/opendocs/utils/code-theme'
 import { cn } from '@/lib/utils'
-
-import type { NpmCommands } from '@/lib/opendocs/types/unist'
+import { CopyButton, CopyNpmCommandButton } from './docs/mdx-components/copy-button'
 
 export const InstallationBox = async ({
   theme,
@@ -27,11 +23,7 @@ export const InstallationBox = async ({
   __style__?: 'default' | 'new-york'
   theme?: Parameters<typeof highlightServerCode>[1]
 } & NpmCommands) => {
-  const htmlCode = await highlightServerCode(
-    __rawString__ || '',
-    theme || 'Aura Theme',
-    'shell'
-  )
+  const htmlCode = await highlightServerCode(__rawString__ || '', theme || 'Aura Theme', 'shell')
 
   return (
     <div className="relative">
@@ -45,26 +37,19 @@ export const InstallationBox = async ({
       />
 
       {__rawString__ && !__npmCommand__ && (
-        <CopyButton
-          value={__rawString__}
-          src={__src__}
+        <CopyButton value={__rawString__} src={__src__} className={cn('absolute right-4 top-10')} />
+      )}
+      {__npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__ && (
+        <CopyNpmCommandButton
+          commands={{
+            __bunCommand__,
+            __npmCommand__,
+            __yarnCommand__,
+            __pnpmCommand__,
+          }}
           className={cn('absolute right-4 top-10')}
         />
       )}
-      {__npmCommand__ &&
-        __yarnCommand__ &&
-        __pnpmCommand__ &&
-        __bunCommand__ && (
-          <CopyNpmCommandButton
-            commands={{
-              __bunCommand__,
-              __npmCommand__,
-              __yarnCommand__,
-              __pnpmCommand__,
-            }}
-            className={cn('absolute right-4 top-10')}
-          />
-        )}
     </div>
   )
 }

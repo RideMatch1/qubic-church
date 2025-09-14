@@ -1,31 +1,27 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
-import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
-import { InstallationBox } from '@/components/installation-box'
-import { FeaturedCard } from '@/components/featured-card'
 import { Announcement } from '@/components/announcement'
+import { FeaturedCard } from '@/components/featured-card'
+import { Icons } from '@/components/icons'
+import { InstallationBox } from '@/components/installation-box'
+import {
+  PageActions,
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/page-header'
 import { buttonVariants } from '@/components/ui/button'
 import { FlipWords } from '@/components/ui/flip-words'
-import { Icons } from '@/components/icons'
-import { siteConfig } from '@/config/site'
-import { Link } from '@/navigation'
-import { cn } from '@/lib/utils'
-
-import {
-  PageHeader,
-  PageActions,
-  PageHeaderHeading,
-  PageHeaderDescription,
-} from '@/components/page-header'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Vortex } from '@/components/vortex'
+import { siteConfig } from '@/config/site'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { cn } from '@/lib/utils'
+import { Link } from '@/navigation'
 
 export const dynamicParams = true
 
-export default async function IndexPage(props: {
-  params: Promise<{ locale: LocaleOptions }>
-}) {
+export default async function IndexPage(props: { params: Promise<{ locale: LocaleOptions }> }) {
   const params = await props.params
   setRequestLocale(params.locale)
 
@@ -37,10 +33,7 @@ export default async function IndexPage(props: {
         <Announcement title={t('site.announcement')} href="/docs" />
 
         <PageHeaderHeading>
-          <FlipWords
-            words={['site', 'blog', 'docs']}
-            className="text-9xl -z-10"
-          />
+          <FlipWords words={['site', 'blog', 'docs']} className="text-9xl -z-10" />
 
           <TextGenerateEffect words={t('site.heading')} />
         </PageHeaderHeading>
@@ -65,10 +58,7 @@ export default async function IndexPage(props: {
 
           <Link
             target="_blank"
-            className={cn(
-              buttonVariants({ variant: 'outline' }),
-              'flex gap-2 group'
-            )}
+            className={cn(buttonVariants({ variant: 'outline' }), 'flex gap-2 group')}
             href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdaltonmenezes%2Fopendocs&project-name=my-opendocs&repository-name=my-opendocs&demo-title=OpenDocs&demo-description=Next.js%20beautifully%20designed%20template%20that%20you%20can%20use%20for%20your%20projects%20for%20free%20with%20site%2C%20blog%20and%20docs%20support.%20Accessible.%20Customizable.%20Open%20Source%20with%20i18n%20support.&demo-url=https%3A%2F%2Fopendocs.daltonmenezes.com%2F&root-directory=apps%2Fweb"
           >
             <span className="pr-3 mr-1 border border-transparent border-r-border group-hover:border-r-black/50">

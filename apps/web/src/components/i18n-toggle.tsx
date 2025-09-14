@@ -1,22 +1,19 @@
 'use client'
 
 import { ChevronDown, LanguagesIcon } from 'lucide-react'
-import { type PointerEvent, useState } from 'react'
 import { useLocale } from 'next-intl'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-
-import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
-import { useRouter, usePathname } from '@/navigation'
+import { type PointerEvent, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { labels } from '@/config/i18n'
-
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuContent,
 } from '@/components/ui/dropdown-menu'
+import { labels } from '@/config/i18n'
+import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { usePathname, useRouter } from '@/navigation'
 
 interface I18nToggleProps {
   messages: {

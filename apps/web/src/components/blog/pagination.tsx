@@ -4,12 +4,12 @@ import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 
 import {
+  PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationContent,
   PaginationPrevious,
-  PaginationEllipsis,
   Pagination as RawPagination,
 } from '@/components/ui/pagination'
 
@@ -27,17 +27,13 @@ interface PaginationProps {
   }
 }
 
-export function Pagination({
-  messages,
-  numberOfPages,
-  pagesToShow = 5,
-}: PaginationProps) {
+export function Pagination({ messages, numberOfPages, pagesToShow = 5 }: PaginationProps) {
   const searchParams = useSearchParams()
 
   const currentPage = useMemo(() => {
     const page = searchParams.get('page')
 
-    return page ? parseInt(page, 10) : 1
+    return page ? Number.parseInt(page, 10) : 1
   }, [searchParams])
 
   const hasPreviousPage = currentPage > 1
@@ -78,8 +74,7 @@ export function Pagination({
         {visiblePages.map((page, index) => {
           const isCurrentPage = page === currentPage
 
-          const shouldDisplayEllipsis =
-            index > 0 && page !== (visiblePages[index - 1] || 0) + 1
+          const shouldDisplayEllipsis = index > 0 && page !== (visiblePages[index - 1] || 0) + 1
 
           return (
             <PaginationItem

@@ -1,21 +1,20 @@
 'use client'
 
-import { type PointerEvent, useState } from 'react'
-import { useLocale } from 'next-intl'
-import ExternalLink from 'next/link'
 import { Rss } from 'lucide-react'
+import ExternalLink from 'next/link'
+import { useLocale } from 'next-intl'
+import { type PointerEvent, useState } from 'react'
 
-import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { blogConfig } from '@/config/blog'
-import { cn } from '@/lib/utils'
-
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuContent,
 } from '@/components/ui/dropdown-menu'
+import { blogConfig } from '@/config/blog'
+import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
+import { cn } from '@/lib/utils'
 
 interface RSSToggleProps {
   messages: {
@@ -58,10 +57,7 @@ export function RSSToggle({ messages }: RSSToggleProps) {
           onPointerEnter={() => !isMobile && openDropdown()}
           onPointerLeave={(event) => !isMobile && closeDropdown(event)}
         >
-          <Rss
-            className="size-[1.2rem] transition-all dark:rotate-0 dark:scale-100"
-            size={20}
-          />
+          <Rss className="size-[1.2rem] transition-all dark:rotate-0 dark:scale-100" size={20} />
 
           <span className="sr-only">{messages.rss_feed}</span>
           <span className="pointer-events-auto absolute z-10 block h-14 w-full" />

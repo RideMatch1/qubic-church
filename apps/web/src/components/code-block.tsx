@@ -9,13 +9,7 @@ type CodeBlockProps = ComponentProps<'div'> & {
   theme?: Parameters<typeof highlightServerCode>[1]
 }
 
-export async function CodeBlock({
-  code,
-  theme,
-  className,
-  language,
-  ...props
-}: CodeBlockProps) {
+export async function CodeBlock({ code, theme, className, language, ...props }: CodeBlockProps) {
   const htmlCode = await highlightServerCode(code, theme, language)
 
   return (

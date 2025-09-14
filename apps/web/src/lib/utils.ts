@@ -5,10 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatDate(
-  input: string | number,
-  locale: Intl.LocalesArgument = 'en-US'
-): string {
+export function formatDate(input: string | number, locale: Intl.LocalesArgument = 'en-US'): string {
   const date = new Date(input)
   return date.toLocaleDateString(locale, {
     month: 'long',
@@ -21,9 +18,9 @@ export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
 
-export function truncateText(text: string, maxLength: number = 105) {
+export function truncateText(text: string, maxLength = 105) {
   if (text?.length > maxLength) {
-    return text.slice(0, maxLength) + '...'
+    return `${text.slice(0, maxLength)}...`
   }
 
   return text

@@ -2,8 +2,8 @@
 
 import type { LinkProps } from 'next/link'
 
-import { Link, useRouter } from '@/navigation'
 import { cn } from '@/lib/utils'
+import { Link, useRouter } from '@/navigation'
 
 export interface MobileLinkProps extends Omit<LinkProps, 'locale'> {
   onOpenChange?: (open: boolean) => void
@@ -11,13 +11,7 @@ export interface MobileLinkProps extends Omit<LinkProps, 'locale'> {
   className?: string
 }
 
-export function MobileLink({
-  href,
-  children,
-  className,
-  onOpenChange,
-  ...props
-}: MobileLinkProps) {
+export function MobileLink({ href, children, className, onOpenChange, ...props }: MobileLinkProps) {
   const router = useRouter()
 
   return (

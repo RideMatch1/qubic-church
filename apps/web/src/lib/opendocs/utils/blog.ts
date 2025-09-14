@@ -1,8 +1,6 @@
-import { type Blog, allBlogs } from 'contentlayer/generated'
-
-import type { BlogPageProps } from '../types/blog'
-
+import { allBlogs, type Blog } from 'contentlayer/generated'
 import { defaultLocale } from '@/config/i18n'
+import type { BlogPageProps } from '../types/blog'
 
 export function makeLocalizedSlug({ locale, slug }: BlogPageProps['params']) {
   const _slug = slug?.join('/')

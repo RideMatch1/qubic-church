@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
-import { createNoise3D } from 'simplex-noise'
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+import { createNoise3D } from 'simplex-noise'
 
 import { cn } from '@/lib/utils'
 
@@ -43,19 +43,18 @@ export default function (props: VortexProps) {
   let tick = 0
   const noise3D = createNoise3D()
   let particleProps = new Float32Array(particlePropsLength)
-  let center: [number, number] = [0, 0]
+  const center: [number, number] = [0, 0]
 
-  const HALF_PI: number = 0.5 * Math.PI
+  const _HALF_PI: number = 0.5 * Math.PI
   const TAU: number = 2 * Math.PI
-  const TO_RAD: number = Math.PI / 180
+  const _TO_RAD: number = Math.PI / 180
   const rand = (n: number): number => n * Math.random()
   const randRange = (n: number): number => n - rand(2 * n)
   const fadeInOut = (t: number, m: number): number => {
-    let hm = 0.5 * m
+    const hm = 0.5 * m
     return Math.abs(((t + hm) % m) - hm) / hm
   }
-  const lerp = (n1: number, n2: number, speed: number): number =>
-    (1 - speed) * n1 + speed * n2
+  const lerp = (n1: number, n2: number, speed: number): number => (1 - speed) * n1 + speed * n2
 
   const setup = () => {
     const canvas = canvasRef.current
@@ -85,7 +84,15 @@ export default function (props: VortexProps) {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    let x, y, vx, vy, life, ttl, speed, radius, hue
+    let x
+    let y
+    let vx
+    let vy
+    let life
+    let ttl
+    let speed
+    let radius
+    let hue
 
     x = rand(canvas.width)
     y = center[1] + randRange(rangeY)
@@ -125,15 +132,26 @@ export default function (props: VortexProps) {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    let i2 = 1 + i,
-      i3 = 2 + i,
-      i4 = 3 + i,
-      i5 = 4 + i,
-      i6 = 5 + i,
-      i7 = 6 + i,
-      i8 = 7 + i,
-      i9 = 8 + i
-    let n, x, y, vx, vy, life, ttl, speed, x2, y2, radius, hue
+    const i2 = 1 + i
+    const i3 = 2 + i
+    const i4 = 3 + i
+    const i5 = 4 + i
+    const i6 = 5 + i
+    const i7 = 6 + i
+    const i8 = 7 + i
+    const i9 = 8 + i
+    let n
+    let x
+    let y
+    let vx
+    let vy
+    let life
+    let ttl
+    let speed
+    let x2
+    let y2
+    let radius
+    let hue
 
     x = particleProps[i]
     y = particleProps[i2]
@@ -190,10 +208,7 @@ export default function (props: VortexProps) {
     return x > canvas.width || x < 0 || y > canvas.height || y < 0
   }
 
-  const resize = (
-    canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D
-  ) => {
+  const resize = (canvas: HTMLCanvasElement, _ctx?: CanvasRenderingContext2D) => {
     const { innerWidth, innerHeight } = window
 
     canvas.width = innerWidth
@@ -203,10 +218,7 @@ export default function (props: VortexProps) {
     center[1] = 0.5 * canvas.height
   }
 
-  const renderGlow = (
-    canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
-  ) => {
+  const renderGlow = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     ctx.save()
     ctx.filter = 'blur(8px) brightness(200%)'
     ctx.globalCompositeOperation = 'lighter'
@@ -220,10 +232,7 @@ export default function (props: VortexProps) {
     ctx.restore()
   }
 
-  const renderToScreen = (
-    canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D
-  ) => {
+  const renderToScreen = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     ctx.save()
     ctx.globalCompositeOperation = 'lighter'
     ctx.drawImage(canvas, 0, 0)
@@ -240,17 +249,13 @@ export default function (props: VortexProps) {
       }
     })
     // eslint-disable-next-line
-  }, []);
+  }, [resize, setup])
 
   /**
    * Firefox has some issues with this component and becomes very laggy
    * so we are disabling it for Firefox for now
    * */
-  if (
-    typeof window !== 'undefined' &&
-    window.navigator.userAgent.includes('Firefox')
-  )
-    return null
+  if (window?.navigator.userAgent.includes('Firefox')) return null
 
   return (
     <div className={cn('relative h-full w-full', props.containerClassName)}>
@@ -260,12 +265,10 @@ export default function (props: VortexProps) {
         ref={containerRef}
         className="absolute h-full w-full inset-0 z-0 bg-transparent flex items-center justify-center"
       >
-        <canvas ref={canvasRef}></canvas>
+        <canvas ref={canvasRef} />
       </motion.div>
 
-      <div className={cn('relative z-10', props.className)}>
-        {props.children}
-      </div>
+      <div className={cn('relative z-10', props.className)}>{props.children}</div>
     </div>
   )
 }

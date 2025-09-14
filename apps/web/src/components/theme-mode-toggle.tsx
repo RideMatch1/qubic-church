@@ -1,18 +1,18 @@
 'use client'
 
-import { type PointerEvent, useState, useMemo } from 'react'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { ChevronDown } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { type PointerEvent, useMemo, useState } from 'react'
 
-import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
 import { Button } from '@/components/ui/button'
+import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
 
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuContent,
 } from './ui/dropdown-menu'
 
 interface ThemeModeToggleProps {

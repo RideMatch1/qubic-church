@@ -50,14 +50,13 @@ code[data-line-numbers] > [data-line]::before {
 }
 
 [data-rehype-pretty-code-title]::before {
-  content: '◯ ';
+  content: "◯ ";
   @apply text-purple-500;
 }
 
 [data-rehype-pretty-code-title] {
   @apply bg-zinc-900 text-primary-active border -mb-7 mt-3 rounded-t-lg py-2 px-3 font-semibold text-sm w-max;
 }
-
 
 [data-highlighted-chars] {
   @apply bg-zinc-600/50 rounded;
@@ -72,14 +71,14 @@ code[data-line-numbers] > [data-line]::before {
   @apply !text-inherit;
 }
 
-[data-chars-id='v'] {
+[data-chars-id="v"] {
   @apply !text-pink-300 bg-rose-800/50 font-bold;
 }
 
-[data-chars-id='s'] {
+[data-chars-id="s"] {
   @apply !text-yellow-300 bg-yellow-800/50 font-bold;
 }
 
-[data-chars-id='i'] {
+[data-chars-id="i"] {
   @apply !text-purple-200 bg-purple-800/50 font-bold;
 }

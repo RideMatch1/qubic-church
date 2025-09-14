@@ -1,30 +1,21 @@
 import { LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
+import type { Blog } from 'contentlayer/generated'
 import { Globe, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { Blog } from 'contentlayer/generated'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-import {
-  Card,
-  CardTitle,
-  CardHeader,
-  CardContent,
-  CardDescription,
-} from '@/components/ui/card'
-
-import { buttonVariants } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { Icons } from '../icons'
+import { buttonVariants } from '../ui/button'
 
 export function AuthorCard({ post }: { post: Blog }) {
   const { author } = post
 
   return (
     <Card className="backdrop-blur-lg dark:bg-card-primary w-full">
-      <CardHeader
-        className={cn('flex gap-4 flex-wrap', 'flex-row items-center')}
-      >
+      <CardHeader className={cn('flex gap-4 flex-wrap', 'flex-row items-center')}>
         {author?.image && (
           <Image
             width={80}

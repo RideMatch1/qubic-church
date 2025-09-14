@@ -1,11 +1,9 @@
-import { type Doc, allDocs } from 'contentlayer/generated'
-
-import type { NavItem, SidebarNavItem } from '../types/nav'
-import type { DocPageProps } from '../types/docs'
-
-import { getSlugWithoutLocale } from './locale'
-import { defaultLocale } from '@/config/i18n'
+import { allDocs, type Doc } from 'contentlayer/generated'
 import { docsConfig } from '@/config/docs'
+import { defaultLocale } from '@/config/i18n'
+import type { DocPageProps } from '../types/docs'
+import type { NavItem, SidebarNavItem } from '../types/nav'
+import { getSlugWithoutLocale } from './locale'
 
 export function makeLocalizedSlug({ locale, slug }: DocPageProps['params']) {
   const _slug = slug?.join('/')
@@ -63,10 +61,7 @@ export function getBreadcrumb(docSlug: string) {
     return null
   }
 
-  const makeBreadcrumb = (
-    slug: string,
-    config: typeof docsConfig
-  ): NavItem[] | null => {
+  const makeBreadcrumb = (slug: string, config: typeof docsConfig): NavItem[] | null => {
     for (const nav of config.sidebarNav) {
       const path = findBreadcrumbPath([nav], slug)
 

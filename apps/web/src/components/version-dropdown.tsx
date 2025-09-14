@@ -3,17 +3,16 @@
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { type PointerEvent, useState } from 'react'
 
-import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
 import { Button } from '@/components/ui/button'
-import { siteConfig } from '@/config/site'
-import { useRouter } from '@/navigation'
-
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuContent,
 } from '@/components/ui/dropdown-menu'
+import { siteConfig } from '@/config/site'
+import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
+import { useRouter } from '@/navigation'
 
 interface VersionDropdownProps {
   messages: {

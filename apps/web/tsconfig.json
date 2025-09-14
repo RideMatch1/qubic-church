@@ -11,7 +11,7 @@
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "baseUrl": ".",
-    "rootDir": ".",
+    "rootDir": "."
   },
   "include": [
     "**/*.ts",

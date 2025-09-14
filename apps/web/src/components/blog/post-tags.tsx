@@ -1,8 +1,8 @@
 import type { Blog } from 'contentlayer/generated'
 
-import { badgeVariants } from '../ui/badge'
-import { Link } from '@/navigation'
 import { cn } from '@/lib/utils'
+import { Link } from '@/navigation'
+import { badgeVariants } from '../ui/badge'
 
 export async function BlogPostTags({ post }: { post: Blog }) {
   if (!post.tags) {

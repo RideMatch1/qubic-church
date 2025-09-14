@@ -1,19 +1,18 @@
-import { setRequestLocale } from 'next-intl/server'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import type { Metadata, Viewport } from 'next'
+import { setRequestLocale } from 'next-intl/server'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 
 import '@/styles/globals.css'
 
-import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
-import { ThemeProvider } from '@/components/theme-provider'
+import { NextIntlClientProvider } from 'next-intl'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
+import { ThemeProvider } from '@/components/theme-provider'
 import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
 import { fontSans } from '@/lib/fonts'
+import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
 import { cn } from '@/lib/utils'
-import { NextIntlClientProvider } from 'next-intl'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -67,10 +66,7 @@ export async function generateMetadata(props: {
       title: siteConfig.name,
       siteName: siteConfig.name,
 
-      description: getObjectValueByLocale(
-        siteConfig.description,
-        params.locale
-      ),
+      description: getObjectValueByLocale(siteConfig.description, params.locale),
 
       images: [
         {
@@ -87,10 +83,7 @@ export async function generateMetadata(props: {
       card: 'summary_large_image',
       images: [siteConfig.og.image],
 
-      description: getObjectValueByLocale(
-        siteConfig.description,
-        params.locale
-      ),
+      description: getObjectValueByLocale(siteConfig.description, params.locale),
     },
 
     icons: {
@@ -125,16 +118,8 @@ export default async function RootLayout(props: AppLayoutProps) {
         <meta name="theme-color" content="#181423" />
       </head>
 
-      <body
-        className={cn(
-          'bg-background min-h-screen font-sans antialiased',
-          fontSans.variable
-        )}
-      >
-        <NextIntlClientProvider
-          locale={params.locale || defaultLocale}
-          messages={{}}
-        >
+      <body className={cn('bg-background min-h-screen font-sans antialiased', fontSans.variable)}>
+        <NextIntlClientProvider locale={params.locale || defaultLocale} messages={{}}>
           <ThemeProvider
             enableSystem
             attribute="class"

@@ -1,13 +1,12 @@
 'use client'
 
+import type { Blog } from 'contentlayer/generated'
 import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 
-import type { Blog } from 'contentlayer/generated'
-
-import { PaginationEllipsis } from '../ui/pagination'
 import { Link } from '@/navigation'
 import { Badge } from '../ui/badge'
+import { PaginationEllipsis } from '../ui/pagination'
 
 export function BlogPostItemTags({
   post,
@@ -26,9 +25,7 @@ export function BlogPostItemTags({
       return null
     }
 
-    const tags = shouldDisplayEllipsis
-      ? post.tags.slice(0, limitOfTagsToDisplay)
-      : post.tags
+    const tags = shouldDisplayEllipsis ? post.tags.slice(0, limitOfTagsToDisplay) : post.tags
 
     const uniqueTags = Array.from(new Set(tags))
 
@@ -45,15 +42,11 @@ export function BlogPostItemTags({
         const currentTag = searchParams.get('tag') || ''
         const isCurrentTagActive = tag === currentTag
 
-        const href = isCurrentTagActive
-          ? '/blog'
-          : `/blog?tag=${encodeURI(tag)}`
+        const href = isCurrentTagActive ? '/blog' : `/blog?tag=${encodeURI(tag)}`
 
         return (
           <Link key={tag} href={href}>
-            <Badge variant={isCurrentTagActive ? 'default' : 'secondary'}>
-              {tag}
-            </Badge>
+            <Badge variant={isCurrentTagActive ? 'default' : 'secondary'}>{tag}</Badge>
           </Link>
         )
       })}

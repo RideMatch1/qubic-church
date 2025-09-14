@@ -1,14 +1,9 @@
-import { createHighlighter } from 'shiki'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-
-import { localCodeThemes, codeThemeConfig } from '../../../config/code-theme'
+import { createHighlighter } from 'shiki'
+import type { CodeTheme, CodeThemeLanguage } from '@/lib/opendocs/types/code-theme'
+import { codeThemeConfig, localCodeThemes } from '../../../config/code-theme'
 import { toKebabCase } from './to-kebab-case'
-
-import type {
-  CodeTheme,
-  CodeThemeLanguage,
-} from '@/lib/opendocs/types/code-theme'
 
 const localThemes = codeThemeConfig.localThemes
 
@@ -18,9 +13,7 @@ export function getContentLayerCodeTheme() {
   if (localCodeThemes.includes(themeName as any)) {
     return JSON.parse(
       readFileSync(
-        resolve(
-          `./src/styles/themes/syntax-highlight/${toKebabCase(themeName)}.json`
-        ),
+        resolve(`./src/styles/themes/syntax-highlight/${toKebabCase(themeName)}.json`),
         'utf-8'
       )
     )
@@ -34,10 +27,7 @@ export async function highlightServerCode(
   theme: CodeTheme = codeThemeConfig.theme,
   language: CodeThemeLanguage = 'typescript'
 ) {
-  const [path, fs] = await Promise.all([
-    import('node:path'),
-    import('node:fs/promises'),
-  ])
+  const [path, fs] = await Promise.all([import('node:path'), import('node:fs/promises')])
 
   const highlighter = await createHighlighter({
     langs: codeThemeConfig.languages,

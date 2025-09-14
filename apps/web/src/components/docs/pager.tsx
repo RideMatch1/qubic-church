@@ -1,18 +1,12 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
-
-import type { NavItem, NavItemWithChildren } from '@/lib/opendocs/types/nav'
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import type { Doc } from 'contentlayer/generated'
-
-import {
-  getSlugWithoutLocale,
-  getObjectValueByLocale,
-} from '@/lib/opendocs/utils/locale'
-
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import type { NavItem, NavItemWithChildren } from '@/lib/opendocs/types/nav'
 import { getServerDocsConfig } from '@/lib/opendocs/utils/get-server-docs-config'
-import { buttonVariants } from '../ui/button'
-import { Link } from '@/navigation'
+import { getObjectValueByLocale, getSlugWithoutLocale } from '@/lib/opendocs/utils/locale'
 import { cn } from '@/lib/utils'
+import { Link } from '@/navigation'
+import { buttonVariants } from '../ui/button'
 
 interface DocsPagerProps {
   doc: Doc
@@ -32,10 +26,7 @@ export async function DocsPager({ doc, locale }: DocsPagerProps) {
   return (
     <div className="flex flex-row items-center justify-between">
       {pager?.prev?.href && (
-        <Link
-          href={pager.prev.href}
-          className={buttonVariants({ variant: 'outline' })}
-        >
+        <Link href={pager.prev.href} className={buttonVariants({ variant: 'outline' })}>
           <ChevronLeftIcon className="mr-2 size-4" />
 
           {getObjectValueByLocale(pager.prev.title, pager.currentLocale)}
@@ -56,28 +47,17 @@ export async function DocsPager({ doc, locale }: DocsPagerProps) {
   )
 }
 
-export async function getPagerForCurrentDoc({
-  doc,
-  locale,
-}: {
-  doc: Doc
-  locale: LocaleOptions
-}) {
+export async function getPagerForCurrentDoc({ doc, locale }: { doc: Doc; locale: LocaleOptions }) {
   const docsConfig = await getServerDocsConfig({ locale })
   const flattenedLinks = [null, ...flatten(docsConfig.docs.sidebarNav), null]
 
   const slugWithoutLocaleFolder = getSlugWithoutLocale(doc.slug, 'docs')
 
-  const activeIndex = flattenedLinks.findIndex(
-    (link) => slugWithoutLocaleFolder === link?.href
-  )
+  const activeIndex = flattenedLinks.findIndex((link) => slugWithoutLocaleFolder === link?.href)
 
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null
 
-  const next =
-    activeIndex !== flattenedLinks.length - 1
-      ? flattenedLinks[activeIndex + 1]
-      : null
+  const next = activeIndex !== flattenedLinks.length - 1 ? flattenedLinks[activeIndex + 1] : null
 
   return {
     prev,

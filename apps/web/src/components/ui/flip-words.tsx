@@ -1,6 +1,6 @@
 'use client'
-import React, { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useCallback, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 export const FlipWords = ({
@@ -63,7 +63,7 @@ export const FlipWords = ({
         )}
         key={currentWord}
       >
-        {currentWord!.split('').map((letter, index) => (
+        {currentWord?.split('').map((letter, index) => (
           <motion.span
             key={currentWord! + index}
             initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}

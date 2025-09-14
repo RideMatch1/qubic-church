@@ -1,6 +1,6 @@
-import { visit } from 'unist-util-visit'
 import { toc } from 'mdast-util-toc'
 import { remark } from 'remark'
+import { visit } from 'unist-util-visit'
 
 const textTypes = ['text', 'emphasis', 'strong', 'inlineCode']
 
@@ -22,7 +22,7 @@ function flattenNode(node: any) {
     p.push(node.value)
   })
 
-  return p.join(``)
+  return p.join('')
 }
 
 function getItems(node: any, current: any): Items {
@@ -49,7 +49,8 @@ function getItems(node: any, current: any): Items {
     current.items = node.children.map((i: any) => getItems(i, {}))
 
     return current
-  } else if (node.type === 'listItem') {
+  }
+  if (node.type === 'listItem') {
     const heading = getItems(node.children[0], {})
 
     if (node.children.length > 1) {
@@ -71,9 +72,7 @@ const getToc = () => (node: any, file: any) => {
 
 export type TableOfContents = Items
 
-export async function getTableOfContents(
-  content: string
-): Promise<TableOfContents> {
+export async function getTableOfContents(content: string): Promise<TableOfContents> {
   const result = await remark().use(getToc).process(content)
 
   return result.data as TableOfContents

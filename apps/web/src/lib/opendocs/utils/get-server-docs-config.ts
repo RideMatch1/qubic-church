@@ -7,7 +7,7 @@ interface ServerDocsConfig {
 }
 
 export async function getServerDocsConfig({ locale }: ServerDocsConfig) {
-  const { docsConfig } = await import(`@/config/docs`)
+  const { docsConfig } = await import('@/config/docs')
 
   return {
     docs: docsConfig,

@@ -1,24 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-
-import {
-  Sheet,
-  SheetTitle,
-  SheetTrigger,
-  SheetContent,
-} from '@/components/ui/sheet'
-
-import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
-import { useDocsConfig } from '@/lib/opendocs/hooks/use-docs-config'
-import { DocsSidebarNav } from './docs/sidebar-nav'
-import { ScrollArea } from './ui/scroll-area'
-import { siteConfig } from '@/config/site'
 import { Icons } from '@/components/icons'
-import { MobileLink } from './mobile-link'
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { blogConfig } from '@/config/blog'
+import { siteConfig } from '@/config/site'
+import { useDocsConfig } from '@/lib/opendocs/hooks/use-docs-config'
+import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
 import { usePathname } from '@/navigation'
+import { DocsSidebarNav } from './docs/sidebar-nav'
+import { MobileLink } from './mobile-link'
 import { Button } from './ui/button'
+import { ScrollArea } from './ui/scroll-area'
 
 interface MobileNavProps {
   menuLinks: React.ReactElement
@@ -51,19 +44,13 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
       <SheetContent side="left" className="pr-0">
         <SheetTitle className="sr-only">{messages.menu}</SheetTitle>
 
-        <MobileLink
-          href="/"
-          className="flex items-center"
-          onOpenChange={setOpen}
-        >
+        <MobileLink href="/" className="flex items-center" onOpenChange={setOpen}>
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
 
         {menuLinks && (
-          <div className="flex phone:hidden flex-col space-y-2 items-end pr-2">
-            {menuLinks}
-          </div>
+          <div className="flex phone:hidden flex-col space-y-2 items-end pr-2">{menuLinks}</div>
         )}
 
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
@@ -77,15 +64,8 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
             {docsConfig.docs.mainNav?.map(
               (item) =>
                 item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {getObjectValueByLocale(
-                      item.title,
-                      docsConfig.currentLocale
-                    )}
+                  <MobileLink key={item.href} href={item.href} onOpenChange={setOpen}>
+                    {getObjectValueByLocale(item.title, docsConfig.currentLocale)}
                   </MobileLink>
                 )
             )}

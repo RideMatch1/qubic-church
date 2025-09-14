@@ -1,12 +1,10 @@
+import type { Doc } from 'contentlayer/generated'
 import { ChevronRightIcon } from 'lucide-react'
 import { Fragment } from 'react'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { Doc } from 'contentlayer/generated'
-
-import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
-import { getBreadcrumb } from '@/lib/opendocs/utils/doc'
 import { defaultLocale } from '@/config/i18n'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { getBreadcrumb } from '@/lib/opendocs/utils/doc'
+import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
 import { Link } from '@/navigation'
 
 interface DocBreadcrumbProps {
@@ -18,9 +16,7 @@ interface DocBreadcrumbProps {
 }
 
 export function DocBreadcrumb({ doc, messages }: DocBreadcrumbProps) {
-  const [locale] = (doc.slugAsParams.split('/') || defaultLocale) as [
-    LocaleOptions,
-  ]
+  const [locale] = (doc.slugAsParams.split('/') || defaultLocale) as [LocaleOptions]
 
   const breadcrumbItems = getBreadcrumb(doc.slug)
 

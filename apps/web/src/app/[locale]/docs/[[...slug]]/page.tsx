@@ -1,24 +1,23 @@
-import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { allDocs } from 'contentlayer/generated'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import type { Metadata } from 'next'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 
 import '@/styles/mdx.css'
 
-import { DashboardTableOfContents } from '@/components/docs/toc'
-import { DocumentNotFound } from '@/components/docs/not-found'
-import { getTableOfContents } from '@/lib/opendocs/utils/toc'
 import { DocBreadcrumb } from '@/components/docs/breadcrumb'
-import { getDocFromParams } from '@/lib/opendocs/utils/doc'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { DocPageProps } from '@/lib/opendocs/types/docs'
 import { DocHeading } from '@/components/docs/heading'
-import { DocsPager } from '@/components/docs/pager'
 import { DocLinks } from '@/components/docs/links'
-import { defaultLocale } from '@/config/i18n'
 import { Mdx } from '@/components/docs/mdx'
+import { DocumentNotFound } from '@/components/docs/not-found'
+import { DocsPager } from '@/components/docs/pager'
+import { DashboardTableOfContents } from '@/components/docs/toc'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
+import type { DocPageProps } from '@/lib/opendocs/types/docs'
+import { getDocFromParams } from '@/lib/opendocs/utils/doc'
+import { getTableOfContents } from '@/lib/opendocs/utils/toc'
 import { absoluteUrl } from '@/lib/utils'
 
 export const dynamicParams = true
@@ -69,9 +68,7 @@ export async function generateMetadata(props: {
   }
 }
 
-export async function generateStaticParams(): Promise<
-  DocPageProps['params'][]
-> {
+export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
   const docs = allDocs.map((doc) => {
     const [locale, ...slugs] = doc.slugAsParams.split('/')
 
@@ -84,9 +81,7 @@ export async function generateStaticParams(): Promise<
   return docs
 }
 
-export default async function DocPage(props: {
-  params: Promise<DocPageProps['params']>
-}) {
+export default async function DocPage(props: { params: Promise<DocPageProps['params']> }) {
   const params = await props.params
   setRequestLocale(params.locale || defaultLocale)
 

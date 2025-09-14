@@ -3,13 +3,8 @@
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { cn } from '@/lib/utils'
-
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible'
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   expandButtonTitle?: string
@@ -26,10 +21,7 @@ export function CodeBlockWrapper({
   return (
     <Collapsible open={isOpened} onOpenChange={setIsOpened}>
       <div className={cn('relative overflow-hidden', className)} {...props}>
-        <CollapsibleContent
-          forceMount
-          className={cn('overflow-hidden', !isOpened && 'max-h-32')}
-        >
+        <CollapsibleContent forceMount className={cn('overflow-hidden', !isOpened && 'max-h-32')}>
           <div
             className={cn(
               '[&_pre]:my-0 [&_pre]:max-h-[650px] [&_pre]:pb-[100px]',

@@ -1,0 +1,18 @@
+{
+  "root": false,
+  "extends": "//",
+  "files": {
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/out",
+      "!**/dist",
+      "!**/build",
+      "!**/coverage",
+      "!**/*.config.js",
+      "!**/*.config.ts",
+      "!**/contentlayer.config.ts"
+    ]
+  }
+}

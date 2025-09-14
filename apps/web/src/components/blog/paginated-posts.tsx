@@ -1,27 +1,21 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-import Balancer from 'react-wrap-balancer'
-import { compareDesc } from 'date-fns'
-import { useMemo } from 'react'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import type { Blog } from 'contentlayer/generated'
-
-import {
-  getSlugWithoutLocale,
-  getObjectValueByLocale,
-} from '@/lib/opendocs/utils/locale'
-
-import { cn, formatDate, truncateText } from '@/lib/utils'
-import { BlogPostItemTags } from './post-item-tags'
-import { buttonVariants } from '../ui/button'
+import { compareDesc } from 'date-fns'
+import { useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
+import Balancer from 'react-wrap-balancer'
 import { dateLocales } from '@/config/i18n'
-import { Pagination } from './pagination'
-import { RSSToggle } from './rss-toggle'
-import { ReadTime } from './read-time'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { getObjectValueByLocale, getSlugWithoutLocale } from '@/lib/opendocs/utils/locale'
+import { cn, formatDate, truncateText } from '@/lib/utils'
 import { Link } from '@/navigation'
+import { buttonVariants } from '../ui/button'
 import { Card } from '../ui/card'
+import { Pagination } from './pagination'
+import { BlogPostItemTags } from './post-item-tags'
+import { ReadTime } from './read-time'
+import { RSSToggle } from './rss-toggle'
 
 interface PaginatedBlogPostsProps {
   posts: Blog[]
@@ -52,16 +46,14 @@ export function PaginatedBlogPosts({
   const currentPage = useMemo(() => {
     const page = searchParams.get('page')
 
-    return page ? parseInt(page, 10) : 1
+    return page ? Number.parseInt(page, 10) : 1
   }, [searchParams])
 
   const blogPosts = useMemo(() => {
     let blogPosts = posts
 
     if (tag) {
-      blogPosts = blogPosts.filter((post) =>
-        post.tags?.includes(decodeURI(tag))
-      )
+      blogPosts = blogPosts.filter((post) => post.tags?.includes(decodeURI(tag)))
     }
 
     return blogPosts
@@ -114,10 +106,7 @@ export function PaginatedBlogPosts({
               <div>
                 <div className="flex items-center mb-2 text-xs text-muted-foreground justify-between gap-1">
                   <time dateTime={post.date}>
-                    {formatDate(
-                      post.date,
-                      getObjectValueByLocale(dateLocales, locale)
-                    )}
+                    {formatDate(post.date, getObjectValueByLocale(dateLocales, locale))}
                   </time>
 
                   <ReadTime
@@ -129,10 +118,7 @@ export function PaginatedBlogPosts({
                   />
                 </div>
 
-                <Link
-                  href={postLink}
-                  className={cn('hover:opacity-65 transition-all')}
-                >
+                <Link href={postLink} className={cn('hover:opacity-65 transition-all')}>
                   <h1 className="text-xl py-2">
                     <Balancer>{post.title}</Balancer>
                   </h1>
@@ -160,11 +146,7 @@ export function PaginatedBlogPosts({
         })}
       </div>
 
-      <Pagination
-        pagesToShow={10}
-        messages={messages}
-        numberOfPages={totalOfPages}
-      />
+      <Pagination pagesToShow={10} messages={messages} numberOfPages={totalOfPages} />
     </main>
   )
 }

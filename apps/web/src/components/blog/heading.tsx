@@ -1,12 +1,10 @@
-import Balancer from 'react-wrap-balancer'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import type { Blog } from 'contentlayer/generated'
-
-import { DocNotAvailableInThisLanguage } from '../docs/not-available'
+import Balancer from 'react-wrap-balancer'
+import { dateLocales } from '@/config/i18n'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
 import { cn, formatDate } from '@/lib/utils'
-import { dateLocales } from '@/config/i18n'
+import { DocNotAvailableInThisLanguage } from '../docs/not-available'
 import { ReadTime } from './read-time'
 
 interface BlogPostHeadingProps {
@@ -19,18 +17,10 @@ interface BlogPostHeadingProps {
   }
 }
 
-export function BlogPostHeading({
-  post,
-  locale,
-  messages,
-}: BlogPostHeadingProps) {
+export function BlogPostHeading({ post, locale, messages }: BlogPostHeadingProps) {
   return (
     <div className="flex flex-col space-y-2 gap-2">
-      <h1
-        className={cn(
-          'scroll-m-20 text-4xl sm:text-6xl font-bold tracking-tight'
-        )}
-      >
+      <h1 className={cn('scroll-m-20 text-4xl sm:text-6xl font-bold tracking-tight')}>
         <Balancer>{post.title}</Balancer>
       </h1>
 

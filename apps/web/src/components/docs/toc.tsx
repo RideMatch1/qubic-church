@@ -1,12 +1,12 @@
 'use client'
 
-import { useMemo, useEffect, useState } from 'react'
 import { ExternalLink } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
 
-import { useMounted } from '@/lib/opendocs/hooks/use-mounted'
-import { TableOfContents } from '@/lib/opendocs/utils/toc'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/config/site'
+import { useMounted } from '@/lib/opendocs/hooks/use-mounted'
+import type { TableOfContents } from '@/lib/opendocs/utils/toc'
 import { cn } from '@/lib/utils'
 
 interface DefaultTableOfContentItemsProps {
@@ -19,8 +19,7 @@ interface DefaultTableOfContentItemsProps {
   }
 }
 
-interface DashboardTableOfContentsProps
-  extends DefaultTableOfContentItemsProps {
+interface DashboardTableOfContentsProps extends DefaultTableOfContentItemsProps {
   toc: TableOfContents
 }
 
@@ -47,10 +46,7 @@ export function DashboardTableOfContents({
   if (!toc?.items || !mounted) {
     return (
       <div className="space-y-2">
-        <DefaultTableOfContentItems
-          messages={messages}
-          sourceFilePath={sourceFilePath}
-        />
+        <DefaultTableOfContentItems messages={messages} sourceFilePath={sourceFilePath} />
       </div>
     )
   }
@@ -65,18 +61,12 @@ export function DashboardTableOfContents({
         <Separator />
       </div>
 
-      <DefaultTableOfContentItems
-        messages={messages}
-        sourceFilePath={sourceFilePath}
-      />
+      <DefaultTableOfContentItems messages={messages} sourceFilePath={sourceFilePath} />
     </div>
   )
 }
 
-function DefaultTableOfContentItems({
-  messages,
-  sourceFilePath,
-}: DefaultTableOfContentItemsProps) {
+function DefaultTableOfContentItems({ messages, sourceFilePath }: DefaultTableOfContentItemsProps) {
   return (
     <div className="mt-2 flex flex-col gap-1">
       <a
@@ -108,7 +98,7 @@ function useActiveItem(itemIds: string[]) {
           }
         })
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: '0% 0% -80% 0%' }
     )
 
     itemIds?.forEach((id) => {

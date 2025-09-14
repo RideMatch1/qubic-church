@@ -1,6 +1,6 @@
-import { absoluteUrl } from '@/lib/utils'
 import en from '@/i18n/locales/en.json'
 import pt from '@/i18n/locales/pt.json'
+import { absoluteUrl } from '@/lib/utils'
 
 export const siteConfig = {
   name: 'opendocs',
