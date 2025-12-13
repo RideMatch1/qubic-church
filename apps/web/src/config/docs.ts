@@ -67,11 +67,6 @@ export const docsConfig: DocsConfig = {
             en: 'MDX',
           },
 
-          label: {
-            en: 'New',
-            pt: 'Novo',
-          },
-
           items: [
             {
               href: '/docs/mdx/frontmatter',
@@ -79,11 +74,6 @@ export const docsConfig: DocsConfig = {
               title: {
                 en: 'Frontmatter',
                 pt: 'Cabeçalho de metadados',
-              },
-
-              label: {
-                en: 'New',
-                pt: 'Novo',
               },
 
               items: [],
@@ -97,11 +87,6 @@ export const docsConfig: DocsConfig = {
                 pt: 'Código',
               },
 
-              label: {
-                en: 'New',
-                pt: 'Novo',
-              },
-
               items: [],
             },
 
@@ -111,11 +96,6 @@ export const docsConfig: DocsConfig = {
               title: {
                 en: 'Components',
                 pt: 'Componentes',
-              },
-
-              label: {
-                en: 'New',
-                pt: 'Novo',
               },
 
               items: [],
