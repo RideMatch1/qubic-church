@@ -20,7 +20,6 @@
     "next-env.d.ts",
     "next.config.ts",
     "postcss.config.mjs",
-    "tailwind.config.ts",
     ".next/types/**/*.ts",
     "contentlayer.config.ts",
     ".contentlayer/generated"

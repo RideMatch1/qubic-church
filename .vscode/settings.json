@@ -5,11 +5,6 @@
     ["cva\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"]
   ],
 
-  "tailwindCSS.experimental.configFile": {
-    "apps/web/tailwind.config.ts": "apps/web/**"
-  },
-
-
   "tailwindCSS.classAttributes": ["class", "className", "tw"],
 
   "[javascript]": {
