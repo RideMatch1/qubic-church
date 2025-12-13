@@ -1,24 +1,34 @@
-/* eslint-disable @next/next/no-img-element */
-
+/** biome-ignore-all lint/performance/noImgElement: Using img elements for OG image generation */
+import { allBlogs, type Blog } from 'contentlayer/generated'
+import type { NextRequest } from 'next/server'
 import { ImageResponse } from 'next/og'
 
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { NextRequest } from 'next/server'
-
-import { allBlogs, type Blog } from 'contentlayer/generated'
 import { absoluteUrl, truncateText } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
 import { getFonts } from '@/lib/fonts'
 
-interface BlogOgProps {
-  params: { slug: string; locale: LocaleOptions }
-}
-
 export const runtime = 'edge'
 export const dynamicParams = true
 
-export async function GET(_: NextRequest, { params }: BlogOgProps) {
-  const post = getBlogPostBySlugAndLocale(params.slug, params.locale)
+interface BlogOgProps {
+  params: Promise<{ slug: string; locale: LocaleOptions }>
+}
+
+export async function GET(
+  _: NextRequest,
+  context: { params: Promise<{ locale: string; slug: string }> }
+) {
+  const params = await context.params
+
+  const blogProps: BlogOgProps = {
+    params: Promise.resolve({
+      slug: params.slug,
+      locale: params.locale as LocaleOptions,
+    }),
+  }
+  const typedParams = await blogProps.params
+  const post = getBlogPostBySlugAndLocale(typedParams.slug, typedParams.locale)
 
   if (!post) {
     return new ImageResponse(<Fallback src="/og.jpg" />, {
@@ -28,39 +38,42 @@ export async function GET(_: NextRequest, { params }: BlogOgProps) {
 
   const { bold, regular } = await getFonts()
 
+  const fonts = []
+  if (regular) {
+    fonts.push({
+      name: 'Geist',
+      data: regular,
+      style: 'normal' as const,
+      weight: 400 as const,
+    })
+  }
+  if (bold) {
+    fonts.push({
+      name: 'Geist',
+      data: bold,
+      style: 'normal' as const,
+      weight: 700 as const,
+    })
+  }
+
   return new ImageResponse(
-    (
-      <div
-        tw={`bg-black flex flex-col min-w-full h-[${siteConfig.og.size.height}px] relative`}
-      >
-        <Background src="/og-background.jpg" />
+    <div
+      tw={`bg-black flex flex-col min-w-full h-[${siteConfig.og.size.height}px] relative`}
+    >
+      <Background src="/og-background.jpg" />
 
-        <div tw="my-10 mx-14 flex flex-col">
-          <Logo src="/logo.svg" />
+      <div tw="my-10 mx-14 flex flex-col">
+        <Logo src="/logo.svg" />
 
-          <div tw="flex flex-col h-full max-h-[300px]">
-            <Title>{post.title}</Title>
-            <Author post={post} />
-          </div>
+        <div tw="flex flex-col h-full max-h-[300px]">
+          <Title>{post.title}</Title>
+          <Author post={post} />
         </div>
       </div>
-    ),
+    </div>,
     {
       ...siteConfig.og.size,
-      fonts: [
-        {
-          name: 'Geist',
-          data: regular,
-          style: 'normal',
-          weight: 400,
-        },
-        {
-          name: 'Geist',
-          data: bold,
-          style: 'normal',
-          weight: 700,
-        },
-      ],
+      fonts,
     }
   )
 }
@@ -70,9 +83,9 @@ function Author({ post }: { post: Blog }) {
     <div tw="flex items-center pt-10">
       {post.author?.image && (
         <img
-          tw="w-20 h-20 rounded-full border-gray-800 border-4"
-          src={absoluteUrl(post.author?.image)}
           alt=""
+          src={absoluteUrl(post.author?.image)}
+          tw="w-20 h-20 rounded-full border-gray-800 border-4"
         />
       )}
 
@@ -92,7 +105,7 @@ function Background({ src }: { src: string }) {
 }
 
 function Logo({ src }: { src: string }) {
-  return <img tw="w-28 h-28 rounded-full" src={absoluteUrl(src)} alt="" />
+  return <img alt="" src={absoluteUrl(src)} tw="w-28 h-28 rounded-full" />
 }
 
 function Title({ children }: { children: string }) {
@@ -106,28 +119,15 @@ function Title({ children }: { children: string }) {
 function Fallback({ src }: { src: string }) {
   return (
     <div tw="flex w-full h-full">
-      <img src={absoluteUrl(src)} tw="w-full h-full" alt="" />
+      <img alt="" src={absoluteUrl(src)} tw="w-full h-full" />
     </div>
   )
 }
 
 function getBlogPostBySlugAndLocale(slug: string, locale: LocaleOptions) {
-  return allBlogs.find((post) => {
+  return allBlogs.find(post => {
     const [postLocale, ...slugs] = post.slugAsParams.split('/')
 
     return slugs.join('/') === slug && postLocale === locale
   })
-}
-
-export async function generateStaticParams(): Promise<BlogOgProps['params'][]> {
-  const blog = allBlogs.map((blog) => {
-    const [locale, ...slugs] = blog.slugAsParams.split('/')
-
-    return {
-      slug: slugs.join('/'),
-      locale: locale as LocaleOptions,
-    }
-  })
-
-  return blog
 }

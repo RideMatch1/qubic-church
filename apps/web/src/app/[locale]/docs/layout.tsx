@@ -2,26 +2,37 @@ import { setRequestLocale } from 'next-intl/server'
 
 import { getServerDocsConfig } from '@/lib/opendocs/utils/get-server-docs-config'
 import { DocsSidebarNav } from '@/components/docs/sidebar-nav'
-import { ScrollArea } from '@/components/ui/scroll-area'
-
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 interface DocsLayoutProps {
   children: React.ReactNode
-  params: {
+  params: Promise<{
     locale: LocaleOptions
-  }
+  }>
 }
 
 export const dynamicParams = true
 
-export default async function DocsLayout({
-  children,
-  params,
-}: DocsLayoutProps) {
-  setRequestLocale(params.locale)
+export default async function DocsLayout(props: {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}) {
+  const params = await props.params
 
-  const docsConfig = await getServerDocsConfig({ locale: params.locale })
+  const docsProps: DocsLayoutProps = {
+    children: props.children,
+    params: Promise.resolve({ locale: params.locale as LocaleOptions }),
+  }
+
+  const typedParams = await docsProps.params
+  const locale = typedParams.locale
+
+  const { children } = props
+
+  setRequestLocale(locale)
+
+  const docsConfig = await getServerDocsConfig({ locale })
 
   return (
     <div className="border-b">

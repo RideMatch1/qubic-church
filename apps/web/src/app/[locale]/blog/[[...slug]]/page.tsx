@@ -1,16 +1,15 @@
-import { setRequestLocale, getTranslations } from 'next-intl/server'
-import { Suspense } from 'react'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 import '@/styles/mdx.css'
 
 import { PaginatedBlogPosts } from '@/components/blog/paginated-posts'
 import { BlogPostBreadcrumb } from '@/components/blog/breadcrumb'
 import { DashboardTableOfContents } from '@/components/docs/toc'
-import { getTableOfContents } from '@/lib/opendocs/utils/toc'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { getBlogFromParams } from '@/lib/opendocs/utils/blog'
+import { getTableOfContents } from '@/lib/opendocs/utils/toc'
 import { BlogPostHeading } from '@/components/blog/heading'
 import { BlogPostTags } from '@/components/blog/post-tags'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -18,22 +17,23 @@ import { AuthorCard } from '@/components/blog/author'
 import { allBlogs } from 'contentlayer/generated'
 import { defaultLocale } from '@/config/i18n'
 import { Mdx } from '@/components/docs/mdx'
-import { siteConfig } from '@/config/site'
 import { Icons } from '@/components/icons'
+import { siteConfig } from '@/config/site'
 import { absoluteUrl } from '@/lib/utils'
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string[]
     locale: LocaleOptions
-  }
+  }>
 }
 
 export const dynamicParams = true
 
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: BlogPageProps
+): Promise<Metadata> {
+  const params = await props.params
   const locale = params.locale || defaultLocale
 
   setRequestLocale(locale)
@@ -47,14 +47,9 @@ export async function generateMetadata({
     const title = t('words.blog')
     const description = t('description')
 
-    const tags = new Set(
-      allBlogs
-        .map((blog) => blog.tags)
-        .flat()
-        .filter(Boolean)
-    )
+    const tags = new Set(allBlogs.flatMap(blog => blog.tags).filter(Boolean))
 
-    const ogImage = absoluteUrl(`/blog-og/introducing-blogs-og.jpg`)
+    const ogImage = absoluteUrl('/blog-og/introducing-blogs-og.jpg')
 
     return {
       title,
@@ -138,7 +133,7 @@ export async function generateMetadata({
 export async function generateStaticParams(): Promise<
   BlogPageProps['params'][]
 > {
-  const blog = allBlogs.map((blog) => {
+  const blog = allBlogs.map(blog => {
     const [locale, ...slugs] = blog.slugAsParams.split('/')
 
     return {
@@ -147,10 +142,11 @@ export async function generateStaticParams(): Promise<
     }
   })
 
-  return blog
+  return blog as unknown as BlogPageProps['params'][]
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage(props: BlogPageProps) {
+  const params = await props.params
   const locale = params.locale || defaultLocale
 
   setRequestLocale(locale)
@@ -171,9 +167,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         }
       >
         <PaginatedBlogPosts
-          posts={allBlogs}
           locale={locale}
-          perPage={6}
           messages={{
             by: t('blog.words.by'),
             next: t('blog.buttons.next'),
@@ -184,6 +178,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
             go_to_next_page: t('blog.buttons.go_to_next_page'),
             go_to_previous_page: t('blog.buttons.go_to_previous_page'),
           }}
+          perPage={6}
+          posts={allBlogs}
         />
       </Suspense>
     )
@@ -195,19 +191,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
     <main className="relative space-y-12 lg:gap-10 lg:grid lg:grid-cols-[1fr_250px]">
       <div className="mx-auto min-w-0 max-w-4xl">
         <BlogPostBreadcrumb
-          post={blogPost}
           messages={{
             posts: t('blog.words.posts'),
           }}
+          post={blogPost}
         />
 
         <BlogPostHeading
-          post={blogPost}
           locale={locale}
           messages={{
             by: t('blog.words.by'),
             min_read: t('blog.cards.min_read'),
           }}
+          post={blogPost}
         />
 
         <BlogPostTags post={blogPost} />
@@ -224,13 +220,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <ScrollArea className="pb-10">
             <div className="sticky top-16 -mt-10 h-fit py-12">
               <DashboardTableOfContents
-                sourceFilePath={blogPost._raw.sourceFilePath}
-                toc={toc}
                 messages={{
                   onThisPage: t('docs.on_this_page'),
                   editPageOnGitHub: t('docs.edit_page_on_github'),
                   startDiscussionOnGitHub: t('docs.start_discussion_on_github'),
                 }}
+                sourceFilePath={blogPost._raw.sourceFilePath}
+                toc={toc}
               />
             </div>
           </ScrollArea>

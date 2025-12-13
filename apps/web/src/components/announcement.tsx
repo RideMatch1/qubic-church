@@ -12,8 +12,8 @@ export function Announcement({
 }) {
   return (
     <Link
-      href={href ? href : '/docs/changelog'}
       className="border bg-card-primary border-input group inline-flex items-center rounded-lg px-3 py-1 text-sm font-medium"
+      href={href ? href : '/docs/changelog'}
     >
       🎉{' '}
       <Separator className="mx-2 h-4 dark:bg-border" orientation="vertical" />{' '}

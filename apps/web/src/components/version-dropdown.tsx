@@ -3,17 +3,17 @@
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { type PointerEvent, useState } from 'react'
 
-import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
-import { Button } from '@/components/ui/button'
-import { siteConfig } from '@/config/site'
-import { useRouter } from '@/navigation'
-
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from '@/components/ui/dropdown-menu'
+
+import { useIsMobile } from '@/lib/opendocs/hooks/use-is-mobile'
+import { Button } from '@/components/ui/button'
+import { siteConfig } from '@/config/site'
+import { useRouter } from '@/navigation'
 
 interface VersionDropdownProps {
   messages: {
@@ -39,30 +39,30 @@ export function VersionDropdown({ messages }: VersionDropdownProps) {
   }
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+    <DropdownMenu modal={false} onOpenChange={setOpen} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
           aria-expanded={open}
           className="group pointer-events-auto relative flex w-fit gap-1 px-2"
           onClick={() => isMobile && openDropdown()}
           onPointerEnter={() => !isMobile && openDropdown()}
-          onPointerLeave={(event) => !isMobile && closeDropdown(event)}
+          onPointerLeave={event => !isMobile && closeDropdown(event)}
+          variant="ghost"
         >
           <span className="">v{siteConfig.app.latestVersion}</span>
 
-          <ChevronDown className="size-3 transition duration-300 group-aria-[expanded=true]:rotate-180" />
+          <ChevronDown className="size-3 transition duration-300 group-aria-expanded:rotate-180" />
 
           <span className="pointer-events-auto absolute z-10 block h-14 w-full" />
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="flex flex-col items-center"
         align="center"
-        role="menu"
+        className="flex flex-col items-center"
+        onCloseAutoFocus={e => e.preventDefault()}
         onPointerLeave={closeDropdown}
-        onCloseAutoFocus={(e) => e.preventDefault()}
+        role="menu"
       >
         <div className="w-full">
           <DropdownMenuItem onClick={() => router.push('/docs/changelog')}>

@@ -1,33 +1,26 @@
 import { setRequestLocale } from 'next-intl/server'
-
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { NextIntlClientProvider } from 'next-intl'
 import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
 
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
-import { fontSans } from '@/lib/fonts'
+import { getSansFont } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
-import { NextIntlClientProvider } from 'next-intl'
 
-interface AppLayoutProps {
-  children: React.ReactNode
-  params: {
-    locale: LocaleOptions
-  }
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: LocaleOptions }
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  setRequestLocale(params.locale || defaultLocale)
+  const params = await props.params
+
+  const locale = (params.locale as LocaleOptions) || defaultLocale
+  setRequestLocale(locale)
 
   return {
     title: {
@@ -35,7 +28,7 @@ export async function generateMetadata({
       template: `%s - ${siteConfig.name}`,
     },
 
-    description: getObjectValueByLocale(siteConfig.description, params.locale),
+    description: getObjectValueByLocale(siteConfig.description, locale),
 
     keywords: [
       'Docs',
@@ -68,10 +61,7 @@ export async function generateMetadata({
       title: siteConfig.name,
       siteName: siteConfig.name,
 
-      description: getObjectValueByLocale(
-        siteConfig.description,
-        params.locale
-      ),
+      description: getObjectValueByLocale(siteConfig.description, locale),
 
       images: [
         {
@@ -88,10 +78,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       images: [siteConfig.og.image],
 
-      description: getObjectValueByLocale(
-        siteConfig.description,
-        params.locale
-      ),
+      description: getObjectValueByLocale(siteConfig.description, locale),
     },
 
     icons: {
@@ -100,7 +87,7 @@ export async function generateMetadata({
       shortcut: '/favicon-16x16.png',
     },
 
-    manifest: `${siteConfig.url}/site.webmanifest`,
+    manifest: '/manifest.webmanifest',
   }
 }
 
@@ -113,13 +100,23 @@ export const viewport: Viewport = {
   ],
 }
 
-export default function RootLayout({ children, params }: AppLayoutProps) {
-  setRequestLocale(params.locale)
+export default async function RootLayout(props: {
+  params: Promise<{ locale: string }>
+  children: React.ReactNode
+}) {
+  const params = await props.params
 
+  const locale = (params.locale as LocaleOptions) || defaultLocale
+
+  const { children } = props
+
+  setRequestLocale(locale)
+
+  const fontSans = await getSansFont()
   return (
-    <html lang={params.locale || defaultLocale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#181423" />
+        <meta content="#181423" name="theme-color" />
       </head>
 
       <body
@@ -133,10 +130,10 @@ export default function RootLayout({ children, params }: AppLayoutProps) {
           messages={{}}
         >
           <ThemeProvider
-            enableSystem
             attribute="class"
             defaultTheme="dark"
             disableTransitionOnChange
+            enableSystem
           >
             <div>
               <div className="relative z-10 flex min-h-screen flex-col">

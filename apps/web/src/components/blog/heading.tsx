@@ -1,10 +1,9 @@
 import Balancer from 'react-wrap-balancer'
 
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { Blog } from 'contentlayer/generated'
-
 import { DocNotAvailableInThisLanguage } from '../docs/not-available'
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import type { Blog } from 'contentlayer/generated'
 import { cn, formatDate } from '@/lib/utils'
 import { dateLocales } from '@/config/i18n'
 import { ReadTime } from './read-time'
@@ -36,15 +35,15 @@ export function BlogPostHeading({
 
       <div className="flex flex-col">
         <ReadTime
-          iconSize={13}
-          variant="unstyled"
-          time={post.readTimeInMinutes}
           className="text-md max-w-max"
+          iconSize={13}
           messages={{ min_read: messages.min_read }}
+          time={post.readTimeInMinutes}
+          variant="unstyled"
         />
 
         <div className="inline-flex flex-wrap items-center gap-2">
-          <time dateTime={post.date} className="text-sm text-gray-500">
+          <time className="text-sm text-gray-500" dateTime={post.date}>
             {formatDate(post.date, getObjectValueByLocale(dateLocales, locale))}
           </time>
 

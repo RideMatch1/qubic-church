@@ -1,27 +1,27 @@
-import { getTranslations } from 'next-intl/server'
 import dynamic from 'next/dynamic'
+import { getTranslations } from 'next-intl/server'
 
+import { Icons } from '@/components/icons'
+import { MainNav } from '@/components/main-nav'
+import { MobileNav } from '@/components/mobile-nav'
 import { ThemeModeToggle } from '@/components/theme-mode-toggle'
 import { Separator } from '@/components/ui/separator'
-import { VersionDropdown } from './version-dropdown'
-import { MobileNav } from '@/components/mobile-nav'
-import { MainNav } from '@/components/main-nav'
-import { buttonVariants } from './ui/button'
-import { Icons } from '@/components/icons'
 import { siteConfig } from '@/config/site'
-import { I18nToggle } from './i18n-toggle'
-import { Link } from '@/navigation'
 import { cn } from '@/lib/utils'
+import { Link } from '@/navigation'
+import { I18nToggle } from './i18n-toggle'
+import { buttonVariants } from './ui/button'
+import { VersionDropdown } from './version-dropdown'
 
 const CommandMenu = dynamic(() =>
-  import('@/components/command-menu').then((mod) => mod.CommandMenu)
+  import('@/components/command-menu').then(mod => mod.CommandMenu)
 )
 
 export async function SiteHeader() {
   const t = await getTranslations('site')
 
   return (
-    <header className={'sticky top-0 z-50 w-full backdrop-blur'}>
+    <header className="sticky top-0 z-50 w-full backdrop-blur">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <MainNav
           messages={{
@@ -31,11 +31,11 @@ export async function SiteHeader() {
         />
 
         <MobileNav
+          menuLinks={<SiteHeaderMenuLinks />}
           messages={{
             menu: t('words.menu'),
             toggleMenu: t('buttons.toggle_menu'),
           }}
-          menuLinks={<SiteHeaderMenuLinks />}
         />
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
@@ -81,7 +81,7 @@ export async function SiteHeader() {
             />
 
             <div className="phone:flex hidden items-center">
-              <Separator orientation="vertical" className="mx-1 h-5" />
+              <Separator className="mx-1 h-5" orientation="vertical" />
               <SiteHeaderMenuLinks />
             </div>
           </nav>
@@ -93,20 +93,18 @@ export async function SiteHeader() {
 
 export function SiteHeaderMenuLinks() {
   return (
-    <>
-      <Link href={siteConfig.links.github.url} target="_blank" rel="noreferrer">
-        <div
-          className={cn(
-            buttonVariants({
-              variant: 'ghost',
-            }),
-            'w-9 px-0'
-          )}
-        >
-          <Icons.gitHub className="size-4" />
-          <span className="sr-only">GitHub</span>
-        </div>
-      </Link>
-    </>
+    <Link href={siteConfig.links.github.url} rel="noreferrer" target="_blank">
+      <div
+        className={cn(
+          buttonVariants({
+            variant: 'ghost',
+          }),
+          'w-9 px-0'
+        )}
+      >
+        <Icons.gitHub className="size-4" />
+        <span className="sr-only">GitHub</span>
+      </div>
+    </Link>
   )
 }

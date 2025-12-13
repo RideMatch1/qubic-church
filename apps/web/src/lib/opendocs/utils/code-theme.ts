@@ -2,20 +2,23 @@ import { createHighlighter } from 'shiki'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-import { localCodeThemes, codeThemeConfig } from '../../../config/code-theme'
-import { toKebabCase } from './to-kebab-case'
-
 import type {
   CodeTheme,
+  LocalCodeThemes,
   CodeThemeLanguage,
 } from '@/lib/opendocs/types/code-theme'
 
+import { codeThemeConfig, localCodeThemes } from '../../../config/code-theme'
+import { toKebabCase } from './to-kebab-case'
+
 const localThemes = codeThemeConfig.localThemes
+let highlighterPromise: ReturnType<typeof createHighlighter> | null = null
+const loadedLocalThemes = new Set<string>()
 
 export function getContentLayerCodeTheme() {
   const themeName = codeThemeConfig.theme
 
-  if (localCodeThemes.includes(themeName as any)) {
+  if (localCodeThemes.includes(themeName as LocalCodeThemes[number])) {
     return JSON.parse(
       readFileSync(
         resolve(
@@ -39,26 +42,29 @@ export async function highlightServerCode(
     import('node:fs/promises'),
   ])
 
-  const highlighter = await createHighlighter({
+  highlighterPromise ??= createHighlighter({
     langs: codeThemeConfig.languages,
-    themes: [theme].filter((theme) => !localThemes.includes(theme as any)),
+    themes: ['nord'],
   })
+  const highlighter = await highlighterPromise
 
-  const isLocalTheme = localThemes.includes(theme as any)
+  const isLocalTheme = localThemes.includes(theme as LocalCodeThemes[number])
 
   if (isLocalTheme) {
-    try {
-      const editorTheme = await fs.readFile(
-        path.resolve(
-          process.cwd(),
-          `src/styles/themes/syntax-highlight/${toKebabCase(theme)}.json`
-        ),
-        'utf-8'
-      )
-
-      await highlighter.loadTheme(JSON.parse(editorTheme))
-    } catch {
-      throw new Error(`Failed to load theme: ${theme}`)
+    if (!loadedLocalThemes.has(theme)) {
+      try {
+        const editorTheme = await fs.readFile(
+          path.resolve(
+            process.cwd(),
+            `src/styles/themes/syntax-highlight/${toKebabCase(theme)}.json`
+          ),
+          'utf-8'
+        )
+        await highlighter.loadTheme(JSON.parse(editorTheme))
+        loadedLocalThemes.add(theme)
+      } catch {
+        throw new Error(`Failed to load theme: ${theme}`)
+      }
     }
   }
 

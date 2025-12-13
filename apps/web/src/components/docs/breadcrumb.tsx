@@ -1,11 +1,10 @@
 import { ChevronRightIcon } from 'lucide-react'
 import { Fragment } from 'react'
 
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { Doc } from 'contentlayer/generated'
-
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { getBreadcrumb } from '@/lib/opendocs/utils/doc'
+import type { Doc } from 'contentlayer/generated'
 import { defaultLocale } from '@/config/i18n'
 import { Link } from '@/navigation'
 
@@ -26,7 +25,7 @@ export function DocBreadcrumb({ doc, messages }: DocBreadcrumbProps) {
 
   return (
     <div className="text-muted-foreground mb-4 flex items-center space-x-1 text-sm">
-      <Link href="/docs" className="text-foreground hover:underline">
+      <Link className="text-foreground hover:underline" href="/docs">
         {messages.docs}
       </Link>
 
@@ -35,13 +34,13 @@ export function DocBreadcrumb({ doc, messages }: DocBreadcrumbProps) {
         const docTitle = getObjectValueByLocale(item.title, locale)
 
         return (
-          <Fragment key={index}>
+          <Fragment key={`${item.href || 'no-href'}-${docTitle}-${index}`}>
             <ChevronRightIcon className="size-4" />
 
             {item.href && !isLastItem ? (
               <Link
-                href={item.href}
                 className="truncate text-foreground font-medium hover:underline"
+                href={item.href}
               >
                 {docTitle}
               </Link>

@@ -1,4 +1,5 @@
-import React, { type PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
+import type React from 'react'
 
 import {
   Card,
@@ -7,6 +8,7 @@ import {
   CardContent,
   CardDescription,
 } from '@/components/ui/card'
+
 import { cn } from '@/lib/utils'
 
 type FeaturedCardProps = PropsWithChildren<{
@@ -24,7 +26,7 @@ export function FeaturedCard({
   orientation = 'vertical',
 }: FeaturedCardProps) {
   return (
-    <Card className="backdrop-blur-lg dark:bg-card-primary">
+    <Card className="backdrop-blur-lg bg-card/80 dark:bg-card-primary">
       <CardHeader
         className={cn(
           'flex gap-4 pb-2',

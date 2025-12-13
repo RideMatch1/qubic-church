@@ -5,16 +5,15 @@ import Balancer from 'react-wrap-balancer'
 import { compareDesc } from 'date-fns'
 import { useMemo } from 'react'
 
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { Blog } from 'contentlayer/generated'
-
 import {
   getSlugWithoutLocale,
   getObjectValueByLocale,
 } from '@/lib/opendocs/utils/locale'
 
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { cn, formatDate, truncateText } from '@/lib/utils'
 import { BlogPostItemTags } from './post-item-tags'
+import type { Blog } from 'contentlayer/generated'
 import { buttonVariants } from '../ui/button'
 import { dateLocales } from '@/config/i18n'
 import { Pagination } from './pagination'
@@ -52,16 +51,14 @@ export function PaginatedBlogPosts({
   const currentPage = useMemo(() => {
     const page = searchParams.get('page')
 
-    return page ? parseInt(page, 10) : 1
+    return page ? Number.parseInt(page, 10) : 1
   }, [searchParams])
 
   const blogPosts = useMemo(() => {
     let blogPosts = posts
 
     if (tag) {
-      blogPosts = blogPosts.filter((post) =>
-        post.tags?.includes(decodeURI(tag))
-      )
+      blogPosts = blogPosts.filter(post => post.tags?.includes(decodeURI(tag)))
     }
 
     return blogPosts
@@ -70,7 +67,7 @@ export function PaginatedBlogPosts({
   const sortedPosts = useMemo(
     () =>
       blogPosts
-        .filter((post) => {
+        .filter(post => {
           const [localeFromSlug] = post.slugAsParams.split('/')
 
           return localeFromSlug === locale
@@ -103,13 +100,13 @@ export function PaginatedBlogPosts({
           'md:grid-cols-1': paginatedPosts.length < 2,
         })}
       >
-        {paginatedPosts.map((post) => {
+        {paginatedPosts.map(post => {
           const postLink = getSlugWithoutLocale(post.slug, 'blog')
 
           return (
             <Card
-              key={post._id}
               className="flex flex-col p-4 md:p-8 w-full h-full backdrop-blur-lg dark:bg-card-primary justify-between"
+              key={post._id}
             >
               <div>
                 <div className="flex items-center mb-2 text-xs text-muted-foreground justify-between gap-1">
@@ -121,17 +118,17 @@ export function PaginatedBlogPosts({
                   </time>
 
                   <ReadTime
-                    time={post.readTimeInMinutes}
-                    variant="unstyled"
                     messages={{
                       min_read: messages.min_read,
                     }}
+                    time={post.readTimeInMinutes}
+                    variant="unstyled"
                   />
                 </div>
 
                 <Link
-                  href={postLink}
                   className={cn('hover:opacity-65 transition-all')}
+                  href={postLink}
                 >
                   <h1 className="text-xl py-2">
                     <Balancer>{post.title}</Balancer>
@@ -146,12 +143,12 @@ export function PaginatedBlogPosts({
               <BlogPostItemTags post={post} />
 
               <Link
-                href={postLink}
                 className={cn(
                   'dark:hover:text-primary dark:text-primary-active transition-all',
                   buttonVariants({ variant: 'link' }),
                   'h-fit p-0 flex self-end mt-1'
                 )}
+                href={postLink}
               >
                 {messages.read_more}
               </Link>
@@ -161,9 +158,9 @@ export function PaginatedBlogPosts({
       </div>
 
       <Pagination
-        pagesToShow={10}
         messages={messages}
         numberOfPages={totalOfPages}
+        pagesToShow={10}
       />
     </main>
   )

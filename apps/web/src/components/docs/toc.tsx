@@ -1,10 +1,10 @@
 'use client'
 
-import { useMemo, useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ExternalLink } from 'lucide-react'
 
+import type { TableOfContents } from '@/lib/opendocs/utils/toc'
 import { useMounted } from '@/lib/opendocs/hooks/use-mounted'
-import { TableOfContents } from '@/lib/opendocs/utils/toc'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
@@ -33,10 +33,10 @@ export function DashboardTableOfContents({
     () =>
       toc.items
         ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+            .flatMap(item => [item.url, item?.items?.map(item => item.url)])
             .flat()
             .filter(Boolean)
-            .map((id) => id?.split('#')[1])
+            .map(id => id?.split('#')[1])
         : [],
     [toc]
   )
@@ -59,7 +59,7 @@ export function DashboardTableOfContents({
     <div className="space-y-2">
       <p className="font-medium">{messages.onThisPage}</p>
 
-      <Tree tree={toc} activeItem={activeHeading as string} />
+      <Tree activeItem={activeHeading as string} tree={toc} />
 
       <div className="py-4">
         <Separator />
@@ -101,17 +101,17 @@ function useActiveItem(itemIds: string[]) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id)
           }
         })
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: '0% 0% -80% 0%' }
     )
 
-    itemIds?.forEach((id) => {
+    itemIds?.forEach(id => {
       const element = document.getElementById(id)
 
       if (element) {
@@ -120,7 +120,7 @@ function useActiveItem(itemIds: string[]) {
     })
 
     return () => {
-      itemIds?.forEach((id) => {
+      itemIds?.forEach(id => {
         const element = document.getElementById(id)
 
         if (element) {
@@ -144,21 +144,24 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
     <ul className={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
       {tree.items.map((item, index) => {
         return (
-          <li key={index} className={cn('mt-0 pt-2')}>
+          <li
+            className={cn('mt-0 pt-2')}
+            key={`${item.url}-${item.title}-${index}`}
+          >
             <a
-              href={item.url}
               className={cn(
                 'hover:text-foreground inline-block no-underline transition-colors',
                 item.url === `#${activeItem}`
                   ? 'text-foreground border-l-primary-active border-l-2 pl-2 font-medium'
                   : 'text-muted-foreground'
               )}
+              href={item.url}
             >
               {item.title}
             </a>
 
             {item.items?.length ? (
-              <Tree tree={item} level={level + 1} activeItem={activeItem} />
+              <Tree activeItem={activeItem} level={level + 1} tree={item} />
             ) : null}
           </li>
         )

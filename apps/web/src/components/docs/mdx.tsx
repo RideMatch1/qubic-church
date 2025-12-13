@@ -1,6 +1,7 @@
 'use client'
 
 import { useMDXComponent } from 'next-contentlayer2/hooks'
+import type { ComponentProps } from 'react'
 import Image from 'next/image'
 
 import {
@@ -11,13 +12,13 @@ import {
 } from '@/components/ui/accordion'
 
 import { CodeBlockWrapper } from '@/components/docs/mdx-components/code-block-wrapper'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { Callout } from '@/components/callout'
 import { Link } from '@/navigation'
 import { cn } from '@/lib/utils'
 
-import { Tabs, TabsList, TabsContent, TabsTrigger } from '@/components/ui/tabs'
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
 import { blockquote } from './mdx-components/blockquote'
 import { table } from './mdx-components/table'
 import { code } from './mdx-components/code'
@@ -29,17 +30,15 @@ import { h3 } from './mdx-components/h3'
 import { h4 } from './mdx-components/h4'
 import { h5 } from './mdx-components/h5'
 import { h6 } from './mdx-components/h6'
-import { ul } from './mdx-components/ul'
-import { ol } from './mdx-components/ol'
-import { li } from './mdx-components/li'
 import { hr } from './mdx-components/hr'
-import { tr } from './mdx-components/tr'
-import { th } from './mdx-components/th'
+import { li } from './mdx-components/li'
+import { ol } from './mdx-components/ol'
 import { td } from './mdx-components/td'
+import { th } from './mdx-components/th'
+import { tr } from './mdx-components/tr'
+import { ul } from './mdx-components/ul'
 import { a } from './mdx-components/a'
 import { p } from './mdx-components/p'
-
-import type { ComponentProps } from 'react'
 
 const components = {
   Image,

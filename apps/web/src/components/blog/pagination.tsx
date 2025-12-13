@@ -4,12 +4,12 @@ import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 
 import {
+  PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationContent,
   PaginationPrevious,
-  PaginationEllipsis,
   Pagination as RawPagination,
 } from '@/components/ui/pagination'
 
@@ -37,7 +37,7 @@ export function Pagination({
   const currentPage = useMemo(() => {
     const page = searchParams.get('page')
 
-    return page ? parseInt(page, 10) : 1
+    return page ? Number.parseInt(page, 10) : 1
   }, [searchParams])
 
   const hasPreviousPage = currentPage > 1
@@ -52,7 +52,7 @@ export function Pagination({
     const endPages = [numberOfPages - 1, numberOfPages]
 
     const middlePages = [currentPage - 1, currentPage, currentPage + 1].filter(
-      (page) => page > 2 && page < numberOfPages - 1
+      page => page > 2 && page < numberOfPages - 1
     )
 
     const allPages = [...startPages, ...middlePages, ...endPages]
@@ -65,11 +65,11 @@ export function Pagination({
       <PaginationContent className="flex flex-wrap items-end space-x-2 space-y-2 sm:space-x-3 sm:space-y-0">
         <PaginationItem>
           <PaginationPrevious
-            href={hasPreviousPage ? `?page=${currentPage - 1}` : '#'}
             aria-label={messages.go_to_previous_page}
             className={cn({
               'opacity-50 pointer-events-none': !hasPreviousPage,
             })}
+            href={hasPreviousPage ? `?page=${currentPage - 1}` : '#'}
           >
             {messages.previous}
           </PaginationPrevious>
@@ -83,10 +83,10 @@ export function Pagination({
 
           return (
             <PaginationItem
-              key={page}
               className={cn({
                 'opacity-50 pointer-events-none': isCurrentPage,
               })}
+              key={page}
             >
               {shouldDisplayEllipsis ? (
                 <PaginationEllipsis />
@@ -99,9 +99,9 @@ export function Pagination({
 
         <PaginationItem>
           <PaginationNext
-            href={hasNextPage ? `?page=${currentPage + 1}` : '#'}
             aria-label={messages.go_to_next_page}
             className={cn({ 'opacity-50 pointer-events-none': !hasNextPage })}
+            href={hasNextPage ? `?page=${currentPage + 1}` : '#'}
           >
             {messages.next}
           </PaginationNext>

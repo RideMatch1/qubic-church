@@ -1,6 +1,6 @@
-import { bundledThemes, bundledLanguages } from 'shiki'
+import type { bundledLanguages, bundledThemes } from 'shiki'
 
-import { localCodeThemes } from '@/config/code-theme'
+import type { localCodeThemes } from '@/config/code-theme'
 
 export type LocalCodeThemes = typeof localCodeThemes
 export type BundledCodeThemeOptions = keyof typeof bundledThemes

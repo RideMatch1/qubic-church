@@ -1,37 +1,37 @@
+import { allBlogs, allDocs } from 'contentlayer/generated'
 import type { MetadataRoute } from 'next'
 
-import { allBlogs, allDocs } from 'contentlayer/generated'
-import { absoluteUrl } from '@/lib/utils'
 import { locales } from '@/config/i18n'
+import { absoluteUrl } from '@/lib/utils'
 
 type Sitemap = MetadataRoute.Sitemap
 
 export default function sitemap(): Sitemap {
   const paths: Sitemap = [
     {
-      url: absoluteUrl(`/`),
+      url: absoluteUrl('/'),
       lastModified: new Date(),
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [locale, absoluteUrl(`/${locale}`)])
+          locales.map(locale => [locale, absoluteUrl(`/${locale}`)])
         ),
       },
     },
 
     {
-      url: absoluteUrl(`/docs`),
+      url: absoluteUrl('/docs'),
       lastModified: new Date(),
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [locale, absoluteUrl(`/${locale}/docs`)])
+          locales.map(locale => [locale, absoluteUrl(`/${locale}/docs`)])
         ),
       },
     },
   ]
 
-  const docPaths: Sitemap = allDocs.map((doc) => {
+  const docPaths: Sitemap = allDocs.map(doc => {
     const [, ...docSlugList] = doc.slugAsParams.split('/')
     const docSlug = docSlugList.join('/') || ''
 
@@ -41,7 +41,7 @@ export default function sitemap(): Sitemap {
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [
+          locales.map(locale => [
             locale,
             absoluteUrl(`/${locale}/docs/${docSlug}`),
           ])
@@ -50,7 +50,7 @@ export default function sitemap(): Sitemap {
     }
   })
 
-  const blogPaths: Sitemap = allBlogs.map((post) => {
+  const blogPaths: Sitemap = allBlogs.map(post => {
     const [, ...postSlugList] = post.slugAsParams.split('/')
     const postSlug = postSlugList.join('/') || ''
 
@@ -60,7 +60,7 @@ export default function sitemap(): Sitemap {
 
       alternates: {
         languages: Object.fromEntries(
-          locales.map((locale) => [
+          locales.map(locale => [
             locale,
             absoluteUrl(`/${locale}/blog/${postSlug}`),
           ])

@@ -15,8 +15,8 @@ export default function Template({ children }: ComponentProps<'div'>) {
 
   return (
     <motion.div
-      initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
+      initial={{ y: 20, opacity: 0 }}
       transition={{ ease: 'easeInOut', duration: 0.7 }}
     >
       {children}

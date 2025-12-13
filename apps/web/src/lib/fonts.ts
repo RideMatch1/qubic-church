@@ -1,8 +1,15 @@
 import { JetBrains_Mono as FontMono } from 'next/font/google'
-import { GeistSans } from 'geist/font/sans'
+
 import { absoluteUrl } from './utils'
 
-export const fontSans = GeistSans
+export async function getSansFont() {
+  try {
+    const { GeistSans } = await import('geist/font/sans')
+    return GeistSans
+  } catch {
+    return { variable: '' } as { variable: string }
+  }
+}
 
 export const fontMono = FontMono({
   subsets: ['latin'],
@@ -10,18 +17,26 @@ export const fontMono = FontMono({
 })
 
 export async function getFonts() {
-  const [bold, regular] = await Promise.all([
-    fetch(new URL(absoluteUrl('/fonts/Geist-Bold.ttf'), import.meta.url)).then(
-      (res) => res.arrayBuffer()
-    ),
+  try {
+    const [bold, regular] = await Promise.all([
+      fetch(new URL(absoluteUrl('/fonts/Geist-Bold.ttf')), {
+        cache: 'force-cache',
+      }).then(res => res.arrayBuffer()),
 
-    fetch(
-      new URL(absoluteUrl('/fonts/Geist-Regular.ttf'), import.meta.url)
-    ).then((res) => res.arrayBuffer()),
-  ])
+      fetch(new URL(absoluteUrl('/fonts/Geist-Regular.ttf')), {
+        cache: 'force-cache',
+      }).then(res => res.arrayBuffer()),
+    ])
 
-  return {
-    bold,
-    regular,
+    return {
+      bold,
+      regular,
+    }
+  } catch (error) {
+    console.warn('Failed to load fonts, using fallback:', error)
+    return {
+      bold: null,
+      regular: null,
+    }
   }
 }

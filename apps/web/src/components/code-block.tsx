@@ -27,6 +27,7 @@ export async function CodeBlock({
       )}
       {...props}
     >
+      {/** biome-ignore lint/security/noDangerouslySetInnerHtml: <> */}
       <div dangerouslySetInnerHTML={{ __html: htmlCode }} />
     </div>
   )

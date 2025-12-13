@@ -1,7 +1,6 @@
 import { CopyButton, CopyNpmCommandButton } from './copy-button'
-import { cn } from '@/lib/utils'
-
 import type { NpmCommands } from '@/lib/opendocs/types/unist'
+import { cn } from '@/lib/utils'
 
 export const pre = ({
   className,
@@ -32,9 +31,9 @@ export const pre = ({
 
       {__rawString__ && !__npmCommand__ && (
         <CopyButton
-          value={__rawString__}
-          src={__src__}
           className={cn('absolute right-4 top-4', __withMeta__ && 'top-16')}
+          src={__src__}
+          value={__rawString__}
         />
       )}
       {__npmCommand__ &&
@@ -42,13 +41,13 @@ export const pre = ({
         __pnpmCommand__ &&
         __bunCommand__ && (
           <CopyNpmCommandButton
+            className={cn('absolute right-4 top-4', __withMeta__ && 'top-16')}
             commands={{
               __bunCommand__,
               __npmCommand__,
               __yarnCommand__,
               __pnpmCommand__,
             }}
-            className={cn('absolute right-4 top-4', __withMeta__ && 'top-16')}
           />
         )}
     </div>

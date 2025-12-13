@@ -11,14 +11,14 @@
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "baseUrl": ".",
-    "rootDir": ".",
+    "rootDir": "."
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "index.d.ts",
     "next-env.d.ts",
-    "next.config.js",
+    "next.config.ts",
     "postcss.config.mjs",
     "tailwind.config.ts",
     ".next/types/**/*.ts",

@@ -1,6 +1,6 @@
 import { Clock } from 'lucide-react'
 
-import { Badge, BadgeProps } from '../ui/badge'
+import { Badge, type BadgeProps } from '../ui/badge'
 import { cn } from '@/lib/utils'
 
 interface ReadTimeProps extends BadgeProps {
@@ -25,11 +25,11 @@ export function ReadTime({
 
   return (
     <Badge
-      variant="secondary"
       className={cn('gap-1 min-w-fit', className)}
+      variant="secondary"
       {...props}
     >
-      <Clock size={iconSize} className="max-h-full" /> {time}{' '}
+      <Clock className="max-h-full" size={iconSize} /> {time}{' '}
       {messages.min_read}
     </Badge>
   )

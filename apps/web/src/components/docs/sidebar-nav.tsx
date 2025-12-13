@@ -2,9 +2,6 @@
 
 import { Fragment } from 'react'
 
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { SidebarNavItem } from '@/lib/opendocs/types/nav'
-
 import {
   Accordion,
   AccordionItem,
@@ -13,7 +10,9 @@ import {
 } from '@/components/ui/accordion'
 
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
-import { usePathname, Link as DesktopLink } from '@/navigation'
+import { Link as DesktopLink, usePathname } from '@/navigation'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import type { SidebarNavItem } from '@/lib/opendocs/types/nav'
 import { MobileLink } from '../mobile-link'
 import { cn } from '@/lib/utils'
 
@@ -40,7 +39,10 @@ export function DocsSidebarNav({
       )}
     >
       {items.map((item, index) => (
-        <div key={index} className={cn('pb-4')}>
+        <div
+          className={cn('pb-4')}
+          key={`${getObjectValueByLocale(item.title, locale)}-${index}`}
+        >
           <h4
             className={cn(
               !isMobile && 'mb-1 rounded-md px-2 py-1 text-sm font-semibold',
@@ -51,11 +53,11 @@ export function DocsSidebarNav({
           </h4>
           {item?.items?.length > 0 && (
             <DocsSidebarNavItems
+              handleMobileSidebar={handleMobileSidebar}
+              isMobile={isMobile}
               items={item.items}
               locale={locale}
               pathname={pathname}
-              isMobile={isMobile}
-              handleMobileSidebar={handleMobileSidebar}
             />
           )}
         </div>
@@ -74,6 +76,75 @@ interface DocsSidebarNavItemsProps {
 
 const accordionsStates = new Map<string, boolean>()
 
+function toggleAccordionState(id: string) {
+  accordionsStates.set(id, !accordionsStates.get(id))
+}
+
+interface ChildrenComponentProps {
+  item: SidebarNavItem
+  pathname: string | null
+  locale: LocaleOptions
+  isMobile?: boolean
+  handleMobileSidebar?: (state: boolean) => void
+}
+
+function ChildrenComponent({
+  item,
+  pathname,
+  locale,
+  isMobile,
+  handleMobileSidebar,
+}: ChildrenComponentProps) {
+  const activeChild = item?.items?.find(
+    childItem => childItem.href === pathname
+  )
+
+  return (
+    item.items.length > 0 && (
+      <Accordion
+        className="py-2"
+        collapsible
+        defaultValue={
+          activeChild?.title ||
+          accordionsStates.get(getObjectValueByLocale(item.title, locale))
+            ? getObjectValueByLocale(item.title, locale)
+            : ''
+        }
+        onValueChange={() =>
+          toggleAccordionState(getObjectValueByLocale(item.title, locale))
+        }
+        type="single"
+      >
+        <AccordionItem value={getObjectValueByLocale(item.title, locale)}>
+          <AccordionTrigger className="py-0 pb-3">
+            <h4 className="flex items-center gap-2 rounded-md pl-4 text-sm font-semibold">
+              {getObjectValueByLocale(item.title, locale)}
+
+              {item.label && (
+                <span className="h-fit rounded-md bg-primary-active px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                  {getObjectValueByLocale(item.label, locale)}
+                </span>
+              )}
+            </h4>
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div className="pl-4">
+              <DocsSidebarNavItems
+                handleMobileSidebar={handleMobileSidebar}
+                isMobile={isMobile}
+                items={item.items}
+                locale={locale}
+                pathname={pathname}
+              />
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    )
+  )
+}
+
 export function DocsSidebarNavItems({
   items,
   pathname,
@@ -83,72 +154,13 @@ export function DocsSidebarNavItems({
 }: DocsSidebarNavItemsProps) {
   const Link = !isMobile ? DesktopLink : MobileLink
 
-  function toggleAccordionState(id: string) {
-    accordionsStates.set(id, !accordionsStates.get(id))
-  }
-
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
-      {items.map((item) => {
-        const ChildrenComponent = () => {
-          const activeChild = item?.items?.find(
-            (childItem) => childItem.href === pathname
-          )
-
-          return (
-            item.items.length > 0 && (
-              <Accordion
-                type="single"
-                className="py-2"
-                collapsible
-                onValueChange={() =>
-                  toggleAccordionState(
-                    getObjectValueByLocale(item.title, locale)
-                  )
-                }
-                defaultValue={
-                  activeChild?.title ||
-                  accordionsStates.get(
-                    getObjectValueByLocale(item.title, locale)
-                  )
-                    ? getObjectValueByLocale(item.title, locale)
-                    : ''
-                }
-              >
-                <AccordionItem
-                  value={getObjectValueByLocale(item.title, locale)}
-                >
-                  <AccordionTrigger className="py-0 pb-3">
-                    <h4 className="flex items-center gap-2 rounded-md pl-4 text-sm font-semibold">
-                      {getObjectValueByLocale(item.title, locale)}
-
-                      {item.label && (
-                        <span className="h-fit rounded-md bg-primary-active px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                          {getObjectValueByLocale(item.label, locale)}
-                        </span>
-                      )}
-                    </h4>
-                  </AccordionTrigger>
-
-                  <AccordionContent>
-                    <div className="pl-4">
-                      <DocsSidebarNavItems
-                        items={item.items}
-                        locale={locale}
-                        pathname={pathname}
-                        isMobile={isMobile}
-                        handleMobileSidebar={handleMobileSidebar}
-                      />
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            )
-          )
-        }
-
+      {items.map(item => {
         const key =
-          getObjectValueByLocale(item.title, locale) + item.href! + pathname
+          getObjectValueByLocale(item.title, locale) +
+          (item.href || '') +
+          pathname
 
         const props =
           isMobile && item.href ? { onOpenChange: handleMobileSidebar } : {}
@@ -165,8 +177,8 @@ export function DocsSidebarNavItems({
                   ? 'text-foreground border-l-primary-active rounded-none border-l-2 font-medium'
                   : 'text-muted-foreground'
               )}
-              target={item.external ? '_blank' : ''}
               rel={item.external ? 'noreferrer' : ''}
+              target={item.external ? '_blank' : ''}
             >
               {getObjectValueByLocale(item.title, locale)}
 
@@ -179,7 +191,13 @@ export function DocsSidebarNavItems({
           </Fragment>
         ) : (
           <Fragment key={key}>
-            <ChildrenComponent />
+            <ChildrenComponent
+              handleMobileSidebar={handleMobileSidebar}
+              isMobile={isMobile}
+              item={item}
+              locale={locale}
+              pathname={pathname}
+            />
           </Fragment>
         )
       })}

@@ -2,14 +2,13 @@ import { NextResponse } from 'next/server'
 import { Feed, type Item } from 'feed'
 import { cache } from 'react'
 
-import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
-import type { RSSFeed } from '@/lib/opendocs/types/blog'
-
 import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
+import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { allBlogs, type Blog } from 'contentlayer/generated'
+import type { RSSFeed } from '@/lib/opendocs/types/blog'
 import { defaultLocale, locales } from '@/config/i18n'
-import { siteConfig } from '@/config/site'
 import { blogConfig } from '@/config/blog'
+import { siteConfig } from '@/config/site'
 import { absoluteUrl } from '@/lib/utils'
 
 function generateWebsiteFeeds({
@@ -34,12 +33,12 @@ function generateWebsiteFeeds({
   })
 
   const blogFeedEntries = posts
-    .filter((post) => {
+    .filter(post => {
       const [postLocale] = post.slugAsParams.split('/')
 
       return postLocale === locale
     })
-    .map((post) => {
+    .map(post => {
       const [postLocale, ...postSlugList] = post.slugAsParams.split('/')
       const postSlug = postSlugList.join('/') || ''
 
@@ -96,24 +95,37 @@ const provideWebsiteFeeds = cache(
 )
 
 type StaticParams = {
-  params: { feed: RSSFeed['file']; locale: LocaleOptions }
+  params: Promise<{ feed: RSSFeed['file']; locale: LocaleOptions }>
 }
 
 export const generateStaticParams = async (): Promise<
   StaticParams['params'][]
 > => {
-  return blogConfig.rss
-    .map(({ file }) => locales.map((locale) => ({ feed: file, locale })))
-    .flat()
+  return blogConfig.rss.flatMap(({ file }) =>
+    locales.map(locale => ({ feed: file, locale }))
+  ) as unknown as StaticParams['params'][]
 }
 
-export const GET = async (_: Request, { params }: StaticParams) => {
+export const GET = async (
+  _: Request,
+  context: { params: Promise<{ feed: string; locale: string }> }
+) => {
+  const params = await context.params
+
+  const staticProps: StaticParams = {
+    params: Promise.resolve({
+      feed: params.feed as RSSFeed['file'],
+      locale: params.locale as LocaleOptions,
+    }),
+  }
+
+  const typedParams = await staticProps.params
   const websiteFeed = provideWebsiteFeeds({
-    feed: params.feed,
-    locale: params.locale || defaultLocale,
+    feed: typedParams.feed,
+    locale: typedParams.locale || defaultLocale,
   })
 
-  const feed = blogConfig.rss.find((rss) => rss.file === params.feed)
+  const feed = blogConfig.rss.find(rss => rss.file === params.feed)
 
   const contentType = String(
     feed?.contentType || blogConfig.rss?.[0]?.contentType
@@ -130,9 +142,4 @@ export const GET = async (_: Request, { params }: StaticParams) => {
 export const dynamicParams = true
 export const dynamic = 'force-static'
 
-const VERCEL_REVALIDATE = Number(
-  // eslint-disable-next-line turbo/no-undeclared-env-vars
-  process.env.NEXT_PUBLIC_VERCEL_REVALIDATE_TIME || 300
-)
-
-export const revalidate = VERCEL_REVALIDATE
+export const revalidate = 300

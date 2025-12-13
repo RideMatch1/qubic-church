@@ -1,6 +1,5 @@
-import { ChevronRightIcon } from 'lucide-react'
-
 import type { Blog } from 'contentlayer/generated'
+import { ChevronRightIcon } from 'lucide-react'
 
 import { Link } from '@/navigation'
 
@@ -18,7 +17,7 @@ export function BlogPostBreadcrumb({
 }: BlogPostBreadcrumbProps) {
   return (
     <div className="text-muted-foreground mb-4 flex items-center space-x-1 text-sm">
-      <Link href="/blog" className="text-foreground hover:underline">
+      <Link className="text-foreground hover:underline" href="/blog">
         {messages.posts}
       </Link>
 
