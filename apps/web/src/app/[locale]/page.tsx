@@ -1,4 +1,4 @@
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { setRequestLocale, getTranslations } from 'next-intl/server'
 
 import {
   PageHeader,
@@ -19,6 +19,7 @@ import { Icons } from '@/components/icons'
 import { siteConfig } from '@/config/site'
 import { Link } from '@/navigation'
 import { cn } from '@/lib/utils'
+import { defaultLocale, locales } from '@/config/i18n'
 
 export const dynamicParams = true
 
@@ -26,14 +27,17 @@ export default async function IndexPage(props: {
   params: Promise<{ locale: LocaleOptions }>
 }) {
   const params = await props.params
-  setRequestLocale(params.locale)
+  const currentLocale = locales.includes(params.locale)
+    ? params.locale
+    : defaultLocale
+  setRequestLocale(currentLocale)
 
-  const t = await getTranslations()
+  const t = await getTranslations('site')
 
   return (
     <div className="container relative">
       <PageHeader>
-        <Announcement href="/docs" title={t('site.announcement')} />
+        <Announcement href="/docs" title={t('announcement')} />
 
         <PageHeaderHeading>
           <FlipWords
@@ -41,14 +45,14 @@ export default async function IndexPage(props: {
             words={['site', 'blog', 'docs']}
           />
 
-          <TextGenerateEffect words={t('site.heading')} />
+          <TextGenerateEffect words={t('heading')} />
         </PageHeaderHeading>
 
-        <PageHeaderDescription>{t('site.description')}</PageHeaderDescription>
+        <PageHeaderDescription>{t('description')}</PageHeaderDescription>
 
         <PageActions className="flex-wrap gap-3 sm:gap-0">
           <Link className={cn(buttonVariants())} href="/docs">
-            {t('site.buttons.get_started')}
+            {t('buttons.get_started')}
           </Link>
 
           <Link
@@ -73,13 +77,13 @@ export default async function IndexPage(props: {
             <span className="pr-3 mr-1 border border-transparent border-r-border group-hover:border-r-black/50">
               ▲
             </span>
-            {t('site.buttons.deploy_vercel')}
+            {t('buttons.deploy_vercel')}
           </Link>
         </PageActions>
 
         <InstallationBox
           __rawString__="npx degit daltonmenezes/opendocs project_name"
-          className="w-full relative max-w-[35rem] flex flex-wrap items-center pl-4 pr-12"
+          className="w-full relative max-w-140 flex flex-wrap items-center pl-4! pr-12!"
         />
 
         <div className="fixed left-0 -top-40 size-full -z-10 overflow-hidden">
@@ -97,35 +101,35 @@ export default async function IndexPage(props: {
       <section className="flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-2 2xl:grid-cols-4">
           <FeaturedCard
-            description={t('site.featured_cards.nextjs.description')}
+            description={t('featured_cards.nextjs.description')}
             icon="🧬"
             title="Next.js"
           />
 
           <FeaturedCard
-            description={t('site.featured_cards.shadcn.description')}
+            description={t('featured_cards.shadcn.description')}
             icon="⚡️"
             title="Shadcn"
           />
 
           <FeaturedCard
-            description={t('site.featured_cards.tailwind.description')}
+            description={t('featured_cards.tailwind.description')}
             icon="🚀"
             title="Tailwind"
           />
 
           <FeaturedCard
-            description={t('site.featured_cards.i18n.description')}
+            description={t('featured_cards.i18n.description')}
             icon="🌍"
             title="i18n"
           />
         </div>
 
         <FeaturedCard
-          description={t('site.featured_cards.more.description')}
+          description={t('featured_cards.more.description')}
           icon="+"
           orientation="horizontal"
-          title={t('site.featured_cards.more.title')}
+          title={t('featured_cards.more.title')}
         />
       </section>
     </div>

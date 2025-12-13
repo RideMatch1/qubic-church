@@ -1,4 +1,9 @@
-export { default } from '@/lib/opendocs/middleware'
+import type { NextRequest } from 'next/server'
+import proxyImpl from '@/lib/opendocs/proxy'
+
+export default function proxy(request: NextRequest) {
+  return proxyImpl(request)
+}
 
 export const config = {
   matcher: [

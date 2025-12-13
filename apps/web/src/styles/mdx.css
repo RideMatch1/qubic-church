@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/complexity/noImportantStyles: <> */
+@reference "tailwindcss";
 pre {
   padding: 1rem 0;
   overflow-x: auto;
@@ -8,11 +10,14 @@ pre [data-line] {
 }
 
 .mdx > .steps:first-child > h3:first-child {
-  @apply mt-0;
+  margin-top: 0;
 }
 
 .steps > h3 {
-  @apply mt-8 mb-4 text-base font-semibold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 [data-theme="light"] {
@@ -40,9 +45,13 @@ code[data-line-numbers] {
 }
 
 code[data-line-numbers] > [data-line]::before {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  color: rgb(107 114 128);
+  text-align: right;
   content: counter(line);
   counter-increment: line;
-  @apply inline-block w-4 mr-4 text-right text-gray-500;
 }
 
 [data-highlighted-line] {
@@ -50,35 +59,51 @@ code[data-line-numbers] > [data-line]::before {
 }
 
 [data-rehype-pretty-code-title]::before {
+  color: rgb(168 85 247);
   content: "◯ ";
-  @apply text-purple-500;
 }
 
 [data-rehype-pretty-code-title] {
-  @apply bg-zinc-900 text-primary-active border -mb-7 mt-3 rounded-t-lg py-2 px-3 font-semibold text-sm w-max;
+  width: max-content;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: -1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-active);
+  background-color: rgb(24 24 27);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
 }
 
 [data-highlighted-chars] {
+  background-color: rgb(82 82 91 / 0.5);
+  border-radius: 0.25rem;
   box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
-  @apply bg-zinc-600/50 rounded;
 }
 
 [data-chars-id] {
-  @apply shadow-none p-1 border-b-2;
+  padding: 0.25rem;
+  border-bottom-width: 2px;
+  box-shadow: none;
 }
 
 [data-chars-id] span {
-  @apply !text-inherit;
+  color: inherit !important;
 }
 
 [data-chars-id="v"] {
-  @apply !text-pink-300 bg-rose-800/50 font-bold;
+  font-weight: bold;
+  color: rgb(252 165 165) !important;
+  background-color: rgb(190 18 60 / 0.5);
 }
 
 [data-chars-id="s"] {
-  @apply !text-yellow-300 bg-yellow-800/50 font-bold;
+  font-weight: bold;
+  color: rgb(253 224 71) !important;
+  background-color: rgb(133 77 14 / 0.5);
 }
 
 [data-chars-id="i"] {
-  @apply !text-purple-200 bg-purple-800/50 font-bold;
+  @apply text-purple-200 bg-purple-800/50 font-bold;
 }

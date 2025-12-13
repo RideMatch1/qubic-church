@@ -1,8 +1,9 @@
-import deepmerge from 'deepmerge'
 import type { AbstractIntlMessages } from 'next-intl'
 import { getRequestConfig } from 'next-intl/server'
-import { locales } from '@/config/i18n'
+import deepmerge from 'deepmerge'
+
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
+import { locales } from '@/config/i18n'
 import { routing } from '@/navigation'
 
 export default getRequestConfig(async ({ requestLocale }) => {

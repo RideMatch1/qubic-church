@@ -26,7 +26,7 @@ export function FeaturedCard({
   orientation = 'vertical',
 }: FeaturedCardProps) {
   return (
-    <Card className="backdrop-blur-lg dark:bg-card-primary">
+    <Card className="backdrop-blur-lg bg-card/80 dark:bg-card-primary">
       <CardHeader
         className={cn(
           'flex gap-4 pb-2',

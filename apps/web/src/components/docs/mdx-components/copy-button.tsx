@@ -33,10 +33,12 @@ export function CopyButton({
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => {
+    if (!hasCopied) return
+    const t = setTimeout(() => {
       setHasCopied(false)
     }, 2000)
-  }, [])
+    return () => clearTimeout(t)
+  }, [hasCopied])
 
   return (
     <Button
@@ -77,10 +79,12 @@ export function CopyNpmCommandButton({
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => {
+    if (!hasCopied) return
+    const t = setTimeout(() => {
       setHasCopied(false)
     }, 2000)
-  }, [])
+    return () => clearTimeout(t)
+  }, [hasCopied])
 
   const copyCommand = useCallback(
     (value: string, _pm: (typeof packageManagers)[number]) => {

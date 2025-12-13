@@ -2,7 +2,6 @@
 
 import type { Blog } from 'contentlayer/generated'
 import { useSearchParams } from 'next/navigation'
-import { useMemo } from 'react'
 
 import { PaginationEllipsis } from '../ui/pagination'
 import { Link } from '@/navigation'
@@ -20,7 +19,7 @@ export function BlogPostItemTags({
   const totalOfTags = post?.tags?.length || 0
   const shouldDisplayEllipsis = totalOfTags > limitOfTagsToDisplay
 
-  const tags = useMemo(() => {
+  const tags = (() => {
     if (!post?.tags) {
       return null
     }
@@ -32,7 +31,7 @@ export function BlogPostItemTags({
     const uniqueTags = Array.from(new Set(tags))
 
     return uniqueTags
-  }, [post?.tags, limitOfTagsToDisplay, shouldDisplayEllipsis])
+  })()
 
   if (!tags) {
     return null

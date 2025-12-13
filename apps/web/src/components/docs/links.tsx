@@ -11,7 +11,8 @@ export async function DocLinks({ doc }: { doc: Doc }) {
     return null
   }
 
-  const t = await getTranslations()
+  const tDocs = await getTranslations('docs')
+  const tSite = await getTranslations('site')
 
   return (
     <div className="flex items-center space-x-2 pt-4">
@@ -22,7 +23,7 @@ export async function DocLinks({ doc }: { doc: Doc }) {
           rel="noreferrer"
           target="_blank"
         >
-          {t('docs.source')}
+          {tDocs('source')}
 
           <ExternalLinkIcon className="size-3" />
         </Link>
@@ -35,7 +36,7 @@ export async function DocLinks({ doc }: { doc: Doc }) {
           rel="noreferrer"
           target="_blank"
         >
-          {t('docs.docs')}
+          {tDocs('docs')}
 
           <ExternalLinkIcon className="size-3" />
         </Link>
@@ -48,7 +49,7 @@ export async function DocLinks({ doc }: { doc: Doc }) {
           rel="noreferrer"
           target="_blank"
         >
-          {t('docs.api_reference')}
+          {tDocs('api_reference')}
 
           <ExternalLinkIcon className="size-3" />
         </Link>
@@ -61,7 +62,7 @@ export async function DocLinks({ doc }: { doc: Doc }) {
           rel="noreferrer"
           target="_blank"
         >
-          {t('site.words.blog')}
+          {tSite('words.blog')}
 
           <ExternalLinkIcon className="size-3" />
         </Link>

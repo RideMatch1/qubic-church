@@ -1,9 +1,15 @@
 import { JetBrains_Mono as FontMono } from 'next/font/google'
-import { GeistSans } from 'geist/font/sans'
 
 import { absoluteUrl } from './utils'
 
-export const fontSans = GeistSans
+export async function getSansFont() {
+  try {
+    const { GeistSans } = await import('geist/font/sans')
+    return GeistSans
+  } catch {
+    return { variable: '' } as { variable: string }
+  }
+}
 
 export const fontMono = FontMono({
   subsets: ['latin'],

@@ -23,7 +23,6 @@
   },
   "formatter": {
     "enabled": true,
-    "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
@@ -87,14 +86,11 @@
       "trailingCommas": "es5"
     }
   },
-  "json": {
-    "formatter": {
-      "enabled": true
-    }
-  },
   "overrides": [
     {
-      "includes": ["**/*.css"],
+      "includes": [
+        "**/*.css"
+      ],
       "linter": {
         "rules": {
           "suspicious": {
@@ -104,5 +100,10 @@
         }
       }
     }
-  ]
+  ],
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
 }

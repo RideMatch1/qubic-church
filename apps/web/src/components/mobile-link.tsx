@@ -22,10 +22,7 @@ export function MobileLink({
 
   // Filter out prefetch if it has incompatible values
   const { prefetch, ...filteredProps } = props
-  const linkProps =
-    prefetch === 'auto' || prefetch === 'unstable_forceStale'
-      ? filteredProps
-      : props
+  const linkProps = typeof prefetch === 'boolean' ? props : filteredProps
 
   return (
     <Link

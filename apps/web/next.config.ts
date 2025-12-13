@@ -4,10 +4,11 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  turbopack: {},
 }
 
 const withContentlayer = createContentlayerPlugin({})
 
-const withNextIntl = createNextIntlPlugin('./src/i18n')
+const withNextIntl = createNextIntlPlugin()
 
 export default withNextIntl(withContentlayer(nextConfig))

@@ -1,31 +1,35 @@
 {
+  "tailwindCSS.experimental.classRegex": [
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"],
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"],
+    ["cva\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"]
+  ],
+
   "tailwindCSS.experimental.configFile": {
     "apps/web/tailwind.config.ts": "apps/web/**"
   },
 
-  "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ],
 
   "tailwindCSS.classAttributes": ["class", "className", "tw"],
 
-  "css.customData": [".vscode/css.json"],
-
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
   },
 
   "[json]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
   },
 
   "[typescript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
   },
 
   "[typescriptreact]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
   },
 
   "biome.enabled": true,
@@ -35,8 +39,15 @@
   },
 
   "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSaveMode": "file",
 
   "editor.quickSuggestions": {
     "strings": "on"
-  }
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": false,
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
 }

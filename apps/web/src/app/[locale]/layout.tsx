@@ -11,7 +11,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
-import { fontSans } from '@/lib/fonts'
+import { getSansFont } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 
 export async function generateMetadata(props: {
@@ -87,7 +87,7 @@ export async function generateMetadata(props: {
       shortcut: '/favicon-16x16.png',
     },
 
-    manifest: `${siteConfig.url}/site.webmanifest`,
+    manifest: '/manifest.webmanifest',
   }
 }
 
@@ -112,6 +112,7 @@ export default async function RootLayout(props: {
 
   setRequestLocale(locale)
 
+  const fontSans = await getSansFont()
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>

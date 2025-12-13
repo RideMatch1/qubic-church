@@ -61,7 +61,7 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
         </MobileLink>
 
         {menuLinks && (
-          <div className="flex phone:hidden flex-col space-y-2 items-end pr-2">
+          <div className="flex sm:hidden flex-col space-y-2 items-end pr-2">
             {menuLinks}
           </div>
         )}
