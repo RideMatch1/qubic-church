@@ -79,11 +79,5 @@
     "typescript": "^5.9.3",
     "unist-builder": "^4.0.0",
     "unist-util-visit": "^5.0.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.7",
-      "@types/react-dom": "19.2.3"
-    }
   }
 }
