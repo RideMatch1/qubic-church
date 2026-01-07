@@ -8,7 +8,8 @@ import { absoluteUrl, truncateText } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
 import { getFonts } from '@/lib/fonts'
 
-export const runtime = 'edge'
+// Using Node.js runtime instead of edge due to size limits
+export const runtime = 'nodejs'
 export const dynamicParams = true
 
 interface BlogOgProps {
