@@ -27,6 +27,30 @@
   --input: hsl(240 5.9% 90%);
   --ring: hsl(240 5% 64.9%);
   --radius: 0.5rem;
+
+  /* Brand Colors */
+  --bitcoin-orange: hsl(25 95% 53%);
+  --bitcoin-orange-light: hsl(35 95% 60%);
+  --qubic-purple: hsl(262 83% 58%);
+  --qubic-purple-light: hsl(280 83% 65%);
+
+  /* Status Colors - Verification Badges */
+  --verified: hsl(142 76% 36%);
+  --verified-bg: hsl(142 76% 36% / 0.15);
+  --high-confidence: hsl(217 91% 60%);
+  --high-confidence-bg: hsl(217 91% 60% / 0.15);
+  --warning: hsl(38 92% 50%);
+  --warning-bg: hsl(38 92% 50% / 0.15);
+  --unknown: hsl(45 93% 47%);
+  --unknown-bg: hsl(45 93% 47% / 0.15);
+  --disproven: hsl(0 0% 45%);
+  --disproven-bg: hsl(0 0% 45% / 0.15);
+
+  /* Surface Layers (Light Mode) */
+  --surface-0: hsl(0 0% 100%);
+  --surface-1: hsl(0 0% 98%);
+  --surface-2: hsl(0 0% 96%);
+  --surface-3: hsl(0 0% 94%);
 }
 
 .dark {
@@ -50,6 +74,30 @@
   --border: hsl(240 3.7% 15.9%);
   --input: hsl(240 3.7% 15.9%);
   --ring: hsl(240 4.9% 83.9%);
+
+  /* Brand Colors (Same in dark mode) */
+  --bitcoin-orange: hsl(25 95% 53%);
+  --bitcoin-orange-light: hsl(35 95% 60%);
+  --qubic-purple: hsl(262 83% 58%);
+  --qubic-purple-light: hsl(280 83% 65%);
+
+  /* Status Colors - Enhanced for dark mode */
+  --verified: hsl(142 76% 42%);
+  --verified-bg: hsl(142 76% 36% / 0.2);
+  --high-confidence: hsl(217 91% 65%);
+  --high-confidence-bg: hsl(217 91% 60% / 0.2);
+  --warning: hsl(38 92% 55%);
+  --warning-bg: hsl(38 92% 50% / 0.2);
+  --unknown: hsl(45 93% 52%);
+  --unknown-bg: hsl(45 93% 47% / 0.2);
+  --disproven: hsl(0 0% 55%);
+  --disproven-bg: hsl(0 0% 45% / 0.2);
+
+  /* Surface Layers (Dark Mode) */
+  --surface-0: hsl(240 10% 3.9%);
+  --surface-1: hsl(240 8% 7%);
+  --surface-2: hsl(240 6% 11%);
+  --surface-3: hsl(240 5% 15%);
 }
 
 @theme inline {
@@ -78,6 +126,30 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Brand Colors */
+  --color-bitcoin-orange: var(--bitcoin-orange);
+  --color-bitcoin-orange-light: var(--bitcoin-orange-light);
+  --color-qubic-purple: var(--qubic-purple);
+  --color-qubic-purple-light: var(--qubic-purple-light);
+
+  /* Status Colors */
+  --color-verified: var(--verified);
+  --color-verified-bg: var(--verified-bg);
+  --color-high-confidence: var(--high-confidence);
+  --color-high-confidence-bg: var(--high-confidence-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-unknown: var(--unknown);
+  --color-unknown-bg: var(--unknown-bg);
+  --color-disproven: var(--disproven);
+  --color-disproven-bg: var(--disproven-bg);
+
+  /* Surface Layers */
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
 }
 
 @layer base {
@@ -94,6 +166,21 @@
     @apply bg-background text-foreground;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Modern headings with Inter font - override all serif */
+  h1, h2, h3, h4, h5, h6,
+  h1.font-serif, h2.font-serif, h3.font-serif, h4.font-serif, h5.font-serif, h6.font-serif,
+  .font-serif h1, .font-serif h2, .font-serif h3, .font-serif h4, .font-serif h5, .font-serif h6 {
+    font-family: var(--font-heading), system-ui, -apple-system, sans-serif !important;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-style: normal;
+  }
+
+  /* Remove serif from font-serif class globally */
+  .font-serif {
+    font-family: var(--font-heading), system-ui, -apple-system, sans-serif !important;
   }
 }
 
@@ -145,4 +232,284 @@
     padding-right: 1rem;
     padding-left: 1rem;
   }
+}
+
+/* ========================================
+   TYPOGRAPHY SCALE
+   ======================================== */
+
+.text-display-xl {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.text-display-lg {
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.text-display-md {
+  font-size: clamp(1.5rem, 3vw + 0.25rem, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.text-caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.text-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ========================================
+   MICRO-INTERACTIONS
+   ======================================== */
+
+.hover-lift {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.active-scale:active {
+  transform: scale(0.97);
+}
+
+/* Glow Effects */
+.hover-glow-orange {
+  position: relative;
+}
+
+.hover-glow-orange::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--bitcoin-orange), var(--bitcoin-orange-light));
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.hover-glow-orange:hover::before {
+  opacity: 0.4;
+}
+
+.hover-glow-purple {
+  position: relative;
+}
+
+.hover-glow-purple::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--qubic-purple), var(--qubic-purple-light));
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.hover-glow-purple:hover::before {
+  opacity: 0.4;
+}
+
+/* Premium Gradients */
+.gradient-bitcoin {
+  background: linear-gradient(135deg, var(--bitcoin-orange), var(--bitcoin-orange-light));
+}
+
+.gradient-qubic {
+  background: linear-gradient(135deg, var(--qubic-purple), var(--qubic-purple-light));
+}
+
+.gradient-bitcoin-text {
+  background: linear-gradient(135deg, var(--bitcoin-orange), var(--bitcoin-orange-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-qubic-text {
+  background: linear-gradient(135deg, var(--qubic-purple), var(--qubic-purple-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   VERIFICATION BADGE STYLES
+   ======================================== */
+
+.badge-verified {
+  background-color: var(--verified-bg);
+  color: var(--verified);
+  border: 1px solid var(--verified);
+}
+
+.badge-high-confidence {
+  background-color: var(--high-confidence-bg);
+  color: var(--high-confidence);
+  border: 1px solid var(--high-confidence);
+}
+
+.badge-warning {
+  background-color: var(--warning-bg);
+  color: var(--warning);
+  border: 1px solid var(--warning);
+}
+
+.badge-unknown {
+  background-color: var(--unknown-bg);
+  color: var(--unknown);
+  border: 1px solid var(--unknown);
+}
+
+.badge-disproven {
+  background-color: var(--disproven-bg);
+  color: var(--disproven);
+  border: 1px solid var(--disproven);
+  text-decoration: line-through;
+}
+
+/* ========================================
+   PREMIUM ANIMATIONS
+   ======================================== */
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--bitcoin-orange) / 0.3;
+  }
+  50% {
+    box-shadow: 0 0 40px var(--bitcoin-orange) / 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes celebration-burst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus indicators */
+.focus-ring:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .animate-float,
+  .animate-shimmer,
+  .animate-pulse-glow {
+    animation: none;
+  }
+}
+
+/* ========================================
+   GAMIFICATION PROGRESS BAR
+   ======================================== */
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease-out;
+}
+
+/* Surface Layers Utility Classes */
+.surface-0 {
+  background-color: var(--surface-0);
+}
+
+.surface-1 {
+  background-color: var(--surface-1);
+}
+
+.surface-2 {
+  background-color: var(--surface-2);
+}
+
+.surface-3 {
+  background-color: var(--surface-3);
 }

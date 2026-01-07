@@ -4,14 +4,10 @@ import { getTranslations } from 'next-intl/server'
 import { Icons } from '@/components/icons'
 import { MainNav } from '@/components/main-nav'
 import { MobileNav } from '@/components/mobile-nav'
-import { ThemeModeToggle } from '@/components/theme-mode-toggle'
-import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Link } from '@/navigation'
-import { I18nToggle } from './i18n-toggle'
 import { buttonVariants } from './ui/button'
-import { VersionDropdown } from './version-dropdown'
 
 const CommandMenu = dynamic(() =>
   import('@/components/command-menu').then(mod => mod.CommandMenu)
@@ -60,28 +56,7 @@ export async function SiteHeader() {
           </div>
 
           <nav className="flex items-center">
-            <VersionDropdown
-              messages={{
-                changelog: t('changelog'),
-              }}
-            />
-
-            <I18nToggle
-              messages={{
-                toggleLanguage: t('buttons.toggle_language'),
-              }}
-            />
-
-            <ThemeModeToggle
-              messages={{
-                dark: t('themes.dark'),
-                light: t('themes.light'),
-                system: t('themes.system'),
-              }}
-            />
-
             <div className="phone:flex hidden items-center">
-              <Separator className="mx-1 h-5" orientation="vertical" />
               <SiteHeaderMenuLinks />
             </div>
           </nav>

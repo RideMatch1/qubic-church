@@ -1,21 +1,42 @@
 {
   "site": {
-    "heading": "for your projects easily",
-    "description": "Beautifully designed template that you can use for your projects for free. Accessible. Customizable. Open Source.",
-    "announcement": "Introducing Opendocs",
-    "changelog": "Changelog",
+    "heading": "A Cryptographic Discovery",
+    "description": "A historical archive documenting the mathematical bridge between Bitcoin Block #283 and Qubic's ternary architecture.",
+    "announcement": "Bitcoin-Qubic Bridge Research",
+    "changelog": "Research Timeline",
 
     "buttons": {
-      "get_started": "Get Started",
+      "get_started": "Read the Research",
       "toggle_menu": "Toggle Menu",
       "toggle_language": "Toggle Language",
-      "deploy_vercel": "Deploy to Vercel"
+      "explore_matrix": "Explore Matrix"
     },
 
     "words": {
       "menu": "Menu",
-      "docs": "Docs",
-      "blog": "Blog"
+      "docs": "Research",
+      "blog": "Updates"
+    },
+
+    "stats": {
+      "identities": "Verified Identities",
+      "formula": "The Formula",
+      "timelock": "Time-Lock Event"
+    },
+
+    "discoveries": {
+      "formula": {
+        "title": "The Formula",
+        "description": "A mathematical proof connecting Bitcoin Block #283 to Qubic through the equation 625,284 = 283 x 47^2 + 137."
+      },
+      "matrix": {
+        "title": "The Matrix",
+        "description": "A 128x128 memory architecture mapping the complete data flow from Bitcoin input to Qubic output."
+      },
+      "timelock": {
+        "title": "The Time-Lock",
+        "description": "A cryptographic mechanism with tick difference exactly divisible by 121, pointing to March 3, 2026."
+      }
     },
 
     "featured_cards": {
@@ -42,7 +63,7 @@
     },
 
     "footer": {
-      "created_by": "Created by"
+      "created_by": "Research by"
     },
 
     "search": {
@@ -65,7 +86,7 @@
     "edit_page_on_github": "Edit this page on GitHub",
     "start_discussion_on_github": "Start a discussion on GitHub",
     "api_reference": "API Reference",
-    "docs": "Docs",
+    "docs": "Research",
     "source": "Source",
 
     "not_found": {
@@ -76,7 +97,7 @@
 
   "blog": {
     "words": {
-      "posts": "Posts",
+      "posts": "Updates",
       "by": "by"
     },
 

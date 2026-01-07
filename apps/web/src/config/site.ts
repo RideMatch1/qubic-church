@@ -3,7 +3,7 @@ import pt from '@/i18n/locales/pt.json'
 import { absoluteUrl } from '@/lib/utils'
 
 export const siteConfig = {
-  name: 'opendocs',
+  name: 'The Bitcoin-Qubic Bridge',
 
   description: {
     en: en.site.description,
@@ -22,24 +22,24 @@ export const siteConfig = {
   },
 
   app: {
-    latestVersion: '4.0.0',
+    latestVersion: '1.0.0',
   },
 
   author: {
-    name: 'Dalton Menezes',
-    site: 'https://daltonmenezes.com',
+    name: 'Qubic Research Archive',
+    site: 'https://qubic-research.org',
   },
 
   links: {
     twitter: {
       label: 'Twitter',
-      username: '@daltonmenezes',
-      url: 'https://twitter.com/daltonmenezes',
+      username: '@qubic_research',
+      url: 'https://twitter.com/qubic_research',
     },
 
     github: {
       label: 'GitHub',
-      url: 'https://github.com/daltonmenezes/opendocs',
+      url: 'https://github.com/qubic-research/bitcoin-bridge',
     },
   },
 } as const

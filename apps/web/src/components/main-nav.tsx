@@ -9,6 +9,8 @@ interface MainNavProps {
   messages: {
     docs: string
     blog: string
+    evidence?: string
+    cfb?: string
   }
 }
 
@@ -29,18 +31,6 @@ export function MainNav({ messages }: MainNavProps) {
         <Link
           className={cn(
             'hover:text-foreground/80 transition-colors',
-            pathname.includes('/blog')
-              ? 'dark:text-primary-active'
-              : 'text-foreground/60'
-          )}
-          href="/blog"
-        >
-          {messages.blog}
-        </Link>
-
-        <Link
-          className={cn(
-            'hover:text-foreground/80 transition-colors',
             pathname.includes('/docs')
               ? 'dark:text-primary-active'
               : 'text-foreground/60'
@@ -48,6 +38,30 @@ export function MainNav({ messages }: MainNavProps) {
           href="/docs"
         >
           {messages.docs}
+        </Link>
+
+        <Link
+          className={cn(
+            'hover:text-foreground/80 transition-colors',
+            pathname.includes('/evidence')
+              ? 'dark:text-primary-active'
+              : 'text-foreground/60'
+          )}
+          href="/evidence"
+        >
+          {messages.evidence || 'Evidence'}
+        </Link>
+
+        <Link
+          className={cn(
+            'hover:text-foreground/80 transition-colors',
+            pathname.includes('/cfb')
+              ? 'dark:text-primary-active'
+              : 'text-foreground/60'
+          )}
+          href="/cfb"
+        >
+          {messages.cfb || 'CFB Forensics'}
         </Link>
       </nav>
     </div>

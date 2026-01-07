@@ -1,6 +1,12 @@
-import { JetBrains_Mono as FontMono } from 'next/font/google'
+import { JetBrains_Mono as FontMono, Inter } from 'next/font/google'
 
 import { absoluteUrl } from './utils'
+
+export const fontHeading = Inter({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  weight: ['400', '500', '600', '700'],
+})
 
 export async function getSansFont() {
   try {

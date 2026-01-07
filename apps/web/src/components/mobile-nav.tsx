@@ -14,7 +14,6 @@ import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
 import { DocsSidebarNav } from './docs/sidebar-nav'
 import { ScrollArea } from './ui/scroll-area'
 import { Icons } from '@/components/icons'
-import { blogConfig } from '@/config/blog'
 import { siteConfig } from '@/config/site'
 import { usePathname } from '@/navigation'
 import { MobileLink } from './mobile-link'
@@ -68,12 +67,6 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
 
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
-            {blogConfig.mainNav?.map(item => (
-              <MobileLink href="/blog" key={item.href} onOpenChange={setOpen}>
-                {getObjectValueByLocale(item.title, docsConfig.currentLocale)}
-              </MobileLink>
-            ))}
-
             {docsConfig.docs.mainNav?.map(
               item =>
                 item.href && (
@@ -89,6 +82,14 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
                   </MobileLink>
                 )
             )}
+
+            <MobileLink href="/evidence" onOpenChange={setOpen}>
+              Evidence
+            </MobileLink>
+
+            <MobileLink href="/cfb" onOpenChange={setOpen}>
+              CFB Forensics
+            </MobileLink>
           </div>
 
           <div className="flex flex-col space-y-2">

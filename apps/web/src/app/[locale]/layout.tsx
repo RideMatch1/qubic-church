@@ -11,7 +11,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
-import { getSansFont } from '@/lib/fonts'
+import { getSansFont, fontHeading } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 
 export async function generateMetadata(props: {
@@ -114,15 +114,20 @@ export default async function RootLayout(props: {
 
   const fontSans = await getSansFont()
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning className="dark bg-black" style={{ backgroundColor: '#000' }}>
       <head>
-        <meta content="#181423" name="theme-color" />
+        <meta content="#000000" name="theme-color" />
+        <style dangerouslySetInnerHTML={{ __html: `
+          html, body { background: #000 !important; }
+          canvas { background: transparent !important; }
+        `}} />
       </head>
 
       <body
         className={cn(
-          'bg-background min-h-screen font-sans antialiased',
-          fontSans.variable
+          'bg-black min-h-screen font-sans antialiased',
+          fontSans.variable,
+          fontHeading.variable
         )}
       >
         <NextIntlClientProvider
@@ -132,19 +137,17 @@ export default async function RootLayout(props: {
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
+            forcedTheme="dark"
             disableTransitionOnChange
-            enableSystem
           >
-            <div>
-              <div className="relative z-10 flex min-h-screen flex-col">
+            <div className="bg-black">
+              <div className="relative z-10 flex min-h-screen flex-col bg-black">
                 <SiteHeader />
 
-                <main className="flex-1">{children}</main>
+                <main className="flex-1 bg-black">{children}</main>
 
                 <SiteFooter />
               </div>
-
-              <div className="fixed left-0 top-0 size-full bg-gradient-to-b from-[#a277ff] via-transparent to-transparent opacity-10" />
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>

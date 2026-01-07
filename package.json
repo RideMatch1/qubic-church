@@ -22,6 +22,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "next": "16.0.10"
+    "next": "16.0.10",
+    "recharts": "^3.6.0"
   }
 }

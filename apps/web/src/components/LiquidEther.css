@@ -1,0 +1,18 @@
+.liquid-ether-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  background: #000 !important;
+}
+
+.liquid-ether-container canvas {
+  background: #000 !important;
+  opacity: 0;
+  animation: fadeInLiquidEther 1s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInLiquidEther {
+  to { opacity: 1; }
+}
