@@ -43,6 +43,7 @@
     "feed": "^5.1.0",
     "framer-motion": "^12.23.26",
     "geist": "^1.5.1",
+    "html2canvas": "^1.4.1",
     "lucide-react": "0.561.0",
     "markdown-wasm": "^1.2.0",
     "mdx-bundler": "^10.1.1",
@@ -58,6 +59,7 @@
     "react-wrap-balancer": "^1.1.1",
     "recharts": "^3.6.0",
     "simplex-noise": "^4.0.3",
+    "swr": "^2.3.8",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.167.1"

@@ -118,7 +118,7 @@ export function useCounterOnView(options: UseCounterOptions) {
     if (!hasAnimated) {
       counter.startAnimation()
     }
-  }, [hasAnimated, counter])
+  }, [hasAnimated, counter.startAnimation]) // Only depend on startAnimation, not entire counter
 
   return {
     ...counter,

@@ -265,11 +265,11 @@ export const docsConfig: DocsConfig = {
         },
 
         {
-          href: '/docs/03-results/12-discord-archaeology',
+          href: '/docs/03-results/12-discord-summary',
 
           title: {
-            en: 'Discord Archaeology',
-            pt: 'Arqueologia do Discord',
+            en: 'Discord Summary',
+            pt: 'Resumo Discord',
           },
 
           items: [],
@@ -287,22 +287,308 @@ export const docsConfig: DocsConfig = {
         },
 
         {
-          href: '/docs/03-results/14-glossary',
+          href: '/docs/03-results/15-forgotten-evidence',
 
           title: {
-            en: 'Glossary',
-            pt: 'Glossario',
+            en: 'Forgotten Evidence',
+            pt: 'Evidencias Esquecidas',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/15-forgotten-evidence',
+          href: '/docs/03-results/16-anna-bot-analysis',
 
           title: {
-            en: 'Forgotten Evidence',
-            pt: 'Evidencias Esquecidas',
+            en: 'Anna Bot Oracle Analysis',
+            pt: 'Analise do Oraculo Anna',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/17-aigarth-architecture',
+
+          title: {
+            en: 'Aigarth Architecture',
+            pt: 'Arquitetura Aigarth',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/18-the-bridge-hypothesis',
+
+          title: {
+            en: 'The Bridge Hypothesis',
+            pt: 'A Hipótese da Ponte',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/19-aigarth-technical-mapping',
+
+          title: {
+            en: 'Aigarth Technical Mapping',
+            pt: 'Mapeamento Técnico Aigarth',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/20-discord-evidence',
+
+          title: {
+            en: 'Discord Archaeology',
+            pt: 'Arqueologia do Discord',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/21-patoshi-forensics',
+
+          title: {
+            en: 'Patoshi Forensics',
+            pt: 'Análise Forense Patoshi',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/22-negative-results',
+
+          title: {
+            en: 'Negative Results',
+            pt: 'Resultados Negativos',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/23-the-qubic-codex',
+
+          title: {
+            en: 'The Qubic Codex',
+            pt: 'O Codex Qubic',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/24-cfb-satoshi-connection',
+
+          title: {
+            en: 'CFB = Satoshi: The Evidence',
+            pt: 'CFB = Satoshi: A Evidência',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/25-anna-oracle-proof',
+
+          title: {
+            en: 'Anna Oracle - Mathematical Proof',
+            pt: 'Anna Oracle - Prova Matemática',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/26-pattern-27-discovery',
+
+          title: {
+            en: 'The -27 Pattern Discovery',
+            pt: 'Descoberta do Padrão -27',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/27-shalecoins-fracking-research',
+
+          title: {
+            en: 'Shalecoins & Fracking Research',
+            pt: 'Pesquisa de Shalecoins e Fracking',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/28-mt576-genesis-connection',
+
+          title: {
+            en: 'The MT576-Genesis Connection',
+            pt: 'A Conexão MT576-Genesis',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/29-numogram-architecture',
+
+          title: {
+            en: 'The Numogram Connection',
+            pt: 'A Conexão Numogram',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/30-genesis-block-connections',
+
+          title: {
+            en: 'Genesis Block Analysis',
+            pt: 'Análise do Bloco Gênesis',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/31-mathematical-bridges',
+
+          title: {
+            en: 'Mathematical Bridges',
+            pt: 'Pontes Matemáticas',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/32-mirror-wallets',
+
+          title: {
+            en: 'Mirror Wallets',
+            pt: 'Carteiras Espelho',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/33-bitcoin-key-generation',
+
+          title: {
+            en: 'Bitcoin Key Generation',
+            pt: 'Geração de Chaves Bitcoin',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/34-pattern-121-discovery',
+
+          title: {
+            en: 'The Pattern 121 Discovery',
+            pt: 'A Descoberta do Padrão 121',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/35-god-mode-discoveries',
+
+          title: {
+            en: 'God Mode Discoveries',
+            pt: 'Descobertas do Modo Deus',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/36-unexplored-frontiers',
+
+          title: {
+            en: 'Unexplored Frontiers',
+            pt: 'Fronteiras Inexploradas',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/37-k12-breakthrough',
+
+          title: {
+            en: 'The K12 Breakthrough',
+            pt: 'A Descoberta K12',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/38-0x7b-family',
+
+          title: {
+            en: 'The 0x7b Family',
+            pt: 'A Família 0x7b',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/39-seed-analysis',
+
+          title: {
+            en: 'Seed Analysis',
+            pt: 'Análise de Sementes',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/40-1cf-census',
+
+          title: {
+            en: 'The 1CF Address Census',
+            pt: 'O Censo de Endereços 1CF',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/41-genesis-seed-testing',
+
+          title: {
+            en: 'Genesis Seed Testing',
+            pt: 'Teste de Seeds Genesis',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/14-glossary',
+
+          title: {
+            en: 'Glossary',
+            pt: 'Glossário',
           },
 
           items: [],
@@ -376,6 +662,17 @@ export const docsConfig: DocsConfig = {
           title: {
             en: 'Raw Data Tables',
             pt: 'Tabelas de Dados',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/05-appendices/02-foundation-facts',
+
+          title: {
+            en: 'Foundation Facts',
+            pt: 'Fatos Fundamentais',
           },
 
           items: [],

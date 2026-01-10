@@ -91,7 +91,7 @@ export default function CFBVisualizationsPage() {
                       <div className="text-3xl font-bold text-blue-300">
                         91.4%
                       </div>
-                      <div className="text-xs text-blue-500 mt-2">20 evidence categories</div>
+                      <div className="text-xs text-blue-500 mt-2">50 findings across 5 categories</div>
                     </div>
                     <div className="p-6 rounded-xl bg-gradient-to-br from-amber-900/30 to-amber-950/30 border border-amber-800">
                       <div className="text-xs text-amber-400 mb-1">DATA POINTS</div>

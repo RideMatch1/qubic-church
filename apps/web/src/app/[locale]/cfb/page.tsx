@@ -40,7 +40,7 @@ export default async function CFBPage(props: {
                 CFB Forensics - Come-from-Beyond Research Archive
               </p>
               <p className="mt-2 font-mono text-xs text-muted-foreground/80">
-                99.8% Stylometry Match | 91% Overall Confidence | 17 Years of Data
+                99.8% Stylometry Match | 91.4% Overall Confidence | 17 Years of Data
               </p>
             </div>
           </div>
