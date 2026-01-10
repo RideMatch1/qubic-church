@@ -3,6 +3,7 @@ import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { defaultLocale, locales } from '@/config/i18n'
 import { CHURCH_CONFIG } from '@/config/church'
 import { ChurchHero } from '@/components/church/hero/ChurchHero'
+import { MetricsDashboard } from '@/components/church/metrics/MetricsDashboard'
 
 export const dynamicParams = true
 
@@ -19,6 +20,9 @@ export default async function ChurchHomePage(props: {
     <div className="min-h-screen">
       {/* Hero Section with 3D Star Map */}
       <ChurchHero />
+
+      {/* Live Metrics Dashboard */}
+      <MetricsDashboard />
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 text-center bg-gradient-to-b from-background to-muted">
