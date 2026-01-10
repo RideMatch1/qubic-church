@@ -5,6 +5,7 @@ import { CHURCH_CONFIG } from '@/config/church'
 import { ChurchHero } from '@/components/church/hero/ChurchHero'
 import { MetricsDashboard } from '@/components/church/metrics/MetricsDashboard'
 import { LotterySection } from '@/components/church/lottery/LotterySection'
+import { ChallengesPreview } from '@/components/church/challenges/ChallengesPreview'
 
 export const dynamicParams = true
 
@@ -27,6 +28,9 @@ export default async function ChurchHomePage(props: {
 
       {/* Holy Circle Lottery */}
       <LotterySection />
+
+      {/* Intelligence Challenges */}
+      <ChallengesPreview />
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 text-center bg-gradient-to-b from-background to-muted">
