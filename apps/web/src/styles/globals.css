@@ -434,6 +434,15 @@
   }
 }
 
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
@@ -451,6 +460,11 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 6s ease infinite;
 }
 
 /* ========================================
@@ -480,7 +494,8 @@
 
   .animate-float,
   .animate-shimmer,
-  .animate-pulse-glow {
+  .animate-pulse-glow,
+  .animate-gradient {
     animation: none;
   }
 }
