@@ -18,24 +18,24 @@ import {
   ChevronUp,
   ChevronDown,
 } from 'lucide-react'
-import type { NeuraxonNode, NeuraxonMetadata } from './types'
+import type { QortexNode, QortexMetadata } from './types'
 
-interface NeuraxonControlsProps {
+interface QortexControlsProps {
   frameIndex: number
   totalFrames: number
   onFrameChange: (index: number) => void
-  onSearch: (query: string) => NeuraxonNode | null
-  onNodeFound: (node: NeuraxonNode) => void
+  onSearch: (query: string) => QortexNode | null
+  onNodeFound: (node: QortexNode) => void
   showConnections: boolean
   onToggleConnections: () => void
-  metadata: NeuraxonMetadata | null
+  metadata: QortexMetadata | null
   playbackSpeed: number
   onSpeedChange: (speed: number) => void
 }
 
 const SPEED_OPTIONS = [0.5, 1, 1.5, 2, 3]
 
-export function NeuraxonControls({
+export function QortexControls({
   frameIndex,
   totalFrames,
   onFrameChange,
@@ -46,7 +46,7 @@ export function NeuraxonControls({
   metadata,
   playbackSpeed,
   onSpeedChange,
-}: NeuraxonControlsProps) {
+}: QortexControlsProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchError, setSearchError] = useState<string | null>(null)
@@ -134,17 +134,20 @@ export function NeuraxonControls({
             <span className="text-white/80 font-medium">{metadata.totalEdges.toLocaleString()}</span>
             <span>synapses</span>
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5" title="Positive state (+1)">
             <span className="w-2 h-2 rounded bg-orange-500/50" />
-            <span className="text-orange-400">{metadata.stateDistribution.positive}</span>
+            <span className="text-orange-400 font-mono">{metadata.stateDistribution.positive}</span>
+            <span className="text-white/40 hidden lg:inline">+1</span>
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5" title="Neutral state (0)">
             <span className="w-2 h-2 rounded bg-gray-500/50" />
-            <span className="text-gray-400">{metadata.stateDistribution.zero}</span>
+            <span className="text-gray-400 font-mono">{metadata.stateDistribution.zero}</span>
+            <span className="text-white/40 hidden lg:inline">0</span>
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5" title="Negative state (-1)">
             <span className="w-2 h-2 rounded bg-blue-500/50" />
-            <span className="text-blue-400">{metadata.stateDistribution.negative}</span>
+            <span className="text-blue-400 font-mono">{metadata.stateDistribution.negative}</span>
+            <span className="text-white/40 hidden lg:inline">-1</span>
           </span>
         </div>
       )}
@@ -165,7 +168,7 @@ export function NeuraxonControls({
           <div className="relative flex-1 sm:flex-initial">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
             <Input
-              placeholder="Search..."
+              placeholder="ID or seed..."
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value)

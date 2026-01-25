@@ -16,11 +16,19 @@ import {
   Layers,
   Clock,
   Coins,
+  TrendingUp,
+  TrendingDown,
+  Activity,
+  RefreshCw,
+  AlertCircle,
+  Loader2,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type { AddressDetailPanelProps, AddressNode, AddressEdge } from './types'
 import { NODE_TYPE_CONFIG, METHOD_CONFIG, XOR_RING_CONFIG, EDGE_TYPE_CONFIG } from './constants'
+import { useBlockchainData } from '@/lib/hooks/useBlockchainData'
+import { formatBTC, getAddressStatus, getAddressAge } from '@/lib/blockchain/blockchain-api'
 
 // =============================================================================
 // ADDRESS DETAIL PANEL
@@ -35,6 +43,12 @@ export function AddressDetailPanel({
 }: AddressDetailPanelProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null)
   const config = NODE_TYPE_CONFIG[node.type]
+
+  // Fetch live blockchain data
+  const lookupAddress = node.derivedAddress || node.address
+  const { data: blockchainData, isLoading, error, refetch } = useBlockchainData(
+    lookupAddress && !lookupAddress.startsWith('[') ? lookupAddress : null
+  )
 
   const handleCopy = async (text: string, field: string) => {
     await navigator.clipboard.writeText(text)
@@ -153,46 +167,196 @@ export function AddressDetailPanel({
 
         {/* Identity Tab */}
         <TabsContent value="identity" className="flex-1 overflow-y-auto p-4 space-y-4">
-          {/* Blockchain Data */}
-          <section>
-            <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
-              Blockchain Data
-            </h3>
-            <div className="space-y-2">
-              {node.blockHeight !== undefined && (
-                <DataRow
-                  icon={<Clock className="w-3.5 h-3.5" />}
-                  label="Block Height"
-                  value={node.blockHeight.toLocaleString()}
-                />
+          {/* Live Blockchain Data */}
+          {lookupAddress && !lookupAddress.startsWith('[') && (
+            <section>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Live Blockchain Data
+                </h3>
+                <button
+                  onClick={refetch}
+                  disabled={isLoading}
+                  className="p-1 hover:bg-white/10 rounded transition-colors disabled:opacity-50"
+                  title="Refresh blockchain data"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 text-gray-500 ${isLoading ? 'animate-spin' : ''}`} />
+                </button>
+              </div>
+
+              {isLoading && (
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="w-5 h-5 text-blue-400 animate-spin" />
+                  <span className="ml-2 text-sm text-gray-400">Fetching data...</span>
+                </div>
               )}
-              {node.amount !== undefined && (
-                <DataRow
-                  icon={<Coins className="w-3.5 h-3.5" />}
-                  label="Amount"
-                  value={`${node.amount.toFixed(8)} BTC`}
-                />
+
+              {error && (
+                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                  <div className="flex items-center gap-2 mb-1">
+                    <AlertCircle className="w-3.5 h-3.5 text-red-400" />
+                    <span className="text-xs text-red-400 font-medium">Error</span>
+                  </div>
+                  <p className="text-xs text-red-400/80">{error.message}</p>
+                </div>
               )}
-              {node.scriptType && (
-                <DataRow
-                  icon={<Layers className="w-3.5 h-3.5" />}
-                  label="Script Type"
-                  value={node.scriptType.toUpperCase()}
-                />
+
+              {blockchainData && !isLoading && (
+                <div className="space-y-3">
+                  {/* Address Status Badge */}
+                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-2">
+                      <Activity className="w-4 h-4 text-gray-500" />
+                      <span className="text-xs text-gray-400">Status</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div
+                        className={`w-2 h-2 rounded-full ${
+                          blockchainData.balance > 0
+                            ? 'bg-green-400'
+                            : blockchainData.hasTransactions
+                            ? 'bg-orange-400'
+                            : 'bg-gray-600'
+                        }`}
+                      />
+                      <span
+                        className={`text-xs font-medium ${
+                          blockchainData.balance > 0
+                            ? 'text-green-400'
+                            : blockchainData.hasTransactions
+                            ? 'text-orange-400'
+                            : 'text-gray-500'
+                        }`}
+                      >
+                        {getAddressStatus(blockchainData)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Balance */}
+                  <div className="p-3 bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 rounded-lg">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Coins className="w-4 h-4 text-green-400" />
+                      <span className="text-xs text-green-400/80">Current Balance</span>
+                    </div>
+                    <div className="text-2xl font-bold text-green-400">
+                      {formatBTC(blockchainData.balance, 8)}
+                    </div>
+                  </div>
+
+                  {/* Transaction Stats */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-2.5 bg-white/5 rounded-lg">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <TrendingUp className="w-3.5 h-3.5 text-blue-400" />
+                        <span className="text-[10px] text-gray-500">Received</span>
+                      </div>
+                      <div className="text-sm font-semibold text-blue-400">
+                        {formatBTC(blockchainData.totalReceived, 4)}
+                      </div>
+                    </div>
+                    <div className="p-2.5 bg-white/5 rounded-lg">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <TrendingDown className="w-3.5 h-3.5 text-purple-400" />
+                        <span className="text-[10px] text-gray-500">Sent</span>
+                      </div>
+                      <div className="text-sm font-semibold text-purple-400">
+                        {formatBTC(blockchainData.totalSent, 4)}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Transaction Count */}
+                  <DataRow
+                    icon={<Activity className="w-3.5 h-3.5" />}
+                    label="Transactions"
+                    value={blockchainData.txCount.toLocaleString()}
+                  />
+
+                  {/* Timestamps */}
+                  {blockchainData.firstSeen && (
+                    <DataRow
+                      icon={<Clock className="w-3.5 h-3.5" />}
+                      label="First Seen"
+                      value={`${blockchainData.firstSeen.toLocaleDateString()} ${blockchainData.firstSeen.toLocaleTimeString()}`}
+                    />
+                  )}
+                  {blockchainData.lastSeen && (
+                    <DataRow
+                      icon={<Clock className="w-3.5 h-3.5" />}
+                      label="Last Seen"
+                      value={`${blockchainData.lastSeen.toLocaleDateString()} ${blockchainData.lastSeen.toLocaleTimeString()}`}
+                    />
+                  )}
+
+                  {/* Age */}
+                  {blockchainData.firstSeen && (
+                    <DataRow
+                      icon={<Clock className="w-3.5 h-3.5" />}
+                      label="Age"
+                      value={`${getAddressAge(blockchainData)} days`}
+                    />
+                  )}
+
+                  {/* Data Source */}
+                  <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                    <span className="text-xs text-gray-500">Source</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs text-gray-400 capitalize">{blockchainData._source}</span>
+                      {blockchainData._source === 'cache' && (
+                        <span className="px-1.5 py-0.5 text-[9px] bg-blue-500/20 text-blue-400 rounded">
+                          Cached
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
               )}
-              {node.pubkey && (
-                <DataRow
-                  icon={<Key className="w-3.5 h-3.5" />}
-                  label="Public Key"
-                  value={`${node.pubkey.slice(0, 20)}...`}
-                  copyable
-                  fullValue={node.pubkey}
-                  onCopy={handleCopy}
-                  copiedField={copiedField}
-                />
-              )}
-            </div>
-          </section>
+            </section>
+          )}
+
+          {/* Static Blockchain Data (from initial load) */}
+          {(node.blockHeight !== undefined || node.amount !== undefined || node.scriptType || node.pubkey) && (
+            <section>
+              <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
+                Static Block Data
+              </h3>
+              <div className="space-y-2">
+                {node.blockHeight !== undefined && (
+                  <DataRow
+                    icon={<Clock className="w-3.5 h-3.5" />}
+                    label="Block Height"
+                    value={node.blockHeight.toLocaleString()}
+                  />
+                )}
+                {node.amount !== undefined && (
+                  <DataRow
+                    icon={<Coins className="w-3.5 h-3.5" />}
+                    label="Mining Reward"
+                    value={`${node.amount.toFixed(8)} BTC`}
+                  />
+                )}
+                {node.scriptType && (
+                  <DataRow
+                    icon={<Layers className="w-3.5 h-3.5" />}
+                    label="Script Type"
+                    value={node.scriptType.toUpperCase()}
+                  />
+                )}
+                {node.pubkey && (
+                  <DataRow
+                    icon={<Key className="w-3.5 h-3.5" />}
+                    label="Public Key"
+                    value={`${node.pubkey.slice(0, 20)}...`}
+                    copyable
+                    fullValue={node.pubkey}
+                    onCopy={handleCopy}
+                    copiedField={copiedField}
+                  />
+                )}
+              </div>
+            </section>
+          )}
 
           {/* Derivation Data */}
           {(node.matrixPosition || node.derivationMethod || node.xorVariant !== undefined) && (

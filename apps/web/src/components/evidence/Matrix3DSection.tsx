@@ -11,7 +11,31 @@ interface MatrixCell {
   row: number
   col: number
   value: number
-  category: 'input' | 'transform' | 'output' | 'neutral'
+  category: 'input' | 'transform' | 'output' | 'neutral' | 'bridge'
+}
+
+/**
+ * Convert Anna coordinates (x, y) to matrix indices (row, col)
+ *
+ * CORRECT TRANSFORMATION:
+ * - col = (x + 64) % 128   # X: -64..63 -> 0..127
+ * - row = (63 - y) % 128   # Y: 63..-64 -> 0..127
+ */
+function annaToMatrix(x: number, y: number): [number, number] {
+  const col = ((x + 64) % 128 + 128) % 128
+  const row = ((63 - y) % 128 + 128) % 128
+  return [row, col]
+}
+
+// Strategic bridge node positions - CORRECTED using Anna coordinate transformation
+// Anna coordinates:
+//   ENTRY: (45, 92)  -> matrix[99][109]
+//   CORE:  (6, 33)   -> matrix[30][70]
+//   EXIT:  (82, 39)  -> matrix[24][18]
+const BRIDGE_NODES = {
+  ENTRY: annaToMatrix(45, 92),  // [99, 109]
+  CORE: annaToMatrix(6, 33),    // [30, 70]
+  EXIT: annaToMatrix(82, 39),   // [24, 18]
 }
 
 // Generate 128x128 matrix visualization data
@@ -26,6 +50,14 @@ function generateMatrixData(): MatrixCell[] {
       if (row === 21) category = 'input'
       else if (row === 68) category = 'transform'
       else if (row === 96) category = 'output'
+      // CORRECTED: Use properly converted matrix indices for bridge nodes
+      else if (
+        (row === BRIDGE_NODES.ENTRY[0] && col === BRIDGE_NODES.ENTRY[1]) ||
+        (row === BRIDGE_NODES.CORE[0] && col === BRIDGE_NODES.CORE[1]) ||
+        (row === BRIDGE_NODES.EXIT[0] && col === BRIDGE_NODES.EXIT[1])
+      ) {
+        category = 'bridge'
+      }
 
       // Generate pseudo-random value based on position
       const seed = row * 128 + col
@@ -61,6 +93,8 @@ export function Matrix3DSection() {
         return 'bg-purple-500/80' // Transformation purple
       case 'output':
         return 'bg-green-500/80' // Output green
+      case 'bridge':
+        return 'bg-cyan-400' // Bridge cyan
       default:
         // Value-based coloring for neutral cells
         const intensity = Math.abs(cell.value) / 128
@@ -106,6 +140,10 @@ export function Matrix3DSection() {
             <div className="w-3 h-3 rounded-full bg-green-500" />
             <span className="text-sm">Row 96: Output</span>
           </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border">
+            <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-sm">Bridge Nodes</span>
+          </div>
         </div>
 
         {/* Matrix Visualization */}
@@ -143,7 +181,9 @@ export function Matrix3DSection() {
                           ? 'bg-purple-500/60'
                           : actualRow === 96 || actualRow === 97
                             ? 'bg-green-500/60'
-                            : 'bg-primary/10 hover:bg-primary/30'
+                            : (actualRow === 45 && col === 92) || (actualRow === 6 && col === 33) || (actualRow === 82 && col === 39)
+                              ? 'bg-cyan-400 animate-pulse z-20 shadow-[0_0_15px_rgba(34,211,238,0.5)]'
+                              : 'bg-primary/10 hover:bg-primary/30'
                     )}
                     whileHover={{ scale: 1.5, zIndex: 10 }}
                     onClick={() => setSelectedRow(actualRow)}

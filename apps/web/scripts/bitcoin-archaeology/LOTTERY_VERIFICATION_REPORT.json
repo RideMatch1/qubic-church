@@ -1,0 +1,138 @@
+{
+  "timestamp": "2026-01-22T22:38:06.405201",
+  "target_numbers": [
+    23,
+    42,
+    41,
+    38,
+    16,
+    36
+  ],
+  "lottery_compatibility": {
+    "euromillions": [
+      {
+        "lottery": "EuroMillions",
+        "format": "5 main numbers (1-50) + 2 Lucky Stars (1-12)",
+        "our_numbers_valid": true,
+        "max_possible_match": 5,
+        "note": "All our numbers are valid for EuroMillions main draw"
+      }
+    ],
+    "powerball": {
+      "lottery": "Powerball (USA)",
+      "format": "5 white balls (1-69) + 1 Powerball (1-26)",
+      "our_numbers_analysis": {
+        "valid_white_balls": [
+          23,
+          42,
+          41,
+          38,
+          16,
+          36
+        ],
+        "valid_powerball": [
+          23,
+          16
+        ],
+        "all_valid_white": true
+      },
+      "possible_combinations": [
+        {
+          "white_balls": [
+            42,
+            41,
+            38,
+            36,
+            23
+          ],
+          "powerball": 16,
+          "valid": true
+        },
+        {
+          "white_balls": [
+            42,
+            41,
+            38,
+            36,
+            16
+          ],
+          "powerball": 23,
+          "valid": true
+        }
+      ]
+    },
+    "german_lotto": {
+      "lottery": "German Lotto 6 aus 49",
+      "format": "6 numbers (1-49) + Superzahl (0-9)",
+      "our_numbers_valid": true,
+      "invalid_numbers": [],
+      "analysis": "Numbers 23, 42, 41, 38, 16, 36 are all valid (1-49 range)"
+    }
+  },
+  "number_analysis": {
+    "numbers": [
+      23,
+      42,
+      41,
+      38,
+      16,
+      36
+    ],
+    "sum": 196,
+    "average": 32.666666666666664,
+    "sorted": [
+      16,
+      23,
+      36,
+      38,
+      41,
+      42
+    ],
+    "range": 26,
+    "odd_count": 2,
+    "even_count": 4,
+    "digit_sum": 43,
+    "special_observations": [
+      "Sum = 196",
+      "42 is 'The Answer' from Hitchhiker's Guide",
+      "23 is associated with Discordianism (Law of Fives: 2+3=5)",
+      "36 = 6\u00b2 (perfect square)",
+      "16 = 4\u00b2 = 2\u2074 (perfect square and power of 2)",
+      "38 + 41 = 79 (prime)",
+      "23 + 42 = 65, 41 + 38 = 79, 16 + 36 = 52"
+    ]
+  },
+  "search_resources": {
+    "sources_to_check": [
+      {
+        "name": "EuroMillions Official",
+        "url": "https://www.euro-millions.com/results-history",
+        "years_available": "2004-present"
+      },
+      {
+        "name": "Powerball Official",
+        "url": "https://www.powerball.com/previous-results",
+        "years_available": "1992-present"
+      },
+      {
+        "name": "Lottery Post",
+        "url": "https://www.lotterypost.com/results",
+        "coverage": "Multiple lotteries worldwide"
+      }
+    ],
+    "search_strategy": [
+      "Search for exact 6-number match in 6-number lotteries",
+      "Search for 5-number subset in 5+1 format lotteries",
+      "Check if any subset appeared as winners"
+    ]
+  },
+  "conclusions": {
+    "all_numbers_valid_for": [
+      "German Lotto 6 aus 49 (all 6 valid)",
+      "EuroMillions (all 6 valid as main numbers, but only 5 drawn)",
+      "Powerball (all 6 valid as white balls)"
+    ],
+    "requires_manual_verification": true,
+    "note": "No public API found for exact historical match search. Manual verification needed."
+  }
+}

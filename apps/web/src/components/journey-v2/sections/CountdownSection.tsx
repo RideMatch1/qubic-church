@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { JourneySection } from '../JourneySection'
-import { Clock, Calendar, Moon, BookOpen, HelpCircle, AlertTriangle, Sparkles } from 'lucide-react'
+import { Clock, Calendar, Moon, BookOpen, HelpCircle, AlertTriangle, Sparkles, ExternalLink } from 'lucide-react'
 
 // Target date: March 3, 2026
 const TARGET_DATE = new Date('2026-03-03T00:00:00Z')
@@ -68,6 +68,9 @@ const EVIDENCE_CARDS = [
     color: 'text-yellow-400',
     bgColor: 'bg-yellow-500/10',
     borderColor: 'border-yellow-500/20',
+    link: 'https://www.biblegateway.com/passage/?search=Isaiah%2030:26&version=NIV',
+    linkText: 'Read verse on BibleGateway',
+    disclaimer: 'Note: Biblical interpretation is speculative and not scientifically verifiable',
   },
   {
     icon: Moon,
@@ -77,6 +80,9 @@ const EVIDENCE_CARDS = [
     color: 'text-blue-400',
     bgColor: 'bg-blue-500/10',
     borderColor: 'border-blue-500/20',
+    link: 'https://eclipse.gsfc.nasa.gov/LEplot/LEplot2001/LE2026Mar03T.pdf',
+    linkText: 'NASA Eclipse Data',
+    disclaimer: 'Astronomically verified event',
   },
   {
     icon: Clock,
@@ -86,6 +92,9 @@ const EVIDENCE_CARDS = [
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     borderColor: 'border-purple-500/20',
+    link: '/docs/03-results/time-lock-analysis',
+    linkText: 'Technical Analysis',
+    disclaimer: 'Requires verification in protocol documentation',
   },
 ]
 
@@ -290,7 +299,16 @@ export function CountdownSection() {
                         <h4 className="font-semibold text-white/80">{card.title}</h4>
                       </div>
                       <p className="text-sm text-white/50 mb-2">{card.description}</p>
-                      <p className="text-xs text-white/50">{card.detail}</p>
+                      <p className="text-xs text-white/50 mb-3">{card.detail}</p>
+                      <a
+                        href={card.link}
+                        target={card.link.startsWith('http') ? '_blank' : undefined}
+                        rel={card.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className={`inline-flex items-center gap-1 text-xs ${card.color} hover:opacity-80 transition-opacity mb-2`}
+                      >
+                        {card.linkText} <ExternalLink className="h-3 w-3" />
+                      </a>
+                      <p className="text-xs text-white/40 italic">{card.disclaimer}</p>
                     </div>
                   </motion.div>
                 )

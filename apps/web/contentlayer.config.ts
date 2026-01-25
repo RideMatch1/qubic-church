@@ -184,6 +184,29 @@ export const Doc = defineDocumentType(() => ({
       default: true,
       required: false,
     },
+
+    tier: {
+      type: 'number',
+      required: false,
+    },
+
+    confidence: {
+      type: 'number',
+      required: false,
+    },
+
+    date: {
+      type: 'date',
+      required: false,
+    },
+
+    sources: {
+      type: 'list',
+      of: {
+        type: 'json',
+      },
+      required: false,
+    },
   },
 
   computedFields: docComputedFields,

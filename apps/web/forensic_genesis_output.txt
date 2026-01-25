@@ -1,0 +1,335 @@
+
+================================================================================
+🔥 FORENSISCHE ANALYSE - RICHTIGE GENESIS ISSUER ADRESSE 🔥
+================================================================================
+
+
+================================================================================
+📊 BASIC PROPERTIES
+================================================================================
+
+✅ CORRECT ADDRESS:
+   POCCZYCKTRQGHFIPWGSBLJTEQFDDVVBMNUHNCKMRACBGQOPBLURNRCBAFOBD
+
+❌ OLD (WRONG) ADDRESS:
+   POCZRDYUKMQINMMHCBOVDFJIPBPUEXEICXVSLMNSJVSFCBACPHTTGFOBD
+
+📏 Length: 60 characters
+📏 Old length: 57 characters
+   Difference: 3 characters
+
+🔄 CHARACTER DIFFERENCES:
+   Position 3: 'C' vs 'Z' (old)
+   Position 4: 'Z' vs 'R' (old)
+   Position 5: 'Y' vs 'D' (old)
+   Position 6: 'C' vs 'Y' (old)
+   Position 7: 'K' vs 'U' (old)
+   Position 8: 'T' vs 'K' (old)
+   Position 9: 'R' vs 'M' (old)
+   Position 11: 'G' vs 'I' (old)
+   Position 12: 'H' vs 'N' (old)
+   Position 13: 'F' vs 'M' (old)
+   Position 14: 'I' vs 'M' (old)
+   Position 15: 'P' vs 'H' (old)
+   Position 16: 'W' vs 'C' (old)
+   Position 17: 'G' vs 'B' (old)
+   Position 18: 'S' vs 'O' (old)
+   Position 19: 'B' vs 'V' (old)
+   Position 20: 'L' vs 'D' (old)
+   Position 21: 'J' vs 'F' (old)
+   Position 22: 'T' vs 'J' (old)
+   Position 23: 'E' vs 'I' (old)
+   Position 24: 'Q' vs 'P' (old)
+   Position 25: 'F' vs 'B' (old)
+   Position 26: 'D' vs 'P' (old)
+   Position 27: 'D' vs 'U' (old)
+   Position 28: 'V' vs 'E' (old)
+   Position 29: 'V' vs 'X' (old)
+   Position 30: 'B' vs 'E' (old)
+   Position 31: 'M' vs 'I' (old)
+   Position 32: 'N' vs 'C' (old)
+   Position 33: 'U' vs 'X' (old)
+   Position 34: 'H' vs 'V' (old)
+   Position 35: 'N' vs 'S' (old)
+   Position 36: 'C' vs 'L' (old)
+   Position 37: 'K' vs 'M' (old)
+   Position 38: 'M' vs 'N' (old)
+   Position 39: 'R' vs 'S' (old)
+   Position 40: 'A' vs 'J' (old)
+   Position 41: 'C' vs 'V' (old)
+   Position 42: 'B' vs 'S' (old)
+   Position 43: 'G' vs 'F' (old)
+   Position 44: 'Q' vs 'C' (old)
+   Position 45: 'O' vs 'B' (old)
+   Position 46: 'P' vs 'A' (old)
+   Position 47: 'B' vs 'C' (old)
+   Position 48: 'L' vs 'P' (old)
+   Position 49: 'U' vs 'H' (old)
+   Position 50: 'R' vs 'T' (old)
+   Position 51: 'N' vs 'T' (old)
+   Position 52: 'R' vs 'G' (old)
+   Position 53: 'C' vs 'F' (old)
+   Position 54: 'B' vs 'O' (old)
+   Position 55: 'A' vs 'B' (old)
+   Position 56: 'F' vs 'D' (old)
+
+🎯 Unique characters:
+   Correct: 25
+   Old: 25
+
+================================================================================
+📈 CHARACTER FREQUENCY ANALYSIS
+================================================================================
+
+📊 Most common characters:
+   'C': 6 times (10.0%)
+   'B': 6 times (10.0%)
+   'R': 4 times (6.7%)
+   'P': 3 times (5.0%)
+   'O': 3 times (5.0%)
+   'Q': 3 times (5.0%)
+   'G': 3 times (5.0%)
+   'F': 3 times (5.0%)
+   'D': 3 times (5.0%)
+   'N': 3 times (5.0%)
+
+📝 Character categories:
+   Letters: 60 (100.0%)
+   Digits: 0 (0.0%)
+
+🔄 Consecutive repeats:
+   Position 2-3: 'CC'
+   Position 26-27: 'DD'
+   Position 28-29: 'VV'
+
+================================================================================
+🔢 MATHEMATICAL ANALYSIS
+================================================================================
+
+📊 Numeric value statistics:
+   Sum: 612
+   Mean: 10.20
+   Min: 0
+   Max: 25
+
+🎯 CFB NUMBER MODULO TESTS (Sum = 612):
+   mod  27 =  18
+   mod 283 =  46
+   mod  47 =   1
+   mod 137 =  64
+   mod 121 =   7
+   mod  43 =  10
+   mod  19 =   4
+   mod   7 =   3
+   mod  14 =  10
+
+📏 LENGTH MODULO TESTS (Length = 60):
+   mod  27 =   6
+   mod 283 =  60
+   mod  47 =  13
+   mod 137 =  60
+   mod 121 =  60
+   mod  43 =  17
+   mod  19 =   3
+   mod   7 =   4
+   mod  14 =   4
+
+================================================================================
+🧩 SEGMENT ANALYSIS
+================================================================================
+
+📦 10-character segments:
+    0- 9: POCCZYCKTR (sum=780, mod27=24)
+   10-19: QGHFIPWGSB (sum=754, mod27=25)
+   20-29: LJTEQFDDVV (sum=762, mod27=6)
+   30-39: BMNUHNCKMR (sum=757, mod27=1)
+   40-49: ACBGQOPBLU (sum=736, mod27=7)
+   50-59: RNRCBAFOBD (sum=723, mod27=21)
+
+🎯 First/Last character analysis:
+   First char: 'P' = 15 (A=0)
+   Last char: 'D' = 3 (A=0)
+   First+Last: 18
+
+🏷️  Prefix 'POCZ' analysis:
+   P=15, O=14, C=2, Z=2
+   Sum: 33
+   Product: 840
+
+🏷️  Suffix 'FOBD' analysis:
+   F=5, O=14, B=1, D=3
+   Sum: 23
+   Product: 210
+
+================================================================================
+⚡ XOR ANALYSIS
+================================================================================
+
+🔐 XOR with CFB numbers:
+   XOR  27: KTXXABXPOIJ\S]RKL\HY
+   XOR 283: KTXXABXPOIJ\S]RKL\HY
+   XOR  47: .`lluvld{}~hgif.xh|m
+   XOR 137: ....................
+   XOR 121: )6::# :2-+(>1?0).>*;
+   XOR  43: {dhhqrh`.yzlcmb{|lxi
+   XOR  19: C\PPIJPXGABT[UZCDT@Q
+   XOR   7: WHDD]^DLSUV@OANWP@TE
+   XOR  14: ^AMMTWMEZ\_IFHG^YI]L
+
+🔄 XOR first half with second half:
+   XOR values: [18, 2, 13, 22, 18, 23, 0, 0, 25, 0, 16, 4, 10, 1, 24, 31, 7, 5, 31, 23]...
+   Sum: 396
+   Mod 27: 18
+   Mod 283: 113
+
+================================================================================
+₿ BITCOIN GENESIS BLOCK COMPARISON
+================================================================================
+
+📊 Address vs Genesis hash:
+   Address length: 60
+   Genesis length: 64
+
+🔐 SHA256(address):
+   05d5163eb9c58c11d679c01ae9666825b635cbfcc22eab1ed78fa2c5b69cac08
+
+🔍 Pattern comparison:
+   Common characters: 6 -> ['a', 'b', 'c', 'd', 'e', 'f']
+
+🔗 Various hash transformations:
+   SHA256: 05d5163eb9c58c11d679c01ae9666825...
+   SHA3-256: 3883aa0c853e99b2a1615899fd558bf4...
+   BLAKE2b: 6d776247834a95ddbdf94138d9b8c4f8...
+
+================================================================================
+🔑 PRIVATE KEY PATTERN SEARCH
+================================================================================
+
+🎯 Key format checks:
+   Length 60 chars: ✓ (Qubic address format)
+   Length 64 chars: ✗ (not hex private key)
+   Length 52 chars: ✗ (not WIF)
+
+   No long hex patterns found
+
+📝 Base32 interpretation attempt:
+   ✓ Base32 decodes to 37 bytes
+   Hex: 7b842ce04a9c6063950fb1a415a66481463ad42c6d0ed1299100826839e15d22...
+
+🔐 SHA256(address) as potential private key:
+   05d5163eb9c58c11d679c01ae9666825b635cbfcc22eab1ed78fa2c5b69cac08
+   Length: 64 chars (64 hex = 32 bytes ✓)
+
+================================================================================
+✍️  CFB SIGNATURE PATTERN SEARCH
+================================================================================
+
+🔍 Direct number appearances:
+   27 not found directly
+   283 not found directly
+   47 not found directly
+   137 not found directly
+   121 not found directly
+   43 not found directly
+   19 not found directly
+   7 not found directly
+   14 not found directly
+
+🔢 Consecutive character numeric sequences:
+
+================================================================================
+🔄 COMPARISON WITH OLD (WRONG) ADDRESS
+================================================================================
+
+📊 Character-by-character comparison:
+
+   Total differences: 53
+
+   Details:
+   Pos  3: 'C' (2) vs 'Z' (25) old
+   Pos  4: 'Z' (25) vs 'R' (17) old
+   Pos  5: 'Y' (24) vs 'D' (3) old
+   Pos  6: 'C' (2) vs 'Y' (24) old
+   Pos  7: 'K' (10) vs 'U' (20) old
+   Pos  8: 'T' (19) vs 'K' (10) old
+   Pos  9: 'R' (17) vs 'M' (12) old
+   Pos 11: 'G' (6) vs 'I' (8) old
+   Pos 12: 'H' (7) vs 'N' (13) old
+   Pos 13: 'F' (5) vs 'M' (12) old
+   Pos 14: 'I' (8) vs 'M' (12) old
+   Pos 15: 'P' (15) vs 'H' (7) old
+   Pos 16: 'W' (22) vs 'C' (2) old
+   Pos 17: 'G' (6) vs 'B' (1) old
+   Pos 18: 'S' (18) vs 'O' (14) old
+   Pos 19: 'B' (1) vs 'V' (21) old
+   Pos 20: 'L' (11) vs 'D' (3) old
+   Pos 21: 'J' (9) vs 'F' (5) old
+   Pos 22: 'T' (19) vs 'J' (9) old
+   Pos 23: 'E' (4) vs 'I' (8) old
+   Pos 24: 'Q' (16) vs 'P' (15) old
+   Pos 25: 'F' (5) vs 'B' (1) old
+   Pos 26: 'D' (3) vs 'P' (15) old
+   Pos 27: 'D' (3) vs 'U' (20) old
+   Pos 28: 'V' (21) vs 'E' (4) old
+   Pos 29: 'V' (21) vs 'X' (23) old
+   Pos 30: 'B' (1) vs 'E' (4) old
+   Pos 31: 'M' (12) vs 'I' (8) old
+   Pos 32: 'N' (13) vs 'C' (2) old
+   Pos 33: 'U' (20) vs 'X' (23) old
+   Pos 34: 'H' (7) vs 'V' (21) old
+   Pos 35: 'N' (13) vs 'S' (18) old
+   Pos 36: 'C' (2) vs 'L' (11) old
+   Pos 37: 'K' (10) vs 'M' (12) old
+   Pos 38: 'M' (12) vs 'N' (13) old
+   Pos 39: 'R' (17) vs 'S' (18) old
+   Pos 40: 'A' (0) vs 'J' (9) old
+   Pos 41: 'C' (2) vs 'V' (21) old
+   Pos 42: 'B' (1) vs 'S' (18) old
+   Pos 43: 'G' (6) vs 'F' (5) old
+   Pos 44: 'Q' (16) vs 'C' (2) old
+   Pos 45: 'O' (14) vs 'B' (1) old
+   Pos 46: 'P' (15) vs 'A' (0) old
+   Pos 47: 'B' (1) vs 'C' (2) old
+   Pos 48: 'L' (11) vs 'P' (15) old
+   Pos 49: 'U' (20) vs 'H' (7) old
+   Pos 50: 'R' (17) vs 'T' (19) old
+   Pos 51: 'N' (13) vs 'T' (19) old
+   Pos 52: 'R' (17) vs 'G' (6) old
+   Pos 53: 'C' (2) vs 'F' (5) old
+   Pos 54: 'B' (1) vs 'O' (14) old
+   Pos 55: 'A' (0) vs 'B' (1) old
+   Pos 56: 'F' (5) vs 'D' (3) old
+
+🔢 Checksum comparison:
+   Correct sum: 4512
+   Old sum: 4333
+   Difference: 179
+   Correct mod 27: 3
+   Old mod 27: 13
+
+================================================================================
+₿ TEST AS BITCOIN PRIVATE KEY
+================================================================================
+
+🔐 Testing address as private key source:
+
+   ✓ Direct SHA256:
+     Private: 05d5163eb9c58c11d679c01ae9666825...
+     Public:  04bb03984ec4d07f7f9a98f7b9facf9d4d8296dc...
+
+   ✓ SHA256 twice:
+     Private: 8791a54ca7573af19d6d3cadb13179b4...
+     Public:  0480bf64ea2f3ba158f1f9b7bf1401accf9811f3...
+
+   ✓ SHA3-256:
+     Private: 3883aa0c853e99b2a1615899fd558bf4...
+     Public:  04e9de5c75b495067dbb658baf7607abf49434ba...
+
+   ✓ BLAKE2b:
+     Private: 6d776247834a95ddbdf94138d9b8c4f8...
+     Public:  04d4a1b13849152a2a12ae44a22a006597790fac...
+
+================================================================================
+✅ Analysis complete! Results saved to genesis_address_forensic_analysis.json
+================================================================================
+

@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { JourneySection } from '../JourneySection'
-import { Database, Gift, Lock, Shield, HelpCircle, Eye, TrendingUp } from 'lucide-react'
+import { Database, Gift, Lock, Shield, HelpCircle, Eye, TrendingUp, ExternalLink } from 'lucide-react'
 import { BitcoinLogoSVG } from '@/components/logos'
 
 export function PatoshiSection() {
@@ -117,7 +117,14 @@ export function PatoshiSection() {
 
           <p className="text-white/60 mb-6 leading-relaxed">
             In <span className="text-orange-400">2013</span>, researcher{' '}
-            <span className="text-white/80 font-medium">Sergio Demian Lerner</span> discovered
+            <a
+              href="https://bitslog.com/2013/04/17/the-well-deserved-fortune-of-satoshi-nakamoto/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 font-medium hover:text-orange-400 transition-colors inline-flex items-center gap-1"
+            >
+              Sergio Demian Lerner <ExternalLink className="h-3 w-3" />
+            </a> discovered
             a unique pattern in Bitcoin's early mining data...
           </p>
 

@@ -1,0 +1,4 @@
+  File "/Users/lukashertle/Developer/projects/qubic-academic-docs/apps/web/scripts/comprehensive_1cfb_final_search.py", line 392
+    variations.append(('Double pattern', (pattern + pattern)[:55]])
+                                                                 ^
+SyntaxError: closing parenthesis ']' does not match opening parenthesis '('

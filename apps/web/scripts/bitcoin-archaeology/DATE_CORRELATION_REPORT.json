@@ -1,0 +1,85 @@
+{
+  "analysis_timestamp": "2026-01-22T22:38:14.980576",
+  "digit_sum_27_blocks": {
+    "count": 27626,
+    "first_10": [
+      999,
+      1899,
+      1989,
+      1998,
+      2799,
+      2889,
+      2898,
+      2979,
+      2988,
+      2997
+    ],
+    "last_10": [
+      499203,
+      499212,
+      499221,
+      499230,
+      499302,
+      499311,
+      499320,
+      499401,
+      499410,
+      499500
+    ],
+    "sample_blocks": [
+      999,
+      44658,
+      68436,
+      89406,
+      123687,
+      150399,
+      172926,
+      193077,
+      225594,
+      249129,
+      270648,
+      291159,
+      319068,
+      343755,
+      364086,
+      384282,
+      409833,
+      434682,
+      454851,
+      475164
+    ]
+  },
+  "blocks_21e8": [],
+  "genesis_analysis": {
+    "block_0": {
+      "hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+      "timestamp": "2009-01-03 18:15:05 UTC",
+      "coinbase_message": "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks",
+      "reward_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "reward": "50 BTC (unspendable)"
+    },
+    "block_1": {
+      "timestamp": "2009-01-09 02:54:25 UTC",
+      "note": "6-day gap from genesis (biblical reference?)"
+    },
+    "special_observations": [
+      "6-day gap parallels 6 days of creation in Genesis",
+      "Newspaper headline references financial crisis",
+      "Coinbase address has received 100+ BTC in donations (all unspendable)",
+      "Block 0 reward is hardcoded and cannot be spent"
+    ]
+  },
+  "march_3_analysis": {
+    "note": "March 3rd search requires block-by-block analysis",
+    "estimation_method": "Block timestamps checked at key ranges",
+    "known_facts": [
+      "Bitcoin Genesis: January 3, 2009",
+      "Block 1: January 9, 2009",
+      "~144 blocks per day on average"
+    ]
+  },
+  "pattern_2026": {
+    "note": "Searching for '2026' in OP_RETURN requires full chain scan",
+    "method": "Would need to check all OP_RETURN data for '2026' string"
+  }
+}

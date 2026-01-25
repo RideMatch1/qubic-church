@@ -1,0 +1,104 @@
+14 TEST TRANSACTION ADDRESS ANALYSIS
+================================================================================
+
+Total addresses with 10.0 BTC: 21949
+Sequences found: 21936
+High priority candidates: 1
+
+
+Sequence #1 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 3 - 17
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #2 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 4 - 18
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #3 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 5 - 19
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #4 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 6 - 20
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #5 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 7 - 21
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #6 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 8 - 22
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #7 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 9 - 23
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #8 - HIGH PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 10 - 24
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+  - Sum of blocks divisible by 27
+
+Sequence #9 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 11 - 25
+Block Span: 14
+
+CFB Patterns:
+  - Span 14 divisible by 14 (transaction count!)
+
+Sequence #10 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 13 - 26
+Block Span: 13
+
+CFB Patterns:
+  - Arithmetic progression (diff=1)
+
+Sequence #11 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 14 - 27
+Block Span: 13
+
+CFB Patterns:
+  - Arithmetic progression (diff=1)
+
+Sequence #15 - MEDIUM PRIORITY
+--------------------------------------------------------------------------------
+Block Range: 18 - 33
+Block Span: 15
+
+CFB Patterns:
+  - Sum of blocks divisible by 27

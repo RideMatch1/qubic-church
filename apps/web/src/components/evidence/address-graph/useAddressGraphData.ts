@@ -8,26 +8,18 @@ import type {
   AddressGraphError,
   NetworkStats,
   LoadStats,
-  RawPatoshiAddress,
   RawInterestingAddress,
-  RawQubicSeed,
-  RawBitcoinDerived,
   AddressType,
 } from './types'
-import { DATA_URLS, NODE_TYPE_CONFIG, XOR_RING_CONFIG } from './constants'
-import { pubkeyToAddress } from './addressUtils'
-
-// =============================================================================
-// RAW MATRIX ADDRESS TYPE
-// =============================================================================
-
-interface RawMatrixAddress {
-  id: number
-  address: string
-}
+import { DATA_URLS } from './constants'
 
 // =============================================================================
 // HOOK: useAddressGraphData
+// =============================================================================
+// Simplified version focusing on:
+// - Anna Matrix addresses (983,040 mathematically derived)
+// - VIP addresses (1CFB*, verified Bitcoin addresses)
+// - NO Patoshi data (unverified Qubic connection)
 // =============================================================================
 
 interface UseAddressGraphDataReturn {
@@ -57,6 +49,15 @@ function smartSample<T>(arr: T[], maxCount: number): T[] {
   return result
 }
 
+// XOR Layer Configuration - Subtle blue gradient for depth
+const XOR_LAYER_CONFIG = [
+  { xor: 0,  yLevel: 0,  color: '#1E3A5F', name: 'Layer 0 (XOR 0)'  },
+  { xor: 7,  yLevel: 8,  color: '#2D4A6E', name: 'Layer 1 (XOR 7)'  },
+  { xor: 13, yLevel: 16, color: '#3C5A7D', name: 'Layer 2 (XOR 13)' },
+  { xor: 27, yLevel: 24, color: '#4B6A8C', name: 'Layer 3 (XOR 27)' },
+  { xor: 33, yLevel: 32, color: '#5A7A9B', name: 'Layer 4 (XOR 33)' },
+]
+
 export function useAddressGraphData(): UseAddressGraphDataReturn {
   const [loading, setLoading] = useState(true)
   const [progress, setProgress] = useState(0)
@@ -64,7 +65,7 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
   const [data, setData] = useState<AddressGraphData | null>(null)
   const [retryCount, setRetryCount] = useState(0)
   const [loadStats, setLoadStats] = useState<LoadStats>({
-    patoshi: 0,
+    patoshi: 0, // Removed - keeping interface for compatibility
     cfbLinked: 0,
     matrixDerived: 0,
     totalEdges: 0,
@@ -77,75 +78,58 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
     setError(null)
 
     try {
-      // Phase 1: Load interesting addresses (VIP nodes) - 10%
-      setProgress(5)
+      // Phase 1: Load VIP addresses (1CFB*, verified) - 20%
+      setProgress(10)
       const interestingRes = await fetch(DATA_URLS.interesting)
-      if (!interestingRes.ok) throw new Error('Failed to load interesting addresses')
+      if (!interestingRes.ok) throw new Error('Failed to load VIP addresses')
       const interestingJson = await interestingRes.json()
       const interestingAddresses: RawInterestingAddress[] = interestingJson.records || []
-      setProgress(10)
+      setProgress(20)
 
-      // Phase 2: Load patoshi addresses - 30%
-      setProgress(15)
-      const patoshiRes = await fetch(DATA_URLS.patoshi)
-      if (!patoshiRes.ok) throw new Error('Failed to load patoshi addresses')
-      const patoshiJson = await patoshiRes.json()
-      const patoshiAddresses: RawPatoshiAddress[] = patoshiJson.records || []
+      // Phase 2: Load matrix addresses WITH XOR metadata (983k) - 70%
       setProgress(30)
-
-      // Phase 3: Load matrix addresses (983k) - 60%
-      setProgress(35)
-      const matrixRes = await fetch(DATA_URLS.matrix)
+      const matrixRes = await fetch(DATA_URLS.matrixWithXor)
       if (!matrixRes.ok) throw new Error('Failed to load matrix addresses')
       const matrixJson = await matrixRes.json()
-      const matrixAddresses: RawMatrixAddress[] = matrixJson.records || matrixJson || []
-      setProgress(60)
-
-      // Phase 4: Load qubic seeds - 70%
-      setProgress(65)
-      const seedsRes = await fetch(DATA_URLS.qubicSeeds)
-      if (!seedsRes.ok) throw new Error('Failed to load qubic seeds')
-      const seedsJson = await seedsRes.json()
-      const qubicSeeds: RawQubicSeed[] = seedsJson.records || []
+      const matrixAddresses = matrixJson.records || []
       setProgress(70)
 
-      // Update load stats with FULL counts
+      // Update load stats
       setLoadStats({
-        patoshi: patoshiAddresses.length,
+        patoshi: 0, // Removed
         cfbLinked: interestingAddresses.length,
         matrixDerived: matrixAddresses.length,
-        totalEdges: 0, // Will be updated later
+        totalEdges: 0,
       })
 
-      // Phase 5: Process data into nodes - 90%
+      // Phase 3: Process data into nodes - 95%
       setProgress(75)
 
       const nodes: AddressNode[] = []
       const nodeMap = new Map<string, AddressNode>()
       const vipNodes: AddressNode[] = []
 
-      // Process VIP nodes first (interesting addresses) - ALL 30
+      // Process VIP nodes (1CFB* addresses) - ALL of them
       interestingAddresses.forEach((addr) => {
         const isCFB = addr.address.startsWith('1CFB')
-        const isPat = addr.address.startsWith('1Pat')
-        const type: AddressType = isCFB ? 'cfb-vanity' : isPat ? 'patoshi-vanity' : 'matrix-derived'
-        const config = NODE_TYPE_CONFIG[type]
-        const xorConfig = XOR_RING_CONFIG[addr.xor] || XOR_RING_CONFIG[0]
+        const type: AddressType = isCFB ? 'cfb-vanity' : 'matrix-derived'
+
+        // Position VIP nodes prominently at the center
+        const centerX = (addr.position[0] - 64) * 0.5
+        const centerZ = (addr.position[1] - 64) * 0.5
+        const xorLayer = XOR_LAYER_CONFIG.find(l => l.xor === addr.xor) ?? XOR_LAYER_CONFIG[0]
+        const yLevel = xorLayer?.yLevel ?? 0
 
         const node: AddressNode = {
           id: addr.address,
           address: addr.address,
           type,
-          position: [
-            (addr.position[0] - 64) * 0.5,
-            0,
-            (addr.position[1] - 64) * 0.5,
-          ],
-          color: config.color,
-          shape: config.shape,
-          size: config.size,
-          glowIntensity: config.glow,
-          xorRings: xorConfig?.rings ?? 1,
+          position: [centerX, yLevel + 2, centerZ], // Slightly elevated
+          color: '#06B6D4', // Cyan for VIP
+          shape: 'cube',
+          size: 'large',
+          glowIntensity: 0.8,
+          xorRings: xorLayer?.xor === 0 ? 0 : Math.floor((xorLayer?.xor ?? 0) / 10) + 1,
           matrixPosition: addr.position,
           derivationMethod: addr.method as any,
           xorVariant: addr.xor,
@@ -160,160 +144,94 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
         vipNodes.push(node)
       })
 
-      // Process ALL patoshi addresses (21,953) - with smart positioning
-      // First, compute all Bitcoin addresses in parallel (batch of 100 at a time for performance)
-      const BATCH_SIZE = 500
-      const patoshiWithAddresses: Array<{ raw: RawPatoshiAddress; derivedAddress: string }> = []
+      setProgress(80)
 
-      for (let i = 0; i < patoshiAddresses.length; i += BATCH_SIZE) {
-        const batch = patoshiAddresses.slice(i, i + BATCH_SIZE)
-        const addresses = await Promise.all(
-          batch.map(async (addr) => {
-            try {
-              const derivedAddress = await pubkeyToAddress(addr.pubkey)
-              return { raw: addr, derivedAddress }
-            } catch {
-              // Fallback if address computation fails
-              return { raw: addr, derivedAddress: `[Invalid pubkey]` }
-            }
-          })
-        )
-        patoshiWithAddresses.push(...addresses)
+      // =========================================================================
+      // ANNA MATRIX ADDRESSES - 128×128 Grid with XOR Layers
+      // =========================================================================
+      // Layout:
+      //   X-axis = Matrix column (0-127)
+      //   Y-axis = XOR layer (0, 7, 13, 27, 33)
+      //   Z-axis = Matrix row (0-127)
+      // =========================================================================
 
-        // Update progress during address computation
-        const progressPercent = 75 + (i / patoshiAddresses.length) * 8
-        setProgress(Math.min(83, progressPercent))
+      const ADDRESSES_PER_LAYER = 2000
+      const GRID_SCALE = 0.5
+
+      // Group addresses by XOR value
+      const addressesByXor: Record<number, typeof matrixAddresses> = {
+        0: [], 7: [], 13: [], 27: [], 33: []
       }
 
-      // Now create nodes with the computed addresses
-      patoshiWithAddresses.forEach(({ raw: addr, derivedAddress }, idx) => {
-        const addressId = `patoshi-${addr.blockHeight}-${idx}`
-        const isGenesis = addr.blockHeight <= 100
-        const type: AddressType = isGenesis ? 'patoshi-genesis' : 'patoshi'
-        const config = NODE_TYPE_CONFIG[type]
-
-        // Spiral positioning based on block height for visual timeline
-        const normalizedBlock = addr.blockHeight / 50000 // Normalize to 0-1
-        const angle = normalizedBlock * Math.PI * 20 // 10 full rotations
-        const radius = 10 + normalizedBlock * 30 // Expanding spiral
-        const height = addr.blockHeight / 2000 // Y = time
-
-        const node: AddressNode = {
-          id: addressId,
-          address: derivedAddress, // Use the derived Bitcoin address
-          type,
-          position: [
-            Math.cos(angle) * radius,
-            height,
-            Math.sin(angle) * radius,
-          ],
-          color: config.color,
-          shape: config.shape,
-          size: config.size,
-          glowIntensity: config.glow,
-          xorRings: 0,
-          blockHeight: addr.blockHeight,
-          amount: addr.amount,
-          scriptType: addr.scriptType,
-          pubkey: addr.pubkey,
-          derivedAddress, // Store the derived address explicitly
-          state: 'default',
-          isVIP: isGenesis,
+      matrixAddresses.forEach((addr: any) => {
+        const xor = addr.xor
+        if (xor in addressesByXor) {
+          addressesByXor[xor].push(addr)
         }
-
-        nodes.push(node)
-        nodeMap.set(addressId, node)
-        if (isGenesis) vipNodes.push(node)
       })
 
-      setProgress(85)
+      // Create nodes for each XOR layer
+      XOR_LAYER_CONFIG.forEach((layerConfig) => {
+        const layerAddresses = addressesByXor[layerConfig.xor] || []
+        const sampledLayer = smartSample(layerAddresses, ADDRESSES_PER_LAYER)
 
-      // Process matrix addresses - SMART SAMPLE for performance
-      // Sample 10,000 addresses from 983,040 to represent the full dataset
-      const MATRIX_SAMPLE_SIZE = 10000
-      const sampledMatrix = smartSample(matrixAddresses, MATRIX_SAMPLE_SIZE)
+        sampledLayer.forEach((addr: any) => {
+          if (nodeMap.has(addr.address)) return
 
-      sampledMatrix.forEach((addr, idx) => {
-        if (nodeMap.has(addr.address)) return
+          // Position based on matrix coordinates
+          const [row, col] = addr.position || [0, 0]
+          const x = (col - 64) * GRID_SCALE
+          const z = (row - 64) * GRID_SCALE
 
-        const config = NODE_TYPE_CONFIG['matrix-derived']
+          // Small variation for visual depth (deterministic)
+          const microOffset = ((addr.id * 7919) % 100) / 500
+          const y = layerConfig.yLevel + microOffset
 
-        // Position in a grid/ring pattern around the center
-        // 128x128 matrix = positions 0-16383
-        const matrixX = addr.id % 128
-        const matrixY = Math.floor(addr.id / 128)
+          const node: AddressNode = {
+            id: addr.address,
+            address: addr.address,
+            type: 'matrix-derived',
+            position: [x, y, z],
+            color: layerConfig.color,
+            shape: 'sphere',
+            size: 'small',
+            glowIntensity: 0.2,
+            xorRings: layerConfig.xor === 0 ? 0 : Math.floor(layerConfig.xor / 10) + 1,
+            xorVariant: layerConfig.xor,
+            matrixPosition: [row, col],
+            derivationMethod: addr.method as any,
+            compressed: addr.compressed,
+            hash160: addr.hash160,
+            state: 'default',
+            isVIP: false,
+          }
 
-        // Map to 3D position - flat grid on XZ plane
-        const scale = 0.4
-        const x = (matrixX - 64) * scale
-        const z = (matrixY - 64) * scale
-        // Deterministic Y offset based on address ID (consistent across reloads)
-        const yOffset = ((addr.id * 7919) % 1000) / 2000 // Small deterministic variation
-        const y = -5 + yOffset // Slightly below patoshi spiral
-
-        const node: AddressNode = {
-          id: addr.address,
-          address: addr.address,
-          type: 'matrix-derived',
-          position: [x, y, z],
-          color: config.color,
-          shape: config.shape,
-          size: 'xs', // Small since there are many
-          glowIntensity: 0.1,
-          xorRings: 0,
-          matrixPosition: [matrixX, matrixY],
-          state: 'default',
-          isVIP: false,
-        }
-
-        nodes.push(node)
-        nodeMap.set(addr.address, node)
+          nodes.push(node)
+          nodeMap.set(addr.address, node)
+        })
       })
 
-      // Create edges based on relationships
+      setProgress(90)
+
+      // Create edges between VIP nodes based on matrix proximity
       const edges: AddressEdge[] = []
 
-      // Temporal edges between consecutive patoshi blocks
-      const patoshiNodes = nodes.filter((n) => n.type === 'patoshi' || n.type === 'patoshi-genesis')
-      patoshiNodes.sort((a, b) => (a.blockHeight || 0) - (b.blockHeight || 0))
-
-      // Sample edges for performance - every 10th connection
-      for (let i = 0; i < patoshiNodes.length - 1; i += 10) {
-        const source = patoshiNodes[i]
-        const target = patoshiNodes[Math.min(i + 10, patoshiNodes.length - 1)]
-        if (!source || !target) continue
-
-        edges.push({
-          id: `temporal-${source.id}-${target.id}`,
-          source: source.id,
-          target: target.id,
-          type: 'temporal',
-          weight: 0.5,
-          color: '#8B5CF6',
-          style: 'solid',
-          animated: true,
-          particleCount: 2,
-          blockHeight: source.blockHeight,
-        })
-      }
-
-      // Matrix adjacency edges between VIP nodes
       vipNodes.forEach((nodeA, i) => {
         vipNodes.slice(i + 1).forEach((nodeB) => {
           if (!nodeA.matrixPosition || !nodeB.matrixPosition) return
           const dist = Math.abs(nodeA.matrixPosition[0] - nodeB.matrixPosition[0]) +
                        Math.abs(nodeA.matrixPosition[1] - nodeB.matrixPosition[1])
-          if (dist <= 20) {
+          if (dist <= 30) {
             edges.push({
               id: `matrix-${nodeA.id}-${nodeB.id}`,
               source: nodeA.id,
               target: nodeB.id,
               type: 'matrix-adjacent',
-              weight: 1 - dist / 20,
-              color: '#3B82F6',
+              weight: 1 - dist / 30,
+              color: '#06B6D4',
               style: 'dotted',
               animated: true,
-              particleCount: 3,
+              particleCount: 2,
               matrixDistance: dist,
             })
           }
@@ -322,43 +240,42 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
 
       setProgress(95)
 
-      // Calculate stats with FULL counts
+      // Calculate stats
       const stats: NetworkStats = {
         totalNodes: nodes.length,
         totalEdges: edges.length,
-        clusters: 5,
-        avgConnections: edges.length / nodes.length,
+        clusters: 5, // XOR layers
+        avgConnections: edges.length / Math.max(1, nodes.length),
         byType: {
-          'patoshi-genesis': nodes.filter((n) => n.type === 'patoshi-genesis').length,
-          'patoshi': nodes.filter((n) => n.type === 'patoshi').length,
+          'patoshi-genesis': 0,
+          'patoshi': 0,
           'cfb-vanity': nodes.filter((n) => n.type === 'cfb-vanity').length,
-          'patoshi-vanity': nodes.filter((n) => n.type === 'patoshi-vanity').length,
+          'patoshi-vanity': 0,
           'matrix-derived': nodes.filter((n) => n.type === 'matrix-derived').length,
           'seed-validated': 0,
           'seed-mismatch': 0,
           'unknown': 0,
         },
         byMethod: {},
-        byXor: {},
-        patoshiBlocks: {
-          min: Math.min(...patoshiAddresses.map((p) => p.blockHeight)),
-          max: Math.max(...patoshiAddresses.map((p) => p.blockHeight)),
+        byXor: {
+          0: addressesByXor[0].length,
+          7: addressesByXor[7].length,
+          13: addressesByXor[13].length,
+          27: addressesByXor[27].length,
+          33: addressesByXor[33].length,
         },
-        // CORRECT: amounts are already in BTC (50.0 per block)
-        totalBTC: patoshiAddresses.reduce((sum, p) => sum + p.amount, 0),
-        validatedSeeds: qubicSeeds.filter((s) => s.match).length,
-        mismatchedSeeds: qubicSeeds.filter((s) => !s.match).length,
-        // Add full dataset counts for display
+        patoshiBlocks: { min: 0, max: 0 },
+        totalBTC: 0,
+        validatedSeeds: 0,
+        mismatchedSeeds: 0,
         fullDatasetCounts: {
-          patoshi: patoshiAddresses.length,
+          patoshi: 0,
           matrix: matrixAddresses.length,
           interesting: interestingAddresses.length,
         },
       }
 
-      // Update final edge count
       setLoadStats((s) => ({ ...s, totalEdges: edges.length }))
-
       setProgress(100)
 
       setData({ nodes, edges, stats, vipNodes })
@@ -391,20 +308,15 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
     if (!data) return new Map<string, AddressNode>()
     const map = new Map<string, AddressNode>()
     data.nodes.forEach((n) => map.set(n.id, n))
-    // Also index by address for search
     data.nodes.forEach((n) => {
       if (n.address && !map.has(n.address)) {
         map.set(n.address, n)
-      }
-      // Index by derived address too
-      if (n.derivedAddress && !map.has(n.derivedAddress)) {
-        map.set(n.derivedAddress, n)
       }
     })
     return map
   }, [data])
 
-  // Helper: Get node by ID - O(1) Map lookup
+  // Helper: Get node by ID
   const getNodeById = useCallback(
     (id: string): AddressNode | undefined => {
       return nodeMapRef.get(id)
@@ -424,35 +336,22 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
     [data]
   )
 
-  // Helper: Search node - optimized with Map for exact matches
+  // Helper: Search node
   const searchNode = useCallback(
     (query: string): AddressNode | null => {
       if (!data || !query.trim()) return null
-      const q = query.trim()
+      const q = query.trim().toLowerCase()
 
       // Try exact match first (O(1))
-      const exactMatch = nodeMapRef.get(q)
+      const exactMatch = nodeMapRef.get(query.trim())
       if (exactMatch) return exactMatch
 
-      // Try case-insensitive exact match on address/derivedAddress
-      const lowerQ = q.toLowerCase()
-      for (const node of data.nodes) {
-        if (
-          node.address.toLowerCase() === lowerQ ||
-          node.derivedAddress?.toLowerCase() === lowerQ
-        ) {
-          return node
-        }
-      }
-
-      // Partial match search (O(n))
+      // Partial match search
       return (
         data.nodes.find(
           (n) =>
-            n.address.toLowerCase().includes(lowerQ) ||
-            n.derivedAddress?.toLowerCase().includes(lowerQ) ||
-            n.id.toLowerCase().includes(lowerQ) ||
-            n.pubkey?.toLowerCase().includes(lowerQ)
+            n.address.toLowerCase().includes(q) ||
+            n.id.toLowerCase().includes(q)
         ) || null
       )
     },

@@ -1,0 +1,10 @@
+QUBIC SEED → BITCOIN ADDRESS MAPPING STATISTICS
+================================================================================
+
+Total Qubic Seeds:      23,765
+Total Patoshi Addresses: 0
+Patoshi Matches Found:   0
+Match Rate:              0.00%
+
+Random Expectation:      0.0 matches
+Actual / Expected:       0.00x

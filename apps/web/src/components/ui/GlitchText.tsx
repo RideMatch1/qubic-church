@@ -29,6 +29,13 @@ export function GlitchText({
   const [isGlitching, setIsGlitching] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Update displayText when children changes (fixes typewriter visibility bug)
+  useEffect(() => {
+    if (!isGlitching) {
+      setDisplayText(children)
+    }
+  }, [children, isGlitching])
+
   useEffect(() => {
     const scheduleGlitch = () => {
       const delay = minInterval + Math.random() * (maxInterval - minInterval)

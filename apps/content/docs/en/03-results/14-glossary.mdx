@@ -1,11 +1,67 @@
 ---
 title: Glossary
 description: Complete reference of CFB constants, technical terms, mathematical values, and key concepts used throughout the Qubic-Bitcoin research.
+tier: 1
+confidence: 100
+date: 2026-01-05
 ---
 
 # Glossary
 
 > Quick reference for all terms, numbers, and concepts in THE GRAND ARCHIVE.
+
+---
+
+## Part 0: Philosophical & Historical Terms
+
+### CCRU (Cybernetic Culture Research Unit)
+
+Experimental cultural theorist collective (1995-2003) at Warwick University, England. Led by Nick Land and Sadie Plant, developed "theory-fiction" blending philosophy, cybernetics, and occult numerology.
+
+**Key Contributions**: Numogram, Hyperstition, Pandemonium System
+**Relevance**: Possible philosophical foundation for Qubic/Aigarth
+**See**: [Background - Era 0](/docs/01-introduction/02-background), [Numogram Connection](/docs/03-results/29-numogram-architecture)
+
+### Helix Gates
+
+Ternary logic gates that are reversible and functionally complete, rotating inputs by sum of three ternary values.
+
+**Origin**: Nick Land's Numogram (CCRU, 1990s)
+**Implementation**: Core operation in Qubic/Aigarth
+**Significance**: IDENTICAL terminology in both systems (probability < 0.1% if independent)
+
+### Hyperstition
+
+CCRU concept: "experimental techno-science of self-fulfilling prophecies." Ideas that make themselves real through belief and action.
+
+**Examples**: Time-locks, breadcrumb trails, Numogram → Aigarth implementation
+
+### Numogram
+
+"Decimal Labyrinth" system (CCRU, 1990s): 10 digits organized into 5 syzygies, operating through feedback loops and time-circuits.
+
+**Structure**: 10 zones, 5 syzygies, 3 time-systems, Helix gates, Pandemonium System
+**Qubic Connection**: 10+ structural parallels, p < 10^-6 for independent convergence
+**See**: [Numogram Connection](/docs/03-results/29-numogram-architecture)
+
+### Pandemonium System
+
+CCRU concept: distributed architecture where autonomous entities interact through feedback to create emergent order from chaos.
+
+**Qubic Implementation**: Aigarth's evolutionary neural network
+**Definition**: "Both the place of all demons and the system of all feedbacks"
+
+### Syzygies
+
+In Numogram: paired zones summing to 9 (0+9, 1+8, 2+7, 3+6, 4+5)
+
+**Qubic Parallel**: row%8 complementary classes in Aigarth neural tissue
+
+### Theory-Fiction
+
+CCRU genre blending theoretical philosophy with fictional narratives, treating ideas as operational systems.
+
+**Example**: Numogram as blueprint for AGI (theory becomes working code)
 
 ---
 
@@ -28,6 +84,16 @@ description: Complete reference of CFB constants, technical terms, mathematical 
 | **576** | Maria Square | 24² | Message count, Block 576 |
 | **676** | Computor Count | 26² | Qubic validators |
 | **817** | Oracle Sum | 19 × 43 | ARB address connection |
+
+### Genesis Block Values
+
+| Value | Description | Calculation | Significance |
+|-------|-------------|-------------|--------------|
+| **285** | Block Length | 3 × 5 × 19 = 15 × 19 | Contains factor 19 (Qubic tick prime) |
+| **43** | Difficulty Zeros | 285 mod 121 | Block length mod 121 equals difficulty |
+| **3839** | Merkle Sum | 11 × 349 | Merkle root bytes sum, divisible by 11 |
+| **2299** | 1CFB Hash Sum | 121 × 19 | 1CFB address hash160 byte sum |
+| **2671** | Genesis XOR 1CFB | XOR byte sum | mod 121 = 9, mod 19 = 11, mod 9 = 0 |
 
 ### Formula Values
 
@@ -64,7 +130,7 @@ description: Complete reference of CFB constants, technical terms, mathematical 
 | **Row 86** | MAC Layer - neural computation |
 | **Row 96** | Output Layer - final identity generation |
 | **Anna Matrix** | 128×128 ternary memory structure |
-| **Helix Gate** | Ternary rotation gate (compression 15.1:1) |
+| **Helix Gate** | Ternary rotation gate (15.1:1 compression). IDENTICAL to Numogram term! |
 
 ### Blockchain
 
@@ -88,6 +154,21 @@ description: Complete reference of CFB constants, technical terms, mathematical 
 | **Hash160** | SHA256 + RIPEMD160 |
 | **P2PKH** | Pay-to-Public-Key-Hash (legacy address) |
 
+### Mirror Wallet Operations
+
+| Term | Definition |
+|------|------------|
+| **Mirror Palindrome** | Hash160 transformation: first 10 bytes + reversed first 10 bytes. Preserves address prefix! |
+| **Reverse Hash160** | Byte-order reversal of Hash160 value |
+| **Bitwise Complement** | Each byte becomes (255 - byte) |
+| **Rotate +N** | Add constant N to each byte (mod 256) |
+| **XOR Operation** | Bitwise XOR between two Hash160 values |
+| **Swap Halves** | Exchange first and last 10 bytes |
+| **ECC Public Key Addition** | Elliptic curve point addition on public keys (Craig Wright trick) |
+| **Vanity Address** | Bitcoin address with custom prefix (e.g., "1CFB") |
+
+**Important**: Mirror operations create valid addresses but we have no private keys for them.
+
 ---
 
 ## Part III: Project Terms
@@ -98,7 +179,7 @@ description: Complete reference of CFB constants, technical terms, mathematical 
 |------|------------|
 | **CFB** | Come-from-Beyond (Sergey Ivancheglo) |
 | **BCNext** | CFB's NXT-era identity |
-| **Maria** | CFB sockpuppet (576 messages) |
+| **Maria** | CFB sockpuppet (2,908 Bitcointalk posts) |
 | **Satoshi** | Bitcoin creator (possibly CFB) |
 | **Patoshi** | Early Bitcoin miner (possibly CFB) |
 
@@ -221,7 +302,7 @@ col = 2,692 mod 128 = 4
 ### Tick Divisibility
 
 ```
-121,942 ÷ 121 = 1,008 (exact)
+121,942 ÷ 121 ≈ 1,008 (close approximation)
 ```
 
 ### Combined Probability
@@ -244,6 +325,10 @@ p_combined < 10⁻¹⁰ (1 in 126 billion)
 | `THE_FOUR_PILLARS_RECOVERED.md` | Knowledge recovery |
 | `MASTER_INTEGRATION_REPORT.md` | Architecture synthesis |
 | `RECURSIVE_HUNT_RESULTS.md` | Pattern findings |
+| `MIRROR_ANALYSIS_SUMMARY.md` | Mirror wallet operations summary |
+| `COMPLETE_TESTING_REPORT.md` | All mirror tests & syzygy key attempts |
+| `SYZYGY_KEYS_TEST_REPORT.md` | Private key derivation tests (all failed) |
+| `PRIVATE_KEY_INVENTORY.md` | Clarification of what keys we have/don't have |
 
 ### Documentation Structure
 
@@ -253,9 +338,12 @@ p_combined < 10⁻¹⁰ (1 in 126 billion)
 | `09-identity-protocols.mdx` | Identity analysis |
 | `10-paracosm-blueprint.mdx` | Economic architecture |
 | `11-timeline-prophecy.mdx` | Date analysis |
-| `12-discord-archaeology.mdx` | Evidence mining |
+| `12-discord-summary.mdx` | Discord overview and evidence mining |
 | `13-mathematical-proofs.mdx` | Statistical validation |
 | `14-glossary.mdx` | This document |
+| `30-genesis-block-connections.mdx` | Genesis Block mathematical analysis |
+| `31-mathematical-bridges.mdx` | Genesis ↔ 1CFB ↔ Qubic connections |
+| `32-mirror-wallets.mdx` | Mirror address generation & testing |
 
 ---
 

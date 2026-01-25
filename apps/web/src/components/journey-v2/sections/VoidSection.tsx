@@ -48,11 +48,11 @@ const HYPERSPEED_CONFIG = {
     background: 0x000000,
     shoulderLines: 0x131318,
     brokenLines: 0x131318,
-    // Bitcoin orange tones (left side - coming towards)
-    leftCars: [0xf97316, 0xea580c, 0xfb923c],
-    // Qubic Tiffany blue/cyan tones (right side - moving away)
-    rightCars: [0x40E0D0, 0x48D1CC, 0x00CED1],
-    sticks: 0x40E0D0
+    // Darker Bitcoin orange tones - mystical and subdued (left side - coming towards)
+    leftCars: [0x8B4513, 0xA0522D, 0xD2691E],
+    // Darker deep blue tones - mysterious and cosmic (right side - moving away)
+    rightCars: [0x1a1f4d, 0x2c3e80, 0x1e3a5f],
+    sticks: 0x2c3e80
   }
 }
 
@@ -119,9 +119,9 @@ export function VoidSection() {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70 pointer-events-none z-[3]" />
 
-      {/* Content - CENTERED and HIGHER */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 pb-32">
-        <div className="text-center max-w-4xl mx-auto -mt-16">
+      {/* Content - CENTERED with proper spacing from header */}
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 pb-32 pt-24">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Logo Header - Bitcoin & Qubic */}
           <motion.div
             className="flex items-center justify-center gap-6 mb-8"

@@ -443,6 +443,51 @@
   }
 }
 
+/* ========================================
+   PREMIUM GALAXY HERO ANIMATIONS
+   ======================================== */
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-cosmic {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
@@ -465,6 +510,40 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient 6s ease infinite;
+}
+
+/* Premium Galaxy Hero Animations */
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-float-cosmic {
+  animation: float-cosmic 6s ease-in-out infinite;
+}
+
+/* Radial gradient utility for cosmic effects */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* NFT Image Transition */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* ========================================
@@ -495,7 +574,11 @@
   .animate-float,
   .animate-shimmer,
   .animate-pulse-glow,
-  .animate-gradient {
+  .animate-gradient,
+  .animate-pulse-slow,
+  .animate-pulse-gentle,
+  .animate-spin-slow,
+  .animate-float-cosmic {
     animation: none;
   }
 }

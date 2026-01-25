@@ -5,46 +5,9 @@
  * Holy Circle Lottery with Genesis verification
  */
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { LOTTERY_CONFIG, PRIZE_STRUCTURE } from '@/config/lottery'
-import { Trophy, Clock, Coins, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react'
-
-/**
- * Calculate countdown to draw date
- */
-function useCountdown(targetDate: Date) {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date().getTime()
-      const target = targetDate.getTime()
-      const difference = target - now
-
-      if (difference <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        clearInterval(interval)
-        return
-      }
-
-      setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((difference % (1000 * 60)) / 1000),
-      })
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [targetDate])
-
-  return timeLeft
-}
+import { Trophy, Coins, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react'
 
 /**
  * Format bigint with commas
@@ -61,8 +24,6 @@ export function LotterySection() {
     success: boolean
     message: string
   } | null>(null)
-
-  const countdown = useCountdown(LOTTERY_CONFIG.drawDate)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -103,35 +64,19 @@ export function LotterySection() {
             675M QUBIC + 2M Genesis
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Lottery draw on {LOTTERY_CONFIG.drawDate.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
+            Community lottery for Anna NFT holders
           </p>
+          <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 rounded-full px-6 py-2 mt-4">
+            <Sparkles className="w-4 h-4 text-purple-400" />
+            <span className="text-sm font-medium text-purple-400 uppercase tracking-wide">
+              Coming Soon
+            </span>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Left Column - Countdown & Prize Pool */}
+          {/* Left Column - Prize Pool */}
           <div className="space-y-6">
-            {/* Countdown */}
-            <div className="bg-gradient-to-br from-purple-500/10 to-primary/10 border border-purple-500/20 rounded-xl p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <Clock className="w-6 h-6 text-purple-500" />
-                <h3 className="text-xl font-semibold">Draw Countdown</h3>
-              </div>
-              <div className="grid grid-cols-4 gap-4">
-                {Object.entries(countdown).map(([unit, value]) => (
-                  <div key={unit} className="text-center">
-                    <div className="bg-background/80 backdrop-blur-sm rounded-lg p-4 mb-2">
-                      <div className="text-4xl font-bold font-mono">{value.toString().padStart(2, '0')}</div>
-                    </div>
-                    <div className="text-sm text-muted-foreground capitalize">{unit}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Prize Pool */}
             <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20 rounded-xl p-8">
               <div className="flex items-center gap-2 mb-6">
@@ -295,7 +240,7 @@ export function LotterySection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  <span>Winners drawn on {LOTTERY_CONFIG.drawDate.toLocaleDateString()}</span>
+                  <span>Winners drawn transparently using blockchain randomness</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>

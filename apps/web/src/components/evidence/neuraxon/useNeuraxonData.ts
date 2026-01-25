@@ -1,36 +1,36 @@
 'use client'
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
-import type { NeuraxonData, NeuraxonNode, NeuraxonEdge, NeuraxonFrame } from './types'
+import type { QortexData, QortexNode, QortexEdge, QortexFrame } from './types'
 
 // Error types for better error handling
-export type NeuraxonErrorType =
+export type QortexErrorType =
   | 'NETWORK_ERROR'
   | 'PARSE_ERROR'
   | 'VALIDATION_ERROR'
   | 'TIMEOUT_ERROR'
   | 'UNKNOWN_ERROR'
 
-export interface NeuraxonError {
-  type: NeuraxonErrorType
+export interface QortexError {
+  type: QortexErrorType
   message: string
   details?: string
   retryable: boolean
 }
 
-interface UseNeuraxonDataReturn {
+interface UseQortexDataReturn {
   loading: boolean
-  error: NeuraxonError | null
-  data: NeuraxonData | null
-  currentFrame: NeuraxonFrame | null
-  currentNodes: NeuraxonNode[]
-  currentEdges: NeuraxonEdge[]
+  error: QortexError | null
+  data: QortexData | null
+  currentFrame: QortexFrame | null
+  currentNodes: QortexNode[]
+  currentEdges: QortexEdge[]
   frameIndex: number
   setFrameIndex: (index: number) => void
   totalFrames: number
-  searchNode: (query: string) => NeuraxonNode | null
-  getNodeById: (id: number) => NeuraxonNode | undefined
-  getConnectedNodes: (nodeId: number) => { incoming: NeuraxonEdge[]; outgoing: NeuraxonEdge[] }
+  searchNode: (query: string) => QortexNode | null
+  getNodeById: (id: number) => QortexNode | undefined
+  getConnectedNodes: (nodeId: number) => { incoming: QortexEdge[]; outgoing: QortexEdge[] }
   retry: () => void
   retryCount: number
 }
@@ -39,7 +39,7 @@ const FETCH_TIMEOUT = 30000 // 30 seconds
 const MAX_RETRIES = 3
 
 // Validate the data structure
-function validateNeuraxonData(data: unknown): data is NeuraxonData {
+function validateQortexData(data: unknown): data is QortexData {
   if (!data || typeof data !== 'object') return false
 
   const d = data as Record<string, unknown>
@@ -64,10 +64,10 @@ function validateNeuraxonData(data: unknown): data is NeuraxonData {
   return true
 }
 
-export function useNeuraxonData(): UseNeuraxonDataReturn {
-  const [data, setData] = useState<NeuraxonData | null>(null)
+export function useQortexData(): UseQortexDataReturn {
+  const [data, setData] = useState<QortexData | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<NeuraxonError | null>(null)
+  const [error, setError] = useState<QortexError | null>(null)
   const [frameIndex, setFrameIndex] = useState(0)
   const [retryCount, setRetryCount] = useState(0)
 
@@ -99,14 +99,14 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
       if (!response.ok) {
         if (response.status === 404) {
           throw {
-            type: 'NETWORK_ERROR' as NeuraxonErrorType,
+            type: 'NETWORK_ERROR' as QortexErrorType,
             message: 'Neural network data not found',
             details: 'The neuraxon-network.json file could not be located. Please ensure the data has been generated.',
             retryable: false,
           }
         }
         throw {
-          type: 'NETWORK_ERROR' as NeuraxonErrorType,
+          type: 'NETWORK_ERROR' as QortexErrorType,
           message: `Server error: ${response.status}`,
           details: response.statusText,
           retryable: response.status >= 500,
@@ -119,7 +119,7 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
         json = await response.json()
       } catch {
         throw {
-          type: 'PARSE_ERROR' as NeuraxonErrorType,
+          type: 'PARSE_ERROR' as QortexErrorType,
           message: 'Failed to parse network data',
           details: 'The data file appears to be corrupted or malformed.',
           retryable: false,
@@ -127,9 +127,9 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
       }
 
       // Validate data structure
-      if (!validateNeuraxonData(json)) {
+      if (!validateQortexData(json)) {
         throw {
-          type: 'VALIDATION_ERROR' as NeuraxonErrorType,
+          type: 'VALIDATION_ERROR' as QortexErrorType,
           message: 'Invalid network data structure',
           details: 'The data file does not contain the expected neural network structure.',
           retryable: false,
@@ -156,7 +156,7 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
 
       // Handle known error types
       if (err && typeof err === 'object' && 'type' in err) {
-        setError(err as NeuraxonError)
+        setError(err as QortexError)
         return
       }
 
@@ -205,7 +205,7 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
     if (!data || !currentFrame) return []
     return currentFrame.nodeIds
       .map((id) => data.nodes[id])
-      .filter((node): node is NeuraxonNode => node !== undefined)
+      .filter((node): node is QortexNode => node !== undefined)
   }, [data, currentFrame])
 
   // Edges for current frame (both endpoints must be in frame)
@@ -218,7 +218,7 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
   }, [data, currentFrame])
 
   // Search for a node by seed or realId
-  const searchNode = useCallback((query: string): NeuraxonNode | null => {
+  const searchNode = useCallback((query: string): QortexNode | null => {
     if (!data) return null
     const queryLower = query.toLowerCase().trim()
     if (!queryLower) return null
@@ -240,7 +240,7 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
   }, [data])
 
   // Get node by ID with bounds checking
-  const getNodeById = useCallback((id: number): NeuraxonNode | undefined => {
+  const getNodeById = useCallback((id: number): QortexNode | undefined => {
     if (!data || id < 0 || id >= data.nodes.length) return undefined
     return data.nodes[id]
   }, [data])
@@ -248,7 +248,7 @@ export function useNeuraxonData(): UseNeuraxonDataReturn {
   // Get connected nodes
   const getConnectedNodes = useCallback((
     nodeId: number
-  ): { incoming: NeuraxonEdge[]; outgoing: NeuraxonEdge[] } => {
+  ): { incoming: QortexEdge[]; outgoing: QortexEdge[] } => {
     if (!data) return { incoming: [], outgoing: [] }
 
     const incoming = data.edges.filter((e) => e.target === nodeId)

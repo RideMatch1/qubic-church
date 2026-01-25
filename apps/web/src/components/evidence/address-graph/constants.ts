@@ -17,37 +17,50 @@ import {
 // -----------------------------------------------------------------------------
 
 export const COLORS = {
+  // XOR Layer colors - Subtle blue gradient for depth
+  layer0: '#1E3A5F',  // Deep Navy - Base
+  layer1: '#2D4A6E',  // Steel Blue
+  layer2: '#3C5A7D',  // Slate Blue
+  layer3: '#4B6A8C',  // Dusty Blue
+  layer4: '#5A7A9B',  // Light Slate - Top
+
   // Node type colors
-  patoshiGenesis: '#FFD700',  // Gold
-  patoshi: '#F59E0B',         // Orange
-  cfbVanity: '#8B5CF6',       // Purple
-  patoshiVanity: '#EC4899',   // Pink
-  matrixDerived: '#3B82F6',   // Blue
+  vip: '#06B6D4',             // Cyan - VIP addresses
+  vipActive: '#F59E0B',       // Gold - VIP with balance
+  matrixDerived: '#4B6A8C',   // Dusty Blue - Matrix nodes
+  selected: '#FFFFFF',        // White - Selected
   seedValidated: '#10B981',   // Emerald
   seedMismatch: '#EF4444',    // Red
   unknown: '#6B7280',         // Gray
 
-  // Derivation method colors
-  step13: '#F59E0B',    // Gold
-  diagonal: '#8B5CF6',  // Purple
-  col: '#3B82F6',       // Blue
-  row: '#EC4899',       // Pink
-  step7: '#10B981',     // Emerald
-  step27: '#06B6D4',    // Cyan
+  // Legacy (kept for compatibility)
+  patoshiGenesis: '#6B7280',
+  patoshi: '#6B7280',
+  cfbVanity: '#06B6D4',
+  patoshiVanity: '#6B7280',
+
+  // Derivation method colors - subtle
+  step13: '#4B6A8C',
+  diagonal: '#5A7A9B',
+  col: '#3C5A7D',
+  row: '#2D4A6E',
+  step7: '#3C5A7D',
+  step27: '#06B6D4',
 
   // Edge colors
   transaction: '#FFFFFF',
-  sameSeed: '#F59E0B',
-  matrixAdjacent: '#3B82F6',
-  temporal: '#8B5CF6',
-  derivation: '#10B981',
+  sameSeed: '#06B6D4',
+  matrixAdjacent: '#06B6D4',
+  temporal: '#4B6A8C',
+  derivation: '#5A7A9B',
 
   // UI colors
-  background: '#000000',
-  surface: '#18181B',
-  border: '#27272A',
-  text: '#FAFAFA',
-  textMuted: '#A1A1AA',
+  background: '#0A0A0A',
+  surface: '#121212',
+  border: 'rgba(255, 255, 255, 0.08)',
+  text: '#F9FAFB',
+  textMuted: '#9CA3AF',
+  accent: '#06B6D4',
 } as const
 
 // -----------------------------------------------------------------------------
@@ -62,39 +75,39 @@ export const NODE_TYPE_CONFIG: Record<AddressType, {
   label: string
 }> = {
   'patoshi-genesis': {
-    color: COLORS.patoshiGenesis,
-    shape: 'dodecahedron',
-    size: 'xl',
-    glow: 1,
-    label: 'Genesis Block',
+    color: COLORS.unknown,
+    shape: 'sphere',
+    size: 'xs',
+    glow: 0,
+    label: 'Not Displayed',
   },
   'patoshi': {
-    color: COLORS.patoshi,
+    color: COLORS.unknown,
     shape: 'sphere',
-    size: 'large',
-    glow: 0.5,
-    label: 'Patoshi Era',
+    size: 'xs',
+    glow: 0,
+    label: 'Not Displayed',
   },
   'cfb-vanity': {
-    color: COLORS.cfbVanity,
-    shape: 'octahedron',
+    color: COLORS.vip,
+    shape: 'cube',
     size: 'large',
     glow: 0.8,
-    label: 'CFB Vanity (1CFB)',
+    label: 'VIP Address (1CFB*)',
   },
   'patoshi-vanity': {
-    color: COLORS.patoshiVanity,
-    shape: 'octahedron',
-    size: 'large',
-    glow: 0.8,
-    label: 'Patoshi Vanity (1Pat)',
+    color: COLORS.unknown,
+    shape: 'sphere',
+    size: 'xs',
+    glow: 0,
+    label: 'Not Displayed',
   },
   'matrix-derived': {
     color: COLORS.matrixDerived,
-    shape: 'cube',
-    size: 'medium',
-    glow: 0.3,
-    label: 'Matrix-Derived',
+    shape: 'sphere',
+    size: 'small',
+    glow: 0.2,
+    label: 'Matrix Derived',
   },
   'seed-validated': {
     color: COLORS.seedValidated,
@@ -144,12 +157,13 @@ export const XOR_RING_CONFIG: Record<number, {
   rings: number
   color: string
   label: string
+  yLevel: number
 }> = {
-  0: { rings: 0, color: '#FFFFFF', label: 'No XOR' },
-  7: { rings: 1, color: '#F59E0B', label: 'XOR 7' },
-  13: { rings: 2, color: '#8B5CF6', label: 'XOR 13' },
-  27: { rings: 3, color: '#3B82F6', label: 'XOR 27' },
-  33: { rings: 4, color: '#EC4899', label: 'XOR 33' },
+  0: { rings: 0, color: COLORS.layer0, label: 'Layer 0 (XOR 0)', yLevel: 0 },
+  7: { rings: 1, color: COLORS.layer1, label: 'Layer 1 (XOR 7)', yLevel: 8 },
+  13: { rings: 2, color: COLORS.layer2, label: 'Layer 2 (XOR 13)', yLevel: 16 },
+  27: { rings: 3, color: COLORS.layer3, label: 'Layer 3 (XOR 27)', yLevel: 24 },
+  33: { rings: 4, color: COLORS.layer4, label: 'Layer 4 (XOR 33)', yLevel: 32 },
 }
 
 // -----------------------------------------------------------------------------
@@ -262,29 +276,40 @@ export const ERROR_CONFIG: Record<AddressGraphErrorType, {
 
 export const CAMERA_PRESETS = {
   overview: {
-    position: [0, 50, 50] as [number, number, number],
-    target: [0, 0, 0] as [number, number, number],
+    position: [60, 40, 60] as [number, number, number],
+    target: [0, 16, 0] as [number, number, number],
     name: 'Overview',
   },
-  patoshi: {
-    position: [30, 20, 10] as [number, number, number],
-    target: [20, 0, 0] as [number, number, number],
-    name: 'Patoshi Cluster',
+  matrix: {
+    position: [0, 80, 0] as [number, number, number],
+    target: [0, 16, 0] as [number, number, number],
+    name: 'Top-Down Matrix',
+  },
+  layers: {
+    position: [80, 20, 0] as [number, number, number],
+    target: [0, 16, 0] as [number, number, number],
+    name: 'Layer Side View',
   },
   cfb: {
-    position: [-30, 20, 10] as [number, number, number],
-    target: [-20, 0, 0] as [number, number, number],
-    name: 'CFB Cluster',
+    position: [20, 20, 20] as [number, number, number],
+    target: [0, 8, 0] as [number, number, number],
+    name: 'VIP Focus',
+  },
+  // Legacy presets kept for compatibility
+  patoshi: {
+    position: [60, 40, 60] as [number, number, number],
+    target: [0, 16, 0] as [number, number, number],
+    name: 'Overview',
   },
   genesis: {
-    position: [0, 5, 15] as [number, number, number],
-    target: [0, 0, 0] as [number, number, number],
-    name: 'Genesis Focus',
+    position: [60, 40, 60] as [number, number, number],
+    target: [0, 16, 0] as [number, number, number],
+    name: 'Overview',
   },
   timeline: {
-    position: [0, 30, 80] as [number, number, number],
-    target: [0, 0, 40] as [number, number, number],
-    name: 'Timeline View',
+    position: [60, 40, 60] as [number, number, number],
+    target: [0, 16, 0] as [number, number, number],
+    name: 'Overview',
   },
 }
 
@@ -300,43 +325,25 @@ export const SPEED_OPTIONS = [0.25, 0.5, 1, 1.5, 2, 3, 5] as const
 
 export const KEYBOARD_SHORTCUTS = [
   {
-    category: 'Playback',
-    items: [
-      { key: 'Space', action: 'Play / Pause timeline' },
-      { key: '←', action: 'Previous block' },
-      { key: '→', action: 'Next block' },
-      { key: 'Home', action: 'Genesis block (0)' },
-      { key: 'End', action: 'Latest block' },
-      { key: '[ / ]', action: 'Decrease / Increase speed' },
-    ],
-  },
-  {
     category: 'Navigation',
     items: [
       { key: 'R', action: 'Reset camera' },
-      { key: 'C', action: 'Center on selected' },
-      { key: 'F', action: 'Fly to node' },
-      { key: '1-5', action: 'Camera presets' },
     ],
   },
   {
     category: 'Visibility',
     items: [
       { key: 'E', action: 'Toggle edges' },
-      { key: 'P', action: 'Toggle Patoshi nodes' },
-      { key: 'M', action: 'Toggle Matrix nodes' },
-      { key: 'V', action: 'Toggle validated only' },
+      { key: 'M', action: 'Toggle Matrix addresses' },
+      { key: 'V', action: 'VIP only mode' },
     ],
   },
   {
     category: 'Interface',
     items: [
-      { key: 'F11', action: 'Toggle fullscreen' },
-      { key: 'I', action: 'Toggle info panel' },
-      { key: '/', action: 'Focus search' },
-      { key: 'S', action: 'Screenshot' },
       { key: '?', action: 'Show shortcuts' },
       { key: 'Esc', action: 'Close / Deselect' },
+      { key: 'F', action: 'Toggle FPS stats' },
     ],
   },
 ]
@@ -366,5 +373,6 @@ export const DATA_URLS = {
   privateKeys: '/data/bitcoin-private-keys.json',
   qubicSeeds: '/data/qubic-seeds.json',
   matrix: '/data/matrix-addresses.json',
+  matrixWithXor: '/data/matrix_addresses_with_xor.json', // 983k with XOR metadata
   annaMatrix: '/data/anna-matrix.json',
 } as const

@@ -936,7 +936,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
               <div className="flex items-center gap-4 pt-2">
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-yellow-400" />
-                  <span className="text-xs text-gray-400">Neuraxon Compatible</span>
+                  <span className="text-xs text-gray-400">Qortex Compatible</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Binary className="w-4 h-4 text-green-400" />

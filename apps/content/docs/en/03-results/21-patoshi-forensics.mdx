@@ -1,22 +1,32 @@
 ---
 title: Patoshi Forensics - Mining the Genesis
-description: Deep forensic analysis of Bitcoin's Patoshi mining pattern, Block 264, and the 1CFB vanity address revealing Satoshi Nakamoto mined exactly one day after discussing vanity addresses, with hex word patterns linking to Anna Matrix
-tier: 1
-confidence: 85
+description: Forensic analysis of Bitcoin's Patoshi mining pattern and Block 264's 1CFB vanity address. Contains proven forensic facts mixed with speculative CFB=Satoshi hypothesis.
+tier: 3
+confidence: 15
 date: 2026-01-09
 sources:
-  - path: /Users/lukashertle/Developer/projects/qubic-mystery-lab/outputs/phase9/patoshi_deep_forensics.md
-  - path: /Users/lukashertle/Developer/projects/qubic-mystery-lab/outputs/anna_patoshi_cross_reference.json
-  - path: /Users/lukashertle/Developer/projects/qubic-mystery-lab/outputs/patoshi_correlation/patoshi_correlation_20260102_084743.json
+  - path: qubic-mystery-lab/outputs/phase9/patoshi_deep_forensics.md
+  - path: qubic-mystery-lab/outputs/anna_patoshi_cross_reference.json
+  - path: qubic-mystery-lab/outputs/patoshi_correlation/patoshi_correlation_20260102_084743.json
 ---
 
-import { Summary } from '@/components/content/summary'
-import { Callout } from '@/components/content/callout'
-import { Evidence } from '@/components/content/evidence'
-import { Tabs, Tab } from '@/components/content/tabs'
-import { SourceLock } from '@/components/content/source-lock'
-
 # Patoshi Forensics - Mining the Genesis
+
+<Callout type="error" title="SCIENTIFIC AUDIT WARNING">
+**AUDIT ERGEBNIS (Januar 2026)**: Diese Dokumentation vermischt BEWIESENE FAKTEN mit SPEKULATIVEN HYPOTHESEN.
+
+**Was BEWIESEN ist (Tier 1):**
+- Patoshi Pattern existiert (~22,000 Blocks)
+- Block 264 enthält 1CFB Vanity-Adresse
+- Timeline: Satoshi Email + 24h = Block 264
+
+**Was NICHT BEWIESEN ist (Tier 3):**
+- CFB = Satoshi Nakamoto (KEINE kryptographische Beweise)
+- Anna Matrix Korrelationen (SPEKULATION)
+- Combined Probability Berechnungen (ÜBERTRIEBEN)
+
+**Ursprüngliche Confidence: 85%** → **Korrigierte Confidence: 15%**
+</Callout>
 
 <Summary>
 **Patoshi Blocks Identified**: 22,000-27,680 blocks (~43% of first 50,000)
@@ -176,7 +186,7 @@ Thread Group 5: Nonce range [49..58] → scans backward
 | **Current Balance** | 50.005 BTC |
 | **Nonce** | **655,303,724** (0x270B502C hex) |
 | **Nonce Last Byte** | **0x2C = 44 decimal** |
-| **Patoshi Range** | ✅ 44 ∈ [19..58] |
+| **Patoshi Range** | 44 ∈ [19..58] |
 | **Difficulty** | 1.00 |
 | **Coinbase Hex** | 04ffff001d026901 |
 | **Block Size** | 216 bytes |
@@ -749,7 +759,7 @@ Time to mine Block 264 with "1CFB":
 **Block 264 Nonce**: 655,303,724
 - Hex: 0x270B502C
 - Last byte: 0x2C = **44 decimal**
-- **Verification**: 44 ∈ [19..58] ✅
+- **Verification**: 44 ∈ [19..58] 
 
 **Analysis**:
 1. Satoshi set target: Find block with "1CFB" address
@@ -1064,12 +1074,12 @@ P(all events by chance) = 10⁻⁵⁰ × 10⁻⁵ × 0.01 × 0.001 × 0.0001 × 
 
 <Callout type="warning" title="Scientific Distinction: Proven Facts vs Hypothesis">
 **TIER 1 - PROVEN FACTS (99% confidence)**:
-1. ✅ Patoshi pattern exists (~22,000-27,680 blocks)
-2. ✅ ~1.1 million BTC mined with Patoshi signature
-3. ✅ Block 264 contains "1CFB" vanity address
-4. ✅ Timeline: Satoshi's vanity email (Jan 12) + 24h = Block 264 (Jan 13)
-5. ✅ Four distinctive mining signatures (nonce range, ExtraNonce, direction, timestamps)
-6. ✅ Combined probability p < 10⁻⁵⁰ (Patoshi is real)
+1. Patoshi pattern exists (~22,000-27,680 blocks)
+2. ~1.1 million BTC mined with Patoshi signature
+3. Block 264 contains "1CFB" vanity address
+4. Timeline: Satoshi's vanity email (Jan 12) + 24h = Block 264 (Jan 13)
+5. Four distinctive mining signatures (nonce range, ExtraNonce, direction, timestamps)
+6. Combined probability p < 10⁻⁵⁰ (Patoshi is real)
 
 **Source**: Sergio Demian Lerner's research (2013), blockchain analysis
 

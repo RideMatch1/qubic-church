@@ -584,6 +584,391 @@ export const docsConfig: DocsConfig = {
         },
 
         {
+          href: '/docs/03-results/42-21e8-block-mystery',
+
+          title: {
+            en: 'The 21e8 Block Mystery',
+            pt: 'O Mistério do Bloco 21e8',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/43-the-bridge-revelation',
+
+          title: {
+            en: 'The Bridge Revelation',
+            pt: 'A Revelação da Ponte',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/44-blockchain-archaeology',
+
+          title: {
+            en: 'Blockchain Archaeology',
+            pt: 'Arqueologia Blockchain',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/45-mybitcoin-whale-investigation',
+
+          title: {
+            en: 'MyBitcoin Whale Investigation',
+            pt: 'Investigação da Baleia MyBitcoin',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/47-anna-matrix-lexikon',
+
+          title: {
+            en: 'Anna Matrix Lexikon',
+            pt: 'Léxico da Matrix Anna',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/51-anna-matrix-symmetry',
+
+          title: {
+            en: 'Point-Symmetry Discovery',
+            pt: 'Descoberta de Simetria',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/52-68-anomaly-cells',
+
+          title: {
+            en: 'The 68 Anomaly Cells',
+            pt: 'As 68 Células Anômalas',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/53-decode-key-system',
+
+          title: {
+            en: 'Decode Key System',
+            pt: 'Sistema de Chave Decode',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/54-1cfb-solution-breakthrough',
+
+          title: {
+            en: '1CFB Solution Breakthrough',
+            pt: 'Avanço na Solução 1CFB',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/55-fibonacci-encoding',
+
+          title: {
+            en: 'Fibonacci Encoding',
+            pt: 'Codificação Fibonacci',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/56-127-formula-discovery',
+
+          title: {
+            en: 'The 127 Formula',
+            pt: 'A Fórmula 127',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/57-position-encoding',
+
+          title: {
+            en: 'Position Encoding',
+            pt: 'Codificação de Posição',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/58-perfect-powers-geography',
+
+          title: {
+            en: 'Perfect Powers Geography',
+            pt: 'Geografia de Potências',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/59-mersenne-recursion',
+
+          title: {
+            en: 'Mersenne Recursion',
+            pt: 'Recursão de Mersenne',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/60-64-pairs-complete-analysis',
+
+          title: {
+            en: '64 Pairs Complete Analysis',
+            pt: 'Análise Completa de 64 Pares',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/61-hidden-messages-complete',
+
+          title: {
+            en: 'Hidden Messages Complete',
+            pt: 'Mensagens Ocultas Completa',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/62-negative-results-validation',
+
+          title: {
+            en: 'Negative Results (Validation)',
+            pt: 'Resultados Negativos (Validação)',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/63-validation-report-complete',
+
+          title: {
+            en: 'Validation Report Complete',
+            pt: 'Relatório de Validação Completo',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/64-cfb-signature-breakthrough',
+
+          title: {
+            en: 'CFB Signature Breakthrough',
+            pt: 'Descoberta da Assinatura CFB',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/65-validated-message-inventory',
+
+          title: {
+            en: 'Validated Message Inventory',
+            pt: 'Inventário de Mensagens Validadas',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/66-complete-validation-report',
+
+          title: {
+            en: 'Complete Validation Report',
+            pt: 'Relatório de Validação Completo',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/67-god-mode-breakthrough',
+
+          title: {
+            en: 'GOD MODE Breakthrough',
+            pt: 'Descoberta GOD MODE',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/48-god-mode-discoveries',
+
+          title: {
+            en: 'GOD MODE Discoveries',
+            pt: 'Descobertas GOD MODE',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/51-god-mode-discoveries',
+
+          title: {
+            en: 'GOD MODE: Ultimate Analysis',
+            pt: 'GOD MODE: Análise Completa',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/45-live-resonance-tests',
+
+          title: {
+            en: 'Live Resonance Tests',
+            pt: 'Testes de Ressonância ao Vivo',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/46-strategic-node-inventory',
+
+          title: {
+            en: 'Strategic Node Inventory',
+            pt: 'Inventário de Nós Estratégicos',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/67-honest-assessment',
+
+          title: {
+            en: 'Honest Assessment (Audit)',
+            pt: 'Avaliação Honesta (Auditoria)',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/68-deep-verification-results',
+
+          title: {
+            en: 'Deep Verification Results',
+            pt: 'Resultados de Verificação Profunda',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/69-ai-deep-dive-results',
+
+          title: {
+            en: 'AI Deep Dive Results',
+            pt: 'Resultados do AI Deep Dive',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/70-aigarth-source-analysis',
+
+          title: {
+            en: 'Aigarth Source Code Analysis',
+            pt: 'Análise do Código Fonte Aigarth',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/71-aigarth-live-experiments',
+
+          title: {
+            en: 'Aigarth Live Experiments',
+            pt: 'Experimentos Aigarth ao Vivo',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/72-anna-bot-algorithm',
+
+          title: {
+            en: 'Anna-Bot Algorithm Verified',
+            pt: 'Algoritmo Anna-Bot Verificado',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/73-research-roadmap',
+
+          title: {
+            en: 'Research Roadmap',
+            pt: 'Roteiro de Pesquisa',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/74-future-research-roadmap',
+
+          title: {
+            en: 'Future Research Plan',
+            pt: 'Plano de Pesquisa Futura',
+          },
+
+          items: [],
+        },
+
+        {
+          href: '/docs/03-results/75-bridge-technical-spec',
+
+          title: {
+            en: 'Bridge Technical Specification',
+            pt: 'Especificacao Tecnica da Ponte',
+          },
+
+          items: [],
+        },
+
+        {
           href: '/docs/03-results/14-glossary',
 
           title: {

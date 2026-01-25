@@ -118,20 +118,18 @@ export default function BitcoinAddressesTable() {
             {showPrivateKeys ? String(value) : '•'.repeat(30) + '...'}
           </span>
           {showPrivateKeys && (
-            <>
-              <button
-                onClick={() => handleCopy(String(value), `wif-${row.id}`)}
-                className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-              >
-                {copiedId === `wif-${row.id}` ? (
-                  <Check className="w-3 h-3 text-green-500" />
-                ) : (
-                  <Copy className="w-3 h-3 text-muted-foreground" />
-                )}
-              </button>
-              <ExplorerButton type="bitcoin" value={row.address} />
-            </>
+            <button
+              onClick={() => handleCopy(String(value), `wif-${row.id}`)}
+              className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+            >
+              {copiedId === `wif-${row.id}` ? (
+                <Check className="w-3 h-3 text-green-500" />
+              ) : (
+                <Copy className="w-3 h-3 text-muted-foreground" />
+              )}
+            </button>
           )}
+          <ExplorerButton type="bitcoin" value={row.address} />
         </div>
       ),
     },

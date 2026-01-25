@@ -83,12 +83,16 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
                 )
             )}
 
+            <MobileLink href="/timeline" onOpenChange={setOpen}>
+              Journey
+            </MobileLink>
+
             <MobileLink href="/evidence" onOpenChange={setOpen}>
               Evidence
             </MobileLink>
 
-            <MobileLink href="/cfb" onOpenChange={setOpen}>
-              CFB Forensics
+            <MobileLink href="/agents" onOpenChange={setOpen}>
+              Agents
             </MobileLink>
           </div>
 

@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { JourneySection } from '../JourneySection'
-import { Calculator, CheckCircle, XCircle, Lightbulb, Zap, HelpCircle } from 'lucide-react'
+import { Calculator, CheckCircle, XCircle, Lightbulb, Zap, HelpCircle, ExternalLink } from 'lucide-react'
 import { useGamificationSafe } from '@/components/gamification/GamificationProvider'
 
 export function FormulaSection() {
@@ -385,9 +385,17 @@ export function FormulaSection() {
           <div className="p-5 rounded-xl bg-green-500/5 border border-green-500/20">
             <div className="text-3xl font-mono font-bold text-green-400 mb-2">137</div>
             <div className="text-sm text-white/60 font-medium mb-1">Fine Structure Constant</div>
-            <p className="text-xs text-white/40 leading-relaxed">
-              α⁻¹ ≈ 137 — a fundamental constant in physics that governs the universe
+            <p className="text-xs text-white/40 leading-relaxed mb-2">
+              α⁻¹ ≈ 137 — a fundamental constant in physics that governs electromagnetic interactions
             </p>
+            <a
+              href="https://en.wikipedia.org/wiki/Fine-structure_constant"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-green-400 hover:text-green-300 transition-colors"
+            >
+              Learn more on Wikipedia <ExternalLink className="h-3 w-3" />
+            </a>
           </div>
         </motion.div>
 

@@ -16,6 +16,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { Callout } from '@/components/callout'
+import { Callout as CalloutContent } from '@/components/content/callout'
+import { Summary } from '@/components/content/summary'
+import { Evidence } from '@/components/content/evidence'
+import { Tabs as TabsContent2, Tab } from '@/components/content/tabs'
+import { SourceLock } from '@/components/content/source-lock'
+import { Source } from '@/components/content/source'
 import { Link } from '@/navigation'
 import { cn } from '@/lib/utils'
 
@@ -51,6 +57,11 @@ const components = {
   AccordionContent,
   AccordionTrigger,
   AlertDescription,
+  Summary,
+  Evidence,
+  Tab,
+  SourceLock,
+  Source,
 
   h1,
   h2,

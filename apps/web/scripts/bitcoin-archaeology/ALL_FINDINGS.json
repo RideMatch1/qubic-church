@@ -1,0 +1,530 @@
+{
+  "timestamp": "2026-01-22T22:38:22.937899",
+  "l137_address_analysis": {
+    "address": "1K69sEhUwNgiva3xzPnToxS89dzydU7nPm",
+    "label": "L137 Sender Address",
+    "total_received": 6.17383153,
+    "total_sent": 6.17383153,
+    "tx_count": 314,
+    "transactions": [
+      {
+        "txid": "fe6a97af328cdfb872affaf291d11b44979bedeee63cf19b2b25cefc6d0ee220",
+        "block_height": 565797,
+        "confirmed": true,
+        "fee": 908,
+        "size": 336,
+        "input_count": 2,
+        "output_count": 1
+      },
+      {
+        "txid": "96d03a8b67809d801d704dcf6075d7ebe7f28361ec5e7a9fc67b790093bba8c3",
+        "block_height": 469763,
+        "confirmed": true,
+        "fee": 16260,
+        "size": 272,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "1f1b7acbe8c5f078cc28f4d131d0112f2ce388db1288844b163c5dcd5d2889f1",
+        "block_height": 469315,
+        "confirmed": true,
+        "fee": 88830,
+        "size": 271,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "b7fa8645ea0b3cdd9c7dd43499c709034da0985555d69fed9fe4848266f80ad6",
+        "block_height": 465275,
+        "confirmed": true,
+        "fee": 22500,
+        "size": 225,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "e2b3131bb161320256d24f4de6b04b7908c7f3e93139278cc46a61fc860d0720",
+        "block_height": 461781,
+        "confirmed": true,
+        "fee": 54480,
+        "size": 228,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "67943cac23624e7101adebf3ebc124a8143239224e17dfb02553b517384c5bf3",
+        "block_height": 461774,
+        "confirmed": true,
+        "fee": 40824,
+        "size": 244,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "90f96d3ce6b1bb326c2316ac6a972cc338a1475048fb599333e7456128be5a34",
+        "block_height": 460828,
+        "confirmed": true,
+        "fee": 31200,
+        "size": 260,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "d8438d43de3fcf17c8bbeee8bc01ac64e0fa0d2e8ed4ab8c9a3f3b47dbf43db9",
+        "block_height": 458343,
+        "confirmed": true,
+        "fee": 27360,
+        "size": 229,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "39b6c3e4f7bea33e51a03b761c622374ae1ed25d70aedfa6ba2d1119306c35d9",
+        "block_height": 458157,
+        "confirmed": true,
+        "fee": 37280,
+        "size": 234,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "2fb07a8f358d690d8717734a48e5daf0ef70ea2d0e3b7c88dace8a5818fcb168",
+        "block_height": 457561,
+        "confirmed": true,
+        "fee": 29770,
+        "size": 229,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "dfa4754fac8b16d276dc88397851654d4cbca42d92a0d93c4d160711d4f9fde7",
+        "block_height": 457546,
+        "confirmed": true,
+        "fee": 38560,
+        "size": 241,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "95d9184c9cedb635d21ccec0e505f4136b5573e03436149f62bf0c941066f22a",
+        "block_height": 457382,
+        "confirmed": true,
+        "fee": 44320,
+        "size": 278,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "b08a83615bb84b2b1fb8bdedae94a8f864cbee10b87652f8706d26d25ffd1d7d",
+        "block_height": 457369,
+        "confirmed": true,
+        "fee": 35040,
+        "size": 220,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "75993f78a82b40a3e6b089123ccaf3cf07cc4acd9b513956b86d594739bdfd92",
+        "block_height": 456483,
+        "confirmed": true,
+        "fee": 43360,
+        "size": 272,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "d5e3569f9464813eb7d9cc4914a0be4d4deb288e50a978b36734e074c0e89255",
+        "block_height": 455769,
+        "confirmed": true,
+        "fee": 27120,
+        "size": 226,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "5328d1c35aaf2cdfad17fc5eb7935cc4f37f4678914def6c013378738b4dbc4a",
+        "block_height": 455671,
+        "confirmed": true,
+        "fee": 58940,
+        "size": 422,
+        "input_count": 2,
+        "output_count": 2
+      },
+      {
+        "txid": "80d28348f9157e67b46ac136f966d7262c618fe737051940677b516008f5987a",
+        "block_height": 455641,
+        "confirmed": true,
+        "fee": 48230,
+        "size": 373,
+        "input_count": 2,
+        "output_count": 2
+      },
+      {
+        "txid": "4ce14f3cc9f59f815c4fc757a5bb86e763924f86688b85f76701f5fea4c0687c",
+        "block_height": 455614,
+        "confirmed": true,
+        "fee": 32760,
+        "size": 235,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "4065265ae8bbeada5135c5a8d4b40f09a58e6a1dafe8192fccf79ea212d0713e",
+        "block_height": 455612,
+        "confirmed": true,
+        "fee": 27430,
+        "size": 212,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "7386b2aa4cb9df9331f5bac1d0e750e6688142a63b849bb853bb0ad2e82ef54a",
+        "block_height": 455602,
+        "confirmed": true,
+        "fee": 42931,
+        "size": 191,
+        "input_count": 1,
+        "output_count": 1
+      },
+      {
+        "txid": "fbefe4687b0e96414f078fc135c140f92d65835ecdfe9563c5d6c98e16f35ec2",
+        "block_height": 455600,
+        "confirmed": true,
+        "fee": 29820,
+        "size": 213,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "b1b3831ba7466f403aa0a2cb8802437441ed60d817d1386fe9277951f58eaec0",
+        "block_height": 455596,
+        "confirmed": true,
+        "fee": 36400,
+        "size": 260,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "4e37132f127351d05f642b7806b542cdb215a6cfc64172cee48a3555a9906760",
+        "block_height": 455592,
+        "confirmed": true,
+        "fee": 38360,
+        "size": 274,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "4876f8e2ec1acc1d37d246cae416a7c8ffba951823aa01633337d7ec7f0e958b",
+        "block_height": 455591,
+        "confirmed": true,
+        "fee": 32760,
+        "size": 235,
+        "input_count": 1,
+        "output_count": 2
+      },
+      {
+        "txid": "4ba30d3f19cd3acfef5ab0eaf2f798e30f534097634b2c9c8959a95eaf3fb2c8",
+        "block_height": 455589,
+        "confirmed": true,
+        "fee": 30100,
+        "size": 216,
+        "input_count": 1,
+        "output_count": 2
+      }
+    ],
+    "connected_addresses": [
+      "162tvWHZuh19Jpg4WXXj3DW63QXQ6ydjco",
+      "bc1q9jduwqkjgj3gut75smjrk3uxzeue5vc3lz6x0q"
+    ],
+    "op_return_messages": [
+      {
+        "txid": "96d03a8b67809d801d704dcf6075d7ebe7f28361ec5e7a9fc67b790093bba8c3",
+        "hex": "6a454c3330372c31643761356465646362616336653961383939366533343630323261383436346535646434303561623433356165613266366564386563326464373336333539",
+        "decoded": "L307,1d7a5dedcbac6e9a8996e346022a8464e5dd405ab435aea2f6ed8ec2dd736359",
+        "block_height": 469763
+      },
+      {
+        "txid": "1f1b7acbe8c5f078cc28f4d131d0112f2ce388db1288844b163c5dcd5d2889f1",
+        "hex": "6a444c3330362c4a6f75726e616c20706170657220636f6d706c6574652032656265353661663666326437356136336630626465353362636661633063613337656237376331",
+        "decoded": "L306,Journal paper complete 2ebe56af6f2d75a63f0bde53bcfac0ca37eb77c1",
+        "block_height": 469315
+      },
+      {
+        "txid": "b7fa8645ea0b3cdd9c7dd43499c709034da0985555d69fed9fe4848266f80ad6",
+        "hex": "6a174c3330352c54686973206973207665727920636f6f6c2e",
+        "decoded": "L305,This is very cool.",
+        "block_height": 465275
+      },
+      {
+        "txid": "e2b3131bb161320256d24f4de6b04b7908c7f3e93139278cc46a61fc860d0720",
+        "hex": "6a194c3330342c4e6f7720626974636f696e206973203132303024",
+        "decoded": "L304,Now bitcoin is 1200$",
+        "block_height": 461781
+      },
+      {
+        "txid": "67943cac23624e7101adebf3ebc124a8143239224e17dfb02553b517384c5bf3",
+        "hex": "6a294c3330332c68747470733a2f2f7777772e66616365626f6f6b2e636f6d2f646969682e64617972656c",
+        "decoded": "L303,https://www.facebook.com/diih.dayrel",
+        "block_height": 461774
+      },
+      {
+        "txid": "90f96d3ce6b1bb326c2316ac6a972cc338a1475048fb599333e7456128be5a34",
+        "hex": "6a3a4c3330322c4e6963636f6cc3b220466172696e61726f2032312f30392f32303135202d20706170c3a02065206d616d6d6120746920616d616e6f",
+        "decoded": "L302,Niccol\u00f2 Farinaro 21/09/2015 - pap\u00e0 e mamma ti amano",
+        "block_height": 460828
+      },
+      {
+        "txid": "d8438d43de3fcf17c8bbeee8bc01ac64e0fa0d2e8ed4ab8c9a3f3b47dbf43db9",
+        "hex": "6a1a4c3330312c4d617269616e6120e299a5204e617263c3a96c696f",
+        "decoded": "L301,Mariana \u2665 Narc\u00e9lio",
+        "block_height": 458343
+      },
+      {
+        "txid": "39b6c3e4f7bea33e51a03b761c622374ae1ed25d70aedfa6ba2d1119306c35d9",
+        "hex": "6a1f4c3330302c544f20544845204d4f4f4e2120e2949728c2b030c2b029e2949b",
+        "decoded": "L300,TO THE MOON! \u2517(\u00b00\u00b0)\u251b",
+        "block_height": 458157
+      },
+      {
+        "txid": "2fb07a8f358d690d8717734a48e5daf0ef70ea2d0e3b7c88dace8a5818fcb168",
+        "hex": "6a1b4c3239392c5472756d7020746f7563686564206d79206e6f2d6e6f",
+        "decoded": "L299,Trump touched my no-no",
+        "block_height": 457561
+      },
+      {
+        "txid": "dfa4754fac8b16d276dc88397851654d4cbca42d92a0d93c4d160711d4f9fde7",
+        "hex": "6a274c3239382c77686f207061797320746865206d696e696e672066656520666f722074686573653f",
+        "decoded": "L298,who pays the mining fee for these?",
+        "block_height": 457546
+      },
+      {
+        "txid": "95d9184c9cedb635d21ccec0e505f4136b5573e03436149f62bf0c941066f22a",
+        "hex": "6a4b4c3239372c2f752f4675636b796f757368696c6c3233202b202f722f57686572654973417373616e676520617265207374757069642c2070726f766573206e6164612c206173736861742e",
+        "decoded": "L297,/u/Fuckyoushill23 + /r/WhereIsAssange are stupid, proves nada, asshat.",
+        "block_height": 457382
+      },
+      {
+        "txid": "b08a83615bb84b2b1fb8bdedae94a8f864cbee10b87652f8706d26d25ffd1d7d",
+        "hex": "6a114c3239362c746869732069732064756d62",
+        "decoded": "L296,this is dumb",
+        "block_height": 457369
+      },
+      {
+        "txid": "75993f78a82b40a3e6b089123ccaf3cf07cc4acd9b513956b86d594739bdfd92",
+        "hex": "6a454c3239352c33373666343839633737316634393865373731366338396431643531653833343633376134653235313838343130336666343231313831396138343565663963",
+        "decoded": "L295,376f489c771f498e7716c89d1d51e834637a4e251884103ff4211819a845ef9c",
+        "block_height": 456483
+      },
+      {
+        "txid": "d5e3569f9464813eb7d9cc4914a0be4d4deb288e50a978b36734e074c0e89255",
+        "hex": "6a184c3239342c416e6420736f20697420626567696e732e2e2e",
+        "decoded": "L294,And so it begins...",
+        "block_height": 455769
+      },
+      {
+        "txid": "5328d1c35aaf2cdfad17fc5eb7935cc4f37f4678914def6c013378738b4dbc4a",
+        "hex": "6a494c3239332c596f75206c6f7374207468652067616d652068747470733a2f2f656e2e77696b6970656469612e6f72672f77696b692f5468655f47616d655f286d696e645f67616d6529",
+        "decoded": "L293,You lost the game https://en.wikipedia.org/wiki/The_Game_(mind_game)",
+        "block_height": 455671
+      },
+      {
+        "txid": "80d28348f9157e67b46ac136f966d7262c618fe737051940677b516008f5987a",
+        "hex": "6a174c3239322c4c6f76652069732074686520616e73776572",
+        "decoded": "L292,Love is the answer",
+        "block_height": 455641
+      },
+      {
+        "txid": "4ce14f3cc9f59f815c4fc757a5bb86e763924f86688b85f76701f5fea4c0687c",
+        "hex": "6a204c3239312c436875636b6c657320697320612066696c7468792062656173742e",
+        "decoded": "L291,Chuckles is a filthy beast.",
+        "block_height": 455614
+      },
+      {
+        "txid": "4065265ae8bbeada5135c5a8d4b40f09a58e6a1dafe8192fccf79ea212d0713e",
+        "hex": "6a094c3239302c64646464",
+        "decoded": "L290,dddd",
+        "block_height": 455612
+      },
+      {
+        "txid": "fbefe4687b0e96414f078fc135c140f92d65835ecdfe9563c5d6c98e16f35ec2",
+        "hex": "6a0b4c3238392c64656e656d65",
+        "decoded": "L289,deneme",
+        "block_height": 455600
+      },
+      {
+        "txid": "b1b3831ba7466f403aa0a2cb8802437441ed60d817d1386fe9277951f58eaec0",
+        "hex": "6a3a4c3238382c496620476f64206578697374732c2068652077696c6c206e65656420746f2062656720666f72206d7920666f726769766e6573732e",
+        "decoded": "L288,If God exists, he will need to beg for my forgivness.",
+        "block_height": 455596
+      },
+      {
+        "txid": "4e37132f127351d05f642b7806b542cdb215a6cfc64172cee48a3555a9906760",
+        "hex": "6a484c3238372c5261736d75732042656e6774736f6e204dc3b86c6c657220736e796465722073696e6520616e7361747465206f672074726f722068616e2065722067616e6773746572",
+        "decoded": "L287,Rasmus Bengtson M\u00f8ller snyder sine ansatte og tror han er gangster",
+        "block_height": 455592
+      },
+      {
+        "txid": "4876f8e2ec1acc1d37d246cae416a7c8ffba951823aa01633337d7ec7f0e958b",
+        "hex": "6a204c3238362cc5bcc3b3c582746120c5bc61626120c5bc6172c5826120c5bc7572",
+        "decoded": "L286,\u017c\u00f3\u0142ta \u017caba \u017car\u0142a \u017cur",
+        "block_height": 455591
+      },
+      {
+        "txid": "4ba30d3f19cd3acfef5ab0eaf2f798e30f534097634b2c9c8959a95eaf3fb2c8",
+        "hex": "6a0d4c3238352c534a432032303137",
+        "decoded": "L285,SJC 2017",
+        "block_height": 455589
+      }
+    ]
+  },
+  "blocks_digit_sum_27": {
+    "count": 27626,
+    "sample": [
+      999,
+      1899,
+      1989,
+      1998,
+      2799,
+      2889,
+      2898,
+      2979,
+      2988,
+      2997,
+      3699,
+      3789,
+      3798,
+      3879,
+      3888,
+      3897,
+      3969,
+      3978,
+      3987,
+      3996,
+      4599,
+      4689,
+      4698,
+      4779,
+      4788,
+      4797,
+      4869,
+      4878,
+      4887,
+      4896,
+      4959,
+      4968,
+      4977,
+      4986,
+      4995,
+      5499,
+      5589,
+      5598,
+      5679,
+      5688,
+      5697,
+      5769,
+      5778,
+      5787,
+      5796,
+      5859,
+      5868,
+      5877,
+      5886,
+      5895,
+      5949,
+      5958,
+      5967,
+      5976,
+      5985,
+      5994,
+      6399,
+      6489,
+      6498,
+      6579,
+      6588,
+      6597,
+      6669,
+      6678,
+      6687,
+      6696,
+      6759,
+      6768,
+      6777,
+      6786,
+      6795,
+      6849,
+      6858,
+      6867,
+      6876,
+      6885,
+      6894,
+      6939,
+      6948,
+      6957,
+      6966,
+      6975,
+      6984,
+      6993,
+      7299,
+      7389,
+      7398,
+      7479,
+      7488,
+      7497,
+      7569,
+      7578,
+      7587,
+      7596,
+      7659,
+      7668,
+      7677,
+      7686,
+      7695,
+      7749
+    ]
+  },
+  "search_patterns": [
+    "L127",
+    "L576",
+    "L676",
+    "L137",
+    "L307",
+    "BCNext",
+    "come-from-beyond",
+    "cfb",
+    "CfB",
+    "aigarth",
+    "AIGARTH",
+    "ternary",
+    "QUBIC",
+    "qubic",
+    "Qubic",
+    "IOTA",
+    "iota",
+    "Iota",
+    "NXT",
+    "nxt",
+    "Nxt",
+    "JINN",
+    "jinn",
+    "Jinn",
+    "satoshi",
+    "Satoshi",
+    "nakamoto",
+    "Nakamoto",
+    "2026",
+    "2027",
+    "ternary",
+    "trinary",
+    "proof of work",
+    "proof-of-work",
+    "quantum",
+    "quorum",
+    "genesis"
+  ],
+  "known_addresses": {
+    "1K69sEhUwNgiva3xzPnToxS89dzydU7nPm": "L137 Sender Address",
+    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa": "Genesis Block Coinbase",
+    "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S": "Hal Finney's Address"
+  }
+}

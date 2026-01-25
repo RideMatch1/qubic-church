@@ -10,7 +10,11 @@ interface MainNavProps {
     docs: string
     blog: string
     evidence?: string
-    cfb?: string
+    monitoring?: string
+    aigarth?: string
+    nft?: string
+    timeline?: string
+    agents?: string
   }
 }
 
@@ -43,6 +47,18 @@ export function MainNav({ messages }: MainNavProps) {
         <Link
           className={cn(
             'hover:text-foreground/80 transition-colors',
+            pathname.includes('/timeline')
+              ? 'dark:text-primary-active'
+              : 'text-foreground/60'
+          )}
+          href="/timeline"
+        >
+          {messages.timeline || 'Journey'}
+        </Link>
+
+        <Link
+          className={cn(
+            'hover:text-foreground/80 transition-colors',
             pathname.includes('/evidence')
               ? 'dark:text-primary-active'
               : 'text-foreground/60'
@@ -55,13 +71,55 @@ export function MainNav({ messages }: MainNavProps) {
         <Link
           className={cn(
             'hover:text-foreground/80 transition-colors',
-            pathname.includes('/cfb')
+            pathname.includes('/monitoring')
               ? 'dark:text-primary-active'
               : 'text-foreground/60'
           )}
-          href="/cfb"
+          href="/monitoring"
         >
-          {messages.cfb || 'CFB Forensics'}
+          <span className="flex items-center gap-1.5">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+            </span>
+            {messages.monitoring || 'Live'}
+          </span>
+        </Link>
+
+        <Link
+          className={cn(
+            'hover:text-foreground/80 transition-colors',
+            pathname.includes('/aigarth-computer')
+              ? 'dark:text-primary-active'
+              : 'text-foreground/60'
+          )}
+          href="/aigarth-computer"
+        >
+          {messages.aigarth || 'Aigarth'}
+        </Link>
+
+        <Link
+          className={cn(
+            'hover:text-foreground/80 transition-colors',
+            pathname.includes('/nft')
+              ? 'dark:text-primary-active'
+              : 'text-foreground/60'
+          )}
+          href="/nft"
+        >
+          {messages.nft || 'NFT'}
+        </Link>
+
+        <Link
+          className={cn(
+            'hover:text-foreground/80 transition-colors',
+            pathname.includes('/agents')
+              ? 'dark:text-primary-active'
+              : 'text-foreground/60'
+          )}
+          href="/agents"
+        >
+          {messages.agents || 'Agents'}
         </Link>
       </nav>
     </div>

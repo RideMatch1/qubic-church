@@ -3,7 +3,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from '@/navigation'
-import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 import {
   Database,
   Binary,
@@ -45,8 +44,8 @@ const QUICK_LINKS = [
     icon: BookOpen,
   },
   {
-    label: 'CFB Forensics',
-    href: '/cfb',
+    label: 'NFT Collection',
+    href: '/nft',
     icon: Sparkles,
   },
   {
@@ -104,7 +103,7 @@ export function EvidenceFooter() {
                 </div>
                 <div>
                   <div className={`text-2xl font-bold font-mono ${stat.color}`}>
-                    <AnimatedCounter value={stat.value} duration={2000} />
+                    {stat.value.toLocaleString()}
                   </div>
                   <div className="text-xs text-muted-foreground">{stat.label} Addresses</div>
                 </div>
@@ -123,7 +122,7 @@ export function EvidenceFooter() {
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 rounded-full border border-primary/20">
             <Shield className="w-5 h-5 text-primary" />
             <span className="font-mono text-lg text-primary font-bold">
-              <AnimatedCounter value={1050515} duration={2500} />
+              {(1050515).toLocaleString()}
             </span>
             <span className="text-primary/80">Records Verified On-Chain</span>
           </div>

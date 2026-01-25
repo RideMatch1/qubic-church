@@ -1,16 +1,18 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Copy, Check, ExternalLink, X, ArrowRight, ArrowLeft, Zap, Activity, Box } from 'lucide-react'
-import { useState } from 'react'
-import type { NeuraxonNode, NeuraxonEdge } from './types'
+import { Copy, Check, ExternalLink, X, ArrowRight, ArrowLeft, Zap, Activity, Box, Cpu, GitBranch, Binary } from 'lucide-react'
+import { useState, useMemo } from 'react'
+import type { QortexNode, QortexEdge } from './types'
 
 interface NeuronDetailPanelProps {
-  node: NeuraxonNode
-  connections: { incoming: NeuraxonEdge[]; outgoing: NeuraxonEdge[] }
-  getNodeById: (id: number) => NeuraxonNode | undefined
+  node: QortexNode
+  connections: { incoming: QortexEdge[]; outgoing: QortexEdge[] }
+  getNodeById: (id: number) => QortexNode | undefined
   onClose: () => void
-  onNodeClick: (node: NeuraxonNode) => void
+  onNodeClick: (node: QortexNode) => void
+  /** Callback to analyze this neuron's seed in Aigarth Processing */
+  onAnalyzeInAigarth?: (seed: string, neuronId: number, publicId: string, frame: number) => void
 }
 
 // State display helpers
@@ -59,9 +61,20 @@ export function NeuronDetailPanel({
   getNodeById,
   onClose,
   onNodeClick,
+  onAnalyzeInAigarth,
 }: NeuronDetailPanelProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null)
-  const [activeTab, setActiveTab] = useState<'info' | 'connections'>('info')
+  const [activeTab, setActiveTab] = useState<'info' | 'connections' | 'evolution'>('info')
+
+  // Calculate synapse weight distribution
+  const synapseStats = useMemo(() => {
+    const allEdges = [...connections.outgoing, ...connections.incoming]
+    const total = allEdges.length
+    const fast = allEdges.filter(e => e.weight > 0.7).length
+    const slow = allEdges.filter(e => e.weight >= 0.4 && e.weight <= 0.7).length
+    const meta = allEdges.filter(e => e.weight < 0.4).length
+    return { total, fast, slow, meta }
+  }, [connections])
 
   const handleCopy = async (text: string, field: string) => {
     await navigator.clipboard.writeText(text)
@@ -132,7 +145,7 @@ export function NeuronDetailPanel({
       <div className="flex border-b border-white/10">
         <button
           onClick={() => setActiveTab('info')}
-          className={`flex-1 px-4 py-2.5 text-xs font-medium transition-colors ${
+          className={`flex-1 px-3 py-2.5 text-xs font-medium transition-colors ${
             activeTab === 'info'
               ? 'text-white bg-white/5 border-b-2 border-white'
               : 'text-white/50 hover:text-white hover:bg-white/5'
@@ -142,19 +155,30 @@ export function NeuronDetailPanel({
         </button>
         <button
           onClick={() => setActiveTab('connections')}
-          className={`flex-1 px-4 py-2.5 text-xs font-medium transition-colors ${
+          className={`flex-1 px-3 py-2.5 text-xs font-medium transition-colors ${
             activeTab === 'connections'
               ? 'text-white bg-white/5 border-b-2 border-white'
               : 'text-white/50 hover:text-white hover:bg-white/5'
           }`}
         >
-          Connections ({connections.outgoing.length + connections.incoming.length})
+          Synapses
+        </button>
+        <button
+          onClick={() => setActiveTab('evolution')}
+          className={`flex-1 px-3 py-2.5 text-xs font-medium transition-colors ${
+            activeTab === 'evolution'
+              ? 'text-white bg-white/5 border-b-2 border-cyan-400'
+              : 'text-white/50 hover:text-white hover:bg-white/5'
+          }`}
+        >
+          Ternary
         </button>
       </div>
 
       {/* Content */}
       <div className="p-4 space-y-4 max-h-[400px] overflow-y-auto custom-scrollbar">
-        {activeTab === 'info' ? (
+        {/* Identity Tab */}
+        {activeTab === 'info' && (
           <>
             {/* Seed */}
             <div className="space-y-2">
@@ -219,6 +243,7 @@ export function NeuronDetailPanel({
               </div>
             </div>
 
+            {/* Live Balance Lookup */}
             {/* Stats grid */}
             <div className="grid grid-cols-2 gap-3">
               {/* Position */}
@@ -245,18 +270,21 @@ export function NeuronDetailPanel({
               </div>
             </div>
 
-            {/* Quick view button */}
-            <a
-              href={`https://explorer.qubic.org/network/address/${node.realId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white text-sm font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-blue-500/20"
-            >
-              <ExternalLink className="w-4 h-4" />
-              View on Qubic Explorer
-            </a>
+            {/* Action buttons */}
+            {onAnalyzeInAigarth && (
+              <button
+                onClick={() => onAnalyzeInAigarth(node.seed, node.id, node.realId, node.frame)}
+                className="flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white text-sm font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-purple-500/20"
+              >
+                <Zap className="w-4 h-4" />
+                Analyze Neuron
+              </button>
+            )}
           </>
-        ) : (
+        )}
+
+        {/* Synapses Tab */}
+        {activeTab === 'connections' && (
           <>
             {/* Connection summary */}
             <div className="flex items-center justify-center gap-6 py-2">
@@ -361,13 +389,127 @@ export function NeuronDetailPanel({
             </div>
           </>
         )}
+
+        {/* Ternary Tab */}
+        {activeTab === 'evolution' && (
+          <>
+            {/* Data Notice */}
+            <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+              <div className="text-[10px] text-blue-400/90">
+                <strong>Seeds:</strong> Real Qubic seeds from Anna Matrix.
+                <span className="text-blue-400/60"> Network structure is conceptual.</span>
+              </div>
+            </div>
+
+            {/* Neuron Classification - Simplified */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <Cpu className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-medium text-gray-300">Classification</span>
+              </div>
+              <div className="text-xs text-gray-400">
+                {node.type === 'input' ? (
+                  <span><strong className="text-gray-300">K Neuron</strong> - Input layer concept</span>
+                ) : node.type === 'output' ? (
+                  <span><strong className="text-gray-300">L Neuron</strong> - Output layer concept</span>
+                ) : (
+                  <span><strong className="text-gray-300">Hidden Neuron</strong> - Demo node</span>
+                )}
+              </div>
+            </div>
+
+            {/* Ternary State - Simplified */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <Binary className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-medium text-gray-300">Ternary State</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className={`w-8 h-8 rounded flex items-center justify-center font-mono font-bold ${
+                  node.state === 1 ? 'bg-gray-700 text-orange-400' :
+                  node.state === -1 ? 'bg-gray-700 text-blue-400' :
+                  'bg-gray-700 text-gray-400'
+                }`}>
+                  {node.state > 0 ? '+1' : node.state < 0 ? '-1' : '0'}
+                </div>
+                <div className="text-xs text-gray-500">
+                  {node.state === 1 ? 'Positive state (+1)' :
+                   node.state === -1 ? 'Negative state (-1)' :
+                   'Neutral state (0)'}
+                </div>
+              </div>
+            </div>
+
+            {/* Tick Formula - With Honesty Notice */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-gray-400" />
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Tick Formula</span>
+                </div>
+                <span className="text-[9px] px-1.5 py-0.5 bg-yellow-500/20 text-yellow-500 rounded">Conceptual</span>
+              </div>
+              <div className="font-mono text-xs text-gray-400 bg-black/30 p-2 rounded">
+                new_value = clamp(Σ w[i] × n[i])
+              </div>
+              <div className="text-[10px] text-gray-600 mt-2">
+                Describes Qubic&apos;s ternary computation.
+                <span className="text-yellow-500/70"> Not simulated here.</span>
+              </div>
+            </div>
+
+            {/* Connection Summary - Simplified Grayscale */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                Connection Summary
+              </div>
+              {synapseStats.total > 0 ? (
+                <div className="space-y-2">
+                  <div className="flex items-center h-2 rounded overflow-hidden bg-gray-800">
+                    <div
+                      className="h-full bg-gray-500"
+                      style={{ width: `${(synapseStats.fast / synapseStats.total) * 100}%` }}
+                    />
+                    <div
+                      className="h-full bg-gray-600"
+                      style={{ width: `${(synapseStats.slow / synapseStats.total) * 100}%` }}
+                    />
+                    <div
+                      className="h-full bg-gray-700"
+                      style={{ width: `${(synapseStats.meta / synapseStats.total) * 100}%` }}
+                    />
+                  </div>
+                  <div className="text-[10px] text-gray-500">
+                    {synapseStats.total} connections (visualization model)
+                  </div>
+                </div>
+              ) : (
+                <div className="text-xs text-gray-600">No connections</div>
+              )}
+            </div>
+
+            {/* What This Represents */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-start gap-2">
+                <GitBranch className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-xs font-medium text-gray-400 mb-1">Data Sources</div>
+                  <div className="text-[10px] text-gray-500 leading-relaxed">
+                    Seeds derived from Anna Matrix (real Qubic identities).
+                    Network topology is a visualization model, not live network state.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Footer */}
       <div className="px-4 py-3 border-t border-white/10 bg-white/5">
         <div className="flex items-center justify-between text-[10px] text-white/30">
-          <span>Frame {node.frame + 1} of 47</span>
-          <span>Node {node.id + 1} of 512</span>
+          <span>Frame {node.frame + 1}</span>
+          <span className="font-mono">ID: {node.id}</span>
         </div>
       </div>
 

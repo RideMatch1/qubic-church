@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
-import { Database, Cpu, Grid3X3, Coins, Binary, Loader2, Info, Sparkles, TrendingUp } from 'lucide-react'
+import { Database, Cpu, Grid3X3, Info, TrendingUp, Box } from 'lucide-react'
 
 // Tab components will be lazy loaded
 import dynamic from 'next/dynamic'
@@ -27,18 +27,9 @@ function TableSkeleton({ label }: { label?: string }) {
   )
 }
 
-const PatoshiTable = dynamic(() => import('./tables/PatoshiTable'), {
-  loading: () => <TableSkeleton label="Patoshi addresses" />,
-  ssr: false,
-})
-
-const QubicSeedsTable = dynamic(() => import('./tables/QubicSeedsTable'), {
-  loading: () => <TableSkeleton label="Qubic seeds" />,
-  ssr: false,
-})
-
-const BitcoinAddressesTable = dynamic(() => import('./tables/BitcoinAddressesTable'), {
-  loading: () => <TableSkeleton label="Bitcoin addresses" />,
+// Consolidated Address Database Tab (combines Qubic, Bitcoin, Patoshi)
+const AddressDatabaseTab = dynamic(() => import('./tabs/AddressDatabaseTab'), {
+  loading: () => <TableSkeleton label="Address Database" />,
   ssr: false,
 })
 
@@ -49,6 +40,11 @@ const VisualizationsTab = dynamic(() => import('./tabs/VisualizationsTab'), {
 
 const AnnaMatrixTab = dynamic(() => import('./tabs/AnnaMatrixTab'), {
   loading: () => <TableSkeleton label="Anna Matrix" />,
+  ssr: false,
+})
+
+const ContactCubeTab = dynamic(() => import('./tabs/ContactCubeTab'), {
+  loading: () => <TableSkeleton label="Contact Cube" />,
   ssr: false,
 })
 
@@ -63,51 +59,40 @@ interface TabConfig {
   gradient?: string
 }
 
-// Quick Win 14: Enhanced tab config with badges and gradients
+// Research-focused tab configuration
 const TABS: TabConfig[] = [
   {
     id: 'visualizations',
-    label: '3D Viz',
+    label: '3D Analysis',
     icon: <Cpu className="w-4 h-4" />,
-    description: 'Neuraxon neural network & Address Graph visualizations',
+    description: 'Qortex neural network & Address Graph visualizations',
     badge: 'Interactive',
     badgeColor: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
     gradient: 'from-purple-500/20 to-blue-500/20',
   },
   {
+    id: 'contact-cube',
+    label: 'Contact Cube',
+    icon: <Box className="w-4 h-4" />,
+    description: '3D cube folding visualization of the Anna Matrix',
+    badge: 'NEW',
+    badgeColor: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
+    gradient: 'from-cyan-500/20 to-purple-500/20',
+  },
+  {
     id: 'matrix',
-    label: 'Anna Grid',
+    label: 'Anna Matrix',
     icon: <Grid3X3 className="w-4 h-4" />,
     description: '128×128 cryptographic matrix with 16,384 cells',
-    badge: 'Enhanced',
-    badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     gradient: 'from-orange-500/20 to-amber-500/20',
   },
   {
-    id: 'qubic',
-    label: 'Qubic Seeds',
-    icon: <Binary className="w-4 h-4" />,
-    description: 'Complete private & public seed pairs with derivations',
-    count: '23,765',
-    gradient: 'from-blue-500/20 to-cyan-500/20',
-  },
-  {
-    id: 'bitcoin',
-    label: 'Bitcoin',
+    id: 'addresses',
+    label: 'Address Database',
     icon: <Database className="w-4 h-4" />,
-    description: 'Derived Bitcoin addresses with public keys',
+    description: 'Qubic Seeds, Bitcoin addresses & Patoshi mining data',
     count: '1M+',
-    badge: 'Verified',
-    badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-    gradient: 'from-orange-500/20 to-yellow-500/20',
-  },
-  {
-    id: 'patoshi',
-    label: 'Patoshi',
-    icon: <Coins className="w-4 h-4" />,
-    description: 'Early Bitcoin mining addresses (blocks 1-36,288)',
-    count: '21,953',
-    gradient: 'from-amber-500/20 to-orange-500/20',
+    gradient: 'from-blue-500/20 to-orange-500/20',
   },
 ]
 
@@ -174,7 +159,7 @@ export function EvidenceTabs() {
   return (
       <section id="data-tables" className="py-16 px-4">
         <div className="container max-w-7xl mx-auto">
-          {/* Quick Win 18: Section header with total stats */}
+          {/* Section header */}
           <motion.div
             className="text-center mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -183,11 +168,11 @@ export function EvidenceTabs() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full text-sm text-primary mb-4">
               <TrendingUp className="w-4 h-4" />
-              <span className="font-mono">1,050,515 Total Records</span>
+              <span className="font-mono">Research Datasets</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">Evidence Database</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">Data Explorer</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Explore cryptographically verified data connecting Bitcoin&apos;s genesis to Qubic
+              Interactive analysis tools and research datasets
             </p>
           </motion.div>
 
@@ -260,24 +245,20 @@ export function EvidenceTabs() {
               <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-primary/5 to-transparent rounded-br-full pointer-events-none" />
               <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-primary/5 to-transparent rounded-tl-full pointer-events-none" />
 
-              <TabsContent value="patoshi" className="mt-0 focus-visible:outline-none">
-                <PatoshiTable />
-              </TabsContent>
-
-              <TabsContent value="qubic" className="mt-0 focus-visible:outline-none">
-                <QubicSeedsTable />
-              </TabsContent>
-
-              <TabsContent value="bitcoin" className="mt-0 focus-visible:outline-none">
-                <BitcoinAddressesTable />
-              </TabsContent>
-
               <TabsContent value="visualizations" className="mt-0 focus-visible:outline-none">
                 <VisualizationsTab />
               </TabsContent>
 
+              <TabsContent value="contact-cube" className="mt-0 focus-visible:outline-none">
+                <ContactCubeTab />
+              </TabsContent>
+
               <TabsContent value="matrix" className="mt-0 focus-visible:outline-none">
                 <AnnaMatrixTab />
+              </TabsContent>
+
+              <TabsContent value="addresses" className="mt-0 focus-visible:outline-none">
+                <AddressDatabaseTab />
               </TabsContent>
             </motion.div>
           </Tabs>

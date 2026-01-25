@@ -74,7 +74,7 @@ function generateNFTCollection(): NFT[] {
       name: `Anna #${String(i).padStart(3, '0')}`,
       title: getNFTTitle(i),
       description: getNFTDescription(i),
-      image: `/images/nfts/anna-${String(i).padStart(3, '0')}.png`,
+      image: `/images/nfts/anna-${String(i).padStart(3, '0')}.webp`,
       owner: null, // To be populated from QubicBay API
       qubicBayLink: `https://qubicbay.com/nft/anna-${String(i).padStart(3, '0')}`,
       rarity,

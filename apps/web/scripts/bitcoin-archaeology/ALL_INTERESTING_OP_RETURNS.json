@@ -1,0 +1,246 @@
+{
+  "metadata": {
+    "analysis_date": "2026-01-22",
+    "purpose": "CFB/Satoshi-relevant OP_RETURN messages from Bitcoin blockchain",
+    "search_patterns": [
+      "L127", "L576", "L676", "L137", "BCNext", "come-from-beyond",
+      "aigarth", "ternary", "QUBIC", "IOTA", "NXT", "JINN", "satoshi"
+    ]
+  },
+
+  "l137_address_op_returns": {
+    "address": "1K69sEhUwNgiva3xzPnToxS89dzydU7nPm",
+    "description": "L137 Sender Address - Contains numbered sequence of messages (L285-L307)",
+    "total_messages": 23,
+    "block_range": {
+      "first": 455589,
+      "last": 469763
+    },
+    "messages": [
+      {
+        "id": "L307",
+        "txid": "96d03a8b67809d801d704dcf6075d7ebe7f28361ec5e7a9fc67b790093bba8c3",
+        "decoded": "L307,1d7a5dedcbac6e9a8996e346022a8464e5dd405ab435aea2f6ed8ec2dd736359",
+        "block_height": 469763,
+        "type": "hash_reference"
+      },
+      {
+        "id": "L306",
+        "txid": "1f1b7acbe8c5f078cc28f4d131d0112f2ce388db1288844b163c5dcd5d2889f1",
+        "decoded": "L306,Journal paper complete 2ebe56af6f2d75a63f0bde53bcfac0ca37eb77c1",
+        "block_height": 469315,
+        "type": "academic_reference"
+      },
+      {
+        "id": "L305",
+        "txid": "b7fa8645ea0b3cdd9c7dd43499c709034da0985555d69fed9fe4848266f80ad6",
+        "decoded": "L305,This is very cool.",
+        "block_height": 465275,
+        "type": "comment"
+      },
+      {
+        "id": "L304",
+        "txid": "e2b3131bb161320256d24f4de6b04b7908c7f3e93139278cc46a61fc860d0720",
+        "decoded": "L304,Now bitcoin is 1200$",
+        "block_height": 461781,
+        "type": "price_timestamp"
+      },
+      {
+        "id": "L303",
+        "txid": "67943cac23624e7101adebf3ebc124a8143239224e17dfb02553b517384c5bf3",
+        "decoded": "L303,https://www.facebook.com/diih.dayrel",
+        "block_height": 461774,
+        "type": "social_link"
+      },
+      {
+        "id": "L302",
+        "txid": "90f96d3ce6b1bb326c2316ac6a972cc338a1475048fb599333e7456128be5a34",
+        "decoded": "L302,Niccolò Farinaro 21/09/2015 - papà e mamma ti amano",
+        "block_height": 460828,
+        "type": "personal_dedication"
+      },
+      {
+        "id": "L301",
+        "txid": "d8438d43de3fcf17c8bbeee8bc01ac64e0fa0d2e8ed4ab8c9a3f3b47dbf43db9",
+        "decoded": "L301,Mariana ♥ Narcélio",
+        "block_height": 458343,
+        "type": "personal_dedication"
+      },
+      {
+        "id": "L300",
+        "txid": "39b6c3e4f7bea33e51a03b761c622374ae1ed25d70aedfa6ba2d1119306c35d9",
+        "decoded": "L300,TO THE MOON! ┗(°0°)┛",
+        "block_height": 458157,
+        "type": "meme"
+      },
+      {
+        "id": "L299",
+        "txid": "2fb07a8f358d690d8717734a48e5daf0ef70ea2d0e3b7c88dace8a5818fcb168",
+        "decoded": "L299,Trump touched my no-no",
+        "block_height": 457561,
+        "type": "political_comment"
+      },
+      {
+        "id": "L298",
+        "txid": "dfa4754fac8b16d276dc88397851654d4cbca42d92a0d93c4d160711d4f9fde7",
+        "decoded": "L298,who pays the mining fee for these?",
+        "block_height": 457546,
+        "type": "meta_question"
+      },
+      {
+        "id": "L297",
+        "txid": "95d9184c9cedb635d21ccec0e505f4136b5573e03436149f62bf0c941066f22a",
+        "decoded": "L297,/u/Fuckyoushill23 + /r/WhereIsAssange are stupid, proves nada, asshat.",
+        "block_height": 457382,
+        "type": "reddit_reference"
+      },
+      {
+        "id": "L296",
+        "txid": "b08a83615bb84b2b1fb8bdedae94a8f864cbee10b87652f8706d26d25ffd1d7d",
+        "decoded": "L296,this is dumb",
+        "block_height": 457369,
+        "type": "comment"
+      },
+      {
+        "id": "L295",
+        "txid": "75993f78a82b40a3e6b089123ccaf3cf07cc4acd9b513956b86d594739bdfd92",
+        "decoded": "L295,376f489c771f498e7716c89d1d51e834637a4e251884103ff4211819a845ef9c",
+        "block_height": 456483,
+        "type": "hash_reference"
+      },
+      {
+        "id": "L294",
+        "txid": "d5e3569f9464813eb7d9cc4914a0be4d4deb288e50a978b36734e074c0e89255",
+        "decoded": "L294,And so it begins...",
+        "block_height": 455769,
+        "type": "comment"
+      },
+      {
+        "id": "L293",
+        "txid": "5328d1c35aaf2cdfad17fc5eb7935cc4f37f4678914def6c013378738b4dbc4a",
+        "decoded": "L293,You lost the game https://en.wikipedia.org/wiki/The_Game_(mind_game)",
+        "block_height": 455671,
+        "type": "meme"
+      },
+      {
+        "id": "L292",
+        "txid": "80d28348f9157e67b46ac136f966d7262c618fe737051940677b516008f5987a",
+        "decoded": "L292,Love is the answer",
+        "block_height": 455641,
+        "type": "philosophical"
+      },
+      {
+        "id": "L291",
+        "txid": "4ce14f3cc9f59f815c4fc757a5bb86e763924f86688b85f76701f5fea4c0687c",
+        "decoded": "L291,Chuckles is a filthy beast.",
+        "block_height": 455614,
+        "type": "comment"
+      },
+      {
+        "id": "L290",
+        "txid": "4065265ae8bbeada5135c5a8d4b40f09a58e6a1dafe8192fccf79ea212d0713e",
+        "decoded": "L290,dddd",
+        "block_height": 455612,
+        "type": "test"
+      },
+      {
+        "id": "L289",
+        "txid": "fbefe4687b0e96414f078fc135c140f92d65835ecdfe9563c5d6c98e16f35ec2",
+        "decoded": "L289,deneme",
+        "block_height": 455600,
+        "type": "test"
+      },
+      {
+        "id": "L288",
+        "txid": "b1b3831ba7466f403aa0a2cb8802437441ed60d817d1386fe9277951f58eaec0",
+        "decoded": "L288,If God exists, he will need to beg for my forgiveness.",
+        "block_height": 455596,
+        "type": "philosophical"
+      },
+      {
+        "id": "L287",
+        "txid": "4e37132f127351d05f642b7806b542cdb215a6cfc64172cee48a3555a9906760",
+        "decoded": "L287,Rasmus Bengtson Møller snyder sine ansatte og tror han er gangster",
+        "block_height": 455592,
+        "type": "personal_accusation"
+      },
+      {
+        "id": "L286",
+        "txid": "4876f8e2ec1acc1d37d246cae416a7c8ffba951823aa01633337d7ec7f0e958b",
+        "decoded": "L286,żółta żaba żarła żur",
+        "block_height": 455591,
+        "type": "polish_text"
+      },
+      {
+        "id": "L285",
+        "txid": "4ba30d3f19cd3acfef5ab0eaf2f798e30f534097634b2c9c8959a95eaf3fb2c8",
+        "decoded": "L285,SJC 2017",
+        "block_height": 455589,
+        "type": "code_reference"
+      }
+    ],
+    "observations": [
+      "Sequential numbering system L285-L307",
+      "Contains two cryptographic hashes (L295, L307)",
+      "L306 references 'Journal paper complete' with hash - academic work?",
+      "Pattern suggests organized message posting, not random graffiti",
+      "SJC 2017 could reference São José dos Campos or similar",
+      "Messages span blocks 455589-469763 (2017 timeframe)"
+    ]
+  },
+
+  "genesis_block": {
+    "block_height": 0,
+    "hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+    "coinbase_message": "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks",
+    "coinbase_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "significance": "First block, timestamp, Satoshi's political statement",
+    "note": "50 BTC reward is unspendable due to code quirk"
+  },
+
+  "21e8_blocks": {
+    "description": "Blocks with hash starting with '21e8' - speculated to reference E8 Theory",
+    "known_blocks": [26284, 83434, 187323, 259695, 304822, 349158, 437039, 475118, 528249],
+    "famous_block": {
+      "height": 528249,
+      "hash": "00000000000000000021e800c1e8df51b22c1588e5a624bea17e9faa34b2dc4a",
+      "theory": "E8 is 'An Exceptionally Simple Theory of Everything' by Garrett Lisi",
+      "debunked": "Expected to occur ~once per year by probability"
+    }
+  },
+
+  "cfb_related_searches": {
+    "come_from_beyond": {
+      "real_name": "Sergey Ivancheglo",
+      "known_projects": ["NXT", "IOTA", "Qubic", "JINN"],
+      "satoshi_speculation": "Has been asked to sign message with Genesis Address to prove he is NOT Satoshi",
+      "bitcoin_involvement": "Early Bitcoin adopter, claims to have old HDDs with potential data"
+    },
+    "search_patterns_found": [],
+    "search_patterns_not_found": [
+      "L127 - No direct OP_RETURN found",
+      "L576 - No direct OP_RETURN found",
+      "L676 - No direct OP_RETURN found",
+      "BCNext - No OP_RETURN found",
+      "aigarth - No OP_RETURN found",
+      "ternary - No OP_RETURN found",
+      "QUBIC - No OP_RETURN found",
+      "IOTA - Requires full chain scan",
+      "NXT - Requires full chain scan"
+    ],
+    "recommendation": "Full blockchain scan with dedicated infrastructure needed for comprehensive search"
+  },
+
+  "date_correlations": {
+    "march_3rd": {
+      "significance": "March 3rd is 03/03 - potential pattern date",
+      "note": "Would require timestamp-based block search"
+    },
+    "blocks_with_digit_sum_27": {
+      "count": 27626,
+      "first_blocks": [999, 1899, 1989, 1998, 2799],
+      "last_blocks": [499401, 499410, 499500],
+      "pattern": "9+9+9=27, 4+9+9+5+0+0=27, etc."
+    }
+  }
+}

@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { JourneySection } from '../JourneySection'
-import { ArrowRight, Binary, Calendar, Hash, Layers, HelpCircle, Link2, Sparkles } from 'lucide-react'
+import { ArrowRight, Binary, Calendar, Hash, Layers, HelpCircle, Link2, Sparkles, ExternalLink } from 'lucide-react'
 import { BitcoinLogoSVG, QubicLogoSVG } from '@/components/logos'
 
 export function BridgeSection() {
@@ -117,18 +117,32 @@ export function BridgeSection() {
                 <div className="font-mono text-xs text-white/50 mb-2 break-all">
                   000000000019d6689c085ae165831e934ff763ae...
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mb-2">
                   <span className="text-orange-400 font-bold text-2xl">43</span>
                   <span className="text-sm text-white/40">leading zero bits</span>
                 </div>
                 <motion.div
-                  className="mt-2 p-2 rounded bg-orange-500/10 text-xs"
+                  className="mt-2 p-2 rounded bg-orange-500/10 text-xs space-y-1"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: connectionStep >= 1 ? 1 : 0 }}
                 >
-                  <span className="text-orange-400 font-bold">43</span>
-                  <span className="text-orange-400/70"> = CFB constant</span>
+                  <div>
+                    <span className="text-orange-400 font-bold">43</span>
+                    <span className="text-orange-400/70"> = CFB constant</span>
+                  </div>
+                  <div className="text-white/50">
+                    Only <strong>32 bits</strong> were required for difficulty.
+                    The extra <strong>11 bits</strong> appear intentional.
+                  </div>
                 </motion.div>
+                <a
+                  href="https://blockchair.com/bitcoin/block/0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs text-orange-400 hover:text-orange-300 transition-colors mt-2"
+                >
+                  Verify on blockchain <ExternalLink className="h-3 w-3" />
+                </a>
               </motion.div>
 
               {/* Key fact 2 */}

@@ -1,0 +1,27 @@
+
+================================================================================
+🔥 K12 PRIVATE KEY DERIVATION - QUBIC OFFICIAL METHOD! 🔥
+================================================================================
+
+📂 Loading data...
+✓ Loaded 21,953 Patoshi addresses
+✓ Loaded 23,765 Qubic seeds
+
+================================================================================
+🔍 TESTING K12 DOUBLE-HASH METHOD ON 10 ADDRESSES
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+ADDRESS #1 - BLOCK 3 (50.0 BTC)
+────────────────────────────────────────────────────────────────────────────────
+Known Public Key: 0494b9d3e76c5b1629ecf97fff95d7a4bbdac87c...
+Seed: aaaaaaaccccuacaaaaaaaccccuacaa...
+Traceback (most recent call last):
+  File "/Users/lukashertle/Developer/projects/qubic-academic-docs/apps/web/scripts/k12_key_derivation.py", line 263, in <module>
+    main()
+  File "/Users/lukashertle/Developer/projects/qubic-academic-docs/apps/web/scripts/k12_key_derivation.py", line 168, in main
+    private_key_hex = derive_private_key_k12(seed)
+  File "/Users/lukashertle/Developer/projects/qubic-academic-docs/apps/web/scripts/k12_key_derivation.py", line 72, in derive_private_key_k12
+    hash1 = k12_1.digest(32)  # 256 bits
+AttributeError: 'K12_XOF' object has no attribute 'digest'

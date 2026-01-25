@@ -4,13 +4,14 @@ import { useRef, useState, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import * as THREE from 'three'
-import type { NeuraxonNode } from './types'
+import type { QortexNode } from './types'
 
 interface NeuronNodeProps {
-  node: NeuraxonNode
+  node: QortexNode
   isSelected: boolean
   isHighlighted: boolean
-  onClick: (node: NeuraxonNode) => void
+  onClick: (node: QortexNode) => void
+  hasBitcoinAddress?: boolean
 }
 
 // Color mapping for states - using more vibrant colors
@@ -40,11 +41,12 @@ const TYPE_DETAIL = {
   output: 2,
 }
 
-export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronNodeProps) {
+export function NeuronNode({ node, isSelected, isHighlighted, onClick, hasBitcoinAddress = false }: NeuronNodeProps) {
   const meshRef = useRef<THREE.Mesh>(null)
   const glowRef = useRef<THREE.Mesh>(null)
   const ringRef = useRef<THREE.Mesh>(null)
   const outerRingRef = useRef<THREE.Mesh>(null)
+  const bitcoinIndicatorRef = useRef<THREE.Mesh>(null)
   const [hovered, setHovered] = useState(false)
 
   const baseColor = STATE_COLORS[String(node.state) as keyof typeof STATE_COLORS]
@@ -52,14 +54,15 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
   const baseSize = TYPE_SIZES[node.type]
   const detail = TYPE_DETAIL[node.type]
 
-  // Create gradient-like material with better visual
+  // Professional material with subtle reflectivity
   const material = useMemo(() => {
     return new THREE.MeshStandardMaterial({
       color: baseColor,
       emissive: baseColor,
-      emissiveIntensity: 0.3,
-      metalness: 0.4,
-      roughness: 0.3,
+      emissiveIntensity: 0.25,
+      metalness: 0.6,
+      roughness: 0.25,
+      envMapIntensity: 0.5,
     })
   }, [baseColor])
 
@@ -76,9 +79,9 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
       0.12
     )
 
-    // Emissive intensity based on state
+    // Emissive intensity based on state - subtle for professional look
     const mat = meshRef.current.material as THREE.MeshStandardMaterial
-    const targetEmissive = isSelected ? 0.9 : hovered ? 0.6 : isHighlighted ? 0.4 : 0.25
+    const targetEmissive = isSelected ? 0.6 : hovered ? 0.4 : isHighlighted ? 0.3 : 0.25
     mat.emissiveIntensity = THREE.MathUtils.lerp(mat.emissiveIntensity, targetEmissive, 0.1)
 
     // Pulse animation for selected nodes
@@ -87,20 +90,20 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
       meshRef.current.scale.multiplyScalar(pulse)
     }
 
-    // Glow pulse
+    // Glow pulse - subtle and professional
     if (glowRef.current) {
       const glowMat = glowRef.current.material as THREE.MeshBasicMaterial
       const glowPulse = isSelected
-        ? Math.sin(time * 3) * 0.15 + 0.35
+        ? Math.sin(time * 3) * 0.08 + 0.2
         : hovered
-          ? 0.25
+          ? 0.15
           : isHighlighted
-            ? 0.15
-            : 0.08
+            ? 0.1
+            : 0.05
       glowMat.opacity = glowPulse
 
       // Scale glow slightly larger
-      const glowScale = isSelected ? 2.2 : hovered ? 2 : 1.8
+      const glowScale = isSelected ? 2.0 : hovered ? 1.8 : 1.6
       glowRef.current.scale.lerp(
         new THREE.Vector3(glowScale, glowScale, glowScale),
         0.1
@@ -118,6 +121,13 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
       outerRingRef.current.rotation.z = -time * 1
       outerRingRef.current.rotation.y = Math.cos(time * 0.7) * 0.2
     }
+
+    // Bitcoin indicator animation - subtle pulse
+    if (bitcoinIndicatorRef.current && hasBitcoinAddress) {
+      bitcoinIndicatorRef.current.rotation.y = time * 2
+      const indicatorMat = bitcoinIndicatorRef.current.material as THREE.MeshBasicMaterial
+      indicatorMat.opacity = Math.sin(time * 3) * 0.1 + 0.4
+    }
   })
 
   return (
@@ -128,7 +138,7 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
         <meshBasicMaterial
           color={glowColor}
           transparent
-          opacity={0.08}
+          opacity={0.05}
           depthWrite={false}
         />
       </mesh>
@@ -164,11 +174,11 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
         <meshBasicMaterial
           color="white"
           transparent
-          opacity={isSelected ? 0.3 : hovered ? 0.2 : 0.1}
+          opacity={isSelected ? 0.2 : hovered ? 0.12 : 0.06}
         />
       </mesh>
 
-      {/* Selection rings - double ring effect */}
+      {/* Selection rings - subtle double ring effect */}
       {isSelected && (
         <>
           {/* Inner ring */}
@@ -177,7 +187,7 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
             <meshBasicMaterial
               color={glowColor}
               transparent
-              opacity={0.7}
+              opacity={0.5}
               side={THREE.DoubleSide}
             />
           </mesh>
@@ -188,15 +198,15 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
             <meshBasicMaterial
               color={glowColor}
               transparent
-              opacity={0.4}
+              opacity={0.3}
               side={THREE.DoubleSide}
             />
           </mesh>
 
-          {/* Selection point lights */}
+          {/* Selection point light - subtle */}
           <pointLight
             color={glowColor}
-            intensity={2}
+            intensity={1.2}
             distance={3}
             decay={2}
           />
@@ -210,7 +220,20 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
           <meshBasicMaterial
             color={glowColor}
             transparent
-            opacity={0.4}
+            opacity={0.3}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+      )}
+
+      {/* Bitcoin Address Indicator - small rotating ring */}
+      {hasBitcoinAddress && (
+        <mesh ref={bitcoinIndicatorRef} rotation={[Math.PI / 2, 0, 0]} position={[0, baseSize * 1.2, 0]}>
+          <ringGeometry args={[baseSize * 0.4, baseSize * 0.5, 24]} />
+          <meshBasicMaterial
+            color="#F59E0B"
+            transparent
+            opacity={0.5}
             side={THREE.DoubleSide}
           />
         </mesh>
@@ -218,7 +241,7 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick }: NeuronN
 
       {/* Hover tooltip - enhanced */}
       {hovered && !isSelected && (
-        <Html distanceFactor={10} style={{ pointerEvents: 'none' }}>
+        <Html center style={{ pointerEvents: 'none' }}>
           <div className="bg-black/90 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3 shadow-2xl whitespace-nowrap transform -translate-x-1/2">
             {/* Header */}
             <div className="flex items-center gap-2 mb-2">

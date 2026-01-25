@@ -236,7 +236,7 @@ export interface FilterState {
 }
 
 export type ViewMode = 'force' | 'cluster' | 'timeline' | 'radial' | 'hierarchical'
-export type CameraPreset = 'overview' | 'patoshi' | 'cfb' | 'genesis' | 'timeline' | 'custom'
+export type CameraPreset = 'overview' | 'matrix' | 'layers' | 'patoshi' | 'cfb' | 'genesis' | 'timeline' | 'custom'
 
 export interface ViewState {
   mode: ViewMode

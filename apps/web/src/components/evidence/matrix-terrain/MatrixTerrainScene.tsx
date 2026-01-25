@@ -957,7 +957,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
               <div className="flex items-center gap-4 pt-2">
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-yellow-400" />
-                  <span className="text-xs text-gray-400">Neuraxon Compatible</span>
+                  <span className="text-xs text-gray-400">Qortex Compatible</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Binary className="w-4 h-4 text-green-400" />
@@ -1129,7 +1129,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
               {[
                 { icon: '🔑', title: 'Seed Derivation', desc: 'Map Qubic 55-char seeds to Bitcoin addresses via matrix XOR operations' },
                 { icon: '🔍', title: 'Pattern Analysis', desc: 'Identify non-random value distributions linking to Patoshi mining' },
-                { icon: '🧠', title: 'Neural Networks', desc: 'Use as weight initialization for Neuraxon-style ternary networks' },
+                { icon: '🧠', title: 'Neural Networks', desc: 'Use as weight initialization for Qortex-style ternary networks' },
                 { icon: '📊', title: 'Statistical Proofs', desc: 'Verify entropy and randomness metrics against null hypothesis' },
                 { icon: '⛓️', title: 'Cross-Chain Links', desc: 'Correlate matrix positions with Bitcoin block heights and timestamps' },
               ].map((item, i) => (

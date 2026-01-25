@@ -3,12 +3,16 @@
 import { useState, useMemo, Suspense, useCallback, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stars, PerspectiveCamera, Float, Sparkles } from '@react-three/drei'
-import { useNeuraxonData } from './useNeuraxonData'
+import { useQortexData } from './useNeuraxonData'
+import { useBitcoinAddresses } from './useBitcoinAddresses'
+import { useQubicLive } from './useQubicLive'
 import { NeuronNode } from './NeuronNode'
 import { SynapseConnection } from './SynapseConnection'
-import { NeuraxonControls } from './NeuraxonControls'
+import { QortexControls } from './NeuraxonControls'
 import { NeuronDetailPanel } from './NeuronDetailPanel'
-import type { NeuraxonNode as NeuraxonNodeType } from './types'
+import { QortexInfoModal } from './NeuraxonInfoModal'
+import { PostProcessingEffects } from './PostProcessingEffects'
+import type { QortexNode as QortexNodeType } from './types'
 import { Button } from '@/components/ui/button'
 import {
   Maximize2,
@@ -20,11 +24,14 @@ import {
   Share2,
   AlertTriangle,
   WifiOff,
+  Wifi,
   FileWarning,
   RefreshCw,
   Clock,
+  Activity,
+  Zap,
 } from 'lucide-react'
-import type { NeuraxonError, NeuraxonErrorType } from './useNeuraxonData'
+import type { QortexError, QortexErrorType } from './useNeuraxonData'
 
 // Camera presets
 const CAMERA_PRESETS = {
@@ -41,29 +48,31 @@ function NetworkVisualization({
   highlightedNodes,
   showConnections,
   onNodeClick,
+  bitcoinAddressChecker,
 }: {
-  currentNodes: NeuraxonNodeType[]
+  currentNodes: QortexNodeType[]
   currentEdges: { source: number; target: number; weight: number; type: 'fast' | 'slow' | 'meta' }[]
-  selectedNode: NeuraxonNodeType | null
+  selectedNode: QortexNodeType | null
   highlightedNodes: Set<number>
   showConnections: boolean
-  onNodeClick: (node: NeuraxonNodeType) => void
+  onNodeClick: (node: QortexNodeType) => void
+  bitcoinAddressChecker?: (nodeId: number) => boolean
 }) {
   const nodeMap = useMemo(() => {
-    const map = new Map<number, NeuraxonNodeType>()
+    const map = new Map<number, QortexNodeType>()
     currentNodes.forEach((node) => map.set(node.id, node))
     return map
   }, [currentNodes])
 
   return (
     <group>
-      {/* Ambient particles for atmosphere */}
+      {/* Ambient particles for atmosphere - subtle */}
       <Sparkles
-        count={100}
+        count={80}
         scale={20}
-        size={2}
-        speed={0.3}
-        opacity={0.3}
+        size={1.5}
+        speed={0.2}
+        opacity={0.15}
         color="#F59E0B"
       />
 
@@ -103,14 +112,15 @@ function NetworkVisualization({
             isSelected={selectedNode?.id === node.id}
             isHighlighted={highlightedNodes.has(node.id)}
             onClick={onNodeClick}
+            hasBitcoinAddress={bitcoinAddressChecker ? bitcoinAddressChecker(node.id) : false}
           />
         </Float>
       ))}
 
-      {/* Central glow sphere */}
+      {/* Central core - subtle */}
       <mesh>
         <sphereGeometry args={[0.5, 32, 32]} />
-        <meshBasicMaterial color="#F59E0B" transparent opacity={0.1} />
+        <meshBasicMaterial color="#F59E0B" transparent opacity={0.06} />
       </mesh>
     </group>
   )
@@ -133,10 +143,10 @@ function LoadingScreen({ progress }: { progress: number }) {
         {/* Title */}
         <div className="text-center">
           <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-gray-300 to-blue-400 bg-clip-text text-transparent">
-            Neuraxon Ternary Network
+            Qortex Neural Network
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            Initializing neural visualization...
+            Loading network data...
           </p>
         </div>
 
@@ -175,7 +185,7 @@ function LoadingScreen({ progress }: { progress: number }) {
 }
 
 // Error icons mapping
-const ERROR_ICONS: Record<NeuraxonErrorType, React.ReactNode> = {
+const ERROR_ICONS: Record<QortexErrorType, React.ReactNode> = {
   NETWORK_ERROR: <WifiOff className="w-12 h-12" />,
   PARSE_ERROR: <FileWarning className="w-12 h-12" />,
   VALIDATION_ERROR: <FileWarning className="w-12 h-12" />,
@@ -183,7 +193,7 @@ const ERROR_ICONS: Record<NeuraxonErrorType, React.ReactNode> = {
   UNKNOWN_ERROR: <AlertTriangle className="w-12 h-12" />,
 }
 
-const ERROR_COLORS: Record<NeuraxonErrorType, string> = {
+const ERROR_COLORS: Record<QortexErrorType, string> = {
   NETWORK_ERROR: 'text-orange-400',
   PARSE_ERROR: 'text-red-400',
   VALIDATION_ERROR: 'text-red-400',
@@ -197,7 +207,7 @@ function ErrorScreen({
   retryCount,
   maxRetries = 3
 }: {
-  error: NeuraxonError
+  error: QortexError
   onRetry: () => void
   retryCount: number
   maxRetries?: number
@@ -291,6 +301,7 @@ function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
         </div>
         <div className="space-y-3">
           {[
+            { key: 'I', action: 'Show info modal' },
             { key: 'Space', action: 'Play / Pause animation' },
             { key: '←', action: 'Previous frame' },
             { key: '→', action: 'Next frame' },
@@ -299,7 +310,7 @@ function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
             { key: 'F', action: 'Toggle fullscreen' },
             { key: 'S', action: 'Toggle synapses' },
             { key: 'R', action: 'Reset camera' },
-            { key: 'Esc', action: 'Deselect node' },
+            { key: 'Esc', action: 'Close modals / Deselect' },
           ].map(({ key, action }) => (
             <div key={key} className="flex items-center gap-3">
               <kbd className="px-2 py-1 bg-muted rounded text-xs font-mono min-w-[60px] text-center">
@@ -314,7 +325,12 @@ function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
   )
 }
 
-export default function NeuraxonScene() {
+export interface QortexSceneProps {
+  /** Callback when user wants to analyze a seed in Aigarth Processing */
+  onAnalyzeInAigarth?: (seed: string, neuronId: number, publicId: string, frame: number) => void
+}
+
+export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {}) {
   const {
     loading,
     error,
@@ -330,12 +346,32 @@ export default function NeuraxonScene() {
     currentFrame,
     retry,
     retryCount,
-  } = useNeuraxonData()
+  } = useQortexData()
 
-  const [selectedNode, setSelectedNode] = useState<NeuraxonNodeType | null>(null)
+  // Load Bitcoin address mappings
+  const { hasAddress } = useBitcoinAddresses()
+
+  // Live Qubic network connection
+  const {
+    isConnected: qubicConnected,
+    epoch: qubicEpoch,
+    networkStatus: qubicNetwork,
+    refresh: refreshQubic,
+  } = useQubicLive()
+
+  // Bitcoin address checker - maps node ID to matrix position if scientifically proven
+  // Currently disabled until cryptographic relationship is established
+  const checkBitcoinAddress = useCallback((nodeId: number) => {
+    // TODO: Implement scientifically proven mapping between neuron seeds and matrix positions
+    // For now, return false to avoid showing arbitrary connections
+    return false
+  }, [])
+
+  const [selectedNode, setSelectedNode] = useState<QortexNodeType | null>(null)
   const [showConnections, setShowConnections] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false)
+  const [showInfoModal, setShowInfoModal] = useState(false)
   const [playbackSpeed, setPlaybackSpeed] = useState(1)
   const [cameraPreset, setCameraPreset] = useState<keyof typeof CAMERA_PRESETS>('front')
   const containerRef = useRef<HTMLDivElement>(null)
@@ -365,11 +401,11 @@ export default function NeuraxonScene() {
   }, [selectedNode, getConnectedNodes])
 
   // Handlers
-  const handleNodeClick = useCallback((node: NeuraxonNodeType) => {
+  const handleNodeClick = useCallback((node: QortexNodeType) => {
     setSelectedNode((current) => (current?.id === node.id ? null : node))
   }, [])
 
-  const handleNodeFound = useCallback((node: NeuraxonNodeType) => {
+  const handleNodeFound = useCallback((node: QortexNodeType) => {
     setSelectedNode(node)
   }, [])
 
@@ -404,8 +440,8 @@ export default function NeuraxonScene() {
 
     if (navigator.share) {
       await navigator.share({
-        title: 'Neuraxon Ternary Network',
-        text: `Exploring frame ${frameIndex + 1} of the Neuraxon visualization with 23,765 neurons`,
+        title: 'Qortex Neural Network',
+        text: `Exploring frame ${frameIndex + 1} of the Qortex visualization with 23,765 neurons`,
         url,
       })
     } else {
@@ -431,9 +467,14 @@ export default function NeuraxonScene() {
           e.preventDefault()
           resetCamera()
           break
+        case 'i':
+          e.preventDefault()
+          setShowInfoModal((s) => !s)
+          break
         case 'escape':
           setSelectedNode(null)
           setShowKeyboardShortcuts(false)
+          setShowInfoModal(false)
           break
         case '?':
           setShowKeyboardShortcuts((s) => !s)
@@ -497,10 +538,16 @@ export default function NeuraxonScene() {
         isFullscreen ? 'h-screen rounded-none' : 'h-[700px]'
       }`}
     >
-      {/* 3D Canvas */}
+      {/* 3D Canvas with professional settings */}
       <Canvas
-        gl={{ antialias: true, alpha: false }}
+        gl={{
+          antialias: true,
+          alpha: false,
+          toneMapping: 0, // NoToneMapping for accurate colors
+          toneMappingExposure: 1.0,
+        }}
         dpr={[1, 2]}
+        shadows
       >
         <PerspectiveCamera
           makeDefault
@@ -519,22 +566,31 @@ export default function NeuraxonScene() {
           zoomSpeed={0.8}
         />
 
-        {/* Enhanced Lighting */}
-        <ambientLight intensity={0.3} />
-        <pointLight position={[15, 15, 15]} intensity={1.2} color="#ffffff" />
-        <pointLight position={[-15, -15, -15]} intensity={0.6} color="#3B82F6" />
-        <pointLight position={[15, -15, 15]} intensity={0.6} color="#F59E0B" />
-        <pointLight position={[0, 20, 0]} intensity={0.4} color="#8B5CF6" />
+        {/* Professional Lighting Setup */}
+        <ambientLight intensity={0.35} />
 
-        {/* Deep space background */}
+        {/* Soft key light */}
+        <directionalLight
+          position={[10, 10, 10]}
+          intensity={0.8}
+          color="#ffffff"
+        />
+
+        {/* Subtle fill lights with color coding */}
+        <pointLight position={[15, 15, 15]} intensity={0.9} color="#FFF8F0" decay={2} distance={40} />
+        <pointLight position={[-15, -15, -15]} intensity={0.5} color="#60A5FA" decay={2} distance={40} />
+        <pointLight position={[15, -15, 15]} intensity={0.5} color="#FBBF24" decay={2} distance={40} />
+        <pointLight position={[-15, 15, -15]} intensity={0.3} color="#A78BFA" decay={2} distance={35} />
+
+        {/* Deep space background - subtle */}
         <Stars
           radius={150}
           depth={80}
-          count={3000}
-          factor={5}
+          count={2000}
+          factor={3}
           saturation={0}
           fade
-          speed={0.5}
+          speed={0.3}
         />
 
         {/* Network */}
@@ -546,44 +602,64 @@ export default function NeuraxonScene() {
             highlightedNodes={highlightedNodes}
             showConnections={showConnections}
             onNodeClick={handleNodeClick}
+            bitcoinAddressChecker={checkBitcoinAddress}
           />
         </Suspense>
+
+        {/* Subtle post-processing for professional look */}
+        <PostProcessingEffects
+          bloomStrength={0.6}
+          bloomRadius={0.4}
+          bloomThreshold={0.7}
+        />
       </Canvas>
 
       {/* UI Overlay */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Top Bar */}
         <div className="absolute top-0 left-0 right-0 p-4 flex items-start justify-between">
-          {/* Legend - Enhanced */}
-          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-xl p-4 space-y-3 pointer-events-auto">
+          {/* Legend */}
+          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-xl p-4 space-y-3 pointer-events-auto max-w-[220px]">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 via-gray-500 to-blue-500" />
               <div>
-                <div className="text-sm font-semibold text-white">Neuraxon</div>
+                <div className="text-sm font-semibold text-white">Qortex</div>
                 <div className="text-[10px] text-gray-400">Ternary Neural Network</div>
               </div>
             </div>
 
+            {/* Data Source Info */}
+            <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+              <div className="text-[9px] text-blue-400/90">
+                <span className="font-bold">Seeds:</span> Real Qubic IDs from Anna Matrix. Network topology is a visualization model.
+              </div>
+            </div>
+
+            {/* Ternary Neuron States */}
             <div className="border-t border-white/10 pt-3 space-y-2">
-              <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">States</div>
+              <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">Neuron States (Ternary)</div>
               <div className="grid grid-cols-3 gap-2">
                 <div className="flex flex-col items-center gap-1">
                   <div className="w-4 h-4 rounded-full bg-orange-500 shadow-lg shadow-orange-500/50" />
-                  <span className="text-[10px] text-gray-400">+1</span>
+                  <span className="text-[10px] text-orange-400 font-mono">+1</span>
+                  <span className="text-[8px] text-gray-500">Excited</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <div className="w-4 h-4 rounded-full bg-gray-500 shadow-lg shadow-gray-500/50" />
-                  <span className="text-[10px] text-gray-400">0</span>
+                  <span className="text-[10px] text-gray-400 font-mono">0</span>
+                  <span className="text-[8px] text-gray-500">Neutral</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <div className="w-4 h-4 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50" />
-                  <span className="text-[10px] text-gray-400">-1</span>
+                  <span className="text-[10px] text-blue-400 font-mono">-1</span>
+                  <span className="text-[8px] text-gray-500">Inhibited</span>
                 </div>
               </div>
             </div>
 
+            {/* Synapse Weights */}
             <div className="border-t border-white/10 pt-3 space-y-2">
-              <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">Synapses</div>
+              <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">Synapse Strength</div>
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-0.5 bg-green-500 rounded-full" />
@@ -597,6 +673,32 @@ export default function NeuraxonScene() {
                   <div className="w-6 h-0.5 bg-purple-500 rounded-full" />
                   <span className="text-[10px] text-gray-400">Meta &lt;40%</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Algorithm Constants */}
+            <div className="border-t border-white/10 pt-3">
+              <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">Algorithm</div>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[9px]">
+                <div className="flex justify-between">
+                  <span className="text-gray-500">K (inputs)</span>
+                  <span className="text-cyan-400 font-mono">14</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">L (outputs)</span>
+                  <span className="text-cyan-400 font-mono">8</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">N (ticks)</span>
+                  <span className="text-cyan-400 font-mono">120</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">S (mutations)</span>
+                  <span className="text-cyan-400 font-mono">100</span>
+                </div>
+              </div>
+              <div className="mt-2 text-[8px] text-gray-600 italic">
+                Evolutionary training, not gradient descent
               </div>
             </div>
           </div>
@@ -622,6 +724,15 @@ export default function NeuraxonScene() {
                 title="Reset camera"
               >
                 <RotateCcw className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10"
+                onClick={() => setShowInfoModal(true)}
+                title="What is Qortex?"
+              >
+                <Info className="w-4 h-4" />
               </Button>
               <Button
                 variant="ghost"
@@ -665,6 +776,65 @@ export default function NeuraxonScene() {
               </div>
             </div>
 
+            {/* Live Qubic Network Status */}
+            <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-3">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  {qubicConnected ? (
+                    <Wifi className="w-3 h-3 text-green-400" />
+                  ) : (
+                    <WifiOff className="w-3 h-3 text-red-400" />
+                  )}
+                  <span className="text-[10px] text-gray-500 uppercase tracking-wider">Qubic Live</span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-5 w-5 text-white/50 hover:text-white hover:bg-white/10"
+                  onClick={refreshQubic}
+                  title="Refresh"
+                >
+                  <RefreshCw className="w-3 h-3" />
+                </Button>
+              </div>
+
+              {qubicConnected && qubicEpoch ? (
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-gray-500 flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      Epoch
+                    </span>
+                    <span className="text-white font-mono">{qubicEpoch.epoch}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-gray-500 flex items-center gap-1">
+                      <Activity className="w-3 h-3" />
+                      Tick
+                    </span>
+                    <span className="text-cyan-400 font-mono">{qubicEpoch.tick?.toLocaleString() || '-'}</span>
+                  </div>
+                  {qubicNetwork && (
+                    <div className="flex items-center justify-between text-[10px]">
+                      <span className="text-gray-500 flex items-center gap-1">
+                        <Zap className="w-3 h-3" />
+                        Health
+                      </span>
+                      <span className={`font-mono capitalize ${
+                        qubicNetwork.health === 'excellent' ? 'text-green-400' :
+                        qubicNetwork.health === 'good' ? 'text-emerald-400' :
+                        qubicNetwork.health === 'fair' ? 'text-yellow-400' : 'text-red-400'
+                      }`}>{qubicNetwork.health}</span>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-[10px] text-gray-500 text-center py-1">
+                  {qubicConnected === false ? 'Connecting...' : 'Offline'}
+                </div>
+              )}
+            </div>
+
             {/* Frame info */}
             {currentFrame && (
               <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-3 text-center">
@@ -691,11 +861,12 @@ export default function NeuraxonScene() {
               setFrameIndex(node.frame)
               setSelectedNode(node)
             }}
+            onAnalyzeInAigarth={onAnalyzeInAigarth}
           />
         )}
 
         {/* Controls */}
-        <NeuraxonControls
+        <QortexControls
           frameIndex={frameIndex}
           totalFrames={totalFrames}
           onFrameChange={setFrameIndex}
@@ -708,16 +879,18 @@ export default function NeuraxonScene() {
           onSpeedChange={setPlaybackSpeed}
         />
 
-        {/* Keyboard shortcuts modal */}
-        {showKeyboardShortcuts && (
-          <KeyboardShortcutsPanel onClose={() => setShowKeyboardShortcuts(false)} />
-        )}
       </div>
 
       {/* Watermark */}
       <div className="absolute bottom-20 left-4 text-[10px] text-white/30 pointer-events-none">
-        Neuraxon v2.0 • 23,765 neurons • 188,452 synapses • 47 frames
+        Qortex • Real Qubic Seeds • Network visualization model
       </div>
+
+      {/* Modals - outside pointer-events-none overlay */}
+      {showKeyboardShortcuts && (
+        <KeyboardShortcutsPanel onClose={() => setShowKeyboardShortcuts(false)} />
+      )}
+      <QortexInfoModal isOpen={showInfoModal} onClose={() => setShowInfoModal(false)} />
     </div>
   )
 }

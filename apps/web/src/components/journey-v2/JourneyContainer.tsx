@@ -122,24 +122,24 @@ export function JourneyContainer({ children }: JourneyContainerProps) {
   return (
     <JourneyContext.Provider value={contextValue}>
       <div className="relative bg-black min-h-screen">
-        {/* LiquidEther background effect - subtle blue core with orange outer */}
-        <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        {/* LiquidEther background effect - subtle Bitcoin orange + deep Qubic blue */}
+        <div className="fixed inset-0 z-0 pointer-events-none opacity-25">
           <LiquidEther
-            colors={['#FF9F43', '#00FFFF', '#FFA500', '#00E5FF']} // Alternating: Bitcoin orange + Qubic cyan
-            mouseForce={15}
-            cursorSize={120}
+            colors={['#F97316', '#1e40af', '#ea580c', '#3b82f6']} // Bitcoin orange + deep blue (like hero)
+            mouseForce={8}
+            cursorSize={80}
             isViscous={false}
-            viscous={25}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5}
+            viscous={15}
+            iterationsViscous={12}
+            iterationsPoisson={12}
+            resolution={0.25}
             isBounce={false}
             autoDemo={true}
-            autoSpeed={0.3}
-            autoIntensity={1.5}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
+            autoSpeed={0.2}
+            autoIntensity={0.8}
+            takeoverDuration={0.15}
+            autoResumeDelay={4000}
+            autoRampDuration={0.4}
           />
         </div>
         {/* Content */}

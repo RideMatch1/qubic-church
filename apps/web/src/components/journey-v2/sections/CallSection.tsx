@@ -31,7 +31,7 @@ const MAIN_CTAS = [
     icon: User,
     title: 'Who is CFB?',
     description: 'Learn about Come-From-Beyond and his revolutionary work in cryptography',
-    href: '/cfb',
+    href: '/docs/03-results/24-cfb-satoshi-connection',
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/10',
     borderColor: 'border-orange-500/20',

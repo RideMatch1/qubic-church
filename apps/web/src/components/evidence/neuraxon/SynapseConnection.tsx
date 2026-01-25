@@ -4,12 +4,12 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Line } from '@react-three/drei'
 import * as THREE from 'three'
-import type { NeuraxonEdge, NeuraxonNode } from './types'
+import type { QortexEdge, QortexNode } from './types'
 
 interface SynapseConnectionProps {
-  edge: NeuraxonEdge
-  sourceNode: NeuraxonNode
-  targetNode: NeuraxonNode
+  edge: QortexEdge
+  sourceNode: QortexNode
+  targetNode: QortexNode
   isHighlighted: boolean
   showAll: boolean
 }

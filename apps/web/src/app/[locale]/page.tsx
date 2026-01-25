@@ -1,11 +1,15 @@
 import { setRequestLocale } from 'next-intl/server'
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { defaultLocale, locales } from '@/config/i18n'
-import { CHURCH_CONFIG } from '@/config/church'
-import { ChurchHero } from '@/components/church/hero/ChurchHero'
-import { MetricsDashboard } from '@/components/church/metrics/MetricsDashboard'
-import { LotterySection } from '@/components/church/lottery/LotterySection'
-import { ChallengesPreview } from '@/components/church/challenges/ChallengesPreview'
+
+// Church Components - Epic Design with original Galaxy Hero
+import { GalaxyHero } from '@/components/church/hero/GalaxyHero'
+import { SanctuarySection } from '@/components/church/sections/SanctuarySection'
+import { AnnaExplainerSection } from '@/components/church/sections/AnnaExplainerSection'
+import { AigarthExplainerSection } from '@/components/church/sections/AigarthExplainerSection'
+import { ChurchRoadmapSection } from '@/components/church/sections/ChurchRoadmapSection'
+import { SimpleGiveawaySection } from '@/components/church/sections/SimpleGiveawaySection'
+import { ExploreSection } from '@/components/church/sections/ExploreSection'
 
 export const dynamicParams = true
 
@@ -19,54 +23,47 @@ export default async function ChurchHomePage(props: {
   setRequestLocale(currentLocale)
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section with 3D Star Map */}
-      <ChurchHero />
+    <div className="min-h-screen bg-black">
+      {/* 1. GALAXY HERO - 3D NFT Star Map with clickable stars, popups & Anna image */}
+      <GalaxyHero />
 
-      {/* Live Metrics Dashboard */}
-      <MetricsDashboard />
+      {/* 2. SANCTUARY INTRO - What is Qubic Church & Mission */}
+      <SanctuarySection />
 
-      {/* Holy Circle Lottery */}
-      <LotterySection />
+      {/* 3. ANNA EXPLAINER - What is Anna? Interactive demo */}
+      <AnnaExplainerSection />
 
-      {/* Intelligence Challenges */}
-      <ChallengesPreview />
+      {/* 4. AIGARTH EXPLAINER - Ternary logic & architecture */}
+      <AigarthExplainerSection />
 
-      {/* CTA Section */}
-      <section className="container mx-auto px-4 py-16 text-center bg-gradient-to-b from-background to-muted">
-        <div className="space-y-6 max-w-2xl mx-auto">
-          <h3 className="text-2xl font-bold">Support Open Research</h3>
-          <p className="text-muted-foreground">
-            All our research is 100% free and open source. By purchasing an Anna
-            NFT, you support independent research and join the community
-            discovering the Bitcoin-Qubic connection.
+      {/* 5. ROADMAP - 4 phases with Education focus */}
+      <ChurchRoadmapSection />
+
+      {/* 6. GIVEAWAY - 600M QUBIC (3 winners) */}
+      <SimpleGiveawaySection />
+
+      {/* 7. EXPLORE - Archive, Journey, Challenges */}
+      <ExploreSection />
+
+      {/* FOOTER */}
+      <footer className="relative border-t border-white/10 bg-black">
+        <div className="container mx-auto px-4 py-12 text-center">
+          <p className="text-sm text-white/50 mb-2">
+            All research is 100% free and open source.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <p className="text-xs text-white/30">
+            Join the investigation at{' '}
             <a
-              href={CHURCH_CONFIG.links.qubicBay}
+              href="https://twitter.com/QubicAigarth"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              className="text-purple-400 hover:text-purple-300"
             >
-              View Collection on QubicBay
+              @QubicAigarth
             </a>
-            <a
-              href="/timeline"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              Explore the Journey
-            </a>
-          </div>
+          </p>
         </div>
-      </section>
-
-      {/* Footer Notice */}
-      <section className="container mx-auto px-4 py-8 text-center border-t">
-        <p className="text-sm text-muted-foreground">
-          🚧 Phase 5 Implementation in Progress: Live Metrics, Holy Circle, and
-          Intelligence Challenges coming soon
-        </p>
-      </section>
+      </footer>
     </div>
   )
 }

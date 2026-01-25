@@ -36,3 +36,47 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# Large data files
+apps/web/complete_seed_btc_mapping.json
+apps/web/public/data/matrix_addresses_with_xor.json
+apps/web/public/data/matrix-addresses-*.json
+apps/web/public/data/matrix-addresses.json
+apps/web/public/data/neuraxon-network.json
+apps/web/public/data/qubic-seeds.json
+apps/web/public/data/patoshi-addresses.json
+apps/web/scripts/ALL_BITCOIN_KEYS_FROM_SEEDS.json
+apps/web/scripts/*.json
+apps/web/*.json
+apps/web/analysis/
+apps/web/cfb_binary_extracted.txt
+apps/web/syzygy_passwords.txt
+
+# Root directory files
+/*.json
+!package.json
+outputs/
+
+# Python virtual environments
+.venv_*/
+**/.venv_*/
+
+# Playwright cache
+.playwright-mcp/
+
+# Large markdown reports (exclude from root, keep docs in apps/content/)
+/*.md
+!README.md
+!LICENSE.md
+!CONTRIBUTING.md
+!CHANGELOG.md
+
+# Embedded git repositories
+apps/web/scripts/qiner/
+apps/web/scripts/qubic-repos/
+external/aigarth-it/
+infra/qubic-http-source/
+
+# Script output files
+apps/web/scripts/*.txt
+apps/web/scripts/*.jsonl
