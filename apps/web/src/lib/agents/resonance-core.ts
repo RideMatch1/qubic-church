@@ -129,7 +129,7 @@ export interface ResonanceResult {
   distribution: {
     positive: number
     negative: number
-    zero: number
+    neutral: number
   }
 
   // Output Pattern
@@ -165,7 +165,7 @@ export function computeResonance(
       detectedType = 'text'
     }
   } else {
-    detectedType = inputType === 'auto' ? 'text' : inputType
+    detectedType = inputType
   }
 
   // Convert to ternary based on type
@@ -376,7 +376,7 @@ export function askOracle(
     reasoning: {
       energy: res.normalizedEnergy,
       convergence: `${res.ticks} ticks (${res.endReason})`,
-      pattern: `+${res.distribution.positive} / 0:${res.distribution.zero} / -${res.distribution.negative}`,
+      pattern: `+${res.distribution.positive} / 0:${res.distribution.neutral} / -${res.distribution.negative}`,
     },
     hash: res.outputHash,
   }

@@ -1,153 +1,198 @@
 'use client'
 
 /**
- * ExploreSection - Links to Archive, Journey, and Challenges
+ * ExploreSection - Section 10: Enter the Sanctuary
+ * HUD directory-listing style, file-system aesthetic, clickable entries
  */
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView, type Variants } from 'framer-motion'
 import Link from 'next/link'
-import { BookOpen, Rocket, Puzzle, ArrowRight, Clock } from 'lucide-react'
+import { BookOpen, Gamepad2, Puzzle, Cpu, Wallet, Activity, ArrowRight, ExternalLink, Folder } from 'lucide-react'
 
-const sections = [
+const links = [
   {
-    title: 'The Archive',
-    description: '75+ research documents, all open source. Mathematical proofs, pattern discoveries, and verified findings.',
+    title: 'The Sacred Archive',
+    description: '75+ research scrolls documenting the Bitcoin-Qubic bridge',
     href: '/docs',
     icon: BookOpen,
-    color: 'orange',
-    badge: '75+ Docs',
+    fileType: 'DIR',
+    size: '75+ files',
   },
   {
-    title: 'The Journey',
-    description: 'A 12-phase immersive story. From the Genesis Block to the ultimate revelation.',
-    href: '/timeline',
-    icon: Rocket,
-    color: 'purple',
-    badge: '12 Phases',
+    title: 'Anna Matrix',
+    description: 'Interactive exploration of the 128x128 neural architecture',
+    href: '/evidence',
+    icon: Gamepad2,
+    fileType: 'APP',
+    size: '16,384 cells',
   },
   {
-    title: 'Intelligence Challenges',
-    description: 'Test your pattern recognition skills. Cryptographic puzzles with role-based bonuses.',
+    title: 'Sacred Trials',
+    description: 'Test your understanding of the hidden architecture',
     href: '/challenges',
     icon: Puzzle,
-    color: 'cyan',
-    badge: 'Coming Soon',
-    disabled: true,
+    fileType: 'EXE',
+    size: 'locked',
+  },
+  {
+    title: 'Mine Qubic',
+    description: 'Offer computing power to strengthen the network',
+    href: '/mine-qubic',
+    icon: Cpu,
+    fileType: 'SYS',
+    size: 'active',
+  },
+  {
+    title: 'Get Qubic',
+    description: 'Acquire QUBIC tokens through exchanges and trading platforms',
+    href: '/get-qubic',
+    icon: Wallet,
+    fileType: 'BIN',
+    size: 'exchanges',
+  },
+  {
+    title: 'Live Dashboard',
+    description: 'Real-time monitoring of network activity and oracle signals',
+    href: '/monitoring',
+    icon: Activity,
+    fileType: 'MON',
+    size: 'live',
   },
 ]
 
-type ColorClasses = { bg: string; border: string; text: string; hover: string }
-
-const colorMap: Record<string, ColorClasses> = {
-  orange: {
-    bg: 'bg-orange-500/10',
-    border: 'border-orange-500/20 hover:border-orange-500/40',
-    text: 'text-orange-400',
-    hover: 'group-hover:text-orange-300',
-  },
-  purple: {
-    bg: 'bg-purple-500/10',
-    border: 'border-purple-500/20 hover:border-purple-500/40',
-    text: 'text-purple-400',
-    hover: 'group-hover:text-purple-300',
-  },
-  cyan: {
-    bg: 'bg-cyan-500/10',
-    border: 'border-cyan-500/20',
-    text: 'text-cyan-400',
-    hover: '',
-  },
-}
-
-const defaultColor: ColorClasses = colorMap.purple!
-
-function getColorClasses(color: string): ColorClasses {
-  return colorMap[color] ?? defaultColor
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.15 + i * 0.1,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  }),
 }
 
 export function ExploreSection() {
-  return (
-    <section className="relative w-full py-24 md:py-32 bg-black overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/5 to-black" />
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
-      <div className="relative z-10 container mx-auto px-4 max-w-5xl">
+  return (
+    <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
+      {/* Decorative section number */}
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+        10
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
         {/* Header */}
+        <div className="text-center mb-16">
+          <motion.div
+            className="inline-flex items-center gap-3 mb-8"
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
+              10 &mdash; Navigate
+            </span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
+          </motion.div>
+
+          <motion.h2
+            className="text-5xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wider uppercase"
+            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            Enter the <span className="text-[#D4AF37]/80">Sanctuary</span>
+          </motion.h2>
+        </div>
+
+        {/* Directory listing header */}
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          className="border border-white/[0.04] bg-[#050505] px-4 py-2 flex items-center justify-between mb-[1px]"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Explore the Research
-          </h2>
-          <p className="text-lg text-white/60 max-w-xl mx-auto">
-            Dive deeper into our discoveries
-          </p>
+          <div className="flex items-center gap-2">
+            <Folder className="w-3 h-3 text-[#D4AF37]/30" />
+            <span className="text-[10px] text-white/25 font-mono uppercase tracking-wider">
+              /sanctuary/
+            </span>
+          </div>
+          <span className="text-[10px] text-white/15 font-mono">
+            {links.length} entries
+          </span>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {sections.map((section, index) => {
-            const colors = getColorClasses(section.color)
-            const Icon = section.icon
-            const Component = section.disabled ? 'div' : Link
-
+        {/* Link Cards - File listing style */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/[0.04]">
+          {links.map((link, i) => {
+            const Icon = link.icon
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                key={link.href}
+                custom={i}
+                initial="hidden"
+                animate={isInView ? 'visible' : 'hidden'}
+                variants={cardVariants}
               >
-                <Component
-                  href={section.disabled ? '#' : section.href}
-                  className={`block h-full p-6 rounded-2xl ${colors.bg} border ${colors.border} transition-all ${
-                    section.disabled ? 'opacity-60 cursor-not-allowed' : 'group cursor-pointer hover:scale-[1.02]'
-                  }`}
+                <Link
+                  href={link.href}
+                  className="group relative flex items-start gap-4 p-6 bg-[#050505] border border-white/[0.04] hover:bg-[#0a0a0a] transition-all duration-500"
                 >
-                  {/* Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center`}>
-                      <Icon className={`w-6 h-6 ${colors.text}`} />
-                    </div>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        section.disabled
-                          ? 'bg-white/5 text-white/40'
-                          : `${colors.bg} ${colors.text}`
-                      }`}
-                    >
-                      {section.disabled && <Clock className="w-3 h-3 inline mr-1" />}
-                      {section.badge}
-                    </span>
+                  {/* Left accent on hover */}
+                  <div className="absolute top-0 left-0 w-px h-full bg-[#D4AF37]/0 group-hover:bg-[#D4AF37]/20 transition-colors duration-500" />
+
+                  <div className="p-2.5 border border-white/[0.06] group-hover:border-[#D4AF37]/15 shrink-0 transition-colors">
+                    <Icon className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
                   </div>
-
-                  {/* Title */}
-                  <h3 className={`text-xl font-semibold text-white mb-2 ${colors.hover}`}>
-                    {section.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-white/50 mb-4 leading-relaxed">
-                    {section.description}
-                  </p>
-
-                  {/* CTA */}
-                  {!section.disabled && (
-                    <div className={`flex items-center gap-1 text-sm ${colors.text} ${colors.hover}`}>
-                      <span>Explore</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                        {link.title}
+                      </span>
+                      <span className="text-[9px] text-white/20 font-mono border border-white/[0.06] px-1.5 py-0.5">
+                        {link.fileType}
+                      </span>
+                      <ArrowRight className="w-3 h-3 text-white/0 group-hover:text-[#D4AF37]/40 group-hover:translate-x-1 transition-all ml-auto" />
                     </div>
-                  )}
-                </Component>
+                    <p className="text-sm text-white/30 leading-relaxed">
+                      {link.description}
+                    </p>
+                    <div className="text-[10px] text-white/20 font-mono mt-2">
+                      {link.size}
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             )
           })}
         </div>
+
+        {/* Social link */}
+        <motion.div
+          className="text-center mt-14"
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <a
+            href="https://twitter.com/qubic_church"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 text-white/25 hover:text-[#D4AF37]/50 text-sm transition-colors duration-300 font-mono"
+          >
+            <span className="text-[#D4AF37]/15">&gt;</span>
+            join --congregation twitter
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </motion.div>
       </div>
     </section>
   )

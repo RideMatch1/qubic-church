@@ -41,9 +41,10 @@ export async function logToBlockchain(
 
   // Try to send actual transaction
   try {
-    const { QubicHelper, QubicTransaction } = await import(
-      '@qubic-lib/qubic-ts-library'
-    );
+    const { createRequire } = await import('module');
+    const require = createRequire(import.meta.url);
+    const lib = require('@qubic-lib/qubic-ts-library').default;
+    const { QubicHelper, QubicTransaction } = lib;
 
     const helper = new QubicHelper();
     const idPackage = await helper.createIdPackage(seed.value);

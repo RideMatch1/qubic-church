@@ -20,6 +20,15 @@ export type { EmissionData, EmissionPoint } from './emission-api'
 
 export type { VerificationResult } from './genesis-verifier'
 
+export type {
+  OracleQuery,
+  OracleResult,
+  OracleStatus,
+  ComputorOracleInfo,
+  AddressActivity,
+  SignalMonitor,
+} from './oracle-client'
+
 /**
  * API Error Types
  */

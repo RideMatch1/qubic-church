@@ -1,0 +1,245 @@
+---
+title: "Research Methods - How We Do Science"
+description: "Documentation of all research methods used in this project, including Monte Carlo simulations, statistical testing, control experiments, and honest assessment of what our algorithms actually measure."
+tier: 1
+confidence: 100
+date: 2026-02-06
+---
+
+# Research Methods: How We Do Science
+
+<Callout type="success" title="TIER 1 - Methodology Reference">
+**Confidence: 100%**
+
+This document explains the methods used throughout our research. Understanding these methods is essential for evaluating our claims.
+</Callout>
+
+<Summary>
+This is the "how we do science" reference document. It explains what "resonance" actually measures, how Monte Carlo validation works, and why control experiments matter.
+</Summary>
+
+---
+
+## Core Principle: Every Claim Gets a Control Experiment
+
+Before February 2026, many of our claims were made without proper baselines. We would find a pattern and call it "significant" without checking whether the same pattern appears in random data.
+
+**Since February 6, 2026**, every claim requires:
+
+1. **Pre-registered hypothesis** -- state what you expect BEFORE testing
+2. **Random baseline** -- test the same property on random data
+3. **Bonferroni correction** -- adjust significance threshold for multiple tests
+4. **Negative results reported** -- failed tests are as valuable as successes
+
+---
+
+## What "Resonance" Actually Measures
+
+### The Algorithm
+
+The "resonance" score used in our experiments is computed by the tick-loop:
+
+```
+1. Convert input string to SHA256 hash
+2. Map hash bytes to Anna Matrix coordinates: (hash[0] % 128, hash[1] % 128)
+3. Initialize 64 input neurons from hash bytes (ternary: -1, 0, +1)
+4. Iterate tick-loop:
+   - Each of 64 output neurons computes weighted sum of 8 input neighbors
+   - Weights from Anna Matrix row/column values
+   - Clamp to ternary: sum > 0 → +1, sum < 0 → -1, sum = 0 → 0
+5. Energy = sum(all 128 neuron states)
+6. Resonance % = (energy / 128) * 100 scaled to 0-100%
+```
+
+### What This IS
+
+- A **deterministic function**: same input always produces same output
+- A **hash-like transformation**: input → fixed output
+- A **matrix multiplication with ternary clamp**: linear algebra, not physics
+
+### What This IS NOT
+
+- NOT a physical measurement
+- NOT an "energy" in the physics sense
+- NOT influenced by external factors (time, Bitcoin blocks, etc.)
+- NOT specific to the Anna Matrix (any matrix produces similar behavior -- see [Tick-Loop Analysis](/docs/03-results/88-tick-loop-analysis))
+
+### Implications
+
+| Previous Claim | Honest Description |
+|---------------|-------------------|
+| "Resonance score of 42" | Deterministic output of our formula for this input |
+| "Energy signature" | Sum of ternary neuron states divided by 128 |
+| "Convergence pattern" | The ternary clamp always converges in 2 ticks |
+| "Bitcoin block correlation" | Observed but never statistically tested |
+
+---
+
+## Monte Carlo Simulation Methodology
+
+### What It Is
+
+Monte Carlo simulation generates thousands of random samples to establish what "normal" looks like. We then compare our actual finding against this distribution.
+
+### How We Use It
+
+```
+For each hypothesis:
+  1. State the hypothesis (pre-registered)
+  2. Measure the property in the Anna Matrix
+  3. Generate 10,000+ random matrices (control)
+  4. Measure the same property in each random matrix
+  5. Calculate p-value: fraction of random matrices that match or exceed Anna
+  6. Apply Bonferroni correction for multiple tests
+  7. Report result honestly (including negative results)
+```
+
+### Example: Point Symmetry
+
+```
+Anna Matrix: 99.58% point symmetry
+Random matrices (n=10,000): mean 0.82%, max 1.22%
+p-value: < 0.0001 (0 of 10,000 random matrices reached even 2%)
+Conclusion: SIGNIFICANT -- Anna's symmetry is genuine
+```
+
+### Example: Tick-Loop Convergence (Negative Result)
+
+```
+Anna Matrix: 100% convergence in 2 ticks
+Random matrices (n=100): 100% convergence in 2 ticks
+p-value: 1.0
+Conclusion: NOT SIGNIFICANT -- all matrices behave identically
+```
+
+---
+
+## Bonferroni Correction
+
+### Why It Matters
+
+When testing N hypotheses simultaneously, the chance of at least one false positive increases:
+
+```
+1 test at p < 0.05:  5% chance of false positive
+10 tests at p < 0.05: 40% chance of at least one false positive
+100 tests at p < 0.05: 99.4% chance of at least one false positive
+```
+
+### How We Apply It
+
+Divide the significance threshold by the number of tests:
+
+```
+Individual threshold: p < 0.001
+5 tests:   p < 0.001/5 = 0.0002
+128 tests: p < 0.001/128 = 0.0000078
+```
+
+### Where We Applied It
+
+| Analysis | Tests | Corrected Threshold |
+|----------|-------|-------------------|
+| Control Matrix Baseline | 5 | p < 0.0002 |
+| Fibonacci Investigation | 3 | p < 0.00033 |
+| Row Analysis | 128 | p < 0.0000078 |
+| Address Pair Scanner | 5 | p < 0.0002 |
+
+---
+
+## Control Matrix Generation
+
+### Method
+
+Random control matrices are NOT uniform random. They use the **same value distribution** as the Anna Matrix:
+
+```python
+anna_vals = anna_matrix.flatten()  # All 16,384 values
+random_matrix = np.random.choice(anna_vals, size=(128, 128))
+```
+
+This ensures fair comparison -- any differences are due to the **arrangement** of values, not the values themselves.
+
+### Why This Matters
+
+The Anna Matrix contains specific values (e.g., value 26 appears disproportionately). If we compared against uniform random matrices, we'd find differences that are due to the value distribution, not the structure. Using shuffled values isolates the structural properties.
+
+---
+
+## Pre-Registration of Hypotheses
+
+### Why It Matters
+
+Finding patterns after the fact (post-hoc) is easy because you can always find SOMETHING interesting in data. Pre-registering hypotheses prevents the "Texas sharpshooter fallacy" -- shooting at a wall and then drawing a target around the bullet holes.
+
+### Our Approach
+
+Each script begins with clearly stated hypotheses:
+
+```python
+"""
+PRE-REGISTERED HYPOTHESES:
+  H1: Values at Fibonacci coordinate intersections differ from random positions
+  H2: Fibonacci rows have different properties than other rows
+  H3: Fibonacci numbers are overrepresented in matrix values
+"""
+```
+
+Observations made AFTER running the test are labeled as "not pre-registered" and cannot be counted as evidence (e.g., the Fibonacci grid sum = 271 observation).
+
+---
+
+## What IS Genuinely Special About the Anna Matrix
+
+After all statistical testing, three properties survive rigorous validation:
+
+### 1. Point Symmetry (99.58%)
+
+```
+matrix[r, c] + matrix[127-r, 127-c] = -1
+```
+
+No random matrix in 10,000 trials came close (max: 1.22%). This is the **most robust finding** in the entire research. The matrix was deliberately constructed with this symmetry.
+
+### 2. Row-Level Value Biases
+
+Multiple rows have extreme value clustering that cannot occur by chance. Row 88 has value -27 appearing 44/128 times (34.4%). Random rows max out at ~13/128 for any single value.
+
+### 3. POCC/HASV Address Pair
+
+The combined mathematical properties of the POCC and HASV addresses are unique (1 in 48.8 million). No individual property is extraordinary, but the combination is.
+
+---
+
+## What IS NOT Special (Debunked)
+
+| Claim | Why It's Not Special |
+|-------|---------------------|
+| Tick-loop convergence | All matrices converge identically |
+| Fibonacci patterns | Indistinguishable from random positions |
+| Energy signatures | Within random variance |
+| Diagonal diff 676 alone | 44.5% of random pairs show similar values |
+| "Resonance" measurements | Property of the algorithm, not the matrix |
+
+---
+
+## Scripts Reference
+
+All validation scripts are in `apps/web/scripts/`:
+
+| Script | Purpose | Runtime |
+|--------|---------|---------|
+| `CONTROL_MATRIX_BASELINE.py` | Random matrix baseline, 5 hypotheses | ~15 min |
+| `ADDRESS_PAIR_SCANNER.py` | POCC/HASV uniqueness test, 100K pairs | ~5 min |
+| `ROW_ANALYSIS_COMPLETE.py` | Full row analysis + Monte Carlo | ~3 min |
+| `FIBONACCI_MATRIX_ANALYSIS.py` | Fibonacci investigation, 3 hypotheses | ~3 min |
+| `TICK_LOOP_BEHAVIOR_STUDY.py` | Neural network behavior, 100 controls | ~10 min |
+| `MONTE_CARLO_VALIDATION.py` | Original point symmetry validation | ~5 min |
+| `MASTER_VALIDATION_ALL_CLAIMS.py` | All mathematical claims verification | ~2 min |
+
+All scripts require only Python 3 + NumPy and the Anna Matrix JSON file.
+
+---
+
+*Methodology document completed: February 6, 2026*
+*All methods are reproducible and open for independent verification*

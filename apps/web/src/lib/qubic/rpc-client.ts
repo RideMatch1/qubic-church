@@ -298,6 +298,62 @@ export class QubicRPCClient {
   }
 
   /**
+   * Broadcast a signed transaction to the Qubic network.
+   * Uses the /broadcast-transaction endpoint.
+   *
+   * @param encodedTransaction - Base64-encoded signed transaction
+   * @returns The number of peers that received the broadcast
+   */
+  async broadcastTransaction(encodedTransaction: string): Promise<{
+    peersBroadcasted: number
+  }> {
+    let lastError: Error | null = null
+
+    for (let i = 0; i < QUBIC_RPC_ENDPOINTS.length; i++) {
+      const endpointIndex =
+        (this.currentEndpointIndex + i) % QUBIC_RPC_ENDPOINTS.length
+      const baseUrl = QUBIC_RPC_ENDPOINTS[endpointIndex]
+
+      if (!baseUrl) continue
+
+      try {
+        if (!this.rateLimiter.canMakeRequest()) {
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+        }
+        this.rateLimiter.recordRequest()
+
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout)
+
+        const response = await fetch(`${baseUrl}/broadcast-transaction`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({ encodedTransaction }),
+          signal: controller.signal,
+        })
+
+        clearTimeout(timeoutId)
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+
+        const data = await response.json()
+        this.currentEndpointIndex = endpointIndex
+        return data as { peersBroadcasted: number }
+      } catch (error) {
+        lastError = error instanceof Error ? error : new Error('Broadcast error')
+        continue
+      }
+    }
+
+    throw lastError || new Error('All endpoints failed for broadcast')
+  }
+
+  /**
    * Clear cache (useful for testing or manual refresh)
    */
   clearCache(): void {

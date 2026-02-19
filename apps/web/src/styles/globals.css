@@ -31,8 +31,8 @@
   /* Brand Colors */
   --bitcoin-orange: hsl(25 95% 53%);
   --bitcoin-orange-light: hsl(35 95% 60%);
-  --qubic-purple: hsl(262 83% 58%);
-  --qubic-purple-light: hsl(280 83% 65%);
+  --qubic-purple: hsl(43 96% 56%);
+  --qubic-purple-light: hsl(43 80% 65%);
 
   /* Status Colors - Verification Badges */
   --verified: hsl(142 76% 36%);
@@ -54,32 +54,32 @@
 }
 
 .dark {
-  --background: hsl(240 10% 3.9%);
+  --background: hsl(0 0% 2%);
   --foreground: hsl(0 0% 98%);
-  --card: hsl(240 10% 3.9%);
+  --card: hsl(0 0% 3%);
   --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(240 10% 3.9%);
+  --popover: hsl(0 0% 3%);
   --popover-foreground: hsl(0 0% 98%);
   --primary: hsl(0 0% 98%);
-  --primary-active: hsl(161 100% 69%);
+  --primary-active: hsl(43 96% 56%);
   --primary-foreground: hsl(240 5.9% 10%);
-  --secondary: hsl(240 3.7% 15.9%);
+  --secondary: hsl(0 0% 12%);
   --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(240 3.7% 15.9%);
-  --muted-foreground: hsl(240 5% 64.9%);
-  --accent: hsl(240 3.7% 15.9%);
+  --muted: hsl(0 0% 12%);
+  --muted-foreground: hsl(0 0% 55%);
+  --accent: hsl(0 0% 12%);
   --accent-foreground: hsl(0 0% 98%);
   --destructive: hsl(0 62.8% 30.6%);
   --destructive-foreground: hsl(0 85.7% 97.3%);
-  --border: hsl(240 3.7% 15.9%);
-  --input: hsl(240 3.7% 15.9%);
-  --ring: hsl(240 4.9% 83.9%);
+  --border: hsl(0 0% 14%);
+  --input: hsl(0 0% 14%);
+  --ring: hsl(43 50% 60%);
 
   /* Brand Colors (Same in dark mode) */
   --bitcoin-orange: hsl(25 95% 53%);
   --bitcoin-orange-light: hsl(35 95% 60%);
-  --qubic-purple: hsl(262 83% 58%);
-  --qubic-purple-light: hsl(280 83% 65%);
+  --qubic-purple: hsl(43 96% 56%);
+  --qubic-purple-light: hsl(43 80% 65%);
 
   /* Status Colors - Enhanced for dark mode */
   --verified: hsl(142 76% 42%);
@@ -94,10 +94,16 @@
   --disproven-bg: hsl(0 0% 45% / 0.2);
 
   /* Surface Layers (Dark Mode) */
-  --surface-0: hsl(240 10% 3.9%);
-  --surface-1: hsl(240 8% 7%);
-  --surface-2: hsl(240 6% 11%);
-  --surface-3: hsl(240 5% 15%);
+  --surface-0: hsl(0 0% 2%);
+  --surface-1: hsl(0 0% 5%);
+  --surface-2: hsl(0 0% 9%);
+  --surface-3: hsl(0 0% 13%);
+
+  /* Church Gold Palette */
+  --church-gold: hsl(43 96% 56%);
+  --church-gold-dim: hsl(43 60% 40%);
+  --church-navy: hsl(240 30% 10%);
+  --church-chalk: hsl(40 20% 85%);
 }
 
 @theme inline {
@@ -150,6 +156,12 @@
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
+
+  /* Church Gold Palette */
+  --color-church-gold: var(--church-gold);
+  --color-church-gold-dim: var(--church-gold-dim);
+  --color-church-navy: var(--church-navy);
+  --color-church-chalk: var(--church-chalk);
 }
 
 @layer base {
@@ -610,4 +622,48 @@
 
 .surface-3 {
   background-color: var(--surface-3);
+}
+
+/* ========================================
+   CHURCH GOLD PALETTE
+   ======================================== */
+
+.gradient-gold {
+  background: linear-gradient(135deg, var(--church-gold), var(--church-gold-dim));
+}
+
+.gradient-gold-text {
+  background: linear-gradient(135deg, hsl(43 96% 56%), hsl(48 96% 65%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hover-glow-gold {
+  position: relative;
+}
+
+.hover-glow-gold::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--church-gold), var(--church-gold-dim));
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.hover-glow-gold:hover::before {
+  opacity: 0.4;
+}
+
+@keyframes chalk-flicker {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.4; }
+}
+
+.animate-chalk-flicker {
+  animation: chalk-flicker 4s ease-in-out infinite;
 }

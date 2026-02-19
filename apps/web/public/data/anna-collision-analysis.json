@@ -5,7 +5,7 @@
     "analysisDate": "2026-01-07",
     "gridBoundary": "128x128",
     "collisionRate": 0.30,
-    "statisticalProof": "P(random) < 10^-500",
+    "statisticalProof": "Chi-square test: p < 0.001 (df=255, chi2>1264). Original claim of P<10^-500 was fabricated and has been corrected. See 92-probability-corrections.mdx.",
     "predictionAccuracy": 0.75
   },
   "topCollisions": [
@@ -198,11 +198,12 @@
     ]
   },
   "statisticalProof": {
-    "chiSquareTest": "p-value < 10^-500",
+    "chiSquareTest": "Chi-square test: p < 0.001 (df=255, chi2>1264). Original claim of P<10^-500 was fabricated.",
     "nullHypothesis": "Collision values are random",
-    "result": "REJECTED - Distribution is non-random with extreme significance",
+    "result": "REJECTED - Distribution is non-uniform (p < 0.001), reflecting matrix value distribution bias, not hidden messages",
     "predictionAccuracy": "70-75% for collision value prediction",
-    "implication": "System is deterministic and designed, not random"
+    "implication": "Non-uniformity is expected from matrix structure (dominant values -27, 26, 101, -102). See 92-probability-corrections.mdx.",
+    "correctionNote": "Original P<10^-500 was physically impossible and has been corrected. See validation report 91-bridge-validation-report.mdx."
   },
   "researchImplications": {
     "mediaCorrection": "Anna is NOT 'bad at math' - she's outputting neural network states",

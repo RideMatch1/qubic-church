@@ -28,6 +28,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { qubicRPC } from '@/lib/qubic/rpc-client'
 import { useQubicNetwork } from '@/components/aigarth-computer/hooks/useQubicNetwork'
+import { OracleMonitor, TransactionPanel } from '@/components/monitoring/oracle'
 
 // =============================================================================
 // TYPES
@@ -660,6 +661,15 @@ export default function MonitoringPage() {
           />
         </section>
 
+        {/* Oracle Machine Monitor */}
+        <section className="mb-6">
+          <OracleMonitor
+            tick={epoch?.tick ?? marketData?.network.tick ?? 0}
+            epoch={epoch?.epoch ?? marketData?.network.epoch ?? 0}
+            loading={rpcLoading || marketLoading}
+          />
+        </section>
+
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Column - Price & Epoch */}
@@ -677,6 +687,7 @@ export default function MonitoringPage() {
 
           {/* Middle Column - Tools */}
           <div className="space-y-6">
+            <TransactionPanel />
             <QuickBalanceCheck />
             <ProfitabilityCalculator price={marketData?.price.usd ?? 0} />
           </div>

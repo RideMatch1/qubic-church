@@ -1,4 +1,5 @@
-import { JetBrains_Mono as FontMono, Inter } from 'next/font/google'
+import { JetBrains_Mono as FontMono, Inter, Caveat, Bebas_Neue } from 'next/font/google'
+import localFont from 'next/font/local'
 
 import { absoluteUrl } from './utils'
 
@@ -16,6 +17,24 @@ export async function getSansFont() {
     return { variable: '' } as { variable: string }
   }
 }
+
+export const fontChalk = Caveat({
+  subsets: ['latin'],
+  variable: '--font-chalk',
+  weight: ['400', '700'],
+})
+
+export const fontHandodle = localFont({
+  src: '../../public/fonts/Handodle.ttf',
+  variable: '--font-handodle',
+  display: 'swap',
+})
+
+export const fontDisplay = Bebas_Neue({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: '400',
+})
 
 export const fontMono = FontMono({
   subsets: ['latin'],

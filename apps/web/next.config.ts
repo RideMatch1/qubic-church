@@ -4,7 +4,12 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  turbopack: {},
+  turbopack: {
+    resolveAlias: {
+      'contentlayer/generated': './.contentlayer/generated',
+    },
+  },
+  serverExternalPackages: ['pino', 'pino-pretty'],
 }
 
 const withContentlayer = createContentlayerPlugin({})

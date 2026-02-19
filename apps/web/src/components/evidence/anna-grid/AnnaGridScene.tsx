@@ -7,6 +7,7 @@ import * as THREE from 'three'
 import { useAnnaGridData } from './useAnnaGridData'
 import { CellDetailPanel } from './CellDetailPanel'
 import { AnnaGridControls } from './AnnaGridControls'
+import { ResearchLabPanel } from './ResearchLabPanel'
 import type { AnnaCell, ViewMode, ColorTheme, MatrixStats } from './types'
 import {
   MATRIX_SIZE,
@@ -16,6 +17,9 @@ import {
   CAMERA_PRESETS,
   KEYBOARD_SHORTCUTS,
 } from './constants'
+import { DiscoveriesOverlay } from './DiscoveriesOverlay'
+import { DiscoveriesPanel } from './DiscoveriesPanel'
+import { DISCOVERIES, DISCOVERY_PRESETS } from './discoveries'
 import { Button } from '@/components/ui/button'
 import {
   Maximize2,
@@ -49,6 +53,7 @@ import {
   MessageCircle,
   Zap,
   AlertTriangle,
+  Beaker,
 } from 'lucide-react'
 
 // =============================================================================
@@ -1142,9 +1147,13 @@ function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
     { key: 'C', action: 'Toggle crosshair' },
     { key: 'M', action: 'Toggle minimap' },
     { key: 'I', action: 'Toggle info panel' },
+    { key: 'E', action: 'Toggle discoveries panel' },
+    { key: 'L', action: 'Toggle Research Lab' },
     { key: 'T', action: 'Toggle 2D/3D view' },
     { key: 'B', action: 'Jump to Boot address' },
     { key: 'P', action: 'Jump to POCZ address' },
+    { key: 'K', action: 'Jump to "Key" position' },
+    { key: 'Z', action: 'Jump to ZZZ Magic Square' },
     { key: '1-5', action: 'Change view mode' },
     { key: 'W/↑', action: 'Navigate up' },
     { key: 'A/←', action: 'Navigate left' },
@@ -1220,6 +1229,25 @@ export default function AnnaGridScene() {
   const [showSearch, setShowSearch] = useState(false)
   const [showCoordInput, setShowCoordInput] = useState(false)
   const [showColorPicker, setShowColorPicker] = useState(false)
+
+  // Research Lab state
+  const [showResearchLab, setShowResearchLab] = useState(false)
+
+  // Discoveries states
+  const [showDiscoveries, setShowDiscoveries] = useState(false)
+  const [activeDiscoveryId, setActiveDiscoveryId] = useState<string | null>(null)
+  const [showDiscoveryLabels, setShowDiscoveryLabels] = useState(true)
+  const [showPatternLines, setShowPatternLines] = useState(true)
+  const [showRowHighlights, setShowRowHighlights] = useState(false)
+  const [discoveryCategoryVisibility, setDiscoveryCategoryVisibility] = useState<Record<string, boolean>>({
+    'easter-egg': true,
+    'mathematical': true,
+    'symmetry': true,
+    'word-encoding': true,
+    'bitcoin-connection': true,
+    'balance': true,
+    'special-value': true,
+  })
 
   const [cameraPreset, setCameraPreset] = useState<keyof typeof CAMERA_PRESETS>('overview')
 
@@ -1424,6 +1452,26 @@ export default function AnnaGridScene() {
           e.preventDefault()
           setShowInfo((v) => !v)
           break
+        case 'e':
+          e.preventDefault()
+          setShowDiscoveries((v) => !v)
+          break
+        case 'l':
+          e.preventDefault()
+          setShowResearchLab((v) => !v)
+          break
+        case 'k':
+          e.preventDefault()
+          // Jump to "Key" position
+          handleCellClick(8, 74)
+          break
+        case 'z':
+          if (!e.ctrlKey && !e.metaKey) {
+            e.preventDefault()
+            // Jump to ZZZ Magic Square
+            handleCellClick(36, 36)
+          }
+          break
         case 't':
           e.preventDefault()
           setDisplayMode((m) => m === '3d' ? '2d' : '3d')
@@ -1542,6 +1590,19 @@ export default function AnnaGridScene() {
               showSpecialRows={showSpecialRows}
               showCrosshair={showCrosshair}
               vipPositions={vipPositions}
+            />
+            {/* Discoveries Overlay */}
+            <DiscoveriesOverlay
+              showEasterEggs={discoveryCategoryVisibility['easter-egg'] ?? true}
+              showMathematical={discoveryCategoryVisibility['mathematical'] ?? true}
+              showSymmetry={discoveryCategoryVisibility['symmetry'] ?? true}
+              showWordEncodings={discoveryCategoryVisibility['word-encoding'] ?? true}
+              showBitcoinConnections={discoveryCategoryVisibility['bitcoin-connection'] ?? true}
+              showPatternLines={showPatternLines}
+              showRowHighlights={showRowHighlights}
+              showLabels={showDiscoveryLabels}
+              animate={true}
+              activeDiscoveryId={activeDiscoveryId}
             />
           </Suspense>
         </Canvas>
@@ -1673,6 +1734,24 @@ export default function AnnaGridScene() {
             <Button
               variant="ghost"
               size="icon"
+              className={`h-8 w-8 ${showDiscoveries ? 'text-amber-400 bg-amber-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              onClick={() => setShowDiscoveries(!showDiscoveries)}
+              title="Easter Eggs & Discoveries (E)"
+            >
+              <Sparkles className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`h-8 w-8 ${showResearchLab ? 'text-green-400 bg-green-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              onClick={() => setShowResearchLab(!showResearchLab)}
+              title="Research Lab (L)"
+            >
+              <Beaker className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
               className={`h-8 w-8 ${showMiniMap ? 'text-emerald-400 bg-emerald-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowMiniMap(!showMiniMap)}
               title="Toggle MiniMap (M)"
@@ -1792,6 +1871,26 @@ export default function AnnaGridScene() {
         {/* Coordinate Input */}
         {showCoordInput && <CoordinateInput onNavigate={handleCellClick} onClose={() => setShowCoordInput(false)} />}
 
+        {/* Discoveries Panel */}
+        <DiscoveriesPanel
+          isOpen={showDiscoveries}
+          onClose={() => setShowDiscoveries(false)}
+          onJumpToCell={handleCellClick}
+          categoryVisibility={discoveryCategoryVisibility}
+          onToggleCategory={(category) => setDiscoveryCategoryVisibility(prev => ({
+            ...prev,
+            [category]: !prev[category]
+          }))}
+          showLabels={showDiscoveryLabels}
+          onToggleLabels={() => setShowDiscoveryLabels(v => !v)}
+          showPatternLines={showPatternLines}
+          onTogglePatternLines={() => setShowPatternLines(v => !v)}
+          showRowHighlights={showRowHighlights}
+          onToggleRowHighlights={() => setShowRowHighlights(v => !v)}
+          activeDiscoveryId={activeDiscoveryId}
+          onSetActiveDiscovery={setActiveDiscoveryId}
+        />
+
         {/* Mini Map */}
         {showMiniMap && displayMode === '3d' && <MiniMap matrix={matrix} stats={stats} selectedCell={selectedCell} hoveredCell={hoveredCell} />}
 
@@ -1843,6 +1942,16 @@ export default function AnnaGridScene() {
 
         {/* Keyboard shortcuts modal */}
         {showKeyboardShortcuts && <KeyboardShortcutsPanel onClose={() => setShowKeyboardShortcuts(false)} />}
+
+        {/* Research Lab Panel */}
+        <ResearchLabPanel
+          isOpen={showResearchLab}
+          onClose={() => setShowResearchLab(false)}
+          matrix={matrix}
+          stats={stats}
+          selectedCell={selectedCell}
+          onCellSelect={handleCellClick}
+        />
       </div>
 
       {/* Watermark */}

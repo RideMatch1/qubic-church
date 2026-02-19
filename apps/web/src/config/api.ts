@@ -28,6 +28,32 @@ export const JETSKI_POOL_API = {
   },
 } as const
 
+/**
+ * Oracle Machine Configuration (v1.278.0+)
+ * Oracle Machines bring real-world data into Qubic smart contracts.
+ * Computors are obligated to run Oracle Machines for revenue.
+ *
+ * CLI commands: -queryoracle, -getoraclequery
+ * Core PR: https://github.com/qubic/core/pull/758
+ */
+export const ORACLE_CONFIG = {
+  /** Known research-relevant addresses */
+  watchAddresses: {
+    POCC: 'POCCZYCKTRQGHFIPWGSBLJTEQFDDVVBMNUHNCKMRACBGQOPBLURNRCBAFOBD',
+    HASV: 'HASVHXZKVIHTFHEZUSZIIBPZFVHAGTANVXHBJNHMWCRQZYKULCUBLCTBPONO',
+  },
+  /** Signal date: Bitcoin Genesis (2009-01-03) + 6268 days */
+  signalDate: new Date('2026-03-03T00:00:00Z'),
+  /** Signal parameters from GENESIS token messages */
+  signal: {
+    topHolders: 676,
+    unitsPerHolder: 50,
+    totalUnits: 33_800,
+    bitcoinBlocksReferenced: { start: 1, end: 676 },
+    daysFromGenesis: 6268,
+  },
+} as const
+
 export const API_CONFIG = {
   cacheTime: {
     epoch: 5000, // 5s
@@ -35,6 +61,7 @@ export const API_CONFIG = {
     emission: 30000, // 30s
     community: 30000, // 30s
     nftOwner: 60000, // 1min
+    oracle: 15000, // 15s — oracle data refreshes frequently
   },
   rateLimit: {
     maxRequests: 10,

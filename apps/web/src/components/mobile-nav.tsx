@@ -67,6 +67,10 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
 
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
+            {/* Research Section */}
+            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider pt-2">
+              Research
+            </div>
             {docsConfig.docs.mainNav?.map(
               item =>
                 item.href && (
@@ -83,16 +87,45 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
                 )
             )}
 
-            <MobileLink href="/timeline" onOpenChange={setOpen}>
-              Journey
-            </MobileLink>
-
             <MobileLink href="/evidence" onOpenChange={setOpen}>
-              Evidence
+              Anna Matrix
             </MobileLink>
 
-            <MobileLink href="/agents" onOpenChange={setOpen}>
-              Agents
+            <MobileLink href="/timeline" onOpenChange={setOpen}>
+              Evidence Timeline
+            </MobileLink>
+
+            <MobileLink href="/monitoring" onOpenChange={setOpen}>
+              Live Monitoring
+            </MobileLink>
+
+            {/* Main Pages */}
+            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider pt-4">
+              Explore
+            </div>
+
+            <MobileLink href="/nfts" onOpenChange={setOpen}>
+              NFT Collection
+            </MobileLink>
+
+            <MobileLink href="/#giveaway" onOpenChange={setOpen}>
+              Giveaway
+            </MobileLink>
+
+            <MobileLink href="/get-qubic" onOpenChange={setOpen}>
+              Get Qubic
+            </MobileLink>
+
+            <MobileLink href="/mine-qubic" onOpenChange={setOpen}>
+              Mine Qubic
+            </MobileLink>
+
+            <MobileLink href="/game" onOpenChange={setOpen}>
+              Anna Matrix Game
+            </MobileLink>
+
+            <MobileLink href="/challenges" onOpenChange={setOpen}>
+              Challenges
             </MobileLink>
           </div>
 

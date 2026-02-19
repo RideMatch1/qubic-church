@@ -12,9 +12,7 @@ const GalaxyHeroClient = dynamic(
   {
     ssr: false,
     loading: () => (
-      <section className="relative w-full h-screen overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-radial from-purple-900/20 via-blue-900/5 to-black" />
-      </section>
+      <section className="relative w-full h-screen overflow-hidden bg-black" />
     ),
   }
 )

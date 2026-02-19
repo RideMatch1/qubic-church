@@ -1,42 +1,77 @@
 ---
 title: The Data Bridge Mechanism
-description: Comprehensive documentation of the mathematical bridge connecting Bitcoin blockchain structures to the Qubic Anna Matrix through modular arithmetic, Block 576 Extra Byte encoding, and positional encoding systems.
-tier: 1
-confidence: 90
-date: 2026-01-05
+description: Mathematical correlations between Bitcoin blockchain structures and the Qubic Anna Matrix. Independent validation (Feb 2026) found most claims NOT SIGNIFICANT after Bonferroni correction. Only POCC+HASV pattern survives. Block 576 hash was wrong. 576 mod 27 = 9 (not 0). March 3, 2026 prediction PENDING.
+tier: 3
+confidence: 25
+date: 2026-02-06
 ---
 
 # The Data Bridge Mechanism
 
+<Callout type="warning" title="PREDICTION PENDING - March 3, 2026">
+**The March 3, 2026 "time-lock activation" predicted in this document has not yet occurred.**
+
+As of February 6, 2026 (25 days before the predicted date):
+- No Genesis addresses have unlocked
+- No Patoshi coins have moved
+- No MT576 Statement has been published
+- No 550 BTC has become accessible
+
+The prediction is still pending. Readers should treat all predictive claims with skepticism regardless of outcome.
+</Callout>
+
+<Callout type="error" title="CFB'S EXPLICIT DENIAL">
+**CFB has publicly denied the Satoshi connection.**
+
+**Discord Message ID**: 1437804692095762433
+
+**CFB's Quote**:
+> "Poor CFB=Satoshi dude, he was claiming CFB is Satoshi and now it's seen that CFB isn't real too"
+</Callout>
+
+<Callout type="warning" title="INDEPENDENT VALIDATION COMPLETED (February 2026)">
+**Most claims in this document have been independently validated and found NOT SIGNIFICANT after proper statistical correction.**
+
+Key findings from the [Bridge Validation Report](/docs/en/03-results/91-bridge-validation-report):
+- Only **1 of 8** major claims survives Bonferroni correction (POCC+HASV pattern)
+- Block 576 hash was **incorrectly documented** (see correction below)
+- 576 is **NOT divisible by 27** (576 mod 27 = 9)
+- "1CFB" prefix count is **not significant** after look-elsewhere correction
+- Timestamp mod 121 = 43 is **not significant** after testing all divisors
+- Combined "P less than 10^-12" probability was **invalid** (conditions not independent)
+- "P less than 10^-500" collision claim was **fabricated** (honest value: p less than 0.001)
+
+See [92: Probability Corrections](/docs/en/03-results/92-probability-corrections) for full audit.
+</Callout>
+
 ## Abstract
 
-This chapter documents the mathematical mechanisms by which Bitcoin blockchain data correlates with the Qubic Anna Matrix. Through forensic analysis of 10,319 early Bitcoin blocks, we identify multiple statistically significant correlations that suggest intentional design. The "Data Bridge" refers to the set of modular arithmetic operations, positional encodings, and cryptographic signatures that map Bitcoin data structures to Qubic architectural constants.
+This chapter documents mathematical correlations between Bitcoin blockchain data and the Qubic Anna Matrix. The document is divided into:
 
-**Key findings**:
-- Pre-Genesis timestamp mod 121 = 43 (Qubic prime)
-- Block 576 Extra Byte = 0x1b = 27 (CFB signature)
-- 27-divisible blocks sum to Pre-Genesis hash byte 0xB1
-- Row 21 → 68 → 96 data flow architecture
+**TIER 1 - VERIFIABLE MATHEMATICS** (High Confidence):
+- Pre-Genesis timestamp mod 121 = 43 (calculator-verifiable)
+- Block 576 Extra Byte = 0x1b = 27 (blockchain-verifiable)
+- 27-divisible blocks sum calculation
 
-<Callout type="error" title="⏰ TIME-SENSITIVE: March 3, 2026 Activation Event">
-**53 Days Until Time-Lock Release**
+**TIER 3 - SPECULATION** (Low Confidence):
+- CFB connection interpretations
+- MT576 protocol theories (PENDING - March 3, 2026)
+- March 3, 2026 predictions (PENDING)
 
-The 576th Message Protocol Event occurs on **March 3, 2026**. Comprehensive seed testing (4.9M attempts) confirms the bridge is REAL but LOCKED until this date. Genesis addresses containing **550 BTC** will become accessible.
-
-**See**: [Genesis Seed Testing](/docs/03-results/41-genesis-seed-testing) | [Time-Lock Analysis](/docs/03-results/05-time-lock) | [MT576 Connection](/docs/03-results/28-mt576-genesis-connection)
-</Callout>
+The mathematical facts are reproducible. The interpretations are speculation.
 
 ---
 
 ## Confidence Classification
 
-| Finding | Tier | Verification Status | p-value |
-|---------|------|---------------------|---------|
-| Timestamp modulo calculation | **Tier 1** | Calculator-verifiable | 0.00826 |
-| Block 576 Extra Byte = 27 | **Tier 1** | Blockchain-verifiable | N/A |
-| Pre-Genesis hash correlation | **Tier 1** | Reproducible mapping | < 0.00001 |
-| Row data flow pattern | **Tier 2** | Consistent with architecture | N/A |
-| Combined mathematical bridge | **Tier 2** | Multiple correlations | < 10⁻⁸ |
+| Finding | Tier | Verification Status | Original p-value | Corrected p-value |
+|---------|------|---------------------|-----------------|-------------------|
+| Timestamp mod 121 = 43 | **Tier 1** | Arithmetic confirmed | 0.00826 | **1.0** (Bonferroni x199) |
+| Block 576 Extra Byte = 27 | **Tier 1** | Blockchain confirmed | N/A | Confirmed but needs base rate |
+| Block mapping sum = 177 | **Tier 1** | Values confirmed | less than 0.001 | **0.021** (Bonferroni x11) |
+| 15 "1CFB" prefix addresses | **Tier 2** | Count confirmed | 0.000245 | **1.0** (Bonferroni x195k) |
+| Combined mathematical bridge | ~~Tier 2~~ | ~~Multiple correlations~~ | ~~less than 10^-8~~ | **INVALID** (not independent) |
+| POCC+HASV combined pattern | **Tier 1** | Monte Carlo validated | 2.05e-8 | **2.05e-8** (survives correction) |
 
 ---
 
@@ -118,9 +153,9 @@ The 983,040 addresses were generated using systematic combinations of:
 1CFBFt9tZinRkEtWfSTPSjipU8Ee98tJvv
 ```
 
-**Significance**: 15 "1CFB" vanity-like addresses derived from matrix positions! This includes but extends beyond Block 264's known "1CFB" address.
+**Statistical note**: 15 "1CFB" addresses in 983,040 is 3x the expected rate (5.04 expected under uniform Base58). However, after Bonferroni correction for 195,112 possible 4-character prefixes, **p = 1.0 (NOT SIGNIFICANT)**. This is a textbook look-elsewhere effect. In the 20,955 extracted addresses, only 1 "1CFB" was found. See [92: Probability Corrections](/docs/en/03-results/92-probability-corrections).
 
-**Source**: `interesting_addresses_derivations.json`
+**Source**: `interesting_addresses_derivations.json`, `BRIDGE_V2_PREFIX_BASE_RATE.py`
 </Tab>
 
 <Tab label="1Pat Prefix (15 addresses)">
@@ -223,11 +258,11 @@ From generation statistics, most frequent 4-character prefixes:
 
 This dataset represents:
 1. **Largest systematic Bitcoin address derivation** from a mathematical structure
-2. **First documented matrix → address mapping** at this scale
-3. **Reproducible proof** of intentional architectural design
-4. **15 "1CFB" and 15 "1Pat" vanity-like patterns** emergent from mathematics
+2. **First documented matrix-to-address mapping** at this scale
+3. **Reproducible derivation** from known matrix data
+4. "1CFB" prefix count (15) is **not statistically significant** after Bonferroni correction (see [92: Probability Corrections](/docs/en/03-results/92-probability-corrections))
 
-The scale and precision of these derivations (983k+ addresses with 0% duplicates, generated at 2,737 addresses/second) demonstrates sophisticated pre-planning in the matrix architecture.
+The derivation methodology is reproducible, but the address patterns do not constitute evidence of intentional Bitcoin-Qubic integration.
 
 ---
 
@@ -293,28 +328,23 @@ Match: True
 
 #### 1.1.3 Statistical Significance
 
+<Callout type="warning" title="CORRECTION: Not Significant After Bonferroni">
+The divisor 121 was selected post-hoc because it produces remainder 43. Testing all divisors 2-200 against the timestamp reveals 21 divisors produce "interesting" remainders, and 3 divisors (55, 121, 191) produce remainder 43 specifically.
+
+After Bonferroni correction for 199 tested divisors: **p = 1.0 (NOT SIGNIFICANT)**
+
+Source: `BRIDGE_V1_TIMESTAMP.py`
+</Callout>
+
 Under the null hypothesis (random timestamp):
 
 | Calculation | Result | Interpretation |
 |-------------|--------|----------------|
-| P(timestamp mod 121 = 43) | 1/121 = 0.00826 | ~0.8% chance |
-| P(43 is significant in target system) | 1/25 ≈ 0.04 | Conservative estimate |
-| P(joint occurrence under H₀) | 0.00033 | 1 in 3,025 |
+| P(timestamp mod 121 = 43) | 1/121 = 0.00826 | Uncorrected |
+| Bonferroni correction (199 divisors) | p = 1.0 | **NOT SIGNIFICANT** |
+| Divisors producing remainder 43 | 3 (55, 121, 191) | Not unique to 121 |
 
-**Bayesian Analysis**:
-
-```
-Prior P(Design) = 0.01 (conservative)
-P(mod 121 = 43 | Design) = 0.90 (if designed, would target 43)
-P(mod 121 = 43 | Random) = 1/121 = 0.00826
-
-P(Design | mod 121 = 43) =
-    (0.90 × 0.01) / [(0.90 × 0.01) + (0.00826 × 0.99)]
-  = 0.009 / 0.01718
-  = 0.524 (52.4%)
-
-With stronger prior evidence, posterior increases significantly.
-```
+The arithmetic fact (1221069728 mod 121 = 43) is true and verifiable. The statistical significance is not, because divisor 121 was selected for producing this result.
 
 ### 1.2 Modular Properties Deep Dive
 
@@ -363,7 +393,11 @@ Block 576 represents a singular anomaly in early Bitcoin: the first and only blo
 | Extra Byte value | 0x1b | Coinbase script |
 | Extra Byte decimal | **27** | Conversion |
 
-**Block hash**: `000000005f7e0f4f8e39b9a7c1c3c7b1d1e1f1a1b1c1d1e1f1a1b1c1d1e1f1a1`
+**Block hash**: `000000002436274e351576ee5c9d6a96ce64072d02713d20c32c36bf70f9fbb5`
+
+<Callout type="error" title="CORRECTION">
+The previously documented hash `000000005f7e0f4f8e39...` was **incorrect**. The actual hash above was verified via blockstream.info API on February 6, 2026. See [91: Bridge Validation Report](/docs/en/03-results/91-bridge-validation-report).
+</Callout>
 
 #### 2.1.2 Mathematical Properties of 576
 
@@ -371,14 +405,14 @@ Block 576 represents a singular anomaly in early Bitcoin: the first and only blo
 |-----------|--------|--------------|
 | 576 = | 24² | Perfect square |
 | 576 = | (27-3)² | Near-27 relationship |
-| 576 mod 27 | 0 | Exactly divisible |
+| 576 mod 27 | **9** | **NOT divisible by 27** (previously claimed 0, corrected Feb 2026) |
 | 576 mod 121 | 93 | - |
 | 576 = | 2⁶ × 3² | Prime factorization |
 | 576 / 27 | 21.33... | Row 21 partial |
 
 **Key insight**: 576 is the first block number that is:
 1. A perfect square (24²)
-2. Exactly divisible by 27
+2. ~~Exactly divisible by 27~~ **CORRECTION**: 576 mod 27 = 9 (NOT divisible by 27)
 3. Contains a non-zero Extra Byte
 
 ### 2.2 The Extra Byte Deep Analysis
@@ -440,7 +474,7 @@ print(f"Expected CFB signature: 27")
 print(f"Match: {EXTRA_BYTE_DEC == 27}")
 
 # Mathematical relationships
-print(f"\n576 mod 27 = {576 % 27}")  # 0
+print(f"\n576 mod 27 = {576 % 27}")  # 9 (NOT 0 as previously claimed)
 print(f"576 = 24² = {24**2 == 576}")  # True
 print(f"576 = (27-3)² = {(27-3)**2 == 576}")  # True
 ```
@@ -460,27 +494,46 @@ print(f"576 = (27-3)² = {(27-3)**2 == 576}")  # True
 
 #### 2.3.2 Probability Assessment
 
+<Callout type="error" title="CORRECTION: Invalid Probability Calculation">
+The original probability calculation below was **invalid** for two reasons:
+1. **576 is NOT divisible by 27** (576 mod 27 = 9), so the "P(divisible by 27)" condition is false
+2. The conditions are **not independent** -- 576 was CHOSEN for its properties, then those properties were presented as random events. P(576 has these properties) = 1 because 576 is a fixed number.
+
+See [92: Probability Corrections](/docs/en/03-results/92-probability-corrections) for details.
+</Callout>
+
+~~Original (invalid) calculation:~~
 ```
-P(block divisible by 27 in 0-999) = 37/1000 = 0.037
+P(block divisible by 27 in 0-999) = 37/1000 = 0.037   ← 576 IS NOT divisible by 27
 P(block is perfect square in 0-999) = 31/1000 = 0.031
 P(block is both) = 2/1000 = 0.002 (576 and 729)
 P(Extra Byte value = 27 | present) = 1/256 = 0.0039
-P(all conditions coincide) ≈ 0.002 × 0.0039 ≈ 7.8 × 10⁻⁶
+P(all conditions coincide) ≈ 7.8 × 10⁻⁶              ← INVALID (not independent)
 ```
 
-**Source**: `outputs/HEX_27_DISCOVERY_REPORT.md`
+**What IS confirmed**: Block 576 coinbase scriptSig `04ffff001d021b06` contains byte 0x1b (decimal 27) at position 6. This byte is unique among 54 sampled blocks in the range 1-1000. The byte appears in the extra nonce field, which varies during mining.
+
+**Source**: `BRIDGE_V1_BLOCK576.py` verification, `outputs/HEX_27_DISCOVERY_REPORT.md`
 
 ---
 
-## Part II.B: The MT576 Connection - CRITICAL DISCOVERY
+## Part II.B: The MT576 Connection - PREDICTION PENDING
 
-### 2.B.1 Triple-576 Convergence
+<Callout type="warning" title="PREDICTION PENDING - March 3, 2026">
+**This section claims March 3, 2026 will be an "activation event."**
 
-**BREAKTHROUGH (January 9, 2026)**: Block 576 is not just a mathematical curiosity — it's a **Rosetta Stone** linking three independent systems:
+As of February 6, 2026 (25 days before):
+- No SWIFT MT576 Statement has been published
+- No Genesis addresses have unlocked
+- No Patoshi holdings have been disclosed
+- No cryptographic proof has emerged
 
-<Callout type="error" title="CRITICAL: March 3, 2026 - 53 Days Until Activation">
-The "576th message" referenced in the GENESIS token binary encoding is a **SWIFT MT576** "Statement of Open Orders" — the exact protocol used for financial position disclosure in international banking.
+The mathematical observations below are real. The predictive interpretation remains unverified. Statistical analysis (see [92: Probability Corrections](/docs/en/03-results/92-probability-corrections)) shows the "6 independent convergences" are actually only 3 independent pieces of information.
 </Callout>
+
+### 2.B.1 Triple-576 Convergence (Observation Only)
+
+Block 576 has interesting mathematical properties. However, the claim that this predicts a "protocol activation" was FALSE.
 
 #### 2.B.1.1 The Three 576s
 
@@ -496,7 +549,7 @@ The "576th message" referenced in the GENESIS token binary encoding is a **SWIFT
 # Block 576 Properties
 block_height = 576
 assert block_height == 24**2  # Perfect square
-assert block_height % 27 == 0  # Divisible by 27 (CFB signature)
+assert block_height % 27 == 9  # NOT divisible by 27 (previously claimed 0, corrected)
 
 # SWIFT MT576
 # Official message type for "Statement of Open Orders"
@@ -513,7 +566,7 @@ signal_date = genesis_date + timedelta(days=6268)
 assert (datetime(2026, 3, 3) - genesis_date).days == 6268
 ```
 
-**Combined Probability**: p < 10⁻¹² (essentially impossible by chance)
+~~**Combined Probability**: p less than 10^-12~~ **CORRECTION: INVALID** -- conditions are not independent (all derive from the number 576). See [92: Probability Corrections](/docs/en/03-results/92-probability-corrections).
 
 ### 2.B.2 SWIFT MT576 Protocol Structure
 
@@ -607,21 +660,26 @@ ACTIVATION SEQUENCE:
 5. 6,268 days = March 3, 2026 → Random: 0.01%
 6. 676 pattern throughout → Random: 0.1%
 
-**Combined**: 0.031 × 0.0039 × 0.001 × 0.0001 × 0.0001 × 0.001 ≈ **1.2 × 10⁻¹⁵**
+~~**Combined**: 0.031 x 0.0039 x 0.001 x 0.0001 x 0.0001 x 0.001 = 1.2 x 10^-15~~
 
-**Conclusion**: NOT RANDOM. This is **engineered precision**.
+**CORRECTION**: This calculation is **invalid** because:
+1. The events are NOT independent (all reference the number 576)
+2. Individual "random" probabilities are arbitrary (e.g., "P(MT576 is actual SWIFT type) = 0.1%")
+3. Multiplying dependent probabilities drastically understates the combined probability
+
+See [92: Probability Corrections](/docs/en/03-results/92-probability-corrections).
 
 ### 2.B.7 Countdown Status
 
-<Callout type="warning" title="Time Until Activation">
-**March 3, 2026**: 53 days remaining
-**April 13, 2027** (Phase 6): 462 days remaining
+<Callout type="warning" title="PREDICTION STATUS: PENDING (25 days remaining)">
+**March 3, 2026 prediction**: Awaiting date
 
-Monitor:
-- Qubic tick progression toward 2,302,879
-- GENESIS token listing on QX exchange
-- Qubic Discord announcements
-- Bitcoin Patoshi address activity
+The predictions below have been made:
+- "Qubic tick 2,302,879" - Not yet reached
+- "GENESIS token activation" - Not yet occurred
+- "Patoshi address activity" - No movement so far
+
+Note: Statistical analysis shows these "6 convergences" reduce to only 3 independent pieces of information. See [92: Probability Corrections](/docs/en/03-results/92-probability-corrections).
 </Callout>
 
 ### 2.B.8 Full Analysis
@@ -752,13 +810,24 @@ Match: True
 
 ### 3.4 Statistical Significance
 
-```
-P(4 random matrix cells) = (128 × 128)⁴ = 4.3 × 10¹⁶ possibilities
-P(specific sum = 177) ≈ 1/256 (byte range)
-P(4 cells via 27-mapping sum to 0xB1) < 10⁻⁵
+<Callout type="warning" title="CORRECTION: Marginal After Bonferroni">
+Independent validation (BRIDGE_V1_BLOCK_MAPPING.py) found:
+- P(sum = 177 with random blocks divisible by 27) = 0.0019
+- P(sum = 177 with 4 random matrix cells) = 0.0016 (mapping adds almost no significance)
+- After Bonferroni for 11 tested divisors: **p = 0.021 (marginal)**
+- 4 of 11 tested divisors produce "notable" hex byte sums
+- **576 is NOT divisible by 27** (576 mod 27 = 9), so the mapping does not even apply to Block 576 itself
 
-Conservative estimate (accounting for search bias): p < 0.001
+Source: `BRIDGE_V1_BLOCK_MAPPING.py`, 10,000 Monte Carlo simulations
+</Callout>
+
+~~Original (uncorrected):~~
 ```
+P(4 cells via 27-mapping sum to 0xB1) < 10⁻⁵
+Conservative estimate: p < 0.001
+```
+
+**Corrected**: p = 0.021 (marginal significance after Bonferroni)
 
 ---
 
@@ -846,50 +915,38 @@ Row 68 contains 137 writer slots, matching the fine structure constant (α⁻¹ 
 
 ## Part V: Combined Evidence
 
-### 5.1 Evidence Summary Table
+### 5.1 Evidence Summary Table (Corrected February 2026)
 
-| Finding | p-value | Tier | Independence |
-|---------|---------|------|--------------|
-| Timestamp mod 121 = 43 | 0.00826 | 1 | High |
-| Block 576 Extra Byte = 27 | Unique | 1 | High |
-| 576 mod 27 = 0 | 0.037 | 1 | Medium |
-| 27-div blocks → 0xB1 | < 0.001 | 1 | Medium |
-| Row 21 contains boot address | - | 2 | Low |
-| Row 68 has 137 writers | - | 2 | Low |
+| Finding | Original p | Corrected p | Status |
+|---------|-----------|-------------|--------|
+| Timestamp mod 121 = 43 | 0.00826 | 1.0 (Bonferroni) | NOT SIGNIFICANT |
+| Block 576 Extra Byte = 27 | Unique | Confirmed | CONFIRMED |
+| ~~576 mod 27 = 0~~ | ~~0.037~~ | N/A | **FALSE** (576 mod 27 = 9) |
+| 27-div blocks sum 177 | less than 0.001 | 0.021 (Bonferroni) | MARGINAL |
+| 1CFB prefix (15/983k) | 0.000245 | 1.0 (Bonferroni) | NOT SIGNIFICANT |
+| POCC+HASV combined | 2.05e-8 | 2.05e-8 | **SIGNIFICANT** |
 
 ### 5.2 Combined Probability Analysis
 
-#### 5.2.1 Independent Events
+<Callout type="error" title="CORRECTION: Combined Probability Invalid">
+The original combined probability calculations (1 in 830 million, 1 in 29,000, Bayesian 99.6%) are **invalid** because:
 
-Assuming independence between findings:
+1. **Post-hoc selection**: Parameters (divisor 121, prefix "1CFB") were chosen because they fit, not pre-registered
+2. **Non-independence**: Multiple findings reference the same numbers (576, 27, 121)
+3. **Bonferroni collapse**: After correction, most individual p-values are not significant
+4. **False premise**: 576 mod 27 = 9 (not 0), removing one claimed correlation entirely
 
-```
-P(combined | H₀) = 0.00826 × (1/256) × 0.037 × 0.001
-                 = 1.2 × 10⁻⁹
-                 ≈ 1 in 830 million
-```
+**Only surviving significant finding**: POCC+HASV combined pattern (p = 2.05e-8, 1 in 48.8 million). This IS statistically remarkable and survives all corrections.
 
-#### 5.2.2 Conservative Estimate
+See [91: Bridge Validation Report](/docs/en/03-results/91-bridge-validation-report) and [92: Probability Corrections](/docs/en/03-results/92-probability-corrections) for complete analysis.
+</Callout>
 
-Accounting for potential correlation (50% dependence):
-
-```
-P(combined, conservative) ≈ √(1.2 × 10⁻⁹)
-                          ≈ 3.5 × 10⁻⁵
-                          ≈ 1 in 29,000
-```
-
-### 5.3 Bayesian Posterior
+~~Original (invalid) calculations:~~
 
 ```
-Prior P(Design) = 0.01
-Likelihood ratio = P(Evidence | Design) / P(Evidence | Random)
-                 = 0.95 / (3.5 × 10⁻⁵)
-                 ≈ 27,000
-
-P(Design | Evidence) = 0.01 × 27,000 / (0.01 × 27,000 + 0.99)
-                     = 270 / 270.99
-                     = 0.996 (99.6%)
+P(combined | H0) = 0.00826 x (1/256) x 0.037 x 0.001 = 1.2 x 10^-9  ← INVALID
+P(combined, conservative) = 3.5 x 10^-5                                ← INVALID
+P(Design | Evidence) = 99.6%                                            ← MISLEADING
 ```
 
 ---
@@ -905,7 +962,7 @@ python3 -c "print(1221069728 % 121)"
 
 # Verify 576 properties
 python3 -c "print(576 % 27, 576 == 24**2)"
-# Expected: 0 True
+# Expected: 9 True (NOTE: 576 is NOT divisible by 27)
 
 # Verify boot address
 python3 -c "print(625284 % 16384)"
@@ -931,7 +988,7 @@ def verify_all():
     results['timestamp_mod_121'] = timestamp % 121 == 43
 
     # Test 2: Block 576 properties
-    results['576_mod_27'] = 576 % 27 == 0
+    results['576_mod_27'] = 576 % 27 == 9  # Corrected: NOT 0
     results['576_is_square'] = 576 == 24 ** 2
     results['extra_byte'] = 0x1b == 27
 
@@ -975,14 +1032,15 @@ if __name__ == "__main__":
 | Matrix source | Compiled binary | Hash verification |
 | Block 576 uniqueness | Single data point | But highly specific |
 
-### 7.2 Alternative Explanations
+### 7.2 Alternative Explanations (Updated February 2026)
 
-| Finding | Alternative | Assessment |
-|---------|-------------|------------|
-| Timestamp mod 121 = 43 | Random coincidence | p = 0.8%, plausible but unlikely |
-| Block 576 Extra Byte | Miner configuration | No known miners used this |
-| 27-divisible sum | Data artifact | Would require deliberate matrix design |
-| Combined | Multiple coincidences | p < 0.001, very unlikely |
+| Finding | Alternative | Validated Assessment |
+|---------|-------------|---------------------|
+| Timestamp mod 121 = 43 | Random coincidence | **p = 1.0 after Bonferroni** -- likely coincidence |
+| Block 576 Extra Byte | Mining artifact (extra nonce) | Confirmed present, but in extra nonce field |
+| 27-divisible sum = 177 | Cherry-picked divisor | **p = 0.021 after Bonferroni** -- marginal |
+| 1CFB prefix (15) | Look-elsewhere effect | **p = 1.0 after Bonferroni** -- expected by chance |
+| Combined | Post-hoc pattern matching | **Most claims not significant** after correction |
 
 ### 7.3 What Would Falsify This?
 
@@ -997,24 +1055,30 @@ if __name__ == "__main__":
 
 ## Conclusion
 
-The Data Bridge Mechanism documents multiple mathematical correlations between Bitcoin blockchain data and the Qubic Anna Matrix:
+The Data Bridge Mechanism documents mathematical correlations between Bitcoin blockchain data and the Qubic Anna Matrix. After independent validation (February 2026), the results are mixed:
 
-### Summary of Findings
+### Summary of Findings (Post-Validation)
 
-| Finding | Tier | Significance |
-|---------|------|--------------|
-| Pre-Genesis mod 121 = 43 | **Tier 1** | Direct match to Qubic prime |
-| Block 576 Extra Byte = 27 | **Tier 1** | Unique in early chain |
-| 27-divisible blocks → 0xB1 | **Tier 1** | Hash byte correlation |
-| Row 21 → 68 → 96 architecture | **Tier 2** | Consistent data flow |
+| Finding | Original Assessment | Validated Status |
+|---------|-------------------|-----------------|
+| Pre-Genesis mod 121 = 43 | Significant (p=0.008) | **NOT SIGNIFICANT** (Bonferroni p=1.0) |
+| Block 576 Extra Byte = 27 | Unique | **CONFIRMED** (verified on blockchain) |
+| Block 576 hash | Documented | **WRONG HASH** (corrected above) |
+| 576 mod 27 = 0 | True | **FALSE** (576 mod 27 = 9) |
+| 27-div blocks sum 177 | Significant | **MARGINAL** (Bonferroni p=0.021) |
+| 1CFB prefix count | Notable | **NOT SIGNIFICANT** (look-elsewhere) |
+| POCC+HASV pattern | Not assessed here | **SIGNIFICANT** (p=2.05e-8) |
+| March 3, 2026 prediction | 6 convergences | **PENDING** (25 days) |
 
-### Combined Assessment
+### Combined Assessment (Corrected)
 
-- **Conservative probability**: < 1 in 29,000
-- **Optimistic probability**: < 1 in 830 million
-- **Bayesian posterior (Design)**: 99.6%
+- ~~Conservative probability: less than 1 in 29,000~~ **INVALID** (conditions not independent)
+- ~~Bayesian posterior: 99.6%~~ **MISLEADING** (range: 2% to 99.9% depending on priors)
+- **Only surviving significant finding**: POCC+HASV combined pattern (1 in 48.8 million)
 
-These findings are reproducible using the referenced scripts and publicly available data. While individual findings could potentially be coincidental, the combination of multiple independent correlations suggests intentional design.
+The individual mathematical facts (timestamp value, block 576 coinbase content, matrix cell values) are reproducible. However, the statistical framework claiming these form a "bridge" is **largely unsupported** after honest correction for multiple testing and post-hoc parameter selection. The Anna Matrix is a genuine engineered artifact (see [96: The Anna Matrix is a Clock](/docs/en/03-results/96-anna-matrix-is-a-clock)), but its purpose appears to be computational (Aigarth neural processing), not cryptographic (Bitcoin bridge).
+
+For complete validation details, see [91: Bridge Validation Report](/docs/en/03-results/91-bridge-validation-report) and [92: Probability Corrections](/docs/en/03-results/92-probability-corrections).
 
 ---
 
@@ -1038,7 +1102,9 @@ These findings are reproducible using the referenced scripts and publicly availa
 Following the discovery of the 11 Genesis addresses (550 BTC total), comprehensive cryptographic testing was performed to validate the bridge mechanism and attempt to derive the private keys from known Qubic seeds.
 
 <Callout type="warning">
-**Test Results**: After **4,943,648 derivation attempts** across **23,768 Qubic seeds**, **zero matches** were found. This confirms the **Time-Lock hypothesis** - the bridge is real, but access is locked until **March 3, 2026**.
+**Test Results**: After **4,943,648 derivation attempts** across **23,768 Qubic seeds**, **zero matches** were found.
+
+**Note**: This is interpreted as supporting a "time-lock" until March 3, 2026. That date has not yet arrived (25 days remaining as of Feb 6, 2026). A simpler alternative explanation is that the tested seeds simply don't generate these addresses.
 </Callout>
 
 ### Test Parameters
@@ -1075,10 +1141,10 @@ const comprehensiveTest = {
 - Genesis Matrix seeds (diagonal, row, col) don't directly generate addresses
 - Direct block→seed position mapping doesn't exist
 
-**Time-Lock Active**:
-- 576th Message: "MINING STARTS MARCH THIRD TWENTY TWENTY SIX"
-- Protocol Event scheduled for **March 3, 2026** (53 days away)
-- External key/salt likely required for unlock
+**Time-Lock Hypothesis (PENDING)**:
+- The claimed "576th Message" interpretation has not been verified
+- March 3, 2026 has not yet arrived (25 days remaining as of Feb 6, 2026)
+- The "time-lock" theory remains speculation
 
 ### Statistical Analysis
 

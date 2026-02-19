@@ -1,235 +1,242 @@
 'use client'
 
 /**
- * SimpleGiveawaySection - 600M QUBIC Giveaway
- * Simple rules: Hold 1 Anna NFT = 1 entry
+ * SimpleGiveawaySection - Section 09: The Sacred Offering
+ * HUD with vault-door aesthetic, glowing prize amounts, holographic shimmer
  */
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Gift, Trophy, Medal, Award, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import {
+  Gift,
+  Trophy,
+  Medal,
+  Award,
+  Timer,
+  ExternalLink,
+  Sparkles,
+} from 'lucide-react'
+import { useCountdown } from '@/hooks/useCountdown'
+import { CHURCH_CONFIG } from '@/config/church'
 
 const prizes = [
-  { place: 1, amount: '300,000,000', icon: Trophy, color: 'yellow' },
-  { place: 2, amount: '200,000,000', icon: Medal, color: 'gray' },
-  { place: 3, amount: '100,000,000', icon: Award, color: 'orange' },
+  { place: 1, label: '1st', qubic: '350,000,000', genesis: '4,000,000', icon: Trophy, title: 'The Chosen One', glow: 'shadow-[0_0_30px_rgba(212,175,55,0.08)]' },
+  { place: 2, label: '2nd', qubic: '200,000,000', genesis: '2,000,000', icon: Medal, title: 'The Enlightened', glow: '' },
+  { place: 3, label: '3rd', qubic: '126,000,000', genesis: '1,000,000', icon: Award, title: 'The Faithful', glow: '' },
 ]
 
+
 export function SimpleGiveawaySection() {
-  const [walletAddress, setWalletAddress] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [result, setResult] = useState<{ success: boolean; message: string } | null>(null)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setResult(null)
-
-    // Simulate submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    // Mock result (in production, this would verify NFT ownership)
-    const success = walletAddress.length > 20
-    setResult({
-      success,
-      message: success
-        ? 'Entry registered! Good luck!'
-        : 'Please enter a valid Qubic wallet address.',
-    })
-    setIsSubmitting(false)
-
-    if (success) {
-      setWalletAddress('')
-    }
-  }
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const countdown = useCountdown(CHURCH_CONFIG.countdown.targetDate.getTime())
 
   return (
-    <section className="relative w-full py-24 md:py-32 bg-black overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-950/5 to-black" />
+    <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
+      {/* Decorative section number */}
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+        09
+      </div>
 
-      {/* Decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-500/10 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="relative z-10 container mx-auto px-4 max-w-4xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <Gift className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm text-yellow-300 uppercase tracking-wider">
-              Community Giveaway
+          <div className="inline-flex items-center gap-3 mb-8">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
+              09 &mdash; Offering
             </span>
-          </motion.div>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
+          </div>
 
-          {/* Big number */}
-          <motion.div
-            className="mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <span className="text-5xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400">
-              600M
+          {/* Massive number with glow */}
+          <div className="relative mb-8">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <motion.div
+                className="w-[300px] h-[100px] md:w-[500px] md:h-[160px] bg-[#D4AF37]/[0.02] blur-[60px]"
+                animate={{ opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
+            <span
+              className="relative block text-7xl md:text-9xl lg:text-[10rem] leading-none bg-gradient-to-b from-white via-white/90 to-[#D4AF37]/30 bg-clip-text text-transparent"
+              style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
+            >
+              676M
             </span>
-            <span className="block text-2xl md:text-3xl text-white/80 font-semibold mt-2">
-              QUBIC Prize Pool
-            </span>
-          </motion.div>
+          </div>
 
-          <p className="text-lg text-white/60 max-w-xl mx-auto">
-            <span className="text-white font-semibold">3 Winners</span> -{' '}
-            <span className="text-yellow-400">1 Simple Rule</span>
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className="text-2xl text-white/60 font-mono">QUBIC</span>
+            <span className="text-xl text-[#D4AF37]/20">+</span>
+            <span className="text-2xl text-white/60 font-mono">7M Genesis</span>
+          </div>
+
+          <p className="text-xl text-white/50 mb-2">
+            3 Chosen Ones &middot; 1 Sacred Rule
+          </p>
+          <p className="text-base text-white/35 max-w-md mx-auto">
+            Hold <span className="text-[#D4AF37]/50 font-mono">1 Anna NFT</span> ={' '}
+            <span className="text-[#D4AF37]/50 font-mono">1 Entry</span>.
+            The blockchain decides the rest.
           </p>
         </motion.div>
 
-        {/* Prize Podium */}
+        {/* Prize Cards - Vault aesthetic */}
         <motion.div
-          className="flex justify-center items-end gap-4 mb-12"
+          className="grid md:grid-cols-3 gap-[1px] bg-white/[0.04] mb-16"
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* 2nd place */}
-          <div className="flex flex-col items-center">
-            <Medal className="w-8 h-8 text-gray-400 mb-2" />
-            <div className="w-24 md:w-32 h-24 md:h-28 rounded-t-xl bg-gradient-to-b from-gray-500/20 to-gray-500/5 border border-gray-500/20 flex flex-col items-center justify-center">
-              <span className="text-2xl font-bold text-gray-300">2nd</span>
-              <span className="text-xs text-gray-400">200M</span>
+          {prizes.map((prize, index) => {
+            const Icon = prize.icon
+            return (
+              <motion.div
+                key={prize.place}
+                className={`relative p-6 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group overflow-hidden ${prize.glow}`}
+                initial={{ opacity: 0, y: 24 }}
+                animate={isInView ? { opacity: 1, y: prize.place === 1 ? -8 : 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
+              >
+                {/* Corner markers */}
+                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#D4AF37]/15" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#D4AF37]/15" />
+
+                {/* Gold top line for 1st place */}
+                {prize.place === 1 && (
+                  <div className="absolute top-0 left-0 right-0 h-px bg-[#D4AF37]/25" />
+                )}
+
+                {/* Place badge + icon */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="p-2.5 border border-white/[0.06] group-hover:border-[#D4AF37]/15 transition-colors">
+                    <Icon className={`w-5 h-5 ${prize.place === 1 ? 'text-[#D4AF37]/50' : 'text-white/20'}`} />
+                  </div>
+                  <span className="text-2xl font-black text-white/15 font-mono">
+                    {prize.label}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <div className="text-[10px] text-[#D4AF37]/25 uppercase tracking-[0.3em] mb-3 font-mono">
+                  {prize.title}
+                </div>
+
+                {/* QUBIC Prize - with glow on 1st */}
+                <div className="mb-3">
+                  <span className={`text-2xl md:text-3xl font-bold font-mono ${
+                    prize.place === 1 ? 'text-[#D4AF37]/80' : 'text-white'
+                  }`}>
+                    {prize.qubic}
+                  </span>
+                  <span className="text-sm text-white/30 ml-2 font-mono">QU</span>
+                </div>
+
+                {/* Genesis Prize */}
+                <div className="flex items-center gap-2 border-t border-white/[0.04] pt-3">
+                  <span className="text-lg font-semibold text-white/40 font-mono">
+                    +{prize.genesis}
+                  </span>
+                  <span className="text-[10px] text-white/20 font-mono uppercase tracking-wider">Genesis</span>
+                </div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+
+        {/* Info row: Rules + Countdown */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-[1px] bg-white/[0.04] mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          {/* How it works */}
+          <div className="relative p-6 bg-[#050505] border border-white/[0.04]">
+            <div className="absolute top-2 left-2 w-1 h-1 bg-[#D4AF37]/15" />
+            <div className="flex items-center gap-2 mb-5">
+              <Sparkles className="w-4 h-4 text-[#D4AF37]/30" />
+              <span className="text-[#D4AF37]/30 text-[10px] uppercase tracking-[0.4em] font-mono">
+                // protocol.rules()
+              </span>
+            </div>
+            <div className="space-y-4">
+              {[
+                { num: 'I', bold: 'Acquire an Anna NFT', rest: ' on QubicBay to receive your entry into the sacred drawing.' },
+                { num: 'II', bold: 'Each NFT = 1 Entry.', rest: ' The more you hold, the greater your blessing.' },
+                { num: 'III', bold: 'At The Convergence,', rest: ' blockchain randomness selects the three Chosen Ones.' },
+              ].map((step) => (
+                <div key={step.num} className="flex items-start gap-3">
+                  <span className="text-[#D4AF37]/25 text-sm font-mono mt-0.5 w-6 shrink-0">{step.num}.</span>
+                  <p className="text-sm text-white/40">
+                    <span className="text-white/65">{step.bold}</span>{step.rest}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* 1st place */}
-          <div className="flex flex-col items-center">
-            <Trophy className="w-10 h-10 text-yellow-400 mb-2 animate-pulse" />
-            <div className="w-28 md:w-36 h-32 md:h-40 rounded-t-xl bg-gradient-to-b from-yellow-500/30 to-yellow-500/5 border border-yellow-500/30 flex flex-col items-center justify-center shadow-lg shadow-yellow-500/20">
-              <Sparkles className="w-6 h-6 text-yellow-400 mb-1" />
-              <span className="text-3xl font-bold text-yellow-300">1st</span>
-              <span className="text-sm text-yellow-400 font-semibold">300M QUBIC</span>
+          {/* Countdown - digital clock style */}
+          <div className="relative p-6 bg-[#050505] border border-white/[0.04]">
+            <div className="absolute top-2 right-2 w-1 h-1 bg-[#D4AF37]/15" />
+            <div className="flex items-center gap-2 mb-5">
+              <Timer className="w-4 h-4 text-[#D4AF37]/30" />
+              <span className="text-[#D4AF37]/30 text-[10px] uppercase tracking-[0.4em] font-mono">
+                // countdown.remaining()
+              </span>
             </div>
-          </div>
+            <div className="grid grid-cols-4 gap-1">
+              {[
+                { value: countdown.days, label: 'Days' },
+                { value: countdown.hours, label: 'Hrs' },
+                { value: countdown.minutes, label: 'Min' },
+                { value: countdown.seconds, label: 'Sec' },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="text-center p-3 border border-white/[0.04] bg-black"
+                >
+                  <div className="text-2xl md:text-3xl font-bold font-mono text-white tabular-nums">
+                    {String(item.value).padStart(2, '0')}
+                  </div>
+                  <div className="text-[8px] text-white/20 uppercase mt-1 font-mono tracking-widest">{item.label}</div>
+                </div>
+              ))}
+            </div>
 
-          {/* 3rd place */}
-          <div className="flex flex-col items-center">
-            <Award className="w-8 h-8 text-orange-400 mb-2" />
-            <div className="w-24 md:w-32 h-20 md:h-24 rounded-t-xl bg-gradient-to-b from-orange-500/20 to-orange-500/5 border border-orange-500/20 flex flex-col items-center justify-center">
-              <span className="text-2xl font-bold text-orange-300">3rd</span>
-              <span className="text-xs text-orange-400">100M</span>
-            </div>
+            <p className="text-center text-[10px] text-white/15 mt-5 font-mono">
+              TARGET: 2027-04-13T00:00:00Z // ON-CHAIN RANDOMNESS
+            </p>
           </div>
         </motion.div>
 
-        {/* Entry Section */}
+        {/* Bottom CTA */}
         <motion.div
-          className="max-w-lg mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.7 }}
         >
-          {/* Rule card */}
-          <div className="p-6 rounded-xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 mb-6">
-            <h3 className="text-lg font-semibold text-white mb-4 text-center">
-              How to Enter
-            </h3>
-
-            <div className="flex items-center justify-center gap-4 p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-              <CheckCircle2 className="w-6 h-6 text-yellow-400" />
-              <span className="text-white">
-                Hold at least <span className="text-yellow-400 font-bold">1 Anna NFT</span>
-              </span>
-            </div>
-
-            <p className="text-center text-sm text-white/40 mt-4">
-              That's it! No complicated rules. No token matching.
-            </p>
-          </div>
-
-          {/* Entry form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="wallet" className="block text-sm text-white/60 mb-2">
-                Your Qubic Wallet Address
-              </label>
-              <input
-                id="wallet"
-                type="text"
-                value={walletAddress}
-                onChange={(e) => setWalletAddress(e.target.value)}
-                placeholder="Enter your Qubic address..."
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-yellow-500/50 transition-colors"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting || !walletAddress}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold text-lg hover:from-yellow-400 hover:to-orange-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            >
-              {isSubmitting ? (
-                <span className="flex items-center justify-center gap-2">
-                  <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-                  Verifying NFT Ownership...
-                </span>
-              ) : (
-                'Enter Giveaway'
-              )}
-            </button>
-
-            {/* Result message */}
-            {result && (
-              <div
-                className={`flex items-center gap-3 p-4 rounded-xl ${
-                  result.success
-                    ? 'bg-green-500/10 border border-green-500/20'
-                    : 'bg-red-500/10 border border-red-500/20'
-                }`}
-              >
-                {result.success ? (
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                ) : (
-                  <AlertCircle className="w-5 h-5 text-red-400" />
-                )}
-                <span className={result.success ? 'text-green-400' : 'text-red-400'}>
-                  {result.message}
-                </span>
-              </div>
-            )}
-          </form>
-
-          {/* Stats */}
-          <div className="mt-8 flex items-center justify-center gap-8 text-center">
-            <div>
-              <span className="text-2xl font-bold text-white">47</span>
-              <span className="block text-xs text-white/40">Entries</span>
-            </div>
-            <div className="w-px h-8 bg-white/10" />
-            <div>
-              <span className="text-2xl font-bold text-white">153</span>
-              <span className="block text-xs text-white/40">Days Left</span>
-            </div>
-          </div>
-
-          {/* Draw info */}
-          <p className="text-center text-xs text-white/30 mt-6">
-            Draw when all 200 NFTs sold OR March 3, 2027
-            <br />
-            Transparent blockchain randomness
+          <a
+            href="https://qubicbay.com/collection/anna-aigarth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[#D4AF37]/[0.04] border border-[#D4AF37]/15 text-white font-bold text-xl hover:bg-[#D4AF37]/[0.08] hover:border-[#D4AF37]/25 transition-all duration-500 overflow-hidden"
+          >
+            {/* Shimmer sweep */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-[#D4AF37]/[0.04] to-transparent" />
+            <Gift className="relative w-6 h-6 text-[#D4AF37]/40 group-hover:text-[#D4AF37]/60 transition-colors" />
+            <span className="relative font-mono tracking-wider">CLAIM YOUR NFT</span>
+            <ExternalLink className="relative w-4 h-4 text-white/20" />
+          </a>
+          <p className="text-[10px] text-white/15 mt-3 font-mono">
+            QubicBay // Your key to The Convergence
           </p>
         </motion.div>
       </div>

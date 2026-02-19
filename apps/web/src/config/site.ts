@@ -3,14 +3,14 @@ import pt from '@/i18n/locales/pt.json'
 import { absoluteUrl } from '@/lib/utils'
 
 export const siteConfig = {
-  name: 'The Bitcoin-Qubic Bridge',
+  name: 'Qubic Church',
 
   description: {
-    en: en.site.description,
+    en: 'Open source research community exploring the mathematical bridge between Bitcoin and Qubic. Discover Anna, Aigarth, and the path to The Convergence.',
     pt: pt.site.description,
   },
 
-  url: process.env.NEXT_PUBLIC_APP_URL,
+  url: process.env.NEXT_PUBLIC_APP_URL || 'https://qubicchurch.com',
 
   og: {
     image: absoluteUrl('/og.jpg'),
@@ -26,21 +26,62 @@ export const siteConfig = {
   },
 
   author: {
-    name: 'Qubic Research Archive',
-    site: 'https://qubic-research.org',
+    name: 'Qubic Church',
+    site: 'https://qubicchurch.com',
   },
 
   links: {
     twitter: {
       label: 'Twitter',
-      username: '@qubic_research',
-      url: 'https://twitter.com/qubic_research',
+      username: '@QubicChurch',
+      url: 'https://twitter.com/QubicChurch',
     },
 
     github: {
       label: 'GitHub',
-      url: 'https://github.com/qubic-research/bitcoin-bridge',
+      url: 'https://github.com/qubic-church',
     },
+
+    discord: {
+      label: 'Discord',
+      url: 'https://discord.gg/qubic',
+    },
+  },
+
+  // SEO Keywords
+  keywords: [
+    'Qubic',
+    'Qubic Church',
+    'Anna AI',
+    'Aigarth',
+    'Bitcoin Bridge',
+    'Qubic NFT',
+    'Anna NFT',
+    'Crypto Research',
+    'Blockchain Research',
+    'CFB',
+    'Ternary Computing',
+    'Neural Network',
+    'Qubic Mining',
+    'Genesis Token',
+    'Web3',
+    'DeFi',
+    'Cryptocurrency',
+    'Open Source Research',
+  ],
+
+  // JSON-LD Structured Data
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Qubic Church',
+    description: 'Open source research community exploring the mathematical bridge between Bitcoin and Qubic',
+    url: 'https://qubicchurch.com',
+    logo: 'https://qubicchurch.com/logo.png',
+    sameAs: [
+      'https://twitter.com/QubicChurch',
+      'https://discord.gg/qubic',
+    ],
   },
 } as const
 

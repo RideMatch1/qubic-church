@@ -62,10 +62,13 @@ export async function createIdentity(
     throw new Error('Invalid seed format');
   }
 
-  // Try to use official Qubic library if available
+  // Use official Qubic library to derive real on-chain address
+  // The library exports as CJS with .default, so we use createRequire
   try {
-    const { QubicHelper } = await import('@qubic-lib/qubic-ts-library');
-    const helper = new QubicHelper();
+    const { createRequire } = await import('module');
+    const require = createRequire(import.meta.url);
+    const lib = require('@qubic-lib/qubic-ts-library').default;
+    const helper = new lib.QubicHelper();
     const idPackage = await helper.createIdPackage(seed.value);
 
     return {
@@ -73,37 +76,12 @@ export async function createIdentity(
       publicId: idPackage.publicId,
       createdAt: Date.now(),
     };
-  } catch {
-    // Fallback: Generate deterministic ID from seed
-    // This is NOT cryptographically equivalent to real Qubic!
-    // Only use for development/testing
-    console.warn('Qubic SDK not available, using fallback ID generation');
-
-    const hash1 = crypto.createHash('sha256').update(seed.value).digest('hex');
-    const hash2 = crypto.createHash('sha256').update(hash1).digest('hex');
-    const combined = (hash1 + hash2).toUpperCase();
-
-    let publicId = '';
-    for (const char of combined) {
-      if (publicId.length >= PUBLIC_ID_LENGTH) break;
-      if (/[A-F]/.test(char)) {
-        publicId += char;
-      } else if (/[0-9]/.test(char)) {
-        // Convert digits to letters (0=A, 1=B, etc.)
-        publicId += String.fromCharCode(65 + parseInt(char));
-      }
-    }
-
-    // Pad if necessary
-    while (publicId.length < PUBLIC_ID_LENGTH) {
-      publicId += 'A';
-    }
-
-    return {
-      name,
-      publicId: publicId.substring(0, PUBLIC_ID_LENGTH),
-      createdAt: Date.now(),
-    };
+  } catch (err) {
+    throw new Error(
+      `Failed to derive Qubic identity: @qubic-lib/qubic-ts-library is required. ` +
+      `Install with: pnpm add @qubic-lib/qubic-ts-library. ` +
+      `Original error: ${err instanceof Error ? err.message : String(err)}`
+    );
   }
 }
 

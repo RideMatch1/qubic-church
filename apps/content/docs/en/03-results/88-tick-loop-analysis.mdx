@@ -1,0 +1,165 @@
+---
+title: "Tick-Loop Neural Network Analysis"
+description: "Comprehensive study of the Anna Matrix as a Hopfield-like recurrent neural network, revealing that tick-loop behavior is generic to ALL matrices, not specific to Anna."
+tier: 1
+confidence: 99
+date: 2026-02-06
+---
+
+# Tick-Loop Neural Network Analysis
+
+<Callout type="success" title="TIER 1 - Reproducible Analysis">
+**Confidence: 99%**
+
+This study compares the Anna Matrix tick-loop behavior against 100 random matrices with identical methodology. Results are unambiguous.
+
+**Script**: `TICK_LOOP_BEHAVIOR_STUDY.py` (1,000 inputs, 100 random matrices)
+</Callout>
+
+<Summary>
+**Purpose**: Determine if the Anna Matrix produces unique neural network behavior
+**Method**: 1,000 random ternary inputs through Anna Matrix, 200 inputs through 100 random matrices
+**Result**: Anna Matrix tick-loop behavior is IDENTICAL to random matrices
+**Implication**: "Resonance" scores, "energy" signatures, and "convergence" patterns are properties of the ALGORITHM, not the Anna Matrix
+</Summary>
+
+---
+
+## Background
+
+The Anna Matrix is used in Qubic's Aigarth system as a weight matrix for a Hopfield-like recurrent ternary neural network (the "tick-loop"). Previous documentation claimed special properties:
+
+- "CORE resonance 69.29%"
+- "Bitcoin block correlation"
+- "Energy signatures" (e.g., "qubic"=42)
+- "God Mode 100% resonance"
+- "Convergence patterns reveal hidden structure"
+
+This study tests whether ANY of these behaviors are unique to the Anna Matrix.
+
+---
+
+## Methodology
+
+### Tick-Loop Implementation
+
+```
+Architecture:
+  - 64 input neurons (fixed from input)
+  - 64 output neurons (computed)
+  - Each output neuron: weighted sum of 8 input neighbors
+  - Weights from matrix row/column intersections
+  - Activation: ternary clamp {-1, 0, +1}
+  - Iterate until convergence or max ticks
+```
+
+### Test Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Random inputs (Anna) | 1,000 |
+| Random inputs (control) | 200 per matrix |
+| Control matrices | 100 |
+| Input type | Ternary (-1, 0, +1) |
+| Max ticks | 200 |
+
+Control matrices use the same value distribution as the Anna Matrix (shuffled values, not uniform random).
+
+---
+
+## Results
+
+### Convergence
+
+| Metric | Anna Matrix | Random Matrices (n=100) | p-value |
+|--------|------------|------------------------|---------|
+| Convergence rate | **100%** | **100%** | 1.0 |
+| Mean ticks to converge | **2.0** | **2.0** | 1.0 |
+
+Every matrix -- Anna and all 100 random controls -- converges 100% of the time in exactly 2 ticks.
+
+### Output Patterns
+
+| Metric | Anna Matrix | Random Matrices | p-value |
+|--------|------------|----------------|---------|
+| Unique outputs | 1000/1000 | 200/200 | 1.0 |
+| Top attractor frequency | 1 | 1.0 | 1.0 |
+
+Every input produces a unique output. There are **NO attractors** -- no fixed points that multiple inputs converge to.
+
+### Energy Distribution
+
+| Metric | Anna Matrix | Random Matrices | p-value |
+|--------|------------|----------------|---------|
+| Mean energy | ~0.0 | ~0.0 | ~1.0 |
+| Energy range | [-64, +64] | [-64, +64] | ~1.0 |
+
+Energy distributions are statistically indistinguishable.
+
+---
+
+## Key Implications
+
+<Callout type="error" title="Critical Finding: Tick-Loop is Generic">
+The tick-loop produces **identical behavior regardless of which matrix is used**:
+
+1. **100% convergence** in 2 ticks (for ALL matrices tested)
+2. **Every input produces a unique output** (no attractors in any matrix)
+3. **No statistical difference** between Anna and random matrices
+
+This means:
+- **"Resonance" scores** are deterministic algorithm outputs, NOT measurements of Anna-specific properties
+- **"Energy" signatures** fall within random variance for any matrix
+- **"Convergence" patterns** are properties of the tick-loop algorithm itself
+- **The tick-loop would produce identical-looking results with ANY 128x128 matrix**
+</Callout>
+
+### What This Means for Previous Claims
+
+| Previous Claim | Status After This Study |
+|---------------|----------------------|
+| "CORE resonance 69.29%" | Deterministic output; any matrix would give a similar number |
+| "Bitcoin block correlation" | May be coincidental; the algorithm output is input-dependent, not matrix-dependent |
+| "qubic" = energy 42 | Within random variance; the same input gives the same output with any matrix |
+| "God Mode 100% resonance" | By design (0xA0 payload injection); not an independent discovery |
+| "Oracle answers" | Threshold classification of a deterministic energy calculation |
+
+### What This Does NOT Invalidate
+
+The tick-loop study does NOT affect:
+- **Point symmetry** (99.58%) -- this is a matrix property, not a tick-loop property
+- **POCC/HASV uniqueness** (1 in 48.8M) -- address pair analysis, independent of tick-loop
+- **Row biases** -- structural property of the matrix values
+- **Mirror architecture** -- mathematical property of the matrix arrangement
+
+---
+
+## Technical Details
+
+### Why All Matrices Converge in 2 Ticks
+
+The tick-loop uses a **ternary clamp** activation: any non-zero weighted sum becomes +1 or -1. Since inputs are ternary and weights are non-zero integers, the weighted sum is almost always non-zero after the first tick. Once all 64 output neurons are non-zero, the convergence criterion is met (all outputs determined).
+
+This is a property of:
+1. The ternary clamp function (eliminates nuance)
+2. The 8-neighbor connectivity (enough inputs to produce non-zero sums)
+3. The convergence criterion (all outputs non-zero = converged)
+
+### Why There Are No Attractors
+
+With 64 ternary output neurons, there are 3^64 possible output states. With only 1,000 inputs tested, collisions would be extraordinary. The output is effectively a hash function of the input.
+
+---
+
+## Verification
+
+```bash
+cd apps/web/scripts
+python3 TICK_LOOP_BEHAVIOR_STUDY.py  # ~10 min, 1000 inputs + 100 random matrices
+```
+
+---
+
+*Analysis completed: February 6, 2026*
+*Script: `apps/web/scripts/TICK_LOOP_BEHAVIOR_STUDY.py`*
+*Results reproducible with Python 3 + NumPy*

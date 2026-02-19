@@ -80,3 +80,9 @@ infra/qubic-http-source/
 # Script output files
 apps/web/scripts/*.txt
 apps/web/scripts/*.jsonl
+
+# SQLite databases
+*.db
+*.db-wal
+*.db-shm
+apps/web/data/

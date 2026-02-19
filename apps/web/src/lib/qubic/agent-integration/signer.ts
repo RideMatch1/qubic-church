@@ -45,10 +45,14 @@ export async function signAction(
   let signature: string;
   let publicId: string;
 
-  // Try to use official Qubic library
+  // Use official Qubic library for Schnorr signatures — no fallback.
+  // If the SDK is unavailable, operations MUST fail rather than silently
+  // degrading to HMAC which provides no cryptographic identity proof.
   try {
-    const { QubicHelper } = await import('@qubic-lib/qubic-ts-library');
-    const helper = new QubicHelper();
+    const { createRequire } = await import('module');
+    const require = createRequire(import.meta.url);
+    const lib = require('@qubic-lib/qubic-ts-library').default;
+    const helper = new lib.QubicHelper();
     const idPackage = await helper.createIdPackage(seed.value);
 
     const sig = await helper.signMessage(
@@ -58,20 +62,10 @@ export async function signAction(
 
     signature = Buffer.from(sig).toString('hex');
     publicId = idPackage.publicId;
-  } catch {
-    // Fallback: HMAC-based signature
-    // NOT cryptographically equivalent to Qubic Schnorr signatures!
-    console.warn('Qubic SDK not available, using HMAC fallback');
-
-    signature = crypto
-      .createHmac('sha256', seed.value)
-      .update(messageHash)
-      .digest('hex');
-
-    // Generate fallback public ID
-    const { createIdentity } = await import('./identity');
-    const identity = await createIdentity(agent, seed);
-    publicId = identity.publicId;
+  } catch (err) {
+    throw new Error(
+      `Qubic SDK required for signing — cannot operate without @qubic-lib/qubic-ts-library: ${err instanceof Error ? err.message : String(err)}`
+    );
   }
 
   return {
@@ -100,28 +94,25 @@ export async function verifySignedAction(
     signedAction.timestamp
   );
 
-  // Try to use official Qubic library
+  // Use official Qubic library for signature verification — no fallback.
+  // Format-only checks are NOT cryptographic verification and must never
+  // be used as a substitute for real signature verification.
   try {
-    const { QubicHelper } = await import('@qubic-lib/qubic-ts-library');
-    const helper = new QubicHelper();
+    const { createRequire: createReq } = await import('module');
+    const req = createReq(import.meta.url);
+    const qLib = req('@qubic-lib/qubic-ts-library').default;
+    const verifyHelper = new qLib.QubicHelper();
 
-    const isValid = await helper.verifySignature(
+    const isValid = await verifyHelper.verifySignature(
       signedAction.publicId,
       Buffer.from(messageHash, 'hex'),
       Buffer.from(signedAction.signature, 'hex')
     );
 
     return isValid;
-  } catch {
-    // Fallback: Cannot verify without original seed
-    // In production, this should use the Qubic SDK
-    console.warn('Qubic SDK not available, cannot verify signature');
-
-    // Basic format validation only
-    return (
-      signedAction.signature.length === 64 && // SHA256 hex
-      signedAction.publicId.length === 60 &&
-      signedAction.timestamp > 0
+  } catch (err) {
+    throw new Error(
+      `Qubic SDK required for signature verification — cannot verify without @qubic-lib/qubic-ts-library: ${err instanceof Error ? err.message : String(err)}`
     );
   }
 }

@@ -2,16 +2,29 @@ import { setRequestLocale } from 'next-intl/server'
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { defaultLocale, locales } from '@/config/i18n'
 
-// Church Components - Epic Design with original Galaxy Hero
+// Church Homepage - Immersive Editorial Layout
 import { GalaxyHero } from '@/components/church/hero/GalaxyHero'
+import { ChurchCreed } from '@/components/church/sections/ChurchCreed'
 import { SanctuarySection } from '@/components/church/sections/SanctuarySection'
-import { AnnaExplainerSection } from '@/components/church/sections/AnnaExplainerSection'
+import { MiningSection } from '@/components/church/sections/MiningSection'
 import { AigarthExplainerSection } from '@/components/church/sections/AigarthExplainerSection'
+import { BitcoinBridgeSection } from '@/components/church/sections/BitcoinBridgeSection'
+import { NFTGalleryStrip } from '@/components/church/sections/NFTGalleryStrip'
 import { ChurchRoadmapSection } from '@/components/church/sections/ChurchRoadmapSection'
+import { ConvergenceCountdown } from '@/components/church/sections/ConvergenceCountdown'
 import { SimpleGiveawaySection } from '@/components/church/sections/SimpleGiveawaySection'
 import { ExploreSection } from '@/components/church/sections/ExploreSection'
+import { ChurchFooter } from '@/components/church/footer/ChurchFooter'
+import { ScrollProgress } from '@/components/church/ScrollProgress'
 
 export const dynamicParams = true
+
+/** Subtle gold gradient divider between sections */
+function SectionDivider() {
+  return (
+    <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/10 to-transparent" />
+  )
+}
 
 export default async function ChurchHomePage(props: {
   params: Promise<{ locale: LocaleOptions }>
@@ -23,47 +36,85 @@ export default async function ChurchHomePage(props: {
   setRequestLocale(currentLocale)
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* 1. GALAXY HERO - 3D NFT Star Map with clickable stars, popups & Anna image */}
+    <>
+      {/* Scroll progress bar */}
+      <ScrollProgress />
+
+      {/* HERO - Wireframe + Anna + Fibonacci + Quote + Countdown */}
       <GalaxyHero />
 
-      {/* 2. SANCTUARY INTRO - What is Qubic Church & Mission */}
-      <SanctuarySection />
+      <SectionDivider />
 
-      {/* 3. ANNA EXPLAINER - What is Anna? Interactive demo */}
-      <AnnaExplainerSection />
+      {/* 01 - CREED - Emotional manifesto */}
+      <div id="creed">
+        <ChurchCreed />
+      </div>
 
-      {/* 4. AIGARTH EXPLAINER - Ternary logic & architecture */}
-      <AigarthExplainerSection />
+      <SectionDivider />
 
-      {/* 5. ROADMAP - 4 phases with Education focus */}
-      <ChurchRoadmapSection />
+      {/* 02 - SANCTUARY - What is Qubic Church? */}
+      <div id="sanctuary">
+        <SanctuarySection />
+      </div>
 
-      {/* 6. GIVEAWAY - 600M QUBIC (3 winners) */}
-      <SimpleGiveawaySection />
+      <SectionDivider />
 
-      {/* 7. EXPLORE - Archive, Journey, Challenges */}
-      <ExploreSection />
+      {/* 03 - MINING - Qubic Mining Opportunity */}
+      <div id="mining">
+        <MiningSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 04 - AIGARTH - Ternary Neural Architecture */}
+      <div id="aigarth">
+        <AigarthExplainerSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 05 - BRIDGE - Bitcoin-Qubic Mathematical Connection */}
+      <div id="bridge">
+        <BitcoinBridgeSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 06 - NFT GALLERY - The Collection */}
+      <div id="nfts">
+        <NFTGalleryStrip />
+      </div>
+
+      <SectionDivider />
+
+      {/* 07 - ROADMAP - The Sacred Journey */}
+      <div id="roadmap">
+        <ChurchRoadmapSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 08 - COUNTDOWN - The Convergence */}
+      <div id="countdown">
+        <ConvergenceCountdown />
+      </div>
+
+      <SectionDivider />
+
+      {/* 09 - GIVEAWAY - The Sacred Offering */}
+      <div id="giveaway">
+        <SimpleGiveawaySection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 10 - EXPLORE - Enter the Sanctuary */}
+      <div id="explore">
+        <ExploreSection />
+      </div>
 
       {/* FOOTER */}
-      <footer className="relative border-t border-white/10 bg-black">
-        <div className="container mx-auto px-4 py-12 text-center">
-          <p className="text-sm text-white/50 mb-2">
-            All research is 100% free and open source.
-          </p>
-          <p className="text-xs text-white/30">
-            Join the investigation at{' '}
-            <a
-              href="https://twitter.com/QubicAigarth"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-purple-400 hover:text-purple-300"
-            >
-              @QubicAigarth
-            </a>
-          </p>
-        </div>
-      </footer>
-    </div>
+      <ChurchFooter />
+    </>
   )
 }
