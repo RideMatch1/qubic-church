@@ -6,7 +6,7 @@ export const siteConfig = {
   name: 'Qubic Church',
 
   description: {
-    en: 'Open source research community exploring the mathematical bridge between Bitcoin and Qubic. Discover Anna, Aigarth, and the path to The Convergence.',
+    en: 'Nonprofit organization preparing humanity for the emergence of AGI. Open research, education, and community governance powered by Qubic.',
     pt: pt.site.description,
   },
 
@@ -54,7 +54,7 @@ export const siteConfig = {
     'Qubic Church',
     'Anna AI',
     'Aigarth',
-    'Bitcoin Bridge',
+    'AGI',
     'Qubic NFT',
     'Anna NFT',
     'Crypto Research',
@@ -75,7 +75,7 @@ export const siteConfig = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Qubic Church',
-    description: 'Open source research community exploring the mathematical bridge between Bitcoin and Qubic',
+    description: 'Nonprofit organization preparing humanity for the emergence of AGI. Open research, education, and community governance powered by Qubic.',
     url: 'https://qubicchurch.com',
     logo: 'https://qubicchurch.com/logo.png',
     sameAs: [

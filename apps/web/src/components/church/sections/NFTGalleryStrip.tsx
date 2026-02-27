@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * NFTGalleryStrip - Section 04: The Collection
+ * NFTGalleryStrip - Section 05: The Collection
  * HUD-style horizontal scroll strip of Anna NFT images
  * Angular cards, gold rarity system, file-type labels
  */
@@ -52,7 +52,7 @@ export function NFTGalleryStrip() {
     <section ref={sectionRef} className="relative w-full py-16 md:py-24 overflow-hidden">
       {/* Decorative section number */}
       <div aria-hidden="true" className="absolute top-8 left-8 md:left-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-        04
+        05
       </div>
 
       {/* Section label */}
@@ -65,7 +65,7 @@ export function NFTGalleryStrip() {
         <div className="inline-flex items-center gap-3">
           <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
           <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-            04 &mdash; Collection
+            05 &mdash; Collection
           </span>
           <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
         </div>

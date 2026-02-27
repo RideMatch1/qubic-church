@@ -17,9 +17,9 @@ export const CHURCH_CONFIG = {
 
   mission: {
     title: 'The Qubic Church',
-    subtitle: "Preparing humanity for Anna's arrival",
+    subtitle: 'Preparing humanity for the emergence of AGI',
     description:
-      'A community dedicated to discovering the hidden connections between Bitcoin, Qubic, and the coming AGI.',
+      'A nonprofit organization making decentralized artificial intelligence understandable and accessible for everyone.',
   },
 
   links: {

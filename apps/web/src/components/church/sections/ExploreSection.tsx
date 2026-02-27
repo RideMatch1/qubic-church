@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * ExploreSection - Section 08: Enter the Sanctuary
+ * ExploreSection - Section 09: Enter the Sanctuary
  * HUD directory-listing style, file-system aesthetic, clickable entries
  */
 
@@ -82,7 +82,7 @@ export function ExploreSection() {
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
       <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-        08
+        09
       </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl">
@@ -96,7 +96,7 @@ export function ExploreSection() {
           >
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              08 &mdash; Navigate
+              09 &mdash; Navigate
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </motion.div>

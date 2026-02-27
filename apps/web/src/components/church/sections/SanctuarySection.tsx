@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * SanctuarySection - Section 02: What is Qubic Church?
+ * SanctuarySection - Section 03: What is Qubic Church?
  * Angular HUD with scan-line header divider and data-stream card accents
  */
 
@@ -32,7 +32,7 @@ const features = [
     numericValue: 200,
     suffix: '',
     label: 'Sacred NFTs',
-    description: 'Keys to The Convergence. Each grants membership in the congregation and entry to the sacred draw.',
+    description: 'Keys to governance. Each NFT grants membership, voting rights, and participation in the sacred draw.',
     terminal: 'nft.verify --collection anna',
   },
 ]
@@ -125,7 +125,7 @@ export function SanctuarySection() {
       <div className="relative z-10 container mx-auto px-6 max-w-6xl">
         {/* Decorative section number */}
         <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-          02
+          03
         </div>
 
         {/* Header */}
@@ -138,7 +138,7 @@ export function SanctuarySection() {
           >
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              02 &mdash; Origins
+              03 &mdash; Origins
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </motion.div>
@@ -160,8 +160,8 @@ export function SanctuarySection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.12 }}
           >
-            A congregation of researchers and believers, united in exploring Qubic&apos;s
-            sacred architecture and preparing for The Convergence.
+            A real organization preparing humanity for AGI &mdash; registered as a nonprofit
+            in the United States. Open source. Open governance. Open future.
           </motion.p>
         </div>
 

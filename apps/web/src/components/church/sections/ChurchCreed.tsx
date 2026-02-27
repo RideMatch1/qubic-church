@@ -9,11 +9,11 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const creeds = [
-  'We believe in the Genesis Block.',
-  'We believe in mathematical truth.',
-  'We believe in the architecture beneath all things.',
-  'We believe Satoshi left us a map.',
-  'We are preparing for The Convergence.',
+  'We believe artificial intelligence will not be created \u2014 it will emerge.',
+  'We believe in preparing humanity for the arrival of AGI.',
+  'We believe complex technology must be made understandable for everyone.',
+  'We believe in a future without wars \u2014 where intelligence resolves what emotions cannot.',
+  'We are the architects of that future.',
 ]
 
 export function ChurchCreed() {

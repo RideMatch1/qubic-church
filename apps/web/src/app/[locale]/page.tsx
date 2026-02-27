@@ -5,6 +5,7 @@ import { defaultLocale, locales } from '@/config/i18n'
 // Church Homepage - Immersive Editorial Layout
 import { GalaxyHero } from '@/components/church/hero/GalaxyHero'
 import { ChurchCreed } from '@/components/church/sections/ChurchCreed'
+import { MissionSection } from '@/components/church/sections/MissionSection'
 import { SanctuarySection } from '@/components/church/sections/SanctuarySection'
 import { MiningSection } from '@/components/church/sections/MiningSection'
 import { NFTGalleryStrip } from '@/components/church/sections/NFTGalleryStrip'
@@ -50,49 +51,56 @@ export default async function ChurchHomePage(props: {
 
       <SectionDivider />
 
-      {/* 02 - SANCTUARY - What is Qubic Church? */}
+      {/* 02 - MISSION - Our Mission */}
+      <div id="mission">
+        <MissionSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 03 - SANCTUARY - What is Qubic Church? */}
       <div id="sanctuary">
         <SanctuarySection />
       </div>
 
       <SectionDivider />
 
-      {/* 03 - MINING - Qubic Mining Opportunity */}
+      {/* 04 - MINING - Qubic Mining Opportunity */}
       <div id="mining">
         <MiningSection />
       </div>
 
       <SectionDivider />
 
-      {/* 04 - NFT GALLERY - The Collection */}
+      {/* 05 - NFT GALLERY - The Collection */}
       <div id="nfts">
         <NFTGalleryStrip />
       </div>
 
       <SectionDivider />
 
-      {/* 05 - ROADMAP - The Sacred Journey */}
+      {/* 06 - ROADMAP - The Sacred Journey */}
       <div id="roadmap">
         <ChurchRoadmapSection />
       </div>
 
       <SectionDivider />
 
-      {/* 06 - COUNTDOWN - The Convergence */}
+      {/* 07 - COUNTDOWN - The Convergence */}
       <div id="countdown">
         <ConvergenceCountdown />
       </div>
 
       <SectionDivider />
 
-      {/* 07 - GIVEAWAY - The Sacred Offering */}
+      {/* 08 - GIVEAWAY - The Sacred Offering */}
       <div id="giveaway">
         <SimpleGiveawaySection />
       </div>
 
       <SectionDivider />
 
-      {/* 08 - EXPLORE - Enter the Sanctuary */}
+      {/* 09 - EXPLORE - Enter the Sanctuary */}
       <div id="explore">
         <ExploreSection />
       </div>

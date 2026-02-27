@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * SimpleGiveawaySection - Section 07: The Sacred Offering
+ * SimpleGiveawaySection - Section 08: The Sacred Offering
  * HUD with vault-door aesthetic, glowing prize amounts, holographic shimmer
  */
 
@@ -35,7 +35,7 @@ export function SimpleGiveawaySection() {
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
       <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-        07
+        08
       </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl">
@@ -49,7 +49,7 @@ export function SimpleGiveawaySection() {
           <div className="inline-flex items-center gap-3 mb-8">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              07 &mdash; Offering
+              08 &mdash; Offering
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </div>
