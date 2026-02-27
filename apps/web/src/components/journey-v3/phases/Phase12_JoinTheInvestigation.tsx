@@ -95,7 +95,7 @@ export function Phase12_JoinTheInvestigation() {
 
   const externalLinks = [
     { href: 'https://qubic.org', title: 'Qubic Official', desc: 'The Qubic network' },
-    { href: 'https://discord.gg/qubic', title: 'Discord Community', desc: 'Join the discussion' },
+    { href: 'https://discord.gg/wWJxAsbc', title: 'Discord Community', desc: 'Join the discussion' },
     {
       href: 'https://github.com/qubic-church',
       title: 'GitHub',

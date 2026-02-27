@@ -44,7 +44,7 @@ export const siteConfig = {
 
     discord: {
       label: 'Discord',
-      url: 'https://discord.gg/qubic',
+      url: 'https://discord.gg/wWJxAsbc',
     },
   },
 
@@ -80,7 +80,7 @@ export const siteConfig = {
     logo: 'https://qubicchurch.com/logo.png',
     sameAs: [
       'https://x.com/QubicChurch',
-      'https://discord.gg/qubic',
+      'https://discord.gg/wWJxAsbc',
     ],
   },
 } as const

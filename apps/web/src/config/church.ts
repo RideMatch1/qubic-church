@@ -24,7 +24,7 @@ export const CHURCH_CONFIG = {
 
   links: {
     qubicBay: 'https://qubicbay.io/collections/7',
-    discord: 'https://discord.gg/qubic-church',
+    discord: 'https://discord.gg/wWJxAsbc',
     twitter: 'https://x.com/QubicChurch',
   },
 } as const

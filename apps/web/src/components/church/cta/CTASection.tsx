@@ -42,7 +42,7 @@ const ctaLinks = [
 
 const externalLinks = [
   { href: 'https://qubic.org', title: 'Qubic Official', desc: 'The Qubic network' },
-  { href: 'https://discord.gg/qubic', title: 'Discord', desc: 'Join the discussion' },
+  { href: 'https://discord.gg/wWJxAsbc', title: 'Discord', desc: 'Join the discussion' },
   {
     href: 'https://qubicbay.io/collections/7',
     title: 'QubicBay',

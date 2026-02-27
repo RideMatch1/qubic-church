@@ -18,7 +18,7 @@ const socialLinks = [
   },
   {
     name: 'Discord',
-    href: 'https://discord.gg/qubic-church',
+    href: 'https://discord.gg/wWJxAsbc',
     icon: MessageCircle,
     color: 'hover:text-[#D4AF37] hover:border-[#D4AF37]/25',
     description: 'Join the congregation',
