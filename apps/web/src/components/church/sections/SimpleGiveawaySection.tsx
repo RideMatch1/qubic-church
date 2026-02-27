@@ -65,7 +65,6 @@ export function SimpleGiveawaySection() {
             </div>
             <span
               className="relative block text-4xl sm:text-7xl md:text-9xl lg:text-[10rem] 2xl:text-[12rem] leading-none bg-gradient-to-b from-white via-white/90 to-[#D4AF37]/30 bg-clip-text text-transparent"
-              style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             >
               676M
             </span>

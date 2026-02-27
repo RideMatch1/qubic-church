@@ -84,7 +84,6 @@ export function BitcoinBridgeSection() {
 
           <motion.h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}

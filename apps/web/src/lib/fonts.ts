@@ -1,4 +1,4 @@
-import { JetBrains_Mono as FontMono, Inter, Caveat, Bebas_Neue } from 'next/font/google'
+import { JetBrains_Mono as FontMono, Inter, Caveat, Bebas_Neue, Cinzel, Cormorant_Garamond, Share_Tech_Mono, IBM_Plex_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 
 import { absoluteUrl } from './utils'
@@ -45,6 +45,31 @@ export const fontDisplay = Bebas_Neue({
 export const fontMono = FontMono({
   subsets: ['latin'],
   variable: '--font-mono',
+})
+
+export const fontCinzel = Cinzel({
+  subsets: ['latin'],
+  variable: '--font-cinzel',
+  weight: ['400', '600', '900'],
+})
+
+export const fontCormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  weight: ['300', '400'],
+  style: ['normal', 'italic'],
+})
+
+export const fontShareTech = Share_Tech_Mono({
+  subsets: ['latin'],
+  variable: '--font-share-tech',
+  weight: '400',
+})
+
+export const fontIBMPlex = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-ibm-plex',
+  weight: ['200', '300', '400', '500', '600', '700'],
 })
 
 export async function getFonts() {

@@ -79,7 +79,6 @@ export function AigarthExplainerSection() {
 
           <h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-8 tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             What is <span className="text-[#D4AF37]/80">Aigarth</span>?
           </h2>
@@ -211,7 +210,6 @@ export function AigarthExplainerSection() {
 
           <h3
             className="text-2xl md:text-3xl text-white mb-10 text-center tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             The 128 x 128 Neural Matrix
           </h3>

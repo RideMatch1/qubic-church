@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BookOpen, Compass, Brain, Sparkles, Image as ImageIcon } from 'lucide-react'
+import { BookOpen, Compass, Sparkles, Image as ImageIcon } from 'lucide-react'
 
 const features = [
   {
@@ -17,13 +17,6 @@ const features = [
     description: 'An immersive story of discovery, tracing the investigation from genesis block to revelation',
     href: '/timeline',
     color: 'from-purple-500 to-purple-600',
-  },
-  {
-    icon: Brain,
-    title: 'Intelligence Challenges',
-    description: 'Test your pattern recognition skills with cryptographic puzzles and earn role-based bonuses',
-    href: '/challenges',
-    color: 'from-blue-500 to-blue-600',
   },
   {
     icon: Sparkles,

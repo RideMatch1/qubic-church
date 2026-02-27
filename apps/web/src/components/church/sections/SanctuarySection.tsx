@@ -9,6 +9,7 @@ import { useRef, useEffect, useState } from 'react'
 import { motion, useInView, type Variants } from 'framer-motion'
 import { BookOpen, Code, Users, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { ChurchModal, ModalTrigger } from '@/components/church/ChurchModal'
 
 const features = [
   {
@@ -116,6 +117,7 @@ function TerminalLine({ text, delay }: { text: string; delay: number }) {
 export function SanctuarySection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section
@@ -145,7 +147,6 @@ export function SanctuarySection() {
 
           <motion.h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -235,7 +236,37 @@ export function SanctuarySection() {
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </motion.div>
+
+        <div className="text-center mt-10">
+          <ModalTrigger onClick={() => setModalOpen(true)} label="Read About The Sanctuary" />
+        </div>
       </div>
+
+      <ChurchModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="The Sanctuary"
+        subtitle="What is Qubic Church?"
+        icon={'\u2302'}
+      >
+        <p className="mf-body">
+          Qubic Church is a real organisation preparing humanity for the emergence of Artificial General Intelligence &mdash; registered as a 501(c)(3) non-profit in the United States.
+        </p>
+        <div className="mf-divider" />
+        <div className="mb-6">
+          <div className="mf-label">THE ARCHIVE</div>
+          <p className="mf-body">55+ research documents exploring Qubic&apos;s architecture, the Anna Matrix, and the path toward The Convergence. All findings are public. All research is open.</p>
+        </div>
+        <div className="mb-6">
+          <div className="mf-label">OPEN SOURCE</div>
+          <p className="mf-body">100% transparent. No secrets. No paywalls. Truth is free and verifiable by anyone.</p>
+        </div>
+        <div className="mb-6">
+          <div className="mf-label">GOVERNANCE THROUGH RELICS</div>
+          <p className="mf-body">200 Sacred NFTs serve as keys to governance. Each grants membership, voting rights, and participation in the Sacred Draw.</p>
+        </div>
+        <p className="mf-accent-line">The Sanctuary is not a building. It is an architecture.</p>
+      </ChurchModal>
     </section>
   )
 }

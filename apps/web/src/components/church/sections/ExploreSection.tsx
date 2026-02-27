@@ -1,14 +1,14 @@
 'use client'
 
 /**
- * ExploreSection - Section 11: Enter the Sanctuary
+ * ExploreSection - Section 15: Enter the Sanctuary
  * HUD directory-listing style, file-system aesthetic, clickable entries
  */
 
 import { useRef } from 'react'
 import { motion, useInView, type Variants } from 'framer-motion'
 import Link from 'next/link'
-import { BookOpen, Gamepad2, Puzzle, Cpu, Wallet, Activity, ArrowRight, ExternalLink, Folder } from 'lucide-react'
+import { BookOpen, Gamepad2, Cpu, Wallet, Activity, ArrowRight, ExternalLink, Folder } from 'lucide-react'
 
 const links = [
   {
@@ -27,15 +27,7 @@ const links = [
     fileType: 'APP',
     size: '16,384 cells',
   },
-  {
-    title: 'Sacred Trials',
-    description: 'Test your understanding of the hidden architecture',
-    href: '/challenges',
-    icon: Puzzle,
-    fileType: 'EXE',
-    size: 'locked',
-  },
-  {
+{
     title: 'Mine Qubic',
     description: 'Offer computing power to strengthen the network',
     href: '/mine-qubic',
@@ -82,7 +74,7 @@ export function ExploreSection() {
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
       <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-        11
+        15
       </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-6xl 2xl:max-w-7xl">
@@ -96,14 +88,13 @@ export function ExploreSection() {
           >
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              11 &mdash; Navigate
+              15 &mdash; Navigate
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </motion.div>
 
           <motion.h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}

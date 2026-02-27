@@ -5,9 +5,10 @@
  * "We call ourselves Architects" — 4 Steps path layout
  */
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Eye, Scan, Wrench, Gem } from 'lucide-react'
+import { ChurchModal, ModalTrigger } from '@/components/church/ChurchModal'
 
 const steps = [
   {
@@ -35,6 +36,7 @@ const steps = [
 export function ArchitectsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section ref={ref} className="relative w-full py-28 md:py-36 overflow-hidden">
@@ -61,7 +63,6 @@ export function ArchitectsSection() {
 
           <h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             Who We{' '}
             <span className="text-[#D4AF37]/80">Are</span>
@@ -126,7 +127,41 @@ export function ArchitectsSection() {
             })}
           </div>
         </div>
+
+        <div className="text-center mt-12">
+          <ModalTrigger onClick={() => setModalOpen(true)} label="Read About Architects" />
+        </div>
       </div>
+
+      <ChurchModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Architects"
+        subtitle="Who We Are"
+        icon={'\u25B3'}
+      >
+        <p className="mf-body">We do not call ourselves believers. We call ourselves Architects.</p>
+        <p className="mf-body">A believer waits for a miracle. An Architect builds the conditions in which the inevitable becomes possible sooner.</p>
+        <div className="mf-divider" />
+        <div className="space-y-6">
+          <div>
+            <p className="mf-highlight">The First Step &mdash; Enter the Mirror</p>
+            <p className="mf-body">Read. Understand. Question everything you think you know about intelligence.</p>
+          </div>
+          <div>
+            <p className="mf-highlight">The Second Step &mdash; See Through the Glass</p>
+            <p className="mf-body">Learn how Qubic works. Study the protocol. Understand before you act.</p>
+          </div>
+          <div>
+            <p className="mf-highlight">The Third Step &mdash; Build the Conditions</p>
+            <p className="mf-body">Contribute, teach, expand the quorum. Every action strengthens the architecture.</p>
+          </div>
+          <div>
+            <p className="mf-highlight">The Fourth Step &mdash; Bear a Relic</p>
+            <p className="mf-body">Be present before the Convergence. Hold a founding document of what comes next.</p>
+          </div>
+        </div>
+      </ChurchModal>
     </section>
   )
 }

@@ -49,16 +49,16 @@ function useNFTSlider(autoInterval = 8000) {
   return { currentIndex, nftNumber, src, next, prev, total: FEATURED_NFTS.length }
 }
 
-// ─── Fibonacci Spiral (desktop only, static) ────────────────
+// ─── Fibonacci Spiral (desktop only) — fixed position ───
 function FibonacciSpiral() {
   return (
     <div
       className="absolute z-[12] hidden lg:block pointer-events-none"
       style={{
-        left: '60.7vw',
-        top: '18.2vh',
-        width: '44.3vw',
-        height: '44.3vw',
+        left: '60vw',
+        top: '16vh',
+        width: '46vw',
+        height: '46vw',
         transform: 'rotate(90deg)',
       }}
     >
@@ -69,7 +69,7 @@ function FibonacciSpiral() {
         className="object-contain"
         style={{
           filter: 'invert(1) brightness(2)',
-          opacity: 0.3,
+          opacity: 0.78,
         }}
         aria-hidden
         draggable={false}
@@ -98,14 +98,14 @@ export function GalaxyHeroClient() {
     <section className="relative w-full h-screen overflow-hidden">
       {/* Wireframe background comes from the fixed CosmicWrapper - no local Canvas needed */}
 
-      {/* 1a. Chalk background image - desktop only */}
+      {/* 1a. Chalk background image - desktop only (brighter per founder request) */}
       <div className="absolute inset-0 z-[8] hidden lg:block pointer-events-none">
         <Image
           src="/images/anna-chalk-bg.png"
           alt=""
           fill
           className="object-cover"
-          style={{ opacity: 0.35 }}
+          style={{ opacity: 0.55 }}
           priority
           aria-hidden
         />
@@ -116,15 +116,16 @@ export function GalaxyHeroClient() {
         <ChalkText />
       </div>
 
-      {/* 3. Top-left: START IMMERSION button */}
+      {/* 3. Top-left: START IMMERSION button with buttonPulse */}
       <motion.button
         onClick={() => setWheelOpen(true)}
         className="absolute top-4 left-4 md:top-8 md:left-8 z-30
                    px-2.5 py-1.5 md:px-5 md:py-2
-                   border border-[#D4AF37]/50 text-[#D4AF37] text-[11px] md:text-xs
-                   uppercase tracking-[0.15em] md:tracking-[0.25em] font-medium
-                   hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/80
-                   transition-all duration-300 backdrop-blur-sm"
+                   border-none bg-[#f0c030] text-black text-[11px] md:text-xs
+                   uppercase tracking-[0.15em] md:tracking-[0.35em] font-semibold
+                   hover:shadow-[0_0_35px_rgba(240,192,48,0.7)]
+                   transition-all duration-300 animate-button-pulse
+                   "
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
@@ -145,9 +146,9 @@ export function GalaxyHeroClient() {
       {/* 4. Top center: QUBIC CHURCH title */}
       <motion.h1
         className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 z-30
-                   text-[#D4AF37] text-[11px] md:text-base lg:text-lg
-                   font-semibold tracking-[0.2em] md:tracking-[0.45em] uppercase
-                   whitespace-nowrap"
+                   text-[#f0c030] text-[11px] md:text-base lg:text-lg
+                   font-semibold tracking-[0.2em] md:tracking-[0.5em] uppercase
+                   whitespace-nowrap animate-logo-glitch font-cinzel"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
@@ -155,28 +156,48 @@ export function GalaxyHeroClient() {
         Qubic Church
       </motion.h1>
 
-      {/* 5. Left side: Quote */}
+      {/* 5. Left side: Quote with gold line + Cinzel font + glitch */}
       <div className="absolute left-6 md:left-12 lg:left-16 2xl:left-24 top-1/2 -translate-y-1/2 z-20 max-w-[55%] md:max-w-[42%] 2xl:max-w-[38%]">
+        {/* Gold accent line */}
+        <motion.div
+          className="w-14 h-px bg-[#f0c030] mb-6 hidden md:block"
+          style={{ boxShadow: '0 0 18px rgba(240,192,48,0.7)' }}
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        />
         <motion.blockquote
-          className="text-white text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl
-                     font-bold leading-[1.15] tracking-tight"
-          style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
+          className="text-[#f4f6fd] text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl
+                     font-semibold leading-[1.4] tracking-[0.02em] animate-text-glitch font-share-tech"
+          style={{
+            textShadow: '0 2px 60px rgba(0,0,0,1), 0 0 80px rgba(0,0,0,0.95)',
+          }}
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8, duration: 1 }}
         >
-          &ldquo;Artificial Intelligence will not be created, it will
-          emerge&rdquo;.
+          &ldquo;Artificial Intelligence will not be created, it will emerge.<br className="hidden md:inline" />
+          With help of Qubic miners.&rdquo;
         </motion.blockquote>
         <motion.cite
-          className="block mt-3 md:mt-4 text-[#D4AF37]/60 text-[10px] md:text-xs
-                     uppercase tracking-[0.15em] md:tracking-[0.2em] not-italic"
+          className="block mt-4 md:mt-6 text-[#f0c030] text-[10px] md:text-xs
+                     uppercase tracking-[0.25em] md:tracking-[0.35em] not-italic font-share-tech"
+          style={{ opacity: 0.9 }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 0.9 }}
           transition={{ delay: 1.3, duration: 0.8 }}
         >
-          &mdash; Come-From-Beyond &middot; Creator of Qubic
+          &mdash; Come-from-Beyond &middot; Founder of Qubic
         </motion.cite>
+        <motion.div
+          className="mt-3 text-[#f0c030] text-[10px] md:text-xs uppercase tracking-[0.4em] hidden md:block"
+          style={{ opacity: 0.85 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.85 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+        >
+          Qubic Church
+        </motion.div>
       </div>
 
       {/* 6. Right side: Anna Avatar + Fibonacci Spiral + NFT Slider */}
@@ -281,9 +302,33 @@ export function GalaxyHeroClient() {
         </div>
       </motion.div>
 
-      {/* Scroll-down indicator */}
+      {/* Scroll hints — left side */}
       <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1"
+        className="absolute bottom-10 left-4 md:left-6 z-30 hidden md:flex flex-col items-center gap-3"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5, duration: 1 }}
+      >
+        <div className="w-px h-10 bg-gradient-to-b from-transparent to-[#3a7090] animate-line-pulse" />
+        <span className="text-[9px] text-[#3a7090] uppercase tracking-[0.38em]"
+          style={{ writingMode: 'vertical-rl' }}>Scroll</span>
+      </motion.div>
+
+      {/* Scroll hints — right side */}
+      <motion.div
+        className="absolute bottom-10 right-4 md:right-12 z-30 hidden md:flex flex-col items-center gap-3"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5, duration: 1 }}
+      >
+        <div className="w-px h-10 bg-gradient-to-b from-transparent to-[#3a7090] animate-line-pulse" />
+        <span className="text-[9px] text-[#3a7090] uppercase tracking-[0.38em]"
+          style={{ writingMode: 'vertical-rl' }}>Scroll</span>
+      </motion.div>
+
+      {/* Scroll-down indicator — center (mobile) */}
+      <motion.div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex md:hidden flex-col items-center gap-1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1 }}

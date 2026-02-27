@@ -5,8 +5,9 @@
  * 9 objectives in 3x3 grid — HUD-style cards with terminal aesthetic
  */
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView, type Variants } from 'framer-motion'
+import { ChurchModal, ModalTrigger } from '@/components/church/ChurchModal'
 import {
   Network,
   Languages,
@@ -101,6 +102,7 @@ const cardVariants: Variants = {
 export function MissionSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
@@ -130,7 +132,6 @@ export function MissionSection() {
 
           <motion.h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -197,7 +198,92 @@ export function MissionSection() {
             )
           })}
         </div>
+
+        {/* Modal trigger */}
+        <div className="text-center mt-12">
+          <ModalTrigger onClick={() => setModalOpen(true)} label="Read Full Mission" />
+        </div>
       </div>
+
+      <ChurchModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Mission"
+        subtitle="What We Build"
+        icon={'\u2295'}
+      >
+        {/* I */}
+        <div className="mb-8">
+          <div className="mf-label">I &middot; DEVELOP THE QUBIC ECOSYSTEM</div>
+          <p className="mf-body">Attracting investment, partnerships and talent into the Qubic ecosystem. Forming a long-term growth strategy for the network. Supporting developers, miners and projects building on Qubic.</p>
+          <p className="mf-accent-line">A sustainable network is the prerequisite for everything else.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* II */}
+        <div className="mb-8">
+          <div className="mf-label">II &middot; MAKE COMPLEXITY ACCESSIBLE</div>
+          <p className="mf-body">Qubic is one of the most complex technological concepts of our time. Difficult to understand even for specialists. Nearly impossible for the general public.</p>
+          <p className="mf-accent-line">Qubic Church works as a translator: between technical reality and human understanding.</p>
+          <p className="mf-body">Publications, explanations, media, community. If the technology cannot be explained &mdash; it cannot spread.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* III */}
+        <div className="mb-8">
+          <div className="mf-label">III &middot; EDUCATE THE NEXT GENERATION</div>
+          <p className="mf-body">Training specialists who understand not only code &mdash; but the philosophy, ethics and consequences of decentralised AGI. Courses, programmes, partnerships with universities.</p>
+          <p className="mf-highlight">The next generation builds differently only if it thinks differently.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* IV */}
+        <div className="mb-8">
+          <div className="mf-label">IV &middot; FUND INDEPENDENT RESEARCH</div>
+          <p className="mf-body">Financing independent research in AGI, Aigarth and decentralised computing through 501(c)(3) grants. Open scientific publications. Participation in international consortiums.</p>
+          <p className="mf-accent-line">Science without a single owner of the result.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* V */}
+        <div className="mb-8">
+          <div className="mf-label">V &middot; MAKE ELECTIONS VERIFIABLE</div>
+          <p className="mf-body">An electoral system where every vote is verifiable and no vote can be altered after submission. Not through trust in an institution &mdash; through the mathematics of consensus.</p>
+          <p className="mf-highlight">Architecture that makes falsification technically impossible.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* VI */}
+        <div className="mb-8">
+          <div className="mf-label">VI &middot; ELIMINATE CORRUPTION THROUGH TRANSPARENCY</div>
+          <p className="mf-body">Corruption lives in information asymmetry. A decentralised ledger translates financial management and decision-making into a publicly verifiable format.</p>
+          <p className="mf-accent-line">No need to trust the official &mdash; read the protocol.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* VII */}
+        <div className="mb-8">
+          <div className="mf-label">VII &middot; BUILD INCORRUPTIBLE GOVERNANCE</div>
+          <p className="mf-body">Decision-making systems where results are determined by the consensus of independent nodes, not the will of a central actor. Applicable to municipal budgets, international treaties, corporate governance.</p>
+          <p className="mf-highlight">The protocol does not take bribes.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* VIII */}
+        <div className="mb-8">
+          <div className="mf-label">VIII &middot; REMOVE THE STRUCTURAL CAUSES OF WAR</div>
+          <p className="mf-body">Wars begin where decisions about conflict are made by those who profit from it. A decentralised arbiter without an owner and without a profit motive can objectively evaluate disputes &mdash; including territorial, resource and political ones.</p>
+          <p className="mf-accent-line">This is not utopia. This is an engineering problem.</p>
+        </div>
+        <div className="mf-divider" />
+
+        {/* IX */}
+        <div className="mb-4">
+          <div className="mf-label">IX &middot; PROTECT INDIVIDUAL SOVEREIGNTY</div>
+          <p className="mf-body">The right of every person to their own data, to privacy, to participate in digital systems without intermediaries who can be bought or coerced.</p>
+          <p className="mf-highlight">Decentralisation returns control to where it belongs.</p>
+        </div>
+      </ChurchModal>
     </section>
   )
 }

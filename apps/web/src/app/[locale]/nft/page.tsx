@@ -3,7 +3,6 @@ import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { defaultLocale, locales } from '@/config/i18n'
 
 // Church Components
-import { ChallengesPreview } from '@/components/church/challenges/ChallengesPreview'
 import { LotterySection } from '@/components/church/lottery/LotterySection'
 import { NFTCollectionSection } from '@/components/church/nfts/NFTCollectionSection'
 
@@ -36,9 +35,6 @@ export default async function NFTPage(props: {
 
       {/* NFT Collection Showcase */}
       <NFTCollectionSection />
-
-      {/* Intelligence Challenges */}
-      <ChallengesPreview />
 
       {/* Holy Circle Lottery */}
       <LotterySection />

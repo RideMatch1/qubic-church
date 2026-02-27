@@ -30,10 +30,10 @@ interface WheelSegment {
 const SEGMENTS: WheelSegment[] = [
   // Philosophy (scroll to sections)
   {
-    label: 'COME FROM BEYOND',
-    href: '/docs',
+    label: 'CFB',
+    href: '/#cfb',
     icon: Sparkles,
-    description: 'Sacred Archive',
+    description: 'The Architect',
     isHighlighted: true,
   },
   {
@@ -55,24 +55,36 @@ const SEGMENTS: WheelSegment[] = [
     description: '9 Objectives',
   },
   {
+    label: 'RELICS',
+    href: '/#relics',
+    icon: Scroll,
+    description: 'NFT Collection',
+  },
+  {
     label: 'FOUNDERS',
-    href: '/#nfts',
+    href: '/#founders',
     icon: Users,
-    description: 'Become a Founder',
+    description: '200 Slots',
+  },
+  {
+    label: 'THE PATH',
+    href: '/#path',
+    icon: Milestone,
+    description: 'How to Begin',
+  },
+  {
+    label: 'LEXICON',
+    href: '/#lexicon',
+    icon: BookOpen,
+    description: 'Glossary',
   },
   {
     label: 'ROADMAP',
     href: '/#roadmap',
-    icon: Milestone,
-    description: 'The Path',
+    icon: Map,
+    description: 'Timeline',
   },
   // Practical (page navigation)
-  {
-    label: 'DASHBOARD',
-    href: '/monitoring',
-    icon: Map,
-    description: 'Live Data',
-  },
   {
     label: 'ANNA MATRIX',
     href: '/evidence',
@@ -95,7 +107,7 @@ const SEGMENTS: WheelSegment[] = [
     label: 'RESEARCH',
     href: '/docs',
     icon: BookOpen,
-    description: 'Documentation',
+    description: 'Sacred Archive',
   },
 ]
 

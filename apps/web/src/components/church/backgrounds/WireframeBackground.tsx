@@ -34,7 +34,7 @@ export function WireframeBackground() {
           <WireframeLandscape
             segments={40}
             amplitude={2}
-            opacity={0.06}
+            opacity={0.15}
             speed={0.08}
           />
         </Suspense>

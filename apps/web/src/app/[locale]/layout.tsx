@@ -14,7 +14,7 @@ import { CosmicWrapper } from '@/components/church/backgrounds/CosmicWrapper'
 import { GlobalNavTrigger } from '@/components/church/navigation'
 import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
-import { getSansFont, fontHeading, fontChalk, fontHandodle, fontDisplay, fontCrayon } from '@/lib/fonts'
+import { getSansFont, fontHeading, fontChalk, fontHandodle, fontDisplay, fontCrayon, fontCinzel, fontCormorant, fontShareTech, fontIBMPlex } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 
 export async function generateMetadata(props: {
@@ -133,13 +133,17 @@ export default async function RootLayout(props: {
 
       <body
         className={cn(
-          'bg-black min-h-screen font-sans antialiased',
+          'bg-black min-h-screen font-sans antialiased church-scan-lines',
           fontSans.variable,
           fontHeading.variable,
           fontChalk.variable,
           fontHandodle.variable,
           fontDisplay.variable,
-          fontCrayon.variable
+          fontCrayon.variable,
+          fontCinzel.variable,
+          fontCormorant.variable,
+          fontShareTech.variable,
+          fontIBMPlex.variable
         )}
       >
         <NextIntlClientProvider

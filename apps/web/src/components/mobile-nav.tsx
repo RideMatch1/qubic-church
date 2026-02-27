@@ -124,9 +124,6 @@ export function MobileNav({ messages, menuLinks }: MobileNavProps) {
               Anna Matrix Game
             </MobileLink>
 
-            <MobileLink href="/challenges" onOpenChange={setOpen}>
-              Challenges
-            </MobileLink>
           </div>
 
           <div className="flex flex-col space-y-2">

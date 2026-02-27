@@ -1,15 +1,16 @@
 'use client'
 
 /**
- * MiningSection - Section 07: Mine the Future
+ * MiningSection - Section 08: Mine the Future
  * HUD cards about Qubic mining: train AI, earn QUBIC, join the network
  * Terminal-style stats bar, CTA to mining guide
  */
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { Cpu, Coins, Network, ArrowRight, Terminal } from 'lucide-react'
+import { ChurchModal, ModalTrigger } from '@/components/church/ChurchModal'
 
 const features = [
   {
@@ -41,12 +42,13 @@ const features = [
 export function MiningSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
       <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-        07
+        08
       </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-6xl 2xl:max-w-7xl">
@@ -60,14 +62,13 @@ export function MiningSection() {
           <div className="inline-flex items-center gap-3 mb-8">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              07 &mdash; Compute
+              08 &mdash; Compute
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </div>
 
           <h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             Mine the{' '}
             <span className="text-[#D4AF37]/80">Future</span>
@@ -167,7 +168,35 @@ export function MiningSection() {
             GPU + CPU supported // No specialized hardware
           </p>
         </motion.div>
+
+        <div className="text-center mt-10">
+          <ModalTrigger onClick={() => setModalOpen(true)} label="Read About Mining" />
+        </div>
       </div>
+
+      <ChurchModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Mining"
+        subtitle="Useful Proof-of-Work"
+        icon={'\u2699'}
+      >
+        <p className="mf-body">Qubic mining is not like Bitcoin mining. Every computation trains Aigarth &mdash; Qubic&apos;s ternary neural network engine.</p>
+        <div className="mf-divider" />
+        <div className="mb-6">
+          <div className="mf-label">TRAIN AI</div>
+          <p className="mf-body">Your compute power trains Aigarth. Mining solutions contribute to artificial intelligence. Energy becomes intelligence, not wasted heat.</p>
+        </div>
+        <div className="mb-6">
+          <div className="mf-label">EARN QUBIC</div>
+          <p className="mf-body">Mining rewards are distributed every epoch. Both GPU and CPU mining are supported &mdash; no specialized hardware required.</p>
+        </div>
+        <div className="mb-6">
+          <div className="mf-label">JOIN THE QUORUM</div>
+          <p className="mf-body">676 computors validate the network. By mining, you strengthen the consensus that makes decentralised intelligence possible.</p>
+        </div>
+        <p className="mf-accent-line">Mining is not extraction. It is contribution.</p>
+      </ChurchModal>
     </section>
   )
 }

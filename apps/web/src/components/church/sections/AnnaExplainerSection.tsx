@@ -112,7 +112,6 @@ export function AnnaExplainerSection() {
 
             <h2
               className="text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-[1.05] tracking-wider uppercase"
-              style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             >
               The 128x128{' '}
               <span className="text-[#D4AF37]/80">

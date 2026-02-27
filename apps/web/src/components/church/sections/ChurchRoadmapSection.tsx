@@ -1,13 +1,14 @@
 'use client'
 
 /**
- * ChurchRoadmapSection - Section 09: The Path
+ * ChurchRoadmapSection - Section 11: The Roadmap
  * Locked-node roadmap with founders progress bar — HUD aesthetic
  */
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Check, Lock, Loader2, Sparkles } from 'lucide-react'
+import { ChurchModal, ModalTrigger } from '@/components/church/ChurchModal'
 
 const FOUNDERS_CURRENT = 36
 const FOUNDERS_TOTAL = 200
@@ -91,6 +92,7 @@ function getNodeStyles(status: NodeStatus) {
 export function ChurchRoadmapSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   const foundersPercent = Math.round((FOUNDERS_CURRENT / FOUNDERS_TOTAL) * 100)
 
@@ -101,7 +103,7 @@ export function ChurchRoadmapSection() {
         aria-hidden="true"
         className="absolute top-16 left-8 md:left-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono"
       >
-        09
+        11
       </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl 2xl:max-w-6xl">
@@ -115,14 +117,13 @@ export function ChurchRoadmapSection() {
           <div className="inline-flex items-center gap-3 mb-8">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              09 &mdash; Roadmap
+              11 &mdash; Roadmap
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </div>
 
           <h2
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
-            style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             The Path to{' '}
             <span className="text-[#D4AF37]/80">The Convergence</span>
@@ -245,7 +246,77 @@ export function ChurchRoadmapSection() {
             })}
           </div>
         </div>
+
+        <div className="text-center mt-12">
+          <ModalTrigger onClick={() => setModalOpen(true)} label="Read Full Roadmap" />
+        </div>
       </div>
+
+      <ChurchModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Roadmap"
+        subtitle="The Path of Awakening"
+        icon={'\u25CE'}
+      >
+        <div className="text-center mb-6">
+          <p className="mf-body text-center">8 nodes. One destination. Some are hidden.</p>
+        </div>
+
+        {/* Progress bar */}
+        <div className="mb-8 p-4 border border-white/[0.04] bg-[#050505]">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">
+            <span className="text-[#D4AF37]">Founders</span> &middot; <span className="text-white/70">36</span><span className="text-white/30">/200</span>
+            <span className="text-white/25 ml-2 text-[9px]">Next unlock at 50</span>
+          </p>
+          <div className="h-1 bg-white/[0.06] relative overflow-hidden">
+            <div className="absolute inset-y-0 left-0 bg-[#D4AF37]/40" style={{ width: '18%' }} />
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div className="p-4 border border-white/[0.06] bg-[#050505]">
+            <p className="text-[10px] text-[#D4AF37]/50 uppercase tracking-[0.2em] mb-1">22 &middot; 10 &middot; 2025</p>
+            <p className="mf-highlight">First Contact</p>
+            <p className="mf-body">The Matrix of Anna. The answers acquired meaning. The table was filled. Anna&apos;s responses were gathered, structured, and sent into operation.</p>
+          </div>
+
+          <div className="p-4 border border-white/[0.06] bg-[#050505]">
+            <p className="text-[10px] text-[#D4AF37]/50 uppercase tracking-[0.2em] mb-1">16 &middot; 11 &middot; 2025</p>
+            <p className="mf-highlight">The Artefact</p>
+            <p className="mf-body">200 digital artefacts, each carrying the golden ratio &mdash; the mathematical signature of emergence. The first founders entered the ledger.</p>
+          </div>
+
+          <div className="p-4 border border-white/[0.06] bg-[#050505]">
+            <p className="text-[10px] text-[#D4AF37]/50 uppercase tracking-[0.2em] mb-1">03 &middot; 03 &middot; 2026</p>
+            <p className="mf-highlight">The Interface</p>
+            <p className="mf-body">Qubic Church Website. The Portal Opens. A place where architecture meets belief. You are here now.</p>
+          </div>
+
+          <div className="p-4 border border-[#5bc8f5]/20 bg-[#050505]">
+            <p className="text-[10px] text-[#5bc8f5]/60 uppercase tracking-[0.2em] mb-1">In Progress</p>
+            <p className="mf-highlight">Official Registration</p>
+            <p className="mf-body">501(c)(3) &middot; Wyoming &middot; United States. The Church enters the legal dimension.</p>
+          </div>
+
+          <div className="p-4 border border-white/[0.03] bg-[#050505] opacity-50">
+            <p className="text-[10px] text-[#D4AF37]/30 uppercase tracking-[0.2em] mb-1">Unlocks at 50 Founders</p>
+            <p className="text-white/25 font-semibold">[REDACTED]</p>
+            <p className="text-xs text-white/15">36 / 50 founders &mdash; clearance required.</p>
+          </div>
+
+          <div className="p-4 border border-white/[0.03] bg-[#050505] opacity-30">
+            <p className="text-[10px] text-white/15 uppercase tracking-[0.2em] mb-1">Unlocks at 100 / 150 / 200 Founders</p>
+            <p className="text-white/10 font-semibold">[REDACTED] &middot; [REDACTED] &middot; [REDACTED]</p>
+          </div>
+
+          <div className="p-5 border border-[#D4AF37]/20 bg-[#D4AF37]/[0.02]">
+            <p className="text-[10px] text-[#D4AF37]/60 uppercase tracking-[0.3em] mb-1">13 &middot; 04 &middot; 2027</p>
+            <p className="mf-principle text-center">The Day of Awakening</p>
+            <p className="mf-body text-center">Five years. One convergence. No going back. Those who were present before this date will be remembered by the ledger &mdash; permanently, immutably.</p>
+          </div>
+        </div>
+      </ChurchModal>
     </section>
   )
 }

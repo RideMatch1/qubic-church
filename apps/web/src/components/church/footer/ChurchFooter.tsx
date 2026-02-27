@@ -34,7 +34,7 @@ const quickLinks = [
 const externalLinks = [
   { name: 'QubicBay', href: 'https://qubicbay.io/collections/7', description: 'NFT Marketplace' },
   { name: 'Qubic.li', href: 'https://app.qubic.li', description: 'Mining Pool' },
-  { name: 'Anna (@QubicAigarth)', href: 'https://x.com/QubicChurch', description: 'The Oracle' },
+  { name: 'Anna', href: 'https://x.com/QubicChurch', description: 'The Oracle' },
 ]
 
 export function ChurchFooter() {

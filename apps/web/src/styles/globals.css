@@ -104,6 +104,18 @@
   --church-gold-dim: hsl(43 60% 40%);
   --church-navy: hsl(240 30% 10%);
   --church-chalk: hsl(40 20% 85%);
+
+  /* Church Signal Colors (from QubicChurch reference) */
+  --church-signal: #5bc8f5;
+  --church-signal-dim: #3a7090;
+  --church-signal-light: #7dd8f8;
+  --church-purple-void: #05040a;
+  --church-purple-panel: #0a0a12;
+  --church-gold-bright: #f0c030;
+  --church-gold-dark: #c8960a;
+  --church-red: rgba(180,40,30,0.9);
+  --church-red-dim: rgba(180,40,30,0.15);
+  --church-teal: #128274;
 }
 
 @theme inline {
@@ -162,6 +174,15 @@
   --color-church-gold-dim: var(--church-gold-dim);
   --color-church-navy: var(--church-navy);
   --color-church-chalk: var(--church-chalk);
+
+  /* Church Signal Colors */
+  --color-church-signal: var(--church-signal);
+  --color-church-signal-dim: var(--church-signal-dim);
+  --color-church-signal-light: var(--church-signal-light);
+  --color-church-purple-void: var(--church-purple-void);
+  --color-church-purple-panel: var(--church-purple-panel);
+  --color-church-gold-bright: var(--church-gold-bright);
+  --color-church-gold-dark: var(--church-gold-dark);
 }
 
 @layer base {
@@ -614,7 +635,8 @@
   .animate-pulse-slow,
   .animate-pulse-gentle,
   .animate-spin-slow,
-  .animate-float-cosmic {
+  .animate-float-cosmic,
+  .animate-founder-awake {
     animation: none;
   }
 }
@@ -690,4 +712,288 @@
 
 .animate-chalk-flicker {
   animation: chalk-flicker 4s ease-in-out infinite;
+}
+
+/* ========================================
+   CHURCH GLITCH ANIMATIONS (from QubicChurch reference)
+   ======================================== */
+
+@keyframes logoGlitch {
+  0%, 89%, 100% { text-shadow: none; transform: none; }
+  90% { text-shadow: -2px 0 rgba(255,0,80,0.9), 2px 0 rgba(0,200,255,0.9); transform: translateX(2px); }
+  91% { text-shadow: 2px 0 rgba(255,0,80,0.9), -2px 0 rgba(0,200,255,0.9); transform: translateX(-3px) skewX(-1deg); }
+  92% { text-shadow: -4px 0 rgba(255,0,80,0.5), 4px 0 rgba(0,200,255,0.5); transform: translateX(1px); }
+  93% { text-shadow: none; transform: translateX(2px) skewX(2deg); }
+  94%, 99% { text-shadow: none; transform: none; }
+}
+
+@keyframes textGlitch {
+  0%, 74%, 100% { transform: none; clip-path: none; filter: none; }
+  75% { transform: translateX(-4px) skewX(1.5deg); clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%); filter: hue-rotate(80deg) brightness(1.2); }
+  75.4% { transform: translateX(4px); clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); filter: none; }
+  75.8% { transform: translateX(-2px) skewX(-1deg); clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+  76.2%, 99% { transform: none; clip-path: none; filter: none; }
+}
+
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(240,192,48,0.4); }
+  50% { box-shadow: 0 0 30px rgba(240,192,48,0.7), 0 0 50px rgba(240,192,48,0.3); }
+}
+
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+}
+
+@keyframes modalGlitch {
+  0% { transform: translateX(-6px) skewX(-2deg); filter: hue-rotate(60deg); }
+  33% { transform: translateX(6px); filter: hue-rotate(-60deg); }
+  66% { transform: translateX(-3px) skewX(1deg); filter: none; }
+  100% { transform: none; }
+}
+
+@keyframes rgbSplit {
+  0%, 100% { text-shadow: none; }
+  25% { text-shadow: -5px 0 rgba(255,0,60,0.7), 5px 0 rgba(0,180,255,0.7); }
+  50% { text-shadow: 4px 0 rgba(255,0,60,0.5), -4px 0 rgba(0,180,255,0.5); }
+  75% { text-shadow: -3px 2px rgba(255,0,60,0.4), 3px -2px rgba(0,180,255,0.4); }
+}
+
+@keyframes linePulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@keyframes lockPulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(180,40,30,0.04); }
+  50% { box-shadow: 0 0 120px rgba(180,40,30,0.1), inset 0 0 60px rgba(180,40,30,0.04); }
+}
+
+.animate-logo-glitch {
+  animation: logoGlitch 8s infinite;
+}
+
+.animate-text-glitch {
+  animation: textGlitch 12s infinite;
+}
+
+.animate-button-pulse {
+  animation: buttonPulse 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 3s ease-in-out infinite;
+}
+
+.animate-line-pulse {
+  animation: linePulse 2s ease-in-out infinite;
+}
+
+.animate-lock-pulse {
+  animation: lockPulse 4s ease-in-out infinite;
+}
+
+/* ========================================
+   CRT SCAN LINES
+   ======================================== */
+
+.church-scan-lines::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ========================================
+   CHURCH TYPOGRAPHY UTILITIES
+   ======================================== */
+
+.font-cinzel {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+}
+
+.font-share-tech {
+  font-family: var(--font-share-tech), 'Share Tech Mono', monospace;
+}
+
+.font-ibm-plex {
+  font-family: var(--font-ibm-plex), 'IBM Plex Mono', monospace;
+}
+
+/* ========================================
+   CHURCH DESIGN ELEMENTS
+   ======================================== */
+
+/* Museum plaque - gold left border accent box */
+.church-plaque {
+  position: relative;
+  padding: 1.2rem 1.6rem 1.2rem 2rem;
+  background: rgba(240,192,48,0.025);
+}
+
+.church-plaque::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--church-gold-bright, #f0c030), var(--church-gold-dark, #c8960a));
+  box-shadow: 0 0 20px rgba(240,192,48,0.3);
+}
+
+/* Signal blue left border (for quotes) */
+.church-signal-border {
+  border-left: 2px solid rgba(91,200,245,0.3);
+  padding-left: 1.6rem;
+}
+
+/* Strikethrough text style from manifesto */
+.church-strike {
+  text-decoration: line-through;
+  text-decoration-color: rgba(240,192,48,0.25);
+  color: rgba(255,255,255,0.38);
+}
+
+/* ========================================
+   FOUNDERS GRID - Awake Slot Animation
+   ======================================== */
+
+@keyframes founderAwake {
+  0%, 100% {
+    border-color: rgba(91,200,245,0.6);
+    box-shadow: 0 0 6px rgba(91,200,245,0.15), inset 0 0 4px rgba(91,200,245,0.05);
+  }
+  50% {
+    border-color: rgba(91,200,245,0.85);
+    box-shadow: 0 0 12px rgba(91,200,245,0.3), inset 0 0 8px rgba(91,200,245,0.1);
+  }
+}
+
+.founder-slot-awake {
+  border: 1px solid rgba(91,200,245,0.6);
+  background: rgba(20,40,60,0.9);
+  animation: founderAwake 3s ease-in-out infinite;
+}
+
+.animate-founder-awake {
+  animation: founderAwake 3s ease-in-out infinite;
+}
+
+/* Founders grid responsive column overrides */
+@media (min-width: 768px) {
+  .founders-grid-responsive {
+    grid-template-columns: repeat(8, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .founders-grid-responsive {
+    grid-template-columns: repeat(10, 1fr) !important;
+  }
+}
+
+/* ── Church Modal Body Styles ── */
+.church-modal-body .mf-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(91,200,245,0.5);
+  border-bottom: 1px solid rgba(91,200,245,0.15);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.church-modal-body .mf-body {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.church-modal-body .mf-accent {
+  color: #D4AF37;
+  font-weight: 600;
+}
+
+.church-modal-body .mf-highlight {
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 1rem 0;
+}
+
+.church-modal-body .mf-divider {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(212,175,55,0.4), transparent);
+  margin: 2rem 0;
+}
+
+.church-modal-body .mf-principle {
+  font-size: 1.1rem;
+  color: rgba(212,175,55,0.7);
+  margin-bottom: 1rem;
+}
+
+.church-modal-body .mf-accent-line {
+  font-size: 1rem;
+  color: rgba(212,175,55,0.65);
+  margin: 1.2rem 0;
+}
+
+.church-modal-body .mf-three-lines p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.8;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(91,200,245,0.15);
+  margin-bottom: 0.6rem;
+}
+
+.church-modal-body .mf-architects-block {
+  border: 1px solid rgba(212,175,55,0.12);
+  padding: 1.5rem 2rem;
+  background: rgba(212,175,55,0.02);
+  margin: 1.5rem 0;
+}
+
+.church-modal-body .mf-architects-block p {
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.church-modal-body .mf-strike {
+  text-decoration: line-through;
+  text-decoration-color: rgba(240,192,48,0.3);
+  color: rgba(255,255,255,0.35);
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.church-modal-body .mf-final-lines p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.4rem;
+}
+
+.church-modal-body .mf-final-impact {
+  font-size: 1.05rem;
+  color: rgba(212,175,55,0.8);
+  margin-top: 0.8rem;
 }
