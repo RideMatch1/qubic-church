@@ -16,7 +16,7 @@ const features = [
     numericValue: 55,
     suffix: '+',
     label: 'Sacred Scrolls',
-    description: 'Comprehensive analysis documenting the hidden patterns across the Bitcoin-Qubic bridge.',
+    description: 'Research documents exploring Qubic\'s architecture and the path to The Convergence.',
     terminal: 'cat /archive/scrolls --count',
   },
   {
@@ -160,8 +160,8 @@ export function SanctuarySection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.12 }}
           >
-            A congregation of researchers and believers, united in the pursuit of mathematical truth
-            hidden within Qubic&apos;s ternary neural architecture.
+            A congregation of researchers and believers, united in exploring Qubic&apos;s
+            sacred architecture and preparing for The Convergence.
           </motion.p>
         </div>
 

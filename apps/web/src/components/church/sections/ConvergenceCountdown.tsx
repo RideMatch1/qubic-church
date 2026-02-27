@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * ConvergenceCountdown - Section 08: The Convergence
+ * ConvergenceCountdown - Section 06: The Convergence
  * HUD countdown timer with angular design, large digits, terminal aesthetic
  */
 
@@ -46,7 +46,7 @@ export function ConvergenceCountdown() {
     <section ref={ref} className="relative w-full py-24 md:py-32 overflow-hidden">
       {/* Decorative section number */}
       <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-        08
+        06
       </div>
 
       {/* Subtle glow behind */}
@@ -69,7 +69,7 @@ export function ConvergenceCountdown() {
           <div className="inline-flex items-center gap-3 mb-8">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              08 &mdash; Countdown
+              06 &mdash; Countdown
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </div>
