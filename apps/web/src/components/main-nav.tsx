@@ -15,7 +15,7 @@ interface MainNavProps {
 }
 
 const researchItems = [
-  { href: '/docs', label: 'Research Archive', icon: BookOpen, description: '75+ open-source documents' },
+  { href: '/docs', label: 'Research Archive', icon: BookOpen, description: '55+ open-source documents' },
   { href: '/evidence', label: 'Anna Matrix', icon: Grid3X3, description: 'Interactive 128x128 visualization' },
   { href: '/timeline', label: 'Evidence Timeline', icon: Clock, description: '12-phase discovery journey' },
   { href: '/monitoring', label: 'Live Monitoring', icon: Activity, description: 'Real-time Qubic metrics' },

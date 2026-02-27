@@ -9,6 +9,7 @@ export type QortexErrorType =
   | 'PARSE_ERROR'
   | 'VALIDATION_ERROR'
   | 'TIMEOUT_ERROR'
+  | 'DATA_UNAVAILABLE'
   | 'UNKNOWN_ERROR'
 
 export interface QortexError {
@@ -21,6 +22,8 @@ export interface QortexError {
 interface UseQortexDataReturn {
   loading: boolean
   error: QortexError | null
+  /** True when the dataset file is missing (too large for deployment) */
+  dataUnavailable: boolean
   data: QortexData | null
   currentFrame: QortexFrame | null
   currentNodes: QortexNode[]
@@ -99,9 +102,9 @@ export function useQortexData(): UseQortexDataReturn {
       if (!response.ok) {
         if (response.status === 404) {
           throw {
-            type: 'NETWORK_ERROR' as QortexErrorType,
-            message: 'Neural network data not found',
-            details: 'The neuraxon-network.json file could not be located. Please ensure the data has been generated.',
+            type: 'DATA_UNAVAILABLE' as QortexErrorType,
+            message: 'Neuraxon Network',
+            details: 'Dataset too large for web deployment. Available locally.',
             retryable: false,
           }
         }
@@ -160,13 +163,13 @@ export function useQortexData(): UseQortexDataReturn {
         return
       }
 
-      // Handle network errors
-      if (err instanceof TypeError && err.message.includes('fetch')) {
+      // Handle network errors (fetch itself failed -- likely data file missing)
+      if (err instanceof TypeError) {
         setError({
-          type: 'NETWORK_ERROR',
-          message: 'Network connection failed',
-          details: 'Unable to connect to the server. Please check your internet connection.',
-          retryable: true,
+          type: 'DATA_UNAVAILABLE',
+          message: 'Neuraxon Network',
+          details: 'Dataset too large for web deployment. Available locally.',
+          retryable: false,
         })
         return
       }
@@ -264,9 +267,13 @@ export function useQortexData(): UseQortexDataReturn {
     setFrameIndex(clampedIndex)
   }, [data])
 
+  // Determine if data is unavailable (file not deployed)
+  const dataUnavailable = error?.type === 'DATA_UNAVAILABLE'
+
   return {
     loading,
     error,
+    dataUnavailable,
     data,
     currentFrame,
     currentNodes,

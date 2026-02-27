@@ -60,7 +60,7 @@ export function DiscoveryTeaser() {
                 href="/docs"
                 className="inline-flex items-center gap-2 mt-8 text-white/60 hover:text-white text-sm font-medium transition-colors group"
               >
-                Explore 75+ research documents
+                Explore 55+ research documents
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>

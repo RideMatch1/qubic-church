@@ -229,7 +229,7 @@ export function Phase12_JoinTheInvestigation() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://qubicbay.com"
+              href="https://qubicbay.io/collections/7"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-gradient-to-r from-orange-600 to-purple-600 hover:from-[#D4AF37] hover:to-[#D4AF37] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105"

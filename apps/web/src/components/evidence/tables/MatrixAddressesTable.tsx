@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { VirtualizedTable, ExplorerButton, type Column } from './VirtualizedTable'
 import { Copy, Check, Info } from 'lucide-react'
+import { DataUnavailablePlaceholder } from '../DataUnavailablePlaceholder'
 import type { FilterConfig } from './TableFilters'
 
 interface MatrixAddress {
@@ -20,25 +21,33 @@ interface MatrixData {
 export default function MatrixAddressesTable() {
   const [data, setData] = useState<MatrixAddress[]>([])
   const [loading, setLoading] = useState(true)
+  const [dataUnavailable, setDataUnavailable] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [stats, setStats] = useState({ total: 0, unique: 0 })
 
   useEffect(() => {
-    fetch('/data/matrix-addresses.json')
-      .then((res) => res.json())
-      .then((json: MatrixData) => {
+    const loadData = async () => {
+      try {
+        const res = await fetch('/data/matrix-addresses.json')
+        if (!res.ok) {
+          setDataUnavailable(true)
+          setLoading(false)
+          return
+        }
+        const json: MatrixData = await res.json()
         setData(json.records)
         setStats({
           total: json.total,
           unique: json.uniqueCount,
         })
         setLoading(false)
-      })
-      .catch((err) => {
-        setError(err.message)
+      } catch {
+        setDataUnavailable(true)
         setLoading(false)
-      })
+      }
+    }
+    loadData()
   }, [])
 
   const handleCopy = async (text: string, id: string) => {
@@ -139,6 +148,16 @@ export default function MatrixAddressesTable() {
     )
   }
 
+  if (dataUnavailable) {
+    return (
+      <DataUnavailablePlaceholder
+        datasetName="Matrix-Derived Bitcoin Addresses"
+        fileName="matrix-addresses.json (61 MB)"
+        height="600px"
+      />
+    )
+  }
+
   if (error) {
     return (
       <div className="flex items-center justify-center h-[600px] text-destructive">
@@ -155,8 +174,8 @@ export default function MatrixAddressesTable() {
         <div>
           <h4 className="font-medium text-[#D4AF37]">Matrix-Derived Addresses</h4>
           <p className="text-sm text-muted-foreground mt-1">
-            These Bitcoin addresses were mathematically derived from the 128×128 Anna Matrix
-            using K12 hash functions. Public addresses only — no private keys are stored or displayed.
+            These Bitcoin addresses were mathematically derived from the 128x128 Anna Matrix
+            using K12 hash functions. Public addresses only -- no private keys are stored or displayed.
           </p>
         </div>
       </div>

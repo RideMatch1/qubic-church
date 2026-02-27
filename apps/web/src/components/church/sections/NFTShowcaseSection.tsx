@@ -139,7 +139,7 @@ export function NFTShowcaseSection() {
         >
           {/* CTA with shimmer effect */}
           <a
-            href="https://qubicbay.com/collection/anna-aigarth"
+            href="https://qubicbay.io/collections/7"
             target="_blank"
             rel="noopener noreferrer"
             className="relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#D4AF37]/[0.08] to-[#D4AF37]/[0.04] border border-[#D4AF37]/20 text-white font-bold text-lg hover:from-[#D4AF37]/[0.14] hover:to-[#D4AF37]/[0.08] hover:border-[#D4AF37]/30 transition-all duration-300 group overflow-hidden"

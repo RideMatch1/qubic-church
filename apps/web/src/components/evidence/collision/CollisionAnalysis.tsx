@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { DataUnavailablePlaceholder } from '../DataUnavailablePlaceholder'
 
 interface CollisionData {
   address: string
@@ -25,9 +26,11 @@ interface CollisionData {
 
 interface CollisionAnalysisProps {
   addresses?: string[]
+  /** When true, shows the data-unavailable placeholder instead of empty analysis */
+  dataUnavailable?: boolean
 }
 
-export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
+export function CollisionAnalysis({ addresses = [], dataUnavailable = false }: CollisionAnalysisProps) {
   const [loading, setLoading] = useState(true)
   const [collisions, setCollisions] = useState<CollisionData[]>([])
   const [analyzing, setAnalyzing] = useState(false)
@@ -40,8 +43,12 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
   }
 
   useEffect(() => {
+    if (dataUnavailable) {
+      setLoading(false)
+      return
+    }
     analyzeCollisions()
-  }, [addresses])
+  }, [addresses, dataUnavailable])
 
   const analyzeCollisions = () => {
     setLoading(true)
@@ -120,6 +127,16 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
           <p className="text-muted-foreground">Analyzing for collisions...</p>
         </div>
       </div>
+    )
+  }
+
+  if (dataUnavailable) {
+    return (
+      <DataUnavailablePlaceholder
+        datasetName="Collision Analysis"
+        fileName="matrix-addresses.json, bitcoin-derived-addresses.json, patoshi-addresses.json"
+        height="500px"
+      />
     )
   }
 
@@ -205,7 +222,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
-                ✓ No Collisions Detected
+                No Collisions Detected
               </h3>
               <p className="text-foreground mb-3">
                 All {addresses.length.toLocaleString()} addresses are unique across all datasets.
@@ -225,7 +242,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
-                ⚠️ {stats.total} Collision(s) Detected
+                {stats.total} Collision(s) Detected
               </h3>
               <p className="text-foreground mb-3">
                 Found {stats.total} address(es) that appear multiple times across datasets.
@@ -238,7 +255,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
               {stats.suspicious > 0 && (
                 <div className="p-3 bg-red-500/10 border border-red-500/30">
                   <p className="text-sm font-medium text-red-400">
-                    🚨 {stats.suspicious} highly suspicious collision(s) detected (&gt;2
+                    {stats.suspicious} highly suspicious collision(s) detected (&gt;2
                     occurrences)
                   </p>
                 </div>
@@ -281,7 +298,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
               space size.
             </p>
             <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">Bitcoin Address Space:</strong> 2^160 ≈ 1.46 ×
+              <strong className="text-foreground">Bitcoin Address Space:</strong> 2^160 &cong; 1.46 x
               10^48 possible addresses. Even with 1 million addresses, collision probability is
               negligibly small (&lt; 10^-30).
             </p>
@@ -328,7 +345,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
           </p>
           <p>
             <strong className="text-foreground">3. Probability Calculation:</strong> Birthday
-            Attack probability is calculated using: P = 1 - e^(-n²/2d) where n = addresses, d =
+            Attack probability is calculated using: P = 1 - e^(-n^2/2d) where n = addresses, d =
             address space size.
           </p>
           <p>
@@ -419,7 +436,7 @@ function CollisionCard({ collision }: { collision: CollisionData }) {
                   : 'bg-[#D4AF37]/20 text-[#D4AF37]'
               }`}
             >
-              {collision.count}× Collision
+              {collision.count}x Collision
             </span>
             {collision.isSuspicious && (
               <span className="px-2 py-0.5 text-xs font-medium bg-red-500 text-white">
@@ -435,7 +452,7 @@ function CollisionCard({ collision }: { collision: CollisionData }) {
               className="shrink-0 p-1 hover:bg-muted transition-colors"
             >
               {copied ? (
-                <span className="text-xs text-[#D4AF37]">✓</span>
+                <span className="text-xs text-[#D4AF37]">Copied</span>
               ) : (
                 <Copy className="w-3 h-3 text-muted-foreground" />
               )}

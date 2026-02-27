@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import { VirtualizedTable, ExplorerButton, type Column } from './VirtualizedTable'
 import { Copy, Check, Eye, EyeOff, AlertTriangle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { DataUnavailablePlaceholder } from '../DataUnavailablePlaceholder'
 import type { FilterConfig } from './TableFilters'
 
 interface QubicSeedRecord {
@@ -26,15 +27,22 @@ interface QubicData {
 export default function QubicSeedsTable() {
   const [data, setData] = useState<QubicSeedRecord[]>([])
   const [loading, setLoading] = useState(true)
+  const [dataUnavailable, setDataUnavailable] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [showSeeds, setShowSeeds] = useState(false)
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [stats, setStats] = useState({ total: 0, matches: 0, matchRate: '0%' })
 
   useEffect(() => {
-    fetch('/data/qubic-seeds.json')
-      .then((res) => res.json())
-      .then((json: QubicData) => {
+    const loadData = async () => {
+      try {
+        const res = await fetch('/data/qubic-seeds.json')
+        if (!res.ok) {
+          setDataUnavailable(true)
+          setLoading(false)
+          return
+        }
+        const json: QubicData = await res.json()
         setData(json.records)
         setStats({
           total: json.total,
@@ -42,11 +50,12 @@ export default function QubicSeedsTable() {
           matchRate: json.matchRate,
         })
         setLoading(false)
-      })
-      .catch((err) => {
-        setError(err.message)
+      } catch {
+        setDataUnavailable(true)
         setLoading(false)
-      })
+      }
+    }
+    loadData()
   }, [])
 
   const handleCopy = async (text: string, id: string) => {
@@ -171,6 +180,16 @@ export default function QubicSeedsTable() {
           <span className="text-muted-foreground">Loading Qubic seeds...</span>
         </div>
       </div>
+    )
+  }
+
+  if (dataUnavailable) {
+    return (
+      <DataUnavailablePlaceholder
+        datasetName="Qubic Seeds Database"
+        fileName="qubic-seeds.json (7 MB)"
+        height="600px"
+      />
     )
   }
 

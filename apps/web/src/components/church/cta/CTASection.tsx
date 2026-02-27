@@ -44,7 +44,7 @@ const externalLinks = [
   { href: 'https://qubic.org', title: 'Qubic Official', desc: 'The Qubic network' },
   { href: 'https://discord.gg/qubic', title: 'Discord', desc: 'Join the discussion' },
   {
-    href: 'https://qubicbay.com',
+    href: 'https://qubicbay.io/collections/7',
     title: 'QubicBay',
     desc: 'NFT Marketplace',
   },
@@ -157,7 +157,7 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://qubicbay.com"
+              href="https://qubicbay.io/collections/7"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[#D4AF37] hover:bg-[#D4AF37]/90 px-8 py-4 text-base font-semibold text-black shadow-lg transition-all duration-300 hover:scale-105"

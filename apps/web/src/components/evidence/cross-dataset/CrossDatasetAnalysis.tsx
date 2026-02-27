@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { DataUnavailablePlaceholder } from '../DataUnavailablePlaceholder'
 
 // Known Satoshi/Patoshi address datasets
 const KNOWN_SATOSHI_DATASETS = {
@@ -79,6 +80,7 @@ interface CrossDatasetAnalysisProps {
 
 export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysisProps) {
   const [loading, setLoading] = useState(true)
+  const [dataUnavailable, setDataUnavailable] = useState(false)
   const [analyzing, setAnalyzing] = useState(false)
   const [results, setResults] = useState<AnalysisResult[]>([])
   const [selectedDataset, setSelectedDataset] = useState<string | null>(null)
@@ -95,27 +97,43 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
     // Load from JSON files
     const loadAddresses = async () => {
       try {
-        const responses = await Promise.all([
-          fetch('/data/bitcoin-derived-addresses.json'),
-          fetch('/data/bitcoin-private-keys.json'),
-          fetch('/data/matrix-addresses.json'),
+        const allAddresses = new Set<string>()
+        let anyLoaded = false
+
+        // Attempt each fetch independently -- some may be available, others not
+        const fetchAndExtract = async (url: string) => {
+          try {
+            const res = await fetch(url)
+            if (!res.ok) return
+            const json = await res.json()
+            if (json.records && Array.isArray(json.records)) {
+              json.records.forEach((r: any) => {
+                if (r.address) allAddresses.add(r.address)
+              })
+              anyLoaded = true
+            }
+          } catch {
+            // Individual file unavailable -- continue with others
+          }
+        }
+
+        await Promise.all([
+          fetchAndExtract('/data/bitcoin-derived-addresses.json'),
+          fetchAndExtract('/data/bitcoin-private-keys.json'),
+          fetchAndExtract('/data/matrix-addresses.json'),
         ])
 
-        const [derived, privateKeys, matrix] = await Promise.all(
-          responses.map((r) => r.json())
-        )
-
-        const allAddresses = new Set<string>()
-
-        // Extract addresses from all sources
-        derived.records?.forEach((r: any) => allAddresses.add(r.address))
-        privateKeys.records?.forEach((r: any) => allAddresses.add(r.address))
-        matrix.records?.forEach((r: any) => allAddresses.add(r.address))
+        if (!anyLoaded) {
+          // None of the datasets loaded -- show data unavailable
+          setDataUnavailable(true)
+          setLoading(false)
+          return
+        }
 
         setLoadedAddresses(Array.from(allAddresses))
         setLoading(false)
-      } catch (error) {
-        console.error('Failed to load addresses:', error)
+      } catch {
+        setDataUnavailable(true)
         setLoading(false)
       }
     }
@@ -215,6 +233,16 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
     )
   }
 
+  if (dataUnavailable) {
+    return (
+      <DataUnavailablePlaceholder
+        datasetName="Cross-Dataset Analysis"
+        fileName="matrix-addresses.json, bitcoin-derived-addresses.json, bitcoin-private-keys.json"
+        height="500px"
+      />
+    )
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -301,7 +329,7 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
             </div>
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-red-400 mb-2">
-                🔥 SMOKING GUN DETECTED!
+                SMOKING GUN DETECTED!
               </h3>
               <p className="text-lg text-foreground mb-3">
                 We found {results.filter(r => r.significance === 'SMOKING_GUN').reduce((sum, r) => sum + r.overlapCount, 0)} overlap(s) with known Satoshi Nakamoto addresses!
@@ -499,7 +527,7 @@ function DatasetResultCard({
             {result.overlapCount > 0 && (
               <div className="p-3 bg-red-500/10 border border-red-500/30">
                 <p className="text-sm font-medium text-red-400 mb-2">
-                  ⚠️ {result.overlapCount} overlap(s) detected!
+                  {result.overlapCount} overlap(s) detected!
                 </p>
                 <div className="space-y-1">
                   {result.overlaps.slice(0, 3).map((overlap) => (

@@ -5,6 +5,7 @@ import { VirtualizedTable, ExplorerButton, type Column } from './VirtualizedTabl
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Copy, Check, Eye, EyeOff, AlertTriangle, Key, Database, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { DataUnavailablePlaceholder } from '../DataUnavailablePlaceholder'
 import type { FilterConfig } from './TableFilters'
 
 // Types for different Bitcoin data
@@ -45,36 +46,71 @@ export default function BitcoinAddressesTable() {
   const [privateKeysData, setPrivateKeysData] = useState<PrivateKeyRecord[]>([])
   const [matrixData, setMatrixData] = useState<MatrixAddress[]>([])
   const [loading, setLoading] = useState({ derived: true, privateKeys: true, matrix: true })
+  const [unavailable, setUnavailable] = useState({ derived: false, privateKeys: false, matrix: false })
   const [counts, setCounts] = useState({ derived: 0, privateKeys: 0, matrix: 0 })
 
-  // Load all data
+  // Load all data with resilient fetch
   useEffect(() => {
     // Load derived addresses
-    fetch('/data/bitcoin-derived-addresses.json')
-      .then((res) => res.json())
-      .then((json) => {
+    const loadDerived = async () => {
+      try {
+        const res = await fetch('/data/bitcoin-derived-addresses.json')
+        if (!res.ok) {
+          setUnavailable((u) => ({ ...u, derived: true }))
+          setLoading((l) => ({ ...l, derived: false }))
+          return
+        }
+        const json = await res.json()
         setDerivedData(json.records)
         setCounts((c) => ({ ...c, derived: json.total }))
         setLoading((l) => ({ ...l, derived: false }))
-      })
+      } catch {
+        setUnavailable((u) => ({ ...u, derived: true }))
+        setLoading((l) => ({ ...l, derived: false }))
+      }
+    }
 
     // Load private keys
-    fetch('/data/bitcoin-private-keys.json')
-      .then((res) => res.json())
-      .then((json) => {
+    const loadPrivateKeys = async () => {
+      try {
+        const res = await fetch('/data/bitcoin-private-keys.json')
+        if (!res.ok) {
+          setUnavailable((u) => ({ ...u, privateKeys: true }))
+          setLoading((l) => ({ ...l, privateKeys: false }))
+          return
+        }
+        const json = await res.json()
         setPrivateKeysData(json.records)
         setCounts((c) => ({ ...c, privateKeys: json.total }))
         setLoading((l) => ({ ...l, privateKeys: false }))
-      })
+      } catch {
+        setUnavailable((u) => ({ ...u, privateKeys: true }))
+        setLoading((l) => ({ ...l, privateKeys: false }))
+      }
+    }
 
     // Load matrix addresses
-    fetch('/data/matrix-addresses.json')
-      .then((res) => res.json())
-      .then((json) => {
+    const loadMatrix = async () => {
+      try {
+        const res = await fetch('/data/matrix-addresses.json')
+        if (!res.ok) {
+          setUnavailable((u) => ({ ...u, matrix: true }))
+          setLoading((l) => ({ ...l, matrix: false }))
+          return
+        }
+        const json = await res.json()
         setMatrixData(json.records)
         setCounts((c) => ({ ...c, matrix: json.total }))
         setLoading((l) => ({ ...l, matrix: false }))
-      })
+      } catch {
+        setUnavailable((u) => ({ ...u, matrix: true }))
+        setLoading((l) => ({ ...l, matrix: false }))
+      }
+    }
+
+    loadDerived()
+    loadPrivateKeys()
+    loadMatrix()
   }, [])
 
   const handleCopy = async (text: string, id: string) => {
@@ -416,6 +452,12 @@ export default function BitcoinAddressesTable() {
             <div className="flex items-center justify-center h-[500px]">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
             </div>
+          ) : unavailable.privateKeys ? (
+            <DataUnavailablePlaceholder
+              datasetName="Bitcoin Private Keys"
+              fileName="bitcoin-private-keys.json"
+              height="500px"
+            />
           ) : (
             <VirtualizedTable
               data={privateKeysData}
@@ -433,6 +475,12 @@ export default function BitcoinAddressesTable() {
             <div className="flex items-center justify-center h-[500px]">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
             </div>
+          ) : unavailable.derived ? (
+            <DataUnavailablePlaceholder
+              datasetName="Bitcoin Derived Addresses"
+              fileName="bitcoin-derived-addresses.json"
+              height="500px"
+            />
           ) : (
             <VirtualizedTable
               data={derivedData}
@@ -450,6 +498,12 @@ export default function BitcoinAddressesTable() {
             <div className="flex items-center justify-center h-[500px]">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
             </div>
+          ) : unavailable.matrix ? (
+            <DataUnavailablePlaceholder
+              datasetName="Matrix-Derived Bitcoin Addresses"
+              fileName="matrix-addresses.json (61 MB)"
+              height="500px"
+            />
           ) : (
             <VirtualizedTable
               data={matrixData}

@@ -79,7 +79,7 @@ const steps = [
     title: 'Get an Anna NFT',
     description: 'Buy an Anna NFT on QubicBay to join the community and enter the giveaway.',
     icon: ShieldCheck,
-    action: { label: 'Browse NFTs', url: 'https://qubicbay.com/collection/anna-aigarth' },
+    action: { label: 'Browse NFTs', url: 'https://qubicbay.io/collections/7' },
     terminal: 'nft.acquire --collection anna',
     details: [
       'Visit QubicBay.com and connect your wallet',
@@ -108,7 +108,7 @@ const faqs = [
   },
   {
     q: 'How much QUBIC do I need for an NFT?',
-    a: 'NFT prices vary on QubicBay marketplace. Check the current floor price at qubicbay.com/collection/anna-aigarth. Each NFT purchase also serves as your giveaway entry.',
+    a: 'NFT prices vary on QubicBay marketplace. Check the current floor price at qubicbay.io/collections/7. Each NFT purchase also serves as your giveaway entry.',
   },
 ]
 
@@ -417,7 +417,7 @@ export default function GetQubicPage() {
                 <span className="relative">GET YOUR WALLET</span>
               </a>
               <a
-                href="https://qubicbay.com/collection/anna-aigarth"
+                href="https://qubicbay.io/collections/7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 border border-white/[0.06] text-white/50 font-bold text-base hover:border-white/15 hover:text-white/80 transition-all duration-500 font-mono tracking-wider"

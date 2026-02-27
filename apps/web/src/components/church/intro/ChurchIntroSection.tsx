@@ -36,7 +36,7 @@ const features = [
     icon: ImageIcon,
     title: 'Anna NFT Collection',
     description: '200 unique digital artifacts, each connected to specific research discoveries',
-    href: 'https://qubicbay.com',
+    href: 'https://qubicbay.io/collections/7',
     color: 'from-pink-500 to-pink-600',
     external: true,
   },

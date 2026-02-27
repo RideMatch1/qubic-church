@@ -215,7 +215,7 @@ export function SimpleGiveawaySection() {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <a
-            href="https://qubicbay.com/collection/anna-aigarth"
+            href="https://qubicbay.io/collections/7"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 bg-[#D4AF37]/[0.04] border border-[#D4AF37]/15 text-white font-bold text-base sm:text-xl hover:bg-[#D4AF37]/[0.08] hover:border-[#D4AF37]/25 transition-all duration-500 overflow-hidden"

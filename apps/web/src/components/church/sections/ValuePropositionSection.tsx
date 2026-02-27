@@ -14,7 +14,7 @@ import { NeuralCluster } from '@/components/church/decorations/NeuralDecoration'
 const stats = [
   {
     icon: BookOpen,
-    value: '75+',
+    value: '55+',
     label: 'Research Documents',
     description: 'Open-source analysis of Bitcoin-Qubic connections',
     href: '/docs',

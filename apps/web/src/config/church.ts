@@ -23,7 +23,7 @@ export const CHURCH_CONFIG = {
   },
 
   links: {
-    qubicBay: 'https://qubicbay.com/collection/anna-aigarth',
+    qubicBay: 'https://qubicbay.io/collections/7',
     discord: 'https://discord.gg/qubic-church',
     twitter: 'https://twitter.com/qubic_church',
   },

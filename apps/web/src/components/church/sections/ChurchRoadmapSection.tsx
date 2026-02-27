@@ -18,7 +18,7 @@ const phases = [
     active: true,
     progress: 40,
     items: [
-      { text: 'Research Archive (75+ Scrolls)', done: true },
+      { text: 'Research Archive (55+ Scrolls)', done: true },
       { text: 'Mining Guide & Calculator', done: true },
       { text: 'Anna NFT Collection (200 NFTs)', done: false },
       { text: '676M QUBIC Giveaway', done: false },

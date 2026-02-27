@@ -30,6 +30,7 @@ import {
   Clock,
   Activity,
   Zap,
+  Database,
 } from 'lucide-react'
 import type { QortexError, QortexErrorType } from './useNeuraxonData'
 
@@ -190,6 +191,7 @@ const ERROR_ICONS: Record<QortexErrorType, React.ReactNode> = {
   PARSE_ERROR: <FileWarning className="w-12 h-12" />,
   VALIDATION_ERROR: <FileWarning className="w-12 h-12" />,
   TIMEOUT_ERROR: <Clock className="w-12 h-12" />,
+  DATA_UNAVAILABLE: <Database className="w-12 h-12" />,
   UNKNOWN_ERROR: <AlertTriangle className="w-12 h-12" />,
 }
 
@@ -198,6 +200,7 @@ const ERROR_COLORS: Record<QortexErrorType, string> = {
   PARSE_ERROR: 'text-red-400',
   VALIDATION_ERROR: 'text-red-400',
   TIMEOUT_ERROR: 'text-[#D4AF37]',
+  DATA_UNAVAILABLE: 'text-white/40',
   UNKNOWN_ERROR: 'text-gray-400',
 }
 
@@ -334,6 +337,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
   const {
     loading,
     error,
+    dataUnavailable,
     data,
     currentNodes,
     currentEdges,
@@ -510,6 +514,28 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
         className="w-full h-[700px] overflow-hidden border border-border"
       >
         <LoadingScreen progress={loadProgress} />
+      </div>
+    )
+  }
+
+  if (dataUnavailable) {
+    return (
+      <div
+        ref={containerRef}
+        className="w-full h-[700px] overflow-hidden border border-white/10 bg-black/20 flex items-center justify-center"
+      >
+        <div className="flex flex-col items-center gap-4 max-w-md text-center px-6">
+          <div className="p-3 border border-white/10 bg-white/5">
+            <Database className="w-6 h-6 text-white/40" />
+          </div>
+          <div className="space-y-2">
+            <p className="font-mono text-sm text-white/40">Neuraxon Network</p>
+            <p className="font-mono text-xs text-white/25">
+              Dataset too large for web deployment. Available locally.
+            </p>
+            <p className="font-mono text-[10px] text-white/15">neuraxon-network.json (19 MB)</p>
+          </div>
+        </div>
       </div>
     )
   }

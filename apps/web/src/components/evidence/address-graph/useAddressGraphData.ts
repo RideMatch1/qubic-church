@@ -86,12 +86,19 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
       const interestingAddresses: RawInterestingAddress[] = interestingJson.records || []
       setProgress(20)
 
-      // Phase 2: Load matrix addresses WITH XOR metadata (983k) - 70%
+      // Phase 2: Try to load matrix addresses (optional - large file may not be deployed)
       setProgress(30)
-      const matrixRes = await fetch(DATA_URLS.matrixWithXor)
-      if (!matrixRes.ok) throw new Error('Failed to load matrix addresses')
-      const matrixJson = await matrixRes.json()
-      const matrixAddresses = matrixJson.records || []
+      let matrixAddresses: any[] = []
+      try {
+        const matrixRes = await fetch(DATA_URLS.matrix)
+        if (matrixRes.ok) {
+          const matrixJson = await matrixRes.json()
+          matrixAddresses = matrixJson.records || []
+        }
+      } catch {
+        // Matrix addresses unavailable - continue with VIP-only mode
+        console.info('Matrix addresses not available, showing VIP addresses only')
+      }
       setProgress(70)
 
       // Update load stats
@@ -159,14 +166,14 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
       const GRID_SCALE = 0.5
 
       // Group addresses by XOR value
-      const addressesByXor: Record<number, typeof matrixAddresses> = {
+      const addressesByXor: Record<number, any[]> = {
         0: [], 7: [], 13: [], 27: [], 33: []
       }
 
       matrixAddresses.forEach((addr: any) => {
         const xor = addr.xor
         if (xor in addressesByXor) {
-          addressesByXor[xor].push(addr)
+          addressesByXor[xor]!.push(addr)
         }
       })
 
@@ -258,11 +265,11 @@ export function useAddressGraphData(): UseAddressGraphDataReturn {
         },
         byMethod: {},
         byXor: {
-          0: addressesByXor[0].length,
-          7: addressesByXor[7].length,
-          13: addressesByXor[13].length,
-          27: addressesByXor[27].length,
-          33: addressesByXor[33].length,
+          0: addressesByXor[0]?.length ?? 0,
+          7: addressesByXor[7]?.length ?? 0,
+          13: addressesByXor[13]?.length ?? 0,
+          27: addressesByXor[27]?.length ?? 0,
+          33: addressesByXor[33]?.length ?? 0,
         },
         patoshiBlocks: { min: 0, max: 0 },
         totalBTC: 0,

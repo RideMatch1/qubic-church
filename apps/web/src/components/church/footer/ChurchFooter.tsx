@@ -32,7 +32,7 @@ const quickLinks = [
 ]
 
 const externalLinks = [
-  { name: 'QubicBay', href: 'https://qubicbay.com', description: 'NFT Marketplace' },
+  { name: 'QubicBay', href: 'https://qubicbay.io/collections/7', description: 'NFT Marketplace' },
   { name: 'Qubic.li', href: 'https://app.qubic.li', description: 'Mining Pool' },
   { name: 'Anna (@QubicAigarth)', href: 'https://twitter.com/QubicAigarth', description: 'The Oracle' },
 ]

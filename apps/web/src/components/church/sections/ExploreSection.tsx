@@ -13,11 +13,11 @@ import { BookOpen, Gamepad2, Puzzle, Cpu, Wallet, Activity, ArrowRight, External
 const links = [
   {
     title: 'The Sacred Archive',
-    description: '75+ research scrolls documenting the Bitcoin-Qubic bridge',
+    description: '55+ research scrolls documenting the Bitcoin-Qubic bridge',
     href: '/docs',
     icon: BookOpen,
     fileType: 'DIR',
-    size: '75+ files',
+    size: '55+ files',
   },
   {
     title: 'Anna Matrix',

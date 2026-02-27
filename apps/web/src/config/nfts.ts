@@ -76,7 +76,7 @@ function generateNFTCollection(): NFT[] {
       description: getNFTDescription(i),
       image: `/images/nfts/anna-${String(i).padStart(3, '0')}.webp`,
       owner: null, // To be populated from QubicBay API
-      qubicBayLink: `https://qubicbay.com/nft/anna-${String(i).padStart(3, '0')}`,
+      qubicBayLink: `https://qubicbay.io/collections/7#anna-${String(i).padStart(3, '0')}`,
       rarity,
       position: { x, y, z: Math.random() * 0.3 }, // Add depth for 3D effect
       researchConnection,

@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import { VirtualizedTable, ExplorerButton, type Column } from './VirtualizedTable'
 import { Copy, Check } from 'lucide-react'
 import { pubkeyToAddressCached } from '@/lib/crypto/pubkey-to-address'
+import { DataUnavailablePlaceholder } from '../DataUnavailablePlaceholder'
 import type { FilterConfig } from './TableFilters'
 
 interface PatoshiRecord {
@@ -23,21 +24,29 @@ interface PatoshiData {
 export default function PatoshiTable() {
   const [data, setData] = useState<PatoshiRecord[]>([])
   const [loading, setLoading] = useState(true)
+  const [dataUnavailable, setDataUnavailable] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('/data/patoshi-addresses.json')
-      .then((res) => res.json())
-      .then((json: PatoshiData) => {
+    const loadData = async () => {
+      try {
+        const res = await fetch('/data/patoshi-addresses.json')
+        if (!res.ok) {
+          setDataUnavailable(true)
+          setLoading(false)
+          return
+        }
+        const json: PatoshiData = await res.json()
         const records = json.records.map((r, idx) => ({ ...r, id: idx }))
         setData(records)
         setLoading(false)
-      })
-      .catch((err) => {
-        setError(err.message)
+      } catch {
+        setDataUnavailable(true)
         setLoading(false)
-      })
+      }
+    }
+    loadData()
   }, [])
 
   const handleCopy = async (text: string, id: string) => {
@@ -176,6 +185,16 @@ export default function PatoshiTable() {
           <span className="text-muted-foreground">Loading Patoshi addresses...</span>
         </div>
       </div>
+    )
+  }
+
+  if (dataUnavailable) {
+    return (
+      <DataUnavailablePlaceholder
+        datasetName="Patoshi-Era Bitcoin Addresses"
+        fileName="patoshi-addresses.json (5.5 MB)"
+        height="600px"
+      />
     )
   }
 
