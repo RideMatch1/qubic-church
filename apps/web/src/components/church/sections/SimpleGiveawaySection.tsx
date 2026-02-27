@@ -20,9 +20,9 @@ import { useCountdown } from '@/hooks/useCountdown'
 import { CHURCH_CONFIG } from '@/config/church'
 
 const prizes = [
-  { place: 1, label: '1st', qubic: '350,000,000', genesis: '4,000,000', icon: Trophy, title: 'The Chosen One', glow: 'shadow-[0_0_30px_rgba(212,175,55,0.08)]' },
-  { place: 2, label: '2nd', qubic: '200,000,000', genesis: '2,000,000', icon: Medal, title: 'The Enlightened', glow: '' },
-  { place: 3, label: '3rd', qubic: '126,000,000', genesis: '1,000,000', icon: Award, title: 'The Faithful', glow: '' },
+  { place: 1, label: '1st', qubic: '350,000,000', icon: Trophy, title: 'The Chosen One', glow: 'shadow-[0_0_30px_rgba(212,175,55,0.08)]' },
+  { place: 2, label: '2nd', qubic: '200,000,000', icon: Medal, title: 'The Enlightened', glow: '' },
+  { place: 3, label: '3rd', qubic: '126,000,000', icon: Award, title: 'The Faithful', glow: '' },
 ]
 
 
@@ -34,7 +34,7 @@ export function SimpleGiveawaySection() {
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         09
       </div>
 
@@ -64,7 +64,7 @@ export function SimpleGiveawaySection() {
               />
             </div>
             <span
-              className="relative block text-7xl md:text-9xl lg:text-[10rem] leading-none bg-gradient-to-b from-white via-white/90 to-[#D4AF37]/30 bg-clip-text text-transparent"
+              className="relative block text-4xl sm:text-7xl md:text-9xl lg:text-[10rem] leading-none bg-gradient-to-b from-white via-white/90 to-[#D4AF37]/30 bg-clip-text text-transparent"
               style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             >
               676M
@@ -73,8 +73,6 @@ export function SimpleGiveawaySection() {
 
           <div className="flex items-center justify-center gap-3 mb-8">
             <span className="text-2xl text-white/60 font-mono">QUBIC</span>
-            <span className="text-xl text-[#D4AF37]/20">+</span>
-            <span className="text-2xl text-white/60 font-mono">7M Genesis</span>
           </div>
 
           <p className="text-xl text-white/50 mb-2">
@@ -99,7 +97,7 @@ export function SimpleGiveawaySection() {
             return (
               <motion.div
                 key={prize.place}
-                className={`relative p-6 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group overflow-hidden ${prize.glow}`}
+                className={`relative p-6 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.04)] group overflow-hidden ${prize.glow}`}
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: prize.place === 1 ? -8 : 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
@@ -138,13 +136,6 @@ export function SimpleGiveawaySection() {
                   <span className="text-sm text-white/30 ml-2 font-mono">QU</span>
                 </div>
 
-                {/* Genesis Prize */}
-                <div className="flex items-center gap-2 border-t border-white/[0.04] pt-3">
-                  <span className="text-lg font-semibold text-white/40 font-mono">
-                    +{prize.genesis}
-                  </span>
-                  <span className="text-[10px] text-white/20 font-mono uppercase tracking-wider">Genesis</span>
-                </div>
               </motion.div>
             )
           })}
@@ -210,7 +201,7 @@ export function SimpleGiveawaySection() {
               ))}
             </div>
 
-            <p className="text-center text-[10px] text-white/15 mt-5 font-mono">
+            <p className="text-center text-[10px] text-white/20 mt-5 font-mono">
               TARGET: 2027-04-13T00:00:00Z // ON-CHAIN RANDOMNESS
             </p>
           </div>
@@ -227,7 +218,7 @@ export function SimpleGiveawaySection() {
             href="https://qubicbay.com/collection/anna-aigarth"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[#D4AF37]/[0.04] border border-[#D4AF37]/15 text-white font-bold text-xl hover:bg-[#D4AF37]/[0.08] hover:border-[#D4AF37]/25 transition-all duration-500 overflow-hidden"
+            className="group relative inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 bg-[#D4AF37]/[0.04] border border-[#D4AF37]/15 text-white font-bold text-base sm:text-xl hover:bg-[#D4AF37]/[0.08] hover:border-[#D4AF37]/25 transition-all duration-500 overflow-hidden"
           >
             {/* Shimmer sweep */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-[#D4AF37]/[0.04] to-transparent" />
@@ -235,7 +226,7 @@ export function SimpleGiveawaySection() {
             <span className="relative font-mono tracking-wider">CLAIM YOUR NFT</span>
             <ExternalLink className="relative w-4 h-4 text-white/20" />
           </a>
-          <p className="text-[10px] text-white/15 mt-3 font-mono">
+          <p className="text-[10px] text-white/20 mt-3 font-mono">
             QubicBay // Your key to The Convergence
           </p>
         </motion.div>

@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import { Icons } from '@/components/icons'
 import { MainNav } from '@/components/main-nav'
 import { MobileNav } from '@/components/mobile-nav'
+import { ImmersionButton } from '@/components/ImmersionButton'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Link } from '@/navigation'
@@ -19,6 +20,7 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur">
       <div className="container flex h-14 max-w-screen-2xl items-center">
+        <ImmersionButton />
         <MainNav
           messages={{
             docs: t('words.docs'),

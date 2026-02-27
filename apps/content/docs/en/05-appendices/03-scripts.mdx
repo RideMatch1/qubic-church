@@ -156,51 +156,7 @@ if __name__ == "__main__":
     exit(0 if success else 1)
 ```
 
-### C.2.2 Genesis Token Timestamp
-
-```python
-#!/usr/bin/env python3
-"""
-Verify Genesis Token timestamp properties.
-
-Tier: 1 (Calculator-verifiable)
-Runtime: < 1 second
-"""
-
-from datetime import datetime, timezone
-
-def verify_genesis_token():
-    # Genesis Token Unix timestamp
-    TIMESTAMP = 1730588571
-
-    # Convert to datetime
-    dt = datetime.fromtimestamp(TIMESTAMP, tz=timezone.utc)
-
-    print("Genesis Token Timestamp Analysis")
-    print("=" * 40)
-    print(f"Unix timestamp: {TIMESTAMP}")
-    print(f"UTC datetime: {dt}")
-
-    # 27-related modular properties
-    print(f"\n27-Related Properties:")
-    print(f"  {TIMESTAMP} mod 27 = {TIMESTAMP % 27}")    # Should be 0
-    print(f"  {TIMESTAMP} mod 576 = {TIMESTAMP % 576}")  # Should be 27
-
-    # Verification
-    mod_27_zero = TIMESTAMP % 27 == 0
-    mod_576_is_27 = TIMESTAMP % 576 == 27
-
-    print(f"\nMod 27 = 0: {'PASSED' if mod_27_zero else 'FAILED'}")
-    print(f"Mod 576 = 27: {'PASSED' if mod_576_is_27 else 'FAILED'}")
-
-    return mod_27_zero and mod_576_is_27
-
-if __name__ == "__main__":
-    success = verify_genesis_token()
-    exit(0 if success else 1)
-```
-
-### C.2.3 March 2026 Calculation
+### C.2.2 March 2026 Calculation
 
 ```python
 #!/usr/bin/env python3
@@ -295,9 +251,9 @@ def verify_block_576():
 
     # Combined significance
     print(f"\nCombined:")
-    print(f"  Block 576 mod 27 = 0: {BLOCK_HEIGHT % 27 == 0}")
+    print(f"  Block 576 mod 27 = {BLOCK_HEIGHT % 27}: (not divisible; corrected)")
     print(f"  Extra Byte = 27: {EXTRA_BYTE_DEC == 27}")
-    print(f"  Both related to 27: VERIFIED")
+    print(f"  Extra Byte value matches 27: VERIFIED")
 
     # Note about blockchain verification
     print(f"\n[NOTE: Block data verification requires blockchain access]")
@@ -882,7 +838,6 @@ def main():
         ("Primary Formula", verify_primary_formula),
         ("Boot Address", verify_boot_address),
         ("Pre-Genesis Timestamp", verify_pregenesis),
-        ("Genesis Token", verify_genesis_token),
         ("March 2026 Calculation", verify_march_2026),
         ("Block 576", verify_block_576),
         ("IOTA Sizes", verify_iota_27),

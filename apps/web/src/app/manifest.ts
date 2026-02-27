@@ -7,7 +7,7 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     name: siteConfig.name,
     short_name: siteConfig.name,
     start_url: '/',
-    theme_color: '#181423',
+    theme_color: '#000000',
     display: 'standalone',
 
     icons: [

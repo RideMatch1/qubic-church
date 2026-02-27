@@ -62,7 +62,7 @@ const evidencePyramid: EvidenceItem[] = [
   },
   {
     title: 'March 2026 Prediction',
-    description: 'Hidden messages in GENESIS tokens seem to point to a date in March 2026',
+    description: 'Mathematical patterns in the time-lock mechanism point to a date in March 2026',
     tier: 3,
     verified: false,
   },

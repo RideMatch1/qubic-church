@@ -298,10 +298,6 @@ export function SeedConnectionsSection() {
                         <div className="text-xs text-muted-foreground">ARB Oracle</div>
                         <div className="font-mono text-xs break-all">{KEY_ADDRESSES.qubic.arb}</div>
                       </div>
-                      <div className="p-3 rounded-lg bg-purple-500/10">
-                        <div className="text-xs text-muted-foreground">POCZ</div>
-                        <div className="font-mono text-xs break-all">{KEY_ADDRESSES.qubic.pocz}</div>
-                      </div>
                     </div>
                   </div>
                 </div>

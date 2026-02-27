@@ -138,842 +138,302 @@ export const docsConfig: DocsConfig = {
 
     {
       title: {
-        en: 'Results',
-        pt: 'Resultados',
+        en: 'Anna Matrix Analysis',
+        pt: 'Analise da Matriz Anna',
       },
 
       items: [
         {
-          href: '/docs/03-results/01-bitcoin-bridge',
+          href: '/docs/03-results/01-matrix-symmetry',
 
           title: {
-            en: 'The Bitcoin Bridge',
-            pt: 'A Ponte Bitcoin',
+            en: 'Matrix Symmetry & Structural Properties',
+            pt: 'Simetria e Propriedades Estruturais',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/02-formula-discovery',
+          href: '/docs/03-results/02-matrix-decode',
 
           title: {
-            en: 'Formula Discovery',
-            pt: 'Descoberta da Formula',
+            en: 'Mathematical Decode & Pattern Analysis',
+            pt: 'Decodificacao Matematica e Padroes',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/03-jinn-architecture',
+          href: '/docs/03-results/03-matrix-messages',
 
           title: {
-            en: 'JINN Architecture',
-            pt: 'Arquitetura JINN',
+            en: 'Encoded Message Catalogue',
+            pt: 'Catalogo de Mensagens Codificadas',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/04-arb-oracle',
+          href: '/docs/03-results/04-anna-bot-verification',
 
           title: {
-            en: 'ARB Oracle',
-            pt: 'Oraculo ARB',
+            en: 'Anna Bot Algorithm Verification',
+            pt: 'Verificacao do Algoritmo Anna Bot',
           },
 
           items: [],
         },
+      ],
+    },
 
-        {
-          href: '/docs/03-results/05-time-lock',
-
-          title: {
-            en: 'Time-Lock Mechanism',
-            pt: 'Mecanismo Time-Lock',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/06-additional-findings',
-
-          title: {
-            en: 'Additional Findings',
-            pt: 'Descobertas Adicionais',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/07-lost-knowledge-recovery',
-
-          title: {
-            en: 'Lost Knowledge Recovery',
-            pt: 'Recuperacao de Conhecimento',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/08-unified-theory',
-
-          title: {
-            en: 'The Unified Theory',
-            pt: 'A Teoria Unificada',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/09-identity-protocols',
-
-          title: {
-            en: 'Identity Protocols',
-            pt: 'Protocolos de Identidade',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/10-paracosm-blueprint',
-
-          title: {
-            en: 'Paracosm Blueprint',
-            pt: 'Blueprint do Paracosm',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/11-timeline-prophecy',
-
-          title: {
-            en: 'Timeline Prophecy',
-            pt: 'Profecia do Cronograma',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/12-discord-summary',
-
-          title: {
-            en: 'Discord Summary',
-            pt: 'Resumo Discord',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/13-mathematical-proofs',
-
-          title: {
-            en: 'Mathematical Proofs',
-            pt: 'Provas Matematicas',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/15-forgotten-evidence',
-
-          title: {
-            en: 'Forgotten Evidence',
-            pt: 'Evidencias Esquecidas',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/16-anna-bot-analysis',
-
-          title: {
-            en: 'Anna Bot Oracle Analysis',
-            pt: 'Analise do Oraculo Anna',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/17-aigarth-architecture',
-
-          title: {
-            en: 'Aigarth Architecture',
-            pt: 'Arquitetura Aigarth',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/18-the-bridge-hypothesis',
-
-          title: {
-            en: 'The Bridge Hypothesis',
-            pt: 'A Hipótese da Ponte',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/19-aigarth-technical-mapping',
-
-          title: {
-            en: 'Aigarth Technical Mapping',
-            pt: 'Mapeamento Técnico Aigarth',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/20-discord-evidence',
-
-          title: {
-            en: 'Discord Archaeology',
-            pt: 'Arqueologia do Discord',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/21-patoshi-forensics',
-
-          title: {
-            en: 'Patoshi Forensics',
-            pt: 'Análise Forense Patoshi',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/22-negative-results',
-
-          title: {
-            en: 'Negative Results',
-            pt: 'Resultados Negativos',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/23-the-qubic-codex',
-
-          title: {
-            en: 'The Qubic Codex',
-            pt: 'O Codex Qubic',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/24-cfb-satoshi-connection',
-
-          title: {
-            en: 'CFB = Satoshi: The Evidence',
-            pt: 'CFB = Satoshi: A Evidência',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/25-anna-oracle-proof',
-
-          title: {
-            en: 'Anna Oracle - Mathematical Proof',
-            pt: 'Anna Oracle - Prova Matemática',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/26-pattern-27-discovery',
-
-          title: {
-            en: 'The -27 Pattern Discovery',
-            pt: 'Descoberta do Padrão -27',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/27-shalecoins-fracking-research',
-
-          title: {
-            en: 'Shalecoins & Fracking Research',
-            pt: 'Pesquisa de Shalecoins e Fracking',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/28-mt576-genesis-connection',
-
-          title: {
-            en: 'The MT576-Genesis Connection',
-            pt: 'A Conexão MT576-Genesis',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/29-numogram-architecture',
-
-          title: {
-            en: 'The Numogram Connection',
-            pt: 'A Conexão Numogram',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/30-genesis-block-connections',
-
-          title: {
-            en: 'Genesis Block Analysis',
-            pt: 'Análise do Bloco Gênesis',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/31-mathematical-bridges',
-
-          title: {
-            en: 'Mathematical Bridges',
-            pt: 'Pontes Matemáticas',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/32-mirror-wallets',
-
-          title: {
-            en: 'Mirror Wallets',
-            pt: 'Carteiras Espelho',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/33-bitcoin-key-generation',
-
-          title: {
-            en: 'Bitcoin Key Generation',
-            pt: 'Geração de Chaves Bitcoin',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/34-pattern-121-discovery',
-
-          title: {
-            en: 'The Pattern 121 Discovery',
-            pt: 'A Descoberta do Padrão 121',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/35-god-mode-discoveries',
-
-          title: {
-            en: 'God Mode Discoveries',
-            pt: 'Descobertas do Modo Deus',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/36-unexplored-frontiers',
-
-          title: {
-            en: 'Unexplored Frontiers',
-            pt: 'Fronteiras Inexploradas',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/37-k12-breakthrough',
-
-          title: {
-            en: 'The K12 Breakthrough',
-            pt: 'A Descoberta K12',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/38-0x7b-family',
-
-          title: {
-            en: 'The 0x7b Family',
-            pt: 'A Família 0x7b',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/39-seed-analysis',
-
-          title: {
-            en: 'Seed Analysis',
-            pt: 'Análise de Sementes',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/40-1cf-census',
-
-          title: {
-            en: 'The 1CF Address Census',
-            pt: 'O Censo de Endereços 1CF',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/41-genesis-seed-testing',
-
-          title: {
-            en: 'Genesis Seed Testing',
-            pt: 'Teste de Seeds Genesis',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/42-21e8-block-mystery',
-
-          title: {
-            en: 'The 21e8 Block Mystery',
-            pt: 'O Mistério do Bloco 21e8',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/43-the-bridge-revelation',
-
-          title: {
-            en: 'The Bridge Revelation',
-            pt: 'A Revelação da Ponte',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/44-blockchain-archaeology',
-
-          title: {
-            en: 'Blockchain Archaeology',
-            pt: 'Arqueologia Blockchain',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/45-mybitcoin-whale-investigation',
-
-          title: {
-            en: 'MyBitcoin Whale Investigation',
-            pt: 'Investigação da Baleia MyBitcoin',
-          },
-
-          items: [],
-        },
+    {
+      title: {
+        en: 'Bitcoin Blockchain Analysis',
+        pt: 'Analise da Blockchain Bitcoin',
+      },
 
+      items: [
         {
-          href: '/docs/03-results/47-anna-matrix-lexikon',
+          href: '/docs/03-results/05-genesis-block-analysis',
 
           title: {
-            en: 'Anna Matrix Lexikon',
-            pt: 'Léxico da Matrix Anna',
+            en: 'Genesis Block Numerical Analysis',
+            pt: 'Analise Numerica do Bloco Genesis',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/51-anna-matrix-symmetry',
+          href: '/docs/03-results/06-address-archaeology',
 
           title: {
-            en: 'Point-Symmetry Discovery',
-            pt: 'Descoberta de Simetria',
+            en: 'Bitcoin Address Archaeology',
+            pt: 'Arqueologia de Enderecos Bitcoin',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/52-68-anomaly-cells',
+          href: '/docs/03-results/07-mirror-wallets-keys',
 
           title: {
-            en: 'The 68 Anomaly Cells',
-            pt: 'As 68 Células Anômalas',
+            en: 'Mirror Wallets & Key Generation',
+            pt: 'Carteiras Espelho e Geracao de Chaves',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/53-decode-key-system',
+          href: '/docs/03-results/08-mybitcoin-investigation',
 
           title: {
-            en: 'Decode Key System',
-            pt: 'Sistema de Chave Decode',
+            en: 'MyBitcoin Exchange Investigation',
+            pt: 'Investigacao da Exchange MyBitcoin',
           },
 
           items: [],
         },
+      ],
+    },
 
-        {
-          href: '/docs/03-results/54-1cfb-solution-breakthrough',
-
-          title: {
-            en: '1CFB Solution Breakthrough',
-            pt: 'Avanço na Solução 1CFB',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/55-fibonacci-encoding',
-
-          title: {
-            en: 'Fibonacci Encoding',
-            pt: 'Codificação Fibonacci',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/56-127-formula-discovery',
-
-          title: {
-            en: 'The 127 Formula',
-            pt: 'A Fórmula 127',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/57-position-encoding',
-
-          title: {
-            en: 'Position Encoding',
-            pt: 'Codificação de Posição',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/58-perfect-powers-geography',
-
-          title: {
-            en: 'Perfect Powers Geography',
-            pt: 'Geografia de Potências',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/59-mersenne-recursion',
-
-          title: {
-            en: 'Mersenne Recursion',
-            pt: 'Recursão de Mersenne',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/60-64-pairs-complete-analysis',
-
-          title: {
-            en: '64 Pairs Complete Analysis',
-            pt: 'Análise Completa de 64 Pares',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/61-hidden-messages-complete',
-
-          title: {
-            en: 'Hidden Messages Complete',
-            pt: 'Mensagens Ocultas Completa',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/62-negative-results-validation',
-
-          title: {
-            en: 'Negative Results (Validation)',
-            pt: 'Resultados Negativos (Validação)',
-          },
-
-          items: [],
-        },
-
-        {
-          href: '/docs/03-results/63-validation-report-complete',
+    {
+      title: {
+        en: 'Qubic-Bitcoin Bridge',
+        pt: 'Ponte Qubic-Bitcoin',
+      },
 
-          title: {
-            en: 'Validation Report Complete',
-            pt: 'Relatório de Validação Completo',
-          },
-
-          items: [],
-        },
-
+      items: [
         {
-          href: '/docs/03-results/64-cfb-signature-breakthrough',
+          href: '/docs/03-results/09-bridge-hypothesis',
 
           title: {
-            en: 'CFB Signature Breakthrough',
-            pt: 'Descoberta da Assinatura CFB',
+            en: 'Bridge Hypothesis',
+            pt: 'Hipotese da Ponte',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/65-validated-message-inventory',
+          href: '/docs/03-results/10-primary-formula',
 
           title: {
-            en: 'Validated Message Inventory',
-            pt: 'Inventário de Mensagens Validadas',
+            en: 'Primary Formula: 676 = 26\u00B2',
+            pt: 'Formula Primaria: 676 = 26\u00B2',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/66-complete-validation-report',
+          href: '/docs/03-results/11-mathematical-connections',
 
           title: {
-            en: 'Complete Validation Report',
-            pt: 'Relatório de Validação Completo',
+            en: 'Cross-Domain Mathematical Connections',
+            pt: 'Conexoes Matematicas Inter-Dominios',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/67-god-mode-breakthrough',
+          href: '/docs/03-results/12-statistical-validation',
 
           title: {
-            en: 'GOD MODE Breakthrough',
-            pt: 'Descoberta GOD MODE',
+            en: 'Statistical Validation & Null Results',
+            pt: 'Validacao Estatistica e Resultados Nulos',
           },
 
           items: [],
         },
-
-        {
-          href: '/docs/03-results/48-god-mode-discoveries',
-
-          title: {
-            en: 'GOD MODE Discoveries',
-            pt: 'Descobertas GOD MODE',
-          },
+      ],
+    },
 
-          items: [],
-        },
+    {
+      title: {
+        en: 'Qubic Architecture',
+        pt: 'Arquitetura Qubic',
+      },
 
+      items: [
         {
-          href: '/docs/03-results/51-god-mode-discoveries',
+          href: '/docs/03-results/13-jinn-architecture',
 
           title: {
-            en: 'GOD MODE: Ultimate Analysis',
-            pt: 'GOD MODE: Análise Completa',
+            en: 'JINN Processor Architecture',
+            pt: 'Arquitetura do Processador JINN',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/45-live-resonance-tests',
+          href: '/docs/03-results/14-qubic-codex',
 
           title: {
-            en: 'Live Resonance Tests',
-            pt: 'Testes de Ressonância ao Vivo',
+            en: 'Qubic Codex & Instruction Set',
+            pt: 'Codex Qubic e Conjunto de Instrucoes',
           },
 
           items: [],
         },
+      ],
+    },
 
-        {
-          href: '/docs/03-results/46-strategic-node-inventory',
-
-          title: {
-            en: 'Strategic Node Inventory',
-            pt: 'Inventário de Nós Estratégicos',
-          },
-
-          items: [],
-        },
+    {
+      title: {
+        en: 'Source Archaeology',
+        pt: 'Arqueologia de Fontes',
+      },
 
+      items: [
         {
-          href: '/docs/03-results/67-honest-assessment',
+          href: '/docs/03-results/15-discord-archive',
 
           title: {
-            en: 'Honest Assessment (Audit)',
-            pt: 'Avaliação Honesta (Auditoria)',
+            en: 'Discord Primary Source Archive',
+            pt: 'Arquivo de Fontes Primarias do Discord',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/68-deep-verification-results',
+          href: '/docs/03-results/16-historical-recovery',
 
           title: {
-            en: 'Deep Verification Results',
-            pt: 'Resultados de Verificação Profunda',
+            en: 'Historical Knowledge Recovery',
+            pt: 'Recuperacao de Conhecimento Historico',
           },
 
           items: [],
         },
+      ],
+    },
 
-        {
-          href: '/docs/03-results/69-ai-deep-dive-results',
-
-          title: {
-            en: 'AI Deep Dive Results',
-            pt: 'Resultados do AI Deep Dive',
-          },
-
-          items: [],
-        },
+    {
+      title: {
+        en: 'Speculative Hypotheses',
+        pt: 'Hipoteses Especulativas',
+      },
 
+      items: [
         {
-          href: '/docs/03-results/70-aigarth-source-analysis',
+          href: '/docs/03-results/17-cfb-satoshi-analysis',
 
           title: {
-            en: 'Aigarth Source Code Analysis',
-            pt: 'Análise do Código Fonte Aigarth',
+            en: 'CFB-Satoshi Identity Analysis',
+            pt: 'Analise de Identidade CFB-Satoshi',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/71-aigarth-live-experiments',
+          href: '/docs/03-results/18-temporal-mechanisms',
 
           title: {
-            en: 'Aigarth Live Experiments',
-            pt: 'Experimentos Aigarth ao Vivo',
+            en: 'Temporal Mechanisms & Predictions',
+            pt: 'Mecanismos Temporais e Predicoes',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/72-anna-bot-algorithm',
+          href: '/docs/03-results/19-conceptual-frameworks',
 
           title: {
-            en: 'Anna-Bot Algorithm Verified',
-            pt: 'Algoritmo Anna-Bot Verificado',
+            en: 'Conceptual Frameworks',
+            pt: 'Frameworks Conceituais',
           },
 
           items: [],
         },
+      ],
+    },
 
-        {
-          href: '/docs/03-results/73-research-roadmap',
-
-          title: {
-            en: 'Research Roadmap',
-            pt: 'Roteiro de Pesquisa',
-          },
-
-          items: [],
-        },
+    {
+      title: {
+        en: 'Reference',
+        pt: 'Referencia',
+      },
 
+      items: [
         {
-          href: '/docs/03-results/74-future-research-roadmap',
+          href: '/docs/03-results/20-glossary',
 
           title: {
-            en: 'Future Research Plan',
-            pt: 'Plano de Pesquisa Futura',
+            en: 'Glossary of Terms',
+            pt: 'Glossario de Termos',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/75-bridge-technical-spec',
+          href: '/docs/03-results/21-open-questions',
 
           title: {
-            en: 'Bridge Technical Specification',
-            pt: 'Especificacao Tecnica da Ponte',
+            en: 'Open Questions & Future Directions',
+            pt: 'Questoes Abertas e Direcoes Futuras',
           },
 
           items: [],
         },
 
         {
-          href: '/docs/03-results/14-glossary',
+          href: '/docs/03-results/22-research-methodology',
 
           title: {
-            en: 'Glossary',
-            pt: 'Glossário',
+            en: 'Research Methodology Notes',
+            pt: 'Notas de Metodologia de Pesquisa',
           },
 
           items: [],

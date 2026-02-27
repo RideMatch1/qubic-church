@@ -131,9 +131,8 @@ function DesktopWheel({
         const startAngle = i * segmentAngle + gap / 2
         const endAngle = (i + 1) * segmentAngle - gap / 2
         const midAngle = (startAngle + endAngle) / 2
-        const labelR = (innerR + outerR) / 2
-        const labelPos = polarToCartesian(cx, cy, labelR, midAngle)
-        const iconPos = polarToCartesian(cx, cy, labelR - 15, midAngle)
+        const midR = (innerR + outerR) / 2
+        const anchor = polarToCartesian(cx, cy, midR, midAngle)
         const isHovered = hovered === i
         const Icon = seg.icon
 
@@ -163,16 +162,17 @@ function DesktopWheel({
               style={{ transition: 'all 0.3s ease' }}
             />
 
-            {/* Icon */}
+            {/* Icon - centered above label */}
             <foreignObject
-              x={iconPos.x - 10}
-              y={iconPos.y - 10}
+              x={anchor.x - 10}
+              y={anchor.y - 18}
               width={20}
               height={20}
             >
               <div className="flex items-center justify-center w-full h-full">
                 <Icon
-                  size={14}
+                  size={15}
+                  strokeWidth={1.5}
                   style={{
                     color: isHovered ? GOLD : `${GOLD}80`,
                     transition: 'color 0.3s ease',
@@ -181,10 +181,10 @@ function DesktopWheel({
               </div>
             </foreignObject>
 
-            {/* Label */}
+            {/* Label - centered below icon */}
             <text
-              x={labelPos.x}
-              y={labelPos.y + 8}
+              x={anchor.x}
+              y={anchor.y + 8}
               textAnchor="middle"
               fill={isHovered ? GOLD : `${GOLD}99`}
               fontSize="7.5"
@@ -213,17 +213,18 @@ function DesktopWheel({
       />
 
       {/* Center icon */}
-      <foreignObject x={cx - 10} y={cy - 20} width={20} height={20}>
+      <foreignObject x={cx - 10} y={cy - 22} width={20} height={20}>
         <div className="flex items-center justify-center w-full h-full">
-          <Target size={14} style={{ color: `${GOLD}80` }} />
+          <Target size={13} strokeWidth={1.5} style={{ color: `${GOLD}80` }} />
         </div>
       </foreignObject>
 
       {/* Center text */}
       <text
         x={cx}
-        y={cy + 2}
+        y={cy}
         textAnchor="middle"
+        dominantBaseline="central"
         fill={GOLD}
         fontSize="8"
         fontWeight="600"
@@ -234,8 +235,9 @@ function DesktopWheel({
       </text>
       <text
         x={cx}
-        y={cy + 14}
+        y={cy + 13}
         textAnchor="middle"
+        dominantBaseline="central"
         fill={`${GOLD}70`}
         fontSize="5.5"
         letterSpacing="0.15em"

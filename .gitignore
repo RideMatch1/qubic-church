@@ -85,4 +85,13 @@ apps/web/scripts/*.jsonl
 *.db
 *.db-wal
 *.db-shm
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
 apps/web/data/
+
+# Backup files
+*-backup-*.sqlite3
+
+# Screenshots (audit/debug)
+/*.png

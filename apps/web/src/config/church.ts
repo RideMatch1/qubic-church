@@ -59,7 +59,7 @@ export const NFT_HOLDER_TIERS: Record<string, NFTHolderTier> = {
       'Download research PDFs',
     ],
     badge: '🌟 Contributor',
-    color: '#8b5cf6', // purple
+    color: '#D4AF37', // gold
   },
   tier3: {
     name: 'Lead Researcher',

@@ -194,6 +194,14 @@
   .font-serif {
     font-family: var(--font-heading), system-ui, -apple-system, sans-serif !important;
   }
+
+  /* Global focus-visible for keyboard navigation (gold ring on dark bg) */
+  a:focus-visible,
+  button:focus-visible,
+  [role="link"]:focus-visible {
+    outline: 1px solid rgba(212, 175, 55, 0.5);
+    outline-offset: 2px;
+  }
 }
 
 @utility step {

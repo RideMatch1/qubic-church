@@ -10,7 +10,7 @@ import { motion, useInView } from 'framer-motion'
 import { Cpu, ChevronRight } from 'lucide-react'
 
 const ternaryStates = [
-  { value: '+1', name: 'Activated', description: 'Neuron fires', color: 'text-green-400/80', border: 'border-green-500/20', glow: 'shadow-[0_0_15px_rgba(74,222,128,0.1)]' },
+  { value: '+1', name: 'Activated', description: 'Neuron fires', color: 'text-[#D4AF37]/80', border: 'border-[#D4AF37]/20', glow: 'shadow-[0_0_15px_rgba(212,175,55,0.1)]' },
   { value: '0', name: 'Neutral', description: 'Resting state', color: 'text-[#D4AF37]/80', border: 'border-[#D4AF37]/20', glow: 'shadow-[0_0_15px_rgba(212,175,55,0.1)]' },
   { value: '-1', name: 'Inhibited', description: 'Suppressed', color: 'text-red-400/80', border: 'border-red-500/20', glow: 'shadow-[0_0_15px_rgba(248,113,113,0.1)]' },
 ]
@@ -50,7 +50,7 @@ export function AigarthExplainerSection() {
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         04
       </div>
 
@@ -78,7 +78,7 @@ export function AigarthExplainerSection() {
           </div>
 
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl text-white mb-8 tracking-wider uppercase"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-8 tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             What is <span className="text-[#D4AF37]/80">Aigarth</span>?
@@ -131,7 +131,7 @@ export function AigarthExplainerSection() {
             {/* Ternary Card */}
             <div className="relative bg-[#050505] border border-[#D4AF37]/[0.06] p-8 group hover:bg-[#0a0a0a] transition-colors duration-500">
               <div className="text-[#D4AF37]/40 text-[10px] uppercase tracking-[0.4em] mb-4 font-mono">
-                <span className="text-green-400/40">active</span> // Aigarth
+                <span className="text-[#D4AF37]/40">active</span> // Aigarth
               </div>
               <h4 className="text-xl font-semibold text-white mb-6">Ternary</h4>
 
@@ -173,7 +173,7 @@ export function AigarthExplainerSection() {
             {benefits.map((item, index) => (
               <motion.div
                 key={index}
-                className="relative p-6 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group"
+                className="relative p-6 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -216,7 +216,7 @@ export function AigarthExplainerSection() {
             The 128 x 128 Neural Matrix
           </h3>
 
-          <div className="relative bg-[#050505] border border-white/[0.06] p-8 md:p-10">
+          <div className="relative bg-[#050505] border border-white/[0.06] p-5 md:p-8 lg:p-10">
             {/* Corner dots */}
             <div className="absolute top-2 left-2 w-1 h-1 bg-[#D4AF37]/20" />
             <div className="absolute top-2 right-2 w-1 h-1 bg-[#D4AF37]/20" />
@@ -237,7 +237,7 @@ export function AigarthExplainerSection() {
                 return (
                   <motion.div
                     key={index}
-                    className={`group flex items-center gap-4 px-4 py-3 transition-all duration-300 cursor-pointer border-l-2 ${
+                    className={`group flex items-center gap-2 md:gap-4 px-2 md:px-4 py-3 transition-all duration-300 cursor-pointer border-l-2 ${
                       layer.highlight
                         ? 'border-l-[#D4AF37]/40 bg-[#D4AF37]/[0.02]'
                         : 'border-l-white/[0.04] hover:border-l-white/[0.12] hover:bg-white/[0.01]'
@@ -249,7 +249,7 @@ export function AigarthExplainerSection() {
                     onMouseEnter={() => setHoveredLayer(index)}
                     onMouseLeave={() => setHoveredLayer(null)}
                   >
-                    <span className="w-16 text-[11px] font-mono text-white/30 group-hover:text-white/50 transition-colors shrink-0">
+                    <span className="w-12 md:w-16 text-[10px] md:text-[11px] font-mono text-white/30 group-hover:text-white/50 transition-colors shrink-0">
                       Row {layer.rows}
                     </span>
 

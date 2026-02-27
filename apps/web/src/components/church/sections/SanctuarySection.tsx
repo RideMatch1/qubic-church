@@ -13,26 +13,52 @@ import Link from 'next/link'
 const features = [
   {
     icon: BookOpen,
-    value: '75+',
+    numericValue: 75,
+    suffix: '+',
     label: 'Sacred Scrolls',
     description: 'Comprehensive analysis documenting the hidden patterns across the Bitcoin-Qubic bridge.',
     terminal: 'cat /archive/scrolls --count',
   },
   {
     icon: Code,
-    value: '100%',
+    numericValue: 100,
+    suffix: '%',
     label: 'Open Source',
     description: 'All findings belong to the congregation. No secrets. No paywalls. Truth is free.',
     terminal: 'git clone truth://qubic.church',
   },
   {
     icon: Users,
-    value: '200',
+    numericValue: 200,
+    suffix: '',
     label: 'Sacred NFTs',
     description: 'Keys to The Convergence. Each grants membership in the congregation and entry to the sacred draw.',
     terminal: 'nft.verify --collection anna',
   },
 ]
+
+/* Animated counter that counts up when visible */
+function AnimatedValue({ target, suffix, isInView }: { target: number; suffix: string; isInView: boolean }) {
+  const [count, setCount] = useState(0)
+  const hasAnimated = useRef(false)
+
+  useEffect(() => {
+    if (!isInView || hasAnimated.current || target <= 0) return
+    hasAnimated.current = true
+    const duration = 1800
+    const startTime = Date.now()
+    const animate = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.floor(eased * target))
+      if (progress < 1) requestAnimationFrame(animate)
+    }
+    requestAnimationFrame(animate)
+  }, [isInView, target])
+
+  return <>{count}{suffix}</>
+}
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -89,7 +115,7 @@ function TerminalLine({ text, delay }: { text: string; delay: number }) {
 
 export function SanctuarySection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   return (
     <section
@@ -98,7 +124,7 @@ export function SanctuarySection() {
     >
       <div className="relative z-10 container mx-auto px-6 max-w-6xl">
         {/* Decorative section number */}
-        <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+        <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
           02
         </div>
 
@@ -118,7 +144,7 @@ export function SanctuarySection() {
           </motion.div>
 
           <motion.h2
-            className="text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wider uppercase"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -146,7 +172,7 @@ export function SanctuarySection() {
             return (
               <motion.div
                 key={item.label}
-                className="relative p-7 md:p-8 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group overflow-hidden"
+                className="relative p-5 md:p-7 lg:p-8 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] group overflow-hidden"
                 custom={idx}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
@@ -169,13 +195,13 @@ export function SanctuarySection() {
                       strokeWidth={1.5}
                     />
                   </div>
-                  <span className="text-[10px] text-white/15 uppercase tracking-[0.3em] font-mono">
+                  <span className="text-[10px] text-white/20 uppercase tracking-[0.3em] font-mono">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                 </div>
 
                 <div className="text-3xl md:text-4xl font-bold font-mono text-white tracking-tight mb-1 group-hover:text-[#D4AF37]/90 transition-colors duration-500">
-                  {item.value}
+                  <AnimatedValue target={item.numericValue} suffix={item.suffix} isInView={isInView} />
                 </div>
 
                 <div className="text-white/70 font-medium text-base mb-3">

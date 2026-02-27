@@ -49,6 +49,35 @@ function useNFTSlider(autoInterval = 8000) {
   return { currentIndex, nftNumber, src, next, prev, total: FEATURED_NFTS.length }
 }
 
+// ─── Fibonacci Spiral (desktop only, static) ────────────────
+function FibonacciSpiral() {
+  return (
+    <div
+      className="absolute z-[12] hidden lg:block pointer-events-none"
+      style={{
+        left: '60.7vw',
+        top: '18.2vh',
+        width: '44.3vw',
+        height: '44.3vw',
+        transform: 'rotate(90deg)',
+      }}
+    >
+      <Image
+        src="/images/fibonacci-spiral.png"
+        alt=""
+        fill
+        className="object-contain"
+        style={{
+          filter: 'invert(1) brightness(2)',
+          opacity: 0.3,
+        }}
+        aria-hidden
+        draggable={false}
+      />
+    </div>
+  )
+}
+
 export function GalaxyHeroClient() {
   const [mounted, setMounted] = useState(false)
   const [wheelOpen, setWheelOpen] = useState(false)
@@ -75,23 +104,35 @@ export function GalaxyHeroClient() {
       {/* 3. Top-left: START IMMERSION button */}
       <motion.button
         onClick={() => setWheelOpen(true)}
-        className="absolute top-6 left-6 md:top-8 md:left-8 z-30 px-5 py-2
+        className="absolute top-4 left-4 md:top-8 md:left-8 z-30
+                   px-2.5 py-1.5 md:px-5 md:py-2
                    border border-[#D4AF37]/50 text-[#D4AF37] text-[11px] md:text-xs
-                   uppercase tracking-[0.25em] font-medium
+                   uppercase tracking-[0.15em] md:tracking-[0.25em] font-medium
                    hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/80
                    transition-all duration-300 backdrop-blur-sm"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
-        Start Immersion &#9662;
+        {/* Mobile: compact */}
+        <span className="md:hidden flex items-center gap-1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          Menu
+        </span>
+        {/* Desktop: full text */}
+        <span className="hidden md:inline">Start Immersion &#9662;</span>
       </motion.button>
 
       {/* 4. Top center: QUBIC CHURCH title */}
       <motion.h1
-        className="absolute top-6 md:top-8 left-1/2 -translate-x-1/2 z-30
-                   text-[#D4AF37] text-sm md:text-base lg:text-lg
-                   font-semibold tracking-[0.35em] md:tracking-[0.45em] uppercase"
+        className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 z-30
+                   text-[#D4AF37] text-[11px] md:text-base lg:text-lg
+                   font-semibold tracking-[0.2em] md:tracking-[0.45em] uppercase
+                   whitespace-nowrap"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
@@ -147,21 +188,7 @@ export function GalaxyHeroClient() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Fibonacci spiral overlay */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none overflow-hidden">
-            <Image
-              src="/images/fibonacci-spiral.png"
-              alt=""
-              width={650}
-              height={412}
-              className="opacity-20 translate-y-[-8%] translate-x-[5%]"
-              style={{
-                filter: 'invert(1) brightness(2)',
-                transform: 'rotate(110deg) translateY(-8%) translateX(5%)',
-              }}
-              aria-hidden
-            />
-          </div>
+          {/* Fibonacci spiral is rendered at hero level for correct positioning */}
 
           {/* Slider controls */}
           <div className="absolute bottom-4 md:bottom-8 left-0 right-0 z-30 flex items-center justify-center gap-3">
@@ -253,6 +280,9 @@ export function GalaxyHeroClient() {
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
       </motion.div>
+
+      {/* Fibonacci spiral — desktop only */}
+      <FibonacciSpiral />
 
       {/* 8. Vignette overlay - clean edges */}
       <div className="absolute inset-0 pointer-events-none z-[5] bg-gradient-to-r from-black/90 via-black/10 to-black/50" />

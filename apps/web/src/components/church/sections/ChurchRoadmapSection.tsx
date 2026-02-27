@@ -21,7 +21,7 @@ const phases = [
       { text: 'Research Archive (75+ Scrolls)', done: true },
       { text: 'Mining Guide & Calculator', done: true },
       { text: 'Anna NFT Collection (200 NFTs)', done: false },
-      { text: '676M QUBIC + 7M Genesis Giveaway', done: false },
+      { text: '676M QUBIC Giveaway', done: false },
     ],
   },
   {
@@ -84,7 +84,7 @@ export function ChurchRoadmapSection() {
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 left-8 md:left-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 left-8 md:left-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         07
       </div>
 
@@ -105,7 +105,7 @@ export function ChurchRoadmapSection() {
           </div>
 
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wider uppercase"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             The Path to{' '}
@@ -128,7 +128,7 @@ export function ChurchRoadmapSection() {
         >
           <div className="flex items-center justify-between flex-wrap gap-2">
             <code className="text-[10px] text-white/25 font-mono">
-              // STATUS: <span className="text-green-400/40">PHASE_01 ACTIVE</span> | PROGRESS: {overallProgress}% | ETA: 2027-04-13T00:00:00Z
+              // STATUS: <span className="text-[#D4AF37]/40">PHASE_01 ACTIVE</span> | PROGRESS: {overallProgress}% | ETA: 2027-04-13T00:00:00Z
             </code>
             <code className="text-[10px] text-[#D4AF37]/25 font-mono">
               {overallProgress}% COMPLETE
@@ -184,7 +184,7 @@ export function ChurchRoadmapSection() {
                     {/* Content card */}
                     <div className={`flex-1 ${isLeft ? 'md:pr-10' : 'md:pl-10'} md:w-1/2`}>
                       <div
-                        className={`relative p-6 ${phase.active ? 'p-7' : 'p-6'} bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group ${
+                        className={`relative p-6 ${phase.active ? 'p-7' : 'p-6'} bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] hover:border-white/[0.08] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] group ${
                           isLeft ? 'md:text-right' : ''
                         }`}
                       >
@@ -198,7 +198,7 @@ export function ChurchRoadmapSection() {
 
                         {/* Phase number + status */}
                         <div className={`flex items-center gap-3 mb-4 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-                          <span className="text-white/15 text-[10px] uppercase tracking-[0.3em] font-mono">
+                          <span className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-mono">
                             Phase {String(phase.number).padStart(2, '0')}
                           </span>
                           {phase.active ? (
@@ -246,7 +246,7 @@ export function ChurchRoadmapSection() {
                                 transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
                               />
                             </div>
-                            <span className="text-[9px] text-white/15 font-mono mt-1 block">
+                            <span className="text-[9px] text-white/20 font-mono mt-1 block">
                               {phase.progress}% complete
                             </span>
                           </div>

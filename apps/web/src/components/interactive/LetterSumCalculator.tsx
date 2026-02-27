@@ -13,13 +13,6 @@ const PRESET_ADDRESSES = {
     factorization: '19 × 43',
     significance: 'ARB sum factorizes to Genesis Block constants: 19 (range start) × 43 (zero bits)',
   },
-  POCZ: {
-    address: 'POCCZYCKTRQGHFIPWGSBLJTEQFDDVVBMNUHNCKMRACBGQOPBLURNRCBAFOBD',
-    name: 'POCZ Seed Holder',
-    expectedSum: 672,
-    factorization: '2⁵ × 21',
-    significance: 'POCZ is the private key holder at Row 96, Column 84 (address 12,372)',
-  },
 }
 
 // Calculate letter value (A=1, B=2, ... Z=26)
@@ -42,7 +35,7 @@ export function LetterSumCalculator() {
   const [address, setAddress] = useState(PRESET_ADDRESSES.ARB.address)
   const [isAnimating, setIsAnimating] = useState(false)
   const [animationIndex, setAnimationIndex] = useState(-1)
-  const [selectedPreset, setSelectedPreset] = useState<'ARB' | 'POCZ' | 'custom'>('ARB')
+  const [selectedPreset, setSelectedPreset] = useState<'ARB' | 'custom'>('ARB')
   const [showDropdown, setShowDropdown] = useState(false)
 
   const letterData = useMemo((): LetterData[] => {
@@ -72,7 +65,6 @@ export function LetterSumCalculator() {
   // Prime factorization helper
   const factorize = (n: number): string => {
     if (n === 817) return '19 × 43'
-    if (n === 672) return '2⁵ × 21 = 32 × 21'
     const factors: number[] = []
     let remaining = n
     for (let i = 2; i <= Math.sqrt(remaining); i++) {
@@ -102,7 +94,7 @@ export function LetterSumCalculator() {
     setAnimationIndex(-1)
   }
 
-  const selectPreset = (preset: 'ARB' | 'POCZ') => {
+  const selectPreset = (preset: 'ARB') => {
     setAddress(PRESET_ADDRESSES[preset].address)
     setSelectedPreset(preset)
     setShowDropdown(false)
@@ -145,13 +137,6 @@ export function LetterSumCalculator() {
                 >
                   <div className="font-medium">ARB Oracle</div>
                   <div className="text-xs text-muted-foreground">Sum: 817 = 19 × 43</div>
-                </button>
-                <button
-                  onClick={() => selectPreset('POCZ')}
-                  className="w-full p-3 text-left hover:bg-purple-900/30 transition-colors border-t border-purple-900/30"
-                >
-                  <div className="font-medium">POCZ Seed Holder</div>
-                  <div className="text-xs text-muted-foreground">Sum: 672</div>
                 </button>
               </motion.div>
             )}

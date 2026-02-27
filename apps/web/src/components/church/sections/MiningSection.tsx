@@ -45,7 +45,7 @@ export function MiningSection() {
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         03
       </div>
 
@@ -66,7 +66,7 @@ export function MiningSection() {
           </div>
 
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wider uppercase"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             Mine the{' '}
@@ -90,7 +90,7 @@ export function MiningSection() {
             return (
               <motion.div
                 key={feature.title}
-                className="relative p-7 md:p-8 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group overflow-hidden"
+                className="relative p-5 md:p-7 lg:p-8 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] group overflow-hidden"
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.25 + index * 0.1, ease: 'easeOut' }}
@@ -143,7 +143,7 @@ export function MiningSection() {
           <div className="flex items-center gap-2">
             <Terminal className="w-3 h-3 text-[#D4AF37]/25 shrink-0" />
             <code className="text-[10px] text-white/20 font-mono overflow-x-auto whitespace-nowrap">
-              <span className="text-[#D4AF37]/30">$</span> status: <span className="text-green-400/40">NETWORK_ACTIVE</span> | miners: 15,000+ | algorithm: AiTraining | pools: qubic.li, apool, minerstat
+              <span className="text-[#D4AF37]/30">$</span> status: <span className="text-[#D4AF37]/40">NETWORK_ACTIVE</span> | miners: 15,000+ | algorithm: AiTraining | pools: qubic.li, apool, minerstat
             </code>
           </div>
         </motion.div>
@@ -163,7 +163,7 @@ export function MiningSection() {
             OPEN MINING GUIDE
             <ArrowRight className="w-4 h-4 text-[#D4AF37]/40 group-hover:translate-x-1 transition-transform" />
           </Link>
-          <p className="text-[10px] text-white/15 mt-3 font-mono">
+          <p className="text-[10px] text-white/20 mt-3 font-mono">
             GPU + CPU supported // No specialized hardware
           </p>
         </motion.div>

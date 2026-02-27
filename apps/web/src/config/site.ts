@@ -63,7 +63,7 @@ export const siteConfig = {
     'Ternary Computing',
     'Neural Network',
     'Qubic Mining',
-    'Genesis Token',
+    'Qubic Giveaway',
     'Web3',
     'DeFi',
     'Cryptocurrency',

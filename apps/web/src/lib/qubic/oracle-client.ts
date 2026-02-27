@@ -5,11 +5,6 @@
  * The Oracle Machine brings real-world data into Qubic smart contracts.
  * Computors are obligated to run Oracle Machines for epoch revenue.
  *
- * Relevance to POCC/HASV research:
- * - Oracle provides the "verifiable via the protocol" mechanism
- * - 676 Computors must reach quorum (451+) on oracle data
- * - Could be the "signal" mechanism referenced in GENESIS token messages
- *
  * References:
  * - Oracle Machine: https://github.com/qubic/oracle-machine
  * - Core PR #758: https://github.com/qubic/core/pull/758
@@ -92,10 +87,6 @@ export interface SignalMonitor {
   daysUntilSignal: number
   /** Whether we're in the signal window (March 3, 2026) */
   inSignalWindow: boolean
-  /** POCC address activity */
-  poccActivity: AddressActivity | null
-  /** HASV address activity */
-  hasvActivity: AddressActivity | null
   /** Current epoch computor count */
   computorCount: number
   /** Oracle system status */
@@ -110,7 +101,7 @@ export interface SignalMonitor {
 
 /**
  * Qubic Oracle Machine Client
- * Monitors oracle activity and watches for GENESIS/EXODUS signal events
+ * Monitors oracle activity and signal events
  */
 export class QubicOracleClient {
   private static instance: QubicOracleClient
@@ -214,7 +205,7 @@ export class QubicOracleClient {
 
   /**
    * Get the full signal monitoring dashboard
-   * Watches POCC/HASV addresses and oracle activity
+   * Watches oracle activity
    */
   async getSignalMonitor(): Promise<SignalMonitor> {
     const now = new Date()
@@ -226,21 +217,9 @@ export class QubicOracleClient {
     // Check if we're in the signal window (March 3, 2026 ±1 day)
     const inWindow = Math.abs(daysUntil) <= 1
 
-    // Fetch POCC and HASV activity in parallel
-    const [poccActivity, hasvActivity] = await Promise.all([
-      this.getAddressActivity(ORACLE_CONFIG.watchAddresses.POCC).catch(
-        () => null
-      ),
-      this.getAddressActivity(ORACLE_CONFIG.watchAddresses.HASV).catch(
-        () => null
-      ),
-    ])
-
     return {
       daysUntilSignal: daysUntil,
       inSignalWindow: inWindow,
-      poccActivity,
-      hasvActivity,
       computorCount: 676,
       oracleStatus: null, // Oracle status endpoint TBD
       relevantQueries: [], // Oracle query scan TBD
@@ -248,38 +227,20 @@ export class QubicOracleClient {
   }
 
   /**
-   * Check if POCC or HASV addresses have new activity
-   * Returns true if any balance change or transaction detected
+   * Check for signal activity
+   * Returns signal window status
    */
   async checkForSignalActivity(): Promise<{
-    poccChanged: boolean
-    hasvChanged: boolean
     details: string
   }> {
     const monitor = await this.getSignalMonitor()
 
     const details: string[] = []
 
-    if (monitor.poccActivity) {
-      details.push(
-        `POCC balance: ${monitor.poccActivity.balance}, ` +
-          `last tick: ${monitor.poccActivity.lastActivityTick}`
-      )
-    }
-
-    if (monitor.hasvActivity) {
-      details.push(
-        `HASV balance: ${monitor.hasvActivity.balance}, ` +
-          `last tick: ${monitor.hasvActivity.lastActivityTick}`
-      )
-    }
-
     details.push(`Days until signal: ${monitor.daysUntilSignal}`)
     details.push(`In signal window: ${monitor.inSignalWindow}`)
 
     return {
-      poccChanged: false, // Need baseline comparison
-      hasvChanged: false,
       details: details.join('\n'),
     }
   }

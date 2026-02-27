@@ -212,8 +212,7 @@ export function Phase02_EnterQubic() {
                 by <span className="text-white font-mono">27</span>
               </li>
               <li>
-                <span className="text-purple-400">Qubic:</span> Genesis Token timestamp mod 576 ={' '}
-                <span className="text-white font-mono">27</span>
+                <span className="text-purple-400">Qubic:</span> 676 Computors = 26² (ternary signature){' '}
               </li>
             </ul>
             <p className="text-white/50 italic">

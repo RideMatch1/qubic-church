@@ -2,7 +2,7 @@
 
 /**
  * LotterySection Component
- * Holy Circle Lottery with Genesis verification
+ * Holy Circle Lottery for Anna NFT holders
  * Updated for dark theme
  */
 
@@ -35,7 +35,7 @@ export function LotterySection() {
     setIsVerifying(true)
     setVerificationResult(null)
 
-    // Simulate verification (in production, this would call genesis-verifier API)
+    // Simulate verification (in production, this would call verifier API)
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
     // Mock result
@@ -43,8 +43,8 @@ export function LotterySection() {
     setVerificationResult({
       success,
       message: success
-        ? `Entry confirmed! NFT #${nftId} with Genesis tokens verified.`
-        : `Verification failed. Please ensure you own NFT #${nftId} and have the correct Genesis token amount.`,
+        ? `Entry confirmed! NFT #${nftId} verified.`
+        : `Verification failed. Please ensure you own NFT #${nftId}.`,
     })
     setIsVerifying(false)
 
@@ -95,7 +95,7 @@ export function LotterySection() {
               76M QUBIC
             </span>
             <span className="block text-xl md:text-2xl text-white/60 font-semibold mt-2">
-              + 7M Genesis Tokens
+              Prize Pool
             </span>
           </motion.div>
 
@@ -142,7 +142,7 @@ export function LotterySection() {
                             {formatBigInt(prize.qubic)} QUBIC
                           </div>
                           <div className="text-sm text-white/50">
-                            + {formatBigInt(prize.genesis)} Genesis
+                            {prize.percentage}% of pool
                           </div>
                         </div>
                       </div>
@@ -159,9 +159,6 @@ export function LotterySection() {
                   <div className="text-right">
                     <div className="text-purple-400">
                       {formatBigInt(LOTTERY_CONFIG.prizePool.qubic)} QUBIC
-                    </div>
-                    <div className="text-sm text-white/50">
-                      + {formatBigInt(LOTTERY_CONFIG.prizePool.genesis)} Genesis
                     </div>
                   </div>
                 </div>
@@ -185,8 +182,7 @@ export function LotterySection() {
 
               <div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20 mb-6">
                 <p className="text-sm text-cyan-300">
-                  <strong className="text-cyan-400">Requirements:</strong> Own an Anna NFT + matching Genesis tokens
-                  (NFT #1 = 1 Genesis, #42 = 42 Genesis, etc.)
+                  <strong className="text-cyan-400">Requirements:</strong> Own an Anna NFT to enter the draw.
                 </p>
               </div>
 
@@ -282,15 +278,11 @@ export function LotterySection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-400 mt-1">•</span>
-                  <span>Must hold Genesis tokens matching your NFT ID (e.g., NFT #42 requires 42 Genesis)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-400 mt-1">•</span>
                   <span>Winners drawn transparently using blockchain randomness</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-400 mt-1">•</span>
-                  <span>5 winners share 675M QUBIC + 2M Genesis tokens</span>
+                  <span>5 winners share the QUBIC prize pool</span>
                 </li>
               </ul>
             </div>

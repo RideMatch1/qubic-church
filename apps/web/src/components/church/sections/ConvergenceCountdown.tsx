@@ -16,11 +16,11 @@ function CountdownDigit({ value, label, pad = 2 }: { value: number; label: strin
 
   return (
     <div className="text-center">
-      <div className="relative p-3 md:p-5 bg-[#050505] border border-white/[0.04]">
+      <div className="relative p-2 sm:p-3 md:p-5 bg-[#050505] border border-white/[0.04]">
         <AnimatePresence mode="popLayout">
           <motion.div
             key={display}
-            className="text-4xl md:text-6xl lg:text-8xl font-bold font-mono text-white tracking-tight tabular-nums"
+            className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-bold font-mono text-white tracking-tight tabular-nums"
             initial={{ y: -8, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 8, opacity: 0 }}
@@ -45,7 +45,7 @@ export function ConvergenceCountdown() {
   return (
     <section ref={ref} className="relative w-full py-24 md:py-32 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         08
       </div>
 
@@ -88,7 +88,7 @@ export function ConvergenceCountdown() {
 
           {/* Title */}
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl text-white/90 mb-2 tracking-wider uppercase"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white/90 mb-2 tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           >
             Preparing for{' '}
@@ -113,13 +113,13 @@ export function ConvergenceCountdown() {
           </div>
 
           {/* Countdown digits */}
-          <div className="inline-flex items-start gap-2 md:gap-3">
+          <div className="inline-flex items-start gap-1 sm:gap-2 md:gap-3">
             <CountdownDigit value={countdown.days} label="Days" pad={3} />
-            <span className="text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-3 md:mt-5">:</span>
+            <span className="text-xl sm:text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-2 sm:mt-3 md:mt-5">:</span>
             <CountdownDigit value={countdown.hours} label="Hours" />
-            <span className="text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-3 md:mt-5">:</span>
+            <span className="text-xl sm:text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-2 sm:mt-3 md:mt-5">:</span>
             <CountdownDigit value={countdown.minutes} label="Mins" />
-            <span className="text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-3 md:mt-5">:</span>
+            <span className="text-xl sm:text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-2 sm:mt-3 md:mt-5">:</span>
             <CountdownDigit value={countdown.seconds} label="Secs" />
           </div>
         </motion.div>

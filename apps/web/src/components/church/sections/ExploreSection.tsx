@@ -81,7 +81,7 @@ export function ExploreSection() {
   return (
     <section ref={sectionRef} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         10
       </div>
 
@@ -102,7 +102,7 @@ export function ExploreSection() {
           </motion.div>
 
           <motion.h2
-            className="text-5xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wider uppercase"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white mb-5 tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -125,7 +125,7 @@ export function ExploreSection() {
               /sanctuary/
             </span>
           </div>
-          <span className="text-[10px] text-white/15 font-mono">
+          <span className="text-[10px] text-white/20 font-mono">
             {links.length} entries
           </span>
         </motion.div>
@@ -144,7 +144,7 @@ export function ExploreSection() {
               >
                 <Link
                   href={link.href}
-                  className="group relative flex items-start gap-4 p-6 bg-[#050505] border border-white/[0.04] hover:bg-[#0a0a0a] transition-all duration-500"
+                  className="group relative flex items-start gap-4 p-6 bg-[#050505] border border-white/[0.04] hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all duration-500"
                 >
                   {/* Left accent on hover */}
                   <div className="absolute top-0 left-0 w-px h-full bg-[#D4AF37]/0 group-hover:bg-[#D4AF37]/20 transition-colors duration-500" />

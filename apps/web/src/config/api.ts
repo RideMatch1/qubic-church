@@ -37,21 +37,8 @@ export const JETSKI_POOL_API = {
  * Core PR: https://github.com/qubic/core/pull/758
  */
 export const ORACLE_CONFIG = {
-  /** Known research-relevant addresses */
-  watchAddresses: {
-    POCC: 'POCCZYCKTRQGHFIPWGSBLJTEQFDDVVBMNUHNCKMRACBGQOPBLURNRCBAFOBD',
-    HASV: 'HASVHXZKVIHTFHEZUSZIIBPZFVHAGTANVXHBJNHMWCRQZYKULCUBLCTBPONO',
-  },
   /** Signal date: Bitcoin Genesis (2009-01-03) + 6268 days */
   signalDate: new Date('2026-03-03T00:00:00Z'),
-  /** Signal parameters from GENESIS token messages */
-  signal: {
-    topHolders: 676,
-    unitsPerHolder: 50,
-    totalUnits: 33_800,
-    bitcoinBlocksReferenced: { start: 1, end: 676 },
-    daysFromGenesis: 6268,
-  },
 } as const
 
 export const API_CONFIG = {

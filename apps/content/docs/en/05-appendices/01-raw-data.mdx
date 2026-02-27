@@ -145,7 +145,6 @@ Statistical Properties:
 | Genesis Block | 2009-01-03 18:15:05 | 1231006505 | mod 121 = 87 |
 | Aigarth Paper | 2019-09-10 ~00:00 | ~1568073600 | 11 years from Pre-Genesis |
 | "Random" Article | 2023-09-10 ~00:00 | ~1694304000 | 15 years from Pre-Genesis |
-| Genesis Token | 2025-11-02 23:02:51 | 1730588571 | mod 27 = 0, mod 576 = 27 |
 | Predicted Signal | 2026-03-03 18:15:05 | 1772758505 | 6268 days from Genesis |
 | CFB Revelation | 2027-04-13 00:00:00 | 1807660800 | timer.js target |
 
@@ -180,7 +179,7 @@ Statistical Properties:
 | Nonce | 3932649037 | Blockchain |
 | Extra Byte | 0x1b | Coinbase analysis |
 | Extra Byte decimal | 27 | Conversion |
-| 576 mod 27 | 0 | Calculator |
+| 576 mod 27 | 9 | Calculator (corrected; 576 is not divisible by 27) |
 | 576 = | 24² | Calculator |
 
 ### A.4.2 Coinbase Structure
@@ -228,33 +227,9 @@ All exactly divisible by 27 = 3³
 
 ---
 
-## A.6 Genesis Token Metadata
+## A.6 Matrix Positions
 
-### A.6.1 Token Properties
-
-| Property | Value | Mathematical Significance |
-|----------|-------|--------------------------|
-| Issue date | 2025-11-02 23:02:51 UTC | - |
-| Unix timestamp | 1730588571 | mod 27 = 0 |
-| Max supply | 676,000,000,000 | 676 = 26² (Computors) |
-| Timestamp mod 576 | 27 | CFB signature |
-| Token name | GENESIS | - |
-
-### A.6.2 Top 676 Theory
-
-If distributed equally among 676 computors:
-
-```
-676,000,000,000 ÷ 676 = 1,000,000,000 per computor
-= 1 billion units per computor
-= "50 units of account" × 20,000,000
-```
-
----
-
-## A.7 Matrix Positions
-
-### A.7.1 Anna Matrix Properties
+### A.6.1 Anna Matrix Properties
 
 | Property | Value |
 |----------|-------|
@@ -263,7 +238,7 @@ If distributed equally among 676 computors:
 | Cell value range | 0-255 (byte) |
 | Coordinate system | [row, column] |
 
-### A.7.2 Significant Positions
+### A.6.2 Significant Positions
 
 | Position | Value | Significance |
 |----------|-------|--------------|
@@ -274,7 +249,7 @@ If distributed equally among 676 computors:
 | [20, 28] | Locked | Block 3,996 |
 | [9, 115] | Locked | Block 10,611 |
 
-### A.7.3 Row 21 Analysis
+### A.6.3 Row 21 Analysis
 
 ```
 Row 21 Memory Range:
@@ -287,9 +262,9 @@ Row 21 Memory Range:
 
 ---
 
-## A.8 Linguistic Data
+## A.7 Linguistic Data
 
-### A.8.1 Stylometric Comparison Results
+### A.7.1 Stylometric Comparison Results
 
 | Comparison | Match Score | Interpretation |
 |------------|-------------|----------------|
@@ -298,7 +273,7 @@ Row 21 Memory Range:
 | CFB vs Maria | 40.0% | Lower correlation |
 | Random baseline | 35% | Expected for unrelated |
 
-### A.8.2 Corpus Statistics
+### A.7.2 Corpus Statistics
 
 | Author | Documents | Words | Time Period |
 |--------|-----------|-------|-------------|
@@ -308,9 +283,9 @@ Row 21 Memory Range:
 
 ---
 
-## A.9 Source File Statistics
+## A.8 Source File Statistics
 
-### A.9.1 Analysis Output Files
+### A.8.1 Analysis Output Files
 
 | Category | File Count | Total Size |
 |----------|------------|------------|
@@ -322,7 +297,7 @@ Row 21 Memory Range:
 | Comprehensive summaries | 8 | ~1.5 MB |
 | **Total** | **179** | **~6.4 MB** |
 
-### A.9.2 Structured Data Files
+### A.8.2 Structured Data Files
 
 | File Type | Count | Records |
 |-----------|-------|---------|
@@ -332,15 +307,15 @@ Row 21 Memory Range:
 
 ---
 
-## A.10 Discord Message Archive
+## A.9 Discord Message Archive
 
-### A.10.1 Archive Statistics
+### A.9.1 Archive Statistics
 
 | Channel | Messages | Authors | Date Range |
 |---------|----------|---------|------------|
 | #aigarth | 847 | ~50 | 2022-2024 |
 
-### A.10.2 Key Message IDs
+### A.9.2 Key Message IDs
 
 | Message ID | Author | Content Summary |
 |------------|--------|-----------------|

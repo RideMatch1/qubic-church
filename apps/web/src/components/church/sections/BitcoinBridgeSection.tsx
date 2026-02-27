@@ -62,7 +62,7 @@ export function BitcoinBridgeSection() {
       ref={sectionRef}
       className="relative w-full py-28 md:py-36 overflow-hidden"
     >
-      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         05
       </div>
 
@@ -83,7 +83,7 @@ export function BitcoinBridgeSection() {
           </motion.div>
 
           <motion.h2
-            className="text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wider uppercase"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-wide md:tracking-wider uppercase"
             style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -111,7 +111,7 @@ export function BitcoinBridgeSection() {
             return (
               <motion.div
                 key={item.number}
-                className="relative p-7 md:p-8 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] group overflow-hidden"
+                className="relative p-5 md:p-7 lg:p-8 bg-[#050505] border border-white/[0.04] transition-all duration-500 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] group overflow-hidden"
                 initial={{ opacity: 0, y: 28 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{
@@ -138,7 +138,7 @@ export function BitcoinBridgeSection() {
                     <span className="text-[9px] text-[#D4AF37]/25 uppercase tracking-[0.2em] font-mono border border-[#D4AF37]/10 px-2 py-0.5">
                       {item.tier}
                     </span>
-                    <span className="text-[9px] text-green-400/30 font-mono">
+                    <span className="text-[9px] text-[#D4AF37]/30 font-mono">
                       {item.confidence}
                     </span>
                   </div>
@@ -148,7 +148,7 @@ export function BitcoinBridgeSection() {
                   {item.title}
                 </h3>
 
-                <div className="text-[#D4AF37]/50 font-mono text-sm mb-4 border-l-2 border-[#D4AF37]/15 pl-3">
+                <div className="text-[#D4AF37]/50 font-mono text-sm mb-4 border-l-2 border-[#D4AF37]/15 pl-3 break-all">
                   {item.detail}
                 </div>
 

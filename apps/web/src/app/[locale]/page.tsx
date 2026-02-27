@@ -22,7 +22,7 @@ export const dynamicParams = true
 /** Subtle gold gradient divider between sections */
 function SectionDivider() {
   return (
-    <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/10 to-transparent" />
+    <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/12 to-transparent" />
   )
 }
 

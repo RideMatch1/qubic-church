@@ -136,15 +136,14 @@ export function Phase11_TheCountdown() {
           </h3>
 
           <div className="space-y-4 text-sm text-white/70">
-            <p>According to the decoded GENESIS token binary messages:</p>
+            <p>According to the mathematical time-lock analysis:</p>
 
             <div className="p-4 rounded-lg bg-black/30 font-mono text-xs border-l-2 border-orange-500/50">
               <p className="text-white/80 italic">
-                "The 576th message will be published. It will not be an announcement, but a stage
-                of the protocol."
+                The 576th message protocol event corresponds to SWIFT MT576 = "Statement of Open Orders".
               </p>
               <p className="text-white/80 italic mt-2">
-                "The signal will begin 6,268 time units counted from point zero."
+                6,268 days counted from Bitcoin Genesis (Jan 3, 2009) = March 3, 2026.
               </p>
             </div>
 
@@ -202,9 +201,8 @@ export function Phase11_TheCountdown() {
             </p>
             <ul className="space-y-1 ml-4 list-disc">
               <li>676 Qubic Computors validate the network</li>
-              <li>GENESIS max supply = 676 billion</li>
-              <li>Top 676 token holders referenced for distribution</li>
               <li>Bitcoin blocks 1-676 (early Satoshi era)</li>
+              <li>676 = 26² (alphabet size squared)</li>
               <li>676 = standard Qubic IPO share size</li>
             </ul>
             <p className="text-white/50 italic">26 = alphabet size (communication theme)</p>

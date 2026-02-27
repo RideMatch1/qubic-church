@@ -30,6 +30,12 @@ export const fontHandodle = localFont({
   display: 'swap',
 })
 
+export const fontCrayon = localFont({
+  src: '../../public/fonts/DKCrayonCrumble.ttf',
+  variable: '--font-crayon',
+  display: 'swap',
+})
+
 export const fontDisplay = Bebas_Neue({
   subsets: ['latin'],
   variable: '--font-display',

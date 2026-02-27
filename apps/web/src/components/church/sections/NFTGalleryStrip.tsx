@@ -38,20 +38,20 @@ const GALLERY_NFTS: GalleryNFT[] = [
 ]
 
 const rarityColor: Record<Rarity, string> = {
-  legendary: 'bg-[#D4AF37]/80 text-black',
-  epic: 'bg-white/50 text-black',
-  rare: 'bg-white/25 text-white',
-  common: 'bg-white/15 text-white/70',
+  legendary: 'bg-[#D4AF37]/90 text-black',
+  epic: 'bg-[#D4AF37]/50 text-white',
+  rare: 'bg-[#D4AF37]/25 text-white',
+  common: 'bg-white/20 text-white',
 }
 
 export function NFTGalleryStrip() {
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-40px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   return (
     <section ref={sectionRef} className="relative w-full py-16 md:py-24 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-8 left-8 md:left-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-8 left-8 md:left-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         06
       </div>
 
@@ -79,13 +79,13 @@ export function NFTGalleryStrip() {
 
         {/* Horizontal scroll */}
         <div
-          className="flex gap-[1px] overflow-x-auto px-8 md:px-16 pb-4 scrollbar-hide"
+          className="flex gap-[1px] overflow-x-auto px-4 sm:px-6 md:px-16 pb-4 scrollbar-hide"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {GALLERY_NFTS.map((nft, i) => (
             <motion.div
               key={nft.id}
-              className="relative flex-shrink-0 w-[180px] md:w-[220px] lg:w-[250px] aspect-[3/4] overflow-hidden group cursor-pointer border border-white/[0.04]"
+              className="relative flex-shrink-0 w-[180px] md:w-[220px] lg:w-[250px] aspect-[3/4] overflow-hidden group cursor-pointer border border-white/[0.04] hover:border-white/[0.08] transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

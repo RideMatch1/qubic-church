@@ -263,7 +263,7 @@ export class QubicRPCClient {
   }
 
   /**
-   * Get address balance (for Genesis token verification)
+   * Get address balance
    * Qubic v1 API returns: { balance: { id, balance, validForTick, ... } }
    */
   async getBalance(address: string): Promise<bigint> {

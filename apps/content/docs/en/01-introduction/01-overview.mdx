@@ -90,7 +90,7 @@ Block 576 contains a unique anomaly: an "Extra Byte" with value **0x1b = 27** in
 | Property | Value | Significance |
 |----------|-------|--------------|
 | Block height | 576 = 24² | Perfect square |
-| 576 mod 27 | 0 | Exactly divisible |
+| 576 mod 27 | 9 | Not evenly divisible (corrected) |
 | Extra Byte | 0x1b = 27 | CFB signature |
 
 ### The 27-Signature Cross-Platform Pattern
@@ -102,7 +102,7 @@ The number 27 appears consistently across multiple CFB-associated projects:
 | **Bitcoin** | Block 576 Extra Byte = 27 | Blockchain |
 | **IOTA** | Transaction size 2187 = 3⁷ | Protocol spec |
 | **IOTA** | 2673 / 27 = 99 | Protocol spec |
-| **Qubic** | Genesis Token timestamp mod 27 = 0 | On-chain |
+| **Qubic** | Computor count 676 = 26² | Architecture spec |
 
 ### Time-Lock Predictions
 

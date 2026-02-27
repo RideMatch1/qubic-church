@@ -18,12 +18,12 @@ const creeds = [
 
 export function ChurchCreed() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
     <section ref={ref} className="relative w-full py-28 md:py-36 overflow-hidden">
       {/* Decorative section number */}
-      <div aria-hidden="true" className="absolute top-16 left-8 md:left-16 text-[120px] md:text-[200px] font-black text-white/[0.02] leading-none select-none pointer-events-none font-mono">
+      <div aria-hidden="true" className="absolute top-16 left-8 md:left-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
         01
       </div>
 
@@ -54,8 +54,8 @@ export function ChurchCreed() {
                   isLast
                     ? 'text-white/90 font-medium mt-8'
                     : i >= creeds.length - 2
-                    ? 'text-white/50'
-                    : 'text-white/30'
+                    ? 'text-white/55'
+                    : 'text-white/35'
                 }`}
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}

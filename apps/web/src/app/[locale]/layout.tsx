@@ -8,14 +8,13 @@ import { getObjectValueByLocale } from '@/lib/opendocs/utils/locale'
 import type { LocaleOptions } from '@/lib/opendocs/types/i18n'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SiteFooter } from '@/components/site-footer'
-import { SiteHeader } from '@/components/site-header'
 import { EasterEggProvider } from '@/components/church/easter-eggs/EasterEggProvider'
 import { TreasureHuntProvider } from '@/components/church/easter-eggs/TreasureHuntProvider'
 import { CosmicWrapper } from '@/components/church/backgrounds/CosmicWrapper'
+import { GlobalNavTrigger } from '@/components/church/navigation'
 import { defaultLocale } from '@/config/i18n'
 import { siteConfig } from '@/config/site'
-import { HeaderVisibility } from '@/components/HeaderVisibility'
-import { getSansFont, fontHeading, fontChalk, fontHandodle, fontDisplay } from '@/lib/fonts'
+import { getSansFont, fontHeading, fontChalk, fontHandodle, fontDisplay, fontCrayon } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 
 export async function generateMetadata(props: {
@@ -48,7 +47,7 @@ export async function generateMetadata(props: {
       'Ternary Computing',
       'Neural Network',
       'Qubic Mining',
-      'Genesis Token',
+      'Qubic Giveaway',
       'Web3',
       'Cryptocurrency',
       'Open Source Research',
@@ -139,7 +138,8 @@ export default async function RootLayout(props: {
           fontHeading.variable,
           fontChalk.variable,
           fontHandodle.variable,
-          fontDisplay.variable
+          fontDisplay.variable,
+          fontCrayon.variable
         )}
       >
         <NextIntlClientProvider
@@ -165,9 +165,7 @@ export default async function RootLayout(props: {
                     }}
                   />
                   <div className="relative z-10 flex min-h-screen flex-col">
-                    <HeaderVisibility>
-                      <SiteHeader />
-                    </HeaderVisibility>
+                    <GlobalNavTrigger />
 
                     <main className="flex-1">{children}</main>
 
