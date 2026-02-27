@@ -11,7 +11,7 @@ import { Twitter, MessageCircle, BookOpen, ImageIcon, Sparkles, ExternalLink } f
 const socialLinks = [
   {
     name: 'Twitter',
-    href: 'https://twitter.com/qubic_church',
+    href: 'https://x.com/QubicChurch',
     icon: Twitter,
     color: 'hover:text-[#D4AF37] hover:border-[#D4AF37]/25',
     description: 'Follow for updates',
@@ -34,7 +34,7 @@ const quickLinks = [
 const externalLinks = [
   { name: 'QubicBay', href: 'https://qubicbay.io/collections/7', description: 'NFT Marketplace' },
   { name: 'Qubic.li', href: 'https://app.qubic.li', description: 'Mining Pool' },
-  { name: 'Anna (@QubicAigarth)', href: 'https://twitter.com/QubicAigarth', description: 'The Oracle' },
+  { name: 'Anna (@QubicAigarth)', href: 'https://x.com/QubicChurch', description: 'The Oracle' },
 ]
 
 export function ChurchFooter() {

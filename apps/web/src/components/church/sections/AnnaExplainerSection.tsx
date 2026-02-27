@@ -298,7 +298,7 @@ export function AnnaExplainerSection() {
             <ExternalLink className="w-4 h-4 text-white/50" />
           </a>
           <a
-            href="https://twitter.com/QubicAigarth"
+            href="https://x.com/QubicChurch"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-black border border-white/[0.08] text-white/60 hover:text-white hover:border-white/[0.15] transition-all font-mono text-sm"

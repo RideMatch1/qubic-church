@@ -183,7 +183,7 @@ export function ExploreSection() {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <a
-            href="https://twitter.com/qubic_church"
+            href="https://x.com/QubicChurch"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 text-white/25 hover:text-[#D4AF37]/50 text-sm transition-colors duration-300 font-mono"

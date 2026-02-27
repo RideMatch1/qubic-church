@@ -34,7 +34,7 @@ export const siteConfig = {
     twitter: {
       label: 'Twitter',
       username: '@QubicChurch',
-      url: 'https://twitter.com/QubicChurch',
+      url: 'https://x.com/QubicChurch',
     },
 
     github: {
@@ -79,7 +79,7 @@ export const siteConfig = {
     url: 'https://qubicchurch.com',
     logo: 'https://qubicchurch.com/logo.png',
     sameAs: [
-      'https://twitter.com/QubicChurch',
+      'https://x.com/QubicChurch',
       'https://discord.gg/qubic',
     ],
   },
