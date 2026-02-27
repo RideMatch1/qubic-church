@@ -141,9 +141,9 @@ export function GalaxyHeroClient() {
       </motion.h1>
 
       {/* 5. Left side: Quote */}
-      <div className="absolute left-6 md:left-12 lg:left-16 top-1/2 -translate-y-1/2 z-20 max-w-[55%] md:max-w-[42%]">
+      <div className="absolute left-6 md:left-12 lg:left-16 2xl:left-24 top-1/2 -translate-y-1/2 z-20 max-w-[55%] md:max-w-[42%] 2xl:max-w-[38%]">
         <motion.blockquote
-          className="text-white text-lg md:text-2xl lg:text-3xl xl:text-4xl
+          className="text-white text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl
                      font-bold leading-[1.15] tracking-tight"
           style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}
           initial={{ opacity: 0, x: -30 }}
@@ -238,7 +238,7 @@ export function GalaxyHeroClient() {
 
       {/* 7. Bottom-left: Countdown */}
       <motion.div
-        className="absolute bottom-6 md:bottom-8 left-6 md:left-12 lg:left-16 z-30"
+        className="absolute bottom-6 md:bottom-8 left-6 md:left-12 lg:left-16 2xl:left-24 z-30"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.8 }}
@@ -246,7 +246,7 @@ export function GalaxyHeroClient() {
         <div className="text-[#D4AF37]/30 text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-2 font-mono">
           // The Awakening
         </div>
-        <div className="text-white text-2xl md:text-4xl lg:text-5xl font-mono font-bold tracking-wider tabular-nums">
+        <div className="text-white text-2xl md:text-4xl lg:text-5xl 2xl:text-6xl font-mono font-bold tracking-wider tabular-nums">
           {String(countdown.days).padStart(3, '0')}
           <span className="text-[#D4AF37]/20 mx-0.5">:</span>
           {String(countdown.hours).padStart(2, '0')}

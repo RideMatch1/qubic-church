@@ -27,7 +27,7 @@ export function ChurchCreed() {
         01
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 max-w-3xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-3xl 2xl:max-w-4xl">
         {/* HUD brackets top */}
         <div className="flex items-center justify-center mb-10">
           <motion.div

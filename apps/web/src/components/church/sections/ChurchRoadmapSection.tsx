@@ -183,7 +183,7 @@ export function ChurchRoadmapSection() {
         06
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-6xl 2xl:max-w-7xl">
         {/* Header */}
         <motion.div
           className="text-center mb-16"

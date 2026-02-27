@@ -247,6 +247,22 @@
   }
 }
 
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    max-width: 1920px;
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+}
+
 @media (max-width: 640px) {
   .container {
     padding-right: 1rem;

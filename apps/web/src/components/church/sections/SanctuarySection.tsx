@@ -122,7 +122,7 @@ export function SanctuarySection() {
       ref={sectionRef}
       className="relative w-full py-28 md:py-36 overflow-hidden"
     >
-      <div className="relative z-10 container mx-auto px-6 max-w-6xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-6xl 2xl:max-w-7xl">
         {/* Decorative section number */}
         <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
           03

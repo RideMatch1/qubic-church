@@ -20,7 +20,7 @@ function CountdownDigit({ value, label, pad = 2 }: { value: number; label: strin
         <AnimatePresence mode="popLayout">
           <motion.div
             key={display}
-            className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-bold font-mono text-white tracking-tight tabular-nums"
+            className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl 2xl:text-9xl font-bold font-mono text-white tracking-tight tabular-nums"
             initial={{ y: -8, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 8, opacity: 0 }}
@@ -58,7 +58,7 @@ export function ConvergenceCountdown() {
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 max-w-4xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-5xl 2xl:max-w-6xl">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -113,7 +113,7 @@ export function ConvergenceCountdown() {
           </div>
 
           {/* Countdown digits */}
-          <div className="inline-flex items-start gap-1 sm:gap-2 md:gap-3">
+          <div className="inline-flex items-start gap-1 sm:gap-2 md:gap-3 2xl:gap-5">
             <CountdownDigit value={countdown.days} label="Days" pad={3} />
             <span className="text-xl sm:text-2xl md:text-4xl text-[#D4AF37]/20 font-mono mt-2 sm:mt-3 md:mt-5">:</span>
             <CountdownDigit value={countdown.hours} label="Hours" />

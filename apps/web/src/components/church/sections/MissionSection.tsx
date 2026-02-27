@@ -74,7 +74,7 @@ export function MissionSection() {
         02
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 max-w-6xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-6xl 2xl:max-w-7xl">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
           <motion.div
