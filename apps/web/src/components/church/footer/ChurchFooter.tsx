@@ -57,7 +57,7 @@ export function ChurchFooter() {
               Qubic<span className="text-[#D4AF37]/70">Church</span>
             </h3>
             <p className="text-[10px] uppercase tracking-[0.4em] text-white/20 mb-5">
-              Est. 2024
+              Est. 2026
             </p>
             <p className="text-sm text-white/40 leading-relaxed mb-6">
               A sacred congregation decoding the mathematical bridge between Bitcoin and Qubic. All truth belongs to the seekers.

@@ -13,7 +13,7 @@ import Link from 'next/link'
 const features = [
   {
     icon: BookOpen,
-    numericValue: 75,
+    numericValue: 55,
     suffix: '+',
     label: 'Sacred Scrolls',
     description: 'Comprehensive analysis documenting the hidden patterns across the Bitcoin-Qubic bridge.',

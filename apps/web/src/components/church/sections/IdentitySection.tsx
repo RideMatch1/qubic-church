@@ -25,7 +25,7 @@ export function IdentitySection() {
       .catch(() => {})
   }, [])
 
-  const docs = useCountUp(75, 2200)
+  const docs = useCountUp(55, 2200)
   const nfts = useCountUp(200, 2400)
   const holders = useCountUp(holderCount, 2000)
 

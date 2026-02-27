@@ -353,7 +353,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
           {/* Timeline events */}
           {TIMELINE_EVENTS.map((event, idx) => {
             const yearsSinceGenesis = event.date.getFullYear() - 2009
-            const position = (yearsSinceGenesis / 15) * 100 // 2009-2024 = 15 years
+            const position = (yearsSinceGenesis / 17) * 100 // 2009-2026 = 17 years
 
             return (
               <div
