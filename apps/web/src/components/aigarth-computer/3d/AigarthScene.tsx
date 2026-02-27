@@ -89,7 +89,7 @@ function NeuralCircle({
         size={1}
         speed={0.3}
         opacity={0.2}
-        color="#06B6D4"
+        color="#D4AF37"
       />
 
       {/* Synapses */}
@@ -115,17 +115,17 @@ function NeuralCircle({
       {/* Central energy indicator */}
       <mesh>
         <sphereGeometry args={[0.3, 32, 32]} />
-        <meshBasicMaterial color="#06B6D4" transparent opacity={0.1} />
+        <meshBasicMaterial color="#D4AF37" transparent opacity={0.1} />
       </mesh>
 
       {/* Ring indicators */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <ringGeometry args={[2.4, 2.6, 64]} />
-        <meshBasicMaterial color="#06B6D4" transparent opacity={0.1} side={2} />
+        <meshBasicMaterial color="#D4AF37" transparent opacity={0.1} side={2} />
       </mesh>
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <ringGeometry args={[1.7, 1.9, 64]} />
-        <meshBasicMaterial color="#A855F7" transparent opacity={0.1} side={2} />
+        <meshBasicMaterial color="#D4AF37" transparent opacity={0.06} side={2} />
       </mesh>
     </group>
   )
@@ -135,7 +135,7 @@ function LoadingFallback() {
   return (
     <mesh>
       <boxGeometry args={[0.5, 0.5, 0.5]} />
-      <meshBasicMaterial color="#06B6D4" wireframe />
+      <meshBasicMaterial color="#D4AF37" wireframe />
     </mesh>
   )
 }
@@ -204,8 +204,8 @@ export function AigarthScene({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full bg-black rounded-lg overflow-hidden border border-gray-800/50 transition-all duration-300 ${
-        isFullscreen ? 'h-screen rounded-none' : 'h-[400px]'
+      className={`relative w-full bg-black overflow-hidden border border-white/[0.04] transition-all duration-300 ${
+        isFullscreen ? 'h-screen' : 'h-[400px]'
       }`}
     >
       {/* 3D Canvas */}
@@ -238,8 +238,8 @@ export function AigarthScene({
         {/* Lighting */}
         <ambientLight intensity={0.4} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
-        <pointLight position={[5, 5, 5]} intensity={0.6} color="#06B6D4" decay={2} />
-        <pointLight position={[-5, -5, -5]} intensity={0.4} color="#A855F7" decay={2} />
+        <pointLight position={[5, 5, 5]} intensity={0.6} color="#D4AF37" decay={2} />
+        <pointLight position={[-5, -5, -5]} intensity={0.4} color="#D4AF37" decay={2} />
 
         {/* Background stars */}
         <Stars
@@ -283,20 +283,20 @@ export function AigarthScene({
       <div className="absolute inset-0 pointer-events-none">
         {/* Top Left - Status */}
         <div className="absolute top-3 left-3">
-          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 pointer-events-auto">
+          <div className="bg-black/70 backdrop-blur-md border border-white/[0.08] px-3 py-2 pointer-events-auto">
             <div className="flex items-center gap-4 text-xs">
               <div className="flex items-center gap-2">
                 <div
-                  className={`w-2 h-2 rounded-full ${
-                    isProcessing ? 'bg-cyan-500 animate-pulse' : 'bg-gray-500'
+                  className={`w-2 h-2 ${
+                    isProcessing ? 'bg-[#D4AF37] animate-pulse' : 'bg-zinc-500'
                   }`}
                 />
-                <span className="text-gray-400">
+                <span className="text-zinc-400">
                   {isProcessing ? `Tick ${tick}` : 'Ready'}
                 </span>
               </div>
-              <div className="text-gray-500">|</div>
-              <div className={`font-mono ${energy > 0 ? 'text-green-400' : energy < 0 ? 'text-red-400' : 'text-gray-400'}`}>
+              <div className="text-zinc-600">|</div>
+              <div className={`font-mono ${energy > 0 ? 'text-[#D4AF37]' : energy < 0 ? 'text-red-400' : 'text-zinc-400'}`}>
                 E: {energy > 0 ? '+' : ''}{energy}
               </div>
             </div>
@@ -305,11 +305,11 @@ export function AigarthScene({
 
         {/* Top Right - Controls */}
         <div className="absolute top-3 right-3 flex gap-2 pointer-events-auto">
-          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-1 flex gap-1">
+          <div className="bg-black/70 backdrop-blur-md border border-white/[0.08] p-1 flex gap-1">
             <Button
               variant="ghost"
               size="icon"
-              className="h-7 w-7 text-white/70 hover:text-white hover:bg-white/10"
+              className="h-7 w-7 text-white/70 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
               onClick={() => setShowSynapses((s) => !s)}
               title={showSynapses ? 'Hide synapses' : 'Show synapses'}
             >
@@ -318,7 +318,7 @@ export function AigarthScene({
             <Button
               variant="ghost"
               size="icon"
-              className="h-7 w-7 text-white/70 hover:text-white hover:bg-white/10"
+              className="h-7 w-7 text-white/70 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
               onClick={resetCamera}
               title="Reset camera"
             >
@@ -327,7 +327,7 @@ export function AigarthScene({
             <Button
               variant="ghost"
               size="icon"
-              className="h-7 w-7 text-white/70 hover:text-white hover:bg-white/10"
+              className="h-7 w-7 text-white/70 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
               onClick={toggleFullscreen}
               title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
             >
@@ -336,7 +336,7 @@ export function AigarthScene({
           </div>
 
           {/* Camera presets */}
-          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-1 flex gap-1">
+          <div className="bg-black/70 backdrop-blur-md border border-white/[0.08] p-1 flex gap-1">
             {Object.entries(CAMERA_PRESETS).map(([key, preset]) => (
               <Button
                 key={key}
@@ -344,8 +344,8 @@ export function AigarthScene({
                 size="sm"
                 className={`h-7 px-2 text-xs ${
                   cameraPreset === key
-                    ? 'bg-white/20 text-white'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                    ? 'bg-[#D4AF37]/20 text-[#D4AF37]'
+                    : 'text-white/70 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10'
                 }`}
                 onClick={() => setCameraPreset(key as keyof typeof CAMERA_PRESETS)}
               >
@@ -357,29 +357,29 @@ export function AigarthScene({
 
         {/* Bottom - Legend */}
         <div className="absolute bottom-3 left-3">
-          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 pointer-events-auto">
+          <div className="bg-black/70 backdrop-blur-md border border-white/[0.08] px-3 py-2 pointer-events-auto">
             <div className="flex items-center gap-4 text-[10px]">
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-cyan-500" />
-                <span className="text-gray-400">Input (0-63)</span>
+                <div className="w-2 h-2 bg-[#D4AF37]" />
+                <span className="text-zinc-400">Input (0-63)</span>
               </div>
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-purple-500" />
-                <span className="text-gray-400">Output (64-127)</span>
+                <div className="w-2 h-2 bg-[#D4AF37]/50" />
+                <span className="text-zinc-400">Output (64-127)</span>
               </div>
             </div>
             <div className="flex items-center gap-4 mt-1 text-[10px]">
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-orange-500" />
-                <span className="text-gray-400">+1</span>
+                <div className="w-2 h-2 bg-[#D4AF37]" />
+                <span className="text-zinc-400">+1</span>
               </div>
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-gray-500" />
-                <span className="text-gray-400">0</span>
+                <div className="w-2 h-2 bg-zinc-500" />
+                <span className="text-zinc-400">0</span>
               </div>
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-blue-500" />
-                <span className="text-gray-400">-1</span>
+                <div className="w-2 h-2 bg-red-500" />
+                <span className="text-zinc-400">-1</span>
               </div>
             </div>
           </div>
@@ -388,15 +388,15 @@ export function AigarthScene({
         {/* Selected neuron info */}
         {selectedNeuron !== null && (
           <div className="absolute bottom-3 right-3">
-            <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 pointer-events-auto">
+            <div className="bg-black/70 backdrop-blur-md border border-white/[0.08] px-3 py-2 pointer-events-auto">
               <div className="text-xs">
-                <div className="text-gray-400">
+                <div className="text-zinc-400">
                   Neuron #{selectedNeuron}
                 </div>
                 <div className="font-mono text-white">
                   State: {displayStates[selectedNeuron]}
                 </div>
-                <div className="text-gray-500">
+                <div className="text-zinc-500">
                   {selectedNeuron < numInputs ? 'Input' : 'Output'}
                 </div>
               </div>
@@ -407,9 +407,9 @@ export function AigarthScene({
 
       {/* Processing indicator */}
       {isProcessing && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-900">
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#0a0a0a]">
           <div
-            className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-100"
+            className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/50 transition-all duration-100"
             style={{ width: `${Math.min((tick / 1000) * 100, 100)}%` }}
           />
         </div>

@@ -88,18 +88,18 @@ export function GenesisConnectionViz() {
 
   const getColorClasses = (color: string) => {
     switch (color) {
-      case 'orange': return { bg: 'bg-orange-500', text: 'text-orange-400', border: 'border-orange-500' }
-      case 'purple': return { bg: 'bg-purple-500', text: 'text-purple-400', border: 'border-purple-500' }
-      case 'green': return { bg: 'bg-green-500', text: 'text-green-400', border: 'border-green-500' }
-      case 'blue': return { bg: 'bg-blue-500', text: 'text-blue-400', border: 'border-blue-500' }
+      case 'orange': return { bg: 'bg-orange-500', text: 'text-[#D4AF37]', border: 'border-orange-500' }
+      case 'purple': return { bg: 'bg-purple-500', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]' }
+      case 'green': return { bg: 'bg-[#D4AF37]', text: 'text-[#D4AF37]', border: 'border-green-500' }
+      case 'blue': return { bg: 'bg-[#D4AF37]', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]' }
       default: return { bg: 'bg-gray-500', text: 'text-gray-400', border: 'border-gray-500' }
     }
   }
 
   return (
-    <div className="p-6 rounded-xl bg-gradient-to-b from-indigo-950/30 to-indigo-950/10 border border-indigo-900/50">
+    <div className="p-6 bg-gradient-to-b from-indigo-950/30 to-indigo-950/10 border border-white/[0.04]">
       <div className="flex items-center gap-3 mb-6">
-        <Link2 className="h-6 w-6 text-indigo-400" />
+        <Link2 className="h-6 w-6 text-[#D4AF37]" />
         <h3 className="text-xl font-semibold">Genesis Connection Proof</h3>
       </div>
 
@@ -113,10 +113,10 @@ export function GenesisConnectionViz() {
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {/* Bitcoin Side */}
-          <div className="p-4 rounded-xl bg-gradient-to-b from-orange-950/40 to-orange-950/20 border border-orange-900/50">
+          <div className="p-4 bg-gradient-to-b from-[#050505] to-[#050505]/80 border border-white/[0.04]">
             <div className="flex items-center gap-2 mb-4">
               <BitcoinLogoSVG size={24} />
-              <h4 className="font-semibold text-orange-400">Bitcoin Genesis</h4>
+              <h4 className="font-semibold text-[#D4AF37]">Bitcoin Genesis</h4>
             </div>
             <div className="space-y-3">
               {bitcoinData.map((item, idx) => (
@@ -125,14 +125,14 @@ export function GenesisConnectionViz() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`p-3 rounded-lg bg-black/30 transition-all ${
+                  className={`p-3 bg-black/30 transition-all ${
                     connections.some(c => c.bitcoinValue.includes(item.value.split(' ')[0] || '') && activeConnection === c.id)
                       ? 'ring-2 ring-orange-400'
                       : ''
                   }`}
                 >
                   <div className="text-xs text-muted-foreground">{item.label}</div>
-                  <div className="font-mono font-bold text-orange-400">{item.value}</div>
+                  <div className="font-mono font-bold text-[#D4AF37]">{item.value}</div>
                   {item.subtext && (
                     <div className="text-xs text-muted-foreground mt-1">{item.subtext}</div>
                   )}
@@ -142,10 +142,10 @@ export function GenesisConnectionViz() {
           </div>
 
           {/* Qubic Side */}
-          <div className="p-4 rounded-xl bg-gradient-to-b from-purple-950/40 to-purple-950/20 border border-purple-900/50">
+          <div className="p-4 bg-gradient-to-b from-[#050505] to-[#050505]/80 border border-white/[0.04]">
             <div className="flex items-center gap-2 mb-4">
               <img src="/logos/qubic.png" alt="Qubic" className="w-6 h-6" />
-              <h4 className="font-semibold text-purple-400">Qubic Network</h4>
+              <h4 className="font-semibold text-[#D4AF37]">Qubic Network</h4>
             </div>
             <div className="space-y-3">
               {qubicData.map((item, idx) => (
@@ -154,14 +154,14 @@ export function GenesisConnectionViz() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`p-3 rounded-lg bg-black/30 transition-all ${
+                  className={`p-3 bg-black/30 transition-all ${
                     connections.some(c => c.qubicValue.includes(item.value) && activeConnection === c.id)
                       ? 'ring-2 ring-purple-400'
                       : ''
                   }`}
                 >
                   <div className="text-xs text-muted-foreground">{item.label}</div>
-                  <div className="font-mono font-bold text-purple-400">{item.value}</div>
+                  <div className="font-mono font-bold text-[#D4AF37]">{item.value}</div>
                   {item.subtext && (
                     <div className="text-xs text-muted-foreground mt-1">{item.subtext}</div>
                   )}
@@ -172,7 +172,7 @@ export function GenesisConnectionViz() {
         </div>
 
         {/* Connection Lines Legend */}
-        <div className="mt-6 p-4 bg-black/30 rounded-lg">
+        <div className="mt-6 p-4 bg-black/30">
           <h4 className="text-sm font-medium mb-4">Mathematical Connections (click to explore):</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {connections.map((conn) => {
@@ -185,7 +185,7 @@ export function GenesisConnectionViz() {
                   onMouseLeave={() => setActiveConnection(null)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`p-3 rounded-lg bg-black/30 border ${colors.border}/30 hover:${colors.border}/60 transition-all text-left`}
+                  className={`p-3 bg-black/30 border ${colors.border}/30 hover:${colors.border}/60 transition-all text-left`}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className={`w-3 h-3 rounded-full ${colors.bg}`} />
@@ -218,7 +218,7 @@ export function GenesisConnectionViz() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-card border border-border rounded-xl p-6 max-w-lg w-full"
+            className="bg-card border border-border p-6 max-w-lg w-full"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
@@ -234,15 +234,15 @@ export function GenesisConnectionViz() {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-center gap-4 p-4 bg-black/30 rounded-lg">
+              <div className="flex items-center justify-center gap-4 p-4 bg-black/30">
                 <div className="text-center">
                   <div className="text-xs text-muted-foreground mb-1">Bitcoin</div>
-                  <div className="text-2xl font-mono font-bold text-orange-400">{modalContent.bitcoinValue}</div>
+                  <div className="text-2xl font-mono font-bold text-[#D4AF37]">{modalContent.bitcoinValue}</div>
                 </div>
                 <div className="text-2xl text-muted-foreground">=</div>
                 <div className="text-center">
                   <div className="text-xs text-muted-foreground mb-1">Qubic</div>
-                  <div className="text-2xl font-mono font-bold text-purple-400">{modalContent.qubicValue}</div>
+                  <div className="text-2xl font-mono font-bold text-[#D4AF37]">{modalContent.qubicValue}</div>
                 </div>
               </div>
 
@@ -250,8 +250,8 @@ export function GenesisConnectionViz() {
                 {modalContent.explanation}
               </p>
 
-              <div className="p-3 bg-green-950/30 border border-green-900/30 rounded-lg">
-                <div className="text-xs text-green-400 font-medium mb-1">Why This Matters</div>
+              <div className="p-3 bg-green-950/30 border border-green-900/30">
+                <div className="text-xs text-[#D4AF37] font-medium mb-1">Why This Matters</div>
                 <p className="text-xs text-muted-foreground">
                   This mathematical connection demonstrates intentional design linking Bitcoin and Qubic.
                   The probability of these values aligning by chance is less than 0.01%.
@@ -263,9 +263,9 @@ export function GenesisConnectionViz() {
       )}
 
       {/* Summary */}
-      <div className="mt-6 p-4 bg-indigo-950/30 border border-indigo-900/30 rounded-lg">
+      <div className="mt-6 p-4 bg-[#050505] border border-indigo-900/30">
         <div className="text-sm">
-          <span className="text-indigo-400 font-medium">Summary: </span>
+          <span className="text-[#D4AF37] font-medium">Summary: </span>
           <span className="text-muted-foreground">
             The Bitcoin Genesis Block properties (43 zero bits, range [19-58], timestamp 18:15:05) are mathematically
             encoded in Qubic through the ARB address (817 = 19 × 43, AFZJ = 43) and the March 3, 2026 time-lock.

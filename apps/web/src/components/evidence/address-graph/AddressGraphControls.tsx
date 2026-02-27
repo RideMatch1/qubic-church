@@ -149,9 +149,9 @@ export function AddressGraphControls({
               variant="ghost"
               size="icon"
               onClick={onPlayToggle}
-              className={`h-10 w-10 rounded-full ${
+              className={`h-10 w-10 ${
                 isPlaying
-                  ? 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'
+                  ? 'bg-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/30'
                   : 'bg-white/10 text-white hover:bg-white/20'
               }`}
             >
@@ -191,7 +191,7 @@ export function AddressGraphControls({
               </Button>
 
               {showSpeedMenu && (
-                <div className="absolute bottom-full left-0 mb-2 py-1 bg-gray-900 border border-white/10 rounded-lg shadow-xl min-w-[80px]">
+                <div className="absolute bottom-full left-0 mb-2 py-1 bg-gray-900 border border-white/[0.04] shadow-xl min-w-[80px]">
                   {SPEED_OPTIONS.map((speed) => (
                     <button
                       key={speed}
@@ -200,7 +200,7 @@ export function AddressGraphControls({
                         setShowSpeedMenu(false)
                       }}
                       className={`w-full px-3 py-1.5 text-left text-xs hover:bg-white/10 transition-colors ${
-                        speed === playbackSpeed ? 'text-orange-400' : 'text-gray-400'
+                        speed === playbackSpeed ? 'text-[#D4AF37]' : 'text-gray-400'
                       }`}
                     >
                       {speed}x
@@ -222,16 +222,16 @@ export function AddressGraphControls({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleSearchKeyDown}
                 placeholder="Search address, pubkey, or seed..."
-                className={`w-full h-9 pl-10 pr-10 bg-white/5 border rounded-lg text-sm text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 transition-colors ${
+                className={`w-full h-9 pl-10 pr-10 bg-white/5 border text-sm text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 transition-colors ${
                   searchError
                     ? 'border-red-500/50 focus:ring-red-500/50'
-                    : 'border-white/10 focus:ring-orange-500/50'
+                    : 'border-white/[0.04] focus:ring-[#D4AF37]/50'
                 }`}
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 hover:bg-white/10 rounded"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 hover:bg-white/10"
                 >
                   <X className="w-3.5 h-3.5 text-gray-500" />
                 </button>
@@ -261,7 +261,7 @@ export function AddressGraphControls({
               onClick={onEdgesToggle}
               className={`h-8 px-3 gap-2 ${
                 showEdges
-                  ? 'text-blue-400 bg-blue-500/10 hover:bg-blue-500/20'
+                  ? 'text-[#D4AF37] bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20'
                   : 'text-gray-500 hover:text-white'
               }`}
             >
@@ -270,8 +270,8 @@ export function AddressGraphControls({
             </Button>
 
             {/* View mode indicator */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-lg">
-              <GitBranch className="w-3.5 h-3.5 text-purple-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5">
+              <GitBranch className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span className="text-xs text-gray-400">Force Layout</span>
             </div>
           </div>

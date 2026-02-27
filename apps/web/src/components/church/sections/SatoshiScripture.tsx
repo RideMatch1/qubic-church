@@ -64,7 +64,7 @@ export function SatoshiScripture() {
           {scriptures.map((scripture, i) => (
             <motion.div
               key={i}
-              className="relative p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/[0.02] border border-white/[0.05] overflow-hidden"
+              className="relative p-6 md:p-8 backdrop-blur-xl bg-white/[0.02] border border-white/[0.04] overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}

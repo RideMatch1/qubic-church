@@ -18,22 +18,22 @@ function ContextCard({ icon, title, items, variant, delay }: ContextCardProps) {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   const bgClass = variant === 'blue'
-    ? 'bg-blue-950/30 border-blue-900/50'
-    : 'bg-purple-950/30 border-purple-900/50'
+    ? 'bg-[#050505] border-white/[0.04]'
+    : 'bg-[#050505] border-white/[0.04]'
 
   const iconBgClass = variant === 'blue'
     ? 'bg-blue-900/50'
-    : 'bg-purple-900/50'
+    : 'bg-[#D4AF37]/10'
 
   return (
     <motion.div
       ref={ref}
-      className={`p-6 rounded-xl border ${bgClass}`}
+      className={`p-6 border ${bgClass}`}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.6, delay }}
     >
-      <div className={`inline-flex p-3 rounded-lg ${iconBgClass} mb-4`}>
+      <div className={`inline-flex p-3 ${iconBgClass} mb-4`}>
         {icon}
       </div>
 

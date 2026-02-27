@@ -30,12 +30,12 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl max-h-[calc(100vh-32px)] md:max-h-[85vh] bg-background border border-border rounded-2xl shadow-2xl z-[101] flex flex-col overflow-hidden"
+            className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl max-h-[calc(100vh-32px)] md:max-h-[85vh] bg-background border border-border shadow-2xl z-[101] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border bg-gradient-to-r from-orange-500/10 via-gray-500/10 to-blue-500/10">
+            <div className="flex items-center justify-between p-6 border-b border-border bg-gradient-to-r from-[#D4AF37]/10 via-gray-500/10 to-[#D4AF37]/10">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-gradient-to-br from-orange-500 via-gray-500 to-blue-500">
+                <div className="p-2 bg-gradient-to-br from-[#D4AF37] via-gray-500 to-[#D4AF37]">
                   <Brain className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -66,7 +66,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={Brain}
                 title="What is Qortex?"
-                color="from-purple-500 to-blue-500"
+                color="from-[#D4AF37] to-[#D4AF37]"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Qortex visualizes the exact algorithm from Qubic's mining software.
@@ -84,7 +84,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={Cpu}
                 title="Evolutionary Training"
-                color="from-cyan-500 to-emerald-500"
+                color="from-[#D4AF37] to-[#D4AF37]"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Qubic mining doesn't solve hash puzzles. Instead, miners train artificial
@@ -101,11 +101,11 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                   <ConstantCard label="Threshold" value="80%" desc="Solution accuracy" />
                 </div>
 
-                <div className="p-4 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
                   <div className="flex items-start gap-3">
-                    <Cpu className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+                    <Cpu className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium mb-1 text-cyan-400">Proof of Useful Work</p>
+                      <p className="font-medium mb-1 text-[#D4AF37]">Proof of Useful Work</p>
                       <p className="text-sm text-muted-foreground">
                         Qubic miners don't waste energy on meaningless hashes. They train AI to perform
                         useful tasks like addition, pattern recognition, and eventually more complex computations.
@@ -119,7 +119,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={Binary}
                 title="Exact Ternary Semantics"
-                color="from-orange-500 to-amber-500"
+                color="from-[#D4AF37] to-[#D4AF37]"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Unlike continuous neural networks, Qubic uses <strong className="text-foreground">discrete ternary values</strong>.
@@ -127,21 +127,21 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                 </p>
 
                 {/* Code snippet */}
-                <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs overflow-x-auto mb-4">
+                <div className="bg-gray-900 p-4 font-mono text-xs overflow-x-auto mb-4">
                   <div className="text-gray-500 mb-2">// From qiner: score_common.h</div>
                   <div className="text-gray-500 mb-1">// Binary to ternary conversion:</div>
-                  <div className="text-cyan-400">template &lt;unsigned long long bitCount&gt;</div>
-                  <div className="text-green-400">void <span className="text-yellow-400">toTenaryBits</span>(long long A, char* bits) {'{'}</div>
+                  <div className="text-[#D4AF37]">template &lt;unsigned long long bitCount&gt;</div>
+                  <div className="text-[#D4AF37]">void <span className="text-[#D4AF37]">toTenaryBits</span>(long long A, char* bits) {'{'}</div>
                   <div className="pl-4 text-gray-300">for (unsigned long long i = 0; i &lt; bitCount; ++i) {'{'}</div>
                   <div className="pl-8 text-gray-300">long long bitValue = (A &gt;&gt; i) & 1;</div>
-                  <div className="pl-8 text-orange-400">bits[i] = (bitValue == 0) ? <span className="text-blue-400">-1</span> : bitValue;</div>
+                  <div className="pl-8 text-[#D4AF37]">bits[i] = (bitValue == 0) ? <span className="text-[#D4AF37]">-1</span> : bitValue;</div>
                   <div className="pl-4 text-gray-300">{'}'}</div>
-                  <div className="text-green-400">{'}'}</div>
+                  <div className="text-[#D4AF37]">{'}'}</div>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4 mb-4">
                   <StateCard
-                    color="bg-orange-500"
+                    color="bg-[#D4AF37]"
                     state="+1"
                     label="Excited"
                     description="Binary 1 → Ternary +1"
@@ -153,16 +153,16 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                     description="Intermediate state"
                   />
                   <StateCard
-                    color="bg-blue-500"
+                    color="bg-[#D4AF37]"
                     state="-1"
                     label="Inhibited"
                     description="Binary 0 → Ternary -1"
                   />
                 </div>
 
-                <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-amber-400">Key Insight:</strong> This is NOT a continuous neural network.
+                    <strong className="text-[#D4AF37]">Key Insight:</strong> This is NOT a continuous neural network.
                     There are no gradients, no backpropagation. Only discrete mutations that either help or don't.
                   </p>
                 </div>
@@ -172,15 +172,15 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={Activity}
                 title="Tick Simulation Mechanics"
-                color="from-purple-500 to-pink-500"
+                color="from-[#D4AF37] to-pink-500"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Each training cycle runs up to <strong className="text-foreground">120 ticks</strong> of neural simulation.
                   Every tick, signals propagate through the network following this formula:
                 </p>
 
-                <div className="bg-gray-900 rounded-lg p-4 mb-4">
-                  <div className="text-center font-mono text-lg text-cyan-400 mb-2">
+                <div className="bg-gray-900 p-4 mb-4">
+                  <div className="text-center font-mono text-lg text-[#D4AF37] mb-2">
                     new_value = clamp(Σ weight[i] × neighbor[i].value)
                   </div>
                   <div className="text-center text-xs text-gray-500">
@@ -205,7 +205,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={GitBranch}
                 title="Evolution Through Mutation"
-                color="from-green-500 to-emerald-500"
+                color="from-[#D4AF37] to-[#D4AF37]"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   This is the heart of Qubic's AI: <strong className="text-foreground">evolutionary learning</strong>.
@@ -217,31 +217,31 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                     number="1"
                     title="Random Selection"
                     desc="Pick a random synapse from the network"
-                    color="text-blue-400"
+                    color="text-[#D4AF37]"
                   />
                   <MutationStep
                     number="2"
                     title="Weight Mutation"
                     desc="Change weight by ±1 (randomly increase or decrease)"
-                    color="text-purple-400"
+                    color="text-[#D4AF37]"
                   />
                   <MutationStep
                     number="3"
                     title="Overflow Check"
                     desc="If |weight| > 1: INSERT new neuron (network grows!)"
-                    color="text-cyan-400"
+                    color="text-[#D4AF37]"
                   />
                   <MutationStep
                     number="4"
                     title="Score Evaluation"
                     desc="R = count of mismatched output bits vs expected"
-                    color="text-orange-400"
+                    color="text-[#D4AF37]"
                   />
                   <MutationStep
                     number="5"
                     title="Keep or Rollback"
                     desc="Keep mutation ONLY if R decreases (greedy optimization)"
-                    color="text-green-400"
+                    color="text-[#D4AF37]"
                   />
                   <MutationStep
                     number="6"
@@ -251,11 +251,11 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                   />
                 </div>
 
-                <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
                   <div className="flex items-start gap-3">
-                    <GitBranch className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                    <GitBranch className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium mb-1 text-green-400">Survival of the Fittest</p>
+                      <p className="font-medium mb-1 text-[#D4AF37]">Survival of the Fittest</p>
                       <p className="text-sm text-muted-foreground">
                         Only beneficial mutations survive. The network literally <em>evolves</em> toward
                         the solution through random exploration and selective pressure.
@@ -269,14 +269,14 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={Target}
                 title="The Score Function: R"
-                color="from-red-500 to-orange-500"
+                color="from-red-500 to-[#D4AF37]"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   The score <strong className="text-foreground">R</strong> measures how many output bits are wrong.
                   Lower R = better solution. A solution is found when accuracy reaches 80%.
                 </p>
 
-                <div className="bg-gray-900 rounded-lg p-4 mb-4">
+                <div className="bg-gray-900 p-4 mb-4">
                   <div className="font-mono text-center">
                     <div className="text-lg text-red-400 mb-1">
                       R = Σ (expected_output[i] ≠ computed_output[i])
@@ -288,15 +288,15 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4 mb-4">
-                  <div className="p-4 bg-card border border-border rounded-lg text-center">
+                  <div className="p-4 bg-card border border-border text-center">
                     <div className="text-3xl font-bold text-red-400 font-mono">R=0</div>
                     <div className="text-xs text-muted-foreground mt-1">Perfect solution</div>
                   </div>
-                  <div className="p-4 bg-card border border-border rounded-lg text-center">
-                    <div className="text-3xl font-bold text-yellow-400 font-mono">R&lt;20%</div>
+                  <div className="p-4 bg-card border border-border text-center">
+                    <div className="text-3xl font-bold text-[#D4AF37] font-mono">R&lt;20%</div>
                     <div className="text-xs text-muted-foreground mt-1">Solution found (≥80% accuracy)</div>
                   </div>
-                  <div className="p-4 bg-card border border-border rounded-lg text-center">
+                  <div className="p-4 bg-card border border-border text-center">
                     <div className="text-3xl font-bold text-gray-400 font-mono">R&gt;50%</div>
                     <div className="text-xs text-muted-foreground mt-1">Keep mutating</div>
                   </div>
@@ -312,7 +312,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               <Section
                 icon={Network}
                 title="Why Exactly 23,765 Neurons?"
-                color="from-blue-500 to-cyan-500"
+                color="from-[#D4AF37] to-[#D4AF37]"
               >
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   This isn't a random number. <strong className="text-foreground">23,765</strong> is
@@ -324,13 +324,13 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                     label="Qubic Seeds"
                     value="23,765"
                     description="From genesis computor file"
-                    color="text-blue-500"
+                    color="text-[#D4AF37]"
                   />
                   <StatsCard
                     label="Synapses"
                     value="188,452"
                     description="Verified K12 derivations"
-                    color="text-purple-500"
+                    color="text-[#D4AF37]"
                   />
                 </div>
 
@@ -341,7 +341,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
               </Section>
 
               {/* How to Explore */}
-              <div className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl">
+              <div className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
                 <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
                   <Zap className="w-5 h-5 text-primary" />
                   How to Explore Qortex
@@ -388,21 +388,21 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
                       href="https://github.com/qubic"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 rounded-lg transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 text-[#D4AF37] transition-colors"
                     >
                       <Code className="w-3 h-3" />
                       Qubic GitHub
                     </a>
                     <Link
                       href="/docs/results/aigarth-architecture"
-                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-primary/20 hover:bg-primary/30 text-primary rounded-lg transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-primary/20 hover:bg-primary/30 text-primary transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       Aigarth Architecture
                     </Link>
                     <Link
                       href="/docs/results/ternary-neural-network"
-                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-primary/20 hover:bg-primary/30 text-primary rounded-lg transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-primary/20 hover:bg-primary/30 text-primary transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       Ternary Network Docs
@@ -414,7 +414,7 @@ export function QortexInfoModal({ isOpen, onClose }: QortexInfoModalProps) {
 
             {/* Footer */}
             <div className="p-4 border-t border-border bg-muted/30 flex flex-col gap-2">
-              <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded text-xs text-blue-600 dark:text-blue-400">
+              <div className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs text-[#D4AF37] dark:text-[#D4AF37]">
                 <strong>Data Sources:</strong> Seeds are real Qubic identities derived from the Anna Matrix.
                 The network topology shown is a visualization model representing ternary neural network concepts.
               </div>
@@ -447,7 +447,7 @@ function Section({
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-3">
-        <div className={`p-2 rounded-lg bg-gradient-to-br ${color}`}>
+        <div className={`p-2 bg-gradient-to-br ${color}`}>
           {React.createElement(IconComponent, { className: 'w-5 h-5 text-white' })}
         </div>
         <h3 className="text-lg font-semibold">{title}</h3>
@@ -467,9 +467,9 @@ function ConstantCard({
   desc: string
 }) {
   return (
-    <div className="p-3 bg-card border border-border rounded-lg">
+    <div className="p-3 bg-card border border-border">
       <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">{label}</div>
-      <div className="text-xl font-bold font-mono text-cyan-400">{value}</div>
+      <div className="text-xl font-bold font-mono text-[#D4AF37]">{value}</div>
       <div className="text-[10px] text-muted-foreground mt-0.5">{desc}</div>
     </div>
   )
@@ -487,9 +487,9 @@ function StateCard({
   description: string
 }) {
   return (
-    <div className="p-4 bg-card border border-border rounded-lg">
+    <div className="p-4 bg-card border border-border">
       <div className="flex items-center gap-2 mb-2">
-        <div className={`w-6 h-6 rounded-full ${color} shadow-lg`} />
+        <div className={`w-6 h-6 ${color} shadow-lg`} />
         <span className="font-mono text-lg font-bold">{state}</span>
       </div>
       <div className="font-medium text-sm mb-1">{label}</div>
@@ -510,7 +510,7 @@ function StatsCard({
   color: string
 }) {
   return (
-    <div className="p-4 bg-card border border-border rounded-lg">
+    <div className="p-4 bg-card border border-border">
       <div className="text-xs text-muted-foreground mb-1">{label}</div>
       <div className={`text-3xl font-bold font-mono mb-1 ${color}`}>{value}</div>
       <div className="text-xs text-muted-foreground">{description}</div>
@@ -528,8 +528,8 @@ function StepCard({
   desc: string
 }) {
   return (
-    <div className="flex items-start gap-3 p-3 bg-card border border-border rounded-lg">
-      <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center text-xs shrink-0">
+    <div className="flex items-start gap-3 p-3 bg-card border border-border">
+      <div className="w-6 h-6 bg-[#D4AF37]/20 text-[#D4AF37] font-bold flex items-center justify-center text-xs shrink-0">
         {step}
       </div>
       <div className="flex-1">
@@ -553,7 +553,7 @@ function MutationStep({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <div className={`w-8 h-8 rounded-full bg-card border border-border ${color} font-bold flex items-center justify-center shrink-0 text-sm`}>
+      <div className={`w-8 h-8 bg-card border border-border ${color} font-bold flex items-center justify-center shrink-0 text-sm`}>
         {number}
       </div>
       <div className="flex-1 pt-1">

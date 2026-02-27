@@ -4,6 +4,7 @@
  * StarMap3D Component
  * Interactive 3D visualization of 200 Anna NFTs
  * Uses React Three Fiber for WebGL rendering
+ * Church HUD Design System: no rounded corners, gold accents, angular aesthetic
  */
 
 import { Canvas } from '@react-three/fiber'
@@ -19,16 +20,16 @@ interface StarProps {
 }
 
 /**
- * Get color based on NFT rarity
+ * Get color based on NFT rarity - gold hierarchy
  */
 function getRarityColor(rarity: NFTRarity): string {
   switch (rarity) {
     case 'legendary':
       return '#FFD700' // Gold
     case 'epic':
-      return '#9D4EDD' // Purple
+      return '#D4AF37' // Church gold
     case 'rare':
-      return '#4CC9F0' // Blue
+      return '#B8860B' // Dark gold
     case 'common':
       return '#F8F9FA' // White
   }
@@ -121,7 +122,7 @@ function Star({ nft, onClick }: StarProps) {
             transition: 'opacity 0.2s',
           }}
         >
-          <div className="bg-background/95 backdrop-blur-sm border border-border rounded-lg px-3 py-2 shadow-lg">
+          <div className="bg-[#050505]/95 backdrop-blur-sm border border-white/[0.04] px-3 py-2 shadow-lg">
             <div className="text-sm font-semibold text-foreground whitespace-nowrap">
               {nft.name}
             </div>
@@ -129,7 +130,7 @@ function Star({ nft, onClick }: StarProps) {
               {nft.title}
             </div>
             {nft.owner && (
-              <div className="text-xs text-green-500 mt-1 whitespace-nowrap">
+              <div className="text-xs text-[#D4AF37] mt-1 whitespace-nowrap">
                 ✓ Owned
               </div>
             )}
@@ -178,7 +179,7 @@ function LoadingFallback() {
   return (
     <Html center>
       <div className="flex items-center gap-2 text-foreground">
-        <div className="animate-spin h-5 w-5 border-2 border-primary border-t-transparent rounded-full" />
+        <div className="animate-spin h-5 w-5 border-2 border-[#D4AF37] border-t-transparent" />
         <span className="text-sm">Loading Star Map...</span>
       </div>
     </Html>

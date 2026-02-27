@@ -96,7 +96,7 @@ export function DataVersioning({ datasetName }: DataVersioningProps) {
     return (
       <div className="flex items-center justify-center h-[600px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-2 border-primary border-t-transparent animate-spin" />
           <p className="text-muted-foreground">Loading version data...</p>
         </div>
       </div>
@@ -108,7 +108,7 @@ export function DataVersioning({ datasetName }: DataVersioningProps) {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
+          <div className="p-2 bg-gradient-to-br from-[#D4AF37] to-[#D4AF37]">
             <GitBranch className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -121,7 +121,7 @@ export function DataVersioning({ datasetName }: DataVersioningProps) {
 
         {/* Security Status Alert */}
         {stats.suspicious.suspicious && (
-          <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+          <div className="p-4 bg-red-500/10 border border-red-500/30">
             <div className="flex items-start gap-3">
               <AlertOctagon className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
               <div>
@@ -150,30 +150,30 @@ export function DataVersioning({ datasetName }: DataVersioningProps) {
           label="Total Versions"
           value={stats.totalVersions.toLocaleString()}
           icon={GitBranch}
-          color="text-blue-500"
-          bgColor="bg-blue-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Audit Logs"
           value={stats.totalLogs.toLocaleString()}
           icon={FileText}
-          color="text-green-500"
-          bgColor="bg-green-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Backups"
           value={stats.backupCount.toLocaleString()}
           icon={HardDrive}
-          color="text-purple-500"
-          bgColor="bg-purple-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Security"
           value={stats.suspicious.suspicious ? 'WARNING' : 'SECURE'}
           icon={Shield}
-          color={stats.suspicious.suspicious ? 'text-red-500' : 'text-green-500'}
+          color={stats.suspicious.suspicious ? 'text-red-500' : 'text-[#D4AF37]'}
           bgColor={
-            stats.suspicious.suspicious ? 'bg-red-500/10' : 'bg-green-500/10'
+            stats.suspicious.suspicious ? 'bg-red-500/10' : 'bg-[#D4AF37]/10'
           }
         />
       </motion.div>
@@ -281,7 +281,7 @@ function OverviewTab({ stats, versions }: { stats: any; versions: DataVersion[] 
     <div className="space-y-6">
       {/* Latest Version */}
       {versions[0] && (
-        <Card className="p-6 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-blue-500/30">
+        <Card className="p-6 bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/10 border-[#D4AF37]/30">
           <div className="flex items-start justify-between mb-4">
             <div>
               <h4 className="font-semibold text-lg mb-1">Latest Version</h4>
@@ -289,7 +289,7 @@ function OverviewTab({ stats, versions }: { stats: any; versions: DataVersion[] 
                 {versions[0].datasetName} - v{versions[0].version}
               </p>
             </div>
-            <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full font-medium border border-blue-500/30">
+            <span className="px-3 py-1 bg-[#D4AF37]/20 text-[#D4AF37] text-xs font-medium border border-[#D4AF37]/30">
               CURRENT
             </span>
           </div>
@@ -311,13 +311,13 @@ function OverviewTab({ stats, versions }: { stats: any; versions: DataVersion[] 
               <div className="flex items-center gap-1">
                 {versions[0].verified ? (
                   <>
-                    <CheckCircle2 className="w-4 h-4 text-green-500" />
-                    <span className="text-sm text-green-400">Verified</span>
+                    <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
+                    <span className="text-sm text-[#D4AF37]">Verified</span>
                   </>
                 ) : (
                   <>
-                    <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                    <span className="text-sm text-yellow-400">Pending</span>
+                    <AlertTriangle className="w-4 h-4 text-[#D4AF37]" />
+                    <span className="text-sm text-[#D4AF37]">Pending</span>
                   </>
                 )}
               </div>
@@ -418,14 +418,14 @@ function VersionHistoryTab({
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-mono font-bold">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-mono font-bold">
                       v{version.version}
                     </span>
-                    <span className="px-2 py-0.5 bg-muted text-xs rounded">
+                    <span className="px-2 py-0.5 bg-muted text-xs">
                       {version.changeType}
                     </span>
                     {version.verified && (
-                      <CheckCircle2 className="w-4 h-4 text-green-500" />
+                      <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
                     )}
                   </div>
                   <p className="text-sm mb-2">{version.changeDescription}</p>
@@ -540,7 +540,7 @@ function AuditLogTab({ logs }: { logs: AuditLogEntry[] }) {
               className={cn(
                 'p-4',
                 log.severity === 'ERROR' && 'bg-red-500/10 border-red-500/30',
-                log.severity === 'WARNING' && 'bg-yellow-500/10 border-yellow-500/30',
+                log.severity === 'WARNING' && 'bg-[#D4AF37]/10 border-[#D4AF37]/30',
                 log.severity === 'CRITICAL' && 'bg-red-500/20 border-red-500/50'
               )}
             >
@@ -570,13 +570,13 @@ function AuditLogTab({ logs }: { logs: AuditLogEntry[] }) {
 function IntegrityTab({ versions }: { versions: DataVersion[] }) {
   return (
     <div className="space-y-6">
-      <Card className="p-6 bg-green-500/10 border-green-500/30">
+      <Card className="p-6 bg-[#D4AF37]/10 border-[#D4AF37]/30">
         <div className="flex items-start gap-4">
-          <div className="p-3 rounded-full bg-green-500">
+          <div className="p-3 bg-[#D4AF37]">
             <Shield className="w-8 h-8 text-white" />
           </div>
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-green-400 mb-2">
+            <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
               ✓ All Systems Operational
             </h3>
             <p className="text-foreground mb-3">
@@ -637,15 +637,15 @@ function ActionIcon({ action }: { action: string }) {
 
 function SeverityBadge({ severity }: { severity: string }) {
   const colors = {
-    INFO: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    WARNING: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+    INFO: 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30',
+    WARNING: 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30',
     ERROR: 'bg-red-500/20 text-red-400 border-red-500/30',
     CRITICAL: 'bg-red-500 text-white border-red-700',
   }
   return (
     <span
       className={cn(
-        'px-2 py-0.5 rounded text-[10px] font-medium border uppercase',
+        'px-2 py-0.5 text-[10px] font-medium border uppercase',
         colors[severity as keyof typeof colors]
       )}
     >

@@ -18,14 +18,14 @@ interface CSSGradientBgProps {
 
 const gradientConfigs: Record<ColorTheme, { primary: string; secondary: string; accent: string }> = {
   purple: {
-    primary: 'rgba(139, 92, 246, 0.15)',
-    secondary: 'rgba(124, 58, 237, 0.1)',
-    accent: 'rgba(167, 139, 250, 0.2)',
+    primary: 'rgba(212, 175, 55, 0.15)',
+    secondary: 'rgba(212, 175, 55, 0.1)',
+    accent: 'rgba(212, 175, 55, 0.2)',
   },
   cyan: {
-    primary: 'rgba(34, 211, 238, 0.15)',
-    secondary: 'rgba(6, 182, 212, 0.1)',
-    accent: 'rgba(103, 232, 249, 0.2)',
+    primary: 'rgba(212, 175, 55, 0.15)',
+    secondary: 'rgba(212, 175, 55, 0.1)',
+    accent: 'rgba(212, 175, 55, 0.2)',
   },
   orange: {
     primary: 'rgba(249, 115, 22, 0.15)',
@@ -38,8 +38,8 @@ const gradientConfigs: Record<ColorTheme, { primary: string; secondary: string; 
     accent: 'rgba(250, 204, 21, 0.2)',
   },
   mixed: {
-    primary: 'rgba(139, 92, 246, 0.12)',
-    secondary: 'rgba(34, 211, 238, 0.08)',
+    primary: 'rgba(212, 175, 55, 0.12)',
+    secondary: 'rgba(212, 175, 55, 0.08)',
     accent: 'rgba(249, 115, 22, 0.1)',
   },
 }
@@ -90,7 +90,7 @@ export const CSSGradientBg = memo(function CSSGradientBg({
       {showGlow && (
         <>
           <div
-            className="absolute w-[500px] h-[500px] rounded-full blur-[120px] animate-float-slow"
+            className="absolute w-[500px] h-[500px] blur-[120px] animate-float-slow"
             style={{
               background: primary,
               top: '10%',
@@ -98,7 +98,7 @@ export const CSSGradientBg = memo(function CSSGradientBg({
             }}
           />
           <div
-            className="absolute w-[400px] h-[400px] rounded-full blur-[100px] animate-float-medium"
+            className="absolute w-[400px] h-[400px] blur-[100px] animate-float-medium"
             style={{
               background: secondary,
               bottom: '20%',

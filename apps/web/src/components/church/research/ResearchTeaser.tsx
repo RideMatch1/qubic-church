@@ -47,13 +47,13 @@ const researchHighlights = [
 function ConfidenceBadge({ value, tier }: { value: number; tier: number }) {
   const color =
     tier === 1
-      ? 'bg-green-500/20 text-green-400 border-green-500/30'
+      ? 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30'
       : tier === 2
-      ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
-      : 'bg-orange-500/20 text-orange-400 border-orange-500/30'
+      ? 'bg-[#D4AF37]/10 text-[#D4AF37]/80 border-[#D4AF37]/20'
+      : 'bg-white/10 text-white/60 border-white/20'
 
   return (
-    <span className={`text-xs px-2 py-0.5 rounded-full border ${color}`}>
+    <span className={`text-xs px-2 py-0.5 border ${color}`}>
       Tier {tier} • {value}%
     </span>
   )
@@ -61,7 +61,7 @@ function ConfidenceBadge({ value, tier }: { value: number; tier: number }) {
 
 export function ResearchTeaser() {
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-background via-orange-950/5 to-background">
+    <section className="w-full py-20 bg-gradient-to-b from-[#050505] via-[#D4AF37]/5 to-[#050505]">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -71,9 +71,9 @@ export function ResearchTeaser() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-4">
-            <BookOpen className="w-4 h-4 text-orange-500" />
-            <span className="text-sm font-medium text-orange-500 uppercase tracking-wide">
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-4 py-2 mb-4">
+            <BookOpen className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-sm font-medium text-[#D4AF37] uppercase tracking-wide font-mono">
               Academic Research
             </span>
           </div>
@@ -100,11 +100,11 @@ export function ResearchTeaser() {
               >
                 <Link
                   href={item.href}
-                  className="block p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all group h-full"
+                  className="block p-6 bg-white/[0.02] border border-white/[0.04] hover:border-[#D4AF37]/30 transition-all group h-full"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 rounded-xl bg-primary/10">
-                      <Icon className="w-5 h-5 text-primary" />
+                    <div className="p-3 bg-[#D4AF37]/10">
+                      <Icon className="w-5 h-5 text-[#D4AF37]" />
                     </div>
                     <ConfidenceBadge value={item.confidence} tier={item.tier} />
                   </div>
@@ -128,10 +128,10 @@ export function ResearchTeaser() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="p-6 rounded-2xl bg-gradient-to-r from-orange-500/5 to-purple-500/5 border border-white/10">
+          <div className="p-6 bg-gradient-to-r from-[#D4AF37]/5 to-[#D4AF37]/10 border border-white/[0.04]">
             <div className="flex items-start gap-4">
-              <div className="p-2 rounded-lg bg-orange-500/10 shrink-0">
-                <Search className="w-5 h-5 text-orange-400" />
+              <div className="p-2 bg-[#D4AF37]/10 shrink-0">
+                <Search className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div>
                 <h4 className="font-semibold text-foreground mb-2">
@@ -144,7 +144,7 @@ export function ResearchTeaser() {
                 </p>
                 <Link
                   href="/docs/03-results/24-cfb-satoshi-connection"
-                  className="inline-flex items-center gap-1 text-sm text-orange-400 hover:text-orange-300 transition-colors"
+                  className="inline-flex items-center gap-1 text-sm text-[#D4AF37] hover:text-[#D4AF37]/80 transition-colors"
                 >
                   Read the full analysis
                   <ArrowRight className="w-4 h-4" />
@@ -164,14 +164,14 @@ export function ResearchTeaser() {
         >
           <Link
             href="/docs"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all"
+            className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-8 py-4 font-semibold hover:bg-[#D4AF37]/90 transition-all"
           >
             <BookOpen className="w-5 h-5" />
             Explore Full Research Archive
             <ArrowRight className="w-5 h-5" />
           </Link>
           <p className="text-xs text-muted-foreground mt-4">
-            75+ documented findings • Open methodology • Reproducible results
+            55+ documented findings • Open methodology • Reproducible results
           </p>
         </motion.div>
       </div>

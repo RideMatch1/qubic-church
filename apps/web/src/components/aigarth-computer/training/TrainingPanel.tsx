@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -52,10 +51,10 @@ export function TrainingPanel() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <FlaskConical className="w-6 h-6 text-purple-400" />
+            <FlaskConical className="w-6 h-6 text-[#D4AF37]" />
             A+B Training Mode
           </h2>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm text-zinc-400 mt-1">
             Train the neural network to learn addition (A + B = C) like real Qubic miners
           </p>
         </div>
@@ -63,7 +62,7 @@ export function TrainingPanel() {
           variant="outline"
           size="sm"
           onClick={() => setShowConfig(!showConfig)}
-          className="border-gray-700"
+          className="border-white/[0.04] hover:bg-[#0a0a0a]"
         >
           <Settings className="w-4 h-4 mr-2" />
           Config
@@ -72,53 +71,53 @@ export function TrainingPanel() {
 
       {/* Error Display */}
       {error && (
-        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-sm text-red-400">
+        <div className="p-3 bg-red-500/10 border border-red-500/30 text-sm text-red-400">
           {error}
         </div>
       )}
 
       {/* Configuration Panel */}
       {showConfig && (
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
+        <div className="bg-[#050505] border border-white/[0.04] p-4">
           <h3 className="font-semibold text-white mb-4">Training Configuration</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
-              <label className="text-xs text-gray-400 block mb-1">Input Bits (per number)</label>
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">Input Bits (per number)</label>
               <input
                 type="number"
                 value={config.inputBits}
                 onChange={(e) => setConfig({ inputBits: parseInt(e.target.value) || 4 })}
                 disabled={isTraining}
-                className="w-full bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-white text-sm"
+                className="w-full bg-[#050505] border border-white/[0.04] px-3 py-2 text-white text-sm focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
                 min={2}
                 max={6}
               />
-              <span className="text-xs text-gray-500">
-                A,B ∈ [{-Math.pow(2, config.inputBits - 1)}, {Math.pow(2, config.inputBits - 1) - 1}]
+              <span className="text-xs text-zinc-500">
+                A,B in [{-Math.pow(2, config.inputBits - 1)}, {Math.pow(2, config.inputBits - 1) - 1}]
               </span>
             </div>
 
             <div>
-              <label className="text-xs text-gray-400 block mb-1">Output Bits</label>
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">Output Bits</label>
               <input
                 type="number"
                 value={config.outputBits}
                 onChange={(e) => setConfig({ outputBits: parseInt(e.target.value) || 5 })}
                 disabled={isTraining}
-                className="w-full bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-white text-sm"
+                className="w-full bg-[#050505] border border-white/[0.04] px-3 py-2 text-white text-sm focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
                 min={3}
                 max={8}
               />
             </div>
 
             <div>
-              <label className="text-xs text-gray-400 block mb-1">Max Mutations</label>
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">Max Mutations</label>
               <input
                 type="number"
                 value={config.maxMutations}
                 onChange={(e) => setConfig({ maxMutations: parseInt(e.target.value) || 100 })}
                 disabled={isTraining}
-                className="w-full bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-white text-sm"
+                className="w-full bg-[#050505] border border-white/[0.04] px-3 py-2 text-white text-sm focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
                 min={10}
                 max={10000}
                 step={10}
@@ -126,23 +125,23 @@ export function TrainingPanel() {
             </div>
 
             <div>
-              <label className="text-xs text-gray-400 block mb-1">Max Ticks</label>
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">Max Ticks</label>
               <input
                 type="number"
                 value={config.maxTicks}
                 onChange={(e) => setConfig({ maxTicks: parseInt(e.target.value) || 20 })}
                 disabled={isTraining}
-                className="w-full bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-white text-sm"
+                className="w-full bg-[#050505] border border-white/[0.04] px-3 py-2 text-white text-sm focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
                 min={5}
                 max={100}
               />
             </div>
           </div>
 
-          <div className="mt-4 p-3 bg-gray-900/50 rounded text-xs text-gray-400">
+          <div className="mt-4 p-3 bg-[#0a0a0a] border border-white/[0.04] text-xs text-zinc-400">
             <strong>Training Set Size:</strong> {totalSamples} pairs (all combinations of A and B)
           </div>
-        </Card>
+        </div>
       )}
 
       {/* Control Buttons */}
@@ -150,7 +149,7 @@ export function TrainingPanel() {
         {!isTraining ? (
           <Button
             onClick={startTraining}
-            className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500"
+            className="bg-[#D4AF37] hover:bg-[#D4AF37]/80 text-black font-semibold"
           >
             <Play className="w-4 h-4 mr-2" />
             Start Training
@@ -160,7 +159,7 @@ export function TrainingPanel() {
             <Button
               onClick={isPaused ? resumeTraining : pauseTraining}
               variant="outline"
-              className="border-yellow-500/50 text-yellow-400"
+              className="border-[#D4AF37]/50 text-[#D4AF37]"
             >
               {isPaused ? (
                 <>
@@ -188,7 +187,7 @@ export function TrainingPanel() {
         <Button
           onClick={reset}
           variant="outline"
-          className="border-gray-700"
+          className="border-white/[0.04] hover:bg-[#0a0a0a]"
           disabled={isTraining}
         >
           <RotateCcw className="w-4 h-4 mr-2" />
@@ -198,51 +197,51 @@ export function TrainingPanel() {
 
       {/* Progress Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <TrendingUp className="w-4 h-4" />
-            Iteration
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Iteration</span>
           </div>
-          <div className="text-2xl font-bold text-cyan-400 font-mono">
+          <div className="text-2xl font-bold text-[#D4AF37] font-mono">
             {currentIteration}/{config.maxMutations}
           </div>
-        </Card>
+        </div>
 
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <Target className="w-4 h-4" />
-            Best Score
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Best Score</span>
           </div>
-          <div className="text-2xl font-bold text-green-400 font-mono">
+          <div className="text-2xl font-bold text-[#D4AF37] font-mono">
             {bestScore}/{totalSamples}
           </div>
-        </Card>
+        </div>
 
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <Zap className="w-4 h-4" />
-            Accuracy
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Accuracy</span>
           </div>
-          <div className="text-2xl font-bold text-purple-400 font-mono">
+          <div className="text-2xl font-bold text-[#D4AF37]/80 font-mono">
             {accuracy.toFixed(1)}%
           </div>
-        </Card>
+        </div>
 
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <Calculator className="w-4 h-4" />
-            Samples
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Samples</span>
           </div>
-          <div className="text-2xl font-bold text-orange-400 font-mono">
+          <div className="text-2xl font-bold text-[#D4AF37]/70 font-mono">
             {totalSamples}
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="relative h-6 bg-gray-800 rounded-full overflow-hidden">
+      <div className="relative h-6 bg-[#0a0a0a] overflow-hidden border border-white/[0.04]">
         <div
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-purple-600 to-cyan-600 transition-all duration-300"
+          className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/60 transition-all duration-300"
           style={{ width: `${(currentIteration / config.maxMutations) * 100}%` }}
         />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -253,11 +252,11 @@ export function TrainingPanel() {
       </div>
 
       {/* Accuracy Progress */}
-      <div className="relative h-4 bg-gray-800 rounded-full overflow-hidden">
+      <div className="relative h-4 bg-[#0a0a0a] overflow-hidden border border-white/[0.04]">
         <div
           className={`absolute inset-y-0 left-0 transition-all duration-300 ${
-            accuracy >= 80 ? 'bg-green-500' :
-            accuracy >= 50 ? 'bg-yellow-500' :
+            accuracy >= 80 ? 'bg-[#D4AF37]' :
+            accuracy >= 50 ? 'bg-[#D4AF37]/60' :
             'bg-red-500'
           }`}
           style={{ width: `${accuracy}%` }}
@@ -271,92 +270,92 @@ export function TrainingPanel() {
 
       {/* Recent Iterations */}
       {iterations.length > 0 && (
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
+        <div className="bg-[#050505] border border-white/[0.04] p-4">
           <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-cyan-400" />
+            <TrendingUp className="w-5 h-5 text-[#D4AF37]" />
             Recent Mutations
           </h3>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {iterations.slice(-10).reverse().map((iter) => (
               <div
                 key={iter.iteration}
-                className={`flex items-center justify-between p-2 rounded text-sm ${
+                className={`flex items-center justify-between p-2 text-sm ${
                   iter.accepted
-                    ? 'bg-green-500/10 border border-green-500/30'
-                    : 'bg-gray-800/50 border border-gray-700/50'
+                    ? 'bg-[#D4AF37]/10 border border-[#D4AF37]/30'
+                    : 'bg-[#0a0a0a] border border-white/[0.04]'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Badge variant="outline" className="font-mono">
+                  <Badge variant="outline" className="font-mono border-white/[0.08]">
                     #{iter.iteration}
                   </Badge>
                   {iter.accepted ? (
-                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
                   ) : (
-                    <XCircle className="w-4 h-4 text-gray-500" />
+                    <XCircle className="w-4 h-4 text-zinc-500" />
                   )}
                   {iter.mutation && (
-                    <span className="text-gray-400">
+                    <span className="text-zinc-400">
                       N{iter.mutation.neuronIdx}:S{iter.mutation.synapseIdx}{' '}
-                      {iter.mutation.oldWeight}→{iter.mutation.newWeight}
+                      {iter.mutation.oldWeight}-&gt;{iter.mutation.newWeight}
                     </span>
                   )}
                 </div>
                 <div className="text-right">
                   <span className="text-white font-mono">{iter.score}</span>
-                  <span className="text-gray-500 text-xs ml-1">
+                  <span className="text-zinc-500 text-xs ml-1">
                     ({iter.accuracy.toFixed(1)}%)
                   </span>
                 </div>
               </div>
             ))}
           </div>
-        </Card>
+        </div>
       )}
 
       {/* Test Network */}
       {currentIteration > 0 && (
-        <Card className="bg-gradient-to-br from-purple-900/30 to-cyan-900/30 border-purple-500/30 p-4">
+        <div className="bg-[#050505] border border-[#D4AF37]/20 p-4">
           <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-            <Calculator className="w-5 h-5 text-purple-400" />
+            <Calculator className="w-5 h-5 text-[#D4AF37]" />
             Test the Network
           </h3>
 
           <div className="flex gap-4 items-end">
             <div>
-              <label className="text-xs text-gray-400 block mb-1">A</label>
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">A</label>
               <input
                 type="number"
                 value={testA}
                 onChange={(e) => setTestA(parseInt(e.target.value) || 0)}
-                className="w-20 bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-white text-center font-mono"
+                className="w-20 bg-[#050505] border border-white/[0.04] px-3 py-2 text-white text-center font-mono focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
               />
             </div>
 
-            <div className="text-2xl text-gray-500 pb-2">+</div>
+            <div className="text-2xl text-zinc-500 pb-2">+</div>
 
             <div>
-              <label className="text-xs text-gray-400 block mb-1">B</label>
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">B</label>
               <input
                 type="number"
                 value={testB}
                 onChange={(e) => setTestB(parseInt(e.target.value) || 0)}
-                className="w-20 bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-white text-center font-mono"
+                className="w-20 bg-[#050505] border border-white/[0.04] px-3 py-2 text-white text-center font-mono focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
               />
             </div>
 
-            <div className="text-2xl text-gray-500 pb-2">=</div>
+            <div className="text-2xl text-zinc-500 pb-2">=</div>
 
             <div>
-              <label className="text-xs text-gray-400 block mb-1">Expected</label>
-              <div className="w-20 bg-gray-800/50 border border-gray-700 rounded px-3 py-2 text-cyan-400 text-center font-mono font-bold">
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono block mb-1">Expected</label>
+              <div className="w-20 bg-[#0a0a0a] border border-white/[0.04] px-3 py-2 text-[#D4AF37] text-center font-mono font-bold">
                 {testA + testB}
               </div>
             </div>
 
             <Button
               onClick={() => testNetwork(testA, testB)}
-              className="bg-purple-600 hover:bg-purple-500"
+              className="bg-[#D4AF37] hover:bg-[#D4AF37]/80 text-black font-semibold"
             >
               <Zap className="w-4 h-4 mr-2" />
               Test
@@ -364,63 +363,63 @@ export function TrainingPanel() {
           </div>
 
           {testResult && (
-            <div className={`mt-4 p-4 rounded-lg ${
+            <div className={`mt-4 p-4 ${
               testResult.correct
-                ? 'bg-green-500/20 border border-green-500/50'
-                : 'bg-red-500/20 border border-red-500/50'
+                ? 'bg-[#D4AF37]/10 border border-[#D4AF37]/30'
+                : 'bg-red-500/10 border border-red-500/30'
             }`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   {testResult.correct ? (
-                    <CheckCircle2 className="w-6 h-6 text-green-400" />
+                    <CheckCircle2 className="w-6 h-6 text-[#D4AF37]" />
                   ) : (
                     <XCircle className="w-6 h-6 text-red-400" />
                   )}
                   <span className={`font-bold ${
-                    testResult.correct ? 'text-green-400' : 'text-red-400'
+                    testResult.correct ? 'text-[#D4AF37]' : 'text-red-400'
                   }`}>
                     {testResult.correct ? 'CORRECT!' : 'INCORRECT'}
                   </span>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm text-gray-400">Network Output:</div>
+                  <div className="text-sm text-zinc-400">Network Output:</div>
                   <div className={`text-2xl font-bold font-mono ${
-                    testResult.correct ? 'text-green-400' : 'text-red-400'
+                    testResult.correct ? 'text-[#D4AF37]' : 'text-red-400'
                   }`}>
                     {testResult.predictedC}
                   </div>
                 </div>
               </div>
-              <div className="mt-2 text-xs text-gray-400">
+              <div className="mt-2 text-xs text-zinc-400">
                 Output bits matched: {testResult.outputMatch}/{testResult.predictedTernary.length}
                 {' | '}
                 Ternary: [{testResult.predictedTernary.join(', ')}]
               </div>
             </div>
           )}
-        </Card>
+        </div>
       )}
 
       {/* How It Works */}
-      <Card className="bg-gray-800/30 border-gray-700/50 p-4">
+      <div className="bg-[#050505] border border-white/[0.04] p-4">
         <h3 className="font-semibold text-white mb-3">How A+B Training Works</h3>
-        <div className="text-sm text-gray-400 space-y-2">
+        <div className="text-sm text-zinc-400 space-y-2">
           <p>
             This implements the <strong className="text-white">real Qubic mining algorithm</strong> (from score_addition.h):
           </p>
           <ol className="list-decimal list-inside space-y-1">
-            <li><strong className="text-cyan-400">Generate Training Set:</strong> All possible (A, B, C=A+B) pairs</li>
-            <li><strong className="text-purple-400">Initialize Network:</strong> Random ternary synapse weights (-1, 0, +1)</li>
-            <li><strong className="text-yellow-400">Mutate:</strong> Randomly change one synapse weight by ±1</li>
-            <li><strong className="text-green-400">Score:</strong> Count correct predictions across all training pairs</li>
-            <li><strong className="text-orange-400">Accept/Reject:</strong> Keep mutation if score improves, else rollback</li>
+            <li><strong className="text-[#D4AF37]">Generate Training Set:</strong> All possible (A, B, C=A+B) pairs</li>
+            <li><strong className="text-[#D4AF37]/80">Initialize Network:</strong> Random ternary synapse weights (-1, 0, +1)</li>
+            <li><strong className="text-[#D4AF37]/70">Mutate:</strong> Randomly change one synapse weight by +/-1</li>
+            <li><strong className="text-[#D4AF37]/60">Score:</strong> Count correct predictions across all training pairs</li>
+            <li><strong className="text-[#D4AF37]/50">Accept/Reject:</strong> Keep mutation if score improves, else rollback</li>
           </ol>
-          <p className="text-xs mt-3 border-t border-gray-700 pt-3">
+          <p className="text-xs mt-3 border-t border-white/[0.04] pt-3">
             Based on CFB&apos;s explanation: &quot;The score function measures how well the network computes A+B.
             Faster reduction of the score function towards zero = better mining solution.&quot;
           </p>
         </div>
-      </Card>
+      </div>
     </div>
   )
 }

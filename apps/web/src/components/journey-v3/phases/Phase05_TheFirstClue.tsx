@@ -20,19 +20,19 @@ interface AddressSegment {
 const addressSegments: AddressSegment[] = [
   {
     text: '1',
-    color: 'text-yellow-400',
+    color: 'text-[#D4AF37]',
     label: 'Network',
     description: 'This "1" means it\'s a real Bitcoin address on the main network (not a test)',
   },
   {
     text: 'CFB',
-    color: 'text-orange-400',
+    color: 'text-[#D4AF37]',
     label: 'Signature',
     description: '"CFB" stands for "Come-From-Beyond" - a famous cryptographer who created multiple blockchain projects',
   },
   {
     text: 'dva',
-    color: 'text-blue-400',
+    color: 'text-[#D4AF37]',
     label: 'Language',
     description: '"dva" means "two" in Russian - a hint about the creator\'s Eastern European origins',
   },
@@ -44,13 +44,13 @@ const addressSegments: AddressSegment[] = [
   },
   {
     text: 'ZgZ',
-    color: 'text-purple-400',
+    color: 'text-[#D4AF37]',
     label: 'Mirror Pattern',
     description: 'This is a palindrome (reads same forwards and backwards) - intentional symmetry',
   },
   {
     text: 'PTZ',
-    color: 'text-green-400',
+    color: 'text-[#D4AF37]',
     label: 'Location Hint',
     description: 'Possibly "Petrozavodsk" - a city in Russia. Could reveal the creator\'s hometown',
   },
@@ -62,7 +62,7 @@ const addressSegments: AddressSegment[] = [
   },
   {
     text: 'zg',
-    color: 'text-purple-400',
+    color: 'text-[#D4AF37]',
     label: 'Closing Mirror',
     description: 'Mirrors the earlier "ZgZ" pattern - deliberate bookend symmetry in the address',
   },
@@ -90,28 +90,28 @@ export function Phase05_TheFirstClue() {
       <div ref={ref} className="space-y-8">
         {/* The 1CFB Address Display */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-orange-950/30 to-black/50 border border-orange-500/20 relative overflow-hidden"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-orange-500/20 relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
           {/* Fingerprint watermark */}
           <div className="absolute top-4 right-4 opacity-10">
-            <Fingerprint className="w-16 h-16 text-orange-500" />
+            <Fingerprint className="w-16 h-16 text-[#D4AF37]" />
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <Key className="w-6 h-6 text-orange-400" />
+            <Key className="w-6 h-6 text-[#D4AF37]" />
             <h3 className="text-xl font-bold text-white/90">Block 264 - The Discovery</h3>
           </div>
 
           <p className="text-white/70 mb-6">
             In early Bitcoin Block #264, researchers found an address that seems to spell out a
-            name. <span className="text-orange-400">Hover or tap each segment</span> to decode its meaning.
+            name. <span className="text-[#D4AF37]">Hover or tap each segment</span> to decode its meaning.
           </p>
 
           {/* Interactive Address Display - HOVER EACH SEGMENT */}
-          <div className="p-4 md:p-6 rounded-xl bg-black/40 border border-white/10 mb-4">
+          <div className="p-4 md:p-6 bg-black/40 border border-white/10 mb-4">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs text-white/40 font-mono">Bitcoin Address (Block 264)</span>
               <button
@@ -120,7 +120,7 @@ export function Phase05_TheFirstClue() {
               >
                 {copied ? (
                   <>
-                    <CheckCircle className="w-3 h-3 text-green-400" />
+                    <CheckCircle className="w-3 h-3 text-[#D4AF37]" />
                     Copied!
                   </>
                 ) : (
@@ -139,7 +139,7 @@ export function Phase05_TheFirstClue() {
                   key={index}
                   className={`font-mono text-lg sm:text-xl md:text-2xl cursor-pointer transition-all duration-200 ${segment.color} ${
                     activeSegment === index
-                      ? 'bg-white/20 rounded px-1 scale-110 shadow-lg'
+                      ? 'bg-white/20  px-1 scale-110 shadow-lg'
                       : 'hover:bg-white/10 hover:rounded'
                   }`}
                   onMouseEnter={() => setActiveSegment(index)}
@@ -158,7 +158,7 @@ export function Phase05_TheFirstClue() {
           </div>
 
           {/* Active Segment Info Panel */}
-          <div className="min-h-[100px] p-4 bg-black/30 rounded-xl border border-white/5">
+          <div className="min-h-[100px] p-4 bg-black/30 border border-white/5">
             <AnimatePresence mode="wait">
               {activeSegment !== null && addressSegments[activeSegment] ? (
                 <motion.div
@@ -208,23 +208,23 @@ export function Phase05_TheFirstClue() {
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Clock className="h-5 w-5 text-orange-400 mx-auto mb-2" />
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Clock className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
             <div className="font-mono text-lg text-white/80">2009</div>
             <div className="text-xs text-white/40">Created</div>
           </div>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Coins className="h-5 w-5 text-orange-400 mx-auto mb-2" />
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Coins className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
             <div className="font-mono text-lg text-white/80">50 BTC</div>
             <div className="text-xs text-white/40">Received</div>
           </div>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Fingerprint className="h-5 w-5 text-green-400 mx-auto mb-2" />
-            <div className="font-mono text-lg text-green-400">Untouched</div>
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Fingerprint className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
+            <div className="font-mono text-lg text-[#D4AF37]">Untouched</div>
             <div className="text-xs text-white/40">17 years</div>
           </div>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Key className="h-5 w-5 text-purple-400 mx-auto mb-2" />
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Key className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
             <div className="font-mono text-lg text-white/80">12</div>
             <div className="text-xs text-white/40">1CFB addresses</div>
           </div>
@@ -235,13 +235,13 @@ export function Phase05_TheFirstClue() {
           href={`https://blockchair.com/bitcoin/address/${THE_1CFB_ADDRESS}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 hover:bg-orange-500/20 transition-colors"
+          className="flex items-center justify-center gap-2 p-4 bg-[#D4AF37]/10 border border-orange-500/20 hover:bg-[#D4AF37]/20 transition-colors"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <ExternalLink className="w-4 h-4 text-orange-400" />
-          <span className="text-orange-400 font-medium">Verify on Blockchain Explorer</span>
+          <ExternalLink className="w-4 h-4 text-[#D4AF37]" />
+          <span className="text-[#D4AF37] font-medium">Verify on Blockchain Explorer</span>
         </motion.a>
 
         {/* Additional 1CFB Addresses */}
@@ -251,17 +251,17 @@ export function Phase05_TheFirstClue() {
           badge="Research Finding"
         >
           <div className="space-y-4">
-            <div className="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-              <AlertCircle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 p-3 bg-[#D4AF37]/10 border border-yellow-500/20">
+              <AlertCircle className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
               <p className="text-sm text-white/70">
                 Through systematic derivation from the Anna Matrix (128x128 = 16,384 positions), we
-                found <span className="text-yellow-400 font-bold">12 total addresses</span>{' '}
+                found <span className="text-[#D4AF37] font-bold">12 total addresses</span>{' '}
                 starting with "1CFB" in Bitcoin's early blocks.
               </p>
             </div>
 
-            <div className="p-3 rounded-lg bg-black/30 font-mono text-xs text-white/60 max-h-40 overflow-y-auto space-y-1">
-              <div>1CFBdvaiZgZPTZERqnezAtDQJuGHKoHSzg <span className="text-orange-400">(Block 264)</span></div>
+            <div className="p-3 bg-black/30 font-mono text-xs text-white/60 max-h-40 overflow-y-auto space-y-1">
+              <div>1CFBdvaiZgZPTZERqnezAtDQJuGHKoHSzg <span className="text-[#D4AF37]">(Block 264)</span></div>
               <div>1CFBtCo6zDgmXAD9NJTZ7dw7Yvoq6ZPGGQ</div>
               <div>1CFBuaBgz1BjLQVfUtaoWBZ58SkCZk1Wnc</div>
               <div>1CFBsY4EvUYox9rxrfWiRvoANtMw8Hr6cn</div>

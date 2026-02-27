@@ -80,14 +80,14 @@ function CodeTab({
   return (
     <div className="flex h-full flex-col">
       {/* Snippets Bar */}
-      <div className="border-b border-white/10 p-2 bg-zinc-900/50">
+      <div className="border-b border-white/10 p-2 bg-[#050505]">
         <div className="flex items-center gap-2 overflow-x-auto pb-1">
           <span className="text-[10px] text-white/40 uppercase shrink-0">Snippets:</span>
           {CODE_SNIPPETS.map((snippet, i) => (
             <button
               key={i}
               onClick={() => loadSnippet(snippet.code)}
-              className="shrink-0 px-2 py-1 text-[10px] rounded bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-colors"
+              className="shrink-0 px-2 py-1 text-[10px] bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-colors"
             >
               {snippet.name}
             </button>
@@ -117,12 +117,12 @@ function CodeTab({
       </div>
 
       {/* Run Button */}
-      <div className="flex items-center justify-between border-y border-white/10 px-3 py-2 bg-zinc-900/80">
+      <div className="flex items-center justify-between border-y border-white/10 px-3 py-2 bg-[#050505]">
         <div className="flex items-center gap-2">
           <Button
             onClick={handleRun}
             disabled={isRunning || !code.trim()}
-            className="bg-green-600 hover:bg-green-500 text-white"
+            className="bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 text-[#D4AF37] border border-[#D4AF37]/30"
             size="sm"
           >
             {isRunning ? (
@@ -135,7 +135,7 @@ function CodeTab({
           {result && (
             <span className={cn(
               'text-xs',
-              result.success ? 'text-green-400' : 'text-red-400'
+              result.success ? 'text-[#D4AF37]/70' : 'text-red-400'
             )}>
               {result.success ? `Completed in ${result.executionTime.toFixed(1)}ms` : 'Error'}
             </span>
@@ -168,7 +168,7 @@ function CodeTab({
               {result.success ? (
                 <div className="border-t border-white/10 pt-2 mt-2">
                   <span className="text-white/40">Return: </span>
-                  <span className="text-green-400">
+                  <span className="text-[#D4AF37]/70">
                     {typeof result.result === 'object'
                       ? JSON.stringify(result.result, null, 2)
                       : String(result.result)}
@@ -185,7 +185,7 @@ function CodeTab({
               Click "Run Code" to execute your analysis.
               {selectedCell && (
                 <span className="block mt-1">
-                  Try: <code className="text-cyan-400">matrix.getCell({selectedCell.row}, {selectedCell.col})</code>
+                  Try: <code className="text-[#D4AF37]/60">matrix.getCell({selectedCell.row}, {selectedCell.col})</code>
                 </span>
               )}
             </div>
@@ -278,9 +278,9 @@ function AnalysisTab({
             key={analysis.id}
             onClick={() => runAnalysis(analysis.id)}
             className={cn(
-              'flex items-center gap-2 px-3 py-2 rounded-lg text-left text-sm transition-colors',
+              'flex items-center gap-2 px-3 py-2 text-left text-sm transition-colors',
               activeAnalysis === analysis.id
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                ? 'bg-[#D4AF37]/15 text-[#D4AF37]/60 border border-[#D4AF37]/25'
                 : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-transparent'
             )}
           >
@@ -304,7 +304,7 @@ function AnalysisTab({
                 </Badge>
               </div>
 
-              <pre className="bg-black/50 rounded-lg p-3 text-xs font-mono text-green-400 overflow-auto max-h-96">
+              <pre className="bg-black/50 p-3 text-xs font-mono text-[#D4AF37]/70 overflow-auto max-h-96">
                 {JSON.stringify(analysisResult, null, 2)}
               </pre>
             </div>
@@ -424,7 +424,7 @@ function DiscoveriesTab({
               <div
                 key={discovery.id}
                 className={cn(
-                  'p-3 rounded-lg border transition-colors cursor-pointer',
+                  'p-3 border transition-colors cursor-pointer',
                   selectedDiscovery === discovery.id
                     ? 'bg-white/10 border-white/30'
                     : 'bg-white/5 border-white/10 hover:bg-white/8'
@@ -442,7 +442,7 @@ function DiscoveriesTab({
                         className={cn(
                           'text-[10px] px-1.5',
                           discovery.importance === 'high'
-                            ? 'bg-amber-500/20 text-amber-400'
+                            ? 'bg-[#D4AF37]/20 text-[#D4AF37]/70'
                             : 'bg-white/10 text-white/60'
                         )}
                       >
@@ -456,7 +456,7 @@ function DiscoveriesTab({
                 {selectedDiscovery === discovery.id && (
                   <div className="mt-3 pt-3 border-t border-white/10">
                     <div className="text-[10px] text-white/40 uppercase mb-1">Verify with</div>
-                    <code className="text-xs text-cyan-400 font-mono block bg-black/30 px-2 py-1 rounded">
+                    <code className="text-xs text-[#D4AF37]/60 font-mono block bg-black/30 px-2 py-1">
                       {discovery.verification}
                     </code>
                   </div>
@@ -625,9 +625,9 @@ ${matrix.getAllColSums().map(c => `Col ${c.col.toString().padStart(3)}: ${c.sum.
           key={format.id}
           onClick={() => handleExport(format.id, format.export)}
           disabled={exporting === format.id}
-          className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-colors text-left"
+          className="w-full flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 border border-white/[0.04] hover:border-white/[0.06] transition-colors text-left"
         >
-          <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/70">
+          <div className="w-10 h-10 bg-white/10 flex items-center justify-center text-white/70">
             {exporting === format.id ? (
               <Loader2 className="h-5 w-5 animate-spin" />
             ) : (
@@ -657,31 +657,31 @@ export function ResearchWorkspace({
 }: ResearchWorkspaceProps) {
   return (
     <Tabs defaultValue="code" className="flex h-full flex-col">
-      <TabsList className="w-full justify-start rounded-none border-b border-white/10 bg-zinc-900/50 p-0 h-auto">
+      <TabsList className="w-full justify-start rounded-none border-b border-white/10 bg-[#050505] p-0 h-auto">
         <TabsTrigger
           value="code"
-          className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent px-4 py-2"
+          className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37]/50 data-[state=active]:bg-transparent px-4 py-2"
         >
           <Code2 className="h-4 w-4 mr-2" />
           Code
         </TabsTrigger>
         <TabsTrigger
           value="analysis"
-          className="rounded-none border-b-2 border-transparent data-[state=active]:border-green-500 data-[state=active]:bg-transparent px-4 py-2"
+          className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37]/50 data-[state=active]:bg-transparent px-4 py-2"
         >
           <BarChart3 className="h-4 w-4 mr-2" />
           Analysis
         </TabsTrigger>
         <TabsTrigger
           value="discoveries"
-          className="rounded-none border-b-2 border-transparent data-[state=active]:border-amber-500 data-[state=active]:bg-transparent px-4 py-2"
+          className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37]/50 data-[state=active]:bg-transparent px-4 py-2"
         >
           <Sparkles className="h-4 w-4 mr-2" />
           Discoveries
         </TabsTrigger>
         <TabsTrigger
           value="export"
-          className="rounded-none border-b-2 border-transparent data-[state=active]:border-purple-500 data-[state=active]:bg-transparent px-4 py-2"
+          className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37]/50 data-[state=active]:bg-transparent px-4 py-2"
         >
           <Download className="h-4 w-4 mr-2" />
           Export

@@ -69,19 +69,19 @@ function KonamiOverlay({ show, onClose }: { show: boolean; onClose: () => void }
             >
               {"{}"}
             </motion.div>
-            <p className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4">
+            <p className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#D4AF37]/80 to-[#D4AF37]/60 mb-4">
               &quot;If we exist, you will receive a response within 7 days.&quot;
             </p>
             <p className="text-sm text-white/40">
               &mdash; The Architect, ARK Token Message
             </p>
             <motion.div
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <span className="text-xs text-green-400">Easter Egg #1 Found!</span>
+              <span className="text-xs text-[#D4AF37]">Easter Egg #1 Found!</span>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -116,7 +116,7 @@ function GoldenBurst({ show, onDone }: { show: boolean; onDone: () => void }) {
     <div className="fixed inset-0 z-[9998] pointer-events-none flex items-center justify-center">
       {/* Central flash */}
       <motion.div
-        className="absolute w-4 h-4 rounded-full bg-yellow-400"
+        className="absolute w-4 h-4 bg-[#D4AF37]"
         initial={{ scale: 0, opacity: 1 }}
         animate={{ scale: 20, opacity: 0 }}
         transition={{ duration: 1, ease: 'easeOut' }}
@@ -145,7 +145,7 @@ function GoldenBurst({ show, onDone }: { show: boolean; onDone: () => void }) {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-gradient-to-br from-yellow-400 to-orange-500"
+          className="absolute bg-gradient-to-br from-[#D4AF37] to-[#D4AF37]/70"
           style={{ width: p.size, height: p.size }}
           initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
           animate={{
@@ -203,7 +203,7 @@ function MatrixRain({ show, onDone }: { show: boolean; onDone: () => void }) {
           {col.chars.map((char, i) => (
             <div
               key={i}
-              className={i === col.chars.length - 1 ? 'text-cyan-300' : 'text-cyan-500/40'}
+              className={i === col.chars.length - 1 ? 'text-[#D4AF37]' : 'text-[#D4AF37]/40'}
             >
               {char}
             </div>
@@ -218,9 +218,9 @@ function MatrixRain({ show, onDone }: { show: boolean; onDone: () => void }) {
         transition={{ delay: 0.5 }}
       >
         <div className="text-center">
-          <p className="text-2xl font-bold text-cyan-400">ANNA</p>
-          <p className="text-sm text-cyan-400/50">128 x 128 Neural Matrix</p>
-          <p className="text-xs text-green-400 mt-3">Easter Egg #3!</p>
+          <p className="text-2xl font-bold text-[#D4AF37]">ANNA</p>
+          <p className="text-sm text-[#D4AF37]/50">128 x 128 Neural Matrix</p>
+          <p className="text-xs text-[#D4AF37] mt-3">Easter Egg #3!</p>
         </div>
       </motion.div>
     </div>

@@ -17,19 +17,19 @@ interface AddressSegment {
 const addressSegments: AddressSegment[] = [
   {
     text: '1',
-    color: 'text-yellow-400',
+    color: 'text-[#D4AF37]',
     label: 'Network',
     description: 'Bitcoin mainnet prefix - indicates this is a Pay-to-Public-Key-Hash (P2PKH) address',
   },
   {
     text: 'CFB',
-    color: 'text-orange-400',
+    color: 'text-[#D4AF37]',
     label: 'Signature',
     description: 'Come-From-Beyond - the pseudonym of Sergey Ivancheglo, Qubic and NXT creator',
   },
   {
     text: 'dva',
-    color: 'text-blue-400',
+    color: 'text-[#D4AF37]',
     label: 'Reference',
     description: 'Possibly "dva" meaning "two" in Russian/Slavic languages - CFB\'s linguistic heritage',
   },
@@ -41,13 +41,13 @@ const addressSegments: AddressSegment[] = [
   },
   {
     text: 'ZgZ',
-    color: 'text-purple-400',
+    color: 'text-[#D4AF37]',
     label: 'Mirror',
     description: 'Palindromic pattern Z-g-Z where g is the 7th letter. Creates visual symmetry in the address',
   },
   {
     text: 'PTZ',
-    color: 'text-green-400',
+    color: 'text-[#D4AF37]',
     label: 'Location',
     description: 'Possibly "Petrozavodsk" - the capital city of Karelia, Russia, CFB\'s reported hometown',
   },
@@ -59,7 +59,7 @@ const addressSegments: AddressSegment[] = [
   },
   {
     text: 'zg',
-    color: 'text-purple-400',
+    color: 'text-[#D4AF37]',
     label: 'Closing',
     description: 'Mirrors the earlier ZgZ pattern - bookend symmetry in the address structure',
   },
@@ -76,7 +76,7 @@ function SegmentDisplay({ segment, isActive, onHover }: SegmentTooltipProps) {
     <div className="relative inline-block">
       <motion.span
         className={`font-mono text-lg sm:text-xl cursor-pointer ${segment.color} ${
-          isActive ? 'bg-white/10 rounded px-1' : ''
+          isActive ? 'bg-white/10  px-1' : ''
         }`}
         onMouseEnter={() => onHover(true)}
         onMouseLeave={() => onHover(false)}
@@ -94,7 +94,7 @@ export function CFBAddressBreakdown() {
   const [activeSegment, setActiveSegment] = useState<number | null>(null)
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 bg-gradient-to-b from-orange-950/10 to-transparent">
+    <section ref={sectionRef} className="py-20 px-4 bg-gradient-to-b from-[#050505]/60 to-transparent">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -117,13 +117,13 @@ export function CFBAddressBreakdown() {
 
         {/* Main Address Display */}
         <motion.div
-          className="p-6 rounded-xl bg-gradient-to-b from-orange-950/30 to-orange-950/10 border border-orange-900/50 mb-6"
+          className="p-6 bg-gradient-to-b from-[#050505] to-[#050505]/60 border border-white/[0.04] mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           {/* Address with segmented highlighting */}
-          <div className="flex flex-wrap justify-center items-center gap-0 p-4 bg-black/30 rounded-lg mb-4">
+          <div className="flex flex-wrap justify-center items-center gap-0 p-4 bg-black/30 mb-4">
             {addressSegments.map((segment, index) => (
               <SegmentDisplay
                 key={index}
@@ -135,7 +135,7 @@ export function CFBAddressBreakdown() {
           </div>
 
           {/* Active Segment Info */}
-          <div className="min-h-[80px] p-4 bg-black/20 rounded-lg">
+          <div className="min-h-[80px] p-4 bg-black/20">
             {activeSegment !== null && addressSegments[activeSegment] ? (
               <motion.div
                 initial={{ opacity: 0, y: 5 }}
@@ -146,7 +146,7 @@ export function CFBAddressBreakdown() {
                   <span className={`font-mono font-bold ${addressSegments[activeSegment].color}`}>
                     {addressSegments[activeSegment].text}
                   </span>
-                  <span className="text-xs px-2 py-0.5 rounded bg-white/10">
+                  <span className="text-xs px-2 py-0.5  bg-white/10">
                     {addressSegments[activeSegment].label}
                   </span>
                 </div>
@@ -166,13 +166,13 @@ export function CFBAddressBreakdown() {
         {/* Metadata Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <motion.div
-            className="p-4 rounded-xl bg-card/50 border border-border"
+            className="p-4 bg-card/50 border border-border"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2 }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <Clock className="h-4 w-4 text-orange-400" />
+              <Clock className="h-4 w-4 text-[#D4AF37]" />
               <span className="text-sm font-medium">First Seen</span>
             </div>
             <div className="font-mono text-lg">Jan 13, 2009</div>
@@ -180,13 +180,13 @@ export function CFBAddressBreakdown() {
           </motion.div>
 
           <motion.div
-            className="p-4 rounded-xl bg-card/50 border border-border"
+            className="p-4 bg-card/50 border border-border"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.25 }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <Coins className="h-4 w-4 text-orange-400" />
+              <Coins className="h-4 w-4 text-[#D4AF37]" />
               <span className="text-sm font-medium">Balance Received</span>
             </div>
             <div className="font-mono text-lg">50 BTC</div>
@@ -194,27 +194,27 @@ export function CFBAddressBreakdown() {
           </motion.div>
 
           <motion.div
-            className="p-4 rounded-xl bg-card/50 border border-border"
+            className="p-4 bg-card/50 border border-border"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.3 }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <MapPin className="h-4 w-4 text-orange-400" />
+              <MapPin className="h-4 w-4 text-[#D4AF37]" />
               <span className="text-sm font-medium">Status</span>
             </div>
-            <div className="font-mono text-lg text-green-400">Dormant</div>
+            <div className="font-mono text-lg text-[#D4AF37]">Dormant</div>
             <div className="text-xs text-muted-foreground">Never moved since 2009</div>
           </motion.div>
 
           <motion.div
-            className="p-4 rounded-xl bg-card/50 border border-border"
+            className="p-4 bg-card/50 border border-border"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.35 }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <Info className="h-4 w-4 text-orange-400" />
+              <Info className="h-4 w-4 text-[#D4AF37]" />
               <span className="text-sm font-medium">1CFB Addresses</span>
             </div>
             <div className="font-mono text-lg">12 unique</div>
@@ -224,28 +224,28 @@ export function CFBAddressBreakdown() {
 
         {/* Pattern Analysis */}
         <motion.div
-          className="p-5 rounded-xl bg-gradient-to-r from-orange-950/30 via-purple-950/30 to-orange-950/30 border border-orange-900/50"
+          className="p-5 bg-gradient-to-r from-[#050505] via-[#050505] to-[#050505] border border-white/[0.04]"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <h3 className="font-semibold mb-4">Pattern Analysis</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-3 rounded bg-black/20">
+            <div className="p-3  bg-black/20">
               <div className="text-sm text-muted-foreground mb-1">Mirror Symmetry</div>
               <div className="font-mono">
-                <span className="text-purple-400">ZgZ</span>
+                <span className="text-[#D4AF37]">ZgZ</span>
                 <span className="text-muted-foreground"> ... </span>
-                <span className="text-purple-400">zg</span>
+                <span className="text-[#D4AF37]">zg</span>
               </div>
               <div className="text-xs text-muted-foreground mt-1">
                 Palindromic bookends
               </div>
             </div>
-            <div className="p-3 rounded bg-black/20">
+            <div className="p-3  bg-black/20">
               <div className="text-sm text-muted-foreground mb-1">Letter Position</div>
               <div className="font-mono">
-                <span className="text-blue-400">g</span>
+                <span className="text-[#D4AF37]">g</span>
                 <span className="text-muted-foreground"> = </span>
                 <span className="text-white">7th letter</span>
               </div>
@@ -253,11 +253,11 @@ export function CFBAddressBreakdown() {
                 7 appears in Qubic architecture
               </div>
             </div>
-            <div className="p-3 rounded bg-black/20">
+            <div className="p-3  bg-black/20">
               <div className="text-sm text-muted-foreground mb-1">CFB Signature</div>
               <div className="font-mono">
-                <span className="text-yellow-400">1</span>
-                <span className="text-orange-400">CFB</span>
+                <span className="text-[#D4AF37]">1</span>
+                <span className="text-[#D4AF37]">CFB</span>
                 <span className="text-muted-foreground">...</span>
               </div>
               <div className="text-xs text-muted-foreground mt-1">
@@ -278,7 +278,7 @@ export function CFBAddressBreakdown() {
             href={`https://blockchair.com/bitcoin/address/${CFB_ADDRESS}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors text-orange-400"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 transition-colors text-[#D4AF37]"
           >
             <ExternalLink className="h-4 w-4" />
             View on Blockchair
@@ -287,7 +287,7 @@ export function CFBAddressBreakdown() {
 
         {/* Research Integrity Notice */}
         <motion.div
-          className="mt-6 p-4 rounded-lg bg-card/50 border border-border text-center"
+          className="mt-6 p-4 bg-card/50 border border-border text-center"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.6 }}

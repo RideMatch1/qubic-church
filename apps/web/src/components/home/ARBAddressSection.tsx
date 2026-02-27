@@ -30,7 +30,7 @@ function LetterDisplay({ letter, index, isHighlighted, showValue }: LetterDispla
   return (
     <motion.span
       className={`inline-flex flex-col items-center mx-[1px] ${
-        isHighlighted ? 'text-purple-400' : 'text-muted-foreground'
+        isHighlighted ? 'text-[#D4AF37]' : 'text-muted-foreground'
       }`}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ function LetterDisplay({ letter, index, isHighlighted, showValue }: LetterDispla
       <span className="text-xs font-mono">{letter}</span>
       {showValue && (
         <motion.span
-          className="text-[8px] text-purple-400/60"
+          className="text-[8px] text-[#D4AF37]/60"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 + index * 0.01 }}
@@ -62,7 +62,7 @@ export function ARBAddressSection() {
   const afzjSum = letterValue('A') + letterValue('F') + letterValue('Z') + letterValue('J') // 1+6+26+10 = 43
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 bg-gradient-to-b from-purple-950/20 to-transparent">
+    <section ref={sectionRef} className="py-20 px-4 bg-gradient-to-b from-[#050505]/80 to-transparent">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -85,25 +85,25 @@ export function ARBAddressSection() {
 
         {/* Address Display */}
         <motion.div
-          className="p-6 rounded-xl bg-gradient-to-b from-purple-950/40 to-purple-950/20 border border-purple-900/50 mb-6"
+          className="p-6 bg-gradient-to-b from-[#050505] to-[#050505]/80 border border-white/[0.04] mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <Hash className="h-4 w-4 text-purple-400" />
+              <Hash className="h-4 w-4 text-[#D4AF37]" />
               <span className="text-sm font-medium">Qubic ARB Address</span>
             </div>
             <button
               onClick={() => setShowLetterValues(!showLetterValues)}
-              className="text-xs px-3 py-1 rounded bg-purple-500/20 hover:bg-purple-500/30 transition-colors text-purple-400"
+              className="text-xs px-3 py-1  bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 transition-colors text-[#D4AF37]"
             >
               {showLetterValues ? 'Hide Values' : 'Show Letter Values'}
             </button>
           </div>
 
-          <div className="flex flex-wrap justify-center p-4 bg-black/30 rounded-lg overflow-x-auto">
+          <div className="flex flex-wrap justify-center p-4 bg-black/30 overflow-x-auto">
             {ARB_ADDRESS.split('').map((letter, index) => (
               <LetterDisplay
                 key={index}
@@ -124,17 +124,17 @@ export function ARBAddressSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Card 1: Letter Sum */}
           <motion.div
-            className="p-5 rounded-xl bg-gradient-to-b from-purple-950/40 to-purple-950/20 border border-purple-900/50"
+            className="p-5 bg-gradient-to-b from-[#050505] to-[#050505]/80 border border-white/[0.04]"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="flex items-center gap-2 mb-3">
-              <Calculator className="h-5 w-5 text-purple-400" />
+              <Calculator className="h-5 w-5 text-[#D4AF37]" />
               <h3 className="font-semibold">Letter Sum</h3>
             </div>
             <div className="text-center py-4">
-              <div className="text-4xl font-mono font-bold text-purple-400">{letterSum}</div>
+              <div className="text-4xl font-mono font-bold text-[#D4AF37]">{letterSum}</div>
               <div className="text-sm text-muted-foreground mt-2">
                 Sum of all letter values (A=1, B=2, ... Z=26)
               </div>
@@ -143,52 +143,52 @@ export function ARBAddressSection() {
 
           {/* Card 2: Prime Factorization */}
           <motion.div
-            className="p-5 rounded-xl bg-gradient-to-b from-purple-950/40 to-purple-950/20 border border-purple-900/50"
+            className="p-5 bg-gradient-to-b from-[#050505] to-[#050505]/80 border border-white/[0.04]"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <div className="flex items-center gap-2 mb-3">
-              <Binary className="h-5 w-5 text-purple-400" />
+              <Binary className="h-5 w-5 text-[#D4AF37]" />
               <h3 className="font-semibold">Prime Factorization</h3>
             </div>
             <div className="text-center py-4">
               <div className="text-2xl font-mono font-bold">
-                <span className="text-purple-400">817</span>
+                <span className="text-[#D4AF37]">817</span>
                 <span className="text-muted-foreground mx-2">=</span>
-                <span className="text-green-400">19</span>
+                <span className="text-[#D4AF37]">19</span>
                 <span className="text-muted-foreground mx-2">×</span>
-                <span className="text-orange-400">43</span>
+                <span className="text-[#D4AF37]">43</span>
               </div>
               <div className="text-sm text-muted-foreground mt-2">
                 Both factors are prime numbers
               </div>
-              <div className="mt-3 p-2 rounded bg-orange-500/10 text-xs">
-                <strong className="text-orange-400">43</strong> = CFB constant (Come-From-Beyond)
+              <div className="mt-3 p-2  bg-[#D4AF37]/10 text-xs">
+                <strong className="text-[#D4AF37]">43</strong> = CFB constant (Come-From-Beyond)
               </div>
             </div>
           </motion.div>
 
           {/* Card 3: AFZJ Marker */}
           <motion.div
-            className="p-5 rounded-xl bg-gradient-to-b from-purple-950/40 to-purple-950/20 border border-purple-900/50"
+            className="p-5 bg-gradient-to-b from-[#050505] to-[#050505]/80 border border-white/[0.04]"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="h-5 w-5 text-purple-400" />
+              <Sparkles className="h-5 w-5 text-[#D4AF37]" />
               <h3 className="font-semibold">AFZJ Marker</h3>
             </div>
             <div className="text-center py-4">
               <div className="flex justify-center gap-2 mb-3">
-                <span className="px-2 py-1 rounded bg-purple-500/20 font-mono">A=1</span>
-                <span className="px-2 py-1 rounded bg-purple-500/20 font-mono">F=6</span>
-                <span className="px-2 py-1 rounded bg-purple-500/20 font-mono">Z=26</span>
-                <span className="px-2 py-1 rounded bg-purple-500/20 font-mono">J=10</span>
+                <span className="px-2 py-1  bg-[#D4AF37]/20 font-mono">A=1</span>
+                <span className="px-2 py-1  bg-[#D4AF37]/20 font-mono">F=6</span>
+                <span className="px-2 py-1  bg-[#D4AF37]/20 font-mono">Z=26</span>
+                <span className="px-2 py-1  bg-[#D4AF37]/20 font-mono">J=10</span>
               </div>
               <div className="text-xl font-mono">
-                1 + 6 + 26 + 10 = <span className="text-orange-400 font-bold">43</span>
+                1 + 6 + 26 + 10 = <span className="text-[#D4AF37] font-bold">43</span>
               </div>
               <div className="text-sm text-muted-foreground mt-2">
                 First meaningful prefix sums to 43
@@ -199,13 +199,13 @@ export function ARBAddressSection() {
 
         {/* Row 68 Connection */}
         <motion.div
-          className="mt-6 p-5 rounded-xl bg-gradient-to-r from-purple-950/40 via-indigo-950/40 to-purple-950/40 border border-purple-900/50"
+          className="mt-6 p-5 bg-gradient-to-r from-[#050505] via-[#050505] to-[#050505] border border-white/[0.04]"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <div className="flex items-center gap-2 mb-4">
-            <Binary className="h-5 w-5 text-indigo-400" />
+            <Binary className="h-5 w-5 text-[#D4AF37]" />
             <h3 className="font-semibold">Row 68: The Alpha Connection</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -214,11 +214,11 @@ export function ARBAddressSection() {
                 Analysis of the Jinn memory matrix reveals that Row 68 performs exactly
                 137 WRITE operations - a direct reference to the fine structure constant.
               </p>
-              <div className="p-3 rounded bg-indigo-500/10 border border-indigo-500/30">
+              <div className="p-3  bg-[#D4AF37]/10 border border-[#D4AF37]/20">
                 <div className="font-mono text-center">
-                  <span className="text-indigo-400">Row 68</span>
+                  <span className="text-[#D4AF37]">Row 68</span>
                   <span className="text-muted-foreground mx-2">performs</span>
-                  <span className="text-green-400 font-bold text-xl">137</span>
+                  <span className="text-[#D4AF37] font-bold text-xl">137</span>
                   <span className="text-muted-foreground ml-2">writes</span>
                 </div>
               </div>
@@ -228,7 +228,7 @@ export function ARBAddressSection() {
                 <div className="text-sm text-muted-foreground mb-2">Fine Structure Constant</div>
                 <div className="font-mono text-2xl">
                   <span className="text-muted-foreground">α ≈ 1/</span>
-                  <span className="text-green-400 font-bold">137</span>
+                  <span className="text-[#D4AF37] font-bold">137</span>
                 </div>
                 <div className="text-xs text-muted-foreground mt-2">
                   Fundamental physics constant describing electromagnetic interaction strength
@@ -240,7 +240,7 @@ export function ARBAddressSection() {
 
         {/* Research Integrity Notice */}
         <motion.div
-          className="mt-6 p-4 rounded-lg bg-card/50 border border-border text-center"
+          className="mt-6 p-4 bg-card/50 border border-border text-center"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.6 }}

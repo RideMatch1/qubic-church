@@ -132,17 +132,17 @@ function LoadingScreen({ progress }: { progress: number }) {
       <div className="flex flex-col items-center gap-6 max-w-md px-8">
         {/* Neural network animation */}
         <div className="relative w-32 h-32">
-          <div className="absolute inset-0 rounded-full border-2 border-orange-500/30 animate-ping" />
-          <div className="absolute inset-4 rounded-full border-2 border-blue-500/30 animate-ping animation-delay-200" />
-          <div className="absolute inset-8 rounded-full border-2 border-gray-500/30 animate-ping animation-delay-400" />
+          <div className="absolute inset-0 border-2 border-[#D4AF37]/30 animate-ping" />
+          <div className="absolute inset-4 border-2 border-[#D4AF37]/30 animate-ping animation-delay-200" />
+          <div className="absolute inset-8 border-2 border-gray-500/30 animate-ping animation-delay-400" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 via-gray-600 to-blue-500 animate-pulse" />
+            <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] via-gray-600 to-[#D4AF37] animate-pulse" />
           </div>
         </div>
 
         {/* Title */}
         <div className="text-center">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-gray-300 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D4AF37] via-gray-300 to-[#D4AF37] bg-clip-text text-transparent">
             Qortex Neural Network
           </h2>
           <p className="text-sm text-gray-500 mt-1">
@@ -152,9 +152,9 @@ function LoadingScreen({ progress }: { progress: number }) {
 
         {/* Progress bar */}
         <div className="w-full space-y-2">
-          <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-gray-800 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-[#D4AF37] via-gray-400 to-[#D4AF37] transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -167,7 +167,7 @@ function LoadingScreen({ progress }: { progress: number }) {
         {/* Stats preview */}
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <div className="text-xl font-bold text-orange-400">23,765</div>
+            <div className="text-xl font-bold text-[#D4AF37]">23,765</div>
             <div className="text-xs text-gray-600">Neurons</div>
           </div>
           <div>
@@ -175,7 +175,7 @@ function LoadingScreen({ progress }: { progress: number }) {
             <div className="text-xs text-gray-600">Synapses</div>
           </div>
           <div>
-            <div className="text-xl font-bold text-blue-400">47</div>
+            <div className="text-xl font-bold text-[#D4AF37]">47</div>
             <div className="text-xs text-gray-600">Frames</div>
           </div>
         </div>
@@ -194,10 +194,10 @@ const ERROR_ICONS: Record<QortexErrorType, React.ReactNode> = {
 }
 
 const ERROR_COLORS: Record<QortexErrorType, string> = {
-  NETWORK_ERROR: 'text-orange-400',
+  NETWORK_ERROR: 'text-[#D4AF37]',
   PARSE_ERROR: 'text-red-400',
   VALIDATION_ERROR: 'text-red-400',
-  TIMEOUT_ERROR: 'text-yellow-400',
+  TIMEOUT_ERROR: 'text-[#D4AF37]',
   UNKNOWN_ERROR: 'text-gray-400',
 }
 
@@ -219,8 +219,8 @@ function ErrorScreen({
       <div className="flex flex-col items-center gap-6 max-w-md px-8 text-center">
         {/* Error icon with animated ring */}
         <div className="relative">
-          <div className={`absolute inset-0 rounded-full border-2 ${ERROR_COLORS[error.type]} opacity-20 animate-ping`} />
-          <div className={`w-24 h-24 rounded-full bg-gray-900 border-2 border-current flex items-center justify-center ${ERROR_COLORS[error.type]}`}>
+          <div className={`absolute inset-0 border-2 ${ERROR_COLORS[error.type]} opacity-20 animate-ping`} />
+          <div className={`w-24 h-24 bg-gray-900 border-2 border-current flex items-center justify-center ${ERROR_COLORS[error.type]}`}>
             {ERROR_ICONS[error.type]}
           </div>
         </div>
@@ -238,7 +238,7 @@ function ErrorScreen({
         </div>
 
         {/* Error type badge */}
-        <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full">
+        <div className="px-3 py-1 bg-white/5 border border-white/[0.04]">
           <span className="text-xs text-gray-500 uppercase tracking-wider">
             {error.type.replace('_', ' ')}
           </span>
@@ -249,7 +249,7 @@ function ErrorScreen({
           <div className="space-y-3">
             <Button
               onClick={onRetry}
-              className="gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white"
+              className="gap-2 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] hover:from-[#D4AF37] hover:to-[#D4AF37] text-white"
             >
               <RefreshCw className="w-4 h-4" />
               Try Again
@@ -274,7 +274,7 @@ function ErrorScreen({
         )}
 
         {/* Troubleshooting tips */}
-        <div className="pt-4 border-t border-white/10 w-full">
+        <div className="pt-4 border-t border-white/[0.04] w-full">
           <p className="text-[10px] text-gray-600 uppercase tracking-wider mb-2">
             Troubleshooting
           </p>
@@ -292,7 +292,7 @@ function ErrorScreen({
 function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm z-50 pointer-events-auto">
-      <div className="bg-background border border-border rounded-xl p-6 max-w-md mx-4 shadow-2xl">
+      <div className="bg-background border border-border p-6 max-w-md mx-4 shadow-2xl">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Keyboard Shortcuts</h3>
           <Button variant="ghost" size="sm" onClick={onClose}>
@@ -303,8 +303,8 @@ function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
           {[
             { key: 'I', action: 'Show info modal' },
             { key: 'Space', action: 'Play / Pause animation' },
-            { key: '←', action: 'Previous frame' },
-            { key: '→', action: 'Next frame' },
+            { key: '\u2190', action: 'Previous frame' },
+            { key: '\u2192', action: 'Next frame' },
             { key: 'Home', action: 'First frame' },
             { key: 'End', action: 'Last frame' },
             { key: 'F', action: 'Toggle fullscreen' },
@@ -313,7 +313,7 @@ function KeyboardShortcutsPanel({ onClose }: { onClose: () => void }) {
             { key: 'Esc', action: 'Close modals / Deselect' },
           ].map(({ key, action }) => (
             <div key={key} className="flex items-center gap-3">
-              <kbd className="px-2 py-1 bg-muted rounded text-xs font-mono min-w-[60px] text-center">
+              <kbd className="px-2 py-1 bg-muted text-xs font-mono min-w-[60px] text-center">
                 {key}
               </kbd>
               <span className="text-sm text-muted-foreground">{action}</span>
@@ -507,7 +507,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
     return (
       <div
         ref={containerRef}
-        className="w-full h-[700px] rounded-lg overflow-hidden border border-border"
+        className="w-full h-[700px] overflow-hidden border border-border"
       >
         <LoadingScreen progress={loadProgress} />
       </div>
@@ -518,7 +518,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
     return (
       <div
         ref={containerRef}
-        className="w-full h-[700px] rounded-lg overflow-hidden border border-border"
+        className="w-full h-[700px] overflow-hidden border border-border"
       >
         <ErrorScreen
           error={error}
@@ -534,7 +534,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full bg-black rounded-lg overflow-hidden border border-border transition-all duration-300 ${
+      className={`relative w-full bg-black overflow-hidden border border-border transition-all duration-300 ${
         isFullscreen ? 'h-screen rounded-none' : 'h-[700px]'
       }`}
     >
@@ -619,9 +619,9 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
         {/* Top Bar */}
         <div className="absolute top-0 left-0 right-0 p-4 flex items-start justify-between">
           {/* Legend */}
-          <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-xl p-4 space-y-3 pointer-events-auto max-w-[220px]">
+          <div className="bg-black/70 backdrop-blur-md border border-white/[0.04] p-4 space-y-3 pointer-events-auto max-w-[220px]">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 via-gray-500 to-blue-500" />
+              <div className="w-8 h-8 bg-gradient-to-br from-[#D4AF37] via-gray-500 to-[#D4AF37]" />
               <div>
                 <div className="text-sm font-semibold text-white">Qortex</div>
                 <div className="text-[10px] text-gray-400">Ternary Neural Network</div>
@@ -629,72 +629,72 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
             </div>
 
             {/* Data Source Info */}
-            <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-              <div className="text-[9px] text-blue-400/90">
+            <div className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
+              <div className="text-[9px] text-[#D4AF37]/90">
                 <span className="font-bold">Seeds:</span> Real Qubic IDs from Anna Matrix. Network topology is a visualization model.
               </div>
             </div>
 
             {/* Ternary Neuron States */}
-            <div className="border-t border-white/10 pt-3 space-y-2">
+            <div className="border-t border-white/[0.04] pt-3 space-y-2">
               <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">Neuron States (Ternary)</div>
               <div className="grid grid-cols-3 gap-2">
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-4 h-4 rounded-full bg-orange-500 shadow-lg shadow-orange-500/50" />
-                  <span className="text-[10px] text-orange-400 font-mono">+1</span>
+                  <div className="w-4 h-4 bg-[#D4AF37] shadow-lg shadow-[#D4AF37]/50" />
+                  <span className="text-[10px] text-[#D4AF37] font-mono">+1</span>
                   <span className="text-[8px] text-gray-500">Excited</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-4 h-4 rounded-full bg-gray-500 shadow-lg shadow-gray-500/50" />
+                  <div className="w-4 h-4 bg-gray-500 shadow-lg shadow-gray-500/50" />
                   <span className="text-[10px] text-gray-400 font-mono">0</span>
                   <span className="text-[8px] text-gray-500">Neutral</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-4 h-4 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50" />
-                  <span className="text-[10px] text-blue-400 font-mono">-1</span>
+                  <div className="w-4 h-4 bg-[#D4AF37] shadow-lg shadow-[#D4AF37]/50" />
+                  <span className="text-[10px] text-[#D4AF37] font-mono">-1</span>
                   <span className="text-[8px] text-gray-500">Inhibited</span>
                 </div>
               </div>
             </div>
 
             {/* Synapse Weights */}
-            <div className="border-t border-white/10 pt-3 space-y-2">
+            <div className="border-t border-white/[0.04] pt-3 space-y-2">
               <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">Synapse Strength</div>
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-0.5 bg-green-500 rounded-full" />
+                  <div className="w-6 h-0.5 bg-[#D4AF37]" />
                   <span className="text-[10px] text-gray-400">Fast &gt;70%</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-0.5 bg-yellow-500 rounded-full" />
+                  <div className="w-6 h-0.5 bg-[#D4AF37]" />
                   <span className="text-[10px] text-gray-400">Slow 40-70%</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-0.5 bg-purple-500 rounded-full" />
+                  <div className="w-6 h-0.5 bg-[#D4AF37]" />
                   <span className="text-[10px] text-gray-400">Meta &lt;40%</span>
                 </div>
               </div>
             </div>
 
             {/* Algorithm Constants */}
-            <div className="border-t border-white/10 pt-3">
+            <div className="border-t border-white/[0.04] pt-3">
               <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">Algorithm</div>
               <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[9px]">
                 <div className="flex justify-between">
                   <span className="text-gray-500">K (inputs)</span>
-                  <span className="text-cyan-400 font-mono">14</span>
+                  <span className="text-[#D4AF37] font-mono">14</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">L (outputs)</span>
-                  <span className="text-cyan-400 font-mono">8</span>
+                  <span className="text-[#D4AF37] font-mono">8</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">N (ticks)</span>
-                  <span className="text-cyan-400 font-mono">120</span>
+                  <span className="text-[#D4AF37] font-mono">120</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">S (mutations)</span>
-                  <span className="text-cyan-400 font-mono">100</span>
+                  <span className="text-[#D4AF37] font-mono">100</span>
                 </div>
               </div>
               <div className="mt-2 text-[8px] text-gray-600 italic">
@@ -706,7 +706,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
           {/* Top Right Controls */}
           <div className="flex flex-col gap-2 pointer-events-auto">
             {/* Main actions */}
-            <div className="flex gap-1 bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-1">
+            <div className="flex gap-1 bg-black/70 backdrop-blur-md border border-white/[0.04] p-1">
               <Button
                 variant="ghost"
                 size="icon"
@@ -755,7 +755,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
             </div>
 
             {/* Camera presets */}
-            <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-1">
+            <div className="bg-black/70 backdrop-blur-md border border-white/[0.04] p-1">
               <div className="text-[10px] text-gray-500 px-2 py-1">Camera</div>
               <div className="grid grid-cols-2 gap-1">
                 {Object.entries(CAMERA_PRESETS).map(([key, preset]) => (
@@ -777,11 +777,11 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
             </div>
 
             {/* Live Qubic Network Status */}
-            <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-3">
+            <div className="bg-black/70 backdrop-blur-md border border-white/[0.04] p-3">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   {qubicConnected ? (
-                    <Wifi className="w-3 h-3 text-green-400" />
+                    <Wifi className="w-3 h-3 text-[#D4AF37]" />
                   ) : (
                     <WifiOff className="w-3 h-3 text-red-400" />
                   )}
@@ -812,7 +812,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
                       <Activity className="w-3 h-3" />
                       Tick
                     </span>
-                    <span className="text-cyan-400 font-mono">{qubicEpoch.tick?.toLocaleString() || '-'}</span>
+                    <span className="text-[#D4AF37] font-mono">{qubicEpoch.tick?.toLocaleString() || '-'}</span>
                   </div>
                   {qubicNetwork && (
                     <div className="flex items-center justify-between text-[10px]">
@@ -821,9 +821,9 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
                         Health
                       </span>
                       <span className={`font-mono capitalize ${
-                        qubicNetwork.health === 'excellent' ? 'text-green-400' :
-                        qubicNetwork.health === 'good' ? 'text-emerald-400' :
-                        qubicNetwork.health === 'fair' ? 'text-yellow-400' : 'text-red-400'
+                        qubicNetwork.health === 'excellent' ? 'text-[#D4AF37]' :
+                        qubicNetwork.health === 'good' ? 'text-[#D4AF37]' :
+                        qubicNetwork.health === 'fair' ? 'text-[#D4AF37]' : 'text-red-400'
                       }`}>{qubicNetwork.health}</span>
                     </div>
                   )}
@@ -837,7 +837,7 @@ export default function QortexScene({ onAnalyzeInAigarth }: QortexSceneProps = {
 
             {/* Frame info */}
             {currentFrame && (
-              <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-3 text-center">
+              <div className="bg-black/70 backdrop-blur-md border border-white/[0.04] p-3 text-center">
                 <div className="text-[10px] text-gray-500 uppercase tracking-wider">Frame Range</div>
                 <div className="text-sm font-mono text-white">
                   #{currentFrame.startId} - #{currentFrame.endId}

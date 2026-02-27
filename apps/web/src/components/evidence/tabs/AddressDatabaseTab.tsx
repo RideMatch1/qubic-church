@@ -12,8 +12,8 @@ const QubicSeedsTable = dynamic(
     loading: () => (
       <div className="flex items-center justify-center h-[500px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span className="text-muted-foreground">Loading Qubic Seeds...</span>
+          <div className="w-8 h-8 border-2 border-[#D4AF37] border-t-transparent animate-spin" />
+          <span className="text-white/40">Loading Qubic Seeds...</span>
         </div>
       </div>
     ),
@@ -26,8 +26,8 @@ const MatrixAddressesTable = dynamic(
     loading: () => (
       <div className="flex items-center justify-center h-[500px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span className="text-muted-foreground">Loading Matrix Addresses...</span>
+          <div className="w-8 h-8 border-2 border-[#D4AF37] border-t-transparent animate-spin" />
+          <span className="text-white/40">Loading Matrix Addresses...</span>
         </div>
       </div>
     ),
@@ -45,18 +45,18 @@ export default function AddressDatabaseTab() {
   const [activeTab, setActiveTab] = useState('qubic')
 
   return (
-    <div className="w-full min-h-[600px] bg-gradient-to-b from-background to-muted/10 rounded-lg border border-border p-6">
+    <div className="w-full min-h-[600px] bg-[#050505] border border-white/[0.04] p-6">
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center">
-            <Database className="w-5 h-5 text-blue-400" />
+          <div className="w-10 h-10 bg-[#D4AF37]/[0.06] border border-[#D4AF37]/20 flex items-center justify-center">
+            <Database className="w-5 h-5 text-[#D4AF37]/70" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-foreground">
+            <h3 className="text-lg font-semibold text-white/90 tracking-wider">
               Address Database
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-white/40">
               Cryptographic research data from the Bitcoin-Qubic bridge analysis
             </p>
           </div>

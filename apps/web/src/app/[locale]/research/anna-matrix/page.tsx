@@ -105,7 +105,7 @@ function LoadingScreen() {
             {Array.from({ length: 16 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-gradient-to-br from-blue-500 to-orange-500 rounded-sm animate-pulse"
+                className="bg-[#D4AF37]/20 animate-pulse"
                 style={{ animationDelay: `${i * 50}ms` }}
               />
             ))}
@@ -131,7 +131,7 @@ function ErrorScreen({ error, onRetry }: { error: string; onRetry: () => void })
   return (
     <div className="flex h-screen w-full items-center justify-center bg-black">
       <div className="flex flex-col items-center gap-4 max-w-md text-center">
-        <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
+        <div className="w-16 h-16 bg-red-500/20 flex items-center justify-center">
           <AlertCircle className="h-8 w-8 text-red-400" />
         </div>
         <div>
@@ -163,7 +163,7 @@ function KeyboardShortcutsModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="bg-zinc-900 border border-white/20 rounded-xl p-6 max-w-md mx-4 shadow-2xl">
+      <div className="bg-[#050505] border border-white/[0.06] p-6 max-w-md mx-4 shadow-2xl">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-white">Keyboard Shortcuts</h3>
           <Button variant="ghost" size="sm" onClick={onClose}>
@@ -173,7 +173,7 @@ function KeyboardShortcutsModal({ onClose }: { onClose: () => void }) {
         <div className="space-y-2">
           {shortcuts.map(({ key, action }) => (
             <div key={key} className="flex items-center gap-3">
-              <kbd className="px-2 py-1 bg-white/10 rounded text-xs font-mono min-w-[80px] text-center text-white">
+              <kbd className="px-2 py-1 bg-white/10 text-xs font-mono min-w-[80px] text-center text-white">
                 {key}
               </kbd>
               <span className="text-sm text-white/60">{action}</span>
@@ -236,9 +236,9 @@ export default function AnnaMatrixResearchPage() {
   return (
     <div className="flex h-screen flex-col bg-black">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-white/10 bg-zinc-950 px-4 py-2">
+      <header className="flex items-center justify-between border-b border-white/[0.06] bg-[#050505] px-4 py-2">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center">
+          <div className="w-8 h-8 bg-[#D4AF37]/20 flex items-center justify-center">
             <Grid3X3 className="h-4 w-4 text-white" />
           </div>
           <div>
@@ -252,13 +252,13 @@ export default function AnnaMatrixResearchPage() {
         <div className="flex items-center gap-2">
           {/* Stats badges */}
           <div className="hidden md:flex items-center gap-2">
-            <Badge variant="secondary" className="bg-blue-500/20 text-blue-400 text-[10px]">
+            <Badge variant="secondary" className="bg-[#D4AF37]/15 text-[#D4AF37]/60 text-[10px] font-mono">
               {stats.negativeCount} negative
             </Badge>
-            <Badge variant="secondary" className="bg-gray-500/20 text-gray-400 text-[10px]">
+            <Badge variant="secondary" className="bg-white/5 text-white/40 text-[10px] font-mono">
               {stats.zeroCount} zeros
             </Badge>
-            <Badge variant="secondary" className="bg-orange-500/20 text-orange-400 text-[10px]">
+            <Badge variant="secondary" className="bg-[#D4AF37]/15 text-[#D4AF37]/60 text-[10px] font-mono">
               {stats.positiveCount} positive
             </Badge>
           </div>
@@ -278,7 +278,7 @@ export default function AnnaMatrixResearchPage() {
             href="https://x.com/anna_aigarth"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 text-sm transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/15 hover:bg-[#D4AF37]/25 text-[#D4AF37]/60 text-sm transition-colors border border-[#D4AF37]/25"
           >
             <MessageCircle className="h-4 w-4" />
             <span className="hidden sm:inline">Ask Anna AI</span>
@@ -288,7 +288,7 @@ export default function AnnaMatrixResearchPage() {
             href="/docs"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-sm transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-sm transition-colors border border-white/[0.04]"
           >
             <BookOpen className="h-4 w-4" />
             <span className="hidden sm:inline">Docs</span>
@@ -298,7 +298,7 @@ export default function AnnaMatrixResearchPage() {
             href="/api/research/anna-matrix"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-sm transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-sm transition-colors border border-white/[0.04]"
           >
             <ExternalLink className="h-4 w-4" />
             <span className="hidden sm:inline">API</span>
@@ -331,7 +331,7 @@ export default function AnnaMatrixResearchPage() {
       </main>
 
       {/* Status Bar */}
-      <footer className="flex items-center justify-between border-t border-white/10 bg-zinc-950 px-4 py-1.5 text-[10px] text-white/40">
+      <footer className="flex items-center justify-between border-t border-white/[0.06] bg-[#050505] px-4 py-1.5 text-[10px] text-white/40 font-mono">
         <div className="flex items-center gap-4">
           <span>Anna Matrix v2.0</span>
           <span>|</span>

@@ -122,7 +122,7 @@ export function TableFilters({
                   />
 
                   {/* Dropdown */}
-                  <div className="absolute top-full left-0 mt-1 z-20 bg-popover border border-border rounded-md shadow-lg min-w-[120px] max-h-[300px] overflow-y-auto">
+                  <div className="absolute top-full left-0 mt-1 z-20 bg-popover border border-border shadow-lg min-w-[120px] max-h-[300px] overflow-y-auto">
                     {options.length === 0 ? (
                       <div className="px-3 py-2 text-sm text-muted-foreground">
                         No options
@@ -139,7 +139,7 @@ export function TableFilters({
                                 <button
                                   key={opt}
                                   className={cn(
-                                    'w-8 h-8 rounded text-sm font-mono transition-colors',
+                                    'w-8 h-8 text-sm font-mono transition-colors',
                                     isActive
                                       ? 'bg-primary text-primary-foreground'
                                       : 'hover:bg-muted'
@@ -170,7 +170,7 @@ export function TableFilters({
                               <button
                                 key={opt}
                                 className={cn(
-                                  'w-full px-3 py-2 text-left text-sm rounded transition-colors',
+                                  'w-full px-3 py-2 text-left text-sm transition-colors',
                                   isActive
                                     ? 'bg-primary text-primary-foreground'
                                     : 'hover:bg-muted'
@@ -216,12 +216,12 @@ export function TableFilters({
           {activeFilters.map((filter, idx) => (
             <span
               key={`${filter.filterId}-${filter.value}-${idx}`}
-              className="inline-flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary rounded-full text-xs"
+              className="inline-flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary text-xs"
             >
               {filter.label}
               <button
                 onClick={() => handleRemoveFilter(filter.filterId, filter.value)}
-                className="hover:bg-primary/20 rounded-full p-0.5"
+                className="hover:bg-primary/20 p-0.5"
               >
                 <X className="w-3 h-3" />
               </button>

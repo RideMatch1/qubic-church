@@ -1,0 +1,122 @@
+{
+  "scan_range": {
+    "start": 9000,
+    "end": 9005
+  },
+  "total_blocks": 6,
+  "parse_failures": 0,
+  "extranonce_stats": {
+    "min": 86,
+    "max": 3551,
+    "mean": 1702.5
+  },
+  "sessions": [
+    {
+      "id": 1,
+      "start_block": 9000,
+      "end_block": 9001,
+      "block_count": 2,
+      "extranonce_range": [
+        1638,
+        1642
+      ],
+      "pattern": "monotonic_increasing",
+      "likely_miner": "satoshi_pattern",
+      "monotonic_ratio": 1.0,
+      "avg_extranonce_step": 4.0,
+      "break_reason": "drop 1642->86"
+    },
+    {
+      "id": 2,
+      "start_block": 9002,
+      "end_block": 9003,
+      "block_count": 2,
+      "extranonce_range": [
+        86,
+        3551
+      ],
+      "pattern": "monotonic_increasing",
+      "likely_miner": "satoshi_pattern",
+      "monotonic_ratio": 1.0,
+      "avg_extranonce_step": 3465.0,
+      "break_reason": "drop 3551->1644"
+    },
+    {
+      "id": 3,
+      "start_block": 9004,
+      "end_block": 9005,
+      "block_count": 2,
+      "extranonce_range": [
+        1644,
+        1654
+      ],
+      "pattern": "monotonic_increasing",
+      "likely_miner": "satoshi_pattern",
+      "monotonic_ratio": 1.0,
+      "avg_extranonce_step": 10.0,
+      "break_reason": "end_of_range"
+    }
+  ],
+  "blocks": [
+    {
+      "height": 9000,
+      "timestamp": 1238252710,
+      "date": "2009-03-28T15:05:10+00:00",
+      "nonce": 2656372516,
+      "extranonce_int": 1638,
+      "extranonce_hex": "6606",
+      "nbits_hex": "ffff001d",
+      "parse_method": "standard_v01"
+    },
+    {
+      "height": 9001,
+      "timestamp": 1238253365,
+      "date": "2009-03-28T15:16:05+00:00",
+      "nonce": 3333321528,
+      "extranonce_int": 1642,
+      "extranonce_hex": "6a06",
+      "nbits_hex": "ffff001d",
+      "parse_method": "standard_v01"
+    },
+    {
+      "height": 9002,
+      "timestamp": 1238253540,
+      "date": "2009-03-28T15:19:00+00:00",
+      "nonce": 67338003,
+      "extranonce_int": 86,
+      "extranonce_hex": "56",
+      "nbits_hex": "ffff001d",
+      "parse_method": "standard_v01"
+    },
+    {
+      "height": 9003,
+      "timestamp": 1238254245,
+      "date": "2009-03-28T15:30:45+00:00",
+      "nonce": 95601110,
+      "extranonce_int": 3551,
+      "extranonce_hex": "df0d",
+      "nbits_hex": "ffff001d",
+      "parse_method": "standard_v01"
+    },
+    {
+      "height": 9004,
+      "timestamp": 1238254717,
+      "date": "2009-03-28T15:38:37+00:00",
+      "nonce": 3383103007,
+      "extranonce_int": 1644,
+      "extranonce_hex": "6c06",
+      "nbits_hex": "ffff001d",
+      "parse_method": "standard_v01"
+    },
+    {
+      "height": 9005,
+      "timestamp": 1238255644,
+      "date": "2009-03-28T15:54:04+00:00",
+      "nonce": 3155907353,
+      "extranonce_int": 1654,
+      "extranonce_hex": "7606",
+      "nbits_hex": "ffff001d",
+      "parse_method": "standard_v01"
+    }
+  ]
+}

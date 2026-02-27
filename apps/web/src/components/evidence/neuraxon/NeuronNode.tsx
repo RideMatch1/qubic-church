@@ -242,11 +242,11 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick, hasBitcoi
       {/* Hover tooltip - enhanced */}
       {hovered && !isSelected && (
         <Html center style={{ pointerEvents: 'none' }}>
-          <div className="bg-black/90 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3 shadow-2xl whitespace-nowrap transform -translate-x-1/2">
+          <div className="bg-[#050505] backdrop-blur-md border border-white/[0.04] px-4 py-3 shadow-2xl whitespace-nowrap transform -translate-x-1/2">
             {/* Header */}
             <div className="flex items-center gap-2 mb-2">
               <div
-                className="w-3 h-3 rounded-full shadow-lg"
+                className="w-3 h-3 shadow-lg"
                 style={{
                   backgroundColor: glowColor,
                   boxShadow: `0 0 8px ${glowColor}`
@@ -264,7 +264,7 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick, hasBitcoi
 
             {/* State and Type */}
             <div className="flex items-center gap-3 text-[10px]">
-              <span className="px-2 py-0.5 rounded-full bg-white/10 text-gray-300">
+              <span className="px-2 py-0.5 bg-white/10 text-gray-300">
                 {node.type}
               </span>
               <span className="text-gray-500">
@@ -275,7 +275,7 @@ export function NeuronNode({ node, isSelected, isHighlighted, onClick, hasBitcoi
             </div>
 
             {/* Click hint */}
-            <div className="mt-2 pt-2 border-t border-white/10 text-[10px] text-gray-500 text-center">
+            <div className="mt-2 pt-2 border-t border-white/[0.04] text-[10px] text-gray-500 text-center">
               Click to explore
             </div>
           </div>

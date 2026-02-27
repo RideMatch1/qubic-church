@@ -74,15 +74,15 @@ export function DiscoveryTeaser() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <div className="relative aspect-[3/4] max-w-[400px] mx-auto lg:ml-auto rounded-2xl overflow-hidden">
+            <div className="relative aspect-[3/4] max-w-[400px] mx-auto lg:ml-auto overflow-hidden">
               {/* Subtle glow behind */}
-              <div className="absolute -inset-4 bg-gradient-radial from-purple-500/10 via-transparent to-transparent blur-2xl" />
+              <div className="absolute -inset-4 bg-gradient-radial from-[#D4AF37]/10 via-transparent to-transparent blur-2xl" />
 
               <Image
                 src="/images/nfts/anna-001.webp"
                 alt="Anna #001 - The First Light"
                 fill
-                className="object-cover rounded-2xl"
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 400px"
                 priority
               />
@@ -91,7 +91,7 @@ export function DiscoveryTeaser() {
               <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
                 <p className="text-white/80 text-xs uppercase tracking-wider">Anna #001</p>
                 <p className="text-white font-semibold text-lg mt-1">The First Light</p>
-                <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-yellow-500/80 text-yellow-100">
+                <span className="inline-block mt-2 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-[#D4AF37]/80 text-yellow-100">
                   Legendary
                 </span>
               </div>

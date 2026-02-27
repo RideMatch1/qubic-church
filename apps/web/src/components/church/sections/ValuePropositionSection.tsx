@@ -33,11 +33,11 @@ const stats = [
     description: 'Unique collection with giveaway entry & tier benefits',
     href: '/nfts',
     color: {
-      gradient: 'from-purple-500/10 to-purple-500/[0.03]',
-      border: 'border-purple-500/15 hover:border-purple-400/30',
-      icon: 'text-purple-400/80',
-      glow: 'bg-purple-500/15',
-      value: 'text-purple-300',
+      gradient: 'from-[#D4AF37]/10 to-[#D4AF37]/[0.03]',
+      border: 'border-[#D4AF37]/15 hover:border-[#D4AF37]/30',
+      icon: 'text-[#D4AF37]/80',
+      glow: 'bg-[#D4AF37]/15',
+      value: 'text-[#D4AF37]',
     },
   },
   {
@@ -77,7 +77,7 @@ export function ValuePropositionSection() {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             The deepest research into{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/90 via-purple-300 to-white/90">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/90 via-[#D4AF37] to-white/90">
               Qubic&apos;s origins
             </span>
           </h2>
@@ -101,14 +101,14 @@ export function ValuePropositionSection() {
               >
                 <Link
                   href={stat.href}
-                  className={`group relative block p-6 rounded-2xl bg-gradient-to-b ${stat.color.gradient} border ${stat.color.border} transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden`}
+                  className={`group relative block p-6 bg-gradient-to-b ${stat.color.gradient} border ${stat.color.border} transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden`}
                 >
                   {/* Glow behind icon */}
-                  <div className={`absolute top-4 left-4 w-16 h-16 rounded-full ${stat.color.glow} blur-2xl opacity-50 group-hover:opacity-80 transition-opacity`} />
+                  <div className={`absolute top-4 left-4 w-16 h-16 ${stat.color.glow} blur-2xl opacity-50 group-hover:opacity-80 transition-opacity`} />
 
                   <div className="relative">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                      <div className="p-3 bg-white/5 border border-white/[0.04]">
                         <Icon className={`w-6 h-6 ${stat.color.icon}`} />
                       </div>
                       <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/60 group-hover:translate-x-1 transition-all" />

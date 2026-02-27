@@ -25,18 +25,18 @@ export const COLORS = {
   layer4: '#5A7A9B',  // Light Slate - Top
 
   // Node type colors
-  vip: '#06B6D4',             // Cyan - VIP addresses
+  vip: '#D4AF37',             // Gold - VIP addresses
   vipActive: '#F59E0B',       // Gold - VIP with balance
   matrixDerived: '#4B6A8C',   // Dusty Blue - Matrix nodes
   selected: '#FFFFFF',        // White - Selected
-  seedValidated: '#10B981',   // Emerald
+  seedValidated: '#D4AF37',   // Gold
   seedMismatch: '#EF4444',    // Red
   unknown: '#6B7280',         // Gray
 
   // Legacy (kept for compatibility)
   patoshiGenesis: '#6B7280',
   patoshi: '#6B7280',
-  cfbVanity: '#06B6D4',
+  cfbVanity: '#D4AF37',
   patoshiVanity: '#6B7280',
 
   // Derivation method colors - subtle
@@ -45,12 +45,12 @@ export const COLORS = {
   col: '#3C5A7D',
   row: '#2D4A6E',
   step7: '#3C5A7D',
-  step27: '#06B6D4',
+  step27: '#D4AF37',
 
   // Edge colors
   transaction: '#FFFFFF',
-  sameSeed: '#06B6D4',
-  matrixAdjacent: '#06B6D4',
+  sameSeed: '#D4AF37',
+  matrixAdjacent: '#D4AF37',
   temporal: '#4B6A8C',
   derivation: '#5A7A9B',
 
@@ -60,7 +60,7 @@ export const COLORS = {
   border: 'rgba(255, 255, 255, 0.08)',
   text: '#F9FAFB',
   textMuted: '#9CA3AF',
-  accent: '#06B6D4',
+  accent: '#D4AF37',
 } as const
 
 // -----------------------------------------------------------------------------
@@ -221,8 +221,8 @@ export const ERROR_CONFIG: Record<AddressGraphErrorType, {
 }> = {
   NETWORK_ERROR: {
     icon: WifiOff,
-    color: 'text-orange-400',
-    bgColor: 'bg-orange-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     retryable: true,
     message: 'Network Connection Failed',
   },
@@ -242,8 +242,8 @@ export const ERROR_CONFIG: Record<AddressGraphErrorType, {
   },
   TIMEOUT_ERROR: {
     icon: Clock,
-    color: 'text-yellow-400',
-    bgColor: 'bg-yellow-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     retryable: true,
     message: 'Request Timed Out',
   },

@@ -1,0 +1,867 @@
+{
+  "title": "Word Encoding Audit - Anna Matrix Diagonal",
+  "seed": 42,
+  "n_controls": 1000,
+  "conclusion": "NOT_SIGNIFICANT",
+  "dictionary": {
+    "path": "/usr/share/dict/words",
+    "total_words": 227624,
+    "length_range": [
+      2,
+      15
+    ]
+  },
+  "anna_diagonal": [
+    -68,
+    60,
+    -118,
+    -70,
+    120,
+    120,
+    -38,
+    26,
+    -28,
+    -76,
+    -79,
+    -67,
+    -16,
+    116,
+    -37,
+    -40,
+    -91,
+    -70,
+    -113,
+    -113,
+    121,
+    28,
+    100,
+    67,
+    -75,
+    -75
+  ],
+  "section1_overview": {
+    "total_words": 227624,
+    "sum_range": [
+      -1224,
+      876
+    ],
+    "distinct_sums": 1777,
+    "avg_words_per_sum": 128.09,
+    "top_10_sums": [
+      {
+        "value": -165,
+        "count": 423
+      },
+      {
+        "value": -198,
+        "count": 418
+      },
+      {
+        "value": -128,
+        "count": 414
+      },
+      {
+        "value": -118,
+        "count": 410
+      },
+      {
+        "value": -220,
+        "count": 407
+      },
+      {
+        "value": -151,
+        "count": 405
+      },
+      {
+        "value": -169,
+        "count": 404
+      },
+      {
+        "value": -200,
+        "count": 402
+      },
+      {
+        "value": -163,
+        "count": 397
+      },
+      {
+        "value": -130,
+        "count": 397
+      }
+    ]
+  },
+  "section2_claims": {
+    "-416": {
+      "total_words": 216,
+      "claimed_words": [
+        "CHRIST"
+      ],
+      "verified": [
+        "CHRIST"
+      ],
+      "all_words_sample": [
+        "ACCOY",
+        "ACICULAR",
+        "ACLEISTOUS",
+        "ADDICTION",
+        "ALASKITE",
+        "ALIETHMOIDAL",
+        "ALTINCAR",
+        "AMYGDALACEAE",
+        "AMYROOT",
+        "ANALOGIST",
+        "ANALYSIS",
+        "ANTITABLOID",
+        "ANTITRYPSIN",
+        "APILARY",
+        "ATARAXIA",
+        "ATTARGUL",
+        "AUTOXIDATOR",
+        "BECASSOCKED",
+        "BIOCHEMICALLY",
+        "BIPASCHAL",
+        "BLOODSPILLER",
+        "BLOODSPILLING",
+        "BRADYPODIDAE",
+        "CALABASH",
+        "CALCEOLATE",
+        "CALCIGEROUS",
+        "CAPSULATED",
+        "CARICACEAE",
+        "CARRARAN",
+        "CATHAY",
+        "CAUDOTIBIAL",
+        "CCOYA",
+        "CECIDOMYIIDAE",
+        "CELLULIPETALLY",
+        "CENTRALITY",
+        "CEPHALALGIA",
+        "CHARAC",
+        "CHARCA",
+        "CHERSYDRIDAE",
+        "CHLOROIODIDE",
+        "CHONDROMATOUS",
+        "CHRIST",
+        "CHURCHYARD",
+        "CILICIOUS",
+        "CIRCUMAMBAGIOUS",
+        "CLERICAL",
+        "COCOTTE",
+        "COLLIGATE",
+        "COLLIGATIVE",
+        "CONCOMITANT"
+      ]
+    },
+    "-145": {
+      "total_words": 340,
+      "claimed_words": [
+        "GOD"
+      ],
+      "verified": [
+        "GOD"
+      ],
+      "all_words_sample": [
+        "ABITIBI",
+        "ACETOMORPHINE",
+        "ACETONURIA",
+        "ADDLEBRAIN",
+        "ADDLENESS",
+        "ADULATE",
+        "AERONAUTIC",
+        "AETOLIAN",
+        "AFFIRMATIVELY",
+        "ALDHAFERA",
+        "ALLSEED",
+        "ALUMISH",
+        "AMATIVE",
+        "ANAKINESIS",
+        "ANALOGIZE",
+        "ANDROPHORUM",
+        "ANILID",
+        "ANTAGONIZER",
+        "ANTENATAL",
+        "ANTIKINASE",
+        "ANTIPLANET",
+        "ARAGONIAN",
+        "ARCHPILFERER",
+        "AROMADENDRIN",
+        "ARROW",
+        "ARSENATION",
+        "ATLANTEAN",
+        "AUSTERELY",
+        "AWKWARDNESS",
+        "BABOODOM",
+        "BACKTENTER",
+        "BAIANISM",
+        "BALD",
+        "BALMLIKE",
+        "BANCAL",
+        "BEETROOTY",
+        "BIBLIOMANIANISM",
+        "BIFOLIOLATE",
+        "BIOGRAPHER",
+        "BIPOROSE",
+        "BLAD",
+        "BLANCA",
+        "BOSTONITE",
+        "BROADSHEET",
+        "BUDZAT",
+        "CAKE",
+        "CALEDONITE",
+        "CANY",
+        "CELADONITE",
+        "CHEMISM"
+      ]
+    },
+    "-105": {
+      "total_words": 331,
+      "claimed_words": [
+        "CODE",
+        "DEATH"
+      ],
+      "verified": [
+        "CODE",
+        "DEATH"
+      ],
+      "all_words_sample": [
+        "AEGIRITE",
+        "AFFRICATE",
+        "AFFRICATIVE",
+        "AGONIADIN",
+        "AIRPLANE",
+        "ALBUMOID",
+        "AMPLEXIFOLIATE",
+        "ANANGIOID",
+        "ANIGHT",
+        "ANTEROOM",
+        "ANTIMONY",
+        "ANTINOMY",
+        "AO",
+        "ARCHTHIEF",
+        "ARIEGITE",
+        "ASHER",
+        "ASHIVER",
+        "ATHING",
+        "ATHRIVE",
+        "AUTECIOUSNESS",
+        "AUTOEDUCATIVE",
+        "AXMINSTER",
+        "BABISM",
+        "BACLIN",
+        "BAHAULLAH",
+        "BAIRNISH",
+        "BARONESS",
+        "BARONGA",
+        "BENZOTHIOPYRAN",
+        "BETATRON",
+        "BIPLOSIVE",
+        "BIRL",
+        "BISHARIN",
+        "BOMBOLA",
+        "BOOMY",
+        "BOOTIED",
+        "BREADSELLER",
+        "BREASTWISE",
+        "BROMINATION",
+        "CAFETERIA",
+        "CALVE",
+        "CAUP",
+        "CAVEL",
+        "CERO",
+        "CHAPWOMAN",
+        "CHARTREUX",
+        "CHEAPERY",
+        "CHUROYAN",
+        "CINCINNATIAN",
+        "CLANDESTINE"
+      ]
+    },
+    "-96": {
+      "total_words": 364,
+      "claimed_words": [
+        "AI",
+        "SOUL"
+      ],
+      "verified": [
+        "AI",
+        "SOUL"
+      ],
+      "all_words_sample": [
+        "ABRADE",
+        "ACCUMBENCY",
+        "ACTINONEMA",
+        "ADMONITIVE",
+        "AI",
+        "ALBEIT",
+        "ALBITE",
+        "ALIX",
+        "ALOEWOOD",
+        "AMENTAL",
+        "ANTHOCLINIUM",
+        "AROON",
+        "ASSEVER",
+        "AVAILMENT",
+        "AXIL",
+        "BACKDOWN",
+        "BAGINDA",
+        "BALBUTIATE",
+        "BALNEOTHERAPY",
+        "BALTEI",
+        "BANISTER",
+        "BARGAIN",
+        "BELAIT",
+        "BEMASK",
+        "BETAIL",
+        "BETRAYER",
+        "BIFLAGELLATE",
+        "BILOBULAR",
+        "BLETIA",
+        "BOLIMBA",
+        "BRAHMI",
+        "BRIDGED",
+        "BRIDGER",
+        "BRIDGING",
+        "BUTYROUSNESS",
+        "CABBAGEWOOD",
+        "CATEPUCE",
+        "CENTRANTHUS",
+        "CENTROLINEAL",
+        "CETORHINUS",
+        "CHANNELWARDS",
+        "CHINCH",
+        "COATEE",
+        "COCKNEIAN",
+        "CODIAEUM",
+        "COENOTROPE",
+        "COMBUSTIVE",
+        "CONCLUSIVE",
+        "CONOCLINIUM",
+        "CONUSANT"
+      ]
+    },
+    "0": {
+      "total_words": 285,
+      "claimed_words": [
+        "zero-sum target"
+      ],
+      "verified": [],
+      "all_words_sample": [
+        "ABSINTHE",
+        "ABUT",
+        "ACUMINULATE",
+        "ADVERB",
+        "AFFECTATE",
+        "AFFETTUOSO",
+        "ALBUMOSE",
+        "ALKYLENE",
+        "ALLEGE",
+        "ALLEMANDE",
+        "AMAZEMENT",
+        "AMBILEVOUS",
+        "AMMOBIUM",
+        "AMPHIPEPTONE",
+        "ANNULOSA",
+        "ANTIMONIURET",
+        "ANTOINETTE",
+        "APERTURE",
+        "APPERTINENT",
+        "APPLEWOMAN",
+        "APPROVEMENT",
+        "AULETES",
+        "AURIFY",
+        "AUTOGAUGE",
+        "AUTOMOWER",
+        "AUXOTOX",
+        "BAGWIGGED",
+        "BAHERA",
+        "BAVIUS",
+        "BELT",
+        "BERDACHE",
+        "BESPEAK",
+        "BESPECKED",
+        "BLET",
+        "BOGGLE",
+        "BRAVER",
+        "BRAVING",
+        "BREACHER",
+        "BREATHABLE",
+        "BULLETLIKE",
+        "CANADINE",
+        "CHEVRETTE",
+        "CLUBHAND",
+        "COELESTINE",
+        "COFFINLESS",
+        "CONCREMENT",
+        "CROUPERBUSH",
+        "CRUX",
+        "CUEMANSHIP",
+        "DARIEN"
+      ]
+    },
+    "26": {
+      "total_words": 298,
+      "claimed_words": [
+        "MOON"
+      ],
+      "verified": [
+        "MOON"
+      ],
+      "all_words_sample": [
+        "AEROCURVE",
+        "AGGRIEVE",
+        "AGREGE",
+        "AMBER",
+        "AMIDINE",
+        "ANGELO",
+        "ARGENTON",
+        "AUSONES",
+        "AUTOGENY",
+        "AUTUMNAL",
+        "BAHUT",
+        "BAKUBA",
+        "BALNEAL",
+        "BAREFACED",
+        "BARKPEELER",
+        "BARKPEELING",
+        "BEARM",
+        "BECRUSH",
+        "BEMAD",
+        "BEMAR",
+        "BERCHEMIA",
+        "BESOOTHE",
+        "BESOUGHT",
+        "BETULACEOUS",
+        "BETWIT",
+        "BODLEIAN",
+        "BOGONG",
+        "BOSN",
+        "BREAM",
+        "BURGHERDOM",
+        "BURLINESS",
+        "BUTCHER",
+        "CANINUS",
+        "CANONIZE",
+        "CHAFFLIKE",
+        "CHELTENHAM",
+        "CLEEKED",
+        "CONFESSION",
+        "CONFIDENCY",
+        "CONNATENESS",
+        "CONNECTEDNESS",
+        "COREVELER",
+        "CORYTUBERINE",
+        "COTEFUL",
+        "COUNTERMANDABLE",
+        "COWLEECH",
+        "CREEPAGE",
+        "DECENYL",
+        "DEMIJAMBE",
+        "DEMULSION"
+      ]
+    },
+    "33": {
+      "total_words": 281,
+      "claimed_words": [
+        "THE"
+      ],
+      "verified": [
+        "THE"
+      ],
+      "all_words_sample": [
+        "ADRUE",
+        "AFTERLOVE",
+        "ALBUMENIZATION",
+        "ALPINE",
+        "AMPHETAMINE",
+        "ANDANTE",
+        "ANGOLESE",
+        "ANGUID",
+        "ANTIPEPTONE",
+        "ARABESQUERIE",
+        "ARECUNA",
+        "AUCANER",
+        "BACULUM",
+        "BAKE",
+        "BARBION",
+        "BARKBOUND",
+        "BEAK",
+        "BEAVERISM",
+        "BECKER",
+        "BEDCOVER",
+        "BEDECK",
+        "BEDMATE",
+        "BEDUCHESS",
+        "BEJABERS",
+        "BERENGARIANISM",
+        "BESMEAR",
+        "BIBLUS",
+        "BILIVERDIN",
+        "BOGAN",
+        "BOTAURINAE",
+        "BRITANNIAN",
+        "BUMPINGLY",
+        "CAVERNULOUS",
+        "CHEEPY",
+        "CHIMNEYHEAD",
+        "CHIPEWYAN",
+        "CLEANER",
+        "CLEANING",
+        "CONFIDER",
+        "CONFIDING",
+        "CONVOLVE",
+        "CRESYLENE",
+        "CULMIFEROUS",
+        "DANTEAN",
+        "DAOINE",
+        "DEBONAIRNESS",
+        "DEFINITIONAL",
+        "DELIVER",
+        "DEPENCIL",
+        "DEVILED"
+      ]
+    },
+    "96": {
+      "total_words": 212,
+      "claimed_words": [
+        "ANNA"
+      ],
+      "verified": [
+        "ANNA"
+      ],
+      "all_words_sample": [
+        "ABIOGENOUS",
+        "ABLUDE",
+        "ALEBION",
+        "ALPENHORN",
+        "ANAN",
+        "ANEMONAL",
+        "ANNA",
+        "AOUELLIMIDEN",
+        "AURIFEROUS",
+        "AZELFAFAGE",
+        "BAMBINI",
+        "BAREHANDED",
+        "BARFUL",
+        "BEAM",
+        "BEBROTHER",
+        "BEFITTING",
+        "BELAUD",
+        "BELLED",
+        "BELLING",
+        "BEMA",
+        "BERESITE",
+        "BHANG",
+        "BLENNOTORRHEA",
+        "BLUEJOINT",
+        "BONELESSNESS",
+        "BOUNTEOUSLY",
+        "BRADENHEAD",
+        "BRAEFACE",
+        "BREADNUT",
+        "BRETONIAN",
+        "BROMBENZAMIDE",
+        "CANNED",
+        "CANNER",
+        "CANNING",
+        "CERUMINOUS",
+        "CINNAMENYL",
+        "COMMENCEABLE",
+        "CONQUERABLENESS",
+        "CONSUETE",
+        "DEMENTATE",
+        "DEMENTHOLIZE",
+        "DERN",
+        "DEWLIKE",
+        "DRAWBENCH",
+        "DRIVEN",
+        "DUBBY",
+        "EERISOME",
+        "EGESTIVE",
+        "ELOPE",
+        "EMULSION"
+      ]
+    },
+    "145": {
+      "total_words": 177,
+      "claimed_words": [
+        "LIFE"
+      ],
+      "verified": [
+        "LIFE"
+      ],
+      "all_words_sample": [
+        "AFTERFAME",
+        "ANENCEPHALUS",
+        "BANQUET",
+        "BAXTONE",
+        "BEDRABBLE",
+        "BELLONIAN",
+        "BELLYFUL",
+        "BENJY",
+        "BEUDANTITE",
+        "BIBLE",
+        "BISMUTHINE",
+        "BLABBERER",
+        "BLIBE",
+        "BOBBINWORK",
+        "BREECHES",
+        "BREVET",
+        "BRIDGEKEEPER",
+        "BROMINE",
+        "BRUNELLA",
+        "BUETTNERIA",
+        "BULBOUS",
+        "BUNDOBUST",
+        "BUSINESSWOMAN",
+        "BUTTONBUR",
+        "CENOGENESIS",
+        "CHANGEMENT",
+        "CHUN",
+        "COFOUNDER",
+        "CONFERVACEAE",
+        "CONSENTFUL",
+        "CONTENTFUL",
+        "DELPHININ",
+        "DIDUNCULINAE",
+        "DISFEN",
+        "DOUBTFULNESS",
+        "EDIBLENESS",
+        "EIDENT",
+        "ELEMENTAL",
+        "ELEMENTOID",
+        "EMETOMORPHINE",
+        "ENDITE",
+        "ENNEATIC",
+        "ENTIRE",
+        "EOGAEAN",
+        "EXPLAINABLE",
+        "FEATHERBRAIN",
+        "FEATURELINESS",
+        "FEIL",
+        "FEVERLESS",
+        "FILE"
+      ]
+    }
+  },
+  "section3_zero_sum": {
+    "total_zero_sum_pairs": 18727873,
+    "words_at_zero": 285,
+    "words_at_zero_list": [
+      "ABSINTHE",
+      "ABUT",
+      "ACUMINULATE",
+      "ADVERB",
+      "AFFECTATE",
+      "AFFETTUOSO",
+      "ALBUMOSE",
+      "ALKYLENE",
+      "ALLEGE",
+      "ALLEMANDE",
+      "AMAZEMENT",
+      "AMBILEVOUS",
+      "AMMOBIUM",
+      "AMPHIPEPTONE",
+      "ANNULOSA",
+      "ANTIMONIURET",
+      "ANTOINETTE",
+      "APERTURE",
+      "APPERTINENT",
+      "APPLEWOMAN",
+      "APPROVEMENT",
+      "AULETES",
+      "AURIFY",
+      "AUTOGAUGE",
+      "AUTOMOWER",
+      "AUXOTOX",
+      "BAGWIGGED",
+      "BAHERA",
+      "BAVIUS",
+      "BELT",
+      "BERDACHE",
+      "BESPEAK",
+      "BESPECKED",
+      "BLET",
+      "BOGGLE",
+      "BRAVER",
+      "BRAVING",
+      "BREACHER",
+      "BREATHABLE",
+      "BULLETLIKE",
+      "CANADINE",
+      "CHEVRETTE",
+      "CLUBHAND",
+      "COELESTINE",
+      "COFFINLESS",
+      "CONCREMENT",
+      "CROUPERBUSH",
+      "CRUX",
+      "CUEMANSHIP",
+      "DARIEN"
+    ]
+  },
+  "section4_anagrams": {
+    "anagram_groups_gt1": 14293,
+    "words_with_anagram": 32760,
+    "fraction_with_anagram": 0.1439,
+    "non_trivial_collision_sums": 1647
+  },
+  "section5_control_test": {
+    "anna_metrics": {
+      "zero_sum_pairs": 18727873,
+      "words_at_zero": 285,
+      "interesting_coincidences": 18,
+      "interesting_hits": [
+        {
+          "word": "ATOM",
+          "value": -234
+        },
+        {
+          "word": "BRAIN",
+          "value": 10
+        },
+        {
+          "word": "CHRIST",
+          "value": -416
+        },
+        {
+          "word": "EIGHT",
+          "value": -33
+        },
+        {
+          "word": "FIVE",
+          "value": 240
+        },
+        {
+          "word": "GENESIS",
+          "value": 64
+        },
+        {
+          "word": "KEY",
+          "value": -34
+        },
+        {
+          "word": "KNOW",
+          "value": 100
+        },
+        {
+          "word": "LIGHT",
+          "value": -220
+        },
+        {
+          "word": "MIND",
+          "value": 2
+        },
+        {
+          "word": "MOON",
+          "value": 26
+        },
+        {
+          "word": "PRIME",
+          "value": -34
+        },
+        {
+          "word": "QUANTUM",
+          "value": 70
+        },
+        {
+          "word": "SILVER",
+          "value": -130
+        },
+        {
+          "word": "STAR",
+          "value": -364
+        },
+        {
+          "word": "THE",
+          "value": 33
+        },
+        {
+          "word": "THINK",
+          "value": -78
+        },
+        {
+          "word": "TWO",
+          "value": -50
+        }
+      ],
+      "distinct_sums": 1777,
+      "max_words_per_sum": 423
+    },
+    "control_stats": {
+      "zero_sum_pairs": {
+        "mean": 22839764.514,
+        "std": 11617177.805938642,
+        "min": 26587,
+        "max": 55516733,
+        "p5": 2284868.65,
+        "p95": 39024193.349999994
+      },
+      "words_at_zero": {
+        "mean": 343.512,
+        "std": 117.36027375564527,
+        "min": 9,
+        "max": 726
+      },
+      "interesting_coincidences": {
+        "mean": 17.635,
+        "std": 3.8199181928413077,
+        "min": 8,
+        "max": 29
+      },
+      "distinct_sums": {
+        "mean": 1527.265,
+        "std": 173.89633341448,
+        "min": 1038,
+        "max": 2061
+      },
+      "max_words_per_sum": {
+        "mean": 499.144,
+        "std": 61.977538382869,
+        "min": 362,
+        "max": 783
+      }
+    },
+    "test_results": {
+      "zero_sum_pairs": {
+        "observed": 18727873.0,
+        "control_mean": 22839764.514,
+        "control_std": 11617177.805938642,
+        "p_value": 0.6533466533466533,
+        "significant": false,
+        "result": "NOT SIGNIFICANT"
+      },
+      "words_at_zero": {
+        "observed": 285.0,
+        "control_mean": 343.512,
+        "control_std": 117.36027375564527,
+        "p_value": 0.7272727272727273,
+        "significant": false,
+        "result": "NOT SIGNIFICANT"
+      },
+      "interesting_coincidences": {
+        "observed": 18.0,
+        "control_mean": 17.635,
+        "control_std": 3.8199181928413077,
+        "p_value": 0.5004995004995005,
+        "significant": false,
+        "result": "NOT SIGNIFICANT"
+      },
+      "distinct_sums": {
+        "observed": 1777.0,
+        "control_mean": 1527.265,
+        "control_std": 173.89633341448,
+        "p_value": 0.13386613386613386,
+        "significant": false,
+        "result": "NOT SIGNIFICANT"
+      },
+      "max_words_per_sum": {
+        "observed": 423.0,
+        "control_mean": 499.144,
+        "control_std": 61.977538382869,
+        "p_value": 0.926073926073926,
+        "significant": false,
+        "result": "NOT SIGNIFICANT"
+      }
+    }
+  }
+}

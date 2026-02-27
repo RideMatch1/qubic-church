@@ -21,19 +21,19 @@ const FOOTER_STATS = [
     value: 21953,
     label: 'Patoshi',
     icon: Coins,
-    color: 'text-amber-500',
+    color: 'text-[#D4AF37]',
   },
   {
     value: 23765,
     label: 'Qubic',
     icon: Binary,
-    color: 'text-blue-500',
+    color: 'text-[#D4AF37]',
   },
   {
     value: 1004767,
     label: 'Bitcoin',
     icon: Database,
-    color: 'text-orange-500',
+    color: 'text-[#D4AF37]',
   },
 ]
 
@@ -98,7 +98,7 @@ export function EvidenceFooter() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <div className={`p-2 rounded-lg bg-muted/50 ${stat.color}`}>
+                <div className={`p-2 bg-muted/50 ${stat.color}`}>
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
@@ -119,7 +119,7 @@ export function EvidenceFooter() {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 rounded-full border border-primary/20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/20">
             <Shield className="w-5 h-5 text-primary" />
             <span className="font-mono text-lg text-primary font-bold">
               {(1050515).toLocaleString()}
@@ -146,7 +146,7 @@ export function EvidenceFooter() {
               <LinkComponent
                 key={link.label}
                 {...linkProps}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground bg-muted/30 hover:bg-muted/50 border border-border rounded-lg transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground bg-muted/30 hover:bg-muted/50 border border-border transition-colors"
               >
                 <Icon className="w-4 h-4" />
                 <span>{link.label}</span>

@@ -138,7 +138,7 @@ export function JourneyStartSection() {
                 setShowContent(true)
               }}
               className={`
-                relative p-6 rounded-xl border text-left transition-all
+                relative p-6 border text-left transition-all
                 hover-lift active-scale
                 ${selectedLevel === path.id
                   ? `border-${path.color}-500 bg-${path.color}-950/30 ring-2 ring-${path.color}-500/30`
@@ -152,7 +152,7 @@ export function JourneyStartSection() {
               whileTap={{ scale: 0.98 }}
             >
               <div className={`
-                inline-flex p-3 rounded-lg mb-4
+                inline-flex p-3 mb-4
                 ${selectedLevel === path.id ? `bg-${path.color}-500/20` : 'bg-muted'}
               `}>
                 {path.icon}
@@ -169,7 +169,7 @@ export function JourneyStartSection() {
               {selectedLevel === path.id && (
                 <motion.div
                   layoutId="selectedIndicator"
-                  className={`absolute inset-0 rounded-xl border-2 border-${path.color}-500 pointer-events-none`}
+                  className={`absolute inset-0 border-2 border-${path.color}-500 pointer-events-none`}
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
               )}
@@ -179,7 +179,7 @@ export function JourneyStartSection() {
 
         {/* Key Stats */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 p-6 rounded-xl bg-muted/30 border border-border/50"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 p-6 bg-muted/30 border border-border/50"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -211,7 +211,7 @@ export function JourneyStartSection() {
         {/* Content Toggle */}
         <motion.button
           onClick={() => setShowContent(!showContent)}
-          className="flex items-center gap-2 mx-auto mb-6 px-4 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+          className="flex items-center gap-2 mx-auto mb-6 px-4 py-2 bg-muted/50 hover:bg-muted transition-colors"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.5 }}
@@ -306,23 +306,23 @@ function NetworkCard({
   const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   const bgClass = variant === 'orange'
-    ? 'bg-orange-950/20 border-orange-900/50 hover-glow-orange'
-    : 'bg-purple-950/20 border-purple-900/50 hover-glow-purple'
+    ? 'bg-[#050505]/80 border-white/[0.04] '
+    : 'bg-[#050505]/80 border-white/[0.04] '
 
   const iconBgClass = variant === 'orange'
-    ? 'bg-orange-900/50'
-    : 'bg-purple-900/50'
+    ? 'bg-[#D4AF37]/10'
+    : 'bg-[#D4AF37]/10'
 
   return (
     <motion.div
       ref={ref}
-      className={`p-6 rounded-xl border ${bgClass} hover-lift`}
+      className={`p-6 border ${bgClass} hover-lift`}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.6 }}
     >
       <div className="flex items-center justify-between mb-4">
-        <div className={`inline-flex p-3 rounded-lg ${iconBgClass}`}>
+        <div className={`inline-flex p-3 ${iconBgClass}`}>
           {icon}
         </div>
         <VerificationBadge level={confidence} size="sm" />
@@ -362,23 +362,23 @@ function ExplainerCard({
   const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   const colorClasses = {
-    blue: 'border-blue-500/30 hover:border-blue-500/50',
-    green: 'border-green-500/30 hover:border-green-500/50',
-    amber: 'border-amber-500/30 hover:border-amber-500/50',
-    purple: 'border-purple-500/30 hover:border-purple-500/50',
+    blue: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
+    green: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
+    amber: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
+    purple: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
   }
 
   const whyClasses = {
-    blue: 'bg-blue-500/10 text-blue-400',
-    green: 'bg-green-500/10 text-green-400',
-    amber: 'bg-amber-500/10 text-amber-400',
-    purple: 'bg-purple-500/10 text-purple-400',
+    blue: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    green: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    amber: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    purple: 'bg-[#D4AF37]/10 text-[#D4AF37]',
   }
 
   return (
     <motion.div
       ref={ref}
-      className={`p-5 rounded-xl border bg-card/50 backdrop-blur-sm transition-all hover-lift ${colorClasses[color]}`}
+      className={`p-5 border bg-card/50 backdrop-blur-sm transition-all hover-lift ${colorClasses[color]}`}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.6 }}
@@ -393,13 +393,13 @@ function ExplainerCard({
         />
       </div>
 
-      <div className="mb-4 rounded-lg overflow-hidden bg-muted/30 p-3">
+      <div className="mb-4 overflow-hidden bg-muted/30 p-3">
         {diagram}
       </div>
 
       <p className="text-sm text-muted-foreground mb-3">{description}</p>
 
-      <div className={`p-3 rounded-lg ${whyClasses[color]}`}>
+      <div className={`p-3 ${whyClasses[color]}`}>
         <div className="text-xs font-semibold mb-1">Why This Matters</div>
         <div className="text-xs opacity-90">{whyItMatters}</div>
       </div>

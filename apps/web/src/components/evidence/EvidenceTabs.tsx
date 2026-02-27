@@ -12,11 +12,11 @@ import dynamic from 'next/dynamic'
 // Quick Win 13: Enhanced loading skeleton with progress
 function TableSkeleton({ label }: { label?: string }) {
   return (
-    <div className="w-full h-[600px] bg-card/50 rounded-lg border border-border flex items-center justify-center">
+    <div className="w-full h-[600px] bg-[#050505] border border-white/[0.04] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="relative">
-          <div className="w-12 h-12 border-2 border-primary/30 rounded-full" />
-          <div className="absolute inset-0 w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-2 border-[#D4AF37]/30" />
+          <div className="absolute inset-0 w-12 h-12 border-2 border-[#D4AF37] border-t-transparent animate-spin" />
         </div>
         <div className="text-center">
           <span className="text-muted-foreground text-sm block">Loading {label || 'data'}...</span>
@@ -67,8 +67,8 @@ const TABS: TabConfig[] = [
     icon: <Cpu className="w-4 h-4" />,
     description: 'Qortex neural network & Address Graph visualizations',
     badge: 'Interactive',
-    badgeColor: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    gradient: 'from-purple-500/20 to-blue-500/20',
+    badgeColor: 'bg-[#D4AF37]/15 text-[#D4AF37]/60 border-[#D4AF37]/20',
+    gradient: 'bg-[#D4AF37]/10',
   },
   {
     id: 'contact-cube',
@@ -76,15 +76,15 @@ const TABS: TabConfig[] = [
     icon: <Box className="w-4 h-4" />,
     description: '3D cube folding visualization of the Anna Matrix',
     badge: 'NEW',
-    badgeColor: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
-    gradient: 'from-cyan-500/20 to-purple-500/20',
+    badgeColor: 'bg-[#D4AF37]/20 text-[#D4AF37]/70 border-[#D4AF37]/25',
+    gradient: 'bg-[#D4AF37]/10',
   },
   {
     id: 'matrix',
     label: 'Anna Matrix',
     icon: <Grid3X3 className="w-4 h-4" />,
     description: '128×128 cryptographic matrix with 16,384 cells',
-    gradient: 'from-orange-500/20 to-amber-500/20',
+    gradient: 'bg-[#D4AF37]/10',
   },
   {
     id: 'addresses',
@@ -92,7 +92,7 @@ const TABS: TabConfig[] = [
     icon: <Database className="w-4 h-4" />,
     description: 'Qubic Seeds, Bitcoin addresses & Patoshi mining data',
     count: '1M+',
-    gradient: 'from-blue-500/20 to-orange-500/20',
+    gradient: 'bg-[#D4AF37]/10',
   },
 ]
 
@@ -105,14 +105,14 @@ function TabTooltip({ tab, visible }: { tab: TabConfig; visible: boolean }) {
           initial={{ opacity: 0, y: 5, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 5, scale: 0.95 }}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-popover border border-border rounded-lg shadow-lg z-50 min-w-[200px] pointer-events-none"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-[#050505] border border-white/[0.06] shadow-lg z-50 min-w-[200px] pointer-events-none"
         >
           <div className="text-sm font-medium text-foreground mb-1">{tab.label}</div>
           <div className="text-xs text-muted-foreground">{tab.description}</div>
           {tab.count && (
-            <div className="text-xs text-primary mt-1 font-mono">{tab.count} records</div>
+            <div className="text-xs text-[#D4AF37]/70 mt-1 font-mono">{tab.count} records</div>
           )}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-popover border-r border-b border-border" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-[#050505] border-r border-b border-white/[0.06]" />
         </motion.div>
       )}
     </AnimatePresence>
@@ -166,12 +166,12 @@ export function EvidenceTabs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full text-sm text-primary mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/[0.06] border border-[#D4AF37]/15 text-sm text-[#D4AF37]/70 mb-4">
               <TrendingUp className="w-4 h-4" />
-              <span className="font-mono">Research Datasets</span>
+              <span className="font-mono tracking-wider">Research Datasets</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">Data Explorer</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-wider mb-2">Data Explorer</h2>
+            <p className="text-white/40 max-w-2xl mx-auto">
               Interactive analysis tools and research datasets
             </p>
           </motion.div>
@@ -189,18 +189,18 @@ export function EvidenceTabs() {
                   <TabsTrigger
                     value={tab.id}
                     className={cn(
-                      'relative flex items-center gap-2 px-4 py-3 rounded-lg border transition-all duration-200',
-                      'data-[state=active]:text-primary-foreground',
-                      'data-[state=active]:border-primary data-[state=active]:shadow-lg',
-                      'data-[state=inactive]:bg-card data-[state=inactive]:border-border',
-                      'data-[state=inactive]:hover:bg-muted',
+                      'relative flex items-center gap-2 px-4 py-3 border transition-all duration-200',
+                      'data-[state=active]:text-[#D4AF37]',
+                      'data-[state=active]:border-[#D4AF37]/30 data-[state=active]:bg-[#D4AF37]/[0.06]',
+                      'data-[state=inactive]:bg-[#050505] data-[state=inactive]:border-white/[0.04]',
+                      'data-[state=inactive]:hover:bg-white/[0.03]',
                       'overflow-hidden'
                     )}
                   >
-                    {/* Quick Win 19: Active tab gradient background */}
+                    {/* Active tab background */}
                     <div
                       className={cn(
-                        'absolute inset-0 opacity-0 transition-opacity bg-gradient-to-r',
+                        'absolute inset-0 opacity-0 transition-opacity',
                         tab.gradient,
                         'data-[state=active]:opacity-100'
                       )}
@@ -208,7 +208,7 @@ export function EvidenceTabs() {
                     />
                     <div
                       className={cn(
-                        'absolute inset-0 bg-primary opacity-0 transition-opacity',
+                        'absolute inset-0 bg-[#D4AF37]/[0.06] opacity-0 transition-opacity',
                         activeTab === tab.id && 'opacity-100'
                       )}
                     />
@@ -216,14 +216,14 @@ export function EvidenceTabs() {
                       {tab.icon}
                       <span className="font-medium">{tab.label}</span>
                       {tab.count && (
-                        <span className="text-xs bg-background/20 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-white/10 px-2 py-0.5 font-mono">
                           {tab.count}
                         </span>
                       )}
                       {tab.badge && (
                         <span className={cn(
-                          'text-[10px] px-1.5 py-0.5 rounded border uppercase font-medium',
-                          tab.badgeColor || 'bg-primary/20 text-primary border-primary/30'
+                          'text-[10px] px-1.5 py-0.5 border uppercase font-medium',
+                          tab.badgeColor || 'bg-[#D4AF37]/15 text-[#D4AF37]/60 border-[#D4AF37]/20'
                         )}>
                           {tab.badge}
                         </span>
@@ -236,14 +236,16 @@ export function EvidenceTabs() {
 
             {/* Quick Win 20: Enhanced content container with subtle animation */}
             <motion.div
-              className="bg-card/30 backdrop-blur-sm rounded-xl border border-border p-4 md:p-6 relative overflow-hidden"
+              className="bg-[#050505] border border-white/[0.04] p-4 md:p-6 relative overflow-hidden"
               initial={false}
               animate={{ opacity: isLoading ? 0.7 : 1 }}
               transition={{ duration: 0.15 }}
             >
-              {/* Decorative corner elements */}
-              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-primary/5 to-transparent rounded-br-full pointer-events-none" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-primary/5 to-transparent rounded-tl-full pointer-events-none" />
+              {/* Decorative corner dots */}
+              <div className="absolute top-2 left-2 w-1 h-1 bg-[#D4AF37]/30 pointer-events-none" />
+              <div className="absolute top-2 right-2 w-1 h-1 bg-[#D4AF37]/30 pointer-events-none" />
+              <div className="absolute bottom-2 left-2 w-1 h-1 bg-[#D4AF37]/30 pointer-events-none" />
+              <div className="absolute bottom-2 right-2 w-1 h-1 bg-[#D4AF37]/30 pointer-events-none" />
 
               <TabsContent value="visualizations" className="mt-0 focus-visible:outline-none">
                 <VisualizationsTab />
@@ -265,17 +267,17 @@ export function EvidenceTabs() {
 
           {/* Quick Win: Navigation hint */}
           <motion.div
-            className="mt-4 flex items-center justify-center gap-4 text-xs text-muted-foreground/50"
+            className="mt-4 flex items-center justify-center gap-4 text-xs text-white/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-muted/50 border border-border rounded text-[10px] font-mono">←</kbd>
-              <kbd className="px-1.5 py-0.5 bg-muted/50 border border-border rounded text-[10px] font-mono">→</kbd>
+              <kbd className="px-1.5 py-0.5 bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono">&larr;</kbd>
+              <kbd className="px-1.5 py-0.5 bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono">&rarr;</kbd>
               <span className="ml-1">Switch tabs</span>
             </span>
-            <span className="text-muted-foreground/30">|</span>
+            <span className="text-white/15">|</span>
             <span className="flex items-center gap-1">
               <Info className="w-3 h-3" />
               <span>Hover tabs for details</span>

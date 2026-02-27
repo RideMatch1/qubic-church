@@ -18,19 +18,19 @@ interface AddressSegment {
 const addressSegments: AddressSegment[] = [
   {
     text: '1',
-    color: 'text-yellow-400',
+    color: 'text-[#D4AF37]',
     label: 'Network',
     description: 'This "1" means it\'s a real Bitcoin address on the main network (not a test)',
   },
   {
     text: 'CFB',
-    color: 'text-orange-400',
+    color: 'text-[#D4AF37]',
     label: 'Signature',
     description: '"CFB" stands for "Come-From-Beyond" - a famous cryptographer who created multiple blockchain projects',
   },
   {
     text: 'dva',
-    color: 'text-blue-400',
+    color: 'text-[#D4AF37]',
     label: 'Language',
     description: '"dva" means "two" in Russian - a hint about the creator\'s Eastern European origins',
   },
@@ -42,13 +42,13 @@ const addressSegments: AddressSegment[] = [
   },
   {
     text: 'ZgZ',
-    color: 'text-purple-400',
+    color: 'text-[#D4AF37]',
     label: 'Mirror Pattern',
     description: 'This is a palindrome (reads same forwards and backwards) - intentional symmetry',
   },
   {
     text: 'PTZ',
-    color: 'text-green-400',
+    color: 'text-[#D4AF37]',
     label: 'Location Hint',
     description: 'Possibly "Petrozavodsk" - a city in Russia. Could reveal the creator\'s hometown',
   },
@@ -60,7 +60,7 @@ const addressSegments: AddressSegment[] = [
   },
   {
     text: 'zg',
-    color: 'text-purple-400',
+    color: 'text-[#D4AF37]',
     label: 'Closing Mirror',
     description: 'Mirrors the earlier "ZgZ" pattern - deliberate bookend symmetry in the address',
   },
@@ -136,7 +136,7 @@ export function GenesisSection() {
 
           {/* Date highlight */}
           <motion.div
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10"
+            className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ delay: 0.7 }}
@@ -150,29 +150,29 @@ export function GenesisSection() {
 
         {/* The Address - Main reveal */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-orange-950/30 to-black/50 border border-orange-900/30 mb-8 relative overflow-hidden"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-orange-900/30 mb-8 relative overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           {/* Fingerprint watermark */}
           <div className="absolute top-4 right-4 opacity-10">
-            <Fingerprint className="w-16 h-16 text-orange-500" />
+            <Fingerprint className="w-16 h-16 text-[#D4AF37]" />
           </div>
 
           {/* Label */}
           <div className="flex items-center gap-2 mb-4">
-            <AlertCircle className="h-4 w-4 text-orange-400" />
-            <span className="text-sm text-orange-400/80 font-medium">The 1CFB Bitcoin Address</span>
+            <AlertCircle className="h-4 w-4 text-[#D4AF37]" />
+            <span className="text-sm text-[#D4AF37]/80 font-medium">The 1CFB Bitcoin Address</span>
           </div>
 
           {/* Address with segmented highlighting */}
-          <div className="flex flex-wrap justify-center items-center gap-0 p-4 md:p-6 bg-black/40 rounded-xl mb-4">
+          <div className="flex flex-wrap justify-center items-center gap-0 p-4 md:p-6 bg-black/40 mb-4">
             {addressSegments.map((segment, index) => (
               <motion.span
                 key={index}
                 className={`font-mono text-base sm:text-xl md:text-2xl cursor-pointer transition-all duration-200 ${segment.color} ${
-                  activeSegment === index ? 'bg-white/10 rounded px-1 scale-110' : 'hover:bg-white/5'
+                  activeSegment === index ? 'bg-white/10  px-1 scale-110' : 'hover:bg-white/5'
                 }`}
                 onMouseEnter={() => setActiveSegment(index)}
                 onMouseLeave={() => setActiveSegment(null)}
@@ -189,7 +189,7 @@ export function GenesisSection() {
           </div>
 
           {/* Active Segment Info */}
-          <div className="min-h-[100px] p-4 bg-black/30 rounded-xl">
+          <div className="min-h-[100px] p-4 bg-black/30">
             <AnimatePresence mode="wait">
               {activeSegment !== null && addressSegments[activeSegment] ? (
                 <motion.div
@@ -239,26 +239,26 @@ export function GenesisSection() {
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 1.2 }}
         >
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Clock className="h-5 w-5 text-orange-400 mx-auto mb-2" />
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Clock className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
             <div className="font-mono text-lg text-white/80">2009</div>
             <div className="text-xs text-white/40">Created</div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Coins className="h-5 w-5 text-orange-400 mx-auto mb-2" />
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Coins className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
             <div className="font-mono text-lg text-white/80">50 BTC</div>
             <div className="text-xs text-white/40">Received</div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <MapPin className="h-5 w-5 text-green-400 mx-auto mb-2" />
-            <div className="font-mono text-lg text-green-400">Untouched</div>
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <MapPin className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
+            <div className="font-mono text-lg text-[#D4AF37]">Untouched</div>
             <div className="text-xs text-white/40">17 years</div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <Fingerprint className="h-5 w-5 text-purple-400 mx-auto mb-2" />
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
+            <Fingerprint className="h-5 w-5 text-[#D4AF37] mx-auto mb-2" />
             <div className="font-mono text-lg text-white/80">12</div>
             <div className="text-xs text-white/40">1CFB addresses</div>
           </div>
@@ -266,14 +266,14 @@ export function GenesisSection() {
 
         {/* The Question */}
         <motion.div
-          className="p-6 rounded-xl bg-gradient-to-r from-orange-950/20 via-purple-950/20 to-orange-950/20 border border-white/10 text-center mb-8"
+          className="p-6 bg-gradient-to-r from-[#050505]/80 via-purple-950/20 to-[#050505]/80 border border-white/10 text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
           transition={{ duration: 0.5, delay: 1.4 }}
         >
           <p className="text-lg text-white/60 mb-2">The Question:</p>
           <p className="text-xl md:text-2xl text-white/80 font-medium">
-            Who is <span className="text-orange-400">CFB</span>?
+            Who is <span className="text-[#D4AF37]">CFB</span>?
           </p>
           <p className="text-sm text-white/40 mt-3">
             And why would someone embed their identity in Bitcoin's earliest blocks?
@@ -291,7 +291,7 @@ export function GenesisSection() {
             href={`https://blockchair.com/bitcoin/address/${CFB_ADDRESS}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 transition-all text-orange-400/80 text-sm border border-orange-500/20"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 transition-all text-[#D4AF37]/80 text-sm border border-orange-500/20"
           >
             <ExternalLink className="h-4 w-4" />
             Verify this address on the blockchain

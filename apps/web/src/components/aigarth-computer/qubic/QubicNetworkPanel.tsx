@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -80,20 +79,20 @@ export function QubicNetworkPanel() {
       {/* Connection Status Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className={`w-3 h-3 rounded-full ${
-            isConnected ? 'bg-green-500 animate-pulse' : 'bg-red-500'
+          <div className={`w-3 h-3 ${
+            isConnected ? 'bg-[#D4AF37] animate-pulse' : 'bg-red-500'
           }`} />
           <span className="font-semibold text-white">
             {isConnected ? 'Connected to Qubic Network' : 'Disconnected'}
           </span>
-          {isLoading && <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />}
+          {isLoading && <Loader2 className="w-4 h-4 animate-spin text-[#D4AF37]" />}
         </div>
         <Button
           variant="outline"
           size="sm"
           onClick={refresh}
           disabled={isLoading}
-          className="border-gray-700 hover:bg-gray-800"
+          className="border-white/[0.04] hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)]"
         >
           <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
           Refresh
@@ -102,7 +101,7 @@ export function QubicNetworkPanel() {
 
       {/* Error Display */}
       {error && (
-        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center gap-2">
+        <div className="p-3 bg-red-500/10 border border-red-500/30 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-red-400" />
           <span className="text-sm text-red-400">{error}</span>
         </div>
@@ -111,112 +110,112 @@ export function QubicNetworkPanel() {
       {/* Network Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {/* Current Tick */}
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <Activity className="w-4 h-4" />
             <span>Current Tick</span>
           </div>
-          <div className="text-2xl font-bold text-cyan-400 font-mono">
-            {networkStatus?.tick !== undefined ? networkStatus.tick.toLocaleString() : '—'}
+          <div className="text-2xl font-bold text-[#D4AF37] font-mono">
+            {networkStatus?.tick !== undefined ? networkStatus.tick.toLocaleString() : '---'}
           </div>
-        </Card>
+        </div>
 
         {/* Current Epoch */}
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <Clock className="w-4 h-4" />
             <span>Epoch</span>
           </div>
-          <div className="text-2xl font-bold text-purple-400 font-mono">
-            {epoch?.epoch !== undefined && !Number.isNaN(epoch.epoch) ? epoch.epoch : '—'}
+          <div className="text-2xl font-bold text-[#D4AF37]/80 font-mono">
+            {epoch?.epoch !== undefined && !Number.isNaN(epoch.epoch) ? epoch.epoch : '---'}
           </div>
-        </Card>
+        </div>
 
         {/* Network Health */}
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <Server className="w-4 h-4" />
             <span>Network Health</span>
           </div>
           <Badge
             variant="outline"
             className={`text-sm ${
-              networkStatus?.health === 'excellent' ? 'text-green-400 border-green-400/50' :
-              networkStatus?.health === 'good' ? 'text-cyan-400 border-cyan-400/50' :
-              networkStatus?.health === 'fair' ? 'text-yellow-400 border-yellow-400/50' :
+              networkStatus?.health === 'excellent' ? 'text-[#D4AF37] border-[#D4AF37]/50' :
+              networkStatus?.health === 'good' ? 'text-[#D4AF37]/70 border-[#D4AF37]/30' :
+              networkStatus?.health === 'fair' ? 'text-[#D4AF37]/50 border-[#D4AF37]/20' :
               'text-red-400 border-red-400/50'
             }`}
           >
-            {networkStatus?.health?.toUpperCase() ?? '—'}
+            {networkStatus?.health?.toUpperCase() ?? '---'}
           </Badge>
-        </Card>
+        </div>
 
         {/* Last Update */}
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+        <div className="bg-[#050505] border border-white/[0.04] p-4 hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] transition-all">
+          <div className="flex items-center gap-2 text-zinc-400 text-sm mb-2">
             <CheckCircle2 className="w-4 h-4" />
             <span>Last Update</span>
           </div>
-          <div className="text-lg font-semibold text-gray-300">
-            {lastUpdate ? formatTimestamp(lastUpdate) : '—'}
+          <div className="text-lg font-semibold text-zinc-300">
+            {lastUpdate ? formatTimestamp(lastUpdate) : '---'}
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* Wallet Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Configured Wallet */}
         {DEFAULT_SENDER_ID && (
-          <Card className="bg-gray-800/30 border-gray-700/50 p-4">
+          <div className="bg-[#050505] border border-white/[0.04] p-4">
             <div className="flex items-center gap-2 mb-4">
-              <Wallet className="w-5 h-5 text-orange-400" />
+              <Wallet className="w-5 h-5 text-[#D4AF37]" />
               <h4 className="font-semibold text-white">Configured Wallet</h4>
             </div>
 
             <div className="space-y-3">
               <div>
-                <label className="text-xs text-gray-500 uppercase tracking-wide">Address</label>
+                <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Address</label>
                 <div className="flex items-center gap-2 mt-1">
-                  <code className="flex-1 text-xs text-cyan-400 bg-gray-900/50 p-2 rounded overflow-x-auto">
+                  <code className="flex-1 text-xs text-[#D4AF37] bg-[#0a0a0a] border border-white/[0.04] p-2 overflow-x-auto">
                     {DEFAULT_SENDER_ID.slice(0, 20)}...{DEFAULT_SENDER_ID.slice(-10)}
                   </code>
                   <button
                     onClick={() => handleCopy(DEFAULT_SENDER_ID)}
-                    className="p-1 hover:bg-gray-700/50 rounded"
+                    className="p-1 hover:bg-[#0a0a0a] border border-transparent hover:border-white/[0.04]"
                   >
                     {copied ? (
-                      <Check className="w-4 h-4 text-green-400" />
+                      <Check className="w-4 h-4 text-[#D4AF37]" />
                     ) : (
-                      <Copy className="w-4 h-4 text-gray-400" />
+                      <Copy className="w-4 h-4 text-zinc-400" />
                     )}
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="text-xs text-gray-500 uppercase tracking-wide">Balance</label>
-                <div className="text-2xl font-bold text-green-400 font-mono">
+                <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Balance</label>
+                <div className="text-2xl font-bold text-[#D4AF37] font-mono">
                   {balance !== null ? (
                     <>
-                      {formatBalance(balance)} <span className="text-sm text-gray-500">QUBIC</span>
+                      {formatBalance(balance)} <span className="text-sm text-zinc-500">QUBIC</span>
                     </>
-                  ) : '—'}
+                  ) : '---'}
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
         )}
 
         {/* Check Any Address */}
-        <Card className="bg-gray-800/30 border-gray-700/50 p-4">
+        <div className="bg-[#050505] border border-white/[0.04] p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Activity className="w-5 h-5 text-cyan-400" />
+            <Activity className="w-5 h-5 text-[#D4AF37]" />
             <h4 className="font-semibold text-white">Check Any Address</h4>
           </div>
 
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-gray-500 uppercase tracking-wide mb-1 block">
+              <label className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono mb-1 block">
                 Qubic Address (60 characters)
               </label>
               <input
@@ -224,7 +223,7 @@ export function QubicNetworkPanel() {
                 value={customAddress}
                 onChange={(e) => setCustomAddress(e.target.value.toUpperCase())}
                 placeholder="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                className="w-full bg-gray-900/50 border border-gray-700 rounded px-3 py-2 text-xs font-mono text-white placeholder-gray-600 focus:border-cyan-500 focus:outline-none"
+                className="w-full bg-[#050505] border border-white/[0.04] px-3 py-2 text-xs font-mono text-white placeholder-zinc-600 focus:border-[#D4AF37]/50 focus:ring-1 focus:ring-[#D4AF37]/50 focus:outline-none transition-all"
                 maxLength={60}
               />
             </div>
@@ -232,7 +231,7 @@ export function QubicNetworkPanel() {
             <Button
               onClick={handleCheckBalance}
               disabled={isLoadingCustom || customAddress.length !== 60}
-              className="w-full bg-cyan-600 hover:bg-cyan-500"
+              className="w-full bg-[#D4AF37] hover:bg-[#D4AF37]/80 text-black font-semibold"
             >
               {isLoadingCustom ? (
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -243,34 +242,34 @@ export function QubicNetworkPanel() {
             </Button>
 
             {customBalance !== null && (
-              <div className="p-3 bg-gray-900/50 rounded-lg">
-                <span className="text-sm text-gray-400">Balance: </span>
-                <span className="text-lg font-bold text-green-400 font-mono">
+              <div className="p-3 bg-[#0a0a0a] border border-white/[0.04]">
+                <span className="text-sm text-zinc-400">Balance: </span>
+                <span className="text-lg font-bold text-[#D4AF37] font-mono">
                   {formatBalance(customBalance)} QUBIC
                 </span>
               </div>
             )}
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* Network Info Footer */}
-      <Card className="bg-gray-800/30 border-gray-700/50 p-4">
+      <div className="bg-[#050505] border border-white/[0.04] p-4">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-400">
-            <span className="font-semibold text-white">Qubic Network</span> — Decentralized AI Computation
+          <div className="text-sm text-zinc-400">
+            <span className="font-semibold text-white">Qubic Network</span> -- Decentralized AI Computation
           </div>
           <a
             href="https://qubic.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300"
+            className="flex items-center gap-1 text-sm text-[#D4AF37] hover:text-[#D4AF37]/80"
           >
             <span>qubic.org</span>
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>
-      </Card>
+      </div>
     </div>
   )
 }

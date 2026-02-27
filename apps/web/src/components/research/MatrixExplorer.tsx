@@ -145,9 +145,9 @@ export function MatrixExplorer({
   }, [hoveredCell, matrix])
 
   return (
-    <div className="flex h-full flex-col bg-zinc-950">
+    <div className="flex h-full flex-col bg-[#050505]">
       {/* Controls Bar */}
-      <div className="flex items-center justify-between border-b border-white/10 px-3 py-2 bg-zinc-900/50">
+      <div className="flex items-center justify-between border-b border-white/[0.06] px-3 py-2 bg-[#050505]">
         <div className="flex items-center gap-2">
           {/* Zoom Presets */}
           <div className="flex gap-1">
@@ -191,7 +191,7 @@ export function MatrixExplorer({
             size="sm"
             className={cn(
               'h-7 px-2',
-              showRowHighlight ? 'text-blue-400 bg-blue-400/20' : 'text-white/40'
+              showRowHighlight ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/40'
             )}
             onClick={() => setShowRowHighlight(!showRowHighlight)}
             title="Toggle row highlight"
@@ -203,7 +203,7 @@ export function MatrixExplorer({
             size="sm"
             className={cn(
               'h-7 px-2',
-              showColHighlight ? 'text-orange-400 bg-orange-400/20' : 'text-white/40'
+              showColHighlight ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/40'
             )}
             onClick={() => setShowColHighlight(!showColHighlight)}
             title="Toggle column highlight"
@@ -217,7 +217,7 @@ export function MatrixExplorer({
       <div ref={containerRef} className="flex-1 overflow-auto p-2">
         <div className="relative inline-block">
           {/* Column Headers */}
-          <div className="sticky top-0 z-20 flex bg-zinc-950/95 backdrop-blur-sm">
+          <div className="sticky top-0 z-20 flex bg-[#050505]/95 backdrop-blur-sm">
             <div style={{ width: 32, minWidth: 32 }} className="shrink-0" />
             <div className="flex">
               {Array.from({ length: visibleCols }, (_, i) => {
@@ -232,7 +232,7 @@ export function MatrixExplorer({
                       isSelected
                         ? 'text-white font-bold'
                         : isHovered && showColHighlight
-                        ? 'text-orange-400'
+                        ? 'text-[#D4AF37]'
                         : 'text-white/30'
                     )}
                     style={{
@@ -251,7 +251,7 @@ export function MatrixExplorer({
           {/* Matrix Cells */}
           <div className="flex">
             {/* Row Headers */}
-            <div className="sticky left-0 z-10 flex flex-col bg-zinc-950/95 backdrop-blur-sm">
+            <div className="sticky left-0 z-10 flex flex-col bg-[#050505]/95 backdrop-blur-sm">
               {Array.from({ length: visibleRows }, (_, i) => {
                 const row = viewBounds.startRow + i
                 const isSelected = selectedCell?.row === row
@@ -264,7 +264,7 @@ export function MatrixExplorer({
                       isSelected
                         ? 'text-white font-bold'
                         : isHovered && showRowHighlight
-                        ? 'text-blue-400'
+                        ? 'text-[#D4AF37]'
                         : 'text-white/30'
                     )}
                     style={{
@@ -324,7 +324,7 @@ export function MatrixExplorer({
       </div>
 
       {/* Info Panel */}
-      <div className="border-t border-white/10 bg-zinc-900/80 px-3 py-2">
+      <div className="border-t border-white/[0.06] bg-[#050505] px-3 py-2">
         {selectedCellInfo ? (
           <div className="grid grid-cols-4 gap-4 text-xs">
             <div>
@@ -337,19 +337,19 @@ export function MatrixExplorer({
               <span className="text-white/40">Value</span>
               <div className={cn(
                 'font-mono font-bold',
-                selectedCellInfo.value > 0 ? 'text-orange-400' :
-                selectedCellInfo.value < 0 ? 'text-blue-400' : 'text-gray-400'
+                selectedCellInfo.value > 0 ? 'text-[#D4AF37]' :
+                selectedCellInfo.value < 0 ? 'text-[#D4AF37]/60' : 'text-gray-400'
               )}>
                 {selectedCellInfo.value}
               </div>
             </div>
             <div>
               <span className="text-white/40">Hex</span>
-              <div className="font-mono text-green-400">0x{selectedCellInfo.hex}</div>
+              <div className="font-mono text-[#D4AF37]/70">0x{selectedCellInfo.hex}</div>
             </div>
             <div>
               <span className="text-white/40">Binary</span>
-              <div className="font-mono text-purple-400 text-[10px]">{selectedCellInfo.binary}</div>
+              <div className="font-mono text-[#D4AF37]/50 text-[10px]">{selectedCellInfo.binary}</div>
             </div>
           </div>
         ) : hoveredCellInfo ? (
@@ -359,8 +359,8 @@ export function MatrixExplorer({
             </span>
             <span className={cn(
               'font-mono font-bold',
-              hoveredCellInfo.value > 0 ? 'text-orange-400' :
-              hoveredCellInfo.value < 0 ? 'text-blue-400' : 'text-gray-400'
+              hoveredCellInfo.value > 0 ? 'text-[#D4AF37]' :
+              hoveredCellInfo.value < 0 ? 'text-[#D4AF37]/60' : 'text-gray-400'
             )}>
               {hoveredCellInfo.value}
             </span>
@@ -374,16 +374,16 @@ export function MatrixExplorer({
       </div>
 
       {/* Color Legend */}
-      <div className="border-t border-white/10 px-3 py-2 bg-zinc-900/50">
-        <div className="flex items-center justify-between text-[10px]">
-          <span className="text-blue-400">-128</span>
+      <div className="border-t border-white/[0.06] px-3 py-2 bg-[#050505]">
+        <div className="flex items-center justify-between text-[10px] font-mono">
+          <span className="text-[#D4AF37]/60">-128</span>
           <div
-            className="flex-1 mx-2 h-2 rounded"
+            className="flex-1 mx-2 h-2"
             style={{
               background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(107, 114, 128), rgb(245, 158, 11))',
             }}
           />
-          <span className="text-orange-400">+127</span>
+          <span className="text-[#D4AF37]">+127</span>
         </div>
       </div>
     </div>

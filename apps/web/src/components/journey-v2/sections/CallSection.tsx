@@ -12,41 +12,41 @@ const MAIN_CTAS = [
     title: 'Read the Full Research',
     description: 'Complete academic documentation with all mathematical proofs and sources',
     href: '/docs/overview',
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-500/10',
-    borderColor: 'border-blue-500/20',
-    hoverColor: 'hover:bg-blue-500/20',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/20',
+    hoverColor: 'hover:bg-[#D4AF37]/20',
   },
   {
     icon: FileSearch,
     title: 'Explore All Evidence',
     description: '46 discoveries organized by confidence level — verify everything yourself',
     href: '/evidence',
-    color: 'text-green-400',
-    bgColor: 'bg-green-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     borderColor: 'border-green-500/20',
-    hoverColor: 'hover:bg-green-500/20',
+    hoverColor: 'hover:bg-[#D4AF37]/20',
   },
   {
     icon: User,
     title: 'Who is CFB?',
     description: 'Learn about Come-From-Beyond and his revolutionary work in cryptography',
     href: '/docs/03-results/24-cfb-satoshi-connection',
-    color: 'text-orange-400',
-    bgColor: 'bg-orange-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     borderColor: 'border-orange-500/20',
-    hoverColor: 'hover:bg-orange-500/20',
+    hoverColor: 'hover:bg-[#D4AF37]/20',
   },
 ]
 
 // Journey highlights for recap
 const JOURNEY_HIGHLIGHTS = [
-  { text: 'Bitcoin created in 2009 by Satoshi Nakamoto', color: 'text-orange-400' },
-  { text: '1CFB address appears just 10 days later', color: 'text-orange-400' },
-  { text: 'Hidden formula connects Block #283 to Qubic', color: 'text-purple-400' },
-  { text: '22,000 Patoshi blocks remain untouched', color: 'text-orange-400' },
-  { text: 'Anna Matrix encodes Bitcoin timestamps', color: 'text-purple-400' },
-  { text: 'All paths converge on March 3, 2026', color: 'text-orange-400' },
+  { text: 'Bitcoin created in 2009 by Satoshi Nakamoto', color: 'text-[#D4AF37]' },
+  { text: '1CFB address appears just 10 days later', color: 'text-[#D4AF37]' },
+  { text: 'Hidden formula connects Block #283 to Qubic', color: 'text-[#D4AF37]' },
+  { text: '22,000 Patoshi blocks remain untouched', color: 'text-[#D4AF37]' },
+  { text: 'Anna Matrix encodes Bitcoin timestamps', color: 'text-[#D4AF37]' },
+  { text: 'All paths converge on March 3, 2026', color: 'text-[#D4AF37]' },
 ]
 
 export function CallSection() {
@@ -143,7 +143,7 @@ export function CallSection() {
               {JOURNEY_HIGHLIGHTS.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center gap-2 p-2 rounded-lg bg-black/30"
+                  className="flex items-center gap-2 p-2 bg-black/30"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + index * 0.1 }}
@@ -174,9 +174,9 @@ export function CallSection() {
               >
                 <Link
                   href={cta.href}
-                  className={`block p-6 rounded-xl ${cta.bgColor} border ${cta.borderColor} ${cta.hoverColor} transition-all group hover:scale-[1.02]`}
+                  className={`block p-6 ${cta.bgColor} border ${cta.borderColor} ${cta.hoverColor} transition-all group hover:scale-[1.02]`}
                 >
-                  <div className={`p-3 rounded-lg bg-black/30 ${cta.color} w-fit mb-4`}>
+                  <div className={`p-3 bg-black/30 ${cta.color} w-fit mb-4`}>
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="font-semibold text-white/90 mb-2 flex items-center gap-2">
@@ -197,13 +197,13 @@ export function CallSection() {
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ delay: 0.8 }}
         >
-          <div className="inline-block p-6 rounded-xl bg-gradient-to-r from-orange-950/20 via-purple-950/30 to-purple-950/20 border border-white/10">
+          <div className="inline-block p-6 bg-gradient-to-r from-[#050505]/80 via-[#050505] to-[#050505]/80 border border-white/10">
             <div className="font-mono text-2xl md:text-3xl mb-2">
-              <span className="text-purple-400">625,284</span>
+              <span className="text-[#D4AF37]">625,284</span>
               <span className="text-white/20"> = </span>
-              <span className="text-orange-400">283</span>
+              <span className="text-[#D4AF37]">283</span>
               <span className="text-white/20"> × 47² + </span>
-              <span className="text-green-400">137</span>
+              <span className="text-[#D4AF37]">137</span>
             </div>
             <p className="text-xs text-white/50">The equation that bridges 2009 and 2024</p>
           </div>
@@ -275,7 +275,7 @@ export function CallSection() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-white/40 hover:text-white/60 text-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 transition-colors text-white/40 hover:text-white/60 text-sm"
           >
             <Github className="h-4 w-4" />
             Source Code

@@ -20,22 +20,22 @@ export function GenesisVerse({ verse, reference, glow = 'amber' }: GenesisVerseP
   const isInView = useInView(ref, { once: true, margin: '-40px' })
 
   const glowColor = glow === 'amber'
-    ? 'bg-amber-500/[0.02]'
-    : 'bg-cyan-500/[0.02]'
+    ? 'bg-[#D4AF37]/[0.02]'
+    : 'bg-[#D4AF37]/[0.02]'
 
   const textGradient = glow === 'amber'
-    ? 'from-amber-200/30 via-white/20 to-amber-200/30'
-    : 'from-cyan-200/30 via-white/20 to-cyan-200/30'
+    ? 'from-[#D4AF37]/30 via-white/20 to-[#D4AF37]/30'
+    : 'from-[#D4AF37]/30 via-white/20 to-[#D4AF37]/30'
 
   const lineColor = glow === 'amber'
-    ? 'via-amber-400/15'
-    : 'via-cyan-400/15'
+    ? 'via-[#D4AF37]/15'
+    : 'via-[#D4AF37]/15'
 
   return (
     <div ref={ref} className="relative w-full py-10 md:py-14 overflow-hidden">
       {/* Subtle radial glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className={`w-[400px] h-[100px] ${glowColor} rounded-full blur-[80px]`} />
+        <div className={`w-[400px] h-[100px] ${glowColor} blur-[80px]`} />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-3xl">

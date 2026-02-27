@@ -60,7 +60,7 @@ export function QubicNetworkDiagram() {
               height="6"
               rx="1"
               fill="currentColor"
-              className="text-blue-500"
+              className="text-[#D4AF37]"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.8 + i * 0.05 }}
@@ -71,7 +71,7 @@ export function QubicNetworkDiagram() {
               width="4"
               height="1"
               fill="currentColor"
-              className="text-blue-400"
+              className="text-[#D4AF37]"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.9 + i * 0.05 }}
@@ -110,7 +110,7 @@ export function QubicNetworkDiagram() {
           cy="100"
           r="8"
           fill="currentColor"
-          className="text-purple-500/20"
+          className="text-[#D4AF37]/20"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 1.9 }}
@@ -119,7 +119,7 @@ export function QubicNetworkDiagram() {
           x="50"
           y="103"
           textAnchor="middle"
-          className="text-[6px] fill-purple-400"
+          className="text-[6px] fill-[#D4AF37]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}

@@ -35,14 +35,14 @@ export function GiveawayBanner() {
     <section className="relative w-full py-16 md:py-20">
       <div className="container mx-auto px-6 max-w-5xl">
         <motion.div
-          className="relative rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden"
+          className="relative border border-white/[0.04] bg-white/[0.02] backdrop-blur-sm overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           {/* Subtle gradient accent */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/[0.03] via-transparent to-yellow-500/[0.03] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/[0.03] via-transparent to-[#D4AF37]/[0.03] pointer-events-none" />
 
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-6 px-8 py-8 md:px-10 md:py-7">
             {/* Left: Title + info */}
@@ -58,7 +58,7 @@ export function GiveawayBanner() {
             {/* Right: CTA */}
             <Link
               href="/giveaway"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 border border-white/15 text-white font-medium text-sm hover:bg-white/15 hover:border-white/25 transition-all group flex-shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/[0.04] text-white font-medium text-sm hover:bg-white/15 hover:border-white/25 transition-all group flex-shrink-0"
             >
               Enter Giveaway
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

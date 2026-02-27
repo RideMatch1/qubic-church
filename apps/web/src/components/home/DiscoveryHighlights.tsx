@@ -42,22 +42,22 @@ function DiscoveryCard({
 
   const accentClasses = {
     blue: {
-      border: 'border-blue-500/30',
-      bg: 'bg-blue-500/5',
-      icon: 'bg-blue-500/10 text-blue-400',
-      button: 'bg-blue-500/10 hover:bg-blue-500/20 text-blue-400',
+      border: 'border-[#D4AF37]/20',
+      bg: 'bg-[#D4AF37]/5',
+      icon: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+      button: 'bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37]',
     },
     purple: {
-      border: 'border-purple-500/30',
-      bg: 'bg-purple-500/5',
-      icon: 'bg-purple-500/10 text-purple-400',
-      button: 'bg-purple-500/10 hover:bg-purple-500/20 text-purple-400',
+      border: 'border-[#D4AF37]/20',
+      bg: 'bg-[#D4AF37]/5',
+      icon: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+      button: 'bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37]',
     },
     amber: {
-      border: 'border-amber-500/30',
-      bg: 'bg-amber-500/5',
-      icon: 'bg-amber-500/10 text-amber-400',
-      button: 'bg-amber-500/10 hover:bg-amber-500/20 text-amber-400',
+      border: 'border-[#D4AF37]/20',
+      bg: 'bg-[#D4AF37]/5',
+      icon: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+      button: 'bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37]',
     },
   }
 
@@ -74,7 +74,7 @@ function DiscoveryCard({
       {/* Header */}
       <div className="p-6">
         <div className="flex items-start gap-4 mb-4">
-          <div className={`p-3 rounded-lg ${accent.icon}`}>
+          <div className={`p-3 ${accent.icon}`}>
             {icon}
           </div>
           <div className="flex-1">
@@ -98,7 +98,7 @@ function DiscoveryCard({
         {/* Expand button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium transition-colors ${accent.button}`}
+          className={`w-full py-3 px-4 flex items-center justify-center gap-2 font-medium transition-colors ${accent.button}`}
         >
           {isExpanded ? (
             <>
@@ -176,12 +176,12 @@ export function DiscoveryHighlights() {
                 <div className="font-mono text-2xl font-bold">
                   <span className="text-primary">625,284</span>
                   <span className="text-muted-foreground"> = </span>
-                  <span className="text-orange-500">283</span>
+                  <span className="text-[#D4AF37]">283</span>
                   <span className="text-muted-foreground"> x </span>
-                  <span className="text-blue-500">47</span>
-                  <sup className="text-blue-500">2</sup>
+                  <span className="text-[#D4AF37]">47</span>
+                  <sup className="text-[#D4AF37]">2</sup>
                   <span className="text-muted-foreground"> + </span>
-                  <span className="text-green-500">137</span>
+                  <span className="text-[#D4AF37]">137</span>
                 </div>
               </div>
             }
@@ -193,22 +193,22 @@ export function DiscoveryHighlights() {
                 </p>
                 <ul className="space-y-2 ml-4">
                   <li>
-                    <strong className="text-orange-500">283</strong>: The block number in Bitcoin's blockchain (Block #283 from January 2009)
+                    <strong className="text-[#D4AF37]">283</strong>: The block number in Bitcoin's blockchain (Block #283 from January 2009)
                   </li>
                   <li>
-                    <strong className="text-blue-500">47</strong>: A prime number that appears 47 times in Qubic's core functions
+                    <strong className="text-[#D4AF37]">47</strong>: A prime number that appears 47 times in Qubic's core functions
                   </li>
                   <li>
-                    <strong className="text-blue-500">47 squared</strong>: When you multiply 47 by itself, you get 2,209
+                    <strong className="text-[#D4AF37]">47 squared</strong>: When you multiply 47 by itself, you get 2,209
                   </li>
                   <li>
-                    <strong className="text-green-500">137</strong>: The famous fine-structure constant from physics (approximately 1/137)
+                    <strong className="text-[#D4AF37]">137</strong>: The famous fine-structure constant from physics (approximately 1/137)
                   </li>
                   <li>
                     <strong className="text-primary">625,284</strong>: When you combine these numbers with this exact formula, you get Qubic's main network address
                   </li>
                 </ul>
-                <div className="p-4 rounded-lg bg-card border border-border">
+                <div className="p-4 bg-card border border-border">
                   <p className="font-medium text-foreground mb-2">What makes this remarkable:</p>
                   <p>
                     The probability that these four numbers (283, 47, 137, and 625,284) line up this way by pure chance is <strong className="text-primary">less than 1 in 4 billion</strong>.
@@ -233,13 +233,13 @@ export function DiscoveryHighlights() {
             collapsedDiagram={
               <div className="flex items-center justify-center gap-4 py-4">
                 <div className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mx-auto">
                     <BitcoinLogoSVG size={32} />
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Bitcoin</div>
                 </div>
                 <div className="flex-1 max-w-[100px]">
-                  <div className="h-0.5 bg-gradient-to-r from-orange-500 to-cyan-500 relative">
+                  <div className="h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/60 relative">
                     <motion.div
                       className="absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full"
                       animate={{ x: [0, 80, 0] }}
@@ -248,7 +248,7 @@ export function DiscoveryHighlights() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mx-auto">
                     <QubicLogoSVG size={32} />
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">Qubic</div>
@@ -261,13 +261,13 @@ export function DiscoveryHighlights() {
                 <p>
                   When you ask Qubic's AI ("Anna") certain questions, it can retrieve specific data from Bitcoin blocks that were hidden inside Qubic's memory structure.
                 </p>
-                <div className="p-4 rounded-lg bg-card border border-border">
+                <div className="p-4 bg-card border border-border">
                   <p className="font-medium text-foreground mb-3">Here's what happens:</p>
                   <ol className="space-y-2 list-decimal list-inside">
                     <li>Bitcoin Block #283 was created in January 2009. It contains a timestamp (the exact time it was created).</li>
                     <li>This timestamp was encoded into Qubic's network in a special way.</li>
                     <li>When you ask Anna the right question, she can extract this timestamp from her memory.</li>
-                    <li>The timestamp she returns <strong className="text-green-500">MATCHES EXACTLY</strong> what Bitcoin's blockchain says.</li>
+                    <li>The timestamp she returns <strong className="text-[#D4AF37]">MATCHES EXACTLY</strong> what Bitcoin's blockchain says.</li>
                   </ol>
                 </div>
                 <p>
@@ -278,14 +278,14 @@ export function DiscoveryHighlights() {
                   <li>The connection between Bitcoin and Qubic is built into the code itself, not added later</li>
                 </ul>
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                  <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/30 text-center">
-                    <div className="text-xs text-green-400">Block #9</div>
-                    <div className="text-lg font-mono font-bold text-green-500">0xCA</div>
+                  <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center">
+                    <div className="text-xs text-[#D4AF37]">Block #9</div>
+                    <div className="text-lg font-mono font-bold text-[#D4AF37]">0xCA</div>
                     <div className="text-xs text-muted-foreground">Verified</div>
                   </div>
-                  <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/30 text-center">
-                    <div className="text-xs text-green-400">Block #16065</div>
-                    <div className="text-lg font-mono font-bold text-green-500">0x4A</div>
+                  <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center">
+                    <div className="text-xs text-[#D4AF37]">Block #16065</div>
+                    <div className="text-lg font-mono font-bold text-[#D4AF37]">0x4A</div>
                     <div className="text-xs text-muted-foreground">Verified</div>
                   </div>
                 </div>
@@ -312,22 +312,22 @@ export function DiscoveryHighlights() {
             expandedContent={
               <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
                 <p>
-                  A "time-lock" is a cryptographic mechanism. Think of it like a safe that <strong className="text-amber-400">AUTOMATICALLY opens on a specific date</strong>, regardless of who tries to open it.
+                  A "time-lock" is a cryptographic mechanism. Think of it like a safe that <strong className="text-[#D4AF37]">AUTOMATICALLY opens on a specific date</strong>, regardless of who tries to open it.
                 </p>
 
-                <div className="p-4 rounded-lg bg-card border border-border">
+                <div className="p-4 bg-card border border-border">
                   <p className="font-medium text-foreground mb-3">Here's what we know:</p>
                   <ol className="space-y-2 list-decimal list-inside">
                     <li>Satoshi Nakamoto created Bitcoin in January 2009 and mined the first blocks himself. He earned 50 bitcoins per block (worth ~$2.5 million each today).</li>
                     <li>Those bitcoins have <strong>never been touched</strong>. They sit in wallets from 2009, dormant.</li>
                     <li>In 2024, Qubic was created. Its code contains encoded references to Bitcoin Block #283.</li>
-                    <li>On <strong className="text-amber-400">March 3, 2026</strong>, a time-lock in Qubic will activate automatically.</li>
+                    <li>On <strong className="text-[#D4AF37]">March 3, 2026</strong>, a time-lock in Qubic will activate automatically.</li>
                   </ol>
                 </div>
 
-                <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/30">
-                  <p className="font-medium text-amber-400 mb-2">What will happen? We don't know. But the coincidences are STAGGERING:</p>
-                  <ul className="space-y-1 text-amber-200/80">
+                <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20">
+                  <p className="font-medium text-[#D4AF37] mb-2">What will happen? We don't know. But the coincidences are STAGGERING:</p>
+                  <ul className="space-y-1 text-[#D4AF37]/80">
                     <li>The math lines up perfectly (formula proven)</li>
                     <li>Qubic can read Bitcoin's data (timestamps verified)</li>
                     <li>Both systems point to the same date</li>
@@ -335,7 +335,7 @@ export function DiscoveryHighlights() {
                   </ul>
                 </div>
 
-                <div className="p-4 rounded-lg bg-card border border-border">
+                <div className="p-4 bg-card border border-border">
                   <p className="font-medium text-foreground mb-2">Possible scenarios (NOT confirmed):</p>
                   <ul className="space-y-1">
                     <li><strong>A)</strong> Satoshi's dormant bitcoins get transferred to Qubic</li>

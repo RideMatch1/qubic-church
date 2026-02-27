@@ -88,13 +88,13 @@ export function Matrix3DSection() {
   const getCellColor = (cell: MatrixCell) => {
     switch (cell.category) {
       case 'input':
-        return 'bg-orange-500/80' // Bitcoin orange
+        return 'bg-[#D4AF37]/80' // Bitcoin orange
       case 'transform':
-        return 'bg-purple-500/80' // Transformation purple
+        return 'bg-[#D4AF37]/80' // Transformation purple
       case 'output':
-        return 'bg-green-500/80' // Output green
+        return 'bg-[#D4AF37]/80' // Output green
       case 'bridge':
-        return 'bg-cyan-400' // Bridge cyan
+        return 'bg-[#D4AF37]' // Bridge cyan
       default:
         // Value-based coloring for neutral cells
         const intensity = Math.abs(cell.value) / 128
@@ -128,27 +128,27 @@ export function Matrix3DSection() {
 
         {/* Matrix Legend */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border">
-            <div className="w-3 h-3 rounded-full bg-orange-500" />
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-card border border-border">
+            <div className="w-3 h-3 bg-[#D4AF37]" />
             <span className="text-sm">Row 21: Bitcoin Input</span>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border">
-            <div className="w-3 h-3 rounded-full bg-purple-500" />
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-card border border-border">
+            <div className="w-3 h-3 bg-[#D4AF37]" />
             <span className="text-sm">Row 68: Transformation</span>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border">
-            <div className="w-3 h-3 rounded-full bg-green-500" />
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-card border border-border">
+            <div className="w-3 h-3 bg-[#D4AF37]" />
             <span className="text-sm">Row 96: Output</span>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border">
-            <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-card border border-border">
+            <div className="w-3 h-3 bg-[#D4AF37] animate-pulse" />
             <span className="text-sm">Bridge Nodes</span>
           </div>
         </div>
 
         {/* Matrix Visualization */}
         <motion.div
-          className="relative mx-auto max-w-4xl aspect-square rounded-xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden"
+          className="relative mx-auto max-w-4xl aspect-square border border-border bg-card/50 backdrop-blur-sm overflow-hidden"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -174,15 +174,15 @@ export function Matrix3DSection() {
                   <motion.div
                     key={i}
                     className={cn(
-                      'rounded-[1px] transition-colors cursor-pointer',
+                      ' transition-colors cursor-pointer',
                       actualRow === 20 || actualRow === 21
-                        ? 'bg-orange-500/60'
+                        ? 'bg-[#D4AF37]/60'
                         : actualRow === 68 || actualRow === 69
-                          ? 'bg-purple-500/60'
+                          ? 'bg-[#D4AF37]/60'
                           : actualRow === 96 || actualRow === 97
-                            ? 'bg-green-500/60'
+                            ? 'bg-[#D4AF37]/60'
                             : (actualRow === 45 && col === 92) || (actualRow === 6 && col === 33) || (actualRow === 82 && col === 39)
-                              ? 'bg-cyan-400 animate-pulse z-20 shadow-[0_0_15px_rgba(34,211,238,0.5)]'
+                              ? 'bg-[#D4AF37] animate-pulse z-20 shadow-[0_0_15px_rgba(34,211,238,0.5)]'
                               : 'bg-primary/10 hover:bg-primary/30'
                     )}
                     whileHover={{ scale: 1.5, zIndex: 10 }}
@@ -197,7 +197,7 @@ export function Matrix3DSection() {
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
             {/* Boot address indicator (Row 21, Col 4) */}
             <div
-              className="absolute w-2 h-2 bg-yellow-400 rounded-full animate-pulse"
+              className="absolute w-2 h-2 bg-[#D4AF37] animate-pulse"
               style={{
                 top: `${(21 / 128) * 100}%`,
                 left: `${(4 / 128) * 100}%`,
@@ -235,7 +235,7 @@ export function Matrix3DSection() {
           {JINN_ARCHITECTURE.dataFlow.map((flow, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-lg border border-border bg-card/50"
+              className="p-4 border border-border bg-card/50"
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-2xl font-bold text-primary">
@@ -264,7 +264,7 @@ export function Matrix3DSection() {
             {CFB_CONSTANTS.known.map((constant) => (
               <span
                 key={constant}
-                className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 font-mono text-sm"
+                className="px-3 py-1 bg-primary/10 border border-primary/20 font-mono text-sm"
               >
                 {constant}
               </span>

@@ -25,23 +25,23 @@ const tiers = [
     name: 'Epic',
     count: 20,
     icon: Diamond,
-    iconColor: 'text-purple-400/70',
-    nameColor: 'text-purple-300/90',
+    iconColor: 'text-[#D4AF37]/70',
+    nameColor: 'text-[#D4AF37]/90',
     description: 'Lead Researcher. Bearer of 7 hidden revelations.',
-    borderHover: 'hover:border-purple-400/25',
-    accent: 'from-purple-400/25 to-purple-400/0',
-    glow: 'hover:shadow-[0_0_30px_rgba(168,85,247,0.06)]',
+    borderHover: 'hover:border-[#D4AF37]/25',
+    accent: 'from-[#D4AF37]/25 to-[#D4AF37]/0',
+    glow: 'hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]',
   },
   {
     name: 'Rare',
     count: 75,
     icon: Star,
-    iconColor: 'text-cyan-400/70',
-    nameColor: 'text-cyan-300/90',
+    iconColor: 'text-[#D4AF37]/70',
+    nameColor: 'text-[#D4AF37]/90',
     description: 'Research Contributor. Early access to sacred findings.',
-    borderHover: 'hover:border-cyan-400/25',
-    accent: 'from-cyan-400/25 to-cyan-400/0',
-    glow: 'hover:shadow-[0_0_30px_rgba(34,211,238,0.06)]',
+    borderHover: 'hover:border-[#D4AF37]/25',
+    accent: 'from-[#D4AF37]/25 to-[#D4AF37]/0',
+    glow: 'hover:shadow-[0_0_30px_rgba(212,175,55,0.06)]',
   },
   {
     name: 'Common',
@@ -96,7 +96,7 @@ export function NFTShowcaseSection() {
             return (
               <motion.div
                 key={tier.name}
-                className={`group relative p-6 rounded-2xl backdrop-blur-xl bg-white/[0.03] border border-white/[0.08] transition-all duration-500 cursor-default hover:bg-white/[0.06] ${tier.borderHover} ${tier.glow} overflow-hidden`}
+                className={`group relative p-6 backdrop-blur-xl bg-white/[0.03] border border-white/[0.04] transition-all duration-500 cursor-default hover:bg-white/[0.06] ${tier.borderHover} ${tier.glow} overflow-hidden`}
                 style={{ perspective: '800px' }}
                 initial={{ opacity: 0, y: 28 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -142,11 +142,11 @@ export function NFTShowcaseSection() {
             href="https://qubicbay.com/collection/anna-aigarth"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500/[0.08] to-cyan-500/[0.04] border border-amber-400/20 text-white font-bold text-lg hover:from-amber-500/[0.14] hover:to-cyan-500/[0.08] hover:border-amber-400/30 transition-all duration-300 group overflow-hidden"
+            className="relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#D4AF37]/[0.08] to-[#D4AF37]/[0.04] border border-[#D4AF37]/20 text-white font-bold text-lg hover:from-[#D4AF37]/[0.14] hover:to-[#D4AF37]/[0.08] hover:border-[#D4AF37]/30 transition-all duration-300 group overflow-hidden"
           >
             {/* Shimmer sweep */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
-            <ShoppingCart className="relative w-5 h-5 text-amber-400/60 group-hover:text-amber-400/80 transition-colors" />
+            <ShoppingCart className="relative w-5 h-5 text-[#D4AF37]/60 group-hover:text-[#D4AF37]/80 transition-colors" />
             <span className="relative">Collect on QubicBay</span>
             <ExternalLink className="relative w-4 h-4 text-white/30" />
           </a>

@@ -47,7 +47,7 @@ export const InputPanel = forwardRef<HTMLTextAreaElement, InputPanelProps>(
             placeholder={PLACEHOLDERS[inputType]}
             disabled={disabled}
             rows={3}
-            className="w-full bg-gray-800/50 border border-gray-700/50 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all resize-none font-mono text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[#050505] border border-white/[0.04] px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all resize-none font-mono text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           />
 
           {/* Character count */}
@@ -59,13 +59,13 @@ export const InputPanel = forwardRef<HTMLTextAreaElement, InputPanelProps>(
         {/* Quick Examples */}
         {examples.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            <span className="text-xs text-gray-500">Try:</span>
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Try:</span>
             {examples.slice(0, 4).map((example) => (
               <button
                 key={example}
                 onClick={() => onChange(example)}
                 disabled={disabled}
-                className="px-2 py-1 text-xs bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white rounded border border-gray-700/50 transition-all disabled:opacity-50"
+                className="px-2 py-1 text-xs bg-[#050505] hover:bg-[#0a0a0a] hover:shadow-[0_0_30px_rgba(212,175,55,0.03)] text-zinc-400 hover:text-[#D4AF37] border border-white/[0.04] transition-all disabled:opacity-50 font-mono"
               >
                 {example.length > 20 ? example.slice(0, 20) + '...' : example}
               </button>

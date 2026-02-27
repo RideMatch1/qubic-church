@@ -1,0 +1,595 @@
+{
+  "independent_count": 8192,
+  "exception_count": 34,
+  "randomness_tests": {
+    "frequency": {
+      "test": "frequency",
+      "s_obs": 10.1640625,
+      "p_value": 0.0
+    },
+    "runs": {
+      "test": "runs",
+      "p_value": 0.0,
+      "note": "frequency pre-test failed"
+    },
+    "serial": {
+      "test": "serial_m2",
+      "delta1": 119.18341064453125,
+      "delta2": 15.875244140625,
+      "p_value_1": 0.0,
+      "p_value_2": 6.765795931784613e-05
+    },
+    "autocorrelation_lag1": {
+      "test": "autocorrelation_lag1",
+      "r": 0.41084129607222103,
+      "z": 37.18510930484961,
+      "p_value": 0.0
+    },
+    "autocorrelation_lag2": {
+      "test": "autocorrelation_lag2",
+      "r": 0.39353028187849626,
+      "z": 35.618295157572895,
+      "p_value": 0.0
+    },
+    "autocorrelation_lag4": {
+      "test": "autocorrelation_lag4",
+      "r": 0.5530023693982757,
+      "z": 50.05206085295986,
+      "p_value": 0.0
+    },
+    "autocorrelation_lag8": {
+      "test": "autocorrelation_lag8",
+      "r": 0.3868907139412724,
+      "z": 35.017350067965246,
+      "p_value": 0.0
+    },
+    "autocorrelation_lag16": {
+      "test": "autocorrelation_lag16",
+      "r": 0.31830040096741447,
+      "z": 28.809263613242354,
+      "p_value": 0.0
+    },
+    "byte_distribution": {
+      "test": "byte_distribution",
+      "chi2": 14771.9375,
+      "p_value": 0.0
+    },
+    "signed_distribution": {
+      "test": "signed_distribution",
+      "chi2": 14771.9375,
+      "p_value": 0.0
+    },
+    "longest_run": {
+      "test": "longest_run_of_ones",
+      "longest_run": 13,
+      "expected_approx": 16.0,
+      "n_bits": 65536
+    }
+  },
+  "randomness_pass_rate": "0/9",
+  "lcg_best_match": {
+    "name": "MINSTD",
+    "score": 5,
+    "seed": 7631,
+    "params": [
+      16807,
+      0,
+      2147483647
+    ],
+    "match_rate": 0.05
+  },
+  "exceptions": [
+    {
+      "pos1": [
+        19,
+        127
+      ],
+      "val1": 15,
+      "pos2": [
+        108,
+        0
+      ],
+      "val2": -48,
+      "sum": -33,
+      "deviation": -32
+    },
+    {
+      "pos1": [
+        20,
+        22
+      ],
+      "val1": 92,
+      "pos2": [
+        107,
+        105
+      ],
+      "val2": -18,
+      "sum": 74,
+      "deviation": 75
+    },
+    {
+      "pos1": [
+        21,
+        22
+      ],
+      "val1": 113,
+      "pos2": [
+        106,
+        105
+      ],
+      "val2": -58,
+      "sum": 55,
+      "deviation": 56
+    },
+    {
+      "pos1": [
+        22,
+        22
+      ],
+      "val1": 100,
+      "pos2": [
+        105,
+        105
+      ],
+      "val2": 100,
+      "sum": 200,
+      "deviation": 201
+    },
+    {
+      "pos1": [
+        23,
+        22
+      ],
+      "val1": -121,
+      "pos2": [
+        104,
+        105
+      ],
+      "val2": -26,
+      "sum": -147,
+      "deviation": -146
+    },
+    {
+      "pos1": [
+        24,
+        22
+      ],
+      "val1": 42,
+      "pos2": [
+        103,
+        105
+      ],
+      "val2": 74,
+      "sum": 116,
+      "deviation": 117
+    },
+    {
+      "pos1": [
+        25,
+        22
+      ],
+      "val1": 23,
+      "pos2": [
+        102,
+        105
+      ],
+      "val2": 66,
+      "sum": 89,
+      "deviation": 90
+    },
+    {
+      "pos1": [
+        26,
+        22
+      ],
+      "val1": 106,
+      "pos2": [
+        101,
+        105
+      ],
+      "val2": 100,
+      "sum": 206,
+      "deviation": 207
+    },
+    {
+      "pos1": [
+        27,
+        22
+      ],
+      "val1": 120,
+      "pos2": [
+        100,
+        105
+      ],
+      "val2": 70,
+      "sum": 190,
+      "deviation": 191
+    },
+    {
+      "pos1": [
+        28,
+        22
+      ],
+      "val1": 40,
+      "pos2": [
+        99,
+        105
+      ],
+      "val2": 110,
+      "sum": 150,
+      "deviation": 151
+    },
+    {
+      "pos1": [
+        29,
+        22
+      ],
+      "val1": -121,
+      "pos2": [
+        98,
+        105
+      ],
+      "val2": -50,
+      "sum": -171,
+      "deviation": -170
+    },
+    {
+      "pos1": [
+        30,
+        22
+      ],
+      "val1": 44,
+      "pos2": [
+        97,
+        105
+      ],
+      "val2": 110,
+      "sum": 154,
+      "deviation": 155
+    },
+    {
+      "pos1": [
+        31,
+        22
+      ],
+      "val1": 120,
+      "pos2": [
+        96,
+        105
+      ],
+      "val2": 102,
+      "sum": 222,
+      "deviation": 223
+    },
+    {
+      "pos1": [
+        32,
+        22
+      ],
+      "val1": 101,
+      "pos2": [
+        95,
+        105
+      ],
+      "val2": -108,
+      "sum": -7,
+      "deviation": -6
+    },
+    {
+      "pos1": [
+        48,
+        97
+      ],
+      "val1": 14,
+      "pos2": [
+        79,
+        30
+      ],
+      "val2": -16,
+      "sum": -2,
+      "deviation": -1
+    },
+    {
+      "pos1": [
+        50,
+        97
+      ],
+      "val1": -114,
+      "pos2": [
+        77,
+        30
+      ],
+      "val2": -15,
+      "sum": -129,
+      "deviation": -128
+    },
+    {
+      "pos1": [
+        51,
+        97
+      ],
+      "val1": 14,
+      "pos2": [
+        76,
+        30
+      ],
+      "val2": 113,
+      "sum": 127,
+      "deviation": 128
+    },
+    {
+      "pos1": [
+        53,
+        97
+      ],
+      "val1": 30,
+      "pos2": [
+        74,
+        30
+      ],
+      "val2": -15,
+      "sum": 15,
+      "deviation": 16
+    },
+    {
+      "pos1": [
+        54,
+        97
+      ],
+      "val1": 10,
+      "pos2": [
+        73,
+        30
+      ],
+      "val2": -31,
+      "sum": -21,
+      "deviation": -20
+    },
+    {
+      "pos1": [
+        55,
+        97
+      ],
+      "val1": 26,
+      "pos2": [
+        72,
+        30
+      ],
+      "val2": -11,
+      "sum": 15,
+      "deviation": 16
+    },
+    {
+      "pos1": [
+        56,
+        97
+      ],
+      "val1": -114,
+      "pos2": [
+        71,
+        30
+      ],
+      "val2": -27,
+      "sum": -141,
+      "deviation": -140
+    },
+    {
+      "pos1": [
+        57,
+        97
+      ],
+      "val1": 30,
+      "pos2": [
+        70,
+        30
+      ],
+      "val2": 113,
+      "sum": 143,
+      "deviation": 144
+    },
+    {
+      "pos1": [
+        58,
+        97
+      ],
+      "val1": -114,
+      "pos2": [
+        69,
+        30
+      ],
+      "val2": -31,
+      "sum": -145,
+      "deviation": -144
+    },
+    {
+      "pos1": [
+        59,
+        97
+      ],
+      "val1": -98,
+      "pos2": [
+        68,
+        30
+      ],
+      "val2": 113,
+      "sum": 15,
+      "deviation": 16
+    },
+    {
+      "pos1": [
+        60,
+        30
+      ],
+      "val1": 81,
+      "pos2": [
+        67,
+        97
+      ],
+      "val2": 46,
+      "sum": 127,
+      "deviation": 128
+    },
+    {
+      "pos1": [
+        60,
+        97
+      ],
+      "val1": 22,
+      "pos2": [
+        67,
+        30
+      ],
+      "val2": 97,
+      "sum": 119,
+      "deviation": 120
+    },
+    {
+      "pos1": [
+        61,
+        30
+      ],
+      "val1": -45,
+      "pos2": [
+        66,
+        97
+      ],
+      "val2": -82,
+      "sum": -127,
+      "deviation": -126
+    },
+    {
+      "pos1": [
+        61,
+        97
+      ],
+      "val1": 30,
+      "pos2": [
+        66,
+        30
+      ],
+      "val2": -23,
+      "sum": 7,
+      "deviation": 8
+    },
+    {
+      "pos1": [
+        62,
+        30
+      ],
+      "val1": -47,
+      "pos2": [
+        65,
+        97
+      ],
+      "val2": 44,
+      "sum": -3,
+      "deviation": -2
+    },
+    {
+      "pos1": [
+        62,
+        41
+      ],
+      "val1": -101,
+      "pos2": [
+        65,
+        86
+      ],
+      "val2": 109,
+      "sum": 8,
+      "deviation": 9
+    },
+    {
+      "pos1": [
+        62,
+        97
+      ],
+      "val1": -102,
+      "pos2": [
+        65,
+        30
+      ],
+      "val2": -31,
+      "sum": -133,
+      "deviation": -132
+    },
+    {
+      "pos1": [
+        63,
+        30
+      ],
+      "val1": -27,
+      "pos2": [
+        64,
+        97
+      ],
+      "val2": 46,
+      "sum": 19,
+      "deviation": 20
+    },
+    {
+      "pos1": [
+        63,
+        41
+      ],
+      "val1": -101,
+      "pos2": [
+        64,
+        86
+      ],
+      "val2": 109,
+      "sum": 8,
+      "deviation": 9
+    },
+    {
+      "pos1": [
+        63,
+        97
+      ],
+      "val1": 26,
+      "pos2": [
+        64,
+        30
+      ],
+      "val2": 101,
+      "sum": 127,
+      "deviation": 128
+    }
+  ],
+  "deviation_stats": {
+    "mean": 34.14705882352941,
+    "std": 113.0557208670187,
+    "unique": [
+      -170,
+      -146,
+      -144,
+      -140,
+      -132,
+      -128,
+      -126,
+      -32,
+      -20,
+      -6,
+      -2,
+      -1,
+      8,
+      9,
+      16,
+      20,
+      56,
+      75,
+      90,
+      117,
+      120,
+      128,
+      144,
+      151,
+      155,
+      191,
+      201,
+      207,
+      223
+    ]
+  },
+  "hypothesis": "C (partially structured)"
+}

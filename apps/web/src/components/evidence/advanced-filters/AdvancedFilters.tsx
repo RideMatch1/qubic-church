@@ -101,7 +101,7 @@ export function AdvancedFilters({
           <Filter className="w-4 h-4" />
           Advanced Filters
           {activeFilterCount > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs rounded-full flex items-center justify-center font-bold">
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">
               {activeFilterCount}
             </span>
           )}
@@ -139,9 +139,9 @@ export function AdvancedFilters({
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="bg-card border border-border rounded-lg p-6 space-y-6">
+            <div className="bg-card border border-border p-6 space-y-6">
               {/* Balance Filter */}
-              <FilterSection icon={DollarSign} title="Balance Range" color="text-green-500">
+              <FilterSection icon={DollarSign} title="Balance Range" color="text-[#D4AF37]">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
@@ -200,7 +200,7 @@ export function AdvancedFilters({
               </FilterSection>
 
               {/* Transaction Count Filter */}
-              <FilterSection icon={TrendingUp} title="Transaction Count" color="text-blue-500">
+              <FilterSection icon={TrendingUp} title="Transaction Count" color="text-[#D4AF37]">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
@@ -240,7 +240,7 @@ export function AdvancedFilters({
               </FilterSection>
 
               {/* Date Range Filter */}
-              <FilterSection icon={Calendar} title="Activity Date Range" color="text-purple-500">
+              <FilterSection icon={Calendar} title="Activity Date Range" color="text-[#D4AF37]">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">
@@ -298,7 +298,7 @@ export function AdvancedFilters({
               </FilterSection>
 
               {/* Address Pattern Filter */}
-              <FilterSection icon={Hash} title="Address Pattern" color="text-orange-500">
+              <FilterSection icon={Hash} title="Address Pattern" color="text-[#D4AF37]">
                 <div className="space-y-4">
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">
@@ -402,12 +402,12 @@ export function AdvancedFilters({
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
+                className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-sm border border-primary/20"
               >
                 <span>{label}</span>
                 <button
                   onClick={() => handleFilterChange(key as keyof FilterConfig, undefined)}
-                  className="hover:bg-primary/20 rounded-full p-0.5"
+                  className="hover:bg-primary/20 p-0.5"
                 >
                   <X className="w-3 h-3" />
                 </button>

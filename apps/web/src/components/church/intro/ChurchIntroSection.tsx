@@ -44,9 +44,9 @@ const features = [
 
 export function ChurchIntroSection() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center py-20 md:py-32 bg-gradient-to-b from-black via-purple-950/10 to-black">
+    <section className="relative min-h-[80vh] flex items-center justify-center py-20 md:py-32 bg-gradient-to-b from-[#050505] via-[#D4AF37]/5 to-[#050505]">
       {/* Background gradient glow */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-radial from-[#D4AF37]/5 via-transparent to-transparent pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-4 max-w-6xl">
         {/* Header */}
@@ -58,13 +58,13 @@ export function ChurchIntroSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/[0.04] mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
             <span className="text-sm text-white/70 uppercase tracking-wider">Welcome</span>
           </motion.div>
 
@@ -88,18 +88,18 @@ export function ChurchIntroSection() {
                 href={feature.href}
                 target={feature.external ? '_blank' : undefined}
                 rel={feature.external ? 'noopener noreferrer' : undefined}
-                className="group relative p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
+                className="group relative p-6 bg-[#050505]/80 backdrop-blur-xl border border-white/[0.04] hover:border-white/20 transition-all duration-300 hover:scale-105"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Gradient glow on hover */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl`} />
 
                 <div className="relative">
                   {/* Icon */}
-                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.color} mb-4`}>
+                  <div className={`inline-flex p-3 bg-gradient-to-br ${feature.color} mb-4`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>
 

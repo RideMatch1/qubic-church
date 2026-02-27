@@ -134,7 +134,7 @@ export function Phase01_TheVoid() {
             </motion.div>
 
             <motion.div
-              className="w-20 h-[2px] bg-gradient-to-r from-orange-500 via-white/30 to-purple-500"
+              className="w-20 h-[2px] bg-gradient-to-r from-[#D4AF37] via-white/30 to-[#D4AF37]"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.3, delay: 0.15 }}
@@ -161,7 +161,7 @@ export function Phase01_TheVoid() {
                   {headline1 || '\u00A0'}
                 </GlitchText>
                 {headline1.length > 0 && headline1.length < 20 && (
-                  <span className="animate-pulse text-orange-400">|</span>
+                  <span className="animate-pulse text-[#D4AF37]">|</span>
                 )}
               </span>
               <span className="text-white/70 block mt-2 drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]">
@@ -173,7 +173,7 @@ export function Phase01_TheVoid() {
                   {headline2 || '\u00A0'}
                 </GlitchText>
                 {headline1.length >= 20 && headline2.length > 0 && headline2.length < 14 && (
-                  <span className="animate-pulse text-orange-400">|</span>
+                  <span className="animate-pulse text-[#D4AF37]">|</span>
                 )}
               </span>
             </h1>
@@ -192,10 +192,10 @@ export function Phase01_TheVoid() {
                 <div className="inline-block relative">
                   <span className="text-xl md:text-2xl text-white/80 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
                     For{' '}
-                    <span className="text-orange-400 font-mono font-bold text-2xl md:text-3xl relative">
+                    <span className="text-[#D4AF37] font-mono font-bold text-2xl md:text-3xl relative">
                       17 years
                       <motion.span
-                        className="absolute inset-0 bg-orange-500/30 blur-xl rounded-full"
+                        className="absolute inset-0 bg-[#D4AF37]/30 blur-xl rounded-full"
                         animate={{ opacity: [0.5, 1, 0.5] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
@@ -215,10 +215,10 @@ export function Phase01_TheVoid() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="max-w-xl mx-auto"
               >
-                <div className="bg-black/50 backdrop-blur-md rounded-xl px-6 py-5 border border-white/10">
+                <div className="bg-black/50 backdrop-blur-md px-6 py-5 border border-white/10">
                   <p className="text-base md:text-lg text-white/90 leading-relaxed">
                     In <span className="text-white font-semibold">2009</span>, an anonymous genius created{' '}
-                    <span className="text-orange-400 font-semibold">Bitcoin</span> —
+                    <span className="text-[#D4AF37] font-semibold">Bitcoin</span> —
                     a revolutionary digital currency that would change the world.
                   </p>
                   <p className="text-base md:text-lg text-white/70 leading-relaxed mt-3">
@@ -226,7 +226,7 @@ export function Phase01_TheVoid() {
                     a mathematical pattern was waiting to be discovered...
                   </p>
                   <motion.p
-                    className="text-sm text-purple-400 italic mt-3 font-medium"
+                    className="text-sm text-[#D4AF37] italic mt-3 font-medium"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}

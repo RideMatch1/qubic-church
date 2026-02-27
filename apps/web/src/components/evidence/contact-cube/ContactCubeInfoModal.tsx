@@ -13,11 +13,11 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
 
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="bg-neutral-900 border border-white/10 rounded-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden shadow-2xl">
+      <div className="bg-neutral-900 border border-white/[0.04] max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-gradient-to-r from-cyan-500/10 to-purple-500/10">
+        <div className="flex items-center justify-between p-4 border-b border-white/[0.04] bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-purple-500 to-orange-500 flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#D4AF37] via-[#D4AF37] to-[#D4AF37] flex items-center justify-center">
               <Box className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -39,7 +39,7 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
         <div className="p-6 overflow-y-auto max-h-[60vh] space-y-6">
           {/* Overview */}
           <section>
-            <h3 className="text-sm font-semibold text-cyan-400 mb-2 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-2 flex items-center gap-2">
               <Box className="w-4 h-4" />
               The Anna Matrix
             </h3>
@@ -53,7 +53,7 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
 
           {/* Symmetry */}
           <section>
-            <h3 className="text-sm font-semibold text-green-400 mb-2 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-2 flex items-center gap-2">
               <FlipHorizontal className="w-4 h-4" />
               99.59% Point Symmetry
             </h3>
@@ -61,8 +61,8 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
               The matrix exhibits remarkable point symmetry: for almost every cell (r, c), the sum
               of its value with the mirror position (127-r, 127-c) equals zero.
             </p>
-            <div className="bg-black/50 rounded-lg p-3 border border-green-500/20">
-              <code className="text-cyan-300 text-sm font-mono">
+            <div className="bg-black/50 p-3 border border-[#D4AF37]/20">
+              <code className="text-[#D4AF37] text-sm font-mono">
                 M[r][c] + M[127-r][127-c] = 0
               </code>
               <p className="text-xs text-gray-500 mt-2">
@@ -73,7 +73,7 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
 
           {/* Anomalies */}
           <section>
-            <h3 className="text-sm font-semibold text-orange-400 mb-2 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-2 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4" />
               68 Anomaly Cells
             </h3>
@@ -82,19 +82,19 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
               concentrated in specific columns (22, 97, 30) and may encode hidden information.
             </p>
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="bg-black/50 rounded-lg p-2 border border-orange-500/20">
-                <span className="text-orange-400 font-mono">NW Quadrant:</span>
+              <div className="bg-black/50 p-2 border border-[#D4AF37]/20">
+                <span className="text-[#D4AF37] font-mono">NW Quadrant:</span>
                 <span className="text-white ml-2">19 anomalies</span>
               </div>
-              <div className="bg-black/50 rounded-lg p-2 border border-orange-500/20">
-                <span className="text-orange-400 font-mono">NE Quadrant:</span>
+              <div className="bg-black/50 p-2 border border-[#D4AF37]/20">
+                <span className="text-[#D4AF37] font-mono">NE Quadrant:</span>
                 <span className="text-white ml-2">15 anomalies</span>
               </div>
-              <div className="bg-black/50 rounded-lg p-2 border border-gray-700">
+              <div className="bg-black/50 p-2 border border-gray-700">
                 <span className="text-gray-500 font-mono">SW Quadrant:</span>
                 <span className="text-gray-500 ml-2">0 anomalies</span>
               </div>
-              <div className="bg-black/50 rounded-lg p-2 border border-gray-700">
+              <div className="bg-black/50 p-2 border border-gray-700">
                 <span className="text-gray-500 font-mono">SE Quadrant:</span>
                 <span className="text-gray-500 ml-2">0 anomalies</span>
               </div>
@@ -103,7 +103,7 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
 
           {/* Special Position */}
           <section>
-            <h3 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-2 flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               Special Position [22, 22]
             </h3>
@@ -115,7 +115,7 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
 
           {/* Contact Movie */}
           <section>
-            <h3 className="text-sm font-semibold text-purple-400 mb-2 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-2 flex items-center gap-2">
               <Film className="w-4 h-4" />
               Contact (1997) Inspiration
             </h3>
@@ -124,16 +124,16 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
               when folded into a 3D cube using primer markers, reveal hidden blueprints. The
               Anna Matrix&apos;s anomaly cells may serve as similar registration marks for 3D alignment.
             </p>
-            <blockquote className="mt-3 p-3 bg-purple-500/10 rounded-lg border-l-2 border-purple-500 italic text-sm text-purple-200">
+            <blockquote className="mt-3 p-3 bg-[#D4AF37]/10 border-l-2 border-[#D4AF37] italic text-sm text-[#D4AF37]">
               &quot;An alien intelligence is going to be more advanced. That means efficiency
               functioning on multiple levels and in multiple dimensions.&quot;
-              <cite className="block text-xs text-purple-400 mt-1 not-italic">— S.R. Hadden</cite>
+              <cite className="block text-xs text-[#D4AF37] mt-1 not-italic">— S.R. Hadden</cite>
             </blockquote>
           </section>
 
           {/* Bitcoin Connection */}
           <section>
-            <h3 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-2 flex items-center gap-2">
               <Bitcoin className="w-4 h-4" />
               CFB/Satoshi Connection
             </h3>
@@ -146,10 +146,10 @@ export function ContactCubeInfoModal({ isOpen, onClose }: ContactCubeInfoModalPr
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-white/10 bg-black/30 flex justify-end">
+        <div className="p-4 border-t border-white/[0.04] bg-black/30 flex justify-end">
           <Button
             onClick={onClose}
-            className="bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white"
+            className="bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] hover:from-[#D4AF37] hover:to-[#D4AF37] text-white"
           >
             Got it
           </Button>
@@ -183,11 +183,11 @@ export function KeyboardShortcutsModal({ isOpen, onClose }: KeyboardShortcutsMod
 
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="bg-neutral-900 border border-white/10 rounded-xl max-w-md w-full mx-4 shadow-2xl">
+      <div className="bg-neutral-900 border border-white/[0.04] max-w-md w-full mx-4 shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10">
+        <div className="flex items-center justify-between p-4 border-b border-white/[0.04]">
           <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-            <Keyboard className="w-5 h-5 text-cyan-400" />
+            <Keyboard className="w-5 h-5 text-[#D4AF37]" />
             Keyboard Shortcuts
           </h2>
           <Button
@@ -205,7 +205,7 @@ export function KeyboardShortcutsModal({ isOpen, onClose }: KeyboardShortcutsMod
           {shortcuts.map(({ key, description }) => (
             <div key={key} className="flex items-center justify-between py-1.5">
               <span className="text-sm text-gray-300">{description}</span>
-              <kbd className="px-2 py-1 bg-white/10 border border-white/20 rounded text-xs font-mono text-cyan-400">
+              <kbd className="px-2 py-1 bg-white/10 border border-white/[0.04] text-xs font-mono text-[#D4AF37]">
                 {key}
               </kbd>
             </div>
@@ -213,7 +213,7 @@ export function KeyboardShortcutsModal({ isOpen, onClose }: KeyboardShortcutsMod
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-white/10 text-center">
+        <div className="p-4 border-t border-white/[0.04] text-center">
           <p className="text-xs text-gray-500">
             Use mouse to drag (rotate), scroll (zoom), and click cells to inspect
           </p>

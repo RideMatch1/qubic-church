@@ -4,6 +4,7 @@
  * IdentitySection - Premium editorial mission statement
  * Large typography, animated counters, generous whitespace.
  * Designed to feel like a high-end crypto brand, not a template.
+ * Church HUD Design System: no rounded corners, gold accents, angular aesthetic
  */
 
 import { useEffect, useRef, useState } from 'react'
@@ -42,7 +43,7 @@ export function IdentitySection() {
         <div className="flex">
           {/* Decorative vertical accent line */}
           <motion.div
-            className="hidden md:block w-[2px] mr-10 mt-2 self-stretch bg-gradient-to-b from-amber-400/30 via-amber-400/10 to-transparent flex-shrink-0"
+            className="hidden md:block w-[2px] mr-10 mt-2 self-stretch bg-gradient-to-b from-[#D4AF37]/30 via-[#D4AF37]/10 to-transparent flex-shrink-0"
             initial={{ scaleY: 0, opacity: 0 }}
             animate={isInView ? { scaleY: 1, opacity: 1 } : {}}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
@@ -70,14 +71,14 @@ export function IdentitySection() {
               We decode the mathematical
               <br className="hidden sm:block" />
               {' '}bridge between{' '}
-              <span className="text-amber-300/70">Bitcoin</span>
+              <span className="text-[#D4AF37]/70">Bitcoin</span>
               {' '}and{' '}
-              <span className="text-cyan-300/70">Qubic.</span>
+              <span className="text-[#D4AF37]/70">Qubic.</span>
             </motion.h2>
 
             {/* Divider */}
             <motion.div
-              className="mt-8 mb-8 h-px w-full max-w-md bg-gradient-to-r from-amber-400/20 via-white/10 to-transparent"
+              className="mt-8 mb-8 h-px w-full max-w-md bg-gradient-to-r from-[#D4AF37]/20 via-white/10 to-transparent"
               initial={{ scaleX: 0, opacity: 0 }}
               animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -138,8 +139,8 @@ export function IdentitySection() {
               </span>
               {holderCount > 0 && (
                 <span className="relative flex h-2 w-2 mb-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/60 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400/60" />
+                  <span className="animate-ping absolute inline-flex h-full w-full bg-[#D4AF37]/60 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 bg-[#D4AF37]/60" />
                 </span>
               )}
             </div>

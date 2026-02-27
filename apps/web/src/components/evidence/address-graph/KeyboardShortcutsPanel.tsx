@@ -23,16 +23,16 @@ export function KeyboardShortcutsPanel({ onClose }: KeyboardShortcutsPanelProps)
       onClick={onClose}
     >
       <motion.div
-        className="bg-gray-950 border border-white/10 rounded-xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden"
+        className="bg-gray-950 border border-white/[0.04] shadow-2xl max-w-2xl w-full mx-4 overflow-hidden"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.04]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#D4AF37] flex items-center justify-center">
               <Keyboard className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -56,7 +56,7 @@ export function KeyboardShortcutsPanel({ onClose }: KeyboardShortcutsPanelProps)
                 {category.items.map((shortcut) => (
                   <div
                     key={shortcut.key}
-                    className="flex items-center justify-between p-2 bg-white/5 rounded-lg"
+                    className="flex items-center justify-between p-2 bg-white/5"
                   >
                     <span className="text-sm text-gray-300">{shortcut.action}</span>
                     <div className="flex items-center gap-1">
@@ -66,7 +66,7 @@ export function KeyboardShortcutsPanel({ onClose }: KeyboardShortcutsPanelProps)
                           {key.split('+').map((k, i) => (
                             <span key={i} className="flex items-center gap-1">
                               {i > 0 && <span className="text-gray-600 text-xs">+</span>}
-                              <kbd className="px-2 py-1 bg-gray-800 border border-gray-700 rounded text-xs font-mono text-gray-300 min-w-[28px] text-center">
+                              <kbd className="px-2 py-1 bg-gray-800 border border-gray-700 text-xs font-mono text-gray-300 min-w-[28px] text-center">
                                 {formatKey(k.trim())}
                               </kbd>
                             </span>
@@ -82,9 +82,9 @@ export function KeyboardShortcutsPanel({ onClose }: KeyboardShortcutsPanelProps)
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/10 bg-white/5">
+        <div className="px-6 py-4 border-t border-white/[0.04] bg-white/5">
           <p className="text-xs text-gray-500 text-center">
-            Press <kbd className="px-1.5 py-0.5 bg-gray-800 rounded text-gray-400">Esc</kbd> or click outside to close
+            Press <kbd className="px-1.5 py-0.5 bg-gray-800 text-gray-400">Esc</kbd> or click outside to close
           </p>
         </div>
       </motion.div>

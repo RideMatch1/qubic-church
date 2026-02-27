@@ -50,7 +50,7 @@ const tiers: Tier[] = [
     name: 'The Formula & Core Mathematics',
     icon: <Calculator className="h-5 w-5" />,
     confidenceRange: '99%',
-    color: 'from-green-950/40 to-green-950/20 border-green-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 1,
@@ -119,7 +119,7 @@ const tiers: Tier[] = [
     name: 'Bitcoin-Qubic Bridge Architecture',
     icon: <Link2 className="h-5 w-5" />,
     confidenceRange: '95%',
-    color: 'from-blue-950/40 to-blue-950/20 border-blue-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 6,
@@ -176,7 +176,7 @@ const tiers: Tier[] = [
     name: 'The Oracle System',
     icon: <Eye className="h-5 w-5" />,
     confidenceRange: '85-95%',
-    color: 'from-purple-950/40 to-purple-950/20 border-purple-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 10,
@@ -245,7 +245,7 @@ const tiers: Tier[] = [
     name: 'Anna Matrix Discoveries',
     icon: <Layers className="h-5 w-5" />,
     confidenceRange: '85-100%',
-    color: 'from-indigo-950/40 to-indigo-950/20 border-indigo-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 15,
@@ -290,7 +290,7 @@ const tiers: Tier[] = [
     name: 'Bitcoin Signature Discoveries',
     icon: <Hash className="h-5 w-5" />,
     confidenceRange: '70-99%',
-    color: 'from-orange-950/40 to-orange-950/20 border-orange-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 18,
@@ -347,7 +347,7 @@ const tiers: Tier[] = [
     name: 'CFB Signature Analysis',
     icon: <User className="h-5 w-5" />,
     confidenceRange: '80-95%',
-    color: 'from-cyan-950/40 to-cyan-950/20 border-cyan-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 22,
@@ -404,7 +404,7 @@ const tiers: Tier[] = [
     name: 'Time-Lock & Signal Date',
     icon: <Timer className="h-5 w-5" />,
     confidenceRange: '85-95%',
-    color: 'from-red-950/40 to-red-950/20 border-red-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 26,
@@ -449,7 +449,7 @@ const tiers: Tier[] = [
     name: 'Decoded Patterns & Ciphers',
     icon: <Binary className="h-5 w-5" />,
     confidenceRange: '99%',
-    color: 'from-emerald-950/40 to-emerald-950/20 border-emerald-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 29,
@@ -530,7 +530,7 @@ const tiers: Tier[] = [
     name: 'CFB Identity Analysis',
     icon: <Search className="h-5 w-5" />,
     confidenceRange: '70-95%',
-    color: 'from-violet-950/40 to-violet-950/20 border-violet-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 35,
@@ -576,7 +576,7 @@ const tiers: Tier[] = [
     name: 'Negative Findings / Dead Ends',
     icon: <XCircle className="h-5 w-5" />,
     confidenceRange: 'DISPROVEN',
-    color: 'from-gray-800/40 to-gray-800/20 border-gray-700/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 38,
@@ -621,7 +621,7 @@ const tiers: Tier[] = [
     name: 'Unresolved Mysteries',
     icon: <HelpCircle className="h-5 w-5" />,
     confidenceRange: 'UNKNOWN',
-    color: 'from-yellow-950/40 to-yellow-950/20 border-yellow-900/50',
+    color: 'from-[#050505] to-[#050505]/80 border-white/[0.04]',
     discoveries: [
       {
         id: 41,
@@ -701,16 +701,16 @@ const tiers: Tier[] = [
 
 function ConfidenceBadge({ level }: { level: ConfidenceLevel }) {
   const config = {
-    VERIFIED: { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500/30' },
-    HIGH: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500/30' },
-    UNKNOWN: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', border: 'border-yellow-500/30' },
+    VERIFIED: { bg: 'bg-[#D4AF37]/20', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/20' },
+    HIGH: { bg: 'bg-[#D4AF37]/20', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/20' },
+    UNKNOWN: { bg: 'bg-[#D4AF37]/20', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/20' },
     DISPROVEN: { bg: 'bg-gray-500/20', text: 'text-gray-400', border: 'border-gray-500/30' },
   }
 
   const c = config[level]
 
   return (
-    <span className={`text-[10px] px-2 py-0.5 rounded border ${c.bg} ${c.text} ${c.border}`}>
+    <span className={`text-[10px] px-2 py-0.5  border ${c.bg} ${c.text} ${c.border}`}>
       {level}
     </span>
   )
@@ -734,11 +734,11 @@ function TierCard({ tier, isExpanded, onToggle }: { tier: Tier; isExpanded: bool
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-white/10">{tier.icon}</div>
+            <div className="p-2 bg-white/10">{tier.icon}</div>
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="font-mono text-xs text-muted-foreground">TIER {tier.id}</span>
-                <span className="text-xs px-2 py-0.5 rounded bg-white/10">
+                <span className="text-xs px-2 py-0.5  bg-white/10">
                   {tier.discoveries.length} findings
                 </span>
                 <span className="text-xs text-muted-foreground">{tier.confidenceRange}</span>
@@ -766,7 +766,7 @@ function TierCard({ tier, isExpanded, onToggle }: { tier: Tier; isExpanded: bool
           >
             <div className="p-4 space-y-3">
               {tier.discoveries.map((d) => (
-                <div key={d.id} className="p-3 rounded-lg bg-black/20">
+                <div key={d.id} className="p-3 bg-black/20">
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-xs text-muted-foreground">#{d.id}</span>
@@ -841,15 +841,15 @@ export function AllDiscoveriesSection() {
           {/* Stats Bar */}
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-green-500"></span>
+              <span className="w-3 h-3 rounded-full bg-[#D4AF37]"></span>
               <span className="text-muted-foreground">{verifiedCount} Verified</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-blue-500"></span>
+              <span className="w-3 h-3 rounded-full bg-[#D4AF37]"></span>
               <span className="text-muted-foreground">{highCount} High Confidence</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
+              <span className="w-3 h-3 rounded-full bg-[#D4AF37]"></span>
               <span className="text-muted-foreground">{unknownCount} Awaiting March 3</span>
             </div>
           </div>
@@ -859,13 +859,13 @@ export function AllDiscoveriesSection() {
         <div className="flex justify-end gap-2 mb-4">
           <button
             onClick={() => setExpandedTiers(tiers.map((t) => t.id))}
-            className="text-xs px-3 py-1 rounded bg-primary/20 hover:bg-primary/30 transition-colors"
+            className="text-xs px-3 py-1  bg-primary/20 hover:bg-primary/30 transition-colors"
           >
             Expand All
           </button>
           <button
             onClick={() => setExpandedTiers([])}
-            className="text-xs px-3 py-1 rounded bg-muted/50 hover:bg-muted transition-colors"
+            className="text-xs px-3 py-1  bg-muted/50 hover:bg-muted transition-colors"
           >
             Collapse All
           </button>
@@ -885,7 +885,7 @@ export function AllDiscoveriesSection() {
 
         {/* Legend */}
         <motion.div
-          className="mt-8 p-4 rounded-lg bg-card/50 border border-border"
+          className="mt-8 p-4 bg-card/50 border border-border"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.6 }}

@@ -53,44 +53,44 @@ export function Phase02_EnterQubic() {
         >
           <p className="text-lg text-white/80 leading-relaxed mb-6">
             <span className="text-white font-semibold">15 years after Bitcoin's launch</span>, a new
-            blockchain project called <span className="text-purple-400 font-semibold">Qubic</span>{' '}
+            blockchain project called <span className="text-[#D4AF37] font-semibold">Qubic</span>{' '}
             emerged. But this wasn't just another cryptocurrency...
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20">
+            <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20">
               <div className="flex items-center gap-2 mb-3">
-                <Cpu className="w-5 h-5 text-purple-400" />
+                <Cpu className="w-5 h-5 text-[#D4AF37]" />
                 <span className="font-medium text-white/90">What is Qubic?</span>
               </div>
               <ul className="space-y-2 text-sm text-white/70">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                   <span>Quantum-resistant blockchain</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                   <span>676 Computors validate transactions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                   <span>Uses ternary computing (not binary)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                   <span>Built-in AI called "Anna"</span>
                 </li>
               </ul>
             </div>
 
-            <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
+            <div className="p-4 bg-[#D4AF37]/10 border border-orange-500/20">
               <div className="flex items-center gap-2 mb-3">
-                <Zap className="w-5 h-5 text-orange-400" />
+                <Zap className="w-5 h-5 text-[#D4AF37]" />
                 <span className="font-medium text-white/90">The Mystery</span>
               </div>
               <p className="text-sm text-white/70">
                 Hidden within Qubic's code are mathematical constants that{' '}
-                <span className="text-orange-400 font-medium">
+                <span className="text-[#D4AF37] font-medium">
                   perfectly match patterns in Bitcoin's earliest blocks
                 </span>
                 . Coincidence? Or deliberate design by the same creator?
@@ -125,22 +125,22 @@ export function Phase02_EnterQubic() {
                 <button
                   key={system}
                   onClick={() => setSelectedSystem(isSelected ? null : system)}
-                  className={`p-5 rounded-xl text-left transition-all duration-300 ${
+                  className={`p-5 text-left transition-all duration-300 ${
                     isSelected
                       ? data.color === 'orange'
-                        ? 'bg-orange-500/20 border-orange-500/50 border-2'
-                        : 'bg-purple-500/20 border-purple-500/50 border-2'
+                        ? 'bg-[#D4AF37]/20 border-orange-500/50 border-2'
+                        : 'bg-[#D4AF37]/20 border-[#D4AF37]/30 border-2'
                       : 'bg-white/5 border border-white/10 hover:bg-white/10'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <Icon
                       className={`w-6 h-6 ${
-                        data.color === 'orange' ? 'text-orange-400' : 'text-purple-400'
+                        data.color === 'orange' ? 'text-[#D4AF37]' : 'text-[#D4AF37]'
                       }`}
                     />
                     <span className="font-semibold text-white/90">{data.name}</span>
-                    <span className="px-2 py-0.5 rounded text-xs bg-white/10 text-white/60">
+                    <span className="px-2 py-0.5  text-xs bg-white/10 text-white/60">
                       Base {data.base}
                     </span>
                   </div>
@@ -151,10 +151,10 @@ export function Phase02_EnterQubic() {
                       {data.digits.map((digit) => (
                         <span
                           key={digit}
-                          className={`px-2 py-1 rounded font-mono text-sm ${
+                          className={`px-2 py-1  font-mono text-sm ${
                             data.color === 'orange'
-                              ? 'bg-orange-500/20 text-orange-400'
-                              : 'bg-purple-500/20 text-purple-400'
+                              ? 'bg-[#D4AF37]/20 text-[#D4AF37]'
+                              : 'bg-[#D4AF37]/20 text-[#D4AF37]'
                           }`}
                         >
                           {digit}
@@ -170,11 +170,11 @@ export function Phase02_EnterQubic() {
                       className="mt-3 pt-3 border-t border-white/10"
                     >
                       <p className="text-sm text-white/70">{data.description}</p>
-                      <div className="mt-2 p-2 rounded bg-black/30 font-mono text-sm">
+                      <div className="mt-2 p-2  bg-black/30 font-mono text-sm">
                         <span className="text-white/50">Example: </span>
                         <span
                           className={
-                            data.color === 'orange' ? 'text-orange-400' : 'text-purple-400'
+                            data.color === 'orange' ? 'text-[#D4AF37]' : 'text-[#D4AF37]'
                           }
                         >
                           {data.example}
@@ -199,20 +199,20 @@ export function Phase02_EnterQubic() {
         >
           <div className="space-y-4 text-sm text-white/70">
             <p>
-              The number <span className="text-purple-400 font-mono font-bold">27</span> (which is
+              The number <span className="text-[#D4AF37] font-mono font-bold">27</span> (which is
               3^3 - a cube of 3) appears as a signature across CFB's projects:
             </p>
             <ul className="space-y-2 ml-4">
               <li>
-                <span className="text-orange-400">Bitcoin:</span> Block 576's Extra Byte = 0x1b ={' '}
+                <span className="text-[#D4AF37]">Bitcoin:</span> Block 576's Extra Byte = 0x1b ={' '}
                 <span className="text-white font-mono">27</span>
               </li>
               <li>
-                <span className="text-purple-400">IOTA:</span> Transaction size 2187 = 3^7, divisible
+                <span className="text-[#D4AF37]">IOTA:</span> Transaction size 2187 = 3^7, divisible
                 by <span className="text-white font-mono">27</span>
               </li>
               <li>
-                <span className="text-purple-400">Qubic:</span> 676 Computors = 26² (ternary signature){' '}
+                <span className="text-[#D4AF37]">Qubic:</span> 676 Computors = 26² (ternary signature){' '}
               </li>
             </ul>
             <p className="text-white/50 italic">

@@ -73,9 +73,9 @@ export function Phase10_TheMathematicalBridge() {
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
   const tierColors = {
-    1: { bg: 'bg-green-500/10', border: 'border-green-500/30', text: 'text-green-400' },
-    2: { bg: 'bg-yellow-500/10', border: 'border-yellow-500/30', text: 'text-yellow-400' },
-    3: { bg: 'bg-orange-500/10', border: 'border-orange-500/30', text: 'text-orange-400' },
+    1: { bg: 'bg-[#D4AF37]/10', border: 'border-[#D4AF37]/20', text: 'text-[#D4AF37]' },
+    2: { bg: 'bg-[#D4AF37]/10', border: 'border-[#D4AF37]/20', text: 'text-[#D4AF37]' },
+    3: { bg: 'bg-[#D4AF37]/10', border: 'border-[#D4AF37]/20', text: 'text-[#D4AF37]' },
   }
 
   return (
@@ -93,33 +93,33 @@ export function Phase10_TheMathematicalBridge() {
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-            <div className="text-2xl font-bold text-green-400 mb-1">5</div>
+          <div className="p-4 bg-[#D4AF37]/10 border border-green-500/20 text-center">
+            <div className="text-2xl font-bold text-[#D4AF37] mb-1">5</div>
             <div className="text-xs text-white/60">Tier 1 Findings</div>
           </div>
-          <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
-            <div className="text-2xl font-bold text-yellow-400 mb-1">2</div>
+          <div className="p-4 bg-[#D4AF37]/10 border border-yellow-500/20 text-center">
+            <div className="text-2xl font-bold text-[#D4AF37] mb-1">2</div>
             <div className="text-xs text-white/60">Tier 2 Findings</div>
           </div>
-          <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 text-center">
-            <div className="text-2xl font-bold text-orange-400 mb-1">1</div>
+          <div className="p-4 bg-[#D4AF37]/10 border border-orange-500/20 text-center">
+            <div className="text-2xl font-bold text-[#D4AF37] mb-1">1</div>
             <div className="text-xs text-white/60">Tier 3 Hypothesis</div>
           </div>
-          <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center">
-            <div className="text-2xl font-bold text-purple-400 mb-1">99.6%</div>
+          <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center">
+            <div className="text-2xl font-bold text-[#D4AF37] mb-1">99.6%</div>
             <div className="text-xs text-white/60">Probability Designed</div>
           </div>
         </motion.div>
 
         {/* Evidence Pyramid */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-purple-950/20 to-black/50 border border-purple-500/20"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505]/80 to-black/50 border border-[#D4AF37]/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <Layers className="w-6 h-6 text-purple-400" />
+            <Layers className="w-6 h-6 text-[#D4AF37]" />
             <h3 className="text-xl font-bold text-white/90">Evidence Pyramid</h3>
           </div>
 
@@ -129,7 +129,7 @@ export function Phase10_TheMathematicalBridge() {
               return (
                 <motion.div
                   key={index}
-                  className={`p-4 rounded-xl ${colors.bg} border ${colors.border}`}
+                  className={`p-4 ${colors.bg} border ${colors.border}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -20 }}
                   transition={{ duration: 0.3, delay: 0.05 * index }}
@@ -138,7 +138,7 @@ export function Phase10_TheMathematicalBridge() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span
-                          className={`px-2 py-0.5 rounded text-xs font-medium ${colors.bg} ${colors.text}`}
+                          className={`px-2 py-0.5  text-xs font-medium ${colors.bg} ${colors.text}`}
                         >
                           Tier {evidence.tier}
                         </span>
@@ -151,9 +151,9 @@ export function Phase10_TheMathematicalBridge() {
                     </div>
                     <div className="shrink-0">
                       {evidence.verified ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-[#D4AF37]" />
                       ) : (
-                        <AlertTriangle className="w-5 h-5 text-yellow-400" />
+                        <AlertTriangle className="w-5 h-5 text-[#D4AF37]" />
                       )}
                     </div>
                   </div>
@@ -176,24 +176,24 @@ export function Phase10_TheMathematicalBridge() {
           </h3>
 
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-lg bg-black/30">
+            <div className="p-4 bg-black/30">
               <div className="text-xs text-white/40 mb-1">Careful Estimate</div>
               <div className="font-mono text-xl text-white mb-1">1 in 29,000</div>
               <div className="text-xs text-white/50">
                 Even if some patterns are related, odds are still very low
               </div>
             </div>
-            <div className="p-4 rounded-lg bg-black/30">
+            <div className="p-4 bg-black/30">
               <div className="text-xs text-white/40 mb-1">If All Separate</div>
               <div className="font-mono text-xl text-white mb-1">1 in 830 million</div>
               <div className="text-xs text-white/50">If each pattern is completely independent</div>
             </div>
           </div>
 
-          <div className="mt-4 p-4 rounded-lg bg-purple-500/10 border border-purple-500/20">
+          <div className="mt-4 p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20">
             <div className="text-sm text-purple-300/80">
               <strong>Bottom Line:</strong> When we add up all the evidence, there's a{' '}
-              <span className="text-purple-400 font-bold">99.6%</span> chance these patterns were
+              <span className="text-[#D4AF37] font-bold">99.6%</span> chance these patterns were
               intentionally created - not just random coincidences.
             </div>
           </div>

@@ -1,0 +1,65 @@
+[2026-02-14 11:25:12] Scanner starting. 344 base phrases, resuming from index 0
+[2026-02-14 11:25:12] Checkpoint: 0 checked, 0 hits so far
+[2026-02-14 11:25:12] [1/344] Base: 'password' -> 63 mutations
+[2026-02-14 11:25:54]   ** HIT ** 'Password' -> 1F1mazRFEUxE1X4dcugxdf2TWRMVp2cMLL (6 txs, 0.00111947 BTC)
+[2026-02-14 11:26:08]   ** HIT ** 'Password1' -> 1xMW3S2yGtN6qKKGjXgkZtgBsh29ByLfS (39091 txs, 0.28054000 BTC)
+[2026-02-14 11:26:09]   ** HIT ** 'Password1' -> 1HxpS6pvVGqukE52muDpSTXJ1bxU3WYyhs (4 txs, 0.00110000 BTC)
+[2026-02-14 11:26:12]   ** HIT ** 'Password123' -> 1CZMi7F5F3gq7e67SjJTFsoTZuj1ms5fqm (2 txs, 0.00010000 BTC)
+[2026-02-14 11:26:48]   ** HIT ** 'password' -> 16qVRutZ7rZuPx7NMtapvZorWYjyaME2Ue (197 txs, 0.50174043 BTC)
+[2026-02-14 11:27:25]   Phrase 'password' complete. Total: 63 checked, 5 hits
+[2026-02-14 11:27:25] [2/344] Base: '123456' -> 22 mutations
+[2026-02-14 11:27:26]   ** HIT ** '123456' -> 1565qkBbLcuFP78f7MFKkK8jtHGDwdSgvX (10 txs, 0.00178480 BTC)
+[2026-02-14 11:28:13]   Phrase '123456' complete. Total: 85 checked, 6 hits
+[2026-02-14 11:28:13] [3/344] Base: '12345678' -> 22 mutations
+[2026-02-14 11:28:14]   ** HIT ** '12345678' -> 174Qm7g95BxXtVJvhGJ3cjdGLPgnSkuJHu (2 txs, 0.00020000 BTC)
+[2026-02-14 11:29:02]   Phrase '12345678' complete. Total: 107 checked, 7 hits
+[2026-02-14 11:29:02] [4/344] Base: 'qwerty' -> 60 mutations
+[2026-02-14 11:30:29]   ** HIT ** 'qwerty' -> 1M8gvPDG58RvoLb1prNF8svWUb3vT3md5a (4 txs, 0.00080000 BTC)
+[2026-02-14 11:31:09]   Phrase 'qwerty' complete. Total: 167 checked, 8 hits
+[2026-02-14 11:31:09] [5/344] Base: 'abc123' -> 60 mutations
+[2026-02-14 11:32:37]   ** HIT ** 'abc123' -> 1LG1ibbDtSWpL3UiKKvzspZTce2n7tLpNg (2 txs, 0.00010000 BTC)
+[2026-02-14 11:33:19]   Phrase 'abc123' complete. Total: 227 checked, 9 hits
+[2026-02-14 11:33:19] [6/344] Base: 'monkey' -> 60 mutations
+[2026-02-14 11:34:49]   ** HIT ** 'monkey' -> 145d1kjpDo55zVWTUVphYXm8ovNfMw55Jn (2 txs, 0.00027000 BTC)
+[2026-02-14 11:35:30]   Phrase 'monkey' complete. Total: 287 checked, 10 hits
+[2026-02-14 11:35:30] [7/344] Base: '1234567' -> 22 mutations
+[2026-02-14 11:35:31]   ** HIT ** '1234567' -> 1B96DTqj2GNFm5VGDfLGyCoZtDFvqWHjG7 (4 txs, 0.00032923 BTC)
+[2026-02-14 11:36:17]   Phrase '1234567' complete. Total: 309 checked, 11 hits
+[2026-02-14 11:36:17] [8/344] Base: 'letmein' -> 63 mutations
+[2026-02-14 11:37:50]   ** HIT ** 'letmein' -> 1LxFiSoR4U4WjRDEV2Nfad24nXq3wYqniB (2 txs, 0.00030000 BTC)
+[2026-02-14 11:38:33]   Phrase 'letmein' complete. Total: 372 checked, 12 hits
+[2026-02-14 11:38:33] [9/344] Base: 'trustno1' -> 62 mutations
+[2026-02-14 11:45:40] Scanner starting. 1085 base phrases, resuming from index 0
+[2026-02-14 11:45:40] Checkpoint: 0 checked, 0 hits so far
+[2026-02-14 11:45:40] [1/1085] Base: 'password' -> 63 mutations
+[2026-02-14 11:46:23]   ** HIT ** 'Password' -> 1F1mazRFEUxE1X4dcugxdf2TWRMVp2cMLL (6 txs, 0.00111947 BTC)
+[2026-02-14 11:46:39]   ** HIT ** 'Password1' -> 1xMW3S2yGtN6qKKGjXgkZtgBsh29ByLfS (39091 txs, 0.28054000 BTC)
+[2026-02-14 11:46:40]   ** HIT ** 'Password1' -> 1HxpS6pvVGqukE52muDpSTXJ1bxU3WYyhs (4 txs, 0.00110000 BTC)
+[2026-02-14 11:46:43]   ** HIT ** 'Password123' -> 1CZMi7F5F3gq7e67SjJTFsoTZuj1ms5fqm (2 txs, 0.00010000 BTC)
+[2026-02-14 11:47:17]   ** HIT ** 'password' -> 16ga2uqnF1NqpAuQeeg7sTCAdtDUwDyJav (45026 txs, 0.35662458 BTC)
+[2026-02-14 11:47:18]   ** HIT ** 'password' -> 16qVRutZ7rZuPx7NMtapvZorWYjyaME2Ue (197 txs, 0.50174043 BTC)
+[2026-02-14 11:47:32]   ** HIT ** 'password1' -> 19VAb9zAhpWLaWfEuqw9HXup2zaNoNPPyE (46270 txs, 0.28362982 BTC)
+[2026-02-14 11:47:37]   ** HIT ** 'password123' -> 1oo9WfSHL75VZm4JtUivRcav5dH3gJcQM (2 txs, 0.00006000 BTC)
+[2026-02-14 11:47:38]   ** HIT ** 'password123' -> 1GSJgoqTGUpA6w8ow1NZA41eZpPXTX4VgR (2 txs, 0.00001166 BTC)
+[2026-02-14 11:47:57]   Phrase 'password' complete. Total: 63 checked, 21 hits
+[2026-02-14 11:47:57] [2/1085] Base: '123456' -> 22 mutations
+[2026-02-14 11:47:58]   ** HIT ** '123456' -> 1565qkBbLcuFP78f7MFKkK8jtHGDwdSgvX (10 txs, 0.00178480 BTC)
+[2026-02-14 11:48:43]   Phrase '123456' complete. Total: 85 checked, 22 hits
+[2026-02-14 11:48:43] [3/1085] Base: '12345678' -> 22 mutations
+[2026-02-14 11:48:44]   ** HIT ** '12345678' -> 174Qm7g95BxXtVJvhGJ3cjdGLPgnSkuJHu (2 txs, 0.00020000 BTC)
+[2026-02-14 11:49:30]   Phrase '12345678' complete. Total: 107 checked, 23 hits
+[2026-02-14 11:49:30] [4/1085] Base: 'qwerty' -> 60 mutations
+[2026-02-14 11:51:01]   ** HIT ** 'qwerty' -> 1M8gvPDG58RvoLb1prNF8svWUb3vT3md5a (4 txs, 0.00080000 BTC)
+[2026-02-14 11:51:43]   Phrase 'qwerty' complete. Total: 167 checked, 24 hits
+[2026-02-14 11:51:43] [5/1085] Base: 'abc123' -> 60 mutations
+[2026-02-14 11:53:49]   Phrase 'abc123' complete. Total: 227 checked, 24 hits
+[2026-02-14 11:53:49] [6/1085] Base: 'monkey' -> 60 mutations
+[2026-02-14 11:55:17]   ** HIT ** 'monkey' -> 145d1kjpDo55zVWTUVphYXm8ovNfMw55Jn (2 txs, 0.00027000 BTC)
+[2026-02-14 11:56:15]   Phrase 'monkey' complete. Total: 287 checked, 25 hits
+[2026-02-14 11:56:15] [7/1085] Base: '1234567' -> 22 mutations
+[2026-02-14 11:56:16]   ** HIT ** '1234567' -> 1B96DTqj2GNFm5VGDfLGyCoZtDFvqWHjG7 (4 txs, 0.00032923 BTC)
+[2026-02-14 11:57:02]   Phrase '1234567' complete. Total: 309 checked, 26 hits
+[2026-02-14 11:57:02] [8/1085] Base: 'letmein' -> 63 mutations
+[2026-02-14 11:58:35]   ** HIT ** 'letmein' -> 1LxFiSoR4U4WjRDEV2Nfad24nXq3wYqniB (2 txs, 0.00030000 BTC)
+[2026-02-14 11:59:29]   Phrase 'letmein' complete. Total: 372 checked, 27 hits
+[2026-02-14 11:59:29] [9/1085] Base: 'trustno1' -> 62 mutations

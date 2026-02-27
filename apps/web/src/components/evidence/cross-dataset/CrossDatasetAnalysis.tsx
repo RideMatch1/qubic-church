@@ -208,7 +208,7 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
     return (
       <div className="flex items-center justify-center h-[500px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-2 border-primary border-t-transparent animate-spin" />
           <p className="text-muted-foreground">Loading Bitcoin addresses...</p>
         </div>
       </div>
@@ -223,7 +223,7 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-red-500 to-orange-500">
+          <div className="p-2 bg-gradient-to-br from-red-500 to-[#D4AF37]">
             <Target className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -234,7 +234,7 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
           </div>
         </div>
 
-        <div className="p-4 bg-muted/30 rounded-lg border border-border">
+        <div className="p-4 bg-muted/30 border border-border">
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div className="flex-1">
@@ -262,29 +262,29 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
           icon={Database}
           label="Our Addresses"
           value={loadedAddresses.length.toLocaleString()}
-          color="text-blue-500"
-          bgColor="bg-blue-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatsCard
           icon={Shield}
           label="Known Datasets"
           value={Object.keys(KNOWN_SATOSHI_DATASETS).length.toString()}
-          color="text-purple-500"
-          bgColor="bg-purple-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatsCard
           icon={Search}
           label="Total Overlaps"
           value={totalOverlaps.toString()}
-          color={totalOverlaps > 0 ? 'text-red-500' : 'text-green-500'}
-          bgColor={totalOverlaps > 0 ? 'bg-red-500/10' : 'bg-green-500/10'}
+          color={totalOverlaps > 0 ? 'text-red-500' : 'text-[#D4AF37]'}
+          bgColor={totalOverlaps > 0 ? 'bg-red-500/10' : 'bg-[#D4AF37]/10'}
         />
         <StatsCard
           icon={hasSmokingGun ? AlertTriangle : CheckCircle2}
           label="Status"
           value={hasSmokingGun ? 'SMOKING GUN!' : 'Clean'}
-          color={hasSmokingGun ? 'text-red-500' : 'text-green-500'}
-          bgColor={hasSmokingGun ? 'bg-red-500/10' : 'bg-green-500/10'}
+          color={hasSmokingGun ? 'text-red-500' : 'text-[#D4AF37]'}
+          bgColor={hasSmokingGun ? 'bg-red-500/10' : 'bg-[#D4AF37]/10'}
         />
       </motion.div>
 
@@ -293,10 +293,10 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-red-500/50 rounded-xl"
+          className="p-6 bg-gradient-to-r from-red-500/20 to-[#D4AF37]/20 border-2 border-red-500/50"
         >
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-full bg-red-500">
+            <div className="p-3 bg-red-500">
               <Zap className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
@@ -346,7 +346,7 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
 
       {/* Methodology */}
       <motion.div
-        className="p-6 bg-muted/20 rounded-xl border border-border"
+        className="p-6 bg-muted/20 border border-border"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -376,7 +376,7 @@ export function CrossDatasetAnalysis({ ourAddresses = [] }: CrossDatasetAnalysis
         <Button onClick={performAnalysis} disabled={analyzing} className="gap-2">
           {analyzing ? (
             <>
-              <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-current border-t-transparent animate-spin" />
               Re-analyzing...
             </>
           ) : (
@@ -438,11 +438,11 @@ function DatasetResultCard({
       case 'SMOKING_GUN':
         return 'border-red-500'
       case 'CRITICAL':
-        return 'border-orange-500'
+        return 'border-[#D4AF37]'
       case 'HIGH':
-        return 'border-yellow-500'
+        return 'border-[#D4AF37]'
       case 'MEDIUM':
-        return 'border-blue-500'
+        return 'border-[#D4AF37]'
       default:
         return 'border-border'
     }
@@ -451,16 +451,16 @@ function DatasetResultCard({
   const getSignificanceBadge = () => {
     const colors = {
       SMOKING_GUN: 'bg-red-500/20 text-red-400 border-red-500/30',
-      CRITICAL: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-      HIGH: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-      MEDIUM: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+      CRITICAL: 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30',
+      HIGH: 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30',
+      MEDIUM: 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30',
       LOW: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
-      NONE: 'bg-green-500/20 text-green-400 border-green-500/30',
+      NONE: 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30',
     }
 
     return (
       <span
-        className={`px-2 py-1 rounded text-xs font-medium border ${colors[result.significance]}`}
+        className={`px-2 py-1 text-xs font-medium border ${colors[result.significance]}`}
       >
         {result.significance.replace('_', ' ')}
       </span>
@@ -497,7 +497,7 @@ function DatasetResultCard({
             </div>
 
             {result.overlapCount > 0 && (
-              <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+              <div className="p-3 bg-red-500/10 border border-red-500/30">
                 <p className="text-sm font-medium text-red-400 mb-2">
                   ⚠️ {result.overlapCount} overlap(s) detected!
                 </p>

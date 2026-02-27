@@ -62,7 +62,7 @@ export function ContactCubeControls({
 
   return (
     <div className="absolute bottom-4 left-4 z-10">
-      <div className="bg-black/90 rounded-lg border border-neutral-700 overflow-hidden min-w-[200px]">
+      <div className="bg-[#050505] border border-neutral-700 overflow-hidden min-w-[200px]">
         {/* Header */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
@@ -85,7 +85,7 @@ export function ContactCubeControls({
                   <button
                     key={mode.id}
                     onClick={() => onViewModeChange(mode.id)}
-                    className={`flex-1 px-2 py-1.5 rounded text-xs flex items-center justify-center gap-1 transition-colors ${
+                    className={`flex-1 px-2 py-1.5 text-xs flex items-center justify-center gap-1 transition-colors ${
                       viewMode === mode.id
                         ? 'bg-neutral-700 text-white'
                         : 'bg-neutral-800/50 text-neutral-500 hover:text-neutral-300'
@@ -103,7 +103,7 @@ export function ContactCubeControls({
               <button
                 onClick={progress < 0.5 ? onFold : onUnfold}
                 disabled={isAnimating}
-                className={`flex-1 px-3 py-2 rounded text-xs flex items-center justify-center gap-1.5 transition-colors ${
+                className={`flex-1 px-3 py-2 text-xs flex items-center justify-center gap-1.5 transition-colors ${
                   isAnimating
                     ? 'bg-neutral-800/30 text-neutral-600 cursor-not-allowed'
                     : 'bg-neutral-700 text-white hover:bg-neutral-600'
@@ -114,7 +114,7 @@ export function ContactCubeControls({
               </button>
               <button
                 onClick={onReset}
-                className="px-3 py-2 rounded text-xs flex items-center justify-center bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
+                className="px-3 py-2 text-xs flex items-center justify-center bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
                 title="Reset"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export function ContactCubeControls({
                     <button
                       key={`${pair[0]}-${pair[1]}`}
                       onClick={() => onOverlayPairChange(pair)}
-                      className={`px-2 py-1.5 rounded text-xs text-left transition-colors ${
+                      className={`px-2 py-1.5 text-xs text-left transition-colors ${
                         overlayPair?.[0] === pair[0] && overlayPair?.[1] === pair[1]
                           ? 'bg-neutral-700 text-white'
                           : 'bg-neutral-800/50 text-neutral-500 hover:text-neutral-300'
@@ -150,7 +150,7 @@ export function ContactCubeControls({
                   type="checkbox"
                   checked={highlightAnomalies}
                   onChange={(e) => onHighlightAnomaliesChange(e.target.checked)}
-                  className="rounded border-neutral-600 bg-neutral-800 text-neutral-500"
+                  className="border-neutral-600 bg-neutral-800 text-neutral-500"
                 />
                 Show anomalies
               </label>
@@ -159,7 +159,7 @@ export function ContactCubeControls({
                   type="checkbox"
                   checked={showRegistrationMarks}
                   onChange={(e) => onShowRegistrationMarksChange(e.target.checked)}
-                  className="rounded border-neutral-600 bg-neutral-800 text-neutral-500"
+                  className="border-neutral-600 bg-neutral-800 text-neutral-500"
                 />
                 Registration marks
               </label>

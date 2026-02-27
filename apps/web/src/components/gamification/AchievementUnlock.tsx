@@ -8,7 +8,7 @@ import { useGamification, ACHIEVEMENTS, type AchievementId } from './Gamificatio
 const rarityColors = {
   common: 'from-slate-500 to-slate-600',
   rare: 'from-blue-500 to-blue-600',
-  epic: 'from-purple-500 to-purple-600',
+  epic: 'from-[#D4AF37] to-purple-600',
   legendary: 'from-amber-500 to-orange-500',
 }
 

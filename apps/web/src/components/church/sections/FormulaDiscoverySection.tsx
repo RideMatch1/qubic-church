@@ -17,7 +17,7 @@ const FormulaCalculator = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-[400px] rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-center">
+      <div className="w-full h-[400px] bg-white/[0.02] border border-white/[0.04] flex items-center justify-center">
         <div className="text-white/25 text-sm">Loading calculator...</div>
       </div>
     ),

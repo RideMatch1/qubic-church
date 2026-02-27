@@ -1,0 +1,356 @@
+[2026-02-14 12:32:19] V3 Scanner starting. 1147 phrases, SegWit+Batch mode
+[2026-02-14 12:32:19] Address types: P2PKH(u), P2PKH(c), P2SH-P2WPKH, P2WPKH = 4 per key
+[2026-02-14 12:32:19] Resuming from index 0, 0 checked, 0 hits
+[2026-02-14 12:32:19] [1/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:32:29]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:32:33]       Progress: 10/88 individual checks done
+[2026-02-14 12:32:35]       Progress: 20/88 individual checks done
+[2026-02-14 12:32:35]       Progress: 30/88 individual checks done
+[2026-02-14 12:32:42]       Progress: 40/88 individual checks done
+[2026-02-14 12:32:49]       Progress: 50/88 individual checks done
+[2026-02-14 12:32:56]       Progress: 60/88 individual checks done
+[2026-02-14 12:33:06]       Progress: 70/88 individual checks done
+[2026-02-14 12:33:13]       Progress: 80/88 individual checks done
+[2026-02-14 12:33:22]       Progress: 88/88 individual checks done
+[2026-02-14 12:33:22]   Done. +176 addrs (63.1s), +0 hits. Total: 176 addrs, 0 hits, ~167 addrs/min
+[2026-02-14 12:33:22] [3/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:33:32]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:33:33]       Progress: 10/88 individual checks done
+[2026-02-14 12:33:38]       Progress: 20/88 individual checks done
+[2026-02-14 12:33:45]       Progress: 30/88 individual checks done
+[2026-02-14 12:33:56]       Progress: 40/88 individual checks done
+[2026-02-14 12:34:00]       Progress: 50/88 individual checks done
+[2026-02-14 12:34:08]       Progress: 60/88 individual checks done
+[2026-02-14 12:34:15]       Progress: 70/88 individual checks done
+[2026-02-14 12:34:21]       Progress: 80/88 individual checks done
+[2026-02-14 12:34:29]       Progress: 88/88 individual checks done
+[2026-02-14 12:34:29]   Done. +176 addrs (66.8s), +0 hits. Total: 352 addrs, 0 hits, ~163 addrs/min
+[2026-02-14 12:34:29] [5/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:34:39]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:34:44]       Progress: 10/88 individual checks done
+[2026-02-14 12:34:50]       Progress: 20/88 individual checks done
+[2026-02-14 12:34:57]       Progress: 30/88 individual checks done
+[2026-02-14 12:35:04]       Progress: 40/88 individual checks done
+[2026-02-14 12:35:11]       Progress: 50/88 individual checks done
+[2026-02-14 12:35:19]       Progress: 60/88 individual checks done
+[2026-02-14 12:35:27]       Progress: 70/88 individual checks done
+[2026-02-14 12:35:34]       Progress: 80/88 individual checks done
+[2026-02-14 12:35:43]       Progress: 88/88 individual checks done
+[2026-02-14 12:35:43]   Done. +176 addrs (74.1s), +0 hits. Total: 528 addrs, 0 hits, ~155 addrs/min
+[2026-02-14 12:35:43] [7/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:35:53]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:35:54]       Progress: 10/88 individual checks done
+[2026-02-14 12:35:55]       Progress: 20/88 individual checks done
+[2026-02-14 12:35:56]       Progress: 30/88 individual checks done
+[2026-02-14 12:36:03]       Progress: 40/88 individual checks done
+[2026-02-14 12:36:08]       Progress: 50/88 individual checks done
+[2026-02-14 12:36:16]       Progress: 60/88 individual checks done
+[2026-02-14 12:36:24]       Progress: 70/88 individual checks done
+[2026-02-14 12:36:30]       Progress: 80/88 individual checks done
+[2026-02-14 12:36:39]       Progress: 88/88 individual checks done
+[2026-02-14 12:36:39]   Done. +176 addrs (56.6s), +0 hits. Total: 704 addrs, 0 hits, ~162 addrs/min
+[2026-02-14 12:36:39] [8/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:36:50]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:36:54]       Progress: 10/88 individual checks done
+[2026-02-14 12:37:01]       Progress: 20/88 individual checks done
+[2026-02-14 12:37:08]       Progress: 30/88 individual checks done
+[2026-02-14 12:37:14]       Progress: 40/88 individual checks done
+[2026-02-14 12:37:21]       Progress: 50/88 individual checks done
+[2026-02-14 12:37:27]       Progress: 60/88 individual checks done
+[2026-02-14 12:37:36]       Progress: 70/88 individual checks done
+[2026-02-14 12:37:43]       Progress: 80/88 individual checks done
+[2026-02-14 12:37:51]       Progress: 88/88 individual checks done
+[2026-02-14 12:37:51]   Done. +176 addrs (71.5s), +0 hits. Total: 880 addrs, 0 hits, ~159 addrs/min
+[2026-02-14 12:37:51] [9/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:38:01]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:38:06]       Progress: 10/88 individual checks done
+[2026-02-14 12:38:12]       Progress: 20/88 individual checks done
+[2026-02-14 12:38:20]       Progress: 30/88 individual checks done
+[2026-02-14 12:38:27]       Progress: 40/88 individual checks done
+[2026-02-14 12:38:35]       Progress: 50/88 individual checks done
+[2026-02-14 12:38:43]       Progress: 60/88 individual checks done
+[2026-02-14 12:38:50]       Progress: 70/88 individual checks done
+[2026-02-14 12:38:57]       Progress: 80/88 individual checks done
+[2026-02-14 12:39:05]       Progress: 88/88 individual checks done
+[2026-02-14 12:39:05]   Done. +176 addrs (74.5s), +0 hits. Total: 1056 addrs, 0 hits, ~156 addrs/min
+[2026-02-14 12:39:05] [10/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:39:16]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:39:23]       Progress: 10/88 individual checks done
+[2026-02-14 12:39:27]       Progress: 20/88 individual checks done
+[2026-02-14 12:39:35]       Progress: 30/88 individual checks done
+[2026-02-14 12:39:45]       Progress: 40/88 individual checks done
+[2026-02-14 12:39:52]       Progress: 50/88 individual checks done
+[2026-02-14 12:39:58]       Progress: 60/88 individual checks done
+[2026-02-14 12:40:06]       Progress: 70/88 individual checks done
+[2026-02-14 12:40:15]       Progress: 80/88 individual checks done
+[2026-02-14 12:40:21]       Progress: 88/88 individual checks done
+[2026-02-14 12:40:21]   Done. +176 addrs (75.3s), +0 hits. Total: 1232 addrs, 0 hits, ~153 addrs/min
+[2026-02-14 12:40:21] [11/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:40:31]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:40:32]       Progress: 10/88 individual checks done
+[2026-02-14 12:40:34]       Progress: 20/88 individual checks done
+[2026-02-14 12:40:38]       Progress: 30/88 individual checks done
+[2026-02-14 12:40:45]       Progress: 40/88 individual checks done
+[2026-02-14 12:40:50]       Progress: 50/88 individual checks done
+[2026-02-14 12:40:58]       Progress: 60/88 individual checks done
+[2026-02-14 12:41:05]       Progress: 70/88 individual checks done
+[2026-02-14 12:41:11]       Progress: 80/88 individual checks done
+[2026-02-14 12:41:21]       Progress: 88/88 individual checks done
+[2026-02-14 12:41:21]   Done. +176 addrs (60.3s), +0 hits. Total: 1408 addrs, 0 hits, ~156 addrs/min
+[2026-02-14 12:41:21] [12/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:41:31]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:41:52]       Progress: 10/88 individual checks done
+[2026-02-14 12:42:02]       Progress: 20/88 individual checks done
+[2026-02-14 12:42:13]       Progress: 30/88 individual checks done
+[2026-02-14 12:42:23]       Progress: 40/88 individual checks done
+[2026-02-14 12:42:33]       Progress: 50/88 individual checks done
+[2026-02-14 12:42:53]       Progress: 60/88 individual checks done
+[2026-02-14 12:43:04]       Progress: 70/88 individual checks done
+[2026-02-14 12:43:13]       Progress: 80/88 individual checks done
+[2026-02-14 12:43:31]       Progress: 88/88 individual checks done
+[2026-02-14 12:43:31]   Done. +176 addrs (129.9s), +0 hits. Total: 1584 addrs, 0 hits, ~141 addrs/min
+[2026-02-14 12:43:31] [13/1147] '00000000000000000000000000000000000000000000000000' -> 40 mutations x 4 addr = 160 addresses
+[2026-02-14 12:43:46]     Individual checks: 40 bc1q + 120 others = 160 total
+[2026-02-14 12:43:58]       Progress: 10/160 individual checks done
+[2026-02-14 12:44:08]       Progress: 20/160 individual checks done
+[2026-02-14 12:44:18]       Progress: 30/160 individual checks done
+[2026-02-14 12:44:41]       Progress: 40/160 individual checks done
+[2026-02-14 12:44:49]       Progress: 50/160 individual checks done
+[2026-02-14 12:44:58]       Progress: 60/160 individual checks done
+[2026-02-14 12:45:02]       Progress: 70/160 individual checks done
+[2026-02-14 12:45:03]       Progress: 80/160 individual checks done
+[2026-02-14 12:45:07]       Progress: 90/160 individual checks done
+[2026-02-14 12:45:15]       Progress: 100/160 individual checks done
+[2026-02-14 12:45:22]       Progress: 110/160 individual checks done
+[2026-02-14 12:45:29]       Progress: 120/160 individual checks done
+[2026-02-14 12:45:36]       Progress: 130/160 individual checks done
+[2026-02-14 12:45:42]       Progress: 140/160 individual checks done
+[2026-02-14 12:45:44]       Progress: 150/160 individual checks done
+[2026-02-14 12:45:48]       Progress: 160/160 individual checks done
+[2026-02-14 12:45:48]   Done. +320 addrs (137.5s), +0 hits. Total: 1904 addrs, 0 hits, ~141 addrs/min
+[2026-02-14 12:45:48] [14/1147] '00000000000000000000000000000000000000000000000000' -> 22 mutations x 4 addr = 88 addresses
+[2026-02-14 12:45:59]     Individual checks: 22 bc1q + 66 others = 88 total
+[2026-02-14 12:46:00]       Progress: 10/88 individual checks done
+[2026-02-14 12:46:02]       Progress: 20/88 individual checks done
+[2026-02-14 12:46:03]       Progress: 30/88 individual checks done
+[2026-02-14 12:46:04]       Progress: 40/88 individual checks done
+[2026-02-14 12:46:06]       Progress: 50/88 individual checks done
+[2026-02-14 12:46:07]       Progress: 60/88 individual checks done
+[2026-02-14 12:46:08]       Progress: 70/88 individual checks done
+[2026-02-14 12:46:09]       Progress: 80/88 individual checks done
+[2026-02-14 12:46:10]       Progress: 88/88 individual checks done
+[2026-02-14 12:46:10]   Done. +176 addrs (21.9s), +0 hits. Total: 2080 addrs, 0 hits, ~150 addrs/min
+[2026-02-14 12:46:10] [15/1147] 'All animals are equal but some animals are more eq' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 12:46:36]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 12:46:38]       Progress: 10/320 individual checks done
+[2026-02-14 12:46:39]       Progress: 20/320 individual checks done
+[2026-02-14 12:46:41]       Progress: 30/320 individual checks done
+[2026-02-14 12:46:42]       Progress: 40/320 individual checks done
+[2026-02-14 12:46:43]       Progress: 50/320 individual checks done
+[2026-02-14 12:46:45]       Progress: 60/320 individual checks done
+[2026-02-14 12:46:46]       Progress: 70/320 individual checks done
+[2026-02-14 12:46:47]       Progress: 80/320 individual checks done
+[2026-02-14 12:46:49]       Progress: 90/320 individual checks done
+[2026-02-14 12:46:50]       Progress: 100/320 individual checks done
+[2026-02-14 12:46:51]       Progress: 110/320 individual checks done
+[2026-02-14 12:46:52]       Progress: 120/320 individual checks done
+[2026-02-14 12:46:54]       Progress: 130/320 individual checks done
+[2026-02-14 12:46:55]       Progress: 140/320 individual checks done
+[2026-02-14 12:46:55]       Progress: 150/320 individual checks done
+[2026-02-14 12:46:56]       Progress: 160/320 individual checks done
+[2026-02-14 12:46:57]       Progress: 170/320 individual checks done
+[2026-02-14 12:46:58]       Progress: 180/320 individual checks done
+[2026-02-14 12:47:00]       Progress: 190/320 individual checks done
+[2026-02-14 12:47:02]       Progress: 200/320 individual checks done
+[2026-02-14 12:47:04]       Progress: 210/320 individual checks done
+[2026-02-14 12:47:05]       Progress: 220/320 individual checks done
+[2026-02-14 12:47:07]       Progress: 230/320 individual checks done
+[2026-02-14 12:47:08]       Progress: 240/320 individual checks done
+[2026-02-14 12:47:09]       Progress: 250/320 individual checks done
+[2026-02-14 12:47:11]       Progress: 260/320 individual checks done
+[2026-02-14 12:47:12]       Progress: 270/320 individual checks done
+[2026-02-14 12:47:13]       Progress: 280/320 individual checks done
+[2026-02-14 12:47:14]       Progress: 290/320 individual checks done
+[2026-02-14 12:47:16]       Progress: 300/320 individual checks done
+[2026-02-14 12:47:16]       Progress: 310/320 individual checks done
+[2026-02-14 12:47:20]       Progress: 320/320 individual checks done
+[2026-02-14 12:47:20]   Done. +640 addrs (70.0s), +0 hits. Total: 2720 addrs, 0 hits, ~181 addrs/min
+[2026-02-14 12:47:20] [16/1147] 'All the war propaganda all the screaming and lies ' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 12:47:46]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 12:47:47]       Progress: 10/320 individual checks done
+[2026-02-14 12:47:48]       Progress: 20/320 individual checks done
+[2026-02-14 12:47:49]       Progress: 30/320 individual checks done
+[2026-02-14 12:47:52]       Progress: 40/320 individual checks done
+[2026-02-14 12:47:53]       Progress: 50/320 individual checks done
+[2026-02-14 12:47:54]       Progress: 60/320 individual checks done
+[2026-02-14 12:47:56]       Progress: 70/320 individual checks done
+[2026-02-14 12:47:57]       Progress: 80/320 individual checks done
+[2026-02-14 12:47:58]       Progress: 90/320 individual checks done
+[2026-02-14 12:48:00]       Progress: 100/320 individual checks done
+[2026-02-14 12:48:01]       Progress: 110/320 individual checks done
+[2026-02-14 12:48:02]       Progress: 120/320 individual checks done
+[2026-02-14 12:48:03]       Progress: 130/320 individual checks done
+[2026-02-14 12:48:05]       Progress: 140/320 individual checks done
+[2026-02-14 12:48:07]       Progress: 150/320 individual checks done
+[2026-02-14 12:48:09]       Progress: 160/320 individual checks done
+[2026-02-14 12:48:11]       Progress: 170/320 individual checks done
+[2026-02-14 12:48:12]       Progress: 180/320 individual checks done
+[2026-02-14 12:48:13]       Progress: 190/320 individual checks done
+[2026-02-14 12:48:15]       Progress: 200/320 individual checks done
+[2026-02-14 12:48:16]       Progress: 210/320 individual checks done
+[2026-02-14 12:48:17]       Progress: 220/320 individual checks done
+[2026-02-14 12:48:19]       Progress: 230/320 individual checks done
+[2026-02-14 12:48:20]       Progress: 240/320 individual checks done
+[2026-02-14 12:48:21]       Progress: 250/320 individual checks done
+[2026-02-14 12:48:23]       Progress: 260/320 individual checks done
+[2026-02-14 12:48:24]       Progress: 270/320 individual checks done
+[2026-02-14 12:48:25]       Progress: 280/320 individual checks done
+[2026-02-14 12:48:27]       Progress: 290/320 individual checks done
+[2026-02-14 12:48:29]       Progress: 300/320 individual checks done
+[2026-02-14 12:48:32]       Progress: 310/320 individual checks done
+[2026-02-14 12:48:34]       Progress: 320/320 individual checks done
+[2026-02-14 12:48:34]   Done. +640 addrs (73.6s), +0 hits. Total: 3360 addrs, 0 hits, ~207 addrs/min
+[2026-02-14 12:48:34] [17/1147] 'All the worlds a stage' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 12:49:00]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 12:49:02]       Progress: 10/320 individual checks done
+[2026-02-14 12:49:03]       Progress: 20/320 individual checks done
+[2026-02-14 12:49:04]       Progress: 30/320 individual checks done
+[2026-02-14 12:49:05]       Progress: 40/320 individual checks done
+[2026-02-14 12:49:07]       Progress: 50/320 individual checks done
+[2026-02-14 12:49:12]       Progress: 60/320 individual checks done
+[2026-02-14 12:49:15]       Progress: 70/320 individual checks done
+[2026-02-14 12:49:19]       Progress: 80/320 individual checks done
+[2026-02-14 12:49:29]       Progress: 90/320 individual checks done
+[2026-02-14 12:49:32]       Progress: 100/320 individual checks done
+[2026-02-14 12:49:36]       Progress: 110/320 individual checks done
+[2026-02-14 12:49:40]       Progress: 120/320 individual checks done
+[2026-02-14 12:49:48]       Progress: 130/320 individual checks done
+[2026-02-14 12:49:56]       Progress: 140/320 individual checks done
+[2026-02-14 12:50:03]       Progress: 150/320 individual checks done
+[2026-02-14 12:50:14]       Progress: 160/320 individual checks done
+[2026-02-14 12:50:22]       Progress: 170/320 individual checks done
+[2026-02-14 12:50:35]       Progress: 180/320 individual checks done
+[2026-02-14 12:50:41]       Progress: 190/320 individual checks done
+[2026-02-14 12:50:49]       Progress: 200/320 individual checks done
+[2026-02-14 12:50:58]       Progress: 210/320 individual checks done
+[2026-02-14 12:51:06]       Progress: 220/320 individual checks done
+[2026-02-14 12:51:14]       Progress: 230/320 individual checks done
+[2026-02-14 12:51:26]       Progress: 240/320 individual checks done
+[2026-02-14 12:51:41]       Progress: 250/320 individual checks done
+[2026-02-14 12:51:51]       Progress: 260/320 individual checks done
+[2026-02-14 12:52:05]       Progress: 270/320 individual checks done
+[2026-02-14 12:52:16]       Progress: 280/320 individual checks done
+[2026-02-14 12:52:30]       Progress: 290/320 individual checks done
+[2026-02-14 12:52:46]       Progress: 300/320 individual checks done
+[2026-02-14 12:52:59]       Progress: 310/320 individual checks done
+[2026-02-14 12:53:20]       Progress: 320/320 individual checks done
+[2026-02-14 12:53:20]   Done. +640 addrs (285.7s), +0 hits. Total: 4000 addrs, 0 hits, ~190 addrs/min
+[2026-02-14 12:53:20] [18/1147] 'CfB' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 12:53:45]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 12:53:56]       Progress: 10/320 individual checks done
+[2026-02-14 12:54:10]       Progress: 20/320 individual checks done
+[2026-02-14 12:54:11]       Progress: 30/320 individual checks done
+[2026-02-14 12:54:12]       Progress: 40/320 individual checks done
+[2026-02-14 12:54:16]       Progress: 50/320 individual checks done
+[2026-02-14 12:54:21]       Progress: 60/320 individual checks done
+[2026-02-14 12:54:28]       Progress: 70/320 individual checks done
+[2026-02-14 12:54:36]       Progress: 80/320 individual checks done
+[2026-02-14 12:54:42]       Progress: 90/320 individual checks done
+[2026-02-14 12:54:50]       Progress: 100/320 individual checks done
+[2026-02-14 12:54:57]       Progress: 110/320 individual checks done
+[2026-02-14 12:55:03]       Progress: 120/320 individual checks done
+[2026-02-14 12:55:12]       Progress: 130/320 individual checks done
+[2026-02-14 12:55:21]       Progress: 140/320 individual checks done
+[2026-02-14 12:55:27]       Progress: 150/320 individual checks done
+[2026-02-14 12:55:35]       Progress: 160/320 individual checks done
+[2026-02-14 12:55:45]       Progress: 170/320 individual checks done
+[2026-02-14 12:56:13]       Progress: 180/320 individual checks done
+[2026-02-14 12:56:41]       Progress: 190/320 individual checks done
+[2026-02-14 12:57:06]       Progress: 200/320 individual checks done
+[2026-02-14 12:57:15]       Progress: 210/320 individual checks done
+[2026-02-14 12:57:45]       Progress: 220/320 individual checks done
+[2026-02-14 12:58:13]       Progress: 230/320 individual checks done
+[2026-02-14 12:58:42]       Progress: 240/320 individual checks done
+[2026-02-14 12:59:07]       Progress: 250/320 individual checks done
+[2026-02-14 12:59:14]       Progress: 260/320 individual checks done
+[2026-02-14 12:59:16]       Progress: 270/320 individual checks done
+[2026-02-14 12:59:32]       Progress: 280/320 individual checks done
+[2026-02-14 12:59:51]       Progress: 290/320 individual checks done
+[2026-02-14 13:00:09]       Progress: 300/320 individual checks done
+[2026-02-14 13:00:24]       Progress: 310/320 individual checks done
+[2026-02-14 13:00:48]       Progress: 320/320 individual checks done
+[2026-02-14 13:00:48]   Done. +640 addrs (447.9s), +0 hits. Total: 4640 addrs, 0 hits, ~163 addrs/min
+[2026-02-14 13:00:48] [19/1147] 'Chancellor on brink of second bailout for banks' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 13:01:13]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 13:01:15]       Progress: 10/320 individual checks done
+[2026-02-14 13:01:33]       Progress: 20/320 individual checks done
+[2026-02-14 13:01:52]       Progress: 30/320 individual checks done
+[2026-02-14 13:02:06]       Progress: 40/320 individual checks done
+[2026-02-14 13:02:23]       Progress: 50/320 individual checks done
+[2026-02-14 13:02:40]       Progress: 60/320 individual checks done
+[2026-02-14 13:02:56]       Progress: 70/320 individual checks done
+[2026-02-14 13:03:11]       Progress: 80/320 individual checks done
+[2026-02-14 13:03:30]       Progress: 90/320 individual checks done
+[2026-02-14 13:03:34]       Progress: 100/320 individual checks done
+[2026-02-14 13:03:36]       Progress: 110/320 individual checks done
+[2026-02-14 13:03:43]       Progress: 120/320 individual checks done
+[2026-02-14 13:03:51]       Progress: 130/320 individual checks done
+[2026-02-14 13:03:59]       Progress: 140/320 individual checks done
+[2026-02-14 13:04:07]       Progress: 150/320 individual checks done
+[2026-02-14 13:04:14]       Progress: 160/320 individual checks done
+[2026-02-14 13:04:23]       Progress: 170/320 individual checks done
+[2026-02-14 13:04:30]       Progress: 180/320 individual checks done
+[2026-02-14 13:04:38]       Progress: 190/320 individual checks done
+[2026-02-14 13:04:46]       Progress: 200/320 individual checks done
+[2026-02-14 13:04:55]       Progress: 210/320 individual checks done
+[2026-02-14 13:05:03]       Progress: 220/320 individual checks done
+[2026-02-14 13:05:12]       Progress: 230/320 individual checks done
+[2026-02-14 13:05:23]       Progress: 240/320 individual checks done
+[2026-02-14 13:05:32]       Progress: 250/320 individual checks done
+[2026-02-14 13:05:42]       Progress: 260/320 individual checks done
+[2026-02-14 13:05:54]       Progress: 270/320 individual checks done
+[2026-02-14 13:06:02]       Progress: 280/320 individual checks done
+[2026-02-14 13:06:12]       Progress: 290/320 individual checks done
+[2026-02-14 13:06:23]       Progress: 300/320 individual checks done
+[2026-02-14 13:06:35]       Progress: 310/320 individual checks done
+[2026-02-14 13:06:52]       Progress: 320/320 individual checks done
+[2026-02-14 13:06:52]   Done. +640 addrs (364.8s), +0 hits. Total: 5280 addrs, 0 hits, ~153 addrs/min
+[2026-02-14 13:06:52] [20/1147] 'Come from Beyond' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 13:07:19]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 13:07:29]       Progress: 10/320 individual checks done
+[2026-02-14 13:07:40]       Progress: 20/320 individual checks done
+[2026-02-14 13:07:50]       Progress: 30/320 individual checks done
+[2026-02-14 13:08:00]       Progress: 40/320 individual checks done
+[2026-02-14 13:08:20]       Progress: 50/320 individual checks done
+[2026-02-14 13:08:37]       Progress: 60/320 individual checks done
+[2026-02-14 13:08:50]       Progress: 70/320 individual checks done
+[2026-02-14 13:09:10]       Progress: 80/320 individual checks done
+[2026-02-14 13:09:31]       Progress: 90/320 individual checks done
+[2026-02-14 13:09:50]       Progress: 100/320 individual checks done
+[2026-02-14 13:10:12]       Progress: 110/320 individual checks done
+[2026-02-14 13:10:32]       Progress: 120/320 individual checks done
+[2026-02-14 13:10:50]       Progress: 130/320 individual checks done
+[2026-02-14 13:11:05]       Progress: 140/320 individual checks done
+[2026-02-14 13:11:54]       Progress: 150/320 individual checks done
+[2026-02-14 13:12:56]       Progress: 160/320 individual checks done
+[2026-02-14 13:13:08]       Progress: 170/320 individual checks done
+[2026-02-14 13:13:15]       Progress: 180/320 individual checks done
+[2026-02-14 13:13:21]       Progress: 190/320 individual checks done
+[2026-02-14 13:13:38]       Progress: 200/320 individual checks done
+[2026-02-14 13:13:52]       Progress: 210/320 individual checks done
+[2026-02-14 13:14:10]       Progress: 220/320 individual checks done
+[2026-02-14 13:14:28]       Progress: 230/320 individual checks done
+[2026-02-14 13:14:46]       Progress: 240/320 individual checks done
+[2026-02-14 13:15:04]       Progress: 250/320 individual checks done
+[2026-02-14 13:15:26]       Progress: 260/320 individual checks done
+[2026-02-14 13:15:44]       Progress: 270/320 individual checks done
+[2026-02-14 13:16:04]       Progress: 280/320 individual checks done
+[2026-02-14 13:16:25]       Progress: 290/320 individual checks done
+[2026-02-14 13:16:44]       Progress: 300/320 individual checks done
+[2026-02-14 13:17:04]       Progress: 310/320 individual checks done
+[2026-02-14 13:17:34]       Progress: 320/320 individual checks done
+[2026-02-14 13:17:34]   Done. +640 addrs (641.3s), +0 hits. Total: 5920 addrs, 0 hits, ~131 addrs/min
+[2026-02-14 13:17:34] [21/1147] 'Doublethink means the power of holding two contrad' -> 80 mutations x 4 addr = 320 addresses
+[2026-02-14 13:18:00]     Individual checks: 80 bc1q + 240 others = 320 total
+[2026-02-14 13:18:21]       Progress: 10/320 individual checks done
+[2026-02-14 13:18:59]       Progress: 20/320 individual checks done

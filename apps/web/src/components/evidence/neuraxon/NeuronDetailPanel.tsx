@@ -19,11 +19,11 @@ interface NeuronDetailPanelProps {
 const STATE_CONFIG = {
   '-1': {
     label: 'Negative',
-    color: 'bg-blue-500',
-    textColor: 'text-blue-400',
-    bgColor: 'bg-blue-500/10',
-    borderColor: 'border-blue-500/30',
-    glowColor: 'shadow-blue-500/20',
+    color: 'bg-[#D4AF37]',
+    textColor: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/30',
+    glowColor: 'shadow-[#D4AF37]/20',
   },
   '0': {
     label: 'Neutral',
@@ -35,24 +35,24 @@ const STATE_CONFIG = {
   },
   '1': {
     label: 'Positive',
-    color: 'bg-orange-500',
-    textColor: 'text-orange-400',
-    bgColor: 'bg-orange-500/10',
-    borderColor: 'border-orange-500/30',
-    glowColor: 'shadow-orange-500/20',
+    color: 'bg-[#D4AF37]',
+    textColor: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/30',
+    glowColor: 'shadow-[#D4AF37]/20',
   },
 }
 
 const TYPE_CONFIG = {
-  input: { label: 'Input Layer', icon: ArrowRight, color: 'text-green-400' },
-  hidden: { label: 'Hidden Layer', icon: Activity, color: 'text-purple-400' },
+  input: { label: 'Input Layer', icon: ArrowRight, color: 'text-[#D4AF37]' },
+  hidden: { label: 'Hidden Layer', icon: Activity, color: 'text-[#D4AF37]' },
   output: { label: 'Output Layer', icon: ArrowLeft, color: 'text-red-400' },
 }
 
 const SYNAPSE_COLORS = {
-  fast: { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500/30' },
-  slow: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', border: 'border-yellow-500/30' },
-  meta: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500/30' },
+  fast: { bg: 'bg-[#D4AF37]/20', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/30' },
+  slow: { bg: 'bg-[#D4AF37]/20', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/30' },
+  meta: { bg: 'bg-[#D4AF37]/20', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/30' },
 }
 
 export function NeuronDetailPanel({
@@ -91,7 +91,7 @@ export function NeuronDetailPanel({
   const sortedIncoming = [...connections.incoming].sort((a, b) => b.weight - a.weight).slice(0, 8)
 
   return (
-    <div className="absolute top-4 right-4 w-[340px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden pointer-events-auto">
+    <div className="absolute top-4 right-4 w-[340px] bg-[#050505] backdrop-blur-xl border border-white/[0.04] shadow-2xl overflow-hidden pointer-events-auto">
       {/* Header with gradient */}
       <div className={`relative p-4 ${stateConfig.bgColor} border-b ${stateConfig.borderColor}`}>
         {/* Background pattern */}
@@ -105,7 +105,7 @@ export function NeuronDetailPanel({
         <div className="relative flex items-start justify-between">
           <div className="flex items-center gap-3">
             {/* State indicator with glow */}
-            <div className={`w-12 h-12 rounded-xl ${stateConfig.color} flex items-center justify-center shadow-lg ${stateConfig.glowColor}`}>
+            <div className={`w-12 h-12 ${stateConfig.color} flex items-center justify-center shadow-lg ${stateConfig.glowColor}`}>
               <span className="text-white font-bold text-lg">
                 {node.state > 0 ? '+1' : node.state < 0 ? '-1' : '0'}
               </span>
@@ -126,14 +126,14 @@ export function NeuronDetailPanel({
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="h-8 w-8 text-white/50 hover:text-white hover:bg-white/10 rounded-lg"
+            className="h-8 w-8 text-white/50 hover:text-white hover:bg-white/10"
           >
             <X className="w-4 h-4" />
           </Button>
         </div>
 
         {/* State badge */}
-        <div className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-full ${stateConfig.bgColor} border ${stateConfig.borderColor}`}>
+        <div className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 ${stateConfig.bgColor} border ${stateConfig.borderColor}`}>
           <Zap className={`w-3 h-3 ${stateConfig.textColor}`} />
           <span className={`text-xs font-medium ${stateConfig.textColor}`}>
             {stateConfig.label} State
@@ -142,7 +142,7 @@ export function NeuronDetailPanel({
       </div>
 
       {/* Tab navigation */}
-      <div className="flex border-b border-white/10">
+      <div className="flex border-b border-white/[0.04]">
         <button
           onClick={() => setActiveTab('info')}
           className={`flex-1 px-3 py-2.5 text-xs font-medium transition-colors ${
@@ -167,7 +167,7 @@ export function NeuronDetailPanel({
           onClick={() => setActiveTab('evolution')}
           className={`flex-1 px-3 py-2.5 text-xs font-medium transition-colors ${
             activeTab === 'evolution'
-              ? 'text-white bg-white/5 border-b-2 border-cyan-400'
+              ? 'text-white bg-white/5 border-b-2 border-[#D4AF37]'
               : 'text-white/50 hover:text-white hover:bg-white/5'
           }`}
         >
@@ -183,10 +183,10 @@ export function NeuronDetailPanel({
             {/* Seed */}
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-[10px] text-white/40 uppercase tracking-wider font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                <span className="w-1.5 h-1.5 bg-[#D4AF37]" />
                 Private Seed (55 chars)
               </label>
-              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg p-2.5 group hover:border-white/20 transition-colors">
+              <div className="flex items-center gap-2 bg-white/5 border border-white/[0.04] p-2.5 group hover:border-white/[0.04] transition-colors">
                 <code className="flex-1 text-xs font-mono text-white/80 truncate">
                   {node.seed}
                 </code>
@@ -197,7 +197,7 @@ export function NeuronDetailPanel({
                   onClick={() => handleCopy(node.seed, 'seed')}
                 >
                   {copiedField === 'seed' ? (
-                    <Check className="w-3.5 h-3.5 text-green-500" />
+                    <Check className="w-3.5 h-3.5 text-[#D4AF37]" />
                   ) : (
                     <Copy className="w-3.5 h-3.5" />
                   )}
@@ -208,10 +208,10 @@ export function NeuronDetailPanel({
             {/* Real ID */}
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-[10px] text-white/40 uppercase tracking-wider font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                <span className="w-1.5 h-1.5 bg-[#D4AF37]" />
                 Public Identity (60 chars)
               </label>
-              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg p-2.5 group hover:border-white/20 transition-colors">
+              <div className="flex items-center gap-2 bg-white/5 border border-white/[0.04] p-2.5 group hover:border-white/[0.04] transition-colors">
                 <code className="flex-1 text-xs font-mono text-white/80 truncate">
                   {node.realId}
                 </code>
@@ -222,7 +222,7 @@ export function NeuronDetailPanel({
                   onClick={() => handleCopy(node.realId, 'realId')}
                 >
                   {copiedField === 'realId' ? (
-                    <Check className="w-3.5 h-3.5 text-green-500" />
+                    <Check className="w-3.5 h-3.5 text-[#D4AF37]" />
                   ) : (
                     <Copy className="w-3.5 h-3.5" />
                   )}
@@ -235,7 +235,7 @@ export function NeuronDetailPanel({
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-7 w-7 text-white/40 hover:text-blue-400 hover:bg-blue-500/10"
+                    className="h-7 w-7 text-white/40 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                   </Button>
@@ -247,7 +247,7 @@ export function NeuronDetailPanel({
             {/* Stats grid */}
             <div className="grid grid-cols-2 gap-3">
               {/* Position */}
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+              <div className="bg-white/5 border border-white/[0.04] p-3">
                 <div className="flex items-center gap-1.5 mb-1.5">
                   <Box className="w-3 h-3 text-white/40" />
                   <span className="text-[10px] text-white/40 uppercase tracking-wider">Position</span>
@@ -258,7 +258,7 @@ export function NeuronDetailPanel({
               </div>
 
               {/* Frame */}
-              <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+              <div className="bg-white/5 border border-white/[0.04] p-3">
                 <div className="flex items-center gap-1.5 mb-1.5">
                   <Activity className="w-3 h-3 text-white/40" />
                   <span className="text-[10px] text-white/40 uppercase tracking-wider">Frame</span>
@@ -274,7 +274,7 @@ export function NeuronDetailPanel({
             {onAnalyzeInAigarth && (
               <button
                 onClick={() => onAnalyzeInAigarth(node.seed, node.id, node.realId, node.frame)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white text-sm font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-purple-500/20"
+                className="flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] hover:from-[#D4AF37] hover:to-[#D4AF37] text-white text-sm font-medium transition-all hover:shadow-lg hover:shadow-[#D4AF37]/20"
               >
                 <Zap className="w-4 h-4" />
                 Analyze Neuron
@@ -289,12 +289,12 @@ export function NeuronDetailPanel({
             {/* Connection summary */}
             <div className="flex items-center justify-center gap-6 py-2">
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-400">{connections.outgoing.length}</div>
+                <div className="text-2xl font-bold text-[#D4AF37]">{connections.outgoing.length}</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">Outgoing</div>
               </div>
               <div className="w-px h-8 bg-white/10" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">{connections.incoming.length}</div>
+                <div className="text-2xl font-bold text-[#D4AF37]">{connections.incoming.length}</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">Incoming</div>
               </div>
             </div>
@@ -303,7 +303,7 @@ export function NeuronDetailPanel({
             {sortedOutgoing.length > 0 && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <ArrowRight className="w-3 h-3 text-green-400" />
+                  <ArrowRight className="w-3 h-3 text-[#D4AF37]" />
                   <span className="text-xs font-medium text-white/60">
                     Outgoing Synapses
                   </span>
@@ -315,15 +315,15 @@ export function NeuronDetailPanel({
                     return (
                       <button
                         key={i}
-                        className="flex items-center gap-2 w-full text-left text-xs bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 rounded-lg p-2 transition-all group"
+                        className="flex items-center gap-2 w-full text-left text-xs bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/[0.04] p-2 transition-all group"
                         onClick={() => targetNode && onNodeClick(targetNode)}
                       >
-                        <ArrowRight className="w-3 h-3 text-green-400/50 group-hover:text-green-400" />
+                        <ArrowRight className="w-3 h-3 text-[#D4AF37]/50 group-hover:text-[#D4AF37]" />
                         <span className="font-mono text-white/70 group-hover:text-white flex-1">
                           #{edge.target}
                         </span>
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${synapseColor.bg} ${synapseColor.text} border ${synapseColor.border}`}
+                          className={`px-2 py-0.5 text-[10px] font-medium ${synapseColor.bg} ${synapseColor.text} border ${synapseColor.border}`}
                         >
                           {(edge.weight * 100).toFixed(0)}%
                         </span>
@@ -338,7 +338,7 @@ export function NeuronDetailPanel({
             {sortedIncoming.length > 0 && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <ArrowLeft className="w-3 h-3 text-purple-400" />
+                  <ArrowLeft className="w-3 h-3 text-[#D4AF37]" />
                   <span className="text-xs font-medium text-white/60">
                     Incoming Synapses
                   </span>
@@ -350,15 +350,15 @@ export function NeuronDetailPanel({
                     return (
                       <button
                         key={i}
-                        className="flex items-center gap-2 w-full text-left text-xs bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 rounded-lg p-2 transition-all group"
+                        className="flex items-center gap-2 w-full text-left text-xs bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/[0.04] p-2 transition-all group"
                         onClick={() => sourceNode && onNodeClick(sourceNode)}
                       >
-                        <ArrowLeft className="w-3 h-3 text-purple-400/50 group-hover:text-purple-400" />
+                        <ArrowLeft className="w-3 h-3 text-[#D4AF37]/50 group-hover:text-[#D4AF37]" />
                         <span className="font-mono text-white/70 group-hover:text-white flex-1">
                           #{edge.source}
                         </span>
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${synapseColor.bg} ${synapseColor.text} border ${synapseColor.border}`}
+                          className={`px-2 py-0.5 text-[10px] font-medium ${synapseColor.bg} ${synapseColor.text} border ${synapseColor.border}`}
                         >
                           {(edge.weight * 100).toFixed(0)}%
                         </span>
@@ -370,19 +370,19 @@ export function NeuronDetailPanel({
             )}
 
             {/* Synapse legend */}
-            <div className="pt-2 border-t border-white/10">
+            <div className="pt-2 border-t border-white/[0.04]">
               <div className="text-[10px] text-white/30 uppercase tracking-wider mb-2">Synapse Types</div>
               <div className="flex items-center gap-3 text-[10px]">
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <div className="w-2 h-2 bg-[#D4AF37]" />
                   <span className="text-white/50">Fast &gt;70%</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                  <div className="w-2 h-2 bg-[#D4AF37]" />
                   <span className="text-white/50">Slow 40-70%</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  <div className="w-2 h-2 bg-[#D4AF37]" />
                   <span className="text-white/50">Meta &lt;40%</span>
                 </div>
               </div>
@@ -394,15 +394,15 @@ export function NeuronDetailPanel({
         {activeTab === 'evolution' && (
           <>
             {/* Data Notice */}
-            <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-              <div className="text-[10px] text-blue-400/90">
+            <div className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
+              <div className="text-[10px] text-[#D4AF37]/90">
                 <strong>Seeds:</strong> Real Qubic seeds from Anna Matrix.
-                <span className="text-blue-400/60"> Network structure is conceptual.</span>
+                <span className="text-[#D4AF37]/60"> Network structure is conceptual.</span>
               </div>
             </div>
 
             {/* Neuron Classification - Simplified */}
-            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-3 bg-white/5 border border-white/[0.04]">
               <div className="flex items-center gap-2 mb-2">
                 <Cpu className="w-4 h-4 text-gray-400" />
                 <span className="text-sm font-medium text-gray-300">Classification</span>
@@ -419,15 +419,15 @@ export function NeuronDetailPanel({
             </div>
 
             {/* Ternary State - Simplified */}
-            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-3 bg-white/5 border border-white/[0.04]">
               <div className="flex items-center gap-2 mb-2">
                 <Binary className="w-4 h-4 text-gray-400" />
                 <span className="text-sm font-medium text-gray-300">Ternary State</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className={`w-8 h-8 rounded flex items-center justify-center font-mono font-bold ${
-                  node.state === 1 ? 'bg-gray-700 text-orange-400' :
-                  node.state === -1 ? 'bg-gray-700 text-blue-400' :
+                <div className={`w-8 h-8 flex items-center justify-center font-mono font-bold ${
+                  node.state === 1 ? 'bg-gray-700 text-[#D4AF37]' :
+                  node.state === -1 ? 'bg-gray-700 text-[#D4AF37]' :
                   'bg-gray-700 text-gray-400'
                 }`}>
                   {node.state > 0 ? '+1' : node.state < 0 ? '-1' : '0'}
@@ -441,31 +441,31 @@ export function NeuronDetailPanel({
             </div>
 
             {/* Tick Formula - With Honesty Notice */}
-            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-3 bg-white/5 border border-white/[0.04]">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <Activity className="w-4 h-4 text-gray-400" />
                   <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Tick Formula</span>
                 </div>
-                <span className="text-[9px] px-1.5 py-0.5 bg-yellow-500/20 text-yellow-500 rounded">Conceptual</span>
+                <span className="text-[9px] px-1.5 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37]">Conceptual</span>
               </div>
-              <div className="font-mono text-xs text-gray-400 bg-black/30 p-2 rounded">
-                new_value = clamp(Σ w[i] × n[i])
+              <div className="font-mono text-xs text-gray-400 bg-black/30 p-2">
+                new_value = clamp(Sigma w[i] x n[i])
               </div>
               <div className="text-[10px] text-gray-600 mt-2">
                 Describes Qubic&apos;s ternary computation.
-                <span className="text-yellow-500/70"> Not simulated here.</span>
+                <span className="text-[#D4AF37]/70"> Not simulated here.</span>
               </div>
             </div>
 
             {/* Connection Summary - Simplified Grayscale */}
-            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-3 bg-white/5 border border-white/[0.04]">
               <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
                 Connection Summary
               </div>
               {synapseStats.total > 0 ? (
                 <div className="space-y-2">
-                  <div className="flex items-center h-2 rounded overflow-hidden bg-gray-800">
+                  <div className="flex items-center h-2 overflow-hidden bg-gray-800">
                     <div
                       className="h-full bg-gray-500"
                       style={{ width: `${(synapseStats.fast / synapseStats.total) * 100}%` }}
@@ -489,7 +489,7 @@ export function NeuronDetailPanel({
             </div>
 
             {/* What This Represents */}
-            <div className="p-3 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-3 bg-white/5 border border-white/[0.04]">
               <div className="flex items-start gap-2">
                 <GitBranch className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />
                 <div>
@@ -506,7 +506,7 @@ export function NeuronDetailPanel({
       </div>
 
       {/* Footer */}
-      <div className="px-4 py-3 border-t border-white/10 bg-white/5">
+      <div className="px-4 py-3 border-t border-white/[0.04] bg-white/5">
         <div className="flex items-center justify-between text-[10px] text-white/30">
           <span>Frame {node.frame + 1}</span>
           <span className="font-mono">ID: {node.id}</span>

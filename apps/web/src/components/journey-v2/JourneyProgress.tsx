@@ -40,7 +40,7 @@ export function JourneyProgress({
 
       {/* Progress line fill */}
       <motion.div
-        className="absolute left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-orange-500/80 to-purple-500/80 origin-top"
+        className="absolute left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-[#D4AF37]/80 to-[#D4AF37]/80 origin-top"
         style={{ height: `${scrollProgress * 100}%`, top: 0 }}
         transition={{ type: 'spring', stiffness: 100, damping: 30 }}
       />
@@ -93,8 +93,8 @@ export function JourneyProgress({
             {/* Label (on hover) */}
             <motion.span
               className={cn(
-                'text-xs font-medium whitespace-nowrap px-2 py-1 rounded bg-black/80 backdrop-blur-sm',
-                isActive ? 'text-orange-400' : 'text-white/60',
+                'text-xs font-medium whitespace-nowrap px-2 py-1  bg-black/80 backdrop-blur-sm',
+                isActive ? 'text-[#D4AF37]' : 'text-white/60',
                 !showLabels && 'opacity-0 group-hover:opacity-100',
                 'transition-opacity duration-200'
               )}
@@ -114,7 +114,7 @@ export function JourneyProgress({
           transition={{ delay: 0.5 }}
           aria-label={`${unlockedCount} of ${totalAchievements} achievements unlocked`}
         >
-          <Trophy className="h-3 w-3 text-yellow-400" aria-hidden="true" />
+          <Trophy className="h-3 w-3 text-[#D4AF37]" aria-hidden="true" />
           <span className="text-[10px] font-mono text-white/60">
             {unlockedCount}/{totalAchievements}
           </span>
@@ -143,7 +143,7 @@ export function JourneyProgressBar({ className }: { className?: string }) {
       {/* Progress bar */}
       <div className="h-0.5 bg-white/10">
         <motion.div
-          className="h-full bg-gradient-to-r from-orange-500 to-purple-500"
+          className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]"
           style={{ width: `${scrollProgress * 100}%` }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
         />

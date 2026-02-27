@@ -9,13 +9,13 @@ import dynamic from 'next/dynamic'
 // Loading component
 function VizLoadingScreen({ name }: { name: string }) {
   return (
-    <div className="w-full h-[700px] bg-black rounded-lg border border-border flex items-center justify-center">
+    <div className="w-full h-[700px] bg-[#050505] border border-white/[0.04] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="relative">
-          <div className="w-16 h-16 border-2 border-primary/30 rounded-full" />
-          <div className="absolute inset-0 w-16 h-16 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-16 h-16 border-2 border-[#D4AF37]/30" />
+          <div className="absolute inset-0 w-16 h-16 border-2 border-[#D4AF37] border-t-transparent animate-spin" />
         </div>
-        <span className="text-muted-foreground">Loading {name}...</span>
+        <span className="text-white/40">Loading {name}...</span>
       </div>
     </div>
   )
@@ -39,14 +39,12 @@ const VISUALIZATIONS = [
     label: 'Qortex Neural Network',
     icon: Brain,
     description: 'Ternary neural network visualization with real Qubic seeds',
-    color: 'purple',
   },
   {
     id: 'graph',
     label: 'Address Graph',
     icon: Network,
     description: 'Bitcoin address network derived from Anna Matrix',
-    color: 'orange',
   },
 ]
 
@@ -75,10 +73,10 @@ export default function VisualizationsTab() {
                 key={viz.id}
                 onClick={() => setActiveViz(viz.id)}
                 className={`
-                  flex items-center gap-2 px-4 py-2 rounded-lg border transition-all
+                  flex items-center gap-2 px-4 py-2 border transition-all font-mono
                   ${isActive
-                    ? `bg-${viz.color}-500/20 border-${viz.color}-500/50 text-${viz.color}-400`
-                    : 'bg-muted/30 border-border text-muted-foreground hover:bg-muted/50'
+                    ? 'bg-[#D4AF37]/[0.06] border-[#D4AF37]/30 text-[#D4AF37]'
+                    : 'bg-[#050505] border-white/[0.04] text-white/40 hover:bg-white/[0.03]'
                   }
                 `}
               >
@@ -96,7 +94,7 @@ export default function VisualizationsTab() {
       </div>
 
       {/* Visualization Container */}
-      <div data-viz-container className="rounded-lg overflow-hidden">
+      <div data-viz-container className="overflow-hidden border border-white/[0.04]">
         {activeViz === 'qortex' && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -112,7 +110,7 @@ export default function VisualizationsTab() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2 }}
-            className="h-[700px] bg-black rounded-lg border border-border"
+            className="h-[700px] bg-black border border-white/[0.04]"
           >
             <AddressGraphScene />
           </motion.div>
@@ -120,7 +118,7 @@ export default function VisualizationsTab() {
       </div>
 
       {/* Minimal footer */}
-      <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground/50">
+      <div className="flex items-center justify-center gap-6 text-xs text-white/30">
         <span className="flex items-center gap-1">
           <Zap className="w-3 h-3" /> WebGL
         </span>

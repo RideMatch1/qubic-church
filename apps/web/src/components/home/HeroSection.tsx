@@ -47,9 +47,9 @@ export function HeroSection() {
         <GridScan
           sensitivity={0.3}
           lineThickness={0.8}
-          linesColor="#1e1b4b"
+          linesColor="#1a1a1a"
           gridScale={0.08}
-          scanColor="#6366f1"
+          scanColor="#D4AF37"
           scanOpacity={0.25}
           enablePost
           bloomIntensity={0.3}
@@ -78,7 +78,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#D4AF37] bg-clip-text text-transparent">
             <GlitchText>The Discovery of a Hidden</GlitchText>
           </span>
           <br />

@@ -104,9 +104,9 @@ export function LetterSumCalculator() {
   const currentPreset = selectedPreset !== 'custom' ? PRESET_ADDRESSES[selectedPreset] : null
 
   return (
-    <div className="p-6 rounded-xl bg-gradient-to-b from-purple-950/30 to-purple-950/10 border border-purple-900/50">
+    <div className="p-6 bg-gradient-to-b from-[#050505] to-purple-950/10 border border-white/[0.04]">
       <div className="flex items-center gap-3 mb-6">
-        <Hash className="h-6 w-6 text-purple-400" />
+        <Hash className="h-6 w-6 text-[#D4AF37]" />
         <h3 className="text-xl font-semibold">Letter Sum Calculator</h3>
       </div>
 
@@ -115,7 +115,7 @@ export function LetterSumCalculator() {
         <div className="relative">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="w-full flex items-center justify-between p-3 bg-black/30 rounded-lg border border-purple-900/50 hover:border-purple-700/50 transition-colors"
+            className="w-full flex items-center justify-between p-3 bg-black/30 border border-white/[0.04] hover:border-purple-700/50 transition-colors"
           >
             <span className="text-sm">
               {currentPreset ? currentPreset.name : 'Custom Address'}
@@ -129,7 +129,7 @@ export function LetterSumCalculator() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full left-0 right-0 mt-1 bg-black/90 border border-purple-900/50 rounded-lg overflow-hidden z-10"
+                className="absolute top-full left-0 right-0 mt-1 bg-black/90 border border-white/[0.04] overflow-hidden z-10"
               >
                 <button
                   onClick={() => selectPreset('ARB')}
@@ -158,7 +158,7 @@ export function LetterSumCalculator() {
             resetAnimation()
           }}
           maxLength={60}
-          className="w-full p-3 bg-black/30 border border-purple-900/50 rounded-lg font-mono text-xs focus:outline-none focus:border-purple-500 transition-colors"
+          className="w-full p-3 bg-black/30 border border-white/[0.04] font-mono text-xs focus:outline-none focus:border-[#D4AF37] transition-colors"
           placeholder="Enter Qubic address..."
         />
         <div className="text-xs text-muted-foreground mt-1 text-right">
@@ -167,7 +167,7 @@ export function LetterSumCalculator() {
       </div>
 
       {/* Letter Grid with Values */}
-      <div className="mb-6 p-4 bg-black/30 rounded-lg overflow-x-auto">
+      <div className="mb-6 p-4 bg-black/30 overflow-x-auto">
         <div className="flex flex-wrap gap-1 justify-center min-w-max">
           {letterData.map((data, idx) => (
             <motion.div
@@ -179,10 +179,10 @@ export function LetterSumCalculator() {
                   ? 'rgba(168, 85, 247, 0.3)'
                   : 'rgba(0, 0, 0, 0.3)',
               }}
-              className="flex flex-col items-center p-1 rounded text-xs"
+              className="flex flex-col items-center p-1  text-xs"
               style={{ minWidth: '24px' }}
             >
-              <span className="font-mono font-bold text-purple-400">{data.letter}</span>
+              <span className="font-mono font-bold text-[#D4AF37]">{data.letter}</span>
               <span className="text-muted-foreground text-[10px]">{data.value}</span>
             </motion.div>
           ))}
@@ -194,14 +194,14 @@ export function LetterSumCalculator() {
         <button
           onClick={startAnimation}
           disabled={isAnimating}
-          className="flex-1 flex items-center justify-center gap-2 p-3 bg-purple-500/20 hover:bg-purple-500/30 disabled:opacity-50 rounded-lg transition-colors text-purple-400"
+          className="flex-1 flex items-center justify-center gap-2 p-3 bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 disabled:opacity-50 transition-colors text-[#D4AF37]"
         >
           <Play className="h-4 w-4" />
           Animate Sum
         </button>
         <button
           onClick={resetAnimation}
-          className="flex items-center justify-center gap-2 p-3 bg-black/30 hover:bg-black/40 rounded-lg transition-colors"
+          className="flex items-center justify-center gap-2 p-3 bg-black/30 hover:bg-black/40 transition-colors"
         >
           <RotateCcw className="h-4 w-4" />
         </button>
@@ -210,14 +210,14 @@ export function LetterSumCalculator() {
       {/* Results */}
       <div className="space-y-4">
         {/* Total Sum */}
-        <div className="p-4 bg-black/30 rounded-lg">
+        <div className="p-4 bg-black/30">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">Total Letter Sum:</span>
             <motion.span
               key={animationIndex}
               initial={{ scale: 1 }}
               animate={{ scale: isAnimating ? [1, 1.1, 1] : 1 }}
-              className="text-3xl font-mono font-bold text-purple-400"
+              className="text-3xl font-mono font-bold text-[#D4AF37]"
             >
               {isAnimating && animationIndex >= 0
                 ? letterData[animationIndex]?.runningSum || 0
@@ -225,7 +225,7 @@ export function LetterSumCalculator() {
             </motion.span>
           </div>
           <div className="text-sm text-muted-foreground">
-            Prime Factorization: <span className="text-purple-400 font-mono">{factorize(totalSum)}</span>
+            Prime Factorization: <span className="text-[#D4AF37] font-mono">{factorize(totalSum)}</span>
           </div>
         </div>
 
@@ -234,19 +234,19 @@ export function LetterSumCalculator() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-4 bg-gradient-to-r from-orange-950/30 to-purple-950/30 rounded-lg border border-orange-900/30"
+            className="p-4 bg-gradient-to-r from-[#050505] to-[#050505] border border-orange-900/30"
           >
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="h-4 w-4 text-orange-400" />
+              <Sparkles className="h-4 w-4 text-[#D4AF37]" />
               <span className="text-sm font-medium">AFZJ Marker Discovery</span>
             </div>
             <div className="font-mono text-sm space-y-1">
               <div>
-                <span className="text-orange-400">A</span>({afzjSum.a}) +
-                <span className="text-orange-400"> F</span>({afzjSum.f}) +
-                <span className="text-orange-400"> Z</span>({afzjSum.z}) +
-                <span className="text-orange-400"> J</span>({afzjSum.j}) =
-                <span className="text-green-400 font-bold"> {afzjSum.sum}</span>
+                <span className="text-[#D4AF37]">A</span>({afzjSum.a}) +
+                <span className="text-[#D4AF37]"> F</span>({afzjSum.f}) +
+                <span className="text-[#D4AF37]"> Z</span>({afzjSum.z}) +
+                <span className="text-[#D4AF37]"> J</span>({afzjSum.j}) =
+                <span className="text-[#D4AF37] font-bold"> {afzjSum.sum}</span>
               </div>
             </div>
             <p className="text-xs text-muted-foreground mt-2">
@@ -257,9 +257,9 @@ export function LetterSumCalculator() {
 
         {/* Significance */}
         {currentPreset && (
-          <div className="p-4 bg-black/20 rounded-lg border border-purple-900/30">
+          <div className="p-4 bg-black/20 border border-purple-900/30">
             <p className="text-sm text-muted-foreground">
-              <span className="text-purple-400 font-medium">Significance: </span>
+              <span className="text-[#D4AF37] font-medium">Significance: </span>
               {currentPreset.significance}
             </p>
           </div>
@@ -268,14 +268,14 @@ export function LetterSumCalculator() {
 
       {/* Letter Values Reference */}
       <details className="mt-6">
-        <summary className="text-sm text-muted-foreground cursor-pointer hover:text-purple-400 transition-colors">
+        <summary className="text-sm text-muted-foreground cursor-pointer hover:text-[#D4AF37] transition-colors">
           Show letter values (A=1, B=2, ... Z=26)
         </summary>
-        <div className="mt-3 p-3 bg-black/20 rounded-lg">
+        <div className="mt-3 p-3 bg-black/20">
           <div className="grid grid-cols-13 gap-1 text-xs font-mono text-center">
             {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((letter, i) => (
               <div key={letter} className="p-1">
-                <div className="text-purple-400">{letter}</div>
+                <div className="text-[#D4AF37]">{letter}</div>
                 <div className="text-muted-foreground">{i + 1}</div>
               </div>
             ))}

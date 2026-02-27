@@ -28,10 +28,10 @@ export function ErrorScreen({
         {/* Error icon with animated ring */}
         <div className="relative">
           <div
-            className={`absolute inset-0 rounded-full border-2 ${config.color} opacity-20 animate-ping`}
+            className={`absolute inset-0 border-2 ${config.color} opacity-20 animate-ping`}
           />
           <div
-            className={`w-24 h-24 rounded-full bg-gray-900 border-2 border-current flex items-center justify-center ${config.color}`}
+            className={`w-24 h-24 bg-gray-900 border-2 border-current flex items-center justify-center ${config.color}`}
           >
             <Icon className="w-12 h-12" />
           </div>
@@ -46,7 +46,7 @@ export function ErrorScreen({
         </div>
 
         {/* Error type badge */}
-        <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full">
+        <div className="px-3 py-1 bg-white/5 border border-white/[0.04]">
           <span className="text-xs text-gray-500 uppercase tracking-wider">
             {error.type.replace('_', ' ')}
           </span>
@@ -57,7 +57,7 @@ export function ErrorScreen({
           <div className="space-y-3">
             <Button
               onClick={onRetry}
-              className="gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white"
+              className="gap-2 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] hover:from-[#D4AF37] hover:to-[#D4AF37] text-white"
             >
               <RefreshCw className="w-4 h-4" />
               Try Again
@@ -80,7 +80,7 @@ export function ErrorScreen({
         )}
 
         {/* Troubleshooting tips */}
-        <div className="pt-4 border-t border-white/10 w-full">
+        <div className="pt-4 border-t border-white/[0.04] w-full">
           <p className="text-[10px] text-gray-600 uppercase tracking-wider mb-2">
             Troubleshooting
           </p>

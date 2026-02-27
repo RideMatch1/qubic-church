@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo } from 'react'
-import { Card } from '@/components/ui/card'
 import {
   Zap,
   Clock,
@@ -70,15 +69,15 @@ function EnergyBar({ energy, maxEnergy = 64 }: { energy: number; maxEnergy?: num
 
   const color =
     energy > 0
-      ? 'from-green-500 to-emerald-500'
+      ? 'from-[#D4AF37] to-[#D4AF37]/70'
       : energy < 0
-      ? 'from-red-500 to-orange-500'
+      ? 'from-red-500 to-red-400'
       : 'from-gray-500 to-gray-400'
 
   return (
-    <div className="relative h-4 bg-gray-800 rounded-full overflow-hidden">
+    <div className="relative h-4 bg-[#0a0a0a] overflow-hidden border border-white/[0.04]">
       {/* Center line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-600" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08]" />
 
       {/* Energy bar */}
       <div
@@ -113,15 +112,15 @@ function StatePatternVisualization({ states }: { states: number[] }) {
       const state = states[idx] ?? 0
       const color =
         state > 0
-          ? 'bg-green-500'
+          ? 'bg-[#D4AF37]'
           : state < 0
           ? 'bg-red-500'
-          : 'bg-gray-700'
+          : 'bg-white/[0.06]'
 
       row.push(
         <div
           key={idx}
-          className={`w-2 h-2 rounded-sm ${color} transition-colors duration-150`}
+          className={`w-2 h-2 ${color} transition-colors duration-150`}
           title={`[${idx}]: ${state}`}
         />
       )
@@ -134,7 +133,7 @@ function StatePatternVisualization({ states }: { states: number[] }) {
   }
 
   return (
-    <div className="flex flex-col gap-0.5 p-3 bg-gray-800/30 rounded-lg">
+    <div className="flex flex-col gap-0.5 p-3 bg-[#0a0a0a] border border-white/[0.04]">
       {rows}
     </div>
   )
@@ -155,36 +154,36 @@ function DistributionBars({
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-3">
-        <div className="w-12 text-right text-sm text-gray-400">+1</div>
-        <div className="flex-1 bg-gray-800 rounded-full h-3 overflow-hidden">
+        <div className="w-12 text-right text-sm text-zinc-400">+1</div>
+        <div className="flex-1 bg-[#0a0a0a] h-3 overflow-hidden border border-white/[0.04]">
           <div
-            className="h-full bg-gradient-to-r from-green-500 to-emerald-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/70 transition-all duration-500"
             style={{ width: `${posPercent}%` }}
           />
         </div>
-        <div className="w-12 text-sm text-gray-300">{distribution.positive}</div>
+        <div className="w-12 text-sm text-zinc-300">{distribution.positive}</div>
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="w-12 text-right text-sm text-gray-400">0</div>
-        <div className="flex-1 bg-gray-800 rounded-full h-3 overflow-hidden">
+        <div className="w-12 text-right text-sm text-zinc-400">0</div>
+        <div className="flex-1 bg-[#0a0a0a] h-3 overflow-hidden border border-white/[0.04]">
           <div
-            className="h-full bg-gradient-to-r from-gray-500 to-gray-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-zinc-500 to-zinc-400 transition-all duration-500"
             style={{ width: `${neuPercent}%` }}
           />
         </div>
-        <div className="w-12 text-sm text-gray-300">{distribution.neutral}</div>
+        <div className="w-12 text-sm text-zinc-300">{distribution.neutral}</div>
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="w-12 text-right text-sm text-gray-400">-1</div>
-        <div className="flex-1 bg-gray-800 rounded-full h-3 overflow-hidden">
+        <div className="w-12 text-right text-sm text-zinc-400">-1</div>
+        <div className="flex-1 bg-[#0a0a0a] h-3 overflow-hidden border border-white/[0.04]">
           <div
-            className="h-full bg-gradient-to-r from-red-500 to-orange-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-red-500 to-red-400 transition-all duration-500"
             style={{ width: `${negPercent}%` }}
           />
         </div>
-        <div className="w-12 text-sm text-gray-300">{distribution.negative}</div>
+        <div className="w-12 text-sm text-zinc-300">{distribution.negative}</div>
       </div>
     </div>
   )
@@ -206,50 +205,50 @@ export function OutputPanel({
     if (!result) return null
     switch (result.endReason) {
       case 'converged':
-        return <CheckCircle2 className="w-4 h-4 text-green-500" />
+        return <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
       case 'all_nonzero':
-        return <Zap className="w-4 h-4 text-yellow-500" />
+        return <Zap className="w-4 h-4 text-[#D4AF37]/70" />
       case 'max_ticks':
-        return <XCircle className="w-4 h-4 text-orange-500" />
+        return <XCircle className="w-4 h-4 text-red-500" />
       default:
-        return <MinusCircle className="w-4 h-4 text-gray-500" />
+        return <MinusCircle className="w-4 h-4 text-zinc-500" />
     }
   }, [result])
 
   if (!result && !animation.isProcessing) {
     return (
-      <Card className="bg-gray-900/50 border-gray-800/50 backdrop-blur-sm h-full">
+      <div className="bg-[#050505] border border-white/[0.04] backdrop-blur-sm h-full">
         <div className="p-6 h-full flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 rounded-full bg-gray-800/50 flex items-center justify-center mb-4">
-            <Activity className="w-8 h-8 text-gray-600" />
+          <div className="w-16 h-16 bg-[#0a0a0a] border border-white/[0.04] flex items-center justify-center mb-4">
+            <Activity className="w-8 h-8 text-zinc-600" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-400">No Results Yet</h3>
-          <p className="text-sm text-gray-500 mt-1">
+          <h3 className="text-lg font-semibold text-zinc-400">No Results Yet</h3>
+          <p className="text-sm text-zinc-500 mt-1">
             Enter an input and click PROCESS to see the neural network output
           </p>
         </div>
-      </Card>
+      </div>
     )
   }
 
   return (
     <div className="space-y-6">
       {/* Energy Card */}
-      <Card className="bg-gray-900/50 border-gray-800/50 backdrop-blur-sm">
+      <div className="bg-[#050505] border border-white/[0.04] backdrop-blur-sm">
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold flex items-center gap-2">
-              <Zap className="w-5 h-5 text-yellow-500" />
+              <Zap className="w-5 h-5 text-[#D4AF37]" />
               Energy Output
             </h2>
             {result && (
               <span
-                className={`text-sm font-medium px-3 py-1 rounded-full ${
+                className={`text-sm font-medium px-3 py-1 ${
                   result.energy > 0
-                    ? 'bg-green-500/20 text-green-400'
+                    ? 'bg-[#D4AF37]/20 text-[#D4AF37]'
                     : result.energy < 0
                     ? 'bg-red-500/20 text-red-400'
-                    : 'bg-gray-500/20 text-gray-400'
+                    : 'bg-zinc-500/20 text-zinc-400'
                 }`}
               >
                 {energyLabel}
@@ -261,84 +260,84 @@ export function OutputPanel({
 
           {result && (
             <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-              <div className="bg-gray-800/30 rounded-lg p-3">
+              <div className="bg-[#0a0a0a] border border-white/[0.04] p-3">
                 <div className="text-2xl font-bold text-white">{result.energy}</div>
-                <div className="text-xs text-gray-500">Energy</div>
+                <div className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Energy</div>
               </div>
-              <div className="bg-gray-800/30 rounded-lg p-3">
-                <div className="text-2xl font-bold text-cyan-400">{result.ticks}</div>
-                <div className="text-xs text-gray-500">Ticks</div>
+              <div className="bg-[#0a0a0a] border border-white/[0.04] p-3">
+                <div className="text-2xl font-bold text-[#D4AF37]">{result.ticks}</div>
+                <div className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">Ticks</div>
               </div>
-              <div className="bg-gray-800/30 rounded-lg p-3">
-                <div className="text-2xl font-bold text-purple-400">
+              <div className="bg-[#0a0a0a] border border-white/[0.04] p-3">
+                <div className="text-2xl font-bold text-[#D4AF37]/80">
                   {result.durationMs.toFixed(1)}
                 </div>
-                <div className="text-xs text-gray-500">ms</div>
+                <div className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">ms</div>
               </div>
             </div>
           )}
         </div>
-      </Card>
+      </div>
 
       {/* Anna Response - Only shown for COORDS input */}
       {result?.inputType === 'coords' && matrixQuery && (
-        <Card className="bg-gradient-to-br from-purple-900/30 to-cyan-900/30 border-purple-500/30 backdrop-blur-sm">
+        <div className="bg-[#050505] border border-[#D4AF37]/20 backdrop-blur-sm">
           <div className="p-6">
             <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-              <MessageCircle className="w-5 h-5 text-purple-400" />
+              <MessageCircle className="w-5 h-5 text-[#D4AF37]" />
               Anna Bot Response
-              <span className="ml-auto text-xs text-gray-400 font-normal">
+              <span className="ml-auto text-xs text-zinc-400 font-normal">
                 @annasolana
               </span>
             </h2>
 
             {/* The actual Anna response character */}
-            <div className="bg-gray-900/50 rounded-xl p-6 mb-4 text-center">
+            <div className="bg-[#0a0a0a] border border-white/[0.04] p-6 mb-4 text-center">
               <div className="text-6xl font-mono font-bold text-white mb-2">
                 {matrixValueToAnnaChar(matrixQuery.value)}
               </div>
-              <div className="text-sm text-gray-400">
+              <div className="text-sm text-zinc-400">
                 {getAnnaCharDescription(matrixQuery.value)}
               </div>
             </div>
 
             {/* Matrix details */}
             <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="bg-gray-800/30 rounded-lg p-3">
-                <div className="text-gray-400 mb-1 flex items-center gap-1">
+              <div className="bg-[#0a0a0a] border border-white/[0.04] p-3">
+                <div className="text-zinc-400 mb-1 flex items-center gap-1">
                   <Grid3X3 className="w-3 h-3" />
                   Coordinates
                 </div>
-                <div className="font-mono text-cyan-400 text-lg">
+                <div className="font-mono text-[#D4AF37] text-lg">
                   {matrixQuery.annaFormat}
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-zinc-500">
                   Matrix [{matrixQuery.row}, {matrixQuery.col}]
                 </div>
               </div>
 
-              <div className="bg-gray-800/30 rounded-lg p-3">
-                <div className="text-gray-400 mb-1">Raw Value</div>
-                <div className="font-mono text-orange-400 text-lg">
+              <div className="bg-[#0a0a0a] border border-white/[0.04] p-3">
+                <div className="text-zinc-400 mb-1">Raw Value</div>
+                <div className="font-mono text-[#D4AF37]/80 text-lg">
                   {matrixQuery.value}
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-zinc-500">
                   {matrixQuery.hex}
                 </div>
               </div>
             </div>
 
             {/* Neighbors */}
-            <div className="mt-4 bg-gray-800/30 rounded-lg p-3">
-              <div className="text-gray-400 text-sm mb-2">Neighboring Cells</div>
+            <div className="mt-4 bg-[#0a0a0a] border border-white/[0.04] p-3">
+              <div className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono mb-2">Neighboring Cells</div>
               <div className="grid grid-cols-8 gap-1">
                 {matrixQuery.neighbors.map((n, i) => (
                   <div
                     key={i}
-                    className={`text-xs text-center py-1 rounded ${
-                      n > 0 ? 'bg-green-500/20 text-green-400' :
+                    className={`text-xs text-center py-1 ${
+                      n > 0 ? 'bg-[#D4AF37]/20 text-[#D4AF37]' :
                       n < 0 ? 'bg-red-500/20 text-red-400' :
-                      'bg-gray-700/50 text-gray-400'
+                      'bg-white/[0.04] text-zinc-400'
                     }`}
                     title={`Neighbor ${i}: ${n}`}
                   >
@@ -346,40 +345,40 @@ export function OutputPanel({
                   </div>
                 ))}
               </div>
-              <div className="text-xs text-gray-500 mt-2">
+              <div className="text-xs text-zinc-500 mt-2">
                 Sum: {matrixQuery.neighborsSum} | Ternary: {matrixQuery.ternary}
               </div>
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
       {/* Processing Info */}
       {result && (
-        <Card className="bg-gray-900/50 border-gray-800/50 backdrop-blur-sm">
+        <div className="bg-[#050505] border border-white/[0.04] backdrop-blur-sm">
           <div className="p-6">
             <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-              <Clock className="w-5 h-5 text-cyan-500" />
+              <Clock className="w-5 h-5 text-[#D4AF37]" />
               Processing Details
             </h2>
 
             <div className="space-y-3 text-sm">
               <div className="flex justify-between items-center">
-                <span className="text-gray-400">Input Type</span>
+                <span className="text-zinc-400">Input Type</span>
                 <span className="text-white font-medium uppercase">
                   {result.inputType.replace('_', ' ')}
                 </span>
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-gray-400">Ternary Length</span>
+                <span className="text-zinc-400">Ternary Length</span>
                 <span className="text-white font-medium">
                   {result.inputTernaryLength} bits
                 </span>
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-gray-400">End Reason</span>
+                <span className="text-zinc-400">End Reason</span>
                 <span className="flex items-center gap-2 text-white font-medium">
                   {endReasonIcon}
                   {result.endReason.replace('_', ' ')}
@@ -388,7 +387,7 @@ export function OutputPanel({
 
               {result.decodedValue !== null && (
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Decoded Value</span>
+                  <span className="text-zinc-400">Decoded Value</span>
                   <span className="text-white font-mono text-xs">
                     {result.decodedValue} (0x{result.decodedValue.toString(16).toUpperCase()})
                   </span>
@@ -396,35 +395,35 @@ export function OutputPanel({
               )}
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
       {/* Distribution */}
       {result && (
-        <Card className="bg-gray-900/50 border-gray-800/50 backdrop-blur-sm">
+        <div className="bg-[#050505] border border-white/[0.04] backdrop-blur-sm">
           <div className="p-6">
             <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-              <BarChart3 className="w-5 h-5 text-purple-500" />
+              <BarChart3 className="w-5 h-5 text-[#D4AF37]" />
               State Distribution
             </h2>
 
             <DistributionBars distribution={result.distribution} />
           </div>
-        </Card>
+        </div>
       )}
 
       {/* State Pattern */}
       {result && (
-        <Card className="bg-gray-900/50 border-gray-800/50 backdrop-blur-sm">
+        <div className="bg-[#050505] border border-white/[0.04] backdrop-blur-sm">
           <div className="p-6">
             <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-              <Binary className="w-5 h-5 text-orange-500" />
+              <Binary className="w-5 h-5 text-[#D4AF37]" />
               State Pattern ({result.stateVector.length} neurons)
             </h2>
 
             <StatePatternVisualization states={result.stateVector} />
           </div>
-        </Card>
+        </div>
       )}
     </div>
   )

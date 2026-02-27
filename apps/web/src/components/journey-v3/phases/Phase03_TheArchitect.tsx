@@ -81,14 +81,14 @@ export function Phase03_TheArchitect() {
       <div ref={ref} className="space-y-8">
         {/* CFB Identity Card */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-purple-950/30 to-black/50 border border-purple-500/20"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-[#D4AF37]/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
           <div className="flex flex-col md:flex-row gap-6">
             <div className="md:w-1/3">
-              <div className="w-24 h-24 md:w-32 md:h-32 mx-auto md:mx-0 rounded-full overflow-hidden bg-gradient-to-br from-purple-500/30 to-orange-500/30 border-2 border-white/20">
+              <div className="w-24 h-24 md:w-32 md:h-32 mx-auto md:mx-0 rounded-full overflow-hidden bg-gradient-to-br from-[#D4AF37]/30 to-orange-500/30 border-2 border-white/20">
                 <Image
                   src="/images/cfb-profile.webp"
                   alt="CFB - Come-from-Beyond"
@@ -105,11 +105,11 @@ export function Phase03_TheArchitect() {
 
             <div className="md:w-2/3 space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 rounded-lg bg-white/5">
+                <div className="p-3 bg-white/5">
                   <span className="text-xs text-white/40 block mb-1">Known Projects</span>
                   <span className="text-white font-semibold">NXT, IOTA, Qubic</span>
                 </div>
-                <div className="p-3 rounded-lg bg-white/5">
+                <div className="p-3 bg-white/5">
                   <span className="text-xs text-white/40 block mb-1">Public Since</span>
                   <span className="text-white font-semibold">2013</span>
                 </div>
@@ -121,8 +121,8 @@ export function Phase03_TheArchitect() {
                 from the very beginning.
               </p>
 
-              <div className="flex items-center gap-2 p-3 rounded-lg bg-orange-500/10 border border-orange-500/20">
-                <HelpCircle className="w-5 h-5 text-orange-400 shrink-0" />
+              <div className="flex items-center gap-2 p-3 bg-[#D4AF37]/10 border border-orange-500/20">
+                <HelpCircle className="w-5 h-5 text-[#D4AF37] shrink-0" />
                 <span className="text-sm text-orange-300/80">
                   <strong>The Question:</strong> Is CFB actually Satoshi Nakamoto?
                 </span>
@@ -145,7 +145,7 @@ export function Phase03_TheArchitect() {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-cyan-500 to-purple-500" />
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#D4AF37] via-[#D4AF37] to-[#D4AF37]" />
 
             <div className="space-y-3">
               {timeline.map((event, index) => {
@@ -168,16 +168,16 @@ export function Phase03_TheArchitect() {
                         color === 'orange'
                           ? 'bg-orange-500 border-orange-400'
                           : color === 'cyan'
-                          ? 'bg-cyan-500 border-cyan-400'
+                          ? 'bg-[#D4AF37] border-[#D4AF37]'
                           : color === 'purple'
                           ? 'bg-purple-500 border-purple-400'
-                          : 'bg-blue-500 border-blue-400'
+                          : 'bg-[#D4AF37] border-blue-400'
                       }`}
                     />
 
                     <button
                       onClick={() => setExpandedEvent(isExpanded ? null : index)}
-                      className={`w-full text-left p-4 rounded-lg transition-all duration-200 ${
+                      className={`w-full text-left p-4 transition-all duration-200 ${
                         isExpanded ? 'bg-white/10' : 'bg-white/5 hover:bg-white/10'
                       }`}
                     >
@@ -188,7 +188,7 @@ export function Phase03_TheArchitect() {
                         </div>
                         <div className="flex items-center gap-2">
                           {event.verified && (
-                            <CheckCircle className="w-4 h-4 text-green-400" />
+                            <CheckCircle className="w-4 h-4 text-[#D4AF37]" />
                           )}
                           <motion.div
                             animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -210,7 +210,7 @@ export function Phase03_TheArchitect() {
                           className="overflow-hidden"
                         >
                           <div className="px-4 pb-4 pt-2">
-                            <div className="p-3 rounded-lg bg-black/20 border-l-2 border-white/20">
+                            <div className="p-3 bg-black/20 border-l-2 border-white/20">
                               <p className="text-sm text-white/70 leading-relaxed">
                                 {event.details}
                               </p>
@@ -234,9 +234,9 @@ export function Phase03_TheArchitect() {
         >
           <div className="space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg bg-white/5">
+              <div className="p-4 bg-white/5">
                 <div className="flex items-center gap-2 mb-2">
-                  <Bitcoin className="w-4 h-4 text-orange-400" />
+                  <Bitcoin className="w-4 h-4 text-[#D4AF37]" />
                   <span className="font-medium text-white/90">Mathematical Signatures</span>
                 </div>
                 <p className="text-sm text-white/60">
@@ -244,9 +244,9 @@ export function Phase03_TheArchitect() {
                   architecture
                 </p>
               </div>
-              <div className="p-4 rounded-lg bg-white/5">
+              <div className="p-4 bg-white/5">
                 <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-4 h-4 text-purple-400" />
+                  <Calendar className="w-4 h-4 text-[#D4AF37]" />
                   <span className="font-medium text-white/90">Timeline Gap</span>
                 </div>
                 <p className="text-sm text-white/60">

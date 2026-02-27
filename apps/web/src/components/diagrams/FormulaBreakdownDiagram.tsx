@@ -15,15 +15,15 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
     return (
       <div className="w-full">
         {/* Compact formula display */}
-        <div className="text-center py-3 px-4 bg-card rounded-lg border border-border">
+        <div className="text-center py-3 px-4 bg-card border border-border">
           <div className="font-mono text-lg md:text-xl font-bold flex flex-wrap justify-center items-baseline gap-1">
             <span className="text-primary">625,284</span>
             <span className="text-muted-foreground">=</span>
-            <span className="text-orange-500">283</span>
+            <span className="text-[#D4AF37]">283</span>
             <span className="text-muted-foreground">x</span>
-            <span className="text-blue-500">47<sup className="text-sm">2</sup></span>
+            <span className="text-[#D4AF37]">47<sup className="text-sm">2</sup></span>
             <span className="text-muted-foreground">+</span>
-            <span className="text-green-500">137</span>
+            <span className="text-[#D4AF37]">137</span>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
       <div className="space-y-4">
         {/* Main formula */}
         <motion.div
-          className="text-center py-3 px-4 bg-card rounded-lg border border-border overflow-hidden"
+          className="text-center py-3 px-4 bg-card border border-border overflow-hidden"
           initial={animated ? { opacity: 0, y: 10 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -58,7 +58,7 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
               =
             </motion.span>
             <motion.span
-              className="text-orange-500"
+              className="text-[#D4AF37]"
               initial={animated ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
               transition={{ delay: baseDelay + 0.2 }}
@@ -74,7 +74,7 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
               x
             </motion.span>
             <motion.span
-              className="text-blue-500"
+              className="text-[#D4AF37]"
               initial={animated ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
               transition={{ delay: baseDelay + 0.4 }}
@@ -90,7 +90,7 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
               +
             </motion.span>
             <motion.span
-              className="text-green-500"
+              className="text-[#D4AF37]"
               initial={animated ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
               transition={{ delay: baseDelay + 0.6 }}
@@ -103,7 +103,7 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
         {/* Breakdown boxes - 2x2 grid on mobile, 4 columns on larger */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           <motion.div
-            className="p-2 rounded-lg bg-primary/10 border border-primary/30 text-center"
+            className="p-2 bg-primary/10 border border-primary/30 text-center"
             initial={animated ? { opacity: 0, y: 10 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: baseDelay + 0.8 }}
@@ -116,7 +116,7 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
           </motion.div>
 
           <motion.div
-            className="p-2 rounded-lg bg-orange-500/10 border border-orange-500/30 text-center"
+            className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center"
             initial={animated ? { opacity: 0, y: 10 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: baseDelay + 0.9 }}
@@ -124,27 +124,27 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
             <div className="flex items-center justify-center gap-1 mb-1">
               <BitcoinLogoSVG size={16} />
             </div>
-            <div className="font-mono text-sm font-bold text-orange-500">283</div>
+            <div className="font-mono text-sm font-bold text-[#D4AF37]">283</div>
             <div className="text-[9px] text-muted-foreground leading-tight">Block Number</div>
           </motion.div>
 
           <motion.div
-            className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/30 text-center"
+            className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center"
             initial={animated ? { opacity: 0, y: 10 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: baseDelay + 1.0 }}
           >
-            <div className="font-mono text-sm font-bold text-blue-500">47<sup className="text-xs">2</sup></div>
+            <div className="font-mono text-sm font-bold text-[#D4AF37]">47<sup className="text-xs">2</sup></div>
             <div className="text-[9px] text-muted-foreground leading-tight">= 2,209</div>
           </motion.div>
 
           <motion.div
-            className="p-2 rounded-lg bg-green-500/10 border border-green-500/30 text-center"
+            className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center"
             initial={animated ? { opacity: 0, y: 10 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: baseDelay + 1.1 }}
           >
-            <div className="font-mono text-sm font-bold text-green-500">137</div>
+            <div className="font-mono text-sm font-bold text-[#D4AF37]">137</div>
             <div className="text-[9px] text-muted-foreground leading-tight">Physics Const</div>
           </motion.div>
         </div>
@@ -156,8 +156,8 @@ export function FormulaBreakdownDiagram({ animated = true, compact = false }: Fo
           animate={{ opacity: 1 }}
           transition={{ delay: baseDelay + 1.3 }}
         >
-          <div><span className="text-orange-500">283</span> x <span className="text-blue-500">2,209</span> = 625,147</div>
-          <div>625,147 + <span className="text-green-500">137</span> = <span className="text-primary font-bold">625,284</span></div>
+          <div><span className="text-[#D4AF37]">283</span> x <span className="text-[#D4AF37]">2,209</span> = 625,147</div>
+          <div>625,147 + <span className="text-[#D4AF37]">137</span> = <span className="text-primary font-bold">625,284</span></div>
         </motion.div>
       </div>
     </div>

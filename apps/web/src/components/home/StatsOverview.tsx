@@ -31,25 +31,25 @@ function InfoCard({
   const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   const accentClasses = {
-    blue: 'border-blue-500/30 hover:border-blue-500/50',
-    orange: 'border-orange-500/30 hover:border-orange-500/50',
-    purple: 'border-purple-500/30 hover:border-purple-500/50',
-    green: 'border-green-500/30 hover:border-green-500/50',
-    amber: 'border-amber-500/30 hover:border-amber-500/50',
+    blue: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
+    orange: 'border-[#D4AF37]/20 hover:border-orange-500/50',
+    purple: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
+    green: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
+    amber: 'border-[#D4AF37]/20 hover:border-[#D4AF37]/30',
   }
 
   const whyClasses = {
-    blue: 'bg-blue-500/10 text-blue-400',
-    orange: 'bg-orange-500/10 text-orange-400',
-    purple: 'bg-purple-500/10 text-purple-400',
-    green: 'bg-green-500/10 text-green-400',
-    amber: 'bg-amber-500/10 text-amber-400',
+    blue: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    orange: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    purple: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    green: 'bg-[#D4AF37]/10 text-[#D4AF37]',
+    amber: 'bg-[#D4AF37]/10 text-[#D4AF37]',
   }
 
   return (
     <motion.div
       ref={ref}
-      className={`p-6 rounded-xl border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${accentClasses[accentColor]}`}
+      className={`p-6 border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${accentClasses[accentColor]}`}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.6, delay }}
@@ -70,7 +70,7 @@ function InfoCard({
       </div>
 
       {/* Why it matters */}
-      <div className={`mt-4 p-3 rounded-lg ${whyClasses[accentColor]}`}>
+      <div className={`mt-4 p-3 ${whyClasses[accentColor]}`}>
         <div className="text-xs font-semibold mb-1">Why This Matters</div>
         <div className="text-xs opacity-90">{whyItMatters}</div>
       </div>

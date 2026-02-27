@@ -14,7 +14,7 @@ export function ConnectionBridgeDiagram() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange-500/10 border-2 border-orange-500/50 flex items-center justify-center">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#D4AF37]/10 border-2 border-orange-500/50 flex items-center justify-center">
             <BitcoinLogoSVG size={40} />
           </div>
           <div className="mt-2 text-center">
@@ -41,7 +41,7 @@ export function ConnectionBridgeDiagram() {
             </svg>
 
             {/* Line */}
-            <div className="flex-1 mx-3 h-0.5 bg-gradient-to-r from-orange-500 via-primary to-cyan-400 relative">
+            <div className="flex-1 mx-3 h-0.5 bg-gradient-to-r from-[#D4AF37] via-primary to-[#D4AF37] relative">
               {/* Animated data pulse */}
               <motion.div
                 className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-lg shadow-primary/50"
@@ -51,14 +51,14 @@ export function ConnectionBridgeDiagram() {
             </div>
 
             {/* Right arrow */}
-            <svg width="12" height="12" className="text-cyan-400 absolute right-0">
+            <svg width="12" height="12" className="text-[#D4AF37] absolute right-0">
               <path d="M4 2 L10 6 L4 10" fill="none" stroke="currentColor" strokeWidth="2" />
             </svg>
           </div>
 
           {/* DATA label - centered below the line */}
           <motion.div
-            className="mt-2 px-2 py-1 bg-primary/20 rounded text-xs font-mono text-primary"
+            className="mt-2 px-2 py-1 bg-primary/20  text-xs font-mono text-primary"
             animate={{
               opacity: [0.6, 1, 0.6],
             }}
@@ -79,7 +79,7 @@ export function ConnectionBridgeDiagram() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-cyan-500/10 border-2 border-cyan-500/50 flex items-center justify-center">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#D4AF37]/10 border-2 border-[#D4AF37]/30 flex items-center justify-center">
             <QubicLogoSVG size={40} />
           </div>
           <div className="mt-2 text-center">

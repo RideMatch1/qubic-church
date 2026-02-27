@@ -126,13 +126,13 @@ export function JourneyV3Container({ children }: JourneyV3ContainerProps) {
         {/* Subtle gradient background */}
         <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/10 to-black" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#D4AF37]/5 via-transparent to-transparent" />
         </div>
 
         {/* Progress Bar */}
         <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-black/50">
           <div
-            className="h-full bg-gradient-to-r from-orange-500 to-purple-500 transition-all duration-150"
+            className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] transition-all duration-150"
             style={{ width: `${scrollProgress * 100}%` }}
           />
         </div>

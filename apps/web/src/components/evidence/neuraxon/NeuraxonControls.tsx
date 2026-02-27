@@ -107,7 +107,7 @@ export function QortexControls({
       <div className="absolute bottom-4 left-4 right-4 pointer-events-auto">
         <button
           onClick={() => setIsCollapsed(false)}
-          className="w-full flex items-center justify-center gap-2 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-3 text-white/70 hover:text-white transition-colors"
+          className="w-full flex items-center justify-center gap-2 bg-black/80 backdrop-blur-md border border-white/[0.04] p-3 text-white/70 hover:text-white transition-colors"
         >
           <ChevronUp className="w-4 h-4" />
           <span className="text-sm">Show Controls</span>
@@ -125,35 +125,35 @@ export function QortexControls({
       {metadata && (
         <div className="hidden md:flex items-center justify-center gap-4 lg:gap-6 text-[10px] lg:text-xs text-white/60">
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-blue-500" />
+            <span className="w-2 h-2 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]" />
             <span className="text-white/80 font-medium">{metadata.totalNodes.toLocaleString()}</span>
             <span>neurons</span>
           </span>
           <span className="hidden lg:flex items-center gap-1.5">
-            <span className="w-3 h-px bg-gradient-to-r from-green-500 via-yellow-500 to-purple-500" />
+            <span className="w-3 h-px bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#D4AF37]" />
             <span className="text-white/80 font-medium">{metadata.totalEdges.toLocaleString()}</span>
             <span>synapses</span>
           </span>
           <span className="flex items-center gap-1.5" title="Positive state (+1)">
-            <span className="w-2 h-2 rounded bg-orange-500/50" />
-            <span className="text-orange-400 font-mono">{metadata.stateDistribution.positive}</span>
+            <span className="w-2 h-2 bg-[#D4AF37]/50" />
+            <span className="text-[#D4AF37] font-mono">{metadata.stateDistribution.positive}</span>
             <span className="text-white/40 hidden lg:inline">+1</span>
           </span>
           <span className="flex items-center gap-1.5" title="Neutral state (0)">
-            <span className="w-2 h-2 rounded bg-gray-500/50" />
+            <span className="w-2 h-2 bg-gray-500/50" />
             <span className="text-gray-400 font-mono">{metadata.stateDistribution.zero}</span>
             <span className="text-white/40 hidden lg:inline">0</span>
           </span>
           <span className="flex items-center gap-1.5" title="Negative state (-1)">
-            <span className="w-2 h-2 rounded bg-blue-500/50" />
-            <span className="text-blue-400 font-mono">{metadata.stateDistribution.negative}</span>
+            <span className="w-2 h-2 bg-[#D4AF37]/50" />
+            <span className="text-[#D4AF37] font-mono">{metadata.stateDistribution.negative}</span>
             <span className="text-white/40 hidden lg:inline">-1</span>
           </span>
         </div>
       )}
 
       {/* Main controls */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl p-2 sm:p-3">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 bg-black/80 backdrop-blur-md border border-white/[0.04] p-2 sm:p-3">
         {/* Mobile collapse button */}
         <button
           onClick={() => setIsCollapsed(true)}
@@ -175,7 +175,7 @@ export function QortexControls({
                 setSearchError(null)
               }}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-              className={`w-full sm:w-40 lg:w-48 pl-8 h-8 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/40 ${
+              className={`w-full sm:w-40 lg:w-48 pl-8 h-8 text-sm bg-white/5 border-white/[0.04] text-white placeholder:text-white/40 ${
                 searchError ? 'border-red-500/50' : ''
               }`}
             />
@@ -208,14 +208,14 @@ export function QortexControls({
             size="icon"
             className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10"
             onClick={() => onFrameChange(Math.max(0, frameIndex - 1))}
-            title="Previous frame (←)"
+            title="Previous frame"
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-9 text-white hover:bg-white/20 border border-white/20"
+            className="h-9 w-9 text-white hover:bg-white/20 border border-white/[0.04]"
             onClick={() => setIsPlaying((p) => !p)}
             title="Play/Pause (Space)"
           >
@@ -230,7 +230,7 @@ export function QortexControls({
             size="icon"
             className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10"
             onClick={() => onFrameChange(Math.min(totalFrames - 1, frameIndex + 1))}
-            title="Next frame (→)"
+            title="Next frame"
           >
             <ChevronRight className="w-4 h-4" />
           </Button>
@@ -265,11 +265,11 @@ export function QortexControls({
                 className="fixed inset-0 z-10"
                 onClick={() => setShowSpeedOptions(false)}
               />
-              <div className="absolute bottom-full left-0 mb-2 bg-black/90 border border-white/10 rounded-lg p-1 z-20">
+              <div className="absolute bottom-full left-0 mb-2 bg-[#050505] border border-white/[0.04] p-1 z-20">
                 {SPEED_OPTIONS.map((speed) => (
                   <button
                     key={speed}
-                    className={`block w-full px-3 py-1.5 text-xs text-left rounded transition-colors ${
+                    className={`block w-full px-3 py-1.5 text-xs text-left transition-colors ${
                       playbackSpeed === speed
                         ? 'bg-white/20 text-white'
                         : 'text-white/70 hover:bg-white/10 hover:text-white'

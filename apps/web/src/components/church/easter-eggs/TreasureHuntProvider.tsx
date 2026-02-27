@@ -153,12 +153,12 @@ export function HiddenFragment({
         onClick={handleClick}
         className={`
           inline-flex items-center justify-center
-          w-6 h-6 rounded-full text-xs cursor-pointer
+          w-6 h-6 text-xs cursor-pointer
           transition-all duration-300
           ${
             found
-              ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-              : 'bg-white/5 text-white/20 hover:text-cyan-400 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20'
+              ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30'
+              : 'bg-white/5 text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 border border-transparent hover:border-[#D4AF37]/20'
           }
         `}
         whileHover={{ scale: 1.3 }}
@@ -177,13 +177,13 @@ export function HiddenFragment({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.8 }}
           >
-            <div className="bg-black/90 border border-yellow-500/30 rounded-lg px-4 py-3 text-center min-w-[200px] backdrop-blur-sm">
-              <p className="text-yellow-400 text-lg mb-1">{fragment.symbol}</p>
+            <div className="bg-black/90 border border-[#D4AF37]/30 px-4 py-3 text-center min-w-[200px] backdrop-blur-sm">
+              <p className="text-[#D4AF37] text-lg mb-1">{fragment.symbol}</p>
               <p className="text-white/90 text-sm font-medium">
                 {fragment.clue}
               </p>
               {!found && (
-                <p className="text-green-400 text-xs mt-2">
+                <p className="text-[#D4AF37] text-xs mt-2">
                   Fragment discovered!
                 </p>
               )}
@@ -214,13 +214,13 @@ function TreasureTracker() {
     <>
       {/* Minimized indicator (always visible after first find) */}
       <motion.button
-        className="fixed bottom-6 right-6 z-[9000] flex items-center gap-2 px-3 py-2 rounded-full bg-black/80 border border-yellow-500/30 backdrop-blur-sm cursor-pointer hover:border-yellow-500/50 transition-colors"
+        className="fixed bottom-6 right-6 z-[9000] flex items-center gap-2 px-3 py-2 bg-black/80 border border-[#D4AF37]/30 backdrop-blur-sm cursor-pointer hover:border-[#D4AF37]/50 transition-colors"
         onClick={() => setShowTracker(!showTracker)}
         initial={{ opacity: 0, scale: 0, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         whileHover={{ scale: 1.05 }}
       >
-        <span className="text-yellow-400 text-sm">
+        <span className="text-[#D4AF37] text-sm">
           {allFound ? '\u2B50' : '\u2727'}
         </span>
         <span className="text-white/70 text-xs font-mono">
@@ -228,7 +228,7 @@ function TreasureTracker() {
         </span>
         {allFound && (
           <motion.span
-            className="text-xs text-yellow-400"
+            className="text-xs text-[#D4AF37]"
             animate={{ opacity: [1, 0.5, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -241,7 +241,7 @@ function TreasureTracker() {
       <AnimatePresence>
         {showTracker && (
           <motion.div
-            className="fixed bottom-20 right-6 z-[9000] w-72 bg-black/95 border border-yellow-500/20 rounded-xl backdrop-blur-md overflow-hidden"
+            className="fixed bottom-20 right-6 z-[9000] w-72 bg-black/95 border border-[#D4AF37]/20 backdrop-blur-md overflow-hidden"
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -251,9 +251,9 @@ function TreasureTracker() {
               <h3 className="text-sm font-bold text-white">
                 Fragment Collection
               </h3>
-              <div className="mt-2 h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div className="mt-2 h-1.5 bg-white/10 overflow-hidden">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"
+                  className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/70"
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.5 }}
@@ -276,7 +276,7 @@ function TreasureTracker() {
                     }`}
                   >
                     <span
-                      className={`text-lg ${discovered ? 'text-yellow-400' : 'text-white/20'}`}
+                      className={`text-lg ${discovered ? 'text-[#D4AF37]' : 'text-white/20'}`}
                     >
                       {discovered ? fragment.symbol : '?'}
                     </span>
@@ -291,7 +291,7 @@ function TreasureTracker() {
                       </p>
                     </div>
                     {discovered && (
-                      <span className="text-green-400 text-[10px]">
+                      <span className="text-[#D4AF37] text-[10px]">
                         Found
                       </span>
                     )}
@@ -302,8 +302,8 @@ function TreasureTracker() {
 
             {/* Footer */}
             {allFound && (
-              <div className="px-4 py-3 border-t border-yellow-500/20 bg-yellow-500/5">
-                <p className="text-xs text-yellow-400 text-center font-medium">
+              <div className="px-4 py-3 border-t border-[#D4AF37]/20 bg-[#D4AF37]/5">
+                <p className="text-xs text-[#D4AF37] text-center font-medium">
                   All fragments collected! The Architect acknowledges you.
                 </p>
               </div>

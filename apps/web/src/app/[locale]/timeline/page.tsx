@@ -58,11 +58,11 @@ export default async function TimelinePage(props: {
         <div className="container mx-auto px-4 py-8 text-center">
           <p className="text-sm text-white/40">
             This is the full investigation timeline. Return to{' '}
-            <a href="/" className="text-purple-400 hover:text-purple-300 underline">
+            <a href="/" className="text-[#D4AF37]/70 hover:text-[#D4AF37] underline">
               Home
             </a>{' '}
             or explore the{' '}
-            <a href="/docs" className="text-purple-400 hover:text-purple-300 underline">
+            <a href="/docs" className="text-[#D4AF37]/70 hover:text-[#D4AF37] underline">
               Research Archive
             </a>
           </p>

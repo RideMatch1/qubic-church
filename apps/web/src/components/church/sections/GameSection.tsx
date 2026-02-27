@@ -16,7 +16,7 @@ const AnnaMatrixGame = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full aspect-square bg-black/50 rounded-2xl flex items-center justify-center">
+      <div className="w-full aspect-square bg-black/50 flex items-center justify-center">
         <div className="text-white/50">Loading game...</div>
       </div>
     ),
@@ -63,7 +63,7 @@ export function GameSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="rounded-2xl border border-white/10 overflow-hidden backdrop-blur-sm">
+          <div className="border border-white/[0.04] overflow-hidden backdrop-blur-sm">
             <AnnaMatrixGame />
           </div>
         </motion.div>
@@ -77,9 +77,9 @@ export function GameSection() {
         >
           <a
             href="/game"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white/[0.06] border border-white/15 text-white hover:bg-white/10 hover:border-white/25 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white/[0.06] border border-white/[0.04] text-white hover:bg-white/10 hover:border-white/25 transition-all"
           >
-            <Gamepad2 className="w-5 h-5 text-cyan-400" />
+            <Gamepad2 className="w-5 h-5 text-[#D4AF37]" />
             Play Fullscreen
             <ArrowRight className="w-4 h-4" />
           </a>

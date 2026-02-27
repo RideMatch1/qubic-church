@@ -107,7 +107,7 @@ export function ResearchLayout({
         style={{ width: leftCollapsed ? 0 : `${actualLeftWidth}%` }}
       >
         {/* Left Header */}
-        <div className="flex h-10 items-center justify-between border-b border-white/10 bg-zinc-900/80 px-3">
+        <div className="flex h-10 items-center justify-between border-b border-white/10 bg-[#050505] px-3">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-white/80">{leftTitle}</span>
           </div>
@@ -133,11 +133,11 @@ export function ResearchLayout({
         <div
           className={cn(
             'group relative z-10 flex w-1 cursor-col-resize items-center justify-center bg-white/5 hover:bg-white/20 transition-colors',
-            isDragging && 'bg-blue-500/50'
+            isDragging && 'bg-[#D4AF37]/50'
           )}
           onMouseDown={handleMouseDown}
         >
-          <div className="absolute flex h-8 w-4 items-center justify-center rounded bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute flex h-8 w-4 items-center justify-center bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
             <GripVertical className="h-4 w-4 text-white/50" />
           </div>
         </div>
@@ -152,7 +152,7 @@ export function ResearchLayout({
         style={{ width: rightCollapsed ? 0 : `${actualRightWidth}%` }}
       >
         {/* Right Header */}
-        <div className="flex h-10 items-center justify-between border-b border-white/10 bg-zinc-900/80 px-3">
+        <div className="flex h-10 items-center justify-between border-b border-white/10 bg-[#050505] px-3">
           <div className="flex items-center gap-2">
             {leftCollapsed && (
               <Button
@@ -202,7 +202,7 @@ export function ResearchLayout({
       {/* Collapsed panel indicators */}
       {leftCollapsed && (
         <button
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 px-1 py-8 bg-zinc-800 hover:bg-zinc-700 rounded-r border-y border-r border-white/10 transition-colors"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 px-1 py-8 bg-[#050505] hover:bg-white/10 border-y border-r border-white/[0.06] transition-colors"
           onClick={() => setLeftCollapsed(false)}
         >
           <PanelRightClose className="h-4 w-4 text-white/60 rotate-180" />
@@ -211,7 +211,7 @@ export function ResearchLayout({
 
       {rightCollapsed && (
         <button
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 px-1 py-8 bg-zinc-800 hover:bg-zinc-700 rounded-l border-y border-l border-white/10 transition-colors"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 px-1 py-8 bg-[#050505] hover:bg-white/10 border-y border-l border-white/[0.06] transition-colors"
           onClick={() => setRightCollapsed(false)}
         >
           <PanelLeftClose className="h-4 w-4 text-white/60 rotate-180" />

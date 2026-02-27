@@ -21,11 +21,11 @@ interface SectionDividerProps {
 }
 
 const colorValues: Record<ColorTheme, { primary: string; secondary: string }> = {
-  purple: { primary: 'rgb(139, 92, 246)', secondary: 'rgba(139, 92, 246, 0.3)' },
-  cyan: { primary: 'rgb(34, 211, 238)', secondary: 'rgba(34, 211, 238, 0.3)' },
+  purple: { primary: 'rgb(212, 175, 55)', secondary: 'rgba(212, 175, 55, 0.3)' },
+  cyan: { primary: 'rgb(212, 175, 55)', secondary: 'rgba(212, 175, 55, 0.3)' },
   orange: { primary: 'rgb(249, 115, 22)', secondary: 'rgba(249, 115, 22, 0.3)' },
   yellow: { primary: 'rgb(234, 179, 8)', secondary: 'rgba(234, 179, 8, 0.3)' },
-  pink: { primary: 'rgb(236, 72, 153)', secondary: 'rgba(236, 72, 153, 0.3)' },
+  pink: { primary: 'rgb(212, 175, 55)', secondary: 'rgba(212, 175, 55, 0.3)' },
 }
 
 // Wave SVG Divider
@@ -170,7 +170,7 @@ const StarsDivider = memo(function StarsDivider({ height }: { height: number }) 
       style={{ height: `${height}px` }}
     >
       {/* Static gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D4AF37]/10 to-transparent" />
 
       {/* Stars */}
       {stars.map((star) => (

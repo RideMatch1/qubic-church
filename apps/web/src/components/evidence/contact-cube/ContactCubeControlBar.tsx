@@ -36,7 +36,7 @@ export function ContactCubeControlBar({
   return (
     <div className="flex flex-col gap-2">
       {/* Main actions */}
-      <div className="flex gap-1 bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-1">
+      <div className="flex gap-1 bg-black/70 backdrop-blur-md border border-white/[0.04] p-1">
         <Button
           variant="ghost"
           size="icon"
@@ -85,7 +85,7 @@ export function ContactCubeControlBar({
       </div>
 
       {/* Camera presets */}
-      <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-1">
+      <div className="bg-black/70 backdrop-blur-md border border-white/[0.04] p-1">
         <div className="text-[10px] text-gray-500 px-2 py-1 flex items-center gap-1">
           <Camera className="w-3 h-3" />
           Camera

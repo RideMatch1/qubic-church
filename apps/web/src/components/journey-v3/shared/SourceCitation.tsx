@@ -20,9 +20,9 @@ export function SourceCitation({
   external = false,
 }: SourceCitationProps) {
   const tierColors = {
-    1: 'text-green-400 border-green-500/30 bg-green-500/10',
-    2: 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10',
-    3: 'text-orange-400 border-orange-500/30 bg-orange-500/10',
+    1: 'text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/10',
+    2: 'text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/10',
+    3: 'text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/10',
   }
 
   const tierLabels = {
@@ -38,7 +38,7 @@ export function SourceCitation({
       {tier && (
         <span
           className={cn(
-            'px-1.5 py-0.5 text-[10px] rounded border shrink-0',
+            'px-1.5 py-0.5 text-[10px]  border shrink-0',
             tierColors[tier]
           )}
         >
@@ -50,7 +50,7 @@ export function SourceCitation({
   )
 
   const baseClasses = cn(
-    'inline-flex items-center gap-2 px-3 py-1.5 rounded-lg',
+    'inline-flex items-center gap-2 px-3 py-1.5',
     'text-sm text-white/70 hover:text-white/90',
     'bg-white/5 hover:bg-white/10 border border-white/10',
     'transition-colors cursor-pointer',

@@ -25,14 +25,14 @@ const TIMELINE_EVENTS = [
     date: new Date('2009-01-03T18:15:05Z'),
     label: 'Bitcoin Genesis',
     description: 'Block #0 mined by Satoshi',
-    color: '#F7931A',
+    color: '#D4AF37',
     significance: 'CRITICAL',
   },
   {
     date: new Date('2009-01-12'),
     label: 'First Transaction',
-    description: 'Satoshi → Hal Finney (10 BTC)',
-    color: '#3B82F6',
+    description: 'Satoshi -> Hal Finney (10 BTC)',
+    color: '#D4AF37',
     significance: 'HIGH',
   },
   {
@@ -46,7 +46,7 @@ const TIMELINE_EVENTS = [
     date: new Date('2018-04-01'),
     label: 'Qubic Announced',
     description: 'CFB announces Qubic project',
-    color: '#8B5CF6',
+    color: '#D4AF37',
     significance: 'HIGH',
   },
 ]
@@ -166,7 +166,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
     return (
       <div className="flex items-center justify-center h-[500px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-2 border-primary border-t-transparent animate-spin" />
           <p className="text-muted-foreground">Loading temporal data...</p>
         </div>
       </div>
@@ -178,7 +178,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
+          <div className="p-2 bg-gradient-to-br from-[#D4AF37] to-[#D4AF37]">
             <Clock className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -189,7 +189,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
           </div>
         </div>
 
-        <div className="p-4 bg-muted/30 rounded-lg border border-border">
+        <div className="p-4 bg-muted/30 border border-border">
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div className="flex-1">
@@ -218,31 +218,31 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
           label="Total Addresses"
           value={stats.total.toLocaleString()}
           icon={Calendar}
-          color="text-blue-500"
-          bgColor="bg-blue-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Satoshi Period"
           value={stats.satoshiActive.toLocaleString()}
           subtitle="2009-2010"
           icon={Zap}
-          color="text-orange-500"
-          bgColor="bg-orange-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Patoshi Period"
           value={stats.patoshiPeriod.toLocaleString()}
           subtitle={`${stats.patoshiPercentage.toFixed(1)}%`}
           icon={TrendingUp}
-          color="text-purple-500"
-          bgColor="bg-purple-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Post-2010"
           value={stats.post2010.toLocaleString()}
           icon={Calendar}
-          color="text-green-500"
-          bgColor="bg-green-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
       </motion.div>
 
@@ -251,15 +251,15 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="p-6 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border-2 border-orange-500/50 rounded-xl"
+          className="p-6 bg-gradient-to-r from-[#D4AF37]/20 to-[#D4AF37]/20 border-2 border-[#D4AF37]/50"
         >
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-full bg-orange-500">
+            <div className="p-3 bg-[#D4AF37]">
               <AlertCircle className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-orange-400 mb-2">
-                ⚠️ Significant Temporal Overlap Detected
+              <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
+                Significant Temporal Overlap Detected
               </h3>
               <p className="text-foreground mb-3">
                 <strong>{stats.patoshiPercentage.toFixed(1)}%</strong> of addresses were active
@@ -349,7 +349,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
         </div>
 
         {/* Timeline */}
-        <div className="relative h-64 bg-muted/20 rounded-lg border border-border p-4">
+        <div className="relative h-64 bg-muted/20 border border-border p-4">
           {/* Timeline events */}
           {TIMELINE_EVENTS.map((event, idx) => {
             const yearsSinceGenesis = event.date.getFullYear() - 2009
@@ -366,7 +366,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
                   style={{ backgroundColor: event.color }}
                 />
                 <div
-                  className="w-3 h-3 rounded-full border-2 border-background"
+                  className="w-3 h-3 border-2 border-background"
                   style={{ backgroundColor: event.color }}
                 />
                 <div className="mt-2 text-center max-w-[100px]">
@@ -381,13 +381,13 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
 
           {/* Patoshi period highlight */}
           <div
-            className="absolute bottom-0 h-32 bg-orange-500/10 border-l-2 border-r-2 border-orange-500/30"
+            className="absolute bottom-0 h-32 bg-[#D4AF37]/10 border-l-2 border-r-2 border-[#D4AF37]/30"
             style={{
               left: '0%',
               width: `${((2010 - 2009) / 15) * 100}%`,
             }}
           >
-            <div className="absolute top-2 left-2 text-xs font-medium text-orange-400">
+            <div className="absolute top-2 left-2 text-xs font-medium text-[#D4AF37]">
               Patoshi Period
             </div>
           </div>
@@ -454,9 +454,9 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
             return (
               <div
                 key={year}
-                className="aspect-square rounded-lg border border-border flex flex-col items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+                className="aspect-square border border-border flex flex-col items-center justify-center hover:scale-110 transition-transform cursor-pointer"
                 style={{
-                  backgroundColor: `rgba(59, 130, 246, ${intensity * 0.8})`,
+                  backgroundColor: `rgba(212, 175, 55, ${intensity * 0.8})`,
                 }}
               >
                 <span className="text-xs font-bold">{year}</span>
@@ -499,7 +499,7 @@ export function TemporalAnalysis({ addresses = [] }: TemporalAnalysisProps) {
         <Button onClick={() => setAnalyzing(true)} disabled={analyzing} className="gap-2">
           {analyzing ? (
             <>
-              <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-current border-t-transparent animate-spin" />
               Analyzing...
             </>
           ) : (
@@ -570,7 +570,7 @@ function FilterButton({
   return (
     <button
       onClick={onClick}
-      className={`p-3 rounded-lg border-2 transition-all ${
+      className={`p-3 border-2 transition-all ${
         active
           ? 'border-primary bg-primary/10 text-foreground'
           : 'border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground'

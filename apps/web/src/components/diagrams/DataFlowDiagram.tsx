@@ -38,10 +38,10 @@ export function DataFlowDiagram() {
               {/* Icon circle */}
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0
-                  ${step.color === 'orange' ? 'bg-orange-500/20 text-orange-500' : ''}
-                  ${step.color === 'blue' ? 'bg-blue-500/20 text-blue-500' : ''}
-                  ${step.color === 'purple' ? 'bg-purple-500/20 text-purple-500' : ''}
-                  ${step.color === 'green' ? 'bg-green-500/20 text-green-500' : ''}
+                  ${step.color === 'orange' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : ''}
+                  ${step.color === 'blue' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : ''}
+                  ${step.color === 'purple' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : ''}
+                  ${step.color === 'green' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : ''}
                 `}
               >
                 {renderIcon(step.iconType)}
@@ -82,13 +82,13 @@ export function DataFlowDiagram() {
 
       {/* Verification badge */}
       <motion.div
-        className="mt-4 p-3 rounded-lg bg-green-500/10 border border-green-500/30 text-center"
+        className="mt-4 p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1 }}
       >
         <div className="text-xs text-green-600 font-medium">Verification Rate</div>
-        <div className="text-lg font-bold text-green-500">100% Match</div>
+        <div className="text-lg font-bold text-[#D4AF37]">100% Match</div>
         <div className="text-[10px] text-muted-foreground">All tested blocks verified</div>
       </motion.div>
     </div>

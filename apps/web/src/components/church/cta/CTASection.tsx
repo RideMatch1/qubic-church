@@ -52,7 +52,7 @@ const externalLinks = [
 
 export function CTASection() {
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-background via-purple-950/10 to-background">
+    <section className="w-full py-20 bg-gradient-to-b from-[#050505] via-[#D4AF37]/5 to-[#050505]">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Section Header */}
         <motion.div
@@ -84,14 +84,14 @@ export function CTASection() {
               <Link
                 key={index}
                 href={link.href}
-                className={`p-6 rounded-2xl transition-all group ${
+                className={`p-6 transition-all group ${
                   link.primary
-                    ? 'bg-gradient-to-br from-primary/20 to-purple-500/20 border-2 border-primary/30 hover:border-primary/50'
-                    : 'bg-card border border-border hover:bg-muted/50'
+                    ? 'bg-gradient-to-br from-[#D4AF37]/10 to-[#D4AF37]/5 border-2 border-[#D4AF37]/30 hover:border-[#D4AF37]/50'
+                    : 'bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04]'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <div className={`p-2 rounded-lg ${link.primary ? 'bg-primary/20' : 'bg-muted'}`}>
+                  <div className={`p-2 ${link.primary ? 'bg-[#D4AF37]/20' : 'bg-white/10'}`}>
                     <Icon className={`w-5 h-5 ${link.primary ? 'text-primary' : 'text-muted-foreground'}`} />
                   </div>
                   <ChevronRight
@@ -111,7 +111,7 @@ export function CTASection() {
 
         {/* External Links */}
         <motion.div
-          className="p-6 rounded-2xl bg-card border border-border mb-8"
+          className="p-6 bg-white/[0.02] border border-white/[0.04] mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -129,7 +129,7 @@ export function CTASection() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors group"
+                className="p-4 bg-white/5 hover:bg-white/10 transition-colors group"
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-medium">{link.title}</span>
@@ -143,7 +143,7 @@ export function CTASection() {
 
         {/* NFT Support Section */}
         <motion.div
-          className="p-8 rounded-2xl bg-gradient-to-b from-purple-950/30 to-background border border-purple-500/20 text-center"
+          className="p-8 bg-gradient-to-b from-[#D4AF37]/10 to-[#050505] border border-[#D4AF37]/20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -160,7 +160,7 @@ export function CTASection() {
               href="https://qubicbay.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-600 to-purple-600 hover:from-orange-500 hover:to-purple-500 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center bg-[#D4AF37] hover:bg-[#D4AF37]/90 px-8 py-4 text-base font-semibold text-black shadow-lg transition-all duration-300 hover:scale-105"
             >
               View Anna NFT Collection
               <ExternalLink className="w-4 h-4 ml-2" />

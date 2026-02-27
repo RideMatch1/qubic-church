@@ -168,7 +168,7 @@ export function VirtualizedTable<T extends { id: number | string }>({
       )}
 
       {/* Table */}
-      <div className="border border-border rounded-lg overflow-hidden">
+      <div className="border border-border overflow-hidden">
         {/* Header */}
         <div className="flex bg-muted/50 border-b border-border sticky top-0 z-10">
           {columns.map((col) => (
@@ -249,7 +249,7 @@ export function VirtualizedTable<T extends { id: number | string }>({
                                 className="opacity-0 group-hover:opacity-100 transition-opacity"
                               >
                                 {copiedId === cellId ? (
-                                  <Check className="w-3 h-3 text-green-500" />
+                                  <Check className="w-3 h-3 text-[#D4AF37]" />
                                 ) : (
                                   <Copy className="w-3 h-3 text-muted-foreground hover:text-foreground" />
                                 )}

@@ -16,7 +16,7 @@ interface ProgressRingProps {
 const colorMap = {
   primary: 'stroke-primary',
   bitcoin: 'stroke-bitcoin-orange',
-  qubic: 'stroke-qubic-purple',
+  qubic: 'stroke-[#D4AF37]',
   verified: 'stroke-verified',
 }
 

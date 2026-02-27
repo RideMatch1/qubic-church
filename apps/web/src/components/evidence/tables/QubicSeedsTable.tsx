@@ -79,7 +79,7 @@ export default function QubicSeedsTable() {
               className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
             >
               {copiedId === `seed-${row.id}` ? (
-                <Check className="w-3 h-3 text-green-500" />
+                <Check className="w-3 h-3 text-[#D4AF37]" />
               ) : (
                 <Copy className="w-3 h-3 text-muted-foreground hover:text-foreground" />
               )}
@@ -101,7 +101,7 @@ export default function QubicSeedsTable() {
             className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
           >
             {copiedId === `pub-${row.id}` ? (
-              <Check className="w-3 h-3 text-green-500" />
+              <Check className="w-3 h-3 text-[#D4AF37]" />
             ) : (
               <Copy className="w-3 h-3 text-muted-foreground hover:text-foreground" />
             )}
@@ -117,10 +117,10 @@ export default function QubicSeedsTable() {
       width: '100px',
       render: (value) => (
         <span
-          className={`px-2 py-0.5 rounded text-xs font-medium ${
+          className={`px-2 py-0.5 text-xs font-medium ${
             value
-              ? 'bg-green-500/20 text-green-400'
-              : 'bg-amber-500/20 text-amber-400'
+              ? 'bg-[#D4AF37]/20 text-[#D4AF37]'
+              : 'bg-[#D4AF37]/20 text-[#D4AF37]'
           }`}
         >
           {value ? 'Match' : 'Derived'}
@@ -167,7 +167,7 @@ export default function QubicSeedsTable() {
     return (
       <div className="flex items-center justify-center h-[600px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
           <span className="text-muted-foreground">Loading Qubic seeds...</span>
         </div>
       </div>
@@ -185,10 +185,10 @@ export default function QubicSeedsTable() {
   return (
     <div className="space-y-4">
       {/* Warning Banner */}
-      <div className="flex items-start gap-3 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
-        <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+      <div className="flex items-start gap-3 p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
+        <AlertTriangle className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
         <div>
-          <h4 className="font-medium text-amber-400">Private Seeds Displayed</h4>
+          <h4 className="font-medium text-[#D4AF37]">Private Seeds Displayed</h4>
           <p className="text-sm text-muted-foreground mt-1">
             These are cryptographic private seeds. Anyone with access to these seeds can
             control the corresponding Qubic identities. This data is provided for research

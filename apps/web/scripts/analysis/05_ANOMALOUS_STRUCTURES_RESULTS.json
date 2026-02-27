@@ -1,0 +1,62 @@
+{
+  "title": "Phase 5: Anomalous Structures",
+  "timestamp": "2026-02-24T17:41:09.371018",
+  "n_controls": 1000,
+  "seed": 42,
+  "alpha": 0.001,
+  "n_tests": 3,
+  "bonferroni_threshold": 0.0003333333333333333,
+  "tests": {
+    "max_row_concentration_vs_symmetric": {
+      "name": "max_row_concentration_vs_symmetric",
+      "null_hypothesis": "Anna's maximum row value concentration is consistent with symmetric matrices",
+      "observed": 42.0,
+      "control_mean": 5.158,
+      "control_std": 0.5486674767106211,
+      "control_min": 4.0,
+      "control_max": 8.0,
+      "control_p5": 4.0,
+      "control_p95": 6.0,
+      "p_value": 0.000999000999000999,
+      "alternative": "greater",
+      "unit": "count",
+      "bonferroni_threshold": 0.0003333333333333333,
+      "significant": false,
+      "result": "NOT SIGNIFICANT"
+    },
+    "min_row_entropy_vs_symmetric": {
+      "name": "min_row_entropy_vs_symmetric",
+      "null_hypothesis": "Anna's minimum row entropy is consistent with symmetric matrices",
+      "observed": 3.82623605413756,
+      "control_mean": 6.385078893975047,
+      "control_std": 0.032557278141340934,
+      "control_min": 6.250982007961506,
+      "control_max": 6.466682324168044,
+      "control_p5": 6.327780521165521,
+      "control_p95": 6.433364648336087,
+      "p_value": 0.000999000999000999,
+      "alternative": "less",
+      "unit": "bits",
+      "bonferroni_threshold": 0.0003333333333333333,
+      "significant": false,
+      "result": "NOT SIGNIFICANT"
+    },
+    "n_anomalous_rows_vs_symmetric": {
+      "name": "n_anomalous_rows_vs_symmetric",
+      "null_hypothesis": "Anna's count of anomalous rows is consistent with symmetric matrices",
+      "observed": 54.0,
+      "control_mean": 0.0,
+      "control_std": 0.0,
+      "control_min": 0.0,
+      "control_max": 0.0,
+      "control_p5": 0.0,
+      "control_p95": 0.0,
+      "p_value": 0.000999000999000999,
+      "alternative": "greater",
+      "unit": "rows",
+      "bonferroni_threshold": 0.0003333333333333333,
+      "significant": false,
+      "result": "NOT SIGNIFICANT"
+    }
+  }
+}

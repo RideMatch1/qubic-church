@@ -14,17 +14,17 @@ export function LoadingScreen({ progress, stats }: LoadingScreenProps) {
       <div className="flex flex-col items-center gap-6 max-w-md px-8">
         {/* Animated network icon */}
         <div className="relative w-32 h-32">
-          <div className="absolute inset-0 rounded-full border-2 border-orange-500/30 animate-ping" />
+          <div className="absolute inset-0 border-2 border-[#D4AF37]/30 animate-ping" />
           <div
-            className="absolute inset-4 rounded-full border-2 border-blue-500/30 animate-ping"
+            className="absolute inset-4 border-2 border-[#D4AF37]/30 animate-ping"
             style={{ animationDelay: '200ms' }}
           />
           <div
-            className="absolute inset-8 rounded-full border-2 border-purple-500/30 animate-ping"
+            className="absolute inset-8 border-2 border-[#D4AF37]/30 animate-ping"
             style={{ animationDelay: '400ms' }}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 via-purple-600 to-blue-500 flex items-center justify-center animate-pulse">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] via-[#D4AF37] to-[#D4AF37] flex items-center justify-center animate-pulse">
               <Network className="w-8 h-8 text-white" />
             </div>
           </div>
@@ -32,7 +32,7 @@ export function LoadingScreen({ progress, stats }: LoadingScreenProps) {
 
         {/* Title */}
         <div className="text-center">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#D4AF37] bg-clip-text text-transparent">
             Address Graph
           </h2>
           <p className="text-sm text-gray-500 mt-1">Loading Bitcoin-Qubic network...</p>
@@ -40,9 +40,9 @@ export function LoadingScreen({ progress, stats }: LoadingScreenProps) {
 
         {/* Progress bar */}
         <div className="w-full space-y-2">
-          <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-gray-800 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#D4AF37] transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -55,19 +55,19 @@ export function LoadingScreen({ progress, stats }: LoadingScreenProps) {
         {/* Stats preview */}
         <div className="grid grid-cols-4 gap-4 text-center">
           <div>
-            <div className="text-xl font-bold text-orange-400">
+            <div className="text-xl font-bold text-[#D4AF37]">
               {stats.patoshi > 0 ? stats.patoshi.toLocaleString() : '...'}
             </div>
             <div className="text-[10px] text-gray-600">Patoshi</div>
           </div>
           <div>
-            <div className="text-xl font-bold text-purple-400">
+            <div className="text-xl font-bold text-[#D4AF37]">
               {stats.cfbLinked > 0 ? stats.cfbLinked.toLocaleString() : '...'}
             </div>
             <div className="text-[10px] text-gray-600">CFB-Linked</div>
           </div>
           <div>
-            <div className="text-xl font-bold text-blue-400">
+            <div className="text-xl font-bold text-[#D4AF37]">
               {stats.matrixDerived > 0 ? stats.matrixDerived.toLocaleString() : '...'}
             </div>
             <div className="text-[10px] text-gray-600">Matrix</div>
@@ -130,18 +130,18 @@ function LoadingPhase({
   return (
     <div className="flex items-center gap-2 text-xs">
       <div
-        className={`w-2 h-2 rounded-full transition-colors ${
+        className={`w-2 h-2 transition-colors ${
           done
-            ? 'bg-green-500'
+            ? 'bg-[#D4AF37]'
             : active
-            ? 'bg-orange-500 animate-pulse'
+            ? 'bg-[#D4AF37] animate-pulse'
             : 'bg-gray-700'
         }`}
       />
-      <span className={done ? 'text-green-400' : active ? 'text-orange-400' : 'text-gray-600'}>
+      <span className={done ? 'text-[#D4AF37]' : active ? 'text-[#D4AF37]' : 'text-gray-600'}>
         {label}
       </span>
-      {done && <span className="text-green-500 text-[10px]">✓</span>}
+      {done && <span className="text-[#D4AF37] text-[10px]">✓</span>}
     </div>
   )
 }

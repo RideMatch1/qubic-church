@@ -98,7 +98,7 @@ export default function BitcoinAddressesTable() {
             className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
           >
             {copiedId === `addr-${row.id}` ? (
-              <Check className="w-3 h-3 text-green-500" />
+              <Check className="w-3 h-3 text-[#D4AF37]" />
             ) : (
               <Copy className="w-3 h-3 text-muted-foreground" />
             )}
@@ -123,7 +123,7 @@ export default function BitcoinAddressesTable() {
               className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
             >
               {copiedId === `wif-${row.id}` ? (
-                <Check className="w-3 h-3 text-green-500" />
+                <Check className="w-3 h-3 text-[#D4AF37]" />
               ) : (
                 <Copy className="w-3 h-3 text-muted-foreground" />
               )}
@@ -139,7 +139,7 @@ export default function BitcoinAddressesTable() {
       accessor: (row) => row.method,
       width: '100px',
       render: (value) => (
-        <span className="px-2 py-0.5 bg-primary/20 rounded text-xs">{String(value)}</span>
+        <span className="px-2 py-0.5 bg-primary/20 text-xs">{String(value)}</span>
       ),
     },
     {
@@ -155,8 +155,8 @@ export default function BitcoinAddressesTable() {
       width: '100px',
       render: (value) => (
         <span
-          className={`px-2 py-0.5 rounded text-xs ${
-            value === 'SUCCESS' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+          className={`px-2 py-0.5 text-xs ${
+            value === 'SUCCESS' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'bg-red-500/20 text-red-400'
           }`}
         >
           {String(value)}
@@ -196,7 +196,7 @@ export default function BitcoinAddressesTable() {
               className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
             >
               {copiedId === `derived-${row.id}` ? (
-                <Check className="w-3 h-3 text-green-500" />
+                <Check className="w-3 h-3 text-[#D4AF37]" />
               ) : (
                 <Copy className="w-3 h-3 text-muted-foreground" />
               )}
@@ -211,7 +211,7 @@ export default function BitcoinAddressesTable() {
       accessor: (row) => row.method,
       width: '100px',
       render: (value) => (
-        <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded text-xs">
+        <span className="px-2 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37] text-xs">
           {String(value)}
         </span>
       ),
@@ -240,7 +240,7 @@ export default function BitcoinAddressesTable() {
             className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
           >
             {copiedId === `matrix-${row.id}` ? (
-              <Check className="w-3 h-3 text-green-500" />
+              <Check className="w-3 h-3 text-[#D4AF37]" />
             ) : (
               <Copy className="w-3 h-3 text-muted-foreground" />
             )}
@@ -372,7 +372,7 @@ export default function BitcoinAddressesTable() {
           )}
 
           <div className="text-right">
-            <div className="text-2xl font-bold text-orange-500">
+            <div className="text-2xl font-bold text-[#D4AF37]">
               {(counts.derived + counts.privateKeys + counts.matrix).toLocaleString()}
             </div>
             <div className="text-xs text-muted-foreground">Total Records</div>
@@ -382,7 +382,7 @@ export default function BitcoinAddressesTable() {
 
       {/* Warning Banner */}
       {showPrivateKeys && (activeSubTab === 'private-keys' || activeSubTab === 'derived') && (
-        <div className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+        <div className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/30">
           <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
           <div>
             <h4 className="font-medium text-red-400">Private Keys Visible</h4>
@@ -414,7 +414,7 @@ export default function BitcoinAddressesTable() {
         <TabsContent value="private-keys" className="mt-4">
           {loading.privateKeys ? (
             <div className="flex items-center justify-center h-[500px]">
-              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
             </div>
           ) : (
             <VirtualizedTable
@@ -431,7 +431,7 @@ export default function BitcoinAddressesTable() {
         <TabsContent value="derived" className="mt-4">
           {loading.derived ? (
             <div className="flex items-center justify-center h-[500px]">
-              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
             </div>
           ) : (
             <VirtualizedTable
@@ -448,7 +448,7 @@ export default function BitcoinAddressesTable() {
         <TabsContent value="matrix" className="mt-4">
           {loading.matrix ? (
             <div className="flex items-center justify-center h-[500px]">
-              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin" />
             </div>
           ) : (
             <VirtualizedTable

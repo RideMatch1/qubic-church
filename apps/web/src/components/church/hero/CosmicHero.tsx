@@ -89,9 +89,9 @@ function Starfield() {
         canvas.height / 2,
         canvas.width * 0.6
       )
-      gradient.addColorStop(0, 'rgba(139, 92, 246, 0.15)')
-      gradient.addColorStop(0.3, 'rgba(168, 85, 247, 0.08)')
-      gradient.addColorStop(0.6, 'rgba(249, 115, 22, 0.05)')
+      gradient.addColorStop(0, 'rgba(212, 175, 55, 0.15)')
+      gradient.addColorStop(0.3, 'rgba(212, 175, 55, 0.08)')
+      gradient.addColorStop(0.6, 'rgba(212, 175, 55, 0.05)')
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)')
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -148,7 +148,7 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
         <span className="text-4xl md:text-6xl lg:text-7xl font-mono font-bold text-white tabular-nums">
           {String(value).padStart(2, '0')}
         </span>
-        <div className="absolute inset-0 blur-xl bg-purple-500/30 -z-10" />
+        <div className="absolute inset-0 blur-xl bg-[#D4AF37]/30 -z-10" />
       </div>
       <span className="text-xs md:text-sm text-white/50 uppercase tracking-widest mt-2">
         {label}
@@ -184,7 +184,7 @@ export function CosmicHero() {
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
             <span
-              className="bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-white via-[#D4AF37] to-white bg-clip-text text-transparent"
               style={{
                 textShadow: '0 0 60px rgba(139, 92, 246, 0.5)',
               }}
@@ -196,7 +196,7 @@ export function CosmicHero() {
 
         {/* Decorative line */}
         <motion.div
-          className="w-48 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent my-6"
+          className="w-48 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent my-6"
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -219,7 +219,7 @@ export function CosmicHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <p className="text-sm md:text-base text-purple-400 uppercase tracking-[0.3em] mb-6">
+          <p className="text-sm md:text-base text-[#D4AF37] uppercase tracking-[0.3em] mb-6 font-mono">
             The Convergence
           </p>
 

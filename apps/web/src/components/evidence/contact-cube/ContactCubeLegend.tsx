@@ -22,11 +22,11 @@ export function ContactCubeLegend({ stats, colorTheme, className = '' }: Contact
 
   return (
     <div
-      className={`bg-black/70 backdrop-blur-md border border-white/10 rounded-xl p-4 space-y-3 max-w-[220px] ${className}`}
+      className={`bg-black/70 backdrop-blur-md border border-white/[0.04] p-4 space-y-3 max-w-[220px] ${className}`}
     >
       {/* Header */}
       <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 via-purple-500 to-orange-500 flex items-center justify-center">
+        <div className="w-8 h-8 bg-gradient-to-br from-[#D4AF37] via-[#D4AF37] to-[#D4AF37] flex items-center justify-center">
           <Box className="w-4 h-4 text-white" />
         </div>
         <div>
@@ -37,25 +37,25 @@ export function ContactCubeLegend({ stats, colorTheme, className = '' }: Contact
 
       {/* Matrix Stats */}
       {stats && (
-        <div className="border-t border-white/10 pt-3">
+        <div className="border-t border-white/[0.04] pt-3">
           <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">
             Matrix Stats
           </div>
           <div className="grid grid-cols-3 gap-2">
             <div className="text-center">
-              <div className="text-lg font-bold text-cyan-400 font-mono">
+              <div className="text-lg font-bold text-[#D4AF37] font-mono">
                 {(stats.totalCells / 1000).toFixed(1)}k
               </div>
               <div className="text-[8px] text-gray-500">Cells</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-green-400 font-mono">
+              <div className="text-lg font-bold text-[#D4AF37] font-mono">
                 {stats.symmetryPercentage.toFixed(1)}%
               </div>
               <div className="text-[8px] text-gray-500">Symmetric</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-orange-400 font-mono">{stats.anomalyCells}</div>
+              <div className="text-lg font-bold text-[#D4AF37] font-mono">{stats.anomalyCells}</div>
               <div className="text-[8px] text-gray-500">Anomalies</div>
             </div>
           </div>
@@ -63,12 +63,12 @@ export function ContactCubeLegend({ stats, colorTheme, className = '' }: Contact
       )}
 
       {/* Color Scale */}
-      <div className="border-t border-white/10 pt-3">
+      <div className="border-t border-white/[0.04] pt-3">
         <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">
           Value Scale
         </div>
         <div
-          className="h-3 rounded-full"
+          className="h-3"
           style={{
             background: `linear-gradient(to right, ${theme.negative}, ${theme.zero}, ${theme.positive})`,
           }}
@@ -81,32 +81,32 @@ export function ContactCubeLegend({ stats, colorTheme, className = '' }: Contact
       </div>
 
       {/* Markers Legend */}
-      <div className="border-t border-white/10 pt-3">
+      <div className="border-t border-white/[0.04] pt-3">
         <div className="text-[10px] uppercase tracking-wider text-gray-500 font-medium mb-2">
           Markers
         </div>
         <div className="space-y-1.5">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-yellow-400 shadow-lg shadow-yellow-500/50" />
+            <div className="w-3 h-3 bg-[#D4AF37] shadow-lg shadow-[#D4AF37]/50" />
             <span className="text-[10px] text-gray-400">
-              Special <span className="text-yellow-400 font-mono">[22,22]</span>
+              Special <span className="text-[#D4AF37] font-mono">[22,22]</span>
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-400 shadow-lg shadow-red-500/50" />
+            <div className="w-3 h-3 bg-red-400 shadow-lg shadow-red-500/50" />
             <span className="text-[10px] text-gray-400">
               Anomaly <span className="text-red-400 font-mono">(68)</span>
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-cyan-400 shadow-lg shadow-cyan-500/50" />
+            <div className="w-3 h-3 bg-[#D4AF37] shadow-lg shadow-[#D4AF37]/50" />
             <span className="text-[10px] text-gray-400">Symmetric cells</span>
           </div>
         </div>
       </div>
 
       {/* Symmetry Formula (collapsible) */}
-      <div className="border-t border-white/10 pt-3">
+      <div className="border-t border-white/[0.04] pt-3">
         <button
           onClick={() => setShowFormula(!showFormula)}
           className="w-full flex items-center justify-between text-[10px] text-gray-500 hover:text-gray-300 transition-colors"
@@ -122,8 +122,8 @@ export function ContactCubeLegend({ stats, colorTheme, className = '' }: Contact
           )}
         </button>
         {showFormula && (
-          <div className="mt-2 p-2 bg-purple-500/10 rounded-lg border border-purple-500/20">
-            <code className="text-cyan-300 text-[10px] font-mono block">
+          <div className="mt-2 p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20">
+            <code className="text-[#D4AF37] text-[10px] font-mono block">
               M[r,c] + M[127-r,127-c] = 0
             </code>
             <p className="text-[8px] text-gray-500 mt-1">
@@ -134,9 +134,9 @@ export function ContactCubeLegend({ stats, colorTheme, className = '' }: Contact
       </div>
 
       {/* Keyboard hint */}
-      <div className="border-t border-white/10 pt-2">
+      <div className="border-t border-white/[0.04] pt-2">
         <div className="text-[9px] text-gray-600 text-center">
-          Press <kbd className="px-1 py-0.5 bg-white/10 rounded text-gray-400">?</kbd> for shortcuts
+          Press <kbd className="px-1 py-0.5 bg-white/10 text-gray-400">?</kbd> for shortcuts
         </div>
       </div>
     </div>

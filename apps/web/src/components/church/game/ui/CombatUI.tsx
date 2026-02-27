@@ -485,7 +485,7 @@ export function CombatUI({
       <motion.div
         key={`${row}-${col}`}
         className={`
-          aspect-square rounded-lg border transition-all cursor-pointer
+          aspect-square  border transition-all cursor-pointer
           ${isPlayer ? 'bg-cyan-500/30 border-cyan-400' : ''}
           ${enemy ? `bg-red-500/20 border-red-500/50 ${isTargetable ? 'hover:bg-red-500/40 hover:border-red-400' : ''}` : ''}
           ${!isPlayer && !enemy ? 'bg-white/5 border-white/10' : ''}
@@ -511,14 +511,14 @@ export function CombatUI({
               animate={{ y: [0, -2, 0] }}
               transition={{ duration: 0.5, repeat: Infinity }}
             >
-              <div className="w-6 h-6 bg-cyan-400 rounded-full shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+              <div className="w-6 h-6 bg-cyan-400  shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
             </motion.div>
           )}
           {enemy && (
             <div className="flex flex-col items-center">
               <span className="text-xl">{getEnemyIcon(enemy.type)}</span>
               {/* Mini HP bar */}
-              <div className="w-8 h-1 bg-black/50 rounded-full mt-1 overflow-hidden">
+              <div className="w-8 h-1 bg-black/50  mt-1 overflow-hidden">
                 <div
                   className="h-full bg-red-500 transition-all"
                   style={{ width: `${(enemy.health / enemy.maxHealth) * 100}%` }}
@@ -541,7 +541,7 @@ export function CombatUI({
             <span className="text-white font-bold">COMBAT</span>
             <span className="text-white/50 text-sm">Turn {turnNumber}</span>
           </div>
-          <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+          <div className={`px-3 py-1  text-sm font-medium ${
             isPlayerTurn ? 'bg-cyan-500/20 text-cyan-400' : 'bg-red-500/20 text-red-400'
           }`}>
             {isPlayerTurn ? 'Your Turn' : 'Enemy Turn'}
@@ -552,7 +552,7 @@ export function CombatUI({
           {/* Left Panel - Player Stats & Skills */}
           <div className="space-y-3">
             {/* Player HP */}
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <div className="p-3  bg-white/5 border border-white/10">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-sm flex items-center gap-1">
                   <Heart className="w-4 h-4 text-red-400" /> HP
@@ -561,7 +561,7 @@ export function CombatUI({
                   {playerHP}/{playerStats.maxHealth}
                 </span>
               </div>
-              <div className="h-3 bg-black/50 rounded-full overflow-hidden">
+              <div className="h-3 bg-black/50  overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-red-600 to-red-400"
                   initial={{ width: '100%' }}
@@ -571,14 +571,14 @@ export function CombatUI({
             </div>
 
             {/* Energy */}
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <div className="p-3  bg-white/5 border border-white/10">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-sm flex items-center gap-1">
                   <Zap className="w-4 h-4 text-yellow-400" /> Energy
                 </span>
                 <span className="text-white font-medium">{energy}</span>
               </div>
-              <div className="h-2 bg-black/50 rounded-full overflow-hidden">
+              <div className="h-2 bg-black/50  overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-yellow-600 to-yellow-400 transition-all"
                   style={{ width: `${(energy / 100) * 100}%` }}
@@ -587,7 +587,7 @@ export function CombatUI({
             </div>
 
             {/* Skills */}
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <div className="p-3  bg-white/5 border border-white/10">
               <h3 className="text-white/70 text-sm mb-2 flex items-center gap-1">
                 <Target className="w-4 h-4" /> Skills
               </h3>
@@ -610,7 +610,7 @@ export function CombatUI({
                         }
                       }}
                       disabled={!canUse}
-                      className={`w-full p-2 rounded-lg text-left text-sm transition-all ${
+                      className={`w-full p-2  text-left text-sm transition-all ${
                         canUse
                           ? selectedSkill?.id === skill.id
                             ? 'bg-purple-500/30 border border-purple-400'
@@ -638,7 +638,7 @@ export function CombatUI({
 
           {/* Center Panel - Battle Grid */}
           <div className="flex flex-col items-center">
-            <div className="grid grid-cols-5 gap-1 p-2 rounded-xl bg-black/50 border border-white/20">
+            <div className="grid grid-cols-5 gap-1 p-2  bg-black/50 border border-white/20">
               {Array.from({ length: COMBAT_GRID_SIZE }).map((_, row) =>
                 Array.from({ length: COMBAT_GRID_SIZE }).map((_, col) => renderCell(row, col))
               )}
@@ -650,7 +650,7 @@ export function CombatUI({
               <button
                 onClick={() => handleMove('up')}
                 disabled={!isPlayerTurn || isAnimating}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-2  bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ArrowUp className="w-5 h-5 text-white" />
               </button>
@@ -658,14 +658,14 @@ export function CombatUI({
               <button
                 onClick={() => handleMove('left')}
                 disabled={!isPlayerTurn || isAnimating}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-2  bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ArrowLeft className="w-5 h-5 text-white" />
               </button>
               <button
                 onClick={handleDefend}
                 disabled={!isPlayerTurn || isAnimating}
-                className="p-2 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-2  bg-blue-500/20 hover:bg-blue-500/30 disabled:opacity-30 disabled:cursor-not-allowed"
                 title="Defend"
               >
                 <Shield className="w-5 h-5 text-blue-400" />
@@ -673,7 +673,7 @@ export function CombatUI({
               <button
                 onClick={() => handleMove('right')}
                 disabled={!isPlayerTurn || isAnimating}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-2  bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ArrowRight className="w-5 h-5 text-white" />
               </button>
@@ -681,7 +681,7 @@ export function CombatUI({
               <button
                 onClick={() => handleMove('down')}
                 disabled={!isPlayerTurn || isAnimating}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-2  bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ArrowDown className="w-5 h-5 text-white" />
               </button>
@@ -694,7 +694,7 @@ export function CombatUI({
                 <button
                   onClick={() => handleAttack(selectedEnemy)}
                   disabled={!isPlayerTurn || isAnimating}
-                  className="px-4 py-2 rounded-lg bg-red-500/20 border border-red-500/50 text-red-400 hover:bg-red-500/30 disabled:opacity-30"
+                  className="px-4 py-2  bg-red-500/20 border border-red-500/50 text-red-400 hover:bg-red-500/30 disabled:opacity-30"
                 >
                   <Swords className="w-4 h-4 inline mr-1" />
                   Attack
@@ -703,7 +703,7 @@ export function CombatUI({
               <button
                 onClick={handleEscape}
                 disabled={!isPlayerTurn || isAnimating || energy < ESCAPE_ENERGY_COST}
-                className="px-4 py-2 rounded-lg bg-yellow-500/20 border border-yellow-500/50 text-yellow-400 hover:bg-yellow-500/30 disabled:opacity-30"
+                className="px-4 py-2  bg-yellow-500/20 border border-yellow-500/50 text-yellow-400 hover:bg-yellow-500/30 disabled:opacity-30"
               >
                 <LogOut className="w-4 h-4 inline mr-1" />
                 Escape ({ESCAPE_ENERGY_COST}E)
@@ -727,7 +727,7 @@ export function CombatUI({
           {/* Right Panel - Enemies & Log */}
           <div className="space-y-3">
             {/* Enemy List */}
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <div className="p-3  bg-white/5 border border-white/10">
               <h3 className="text-white/70 text-sm mb-2 flex items-center gap-1">
                 <Skull className="w-4 h-4 text-red-400" /> Enemies
               </h3>
@@ -735,7 +735,7 @@ export function CombatUI({
                 {enemies.map((enemy, idx) => (
                   <div
                     key={enemy.id}
-                    className={`p-2 rounded-lg transition-all ${
+                    className={`p-2  transition-all ${
                       enemy.health <= 0
                         ? 'bg-black/30 opacity-50'
                         : selectedEnemy === idx
@@ -767,7 +767,7 @@ export function CombatUI({
                       )}
                     </div>
                     {enemy.health > 0 && (
-                      <div className="mt-1.5 h-1.5 bg-black/50 rounded-full overflow-hidden">
+                      <div className="mt-1.5 h-1.5 bg-black/50  overflow-hidden">
                         <div
                           className="h-full bg-gradient-to-r from-red-600 to-red-400 transition-all"
                           style={{ width: `${(enemy.health / enemy.maxHealth) * 100}%` }}
@@ -792,7 +792,7 @@ export function CombatUI({
             </div>
 
             {/* Combat Log */}
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10 max-h-40 overflow-hidden">
+            <div className="p-3  bg-white/5 border border-white/10 max-h-40 overflow-hidden">
               <h3 className="text-white/70 text-sm mb-2">Combat Log</h3>
               <div className="space-y-1 text-xs overflow-y-auto max-h-28">
                 {combatLog.slice(-8).map((entry) => (
@@ -827,7 +827,7 @@ export function CombatUI({
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-gradient-to-b from-green-900/50 to-black/90 border border-green-500/50 rounded-2xl p-8 text-center max-w-md"
+              className="bg-gradient-to-b from-green-900/50 to-black/90 border border-green-500/50  p-8 text-center max-w-md"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -841,16 +841,16 @@ export function CombatUI({
               <p className="text-white/60 mb-6">All enemies defeated!</p>
 
               <div className="space-y-3 mb-6">
-                <div className="flex justify-between p-3 rounded-lg bg-white/5">
+                <div className="flex justify-between p-3  bg-white/5">
                   <span className="text-white/70">XP Earned</span>
                   <span className="text-cyan-400 font-bold">+{rewards.xp}</span>
                 </div>
-                <div className="flex justify-between p-3 rounded-lg bg-white/5">
+                <div className="flex justify-between p-3  bg-white/5">
                   <span className="text-white/70">Points</span>
                   <span className="text-yellow-400 font-bold">+{rewards.points}</span>
                 </div>
                 {rewards.items.length > 0 && (
-                  <div className="p-3 rounded-lg bg-white/5">
+                  <div className="p-3  bg-white/5">
                     <span className="text-white/70 block mb-2">Loot</span>
                     <div className="flex flex-wrap gap-2">
                       {rewards.items.map((item, i) => (
@@ -865,7 +865,7 @@ export function CombatUI({
 
               <button
                 onClick={handleVictoryConfirm}
-                className="w-full py-3 rounded-xl bg-green-500 text-white font-bold hover:bg-green-400 transition-colors"
+                className="w-full py-3  bg-green-500 text-white font-bold hover:bg-green-400 transition-colors"
               >
                 Continue
               </button>
@@ -886,7 +886,7 @@ export function CombatUI({
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-gradient-to-b from-red-900/50 to-black/90 border border-red-500/50 rounded-2xl p-8 text-center max-w-md"
+              className="bg-gradient-to-b from-red-900/50 to-black/90 border border-red-500/50  p-8 text-center max-w-md"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -904,7 +904,7 @@ export function CombatUI({
 
               <button
                 onClick={handleDefeatConfirm}
-                className="w-full py-3 rounded-xl bg-red-500 text-white font-bold hover:bg-red-400 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3  bg-red-500 text-white font-bold hover:bg-red-400 transition-colors flex items-center justify-center gap-2"
               >
                 <RotateCcw className="w-5 h-5" />
                 Respawn

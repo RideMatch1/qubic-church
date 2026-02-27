@@ -3,6 +3,7 @@
 /**
  * MissionSection Component
  * Church mission and research principles (standalone version)
+ * Church HUD Design System: no rounded corners, gold accents, angular aesthetic
  */
 
 import { useRef, useState } from 'react'
@@ -20,15 +21,15 @@ function ConfidenceMeter({ value, label }: { value: number; label: string }) {
         <span className="text-muted-foreground">{label}</span>
         <span className="font-mono">{value}%</span>
       </div>
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
+      <div className="h-2 bg-muted overflow-hidden">
         <motion.div
-          className={`h-full rounded-full ${
+          className={`h-full ${
             value >= 80
-              ? 'bg-green-500'
+              ? 'bg-[#D4AF37]'
               : value >= 60
-              ? 'bg-yellow-500'
+              ? 'bg-[#D4AF37]/70'
               : value >= 40
-              ? 'bg-orange-500'
+              ? 'bg-[#D4AF37]/50'
               : 'bg-red-500'
           }`}
           initial={{ width: 0 }}
@@ -69,7 +70,7 @@ export function MissionSection() {
   const [activeTab, setActiveTab] = useState<'mission' | 'tiers'>('mission')
 
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-background via-primary/5 to-background">
+    <section className="w-full py-20 bg-gradient-to-b from-[#050505] via-[#D4AF37]/5 to-[#050505]">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Section Header */}
         <motion.div
@@ -79,9 +80,9 @@ export function MissionSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-4">
-            <Target className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary uppercase tracking-wide">
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-4 py-2 mb-4">
+            <Target className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
               Our Mission
             </span>
           </div>
@@ -97,7 +98,7 @@ export function MissionSection() {
         <div ref={ref} className="space-y-8">
           {/* Mission & Principles Card */}
           <motion.div
-            className="p-6 md:p-8 rounded-2xl bg-card border border-border"
+            className="p-6 md:p-8 bg-white/[0.02] border border-white/[0.04]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.5 }}
@@ -106,20 +107,20 @@ export function MissionSection() {
             <div className="flex gap-2 mb-6">
               <button
                 onClick={() => setActiveTab('mission')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
                   activeTab === 'mission'
-                    ? 'bg-primary/20 text-primary border border-primary/30'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30'
+                    : 'bg-white/5 text-white/50 hover:bg-white/10'
                 }`}
               >
                 Research Principles
               </button>
               <button
                 onClick={() => setActiveTab('tiers')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
                   activeTab === 'tiers'
-                    ? 'bg-purple-500/20 text-purple-500 border border-purple-500/30'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30'
+                    : 'bg-white/5 text-white/50 hover:bg-white/10'
                 }`}
               >
                 Evidence Tiers
@@ -134,7 +135,7 @@ export function MissionSection() {
                   return (
                     <motion.div
                       key={index}
-                      className="p-4 rounded-xl bg-muted/50"
+                      className="p-4 bg-muted/50"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 10 }}
                       transition={{ duration: 0.3, delay: 0.1 * index }}
@@ -152,9 +153,9 @@ export function MissionSection() {
 
             {activeTab === 'tiers' && (
               <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+                <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-0.5 rounded text-xs bg-green-500/30 text-green-500">
+                    <span className="px-2 py-0.5 text-xs bg-[#D4AF37]/30 text-[#D4AF37]">
                       Tier 1
                     </span>
                     <span className="font-medium">Mathematically Verified</span>
@@ -163,9 +164,9 @@ export function MissionSection() {
                     Calculator-verifiable facts. Anyone can reproduce these results.
                   </p>
                 </div>
-                <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
+                <div className="p-4 bg-[#D4AF37]/[0.06] border border-[#D4AF37]/15">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-0.5 rounded text-xs bg-yellow-500/30 text-yellow-500">
+                    <span className="px-2 py-0.5 text-xs bg-[#D4AF37]/20 text-[#D4AF37]/80">
                       Tier 2
                     </span>
                     <span className="font-medium">Statistically Supported</span>
@@ -174,9 +175,9 @@ export function MissionSection() {
                     Patterns with statistical significance (p &lt; 0.05). Multiple data points support the hypothesis.
                   </p>
                 </div>
-                <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
+                <div className="p-4 bg-white/[0.03] border border-white/[0.06]">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-0.5 rounded text-xs bg-orange-500/30 text-orange-500">
+                    <span className="px-2 py-0.5 text-xs bg-white/10 text-white/60">
                       Tier 3
                     </span>
                     <span className="font-medium">Hypothetical</span>
@@ -191,7 +192,7 @@ export function MissionSection() {
 
           {/* Confidence Levels */}
           <motion.div
-            className="p-6 rounded-2xl bg-card border border-border"
+            className="p-6 bg-[#050505] border border-white/[0.04]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -215,7 +216,7 @@ export function MissionSection() {
 
           {/* Disclaimer */}
           <motion.div
-            className="p-4 rounded-xl bg-muted/50 border border-border"
+            className="p-4 bg-muted/50 border border-white/[0.04]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}

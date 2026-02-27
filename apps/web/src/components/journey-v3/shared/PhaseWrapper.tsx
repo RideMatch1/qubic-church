@@ -29,7 +29,7 @@ export function PhaseWrapper({
   const backgroundStyles = {
     default: 'bg-transparent',
     dark: 'bg-black/40',
-    gradient: 'bg-gradient-to-b from-purple-950/20 to-transparent',
+    gradient: 'bg-gradient-to-b from-[#050505]/80 to-transparent',
   }
 
   return (

@@ -37,11 +37,11 @@ function LoadingCube() {
 function ErrorDisplay({ error, onRetry }: { error: string; onRetry: () => void }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-black/80">
-      <div className="text-center p-6 bg-neutral-900 rounded-lg border border-red-500/30">
+      <div className="text-center p-6 bg-neutral-900 border border-red-500/30">
         <p className="text-red-400 mb-4">{error}</p>
         <button
           onClick={onRetry}
-          className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-md transition-colors"
+          className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-colors"
         >
           Retry
         </button>
@@ -338,7 +338,7 @@ export function ContactCubeScene({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-[700px] bg-black rounded-lg overflow-hidden ${className}`}
+      className={`relative w-full h-[700px] bg-black overflow-hidden ${className}`}
     >
       {/* Canvas */}
       <Canvas
@@ -405,14 +405,14 @@ export function ContactCubeScene({
       <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
         <button
           onClick={resetCamera}
-          className="px-3 py-1.5 bg-black/70 hover:bg-black/90 border border-neutral-700 rounded text-xs text-neutral-300 transition-colors"
+          className="px-3 py-1.5 bg-black/70 hover:bg-[#050505] border border-neutral-700 text-xs text-neutral-300 transition-colors"
           title="Reset camera (R)"
         >
           Reset View
         </button>
         <button
           onClick={toggleFullscreen}
-          className="px-3 py-1.5 bg-black/70 hover:bg-black/90 border border-neutral-700 rounded text-xs text-neutral-300 transition-colors"
+          className="px-3 py-1.5 bg-black/70 hover:bg-[#050505] border border-neutral-700 text-xs text-neutral-300 transition-colors"
           title="Fullscreen (F)"
         >
           {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
@@ -460,7 +460,7 @@ export function ContactCubeScene({
       {/* Cell tooltip on hover */}
       {hoveredCell && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-          <div className="bg-black/90 px-3 py-1.5 rounded border border-neutral-700 text-xs font-mono text-neutral-300">
+          <div className="bg-[#050505] px-3 py-1.5 border border-neutral-700 text-xs font-mono text-neutral-300">
             [{hoveredCell.row}, {hoveredCell.col}] = {hoveredCell.value}
           </div>
         </div>
@@ -470,7 +470,7 @@ export function ContactCubeScene({
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/60">
           <div className="flex items-center gap-3 text-neutral-400 text-sm">
-            <div className="w-5 h-5 border-2 border-neutral-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-5 h-5 border-2 border-neutral-500 border-t-transparent animate-spin" />
             Loading matrix...
           </div>
         </div>
@@ -479,9 +479,9 @@ export function ContactCubeScene({
       {/* Progress indicator during animation */}
       {isAnimating && (
         <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10">
-          <div className="bg-black/80 px-3 py-1.5 rounded border border-neutral-700">
+          <div className="bg-black/80 px-3 py-1.5 border border-neutral-700">
             <div className="flex items-center gap-2">
-              <div className="w-24 h-1 bg-neutral-700 rounded-full overflow-hidden">
+              <div className="w-24 h-1 bg-neutral-700 overflow-hidden">
                 <div
                   className="h-full bg-neutral-400 transition-all duration-100"
                   style={{ width: `${progress * 100}%` }}

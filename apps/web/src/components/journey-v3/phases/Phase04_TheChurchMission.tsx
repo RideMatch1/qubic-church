@@ -19,9 +19,9 @@ function ConfidenceMeter({ value, label }: { value: number; label: string }) {
         <motion.div
           className={`h-full rounded-full ${
             value >= 80
-              ? 'bg-green-500'
+              ? 'bg-[#D4AF37]'
               : value >= 60
-              ? 'bg-yellow-500'
+              ? 'bg-[#D4AF37]'
               : value >= 40
               ? 'bg-orange-500'
               : 'bg-red-500'
@@ -73,13 +73,13 @@ export function Phase04_TheChurchMission() {
       <div ref={ref} className="space-y-8">
         {/* Mission Statement */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-orange-950/20 to-purple-950/20 border border-white/10"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505]/80 to-[#050505]/80 border border-white/10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Target className="w-6 h-6 text-orange-400" />
+            <Target className="w-6 h-6 text-[#D4AF37]" />
             <h3 className="text-xl font-bold text-white/90">Our Mission</h3>
           </div>
           <p className="text-lg text-white/70 leading-relaxed mb-6">
@@ -92,9 +92,9 @@ export function Phase04_TheChurchMission() {
           <div className="flex gap-2 mb-6">
             <button
               onClick={() => setActiveTab('mission')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
                 activeTab === 'mission'
-                  ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                  ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/20'
                   : 'bg-white/5 text-white/60 hover:bg-white/10'
               }`}
             >
@@ -102,9 +102,9 @@ export function Phase04_TheChurchMission() {
             </button>
             <button
               onClick={() => setActiveTab('tiers')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
                 activeTab === 'tiers'
-                  ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                  ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/20'
                   : 'bg-white/5 text-white/60 hover:bg-white/10'
               }`}
             >
@@ -120,7 +120,7 @@ export function Phase04_TheChurchMission() {
                 return (
                   <motion.div
                     key={index}
-                    className="p-4 rounded-xl bg-white/5"
+                    className="p-4 bg-white/5"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 10 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
@@ -138,9 +138,9 @@ export function Phase04_TheChurchMission() {
 
           {activeTab === 'tiers' && (
             <div className="space-y-4">
-              <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+              <div className="p-4 bg-[#D4AF37]/10 border border-green-500/20">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="px-2 py-0.5 rounded text-xs bg-green-500/30 text-green-400">
+                  <span className="px-2 py-0.5  text-xs bg-[#D4AF37]/30 text-[#D4AF37]">
                     Tier 1
                   </span>
                   <span className="font-medium text-white/90">Mathematically Verified</span>
@@ -150,9 +150,9 @@ export function Phase04_TheChurchMission() {
                   47^2 + 137 = 625,284
                 </p>
               </div>
-              <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[#D4AF37]/10 border border-yellow-500/20">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="px-2 py-0.5 rounded text-xs bg-yellow-500/30 text-yellow-400">
+                  <span className="px-2 py-0.5  text-xs bg-[#D4AF37]/30 text-[#D4AF37]">
                     Tier 2
                   </span>
                   <span className="font-medium text-white/90">Statistically Supported</span>
@@ -162,9 +162,9 @@ export function Phase04_TheChurchMission() {
                   points support the hypothesis.
                 </p>
               </div>
-              <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
+              <div className="p-4 bg-[#D4AF37]/10 border border-orange-500/20">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="px-2 py-0.5 rounded text-xs bg-orange-500/30 text-orange-400">
+                  <span className="px-2 py-0.5  text-xs bg-[#D4AF37]/30 text-[#D4AF37]">
                     Tier 3
                   </span>
                   <span className="font-medium text-white/90">Hypothetical</span>

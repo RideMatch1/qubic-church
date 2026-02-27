@@ -1,0 +1,4 @@
+Session,Start_Block,End_Block,Block_Count,EN_Min,EN_Max,Pattern,Likely_Miner,Monotonic_Ratio,Avg_Step,Break_Reason
+1,9000,9001,2,1638,1642,monotonic_increasing,satoshi_pattern,1.0,4.0,drop 1642->86
+2,9002,9003,2,86,3551,monotonic_increasing,satoshi_pattern,1.0,3465.0,drop 3551->1644
+3,9004,9005,2,1644,1654,monotonic_increasing,satoshi_pattern,1.0,10.0,end_of_range

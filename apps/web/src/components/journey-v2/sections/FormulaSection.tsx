@@ -115,7 +115,7 @@ export function FormulaSection() {
 
           {/* What is Qubic - Quick explainer */}
           <motion.div
-            className="inline-flex items-start gap-3 px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-left max-w-md mx-auto"
+            className="inline-flex items-start gap-3 px-4 py-3 bg-white/5 border border-white/10 text-left max-w-md mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ delay: 0.6 }}
@@ -133,24 +133,24 @@ export function FormulaSection() {
 
         {/* The Discovery Story */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-purple-950/30 to-black/50 border border-purple-900/30 mb-8 relative overflow-hidden"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-purple-900/30 mb-8 relative overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           {/* Lightbulb icon */}
           <div className="absolute top-4 right-4 opacity-10">
-            <Lightbulb className="w-16 h-16 text-purple-500" />
+            <Lightbulb className="w-16 h-16 text-[#D4AF37]" />
           </div>
 
           <div className="flex items-center gap-2 mb-6">
-            <Zap className="h-4 w-4 text-purple-400" />
-            <span className="text-sm text-purple-400/80 font-medium">The Discovery</span>
+            <Zap className="h-4 w-4 text-[#D4AF37]" />
+            <span className="text-sm text-[#D4AF37]/80 font-medium">The Discovery</span>
           </div>
 
           <p className="text-white/60 mb-6 leading-relaxed">
             Researchers noticed something strange: a specific cell in Qubic's memory grid
-            (position <span className="text-purple-400 font-mono font-bold">625,284</span>)
+            (position <span className="text-[#D4AF37] font-mono font-bold">625,284</span>)
             seemed to connect back to Bitcoin's earliest days...
           </p>
 
@@ -160,19 +160,19 @@ export function FormulaSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-6 bg-black/40 rounded-xl mb-6"
+                className="p-6 bg-black/40 mb-6"
               >
                 <p className="text-sm text-white/40 text-center mb-4">The equation that connects them:</p>
                 <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 font-mono text-2xl md:text-4xl">
                   <motion.span
-                    className="text-purple-400 font-bold relative"
+                    className="text-[#D4AF37] font-bold relative"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: formulaStep >= 0 ? 1 : 0, y: formulaStep >= 0 ? 0 : 20 }}
                   >
                     625,284
                     {formulaStep >= 0 && (
                       <motion.span
-                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-purple-400/60 whitespace-nowrap"
+                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-[#D4AF37]/60 whitespace-nowrap"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
@@ -191,14 +191,14 @@ export function FormulaSection() {
                   </motion.span>
 
                   <motion.span
-                    className="text-orange-400 font-bold relative"
+                    className="text-[#D4AF37] font-bold relative"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: formulaStep >= 1 ? 1 : 0, y: formulaStep >= 1 ? 0 : 20 }}
                   >
                     283
                     {formulaStep >= 1 && (
                       <motion.span
-                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-orange-400/60 whitespace-nowrap"
+                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-[#D4AF37]/60 whitespace-nowrap"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
@@ -233,14 +233,14 @@ export function FormulaSection() {
                   </motion.span>
 
                   <motion.span
-                    className="text-green-400 font-bold relative"
+                    className="text-[#D4AF37] font-bold relative"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: formulaStep >= 3 ? 1 : 0, y: formulaStep >= 3 ? 0 : 20 }}
                   >
                     137
                     {formulaStep >= 3 && (
                       <motion.span
-                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-green-400/60 whitespace-nowrap"
+                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-[#D4AF37]/60 whitespace-nowrap"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
@@ -261,17 +261,17 @@ export function FormulaSection() {
             animate={{ opacity: isInView && formulaStep >= 3 ? 1 : 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <div className="p-3 rounded-lg bg-black/30 text-center">
+            <div className="p-3 bg-black/30 text-center">
               <div className="text-xs text-white/40 mb-1">Step 1: 47² =</div>
               <div className="font-mono text-lg text-white">2,209</div>
             </div>
-            <div className="p-3 rounded-lg bg-black/30 text-center">
+            <div className="p-3 bg-black/30 text-center">
               <div className="text-xs text-white/40 mb-1">Step 2: 283 × 2,209 =</div>
               <div className="font-mono text-lg text-white">625,147</div>
             </div>
-            <div className="p-3 rounded-lg bg-black/30 text-center">
+            <div className="p-3 bg-black/30 text-center">
               <div className="text-xs text-white/40 mb-1">Step 3: 625,147 + 137 =</div>
-              <div className="font-mono text-lg text-purple-400">625,284</div>
+              <div className="font-mono text-lg text-[#D4AF37]">625,284</div>
             </div>
           </motion.div>
 
@@ -282,7 +282,7 @@ export function FormulaSection() {
             animate={{ opacity: isInView && formulaStep >= 3 ? 1 : 0 }}
             transition={{ delay: 0.8 }}
           >
-            Block #283 was mined on <span className="text-orange-400">January 12, 2009</span> —
+            Block #283 was mined on <span className="text-[#D4AF37]">January 12, 2009</span> —
             just <span className="text-white/70">9 days</span> after Bitcoin's genesis.
           </motion.p>
         </motion.div>
@@ -300,7 +300,7 @@ export function FormulaSection() {
           </div>
 
           <p className="text-sm text-white/40 mb-4">
-            Which Bitcoin block number produces <span className="text-purple-400 font-mono">625,284</span> using the formula <span className="font-mono text-white/60">n × 47² + 137</span>?
+            Which Bitcoin block number produces <span className="text-[#D4AF37] font-mono">625,284</span> using the formula <span className="font-mono text-white/60">n × 47² + 137</span>?
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
@@ -312,14 +312,14 @@ export function FormulaSection() {
                 setVerificationResult(null)
               }}
               placeholder="Enter a block number..."
-              className="flex-1 px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder:text-white/50 font-mono focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-colors"
+              className="flex-1 px-4 py-3 bg-black/40 border border-white/10 text-white placeholder:text-white/50 font-mono focus:outline-none focus:border-[#D4AF37]/30 focus:ring-2 focus:ring-purple-500/20 transition-colors"
               aria-label="Bitcoin block number"
               aria-describedby="formula-hint"
             />
             <button
               onClick={handleVerify}
               disabled={!blockInput}
-              className="px-6 py-3 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-purple-400 font-medium"
+              className="px-6 py-3 bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-[#D4AF37] font-medium"
             >
               Calculate
             </button>
@@ -328,10 +328,10 @@ export function FormulaSection() {
           <AnimatePresence>
             {verificationResult && (
               <motion.div
-                className={`mt-4 p-4 rounded-lg flex items-center gap-3 ${
+                className={`mt-4 p-4 flex items-center gap-3 ${
                   verificationResult === 'correct'
-                    ? 'bg-green-500/10 border border-green-500/30'
-                    : 'bg-orange-500/10 border border-orange-500/30'
+                    ? 'bg-[#D4AF37]/10 border border-[#D4AF37]/20'
+                    : 'bg-[#D4AF37]/10 border border-[#D4AF37]/20'
                 }`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -339,18 +339,18 @@ export function FormulaSection() {
               >
                 {verificationResult === 'correct' ? (
                   <>
-                    <CheckCircle className="h-5 w-5 text-green-400 shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-[#D4AF37] shrink-0" />
                     <div>
-                      <div className="font-medium text-green-400">Correct!</div>
-                      <div className="text-sm text-green-400/70">283 × 2,209 + 137 = 625,284</div>
+                      <div className="font-medium text-[#D4AF37]">Correct!</div>
+                      <div className="text-sm text-[#D4AF37]/70">283 × 2,209 + 137 = 625,284</div>
                     </div>
                   </>
                 ) : (
                   <>
-                    <XCircle className="h-5 w-5 text-orange-400 shrink-0" />
+                    <XCircle className="h-5 w-5 text-[#D4AF37] shrink-0" />
                     <div>
-                      <div className="font-medium text-orange-400">Not quite — but you can see the math:</div>
-                      <div className="text-sm text-orange-400/70">
+                      <div className="font-medium text-[#D4AF37]">Not quite — but you can see the math:</div>
+                      <div className="text-sm text-[#D4AF37]/70">
                         {blockInput} × 2,209 + 137 = <span className="font-mono">{parseInt(blockInput || '0', 10) * 2209 + 137}</span>
                       </div>
                     </div>
@@ -368,22 +368,22 @@ export function FormulaSection() {
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 0.6, delay: 1.4 }}
         >
-          <div className="p-5 rounded-xl bg-orange-500/5 border border-orange-500/20">
-            <div className="text-3xl font-mono font-bold text-orange-400 mb-2">283</div>
+          <div className="p-5 bg-orange-500/5 border border-orange-500/20">
+            <div className="text-3xl font-mono font-bold text-[#D4AF37] mb-2">283</div>
             <div className="text-sm text-white/60 font-medium mb-1">Prime Number</div>
             <p className="text-xs text-white/40 leading-relaxed">
               Bitcoin Block #283, mined January 12, 2009 — one of Bitcoin's first blocks
             </p>
           </div>
-          <div className="p-5 rounded-xl bg-white/5 border border-white/20">
+          <div className="p-5 bg-white/5 border border-white/20">
             <div className="text-3xl font-mono font-bold text-white mb-2">47</div>
             <div className="text-sm text-white/60 font-medium mb-1">Prime Number</div>
             <p className="text-xs text-white/40 leading-relaxed">
               Squared (47² = 2,209) to create the multiplier in the formula
             </p>
           </div>
-          <div className="p-5 rounded-xl bg-green-500/5 border border-green-500/20">
-            <div className="text-3xl font-mono font-bold text-green-400 mb-2">137</div>
+          <div className="p-5 bg-[#D4AF37]/5 border border-green-500/20">
+            <div className="text-3xl font-mono font-bold text-[#D4AF37] mb-2">137</div>
             <div className="text-sm text-white/60 font-medium mb-1">Fine Structure Constant</div>
             <p className="text-xs text-white/40 leading-relaxed mb-2">
               α⁻¹ ≈ 137 — a fundamental constant in physics that governs electromagnetic interactions
@@ -392,7 +392,7 @@ export function FormulaSection() {
               href="https://en.wikipedia.org/wiki/Fine-structure_constant"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-green-400 hover:text-green-300 transition-colors"
+              className="inline-flex items-center gap-1 text-xs text-[#D4AF37] hover:text-green-300 transition-colors"
             >
               Learn more on Wikipedia <ExternalLink className="h-3 w-3" />
             </a>

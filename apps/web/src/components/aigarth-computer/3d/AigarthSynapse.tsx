@@ -20,9 +20,9 @@ export function AigarthSynapse({
   isActive = false,
   isHighlighted = false,
 }: AigarthSynapseProps) {
-  // Color based on weight
+  // Color based on weight - gold for excitatory, red for inhibitory
   const color = useMemo(() => {
-    if (weight > 0) return '#22C55E' // Green for excitatory
+    if (weight > 0) return '#D4AF37' // Gold for excitatory
     if (weight < 0) return '#EF4444' // Red for inhibitory
     return '#6B7280' // Gray for neutral
   }, [weight])

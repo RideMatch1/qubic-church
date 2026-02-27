@@ -116,7 +116,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
     return (
       <button
         onClick={onToggle}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-purple-600 hover:bg-purple-700 rounded-full shadow-2xl transition-all hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 p-4 bg-[#D4AF37] hover:bg-[#D4AF37] shadow-2xl transition-all hover:scale-110"
         title="Show Statistical Analysis"
       >
         <BarChart3 className="w-6 h-6 text-white" />
@@ -126,18 +126,18 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
 
   return (
     <motion.div
-      className="fixed bottom-6 right-6 z-50 w-96 max-h-[80vh] bg-gray-950/95 border border-white/20 rounded-2xl shadow-2xl backdrop-blur-xl overflow-hidden flex flex-col"
+      className="fixed bottom-6 right-6 z-50 w-96 max-h-[80vh] bg-gray-950/95 border border-white/[0.04] shadow-2xl backdrop-blur-xl overflow-hidden flex flex-col"
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 50, scale: 0.9 }}
       transition={{ type: 'spring', damping: 20 }}
     >
       {/* Header */}
-      <div className="p-4 border-b border-white/10 bg-gradient-to-r from-purple-600/20 to-blue-600/20">
+      <div className="p-4 border-b border-white/[0.04] bg-gradient-to-r from-[#D4AF37]/20 to-[#D4AF37]/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-purple-600/30 rounded-lg">
-              <BarChart3 className="w-5 h-5 text-purple-400" />
+            <div className="p-2 bg-[#D4AF37]/30">
+              <BarChart3 className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <div>
               <h2 className="text-sm font-semibold text-white">Statistical Analysis</h2>
@@ -146,7 +146,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
           </div>
           <button
             onClick={onToggle}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="p-2 hover:bg-white/10 transition-colors"
           >
             <ChevronDown className="w-5 h-5 text-gray-400" />
           </button>
@@ -158,14 +158,14 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
         {/* XOR Distribution Test */}
         {xorTest && (
           <TestSection
-            title="XOR Distribution (χ² Test)"
+            title="XOR Distribution (chi-squared Test)"
             icon={<Target className="w-4 h-4" />}
             isExpanded={expandedSections.has('xor')}
             onToggle={() => toggleSection('xor')}
             result={xorTest}
           >
             <div className="space-y-2">
-              <MetricRow label="χ² Statistic" value={xorTest.chiSquared.toFixed(4)} />
+              <MetricRow label="chi-squared Statistic" value={xorTest.chiSquared.toFixed(4)} />
               <MetricRow label="Degrees of Freedom" value={String(xorTest.degreesOfFreedom)} />
               <MetricRow
                 label="P-Value"
@@ -180,7 +180,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
 
               <SignificanceBadge result={xorTest} />
 
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10 mt-3">
+              <div className="p-3 bg-white/5 border border-white/[0.04] mt-3">
                 <p className="text-xs text-gray-300 leading-relaxed">
                   {xorTest.interpretation}
                 </p>
@@ -190,7 +190,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
                 <DistributionBars
                   data={data.xorDistribution}
                   labels={['XOR 0', 'XOR 7', 'XOR 13', 'XOR 27', 'XOR 33']}
-                  colors={['#60a5fa', '#34d399', '#fbbf24', '#f87171', '#a78bfa']}
+                  colors={['#D4AF37', '#B8962E', '#9C7D25', '#D4AF37', '#C4A030']}
                 />
               )}
             </div>
@@ -200,14 +200,14 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
         {/* Method Distribution Test */}
         {methodTest && (
           <TestSection
-            title="Method Distribution (χ² Test)"
+            title="Method Distribution (chi-squared Test)"
             icon={<Target className="w-4 h-4" />}
             isExpanded={expandedSections.has('method')}
             onToggle={() => toggleSection('method')}
             result={methodTest}
           >
             <div className="space-y-2">
-              <MetricRow label="χ² Statistic" value={methodTest.chiSquared.toFixed(4)} />
+              <MetricRow label="chi-squared Statistic" value={methodTest.chiSquared.toFixed(4)} />
               <MetricRow label="P-Value" value={methodTest.pValue.toFixed(6)} />
 
               <SignificanceBadge result={methodTest} />
@@ -216,7 +216,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
                 <DistributionBars
                   data={data.methodDistribution}
                   labels={['Diagonal', 'Row', 'Col', 'Step7', 'Step13', 'Step27']}
-                  colors={['#60a5fa', '#34d399', '#fbbf24', '#f87171', '#a78bfa', '#fb923c']}
+                  colors={['#D4AF37', '#B8962E', '#9C7D25', '#f87171', '#C4A030', '#E8C84A']}
                 />
               )}
             </div>
@@ -239,7 +239,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
                 highlight={Math.abs(blockHeightCorrelation.r) > 0.5 ? 'success' : 'neutral'}
               />
               <MetricRow
-                label="R²"
+                label="R-squared"
                 value={`${(blockHeightCorrelation.rSquared * 100).toFixed(2)}%`}
               />
               <MetricRow
@@ -248,15 +248,15 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
                 highlight={blockHeightCorrelation.isSignificant ? 'success' : 'warning'}
               />
 
-              <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+              <div className="flex items-center justify-between p-2 bg-white/5">
                 <span className="text-xs text-gray-400">Strength</span>
                 <span
                   className={`text-xs font-semibold ${
                     blockHeightCorrelation.strength === 'very_strong' ||
                     blockHeightCorrelation.strength === 'strong'
-                      ? 'text-green-400'
+                      ? 'text-[#D4AF37]'
                       : blockHeightCorrelation.strength === 'moderate'
-                      ? 'text-yellow-400'
+                      ? 'text-[#D4AF37]'
                       : 'text-gray-400'
                   }`}
                 >
@@ -264,7 +264,7 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
                 </span>
               </div>
 
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10 mt-3">
+              <div className="p-3 bg-white/5 border border-white/[0.04] mt-3">
                 <p className="text-xs text-gray-300 leading-relaxed">
                   {blockHeightCorrelation.interpretation}
                 </p>
@@ -304,14 +304,14 @@ export function StatisticsPanel({ isOpen, onToggle, data }: StatisticsPanelProps
         )}
 
         {/* Info Box */}
-        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+        <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
           <div className="flex items-start gap-2">
-            <Info className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+            <Info className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="text-xs text-blue-300 font-medium mb-1">
+              <p className="text-xs text-[#D4AF37] font-medium mb-1">
                 Statistical Significance
               </p>
-              <p className="text-xs text-blue-400/80 leading-relaxed">
+              <p className="text-xs text-[#D4AF37]/80 leading-relaxed">
                 P-values &lt; 0.05 indicate patterns unlikely due to random chance.
                 Chi-squared tests validate distribution uniformity. Pearson correlation
                 measures linear relationships.
@@ -349,7 +349,7 @@ function TestSection({
     result && 'isSignificant' in result ? result.isSignificant : false
 
   return (
-    <div className="border border-white/10 rounded-lg overflow-hidden">
+    <div className="border border-white/[0.04] overflow-hidden">
       <button
         onClick={onToggle}
         className="w-full p-3 bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-between"
@@ -361,8 +361,8 @@ function TestSection({
         <div className="flex items-center gap-2">
           {result && (
             <div
-              className={`w-2 h-2 rounded-full ${
-                isSignificant ? 'bg-green-400' : 'bg-yellow-400'
+              className={`w-2 h-2 ${
+                isSignificant ? 'bg-[#D4AF37]' : 'bg-[#D4AF37]'
               }`}
             />
           )}
@@ -399,14 +399,14 @@ interface MetricRowProps {
 
 function MetricRow({ label, value, highlight = 'neutral' }: MetricRowProps) {
   const colorClasses = {
-    success: 'text-green-400',
-    warning: 'text-yellow-400',
+    success: 'text-[#D4AF37]',
+    warning: 'text-[#D4AF37]',
     error: 'text-red-400',
     neutral: 'text-white',
   }
 
   return (
-    <div className="flex items-center justify-between p-2 bg-white/5 rounded">
+    <div className="flex items-center justify-between p-2 bg-white/5">
       <span className="text-xs text-gray-400">{label}</span>
       <code className={`text-xs font-mono font-semibold ${colorClasses[highlight]}`}>
         {value}
@@ -432,20 +432,20 @@ function SignificanceBadge({
       case 'extremely_significant':
         label = 'Extremely Significant (p < 0.001)'
         icon = <CheckCircle2 className="w-4 h-4" />
-        colorClass = 'bg-green-500/20 border-green-500/40 text-green-400'
+        colorClass = 'bg-[#D4AF37]/20 border-[#D4AF37]/40 text-[#D4AF37]'
         break
       case 'highly_significant':
         label = 'Highly Significant (p < 0.01)'
         icon = <CheckCircle2 className="w-4 h-4" />
-        colorClass = 'bg-green-500/20 border-green-500/40 text-green-400'
+        colorClass = 'bg-[#D4AF37]/20 border-[#D4AF37]/40 text-[#D4AF37]'
         break
       case 'significant':
         label = 'Significant (p < 0.05)'
         icon = <CheckCircle2 className="w-4 h-4" />
-        colorClass = 'bg-yellow-500/20 border-yellow-500/40 text-yellow-400'
+        colorClass = 'bg-[#D4AF37]/20 border-[#D4AF37]/40 text-[#D4AF37]'
         break
       case 'not_significant':
-        label = 'Not Significant (p ≥ 0.05)'
+        label = 'Not Significant (p >= 0.05)'
         icon = <XCircle className="w-4 h-4" />
         colorClass = 'bg-gray-500/20 border-gray-500/40 text-gray-400'
         break
@@ -455,16 +455,16 @@ function SignificanceBadge({
     if (isSignificant) {
       label = 'Statistically Significant (p < 0.05)'
       icon = <CheckCircle2 className="w-4 h-4" />
-      colorClass = 'bg-green-500/20 border-green-500/40 text-green-400'
+      colorClass = 'bg-[#D4AF37]/20 border-[#D4AF37]/40 text-[#D4AF37]'
     } else {
-      label = 'Not Significant (p ≥ 0.05)'
+      label = 'Not Significant (p >= 0.05)'
       icon = <XCircle className="w-4 h-4" />
       colorClass = 'bg-gray-500/20 border-gray-500/40 text-gray-400'
     }
   }
 
   return (
-    <div className={`p-3 rounded-lg border ${colorClass} flex items-center gap-2`}>
+    <div className={`p-3 border ${colorClass} flex items-center gap-2`}>
       {icon}
       <span className="text-xs font-medium">{label}</span>
     </div>
@@ -496,12 +496,12 @@ function DistributionBars({ data, labels, colors }: DistributionBarsProps) {
                 {value.toLocaleString()} ({percentage.toFixed(2)}%)
               </span>
             </div>
-            <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+            <div className="h-2 bg-white/5 overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${barWidth}%` }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="h-full rounded-full"
+                className="h-full"
                 style={{ backgroundColor: colors[i] }}
               />
             </div>

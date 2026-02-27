@@ -1,0 +1,44 @@
+/Users/lukashertle/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+🚀 Starting automated scan...
+This will take a while (rate-limited to avoid API bans)
+
+======================================================================
+🤖 AUTOMATED OP_RETURN SCANNER & BRAINWALLET TESTER
+======================================================================
+Scanning blocks 0 to 1,000
+This will find OP_RETURN messages and test them as brainwallets
+======================================================================
+
+📍 Block 0/1,000 ... (0 phrases tested)
+
+📍 Block 100/1,000 ... (0 phrases tested)
+
+📍 Block 200/1,000 ... (0 phrases tested)
+
+📍 Block 300/1,000 ... (0 phrases tested)
+
+📍 Block 400/1,000 ... (0 phrases tested)
+
+📍 Block 500/1,000 ... (0 phrases tested)
+
+📍 Block 600/1,000 ... (0 phrases tested)
+
+📍 Block 700/1,000 ... (0 phrases tested)
+
+📍 Block 800/1,000 ... (0 phrases tested)
+
+📍 Block 900/1,000 ... (0 phrases tested)
+
+📍 Block 1,000/1,000 ... (0 phrases tested)
+
+
+======================================================================
+📊 SCAN COMPLETE
+======================================================================
+Tested phrases: 0
+Hits (used addresses): 0
+Results saved to: apps/web/scripts/op_return_treasures.json
+
+❌ No hits found - all messages were either invalid or never used

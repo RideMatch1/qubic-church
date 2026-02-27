@@ -38,7 +38,7 @@ export function ChurchHero() {
               {/* Title */}
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="inline-block animate-pulse">✨</span>
-                <span className="bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent animate-gradient">
+                <span className="bg-gradient-to-r from-primary via-[#D4AF37] to-primary bg-clip-text text-transparent animate-gradient">
                   {' '}
                   {CHURCH_CONFIG.mission.title}{' '}
                 </span>
@@ -51,7 +51,7 @@ export function ChurchHero() {
               </p>
 
               {/* Collection Info */}
-              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-6 py-3">
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-6 py-3">
                 <span className="text-sm font-medium text-muted-foreground">
                   {CHURCH_CONFIG.collection.total} Unique NFTs
                 </span>

@@ -80,7 +80,7 @@ const RARITY_COLORS = {
   common: 'text-gray-400',
   uncommon: 'text-green-400',
   rare: 'text-blue-400',
-  epic: 'text-purple-400',
+  epic: 'text-[#D4AF37]',
   legendary: 'text-orange-400',
   mythic: 'text-pink-400',
 }
@@ -614,7 +614,7 @@ export function AnnaMatrixGame() {
       // Resource node styling
       if (resourceNode && !resourceNode.depleted) {
         const display = getResourceNodeDisplay(resourceNode)
-        return `${display.depleted ? 'bg-gray-500/20' : 'bg-emerald-500/30'} shadow-[0_0_8px_${display.glowColor}] hover:brightness-125`
+        return `${display.depleted ? 'bg-gray-500/20' : 'bg-[#D4AF37]/30'} shadow-[0_0_8px_${display.glowColor}] hover:brightness-125`
       }
 
       if (zone) {
@@ -680,27 +680,27 @@ export function AnnaMatrixGame() {
   return (
     <div
       ref={gameRef}
-      className={`relative ${isFullscreen ? 'fixed inset-0 z-50 bg-black' : 'rounded-2xl overflow-hidden'}`}
+      className={`relative ${isFullscreen ? 'fixed inset-0 z-50 bg-black' : 'overflow-hidden'}`}
       tabIndex={0}
     >
       {/* Game Header */}
       <div className="absolute top-0 left-0 right-0 z-20 p-3 flex items-center justify-between bg-gradient-to-b from-black/90 via-black/60 to-transparent">
         <div className="flex items-center gap-2 flex-wrap">
           {/* Level Badge with XP Progress */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/30">
-            <span className="text-purple-400 font-bold text-sm">Lv.{stats.level}</span>
-            <div className="w-12 h-1.5 bg-black/50 rounded-full overflow-hidden" title={`${stats.experience}/${stats.experienceToNextLevel} XP`}>
+          <div className="flex items-center gap-1.5 px-3 py-1.5  bg-[#D4AF37]/20 border border-[#D4AF37]/30">
+            <span className="text-[#D4AF37] font-bold text-sm">Lv.{stats.level}</span>
+            <div className="w-12 h-1.5 bg-black/50  overflow-hidden" title={`${stats.experience}/${stats.experienceToNextLevel} XP`}>
               <motion.div
-                className="h-full bg-gradient-to-r from-purple-600 to-purple-400"
+                className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/70"
                 animate={{ width: `${(stats.experience / stats.experienceToNextLevel) * 100}%` }}
               />
             </div>
           </div>
 
           {/* HP Bar */}
-          <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-full bg-red-500/10 border border-red-500/30">
+          <div className="flex items-center gap-1.5 px-2 py-1.5  bg-red-500/10 border border-red-500/30">
             <Heart className="w-3.5 h-3.5 text-red-400" />
-            <div className="w-16 h-2 bg-black/50 rounded-full overflow-hidden">
+            <div className="w-16 h-2 bg-black/50  overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-red-600 to-red-400"
                 animate={{ width: `${(playerHP / stats.maxHealth) * 100}%` }}
@@ -710,9 +710,9 @@ export function AnnaMatrixGame() {
           </div>
 
           {/* Energy Bar */}
-          <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30">
+          <div className="flex items-center gap-1.5 px-2 py-1.5  bg-yellow-500/10 border border-yellow-500/30">
             <Zap className="w-3.5 h-3.5 text-yellow-400" />
-            <div className="w-16 h-2 bg-black/50 rounded-full overflow-hidden">
+            <div className="w-16 h-2 bg-black/50  overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-yellow-600 to-yellow-400"
                 animate={{ width: `${(energy / maxEnergy) * 100}%` }}
@@ -722,24 +722,24 @@ export function AnnaMatrixGame() {
           </div>
 
           {/* Score */}
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-yellow-500/20 border border-yellow-500/30">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5  bg-yellow-500/20 border border-yellow-500/30">
             <Trophy className="w-4 h-4 text-yellow-400" />
             <span className="text-yellow-400 font-bold text-sm">{score.toLocaleString()}</span>
           </div>
 
           {/* Discoveries */}
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/30">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 text-sm font-medium">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5  bg-[#D4AF37]/20 border border-[#D4AF37]/30">
+            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-[#D4AF37] text-sm font-medium">
               {discoveredPatterns.length}/{PATTERNS.length}
             </span>
           </div>
 
           {/* Progress bar */}
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-            <div className="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5  bg-white/5 border border-white/10">
+            <div className="w-20 h-1.5 bg-white/10  overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-cyan-400 to-purple-400"
+                className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/70"
                 initial={{ width: 0 }}
                 animate={{ width: `${progressPercent}%` }}
               />
@@ -754,7 +754,7 @@ export function AnnaMatrixGame() {
               setShowCrafting(!showCrafting)
               audio.click()
             }}
-            className={`p-2 rounded-lg transition-colors ${showCrafting ? 'bg-orange-500/30 text-orange-400' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
+            className={`p-2  transition-colors ${showCrafting ? 'bg-orange-500/30 text-orange-400' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
             title="Crafting (C)"
           >
             <Hammer className="w-4 h-4" />
@@ -764,7 +764,7 @@ export function AnnaMatrixGame() {
               setShowScanPanel(!showScanPanel)
               audio.click()
             }}
-            className={`p-2 rounded-lg transition-colors ${showScanPanel ? 'bg-cyan-500/30 text-cyan-400' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
+            className={`p-2  transition-colors ${showScanPanel ? 'bg-[#D4AF37]/30 text-[#D4AF37]' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
             title="Scanner (Tab)"
           >
             <Scan className="w-4 h-4" />
@@ -774,7 +774,7 @@ export function AnnaMatrixGame() {
               setShowQuests(!showQuests)
               audio.click()
             }}
-            className={`p-2 rounded-lg transition-colors ${showQuests ? 'bg-purple-500/30 text-purple-400' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
+            className={`p-2  transition-colors ${showQuests ? 'bg-[#D4AF37]/30 text-[#D4AF37]' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
             title="Quests (Q)"
           >
             <Target className="w-4 h-4" />
@@ -784,14 +784,14 @@ export function AnnaMatrixGame() {
               setShowMinimap(!showMinimap)
               audio.click()
             }}
-            className={`p-2 rounded-lg transition-colors ${showMinimap ? 'bg-cyan-500/30 text-cyan-400' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
+            className={`p-2  transition-colors ${showMinimap ? 'bg-[#D4AF37]/30 text-[#D4AF37]' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
             title="Minimap (M)"
           >
             <Map className="w-4 h-4" />
           </button>
           <button
             onClick={() => audio.toggleMute()}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/70"
+            className="p-2  bg-white/10 hover:bg-white/20 transition-colors text-white/70"
             title="Toggle Sound"
           >
             {audio.config.muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
@@ -801,28 +801,28 @@ export function AnnaMatrixGame() {
               setShowHelp(!showHelp)
               audio.click()
             }}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/70"
+            className="p-2  bg-white/10 hover:bg-white/20 transition-colors text-white/70"
             title="Help (H)"
           >
             <Info className="w-4 h-4" />
           </button>
           <button
             onClick={saveGame}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/70"
+            className="p-2  bg-white/10 hover:bg-white/20 transition-colors text-white/70"
             title="Save"
           >
             <Save className="w-4 h-4" />
           </button>
           <button
             onClick={resetGame}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/70"
+            className="p-2  bg-white/10 hover:bg-white/20 transition-colors text-white/70"
             title="Reset"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
           <button
             onClick={() => setIsFullscreen(!isFullscreen)}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/70"
+            className="p-2  bg-white/10 hover:bg-white/20 transition-colors text-white/70"
           >
             {isFullscreen ? <X className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           </button>
@@ -837,7 +837,7 @@ export function AnnaMatrixGame() {
             currentZoneInfo?.color === 'orange'
               ? 'bg-orange-500'
               : currentZoneInfo?.color === 'purple'
-                ? 'bg-purple-500'
+                ? 'bg-[#D4AF37]'
                 : currentZoneInfo?.color === 'green'
                   ? 'bg-green-500'
                   : currentZoneInfo?.color === 'blue'
@@ -881,8 +881,8 @@ export function AnnaMatrixGame() {
               transition={{ duration: 0.4, repeat: Infinity, ease: 'easeInOut' }}
             >
               <div className="absolute inset-0 flex flex-col items-center">
-                <div className="w-3 h-3 bg-cyan-400 rounded-sm shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-                <div className="w-4 h-2 bg-purple-500 rounded-sm -mt-0.5" />
+                <div className="w-3 h-3 bg-[#D4AF37] shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
+                <div className="w-4 h-2 bg-[#D4AF37] -mt-0.5" />
                 <div className="flex gap-[2px] -mt-[1px]">
                   <div className="w-[6px] h-[6px] bg-blue-600 rounded-sm" />
                   <div className="w-[6px] h-[6px] bg-blue-600 rounded-sm" />
@@ -890,7 +890,7 @@ export function AnnaMatrixGame() {
               </div>
             </motion.div>
             {/* Glow ring */}
-            <div className="absolute -inset-3 bg-cyan-400/20 rounded-full blur-md animate-pulse" />
+            <div className="absolute -inset-3 bg-[#D4AF37]/20  blur-md animate-pulse" />
           </div>
         </div>
       </div>
@@ -908,7 +908,7 @@ export function AnnaMatrixGame() {
             </div>
             {currentZoneInfo && (
               <div
-                className={`px-3 py-1.5 rounded-lg ${currentZoneInfo.bgColor} border border-white/10`}
+                className={`px-3 py-1.5  ${currentZoneInfo.bgColor} border border-white/10`}
               >
                 <div className={`${getZoneColorClass(currentZoneInfo)} text-sm font-medium`}>
                   {currentZoneInfo.name}
@@ -923,30 +923,30 @@ export function AnnaMatrixGame() {
               <div />
               <button
                 onTouchStart={() => handleDirection('up')}
-                className="p-2.5 rounded-lg bg-white/10 active:bg-white/30"
+                className="p-2.5  bg-white/10 active:bg-white/30"
               >
                 <ArrowUp className="w-5 h-5 text-white" />
               </button>
               <div />
               <button
                 onTouchStart={() => handleDirection('left')}
-                className="p-2.5 rounded-lg bg-white/10 active:bg-white/30"
+                className="p-2.5  bg-white/10 active:bg-white/30"
               >
                 <ArrowLeft className="w-5 h-5 text-white" />
               </button>
-              <div className="p-2.5 rounded-lg bg-white/5 flex items-center justify-center">
+              <div className="p-2.5  bg-white/5 flex items-center justify-center">
                 <Gamepad2 className="w-4 h-4 text-white/30" />
               </div>
               <button
                 onTouchStart={() => handleDirection('right')}
-                className="p-2.5 rounded-lg bg-white/10 active:bg-white/30"
+                className="p-2.5  bg-white/10 active:bg-white/30"
               >
                 <ArrowRight className="w-5 h-5 text-white" />
               </button>
               <div />
               <button
                 onTouchStart={() => handleDirection('down')}
-                className="p-2.5 rounded-lg bg-white/10 active:bg-white/30"
+                className="p-2.5  bg-white/10 active:bg-white/30"
               >
                 <ArrowDown className="w-5 h-5 text-white" />
               </button>
@@ -970,7 +970,7 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, scale: 0.9, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.9, x: 20 }}
-            className="absolute top-14 right-3 w-28 h-28 rounded-lg bg-black/90 border border-white/20 overflow-hidden z-30"
+            className="absolute top-14 right-3 w-28 h-28  bg-black/90 border border-white/20 overflow-hidden z-30"
           >
             <div className="relative w-full h-full">
               {/* Zone bands */}
@@ -983,7 +983,7 @@ export function AnnaMatrixGame() {
                 style={{ top: `${(21 / 128) * 100}%` }}
               />
               <div
-                className="absolute w-full h-[1px] bg-purple-500"
+                className="absolute w-full h-[1px] bg-[#D4AF37]"
                 style={{ top: `${(68 / 128) * 100}%` }}
               />
               <div
@@ -995,7 +995,7 @@ export function AnnaMatrixGame() {
               {PATTERNS.filter((p) => discoveredPatterns.includes(p.id)).map((p) => (
                 <div
                   key={p.id}
-                  className="absolute w-1 h-1 bg-yellow-400 rounded-full"
+                  className="absolute w-1 h-1 bg-yellow-400 "
                   style={{
                     top: `${(p.row / GRID_SIZE) * 100}%`,
                     left: `${(p.col / GRID_SIZE) * 100}%`,
@@ -1005,7 +1005,7 @@ export function AnnaMatrixGame() {
 
               {/* Player */}
               <motion.div
-                className="absolute w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_6px_rgba(34,211,238,0.8)]"
+                className="absolute w-2 h-2 bg-[#D4AF37]  shadow-[0_0_6px_rgba(212,175,55,0.8)]"
                 animate={{
                   top: `${(position.row / GRID_SIZE) * 100}%`,
                   left: `${(position.col / GRID_SIZE) * 100}%`,
@@ -1036,11 +1036,11 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="absolute top-14 left-3 w-64 max-h-80 rounded-lg bg-black/95 border border-purple-500/30 overflow-hidden z-30"
+            className="absolute top-14 left-3 w-64 max-h-80  bg-black/95 border border-[#D4AF37]/30 overflow-hidden z-30"
           >
             <div className="p-3 border-b border-white/10">
               <h3 className="text-white font-semibold flex items-center gap-2">
-                <Target className="w-4 h-4 text-purple-400" />
+                <Target className="w-4 h-4 text-[#D4AF37]" />
                 Quests
               </h3>
             </div>
@@ -1050,7 +1050,7 @@ export function AnnaMatrixGame() {
                 return (
                   <div
                     key={quest.id}
-                    className={`p-2 rounded-lg ${isComplete ? 'bg-green-500/10 border border-green-500/20' : 'bg-white/5'}`}
+                    className={`p-2  ${isComplete ? 'bg-green-500/10 border border-green-500/20' : 'bg-white/5'}`}
                   >
                     <div className="flex items-center justify-between">
                       <span
@@ -1080,17 +1080,17 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-32 left-3 w-72 rounded-lg bg-black/95 border border-cyan-500/30 overflow-hidden z-30"
+            className="absolute bottom-32 left-3 w-72  bg-black/95 border border-[#D4AF37]/30 overflow-hidden z-30"
           >
             <div className="p-3 border-b border-white/10">
               <div className="flex items-center justify-between">
                 <h3 className="text-white font-semibold flex items-center gap-2">
-                  <Scan className="w-4 h-4 text-cyan-400" />
+                  <Scan className="w-4 h-4 text-[#D4AF37]" />
                   Scanner
                 </h3>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-yellow-400" />
-                  <div className="w-16 h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div className="w-16 h-2 bg-white/10  overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-yellow-500 to-orange-500 transition-all"
                       style={{ width: `${(energy / maxEnergy) * 100}%` }}
@@ -1105,14 +1105,14 @@ export function AnnaMatrixGame() {
               <button
                 onClick={() => doScan('quick')}
                 disabled={scanCooldown}
-                className={`w-full p-3 rounded-lg text-left transition-all ${
+                className={`w-full p-3  text-left transition-all ${
                   scanCooldown
                     ? 'bg-white/5 text-white/30 cursor-not-allowed'
-                    : 'bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30'
+                    : 'bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-cyan-400 font-medium">Quick Scan</span>
+                  <span className="text-[#D4AF37] font-medium">Quick Scan</span>
                   <span className="text-xs text-green-400">FREE</span>
                 </div>
                 <p className="text-white/50 text-xs mt-1">Basic scan. Good for common patterns.</p>
@@ -1122,14 +1122,14 @@ export function AnnaMatrixGame() {
               <button
                 onClick={() => doScan('deep')}
                 disabled={scanCooldown || energy < 10}
-                className={`w-full p-3 rounded-lg text-left transition-all ${
+                className={`w-full p-3  text-left transition-all ${
                   scanCooldown || energy < 10
                     ? 'bg-white/5 text-white/30 cursor-not-allowed'
-                    : 'bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30'
+                    : 'bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-purple-400 font-medium">Deep Scan</span>
+                  <span className="text-[#D4AF37] font-medium">Deep Scan</span>
                   <span className="text-xs text-yellow-400">10 Energy</span>
                 </div>
                 <p className="text-white/50 text-xs mt-1">Thorough analysis. Reveals hints.</p>
@@ -1139,7 +1139,7 @@ export function AnnaMatrixGame() {
               <button
                 onClick={() => doScan('full')}
                 disabled={scanCooldown || energy < 50}
-                className={`w-full p-3 rounded-lg text-left transition-all ${
+                className={`w-full p-3  text-left transition-all ${
                   scanCooldown || energy < 50
                     ? 'bg-white/5 text-white/30 cursor-not-allowed'
                     : 'bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30'
@@ -1177,7 +1177,7 @@ export function AnnaMatrixGame() {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="bg-black/90 border border-white/20 rounded-xl p-6 max-w-md"
+              className="bg-black/90 border border-white/20  p-6 max-w-md"
               onClick={(e) => e.stopPropagation()}
             >
               <h3 className="text-xl font-bold text-white mb-4">How to Play</h3>
@@ -1229,7 +1229,7 @@ export function AnnaMatrixGame() {
               </div>
               <button
                 onClick={() => setShowHelp(false)}
-                className="mt-6 w-full py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
+                className="mt-6 w-full py-2  bg-white/10 text-white hover:bg-white/20 transition-colors"
               >
                 Got it!
               </button>
@@ -1245,30 +1245,30 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, y: -20, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, y: -20, x: '-50%' }}
-            className={`absolute top-16 left-1/2 z-50 px-4 py-2 rounded-xl backdrop-blur-sm border ${
+            className={`absolute top-16 left-1/2 z-50 px-4 py-2  backdrop-blur-sm border ${
               notification.type === 'discovery'
                 ? 'bg-yellow-500/20 border-yellow-500/50'
                 : notification.type === 'quest'
-                  ? 'bg-purple-500/20 border-purple-500/50'
+                  ? 'bg-[#D4AF37]/20 border-[#D4AF37]/50'
                   : notification.type === 'combat'
                     ? 'bg-red-500/20 border-red-500/50'
-                    : 'bg-cyan-500/20 border-cyan-500/50'
+                    : 'bg-[#D4AF37]/20 border-[#D4AF37]/50'
             }`}
           >
             <div className="flex items-center gap-2">
               {notification.type === 'discovery' && <Sparkles className="w-4 h-4 text-yellow-400" />}
-              {notification.type === 'quest' && <Trophy className="w-4 h-4 text-purple-400" />}
+              {notification.type === 'quest' && <Trophy className="w-4 h-4 text-[#D4AF37]" />}
               {notification.type === 'combat' && <Heart className="w-4 h-4 text-red-400" />}
-              {notification.type === 'zone' && <Map className="w-4 h-4 text-cyan-400" />}
+              {notification.type === 'zone' && <Map className="w-4 h-4 text-[#D4AF37]" />}
               <span
                 className={`font-medium text-sm ${
                   notification.type === 'discovery'
                     ? 'text-yellow-300'
                     : notification.type === 'quest'
-                      ? 'text-purple-300'
+                      ? 'text-[#D4AF37]/80'
                       : notification.type === 'combat'
                         ? 'text-red-300'
-                        : 'text-cyan-300'
+                        : 'text-[#D4AF37]/80'
                 }`}
               >
                 {notification.message}
@@ -1285,10 +1285,10 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40 p-4 rounded-xl bg-black/90 border border-yellow-500/30 backdrop-blur-sm"
+            className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40 p-4  bg-black/90 border border-yellow-500/30 backdrop-blur-sm"
           >
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-yellow-500/20 flex items-center justify-center text-2xl">
+              <div className="w-12 h-12  bg-yellow-500/20 flex items-center justify-center text-2xl">
                 {PATTERN_TYPES[recentDiscovery.category]?.icon}
               </div>
               <div>
@@ -1334,11 +1334,11 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/50 backdrop-blur-sm"
+            className="absolute bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2  bg-[#D4AF37]/20 border border-[#D4AF37]/50 backdrop-blur-sm"
           >
             <div className="flex items-center gap-2">
               <span className="text-2xl">🌿</span>
-              <span className="text-emerald-300 font-medium text-sm">{gatherNotification}</span>
+              <span className="text-[#D4AF37] font-medium text-sm">{gatherNotification}</span>
             </div>
           </motion.div>
         )}
@@ -1351,14 +1351,14 @@ export function AnnaMatrixGame() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute bottom-36 right-3 z-30 p-3 rounded-xl bg-black/90 border border-emerald-500/30 backdrop-blur-sm"
+            className="absolute bottom-36 right-3 z-30 p-3  bg-black/90 border border-[#D4AF37]/30 backdrop-blur-sm"
           >
             <div className="flex items-center gap-3">
               <span className="text-2xl">
                 {RESOURCES[findResourceNodeAt(position, resourceNodes)!.type]?.icon}
               </span>
               <div>
-                <div className="text-emerald-400 font-medium text-sm">
+                <div className="text-[#D4AF37] font-medium text-sm">
                   {RESOURCES[findResourceNodeAt(position, resourceNodes)!.type]?.name}
                 </div>
                 <div className="text-white/50 text-xs">
@@ -1396,7 +1396,7 @@ export function AnnaMatrixGame() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4"
+                className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#D4AF37]/80 to-[#D4AF37] mb-4"
               >
                 THE ARCHITECT DEFEATED
               </motion.h1>
@@ -1414,15 +1414,15 @@ export function AnnaMatrixGame() {
                 transition={{ delay: 0.8 }}
                 className="grid grid-cols-3 gap-6 mb-8"
               >
-                <div className="bg-white/10 rounded-xl p-4">
-                  <div className="text-3xl font-bold text-cyan-400">{stats.level}</div>
+                <div className="bg-white/10  p-4">
+                  <div className="text-3xl font-bold text-[#D4AF37]">{stats.level}</div>
                   <div className="text-white/60 text-sm">Final Level</div>
                 </div>
-                <div className="bg-white/10 rounded-xl p-4">
-                  <div className="text-3xl font-bold text-purple-400">{score}</div>
+                <div className="bg-white/10  p-4">
+                  <div className="text-3xl font-bold text-[#D4AF37]">{score}</div>
                   <div className="text-white/60 text-sm">Score</div>
                 </div>
-                <div className="bg-white/10 rounded-xl p-4">
+                <div className="bg-white/10  p-4">
                   <div className="text-3xl font-bold text-pink-400">{discoveredPatterns.length}/15</div>
                   <div className="text-white/60 text-sm">Patterns Found</div>
                 </div>
@@ -1436,7 +1436,7 @@ export function AnnaMatrixGame() {
                   setNotification({ message: 'Continue exploring the Matrix...', type: 'zone' })
                   setTimeout(() => setNotification(null), 3000)
                 }}
-                className="px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-lg hover:opacity-90 transition-opacity"
+                className="px-8 py-3  bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/80 text-white font-bold text-lg hover:opacity-90 transition-opacity"
               >
                 Continue Playing
               </motion.button>

@@ -33,9 +33,9 @@ function AchievementBadge({
   const Icon = achievement.icon
   return (
     <motion.div
-      className={`p-4 rounded-xl border transition-all ${
+      className={`p-4 border transition-all ${
         unlocked
-          ? 'bg-purple-500/20 border-purple-500/30'
+          ? 'bg-[#D4AF37]/20 border-[#D4AF37]/20'
           : 'bg-white/5 border-white/10 opacity-50'
       }`}
       whileHover={{ scale: unlocked ? 1.02 : 1 }}
@@ -43,10 +43,10 @@ function AchievementBadge({
       <div className="flex items-center gap-3">
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center ${
-            unlocked ? 'bg-purple-500/30' : 'bg-white/10'
+            unlocked ? 'bg-[#D4AF37]/30' : 'bg-white/10'
           }`}
         >
-          <Icon className={`w-5 h-5 ${unlocked ? 'text-purple-400' : 'text-white/40'}`} />
+          <Icon className={`w-5 h-5 ${unlocked ? 'text-[#D4AF37]' : 'text-white/40'}`} />
         </div>
         <div>
           <div className={`font-medium ${unlocked ? 'text-white/90' : 'text-white/50'}`}>
@@ -115,14 +115,14 @@ export function Phase12_JoinTheInvestigation() {
         {/* Journey Progress */}
         {journey && (
           <motion.div
-            className="p-6 rounded-2xl bg-gradient-to-r from-orange-500/10 to-purple-500/10 border border-white/10"
+            className="p-6 rounded-2xl bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/10 border border-white/10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-white/90 flex items-center gap-2">
-                <Award className="w-5 h-5 text-orange-400" />
+                <Award className="w-5 h-5 text-[#D4AF37]" />
                 Your Journey Progress
               </h3>
               <span className="text-sm text-white/60">
@@ -132,7 +132,7 @@ export function Phase12_JoinTheInvestigation() {
 
             <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-4">
               <motion.div
-                className="h-full bg-gradient-to-r from-orange-500 to-purple-500"
+                className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]"
                 initial={{ width: 0 }}
                 animate={{ width: `${(journey.visitedPhases.size / journey.totalPhases) * 100}%` }}
                 transition={{ duration: 0.5 }}
@@ -164,7 +164,7 @@ export function Phase12_JoinTheInvestigation() {
               href={link.href}
               className={`p-6 rounded-2xl transition-all group ${
                 link.primary
-                  ? 'bg-gradient-to-br from-orange-500/20 to-purple-500/20 border-2 border-orange-500/30 hover:border-orange-500/50'
+                  ? 'bg-gradient-to-br from-[#D4AF37]/20 to-[#D4AF37]/20 border-2 border-[#D4AF37]/20 hover:border-orange-500/50'
                   : 'bg-white/5 border border-white/10 hover:bg-white/10'
               }`}
             >
@@ -174,7 +174,7 @@ export function Phase12_JoinTheInvestigation() {
                 </h4>
                 <ChevronRight
                   className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${
-                    link.primary ? 'text-orange-400' : 'text-white/40'
+                    link.primary ? 'text-[#D4AF37]' : 'text-white/40'
                   }`}
                 />
               </div>
@@ -202,7 +202,7 @@ export function Phase12_JoinTheInvestigation() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group"
+                className="p-4 bg-white/5 hover:bg-white/10 transition-colors group"
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-medium text-white/90">{link.title}</span>
@@ -216,7 +216,7 @@ export function Phase12_JoinTheInvestigation() {
 
         {/* NFT Support Section */}
         <motion.div
-          className="p-6 rounded-2xl bg-gradient-to-b from-purple-950/30 to-black/50 border border-purple-500/20 text-center"
+          className="p-6 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-[#D4AF37]/20 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -232,7 +232,7 @@ export function Phase12_JoinTheInvestigation() {
               href="https://qubicbay.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-600 to-purple-600 hover:from-orange-500 hover:to-purple-500 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center bg-gradient-to-r from-orange-600 to-purple-600 hover:from-[#D4AF37] hover:to-[#D4AF37] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105"
             >
               View Anna NFT Collection
               <ExternalLink className="w-4 h-4 ml-2" />

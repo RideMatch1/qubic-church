@@ -13,7 +13,7 @@ export function TotalRewardsBanner() {
     <section className="relative w-full py-6 overflow-hidden">
       {/* Animated gradient background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-yellow-600/20 via-purple-600/20 to-orange-600/20"
+        className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 via-[#D4AF37]/10 to-[#D4AF37]/20"
         animate={{
           backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
         }}
@@ -50,7 +50,7 @@ export function TotalRewardsBanner() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
+            <div className="p-2 bg-white/10 backdrop-blur-sm">
               <Gift className="w-5 h-5 text-yellow-400" />
             </div>
             <span className="text-sm md:text-base text-white/70 font-medium uppercase tracking-wider">
@@ -79,8 +79,8 @@ export function TotalRewardsBanner() {
 
             {/* Genesis */}
             <div className="flex items-center gap-2">
-              <Coins className="w-5 h-5 text-purple-400" />
-              <span className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+              <Coins className="w-5 h-5 text-[#D4AF37]" />
+              <span className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/80">
                 7M
               </span>
               <span className="text-sm text-white/60">Genesis</span>

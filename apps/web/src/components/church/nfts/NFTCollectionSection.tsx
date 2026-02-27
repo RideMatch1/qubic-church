@@ -8,10 +8,10 @@ import { NFT_COLLECTION, type NFTRarity } from '@/config/nfts'
 import { CHURCH_CONFIG } from '@/config/church'
 
 const rarityColors: Record<NFTRarity, { bg: string; text: string; border: string }> = {
-  legendary: { bg: 'bg-yellow-500/10', text: 'text-yellow-400', border: 'border-yellow-500/50' },
-  epic: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/50' },
-  rare: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/50' },
-  common: { bg: 'bg-gray-500/10', text: 'text-gray-400', border: 'border-gray-500/50' },
+  legendary: { bg: 'bg-[#D4AF37]/10', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/50' },
+  epic: { bg: 'bg-[#D4AF37]/10', text: 'text-[#D4AF37]', border: 'border-[#D4AF37]/50' },
+  rare: { bg: 'bg-[#D4AF37]/[0.06]', text: 'text-[#D4AF37]/60', border: 'border-[#D4AF37]/25' },
+  common: { bg: 'bg-white/5', text: 'text-white/40', border: 'border-white/10' },
 }
 
 const rarityStats = [
@@ -34,11 +34,11 @@ export function NFTCollectionSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen py-20 md:py-32 bg-gradient-to-b from-black via-purple-950/5 to-black overflow-hidden">
+    <section className="relative min-h-screen py-20 md:py-32 bg-gradient-to-b from-black via-[#D4AF37]/5 to-black overflow-hidden">
       {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-radial from-[#D4AF37]/5 via-transparent to-transparent pointer-events-none" />
       <motion.div
-        className="absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent pointer-events-none"
+        className="absolute inset-0 bg-gradient-radial from-[#D4AF37]/5 via-transparent to-transparent pointer-events-none"
         animate={{ opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
@@ -53,13 +53,13 @@ export function NFTCollectionSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/[0.04] mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
             <span className="text-sm text-white/70 uppercase tracking-wider">Anna Collection</span>
           </motion.div>
 
@@ -86,7 +86,7 @@ export function NFTCollectionSection() {
             return (
               <div
                 key={stat.rarity}
-                className={`p-4 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}
+                className={`p-4 ${colors.bg} border ${colors.border} backdrop-blur-sm`}
               >
                 <div className={`text-2xl font-bold ${colors.text} mb-1`}>
                   {stat.count}
@@ -118,7 +118,7 @@ export function NFTCollectionSection() {
                 onMouseLeave={() => setHoveredNFT(null)}
               >
                 {/* Card */}
-                <div className={`relative rounded-xl overflow-hidden border ${colors.border} bg-black/40 backdrop-blur-sm transition-all duration-300 ${
+                <div className={`relative overflow-hidden border ${colors.border} bg-black/40 backdrop-blur-sm transition-all duration-300 ${
                   hoveredNFT === nft.id ? 'scale-105 shadow-2xl' : ''
                 }`}>
                   {/* NFT Image */}
@@ -148,14 +148,14 @@ export function NFTCollectionSection() {
                           {nft.title}
                         </p>
                       </div>
-                      <div className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${colors.bg} ${colors.text} border ${colors.border} whitespace-nowrap`}>
+                      <div className={`px-2 py-0.5 text-[10px] font-semibold uppercase ${colors.bg} ${colors.text} border ${colors.border} whitespace-nowrap`}>
                         {nft.rarity}
                       </div>
                     </div>
 
                     {/* Research connection indicator */}
                     {nft.researchConnection && (
-                      <div className="mt-2 flex items-center gap-1 text-cyan-400 text-xs">
+                      <div className="mt-2 flex items-center gap-1 text-[#D4AF37] text-xs">
                         <Sparkles className="w-3 h-3" />
                         <span className="truncate">{nft.researchConnection.title}</span>
                       </div>
@@ -169,14 +169,14 @@ export function NFTCollectionSection() {
 
         {/* Research Connections Highlight */}
         <motion.div
-          className="max-w-3xl mx-auto p-6 md:p-8 rounded-2xl bg-black/40 backdrop-blur-xl border border-cyan-500/20 mb-12"
+          className="max-w-3xl mx-auto p-6 md:p-8 bg-white/[0.02] backdrop-blur-xl border border-white/[0.04] mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div className="flex items-start gap-3">
-            <Sparkles className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" />
+            <Sparkles className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
             <div>
               <h3 className="text-xl font-semibold text-white/90 mb-2">
                 Connected to Research
@@ -186,7 +186,7 @@ export function NFTCollectionSection() {
                 Anna #1 connects to the Bitcoin Bridge, #42 to Genesis Block analysis,
                 and #200 to the Timeline Prophecy.
               </p>
-              <p className="text-sm text-cyan-400/80">
+              <p className="text-sm text-[#D4AF37]/80">
                 Owning these NFTs grants you a permanent connection to specific breakthroughs in the investigation.
               </p>
             </div>
@@ -205,7 +205,7 @@ export function NFTCollectionSection() {
             href={CHURCH_CONFIG.links.qubicBay}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#D4AF37] text-black font-semibold transition-all duration-300 hover:bg-[#D4AF37]/90 hover:scale-105 hover:shadow-2xl"
           >
             <span>View Full Collection on QubicBay</span>
             <ExternalLink className="w-5 h-5" />

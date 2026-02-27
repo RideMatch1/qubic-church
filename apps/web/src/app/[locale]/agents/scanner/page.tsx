@@ -152,16 +152,16 @@ function MatrixCityscape({
           const brightness = 0.5 + Math.sin(time * 4) * 0.2
           color.setHSL(0.12, 1, brightness)
         } else if (isActiveRow) {
-          // Scanning row - cyan glow
-          color.setHSL(0.5, 1, 0.5 + Math.sin(col * 0.1 + time * 5) * 0.2)
+          // Scanning row - gold glow
+          color.setHSL(0.12, 0.8, 0.4 + Math.sin(col * 0.1 + time * 5) * 0.2)
         } else if (scanned) {
           // Scanned - color by value
           if (value > 50) {
-            color.setHSL(0.35, 0.8, 0.2 + normalizedValue * 0.3) // Green (positive)
+            color.setHSL(0.12, 0.6, 0.15 + normalizedValue * 0.25) // Gold (positive)
           } else if (value < -50) {
-            color.setHSL(0, 0.8, 0.2 + (1 - normalizedValue) * 0.3) // Red (negative)
+            color.setHSL(0, 0.6, 0.15 + (1 - normalizedValue) * 0.2) // Red (negative)
           } else {
-            color.setHSL(0.6, 0.3, 0.1 + normalizedValue * 0.1) // Blue (neutral)
+            color.setHSL(0.12, 0.15, 0.08 + normalizedValue * 0.08) // Dim gold (neutral)
           }
         } else {
           // Unscanned - dark
@@ -237,19 +237,19 @@ function ScanBeam({ progress, active }: { progress: number; active: boolean }) {
       {/* Main beam */}
       <mesh position={[0, 0.4, 0]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.02, 0.02, size * 2, 16]} />
-        <meshBasicMaterial color="#00ffff" transparent opacity={0.8} />
+        <meshBasicMaterial color="#D4AF37" transparent opacity={0.8} />
       </mesh>
       {/* Glow rings */}
       {[0, 0.1, 0.2].map((offset, i) => (
         <mesh key={i} position={[0, 0.4 + offset, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.05 + i * 0.02, 0.01, 8, 32]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
+          <meshBasicMaterial color="#D4AF37" transparent opacity={0.3} />
         </mesh>
       ))}
       {/* Scan surface */}
       <mesh position={[0, 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[size * 2, 0.3]} />
-        <meshBasicMaterial color="#00ffff" transparent opacity={0.1} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#D4AF37" transparent opacity={0.1} side={THREE.DoubleSide} />
       </mesh>
     </group>
   )
@@ -271,8 +271,8 @@ function HotspotMarkers({ hotspots }: { hotspots: Array<{ row: number; col: numb
               <mesh rotation={[0, 0, Math.PI / 4]}>
                 <octahedronGeometry args={[0.05 + intensity * 0.03]} />
                 <meshStandardMaterial
-                  color={spot.energy > 30 ? '#ffd700' : '#00ff88'}
-                  emissive={spot.energy > 30 ? '#ffd700' : '#00ff88'}
+                  color="#D4AF37"
+                  emissive="#D4AF37"
                   emissiveIntensity={0.5}
                   metalness={1}
                   roughness={0}
@@ -281,7 +281,7 @@ function HotspotMarkers({ hotspots }: { hotspots: Array<{ row: number; col: numb
               {/* Connection line */}
               <mesh position={[0, -0.5 - intensity * 0.25, 0]}>
                 <cylinderGeometry args={[0.005, 0.005, 1 + intensity * 0.5, 8]} />
-                <meshBasicMaterial color="#00ff88" transparent opacity={0.3} />
+                <meshBasicMaterial color="#D4AF37" transparent opacity={0.3} />
               </mesh>
             </group>
           </Float>
@@ -327,7 +327,7 @@ function DiscoveryExplosion({ position, active }: { position: [number, number, n
       {particles.map((p, i) => (
         <mesh key={i}>
           <sphereGeometry args={[p.size, 8, 8]} />
-          <meshBasicMaterial color="#ffd700" transparent />
+          <meshBasicMaterial color="#D4AF37" transparent />
         </mesh>
       ))}
     </group>
@@ -362,16 +362,16 @@ function IntroOverlay({ onStart, loading }: { onStart: () => void; loading: bool
       <div className="text-center space-y-8">
         <div className="relative">
           <h1 className="text-6xl font-mono font-bold tracking-wider">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500">
+            <span className="text-[#D4AF37]">
               ANNA MATRIX
             </span>
           </h1>
           <h2 className="text-3xl font-mono text-zinc-400 mt-2">SCANNER v2.0</h2>
-          <div className="absolute -inset-4 bg-cyan-500/10 blur-3xl -z-10" />
+          <div className="absolute -inset-4 bg-[#D4AF37]/5 blur-3xl -z-10" />
         </div>
 
         <div className="space-y-2 text-zinc-500 font-mono text-sm max-w-md mx-auto">
-          <p>128×128 Ternary Neural Network</p>
+          <p>128x128 Ternary Neural Network</p>
           <p>16,384 Addressable Cells</p>
           <p>Live Bitcoin Address Discovery</p>
         </div>
@@ -380,23 +380,23 @@ function IntroOverlay({ onStart, loading }: { onStart: () => void; loading: bool
           type="button"
           onClick={onStart}
           disabled={loading}
-          className="group relative px-12 py-4 bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-lg font-mono font-bold text-black text-lg transition-all hover:scale-105 disabled:opacity-50"
+          className="group relative px-12 py-4 bg-[#D4AF37]/[0.08] border border-[#D4AF37]/30 font-mono font-bold text-[#D4AF37] text-lg transition-all hover:bg-[#D4AF37]/[0.15] hover:border-[#D4AF37]/50 hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] disabled:opacity-50"
         >
           {loading ? (
             <span className="flex items-center gap-2">
-              <span className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+              <span className="w-5 h-5 border-2 border-[#D4AF37]/30 border-t-[#D4AF37] animate-spin" />
               LOADING MATRIX...
             </span>
           ) : (
             <>
               INITIALIZE SCANNER
-              <span className="absolute inset-0 rounded-lg bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="absolute inset-0 bg-[#D4AF37]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </>
           )}
         </button>
 
         <p className="text-zinc-600 text-xs font-mono">
-          Press SPACE to start/stop • R to reset • +/- to adjust speed
+          Press SPACE to start/stop | R to reset | +/- to adjust speed
         </p>
       </div>
     </div>
@@ -424,26 +424,26 @@ function StatsHUD({
   return (
     <div className="absolute top-4 left-4 space-y-3">
       {/* Main stats card */}
-      <div className="bg-black/80 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-4 font-mono">
+      <div className="bg-black/80 backdrop-blur-xl border border-[#D4AF37]/15 p-4 font-mono">
         <div className="flex items-center gap-3 mb-4">
           {scanning && (
             <div className="relative">
-              <span className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse" />
-              <span className="absolute inset-0 w-3 h-3 bg-cyan-400 rounded-full animate-ping" />
+              <span className="w-3 h-3 bg-[#D4AF37] animate-pulse" />
+              <span className="absolute inset-0 w-3 h-3 bg-[#D4AF37] animate-ping" />
             </div>
           )}
-          <span className="text-cyan-400 font-bold text-lg">MATRIX SCANNER</span>
+          <span className="text-[#D4AF37] font-bold text-lg">MATRIX SCANNER</span>
         </div>
 
         {/* Progress bar */}
         <div className="mb-4">
           <div className="flex justify-between text-xs text-zinc-500 mb-1">
             <span>SCAN PROGRESS</span>
-            <span className="text-cyan-400">{(progress * 100).toFixed(1)}%</span>
+            <span className="text-[#D4AF37]">{(progress * 100).toFixed(1)}%</span>
           </div>
-          <div className="h-2 bg-zinc-900 rounded-full overflow-hidden">
+          <div className="h-2 bg-zinc-900 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 transition-all duration-100"
+              className="h-full bg-[#D4AF37]/50 transition-all duration-100"
               style={{ width: `${progress * 100}%` }}
             />
           </div>
@@ -452,21 +452,21 @@ function StatsHUD({
         {/* Stats grid */}
         <div className="grid grid-cols-2 gap-4 text-sm">
           <StatItem label="CELLS" value={stats.scanned.toLocaleString()} max="16,384" />
-          <StatItem label="HOTSPOTS" value={stats.hotspots} color="amber" />
-          <StatItem label="ADDRESSES" value={stats.addresses} color="emerald" />
+          <StatItem label="HOTSPOTS" value={stats.hotspots} color="gold" />
+          <StatItem label="ADDRESSES" value={stats.addresses} color="gold-dim" />
           <StatItem
             label="WITH BTC"
             value={stats.withBalance}
-            color={stats.withBalance > 0 ? 'amber' : 'zinc'}
+            color={stats.withBalance > 0 ? 'gold' : 'zinc'}
             pulse={stats.withBalance > 0}
           />
         </div>
 
         {/* Energy meter */}
-        <div className="mt-4 pt-4 border-t border-zinc-800">
+        <div className="mt-4 pt-4 border-t border-white/[0.04]">
           <div className="flex justify-between items-center">
             <span className="text-zinc-500 text-xs">TOTAL ENERGY</span>
-            <span className={`font-bold ${stats.totalEnergy >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+            <span className={`font-bold ${stats.totalEnergy >= 0 ? 'text-[#D4AF37]' : 'text-red-400'}`}>
               {stats.totalEnergy >= 0 ? '+' : ''}{stats.totalEnergy.toFixed(0)}
             </span>
           </div>
@@ -475,12 +475,12 @@ function StatsHUD({
 
       {/* Current cell */}
       {currentCell && (
-        <div className="bg-black/60 backdrop-blur border border-cyan-500/20 rounded-lg p-3 font-mono text-sm">
-          <div className="text-zinc-500 text-xs mb-1">SCANNING</div>
-          <div className="text-cyan-400">
+        <div className="bg-black/60 backdrop-blur border border-[#D4AF37]/10 p-3 font-mono text-sm">
+          <div className="text-[11px] text-[#D4AF37]/50 uppercase tracking-[0.4em] mb-1">SCANNING</div>
+          <div className="text-[#D4AF37]">
             [{currentCell.row}, {currentCell.col}]
           </div>
-          <div className={`text-lg font-bold ${currentCell.value >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+          <div className={`text-lg font-bold ${currentCell.value >= 0 ? 'text-[#D4AF37]' : 'text-red-400'}`}>
             {currentCell.value}
           </div>
         </div>
@@ -493,7 +493,7 @@ function StatItem({
   label,
   value,
   max,
-  color = 'cyan',
+  color = 'gold',
   pulse = false
 }: {
   label: string
@@ -503,16 +503,15 @@ function StatItem({
   pulse?: boolean
 }) {
   const colorClasses: Record<string, string> = {
-    cyan: 'text-cyan-400',
-    amber: 'text-amber-400',
-    emerald: 'text-emerald-400',
+    gold: 'text-[#D4AF37]',
+    'gold-dim': 'text-[#D4AF37]/70',
     zinc: 'text-zinc-500',
   }
 
   return (
     <div>
       <div className="text-zinc-500 text-xs">{label}</div>
-      <div className={`font-bold ${colorClasses[color]} ${pulse ? 'animate-pulse' : ''}`}>
+      <div className={`font-bold ${colorClasses[color] || colorClasses.gold} ${pulse ? 'animate-pulse' : ''}`}>
         {value}
         {max && <span className="text-zinc-600 text-xs font-normal"> / {max}</span>}
       </div>
@@ -527,33 +526,32 @@ function ResultsPanel({ results, expanded, onToggle }: { results: ScanResult[]; 
 
   return (
     <div className={`absolute top-4 right-4 bottom-4 transition-all duration-300 ${expanded ? 'w-96' : 'w-80'}`}>
-      <div className="h-full bg-black/80 backdrop-blur-xl border border-cyan-500/30 rounded-xl overflow-hidden flex flex-col">
+      <div className="h-full bg-black/80 backdrop-blur-xl border border-[#D4AF37]/15 overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-4 border-b border-zinc-800 flex items-center justify-between">
+        <div className="p-4 border-b border-white/[0.04] flex items-center justify-between">
           <div>
-            <div className="text-cyan-400 font-mono font-bold">DISCOVERED</div>
+            <div className="text-[#D4AF37] font-mono font-bold">DISCOVERED</div>
             <div className="text-zinc-500 text-xs">{results.length} addresses found</div>
           </div>
           <button
             type="button"
             onClick={onToggle}
-            className="text-zinc-500 hover:text-cyan-400 transition-colors"
+            className="text-zinc-500 hover:text-[#D4AF37] transition-colors"
           >
-            {expanded ? '◀' : '▶'}
+            {expanded ? '<<' : '>>'}
           </button>
         </div>
 
         {/* Balance alert */}
         {withBalance.length > 0 && (
-          <div className="p-4 bg-gradient-to-r from-amber-500/20 to-transparent border-b border-amber-500/30">
-            <div className="flex items-center gap-2 text-amber-400 font-mono font-bold animate-pulse">
-              <span className="text-2xl">💰</span>
-              {withBalance.length} ADDRESS{withBalance.length > 1 ? 'ES' : ''} WITH BALANCE!
+          <div className="p-4 bg-[#D4AF37]/[0.06] border-b border-[#D4AF37]/20">
+            <div className="flex items-center gap-2 text-[#D4AF37] font-mono font-bold animate-pulse">
+              {withBalance.length} ADDRESS{withBalance.length > 1 ? 'ES' : ''} WITH BALANCE
             </div>
             {withBalance.map((r, i) => (
-              <div key={i} className="mt-2 p-2 bg-black/40 rounded font-mono text-xs">
-                <div className="text-amber-400 break-all">{r.address}</div>
-                <div className="text-amber-300 font-bold">{r.balance} BTC</div>
+              <div key={i} className="mt-2 p-2 bg-black/40 border border-[#D4AF37]/10 font-mono text-xs">
+                <div className="text-[#D4AF37]/80 break-all">{r.address}</div>
+                <div className="text-[#D4AF37] font-bold">{r.balance} BTC</div>
               </div>
             ))}
           </div>
@@ -564,25 +562,25 @@ function ResultsPanel({ results, expanded, onToggle }: { results: ScanResult[]; 
           {sortedResults.slice(0, 50).map((r, i) => (
             <div
               key={i}
-              className={`p-3 border-b border-zinc-800/50 hover:bg-zinc-900/50 transition-colors ${
-                r.hasBalance ? 'bg-amber-500/10' : ''
+              className={`p-3 border-b border-white/[0.04] hover:bg-[#0a0a0a] transition-colors ${
+                r.hasBalance ? 'bg-[#D4AF37]/[0.04]' : ''
               }`}
             >
               <div className="flex items-center justify-between font-mono text-xs">
                 <span className="text-zinc-500">[{r.row},{r.col}]</span>
-                <span className={`font-bold ${r.energy > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                <span className={`font-bold ${r.energy > 0 ? 'text-[#D4AF37]' : 'text-red-400'}`}>
                   {r.energy > 0 ? '+' : ''}{r.energy.toFixed(0)}
                 </span>
               </div>
-              <div className="text-cyan-400 font-mono text-xs truncate mt-1" title={r.address}>
+              <div className="text-[#D4AF37]/70 font-mono text-xs truncate mt-1" title={r.address}>
                 {r.address}
               </div>
               <div className="text-zinc-600 text-xs mt-1">
                 {r.checked
                   ? r.hasBalance
-                    ? `✓ ${r.balance} BTC`
-                    : '✗ Empty'
-                  : '○ Checking...'}
+                    ? `${r.balance} BTC`
+                    : 'Empty'
+                  : 'Checking...'}
               </div>
             </div>
           ))}
@@ -613,30 +611,27 @@ function ControlPanel({
   onModeChange: (mode: 'full' | 'hotspots' | 'smart') => void
 }) {
   return (
-    <div className="absolute bottom-4 left-4 right-[26rem] bg-black/80 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-4 font-mono">
+    <div className="absolute bottom-4 left-4 right-[26rem] bg-black/80 backdrop-blur-xl border border-[#D4AF37]/15 p-4 font-mono">
       <div className="flex items-center gap-6">
         {/* Main control */}
         <button
           type="button"
           onClick={scanning ? onStop : onStart}
-          className={`relative px-8 py-3 rounded-lg font-bold text-lg transition-all ${
+          className={`relative px-8 py-3 font-bold text-lg transition-all ${
             scanning
-              ? 'bg-red-500 hover:bg-red-400 text-white'
-              : 'bg-gradient-to-r from-cyan-600 to-cyan-400 hover:from-cyan-500 hover:to-cyan-300 text-black'
+              ? 'bg-red-500/20 border border-red-500/30 hover:bg-red-500/30 text-red-400'
+              : 'bg-[#D4AF37]/[0.08] border border-[#D4AF37]/30 hover:bg-[#D4AF37]/[0.15] hover:border-[#D4AF37]/50 text-[#D4AF37]'
           }`}
         >
-          {scanning ? '⏹ STOP' : '▶ SCAN'}
-          {!scanning && (
-            <span className="absolute inset-0 rounded-lg bg-white/20 opacity-0 hover:opacity-100 transition-opacity" />
-          )}
+          {scanning ? 'STOP' : 'SCAN'}
         </button>
 
         <button
           type="button"
           onClick={onReset}
-          className="px-4 py-3 rounded-lg border border-zinc-700 text-zinc-400 hover:border-cyan-500 hover:text-cyan-400 transition-all"
+          className="px-4 py-3 border border-white/[0.06] text-zinc-400 hover:border-[#D4AF37]/20 hover:text-[#D4AF37] transition-all"
         >
-          ↺ RESET
+          RESET
         </button>
 
         {/* Speed control */}
@@ -648,9 +643,9 @@ function ControlPanel({
             max="50"
             value={speed}
             onChange={e => onSpeedChange(Number(e.target.value))}
-            className="w-32 accent-cyan-500"
+            className="w-32 accent-[#D4AF37]"
           />
-          <span className="text-cyan-400 text-sm w-12">{speed}x</span>
+          <span className="text-[#D4AF37] text-sm w-12">{speed}x</span>
         </div>
 
         {/* Mode selector */}
@@ -661,10 +656,10 @@ function ControlPanel({
               key={m}
               type="button"
               onClick={() => onModeChange(m)}
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              className={`px-4 py-2 text-xs font-bold transition-all ${
                 mode === m
-                  ? 'bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400'
-                  : 'border border-zinc-700 text-zinc-500 hover:border-zinc-500'
+                  ? 'bg-[#D4AF37]/[0.08] border-2 border-[#D4AF37]/40 text-[#D4AF37]'
+                  : 'border border-white/[0.06] text-zinc-500 hover:border-white/[0.12]'
               }`}
             >
               {m.toUpperCase()}
@@ -933,8 +928,8 @@ export default function ScannerPage() {
         <CosmicBackground />
         <ambientLight intensity={0.2} />
         <pointLight position={[10, 10, 10]} intensity={1} />
-        <pointLight position={[-10, 10, -10]} intensity={0.5} color="#00ffff" />
-        <pointLight position={[0, 5, 0]} intensity={0.3} color="#ffd700" />
+        <pointLight position={[-10, 10, -10]} intensity={0.5} color="#D4AF37" />
+        <pointLight position={[0, 5, 0]} intensity={0.3} color="#D4AF37" />
 
         {matrix.length > 0 && (
           <>
@@ -983,12 +978,12 @@ export default function ScannerPage() {
       {/* Title */}
       <div className="absolute top-4 left-1/2 -translate-x-1/2 text-center pointer-events-none">
         <h1 className="text-3xl font-mono font-bold tracking-wider">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300">
+          <span className="text-[#D4AF37]">
             ANNA MATRIX SCANNER
           </span>
         </h1>
         <p className="text-zinc-500 text-sm font-mono mt-1">
-          128×128 Ternary Neural Network • Live Bitcoin Discovery
+          128x128 Ternary Neural Network | Live Bitcoin Discovery
         </p>
       </div>
     </div>

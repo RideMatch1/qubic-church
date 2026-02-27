@@ -495,26 +495,26 @@ export default function BridgeCoreTab() {
                 className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
                 onClick={() => setShowHelp(false)}
             >
-                <div className="bg-card border border-border rounded-xl max-w-2xl w-full p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
+                <div className="bg-[#050505] border border-white/[0.06] max-w-2xl w-full p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
                     <div className="flex justify-between items-start mb-4">
-                        <h2 className="text-xl font-bold flex items-center gap-2">
-                            <Shield className="w-5 h-5 text-primary" />
+                        <h2 className="text-xl font-bold flex items-center gap-2 tracking-wider">
+                            <Shield className="w-5 h-5 text-[#D4AF37]" />
                             Bridge Core System Usage
                         </h2>
                         <Button variant="ghost" size="sm" onClick={() => setShowHelp(false)}><X className="w-4 h-4" /></Button>
                     </div>
-                    <div className="space-y-4 text-sm text-muted-foreground">
+                    <div className="space-y-4 text-sm text-white/50">
                         <p>
                             This interface allows you to interact directly with the validated mathematical bridge between Bitcoin and Qubic.
                             It uses the exact algorithms discovered during the research phase.
                         </p>
                         <ul className="list-disc pl-5 space-y-2">
-                            <li><strong className="text-foreground">Verify Address:</strong> Enter any Bitcoin address. The system will derive its Qubic Identity and map it to the Anna Matrix. Special attention is given to <code>1CFB...</code> and <code>1CFi...</code>.</li>
-                            <li><strong className="text-foreground">Protocol 576:</strong> Checks the countdown to the major synchronization event on March 3, 2026.</li>
-                            <li><strong className="text-foreground">Master Key:</strong> Displays the extracted key required for future bridge activation.</li>
+                            <li><strong className="text-white/80">Verify Address:</strong> Enter any Bitcoin address. The system will derive its Qubic Identity and map it to the Anna Matrix. Special attention is given to <code className="text-[#D4AF37]/60">1CFB...</code> and <code className="text-[#D4AF37]/60">1CFi...</code>.</li>
+                            <li><strong className="text-white/80">Protocol 576:</strong> Checks the countdown to the major synchronization event on March 3, 2026.</li>
+                            <li><strong className="text-white/80">Master Key:</strong> Displays the extracted key required for future bridge activation.</li>
                         </ul>
-                        <div className="p-3 bg-muted rounded-lg border border-border mt-4">
-                            <strong>Try this:</strong> Click "Bridge Verifier" and use the preset <code>1CFB...</code> address to see the proven Genesis Connection.
+                        <div className="p-3 bg-white/[0.02] border border-white/[0.06] mt-4">
+                            <strong>Try this:</strong> Click "Bridge Verifier" and use the preset <code className="text-[#D4AF37]/60">1CFB...</code> address to see the proven Genesis Connection.
                         </div>
                     </div>
                 </div>
@@ -524,42 +524,42 @@ export default function BridgeCoreTab() {
 
        {/* Dashboard Header */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="p-4 border-primary/20 bg-primary/5 flex items-center justify-between">
+        <Card className="p-4 border-[#D4AF37]/20 bg-[#D4AF37]/[0.04] flex items-center justify-between">
             <div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">System Status</div>
-                <div className="text-lg font-bold text-primary flex items-center gap-2">
+                <div className="text-xs text-white/40 uppercase tracking-wider font-mono">System Status</div>
+                <div className="text-lg font-bold text-[#D4AF37] flex items-center gap-2">
                     <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full bg-[#D4AF37] opacity-75"></span>
+                      <span className="relative inline-flex h-3 w-3 bg-[#D4AF37]"></span>
                     </span>
                     ONLINE
                 </div>
             </div>
-            <Activity className="w-8 h-8 text-primary/50" />
-        </Card>
-        
-        <Card className="p-4 border-orange-500/20 bg-orange-500/5 flex items-center justify-between">
-            <div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Time-Lock</div>
-                <div className="text-lg font-bold text-orange-500">ACTIVE</div>
-            </div>
-            <Lock className="w-8 h-8 text-orange-500/50" />
+            <Activity className="w-8 h-8 text-[#D4AF37]/40" />
         </Card>
 
-        <Card className="p-4 border-purple-500/20 bg-purple-500/5 flex items-center justify-between">
+        <Card className="p-4 border-[#D4AF37]/15 bg-[#D4AF37]/[0.03] flex items-center justify-between">
             <div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Neural Link</div>
-                <div className="text-lg font-bold text-purple-500">CONNECTED</div>
+                <div className="text-xs text-white/40 uppercase tracking-wider font-mono">Time-Lock</div>
+                <div className="text-lg font-bold text-[#D4AF37]/80">ACTIVE</div>
             </div>
-            <Cpu className="w-8 h-8 text-purple-500/50" />
+            <Lock className="w-8 h-8 text-[#D4AF37]/30" />
         </Card>
 
-        <Card className="p-4 border-emerald-500/20 bg-emerald-500/5 flex items-center justify-between">
+        <Card className="p-4 border-[#D4AF37]/15 bg-[#D4AF37]/[0.03] flex items-center justify-between">
             <div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Master Key</div>
-                <div className="text-lg font-bold text-emerald-500">EXTRACTED</div>
+                <div className="text-xs text-white/40 uppercase tracking-wider font-mono">Neural Link</div>
+                <div className="text-lg font-bold text-[#D4AF37]/70">CONNECTED</div>
             </div>
-            <Key className="w-8 h-8 text-emerald-500/50" />
+            <Cpu className="w-8 h-8 text-[#D4AF37]/30" />
+        </Card>
+
+        <Card className="p-4 border-[#D4AF37]/15 bg-[#D4AF37]/[0.03] flex items-center justify-between">
+            <div>
+                <div className="text-xs text-white/40 uppercase tracking-wider font-mono">Master Key</div>
+                <div className="text-lg font-bold text-[#D4AF37]/60">EXTRACTED</div>
+            </div>
+            <Key className="w-8 h-8 text-[#D4AF37]/30" />
         </Card>
       </div>
 
@@ -567,106 +567,106 @@ export default function BridgeCoreTab() {
         {/* Left Panel: Modules */}
         <div className="lg:col-span-1 space-y-4">
             <div className="flex justify-between items-center">
-                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Active Modules</h3>
+                 <h3 className="text-sm font-mono text-white/40 uppercase tracking-wider">Active Modules</h3>
                  <Button variant="ghost" size="sm" className="h-6 gap-1 text-xs" onClick={() => setShowHelp(true)}>
                     <HelpCircle className="w-3 h-3" /> Info
                  </Button>
             </div>
             
-            <button 
+            <button
                 onClick={() => handleCommand('verify 1CFBdvaiZgZPTZERqnezAtDQJuGHKoHSzg')}
-                className="w-full text-left p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors flex items-center gap-3 group"
+                className="w-full text-left p-4 border border-white/[0.04] bg-[#050505] hover:bg-white/[0.03] transition-colors flex items-center gap-3 group"
             >
-                <div className="p-2 rounded-md bg-primary/10 text-primary group-hover:bg-primary/20">
+                <div className="p-2 bg-[#D4AF37]/[0.06] text-[#D4AF37] group-hover:bg-[#D4AF37]/10">
                     <Shield className="w-5 h-5" />
                 </div>
                 <div>
-                    <div className="font-medium">Bridge Verifier</div>
-                    <div className="text-xs text-muted-foreground">Run mathematical proof check</div>
+                    <div className="font-medium text-white/80">Bridge Verifier</div>
+                    <div className="text-xs text-white/30">Run mathematical proof check</div>
                 </div>
             </button>
 
-            <button 
+            <button
                 onClick={() => handleCommand('status')}
-                className="w-full text-left p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors flex items-center gap-3 group"
+                className="w-full text-left p-4 border border-white/[0.04] bg-[#050505] hover:bg-white/[0.03] transition-colors flex items-center gap-3 group"
             >
-                <div className="p-2 rounded-md bg-orange-500/10 text-orange-500 group-hover:bg-orange-500/20">
+                <div className="p-2 bg-[#D4AF37]/[0.06] text-[#D4AF37]/80 group-hover:bg-[#D4AF37]/10">
                     <Lock className="w-5 h-5" />
                 </div>
                 <div>
-                    <div className="font-medium">Protocol 576</div>
-                    <div className="text-xs text-muted-foreground">Check Time-Lock countdown</div>
+                    <div className="font-medium text-white/80">Protocol 576</div>
+                    <div className="text-xs text-white/30">Check Time-Lock countdown</div>
                 </div>
             </button>
 
-            <button 
+            <button
                 onClick={() => handleCommand('key')}
-                className="w-full text-left p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors flex items-center gap-3 group"
+                className="w-full text-left p-4 border border-white/[0.04] bg-[#050505] hover:bg-white/[0.03] transition-colors flex items-center gap-3 group"
             >
-                <div className="p-2 rounded-md bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500/20">
+                <div className="p-2 bg-[#D4AF37]/[0.06] text-[#D4AF37]/70 group-hover:bg-[#D4AF37]/10">
                     <Key className="w-5 h-5" />
                 </div>
                 <div>
-                    <div className="font-medium">Master Key Vault</div>
-                    <div className="text-xs text-muted-foreground">View extracted operational keys</div>
+                    <div className="font-medium text-white/80">Master Key Vault</div>
+                    <div className="text-xs text-white/30">View extracted operational keys</div>
                 </div>
             </button>
             
-            <div className="p-4 rounded-lg border border-dashed border-border bg-muted/20">
-                <div className="text-xs font-mono text-muted-foreground mb-2">SYSTEM METRICS</div>
+            <div className="p-4 border border-dashed border-white/[0.06] bg-white/[0.02]">
+                <div className="text-xs font-mono text-[#D4AF37]/50 mb-2 tracking-wider">SYSTEM METRICS</div>
                 <div className="space-y-2">
                     <div className="flex justify-between text-xs">
-                        <span>CPU Load</span>
-                        <span className="text-primary">12%</span>
+                        <span className="text-white/40">CPU Load</span>
+                        <span className="text-[#D4AF37]/70 font-mono">12%</span>
                     </div>
-                    <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full bg-primary w-[12%]" />
+                    <div className="w-full h-1 bg-white/[0.04] overflow-hidden">
+                        <div className="h-full bg-[#D4AF37]/40 w-[12%]" />
                     </div>
-                    
+
                     <div className="flex justify-between text-xs">
-                        <span>Memory (Anna)</span>
-                        <span className="text-purple-500">128x128</span>
+                        <span className="text-white/40">Memory (Anna)</span>
+                        <span className="text-[#D4AF37]/60 font-mono">128x128</span>
                     </div>
-                    <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full bg-purple-500 w-full" />
+                    <div className="w-full h-1 bg-white/[0.04] overflow-hidden">
+                        <div className="h-full bg-[#D4AF37]/30 w-full" />
                     </div>
 
                     <div className="flex justify-between text-xs mt-2">
-                         <span>Identity Conf.</span>
-                         <span className="text-emerald-500">99.9%</span>
+                         <span className="text-white/40">Identity Conf.</span>
+                         <span className="text-[#D4AF37]/60 font-mono">99.9%</span>
                     </div>
                 </div>
             </div>
         </div>
 
         {/* Right Panel: Terminal */}
-        <div className="lg:col-span-2 flex flex-col rounded-lg border border-border bg-black font-mono overflow-hidden shadow-inner">
-            <div className="flex items-center gap-2 px-4 py-2 border-b border-white/10 bg-white/5">
-                <Terminal className="w-4 h-4 text-muted-foreground" />
-                <span className="text-xs text-muted-foreground">BRIDGE_CORE_SYS_V1.0</span>
+        <div className="lg:col-span-2 flex flex-col border border-white/[0.04] bg-black font-mono overflow-hidden shadow-inner">
+            <div className="flex items-center gap-2 px-4 py-2 border-b border-white/[0.06] bg-white/[0.02]">
+                <Terminal className="w-4 h-4 text-[#D4AF37]/50" />
+                <span className="text-xs text-white/30 tracking-wider">BRIDGE_CORE_SYS_V1.0</span>
                 <div className="ml-auto flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+                    <div className="w-2.5 h-2.5 bg-[#D4AF37]/10" />
+                    <div className="w-2.5 h-2.5 bg-[#D4AF37]/20" />
+                    <div className="w-2.5 h-2.5 bg-[#D4AF37]/30" />
                 </div>
             </div>
-            
-            <div id="terminal-logs" className="flex-1 p-4 overflow-y-auto space-y-1 text-sm text-green-400 font-mono scrollbar-thin scrollbar-thumb-white/10">
+
+            <div id="terminal-logs" className="flex-1 p-4 overflow-y-auto space-y-1 text-sm text-[#D4AF37]/70 font-mono scrollbar-thin scrollbar-thumb-white/10">
                 {systemState.logs.map((log, i) => (
                     <div key={i} className="opacity-90 break-words whitespace-pre-wrap">{log}</div>
                 ))}
                 
                  {systemState.status === 'processing' && (
-                    <div className="flex items-center gap-2 text-yellow-500">
+                    <div className="flex items-center gap-2 text-[#D4AF37]/80">
                         <Loader2 className="w-3 h-3 animate-spin" />
                         <span>Processing...</span>
                     </div>
                  )}
             </div>
 
-            <div className="p-2 border-t border-white/10 bg-white/5">
+            <div className="p-2 border-t border-white/[0.06] bg-white/[0.02]">
                 <div className="flex items-center gap-2">
-                    <span className="text-green-500">root@bridge:~#</span>
+                    <span className="text-[#D4AF37]/60">root@bridge:~#</span>
                     <input 
                         type="text" 
                         value={terminalInput}

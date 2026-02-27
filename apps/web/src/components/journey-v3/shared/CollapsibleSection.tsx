@@ -25,7 +25,7 @@ export function CollapsibleSection({
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
-    <div className={cn('border border-white/10 rounded-xl overflow-hidden', className)}>
+    <div className={cn('border border-white/10 overflow-hidden', className)}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors text-left"
@@ -35,7 +35,7 @@ export function CollapsibleSection({
           {icon && <span className="text-white/60">{icon}</span>}
           <span className="font-medium text-white/90">{title}</span>
           {badge && (
-            <span className="px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span className="px-2 py-0.5 text-xs rounded-full bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/20">
               {badge}
             </span>
           )}

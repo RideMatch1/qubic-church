@@ -26,14 +26,14 @@ import { PERFORMANCE } from './constants'
 
 const COLORS = {
   bg: {
-    primary: 'bg-black/90',
+    primary: 'bg-[#050505]',
     secondary: 'bg-black/80',
     card: 'bg-white/5',
     cardHover: 'bg-white/10',
   },
   border: {
-    subtle: 'border-white/10',
-    active: 'border-cyan-500/50',
+    subtle: 'border-white/[0.04]',
+    active: 'border-[#D4AF37]/50',
   },
   text: {
     primary: 'text-white',
@@ -52,7 +52,7 @@ const LAYER_CONFIG = [
   { xor: 33, y: 32, color: '#5A7A9B', name: 'Layer 4 (XOR 33)',     key: '5' },
 ]
 
-const VIP_COLOR = '#06B6D4'
+const VIP_COLOR = '#D4AF37'
 const SELECTED_COLOR = '#FFFFFF'
 
 // =============================================================================
@@ -71,7 +71,7 @@ function CollapsiblePanel({ title, defaultOpen = true, children, badge, classNam
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
-    <div className={`border border-white/10 rounded-lg overflow-hidden ${className}`}>
+    <div className={`border border-white/[0.04] overflow-hidden ${className}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-4 py-3 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-colors"
@@ -79,7 +79,7 @@ function CollapsiblePanel({ title, defaultOpen = true, children, badge, classNam
         <span className="text-[11px] text-white/80 font-medium uppercase tracking-wider">{title}</span>
         <div className="flex items-center gap-2">
           {badge !== undefined && (
-            <span className="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">
+            <span className="text-[10px] bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5">
               {badge}
             </span>
           )}
@@ -131,12 +131,12 @@ function KeyboardShortcutsModal({ onClose }: { onClose: () => void }) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-black/95 border border-white/10 rounded-xl p-6 max-w-sm w-full mx-4"
+        className="bg-[#050505] border border-white/[0.04] p-6 max-w-sm w-full mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-medium text-white">Keyboard Shortcuts</h3>
-          <button onClick={onClose} className="p-1 hover:bg-white/10 rounded transition-colors">
+          <button onClick={onClose} className="p-1 hover:bg-white/10 transition-colors">
             <X size={16} className="text-white/60" />
           </button>
         </div>
@@ -144,7 +144,7 @@ function KeyboardShortcutsModal({ onClose }: { onClose: () => void }) {
           {shortcuts.map(({ key, action }) => (
             <div key={key} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
               <span className="text-white/60 text-sm">{action}</span>
-              <kbd className="px-2 py-1 bg-white/10 rounded text-[11px] text-white/80 font-mono">{key}</kbd>
+              <kbd className="px-2 py-1 bg-white/10 text-[11px] text-white/80 font-mono">{key}</kbd>
             </div>
           ))}
         </div>
@@ -395,7 +395,7 @@ function EdgeConnections({ edges, nodeMap }: { edges: AddressEdge[], nodeMap: Ma
 
   return (
     <lineSegments ref={lineRef} geometry={geometry}>
-      <lineBasicMaterial color="#06B6D4" transparent opacity={0.25} blending={THREE.AdditiveBlending} />
+      <lineBasicMaterial color="#D4AF37" transparent opacity={0.25} blending={THREE.AdditiveBlending} />
     </lineSegments>
   )
 }
@@ -583,7 +583,7 @@ export function AddressGraphScene() {
           {/* Lighting */}
           <ambientLight intensity={0.3} />
           <directionalLight position={[50, 100, 50]} intensity={0.5} />
-          <pointLight position={[0, 50, 0]} intensity={0.6} color="#0EA5E9" distance={150} />
+          <pointLight position={[0, 50, 0]} intensity={0.6} color="#D4AF37" distance={150} />
 
           <AmbientParticles />
 
@@ -667,13 +667,13 @@ export function AddressGraphScene() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden"
+          className="bg-[#050505] backdrop-blur-xl border border-white/[0.04] overflow-hidden"
         >
           {/* Header */}
-          <div className="p-4 border-b border-white/10">
+          <div className="p-4 border-b border-white/[0.04]">
             <h1 className="text-sm font-semibold text-white">Anna Matrix Graph</h1>
             <p className="text-[11px] text-white/40 mt-1">
-              {data.nodes.length.toLocaleString()} addresses from 128×128 matrix
+              {data.nodes.length.toLocaleString()} addresses from 128x128 matrix
             </p>
           </div>
 
@@ -686,13 +686,13 @@ export function AddressGraphScene() {
                   <button
                     key={layer.xor}
                     onClick={() => setActiveLayer(isActive ? null : layer.xor)}
-                    className={`w-full flex items-center justify-between p-2 rounded-lg transition-all ${
+                    className={`w-full flex items-center justify-between p-2 transition-all ${
                       isActive ? 'bg-white/10 ring-1 ring-white/20' : 'hover:bg-white/5'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-3 h-3 rounded-full"
+                        className="w-3 h-3"
                         style={{ backgroundColor: layer.color, opacity: isActive ? 1 : 0.6 }}
                       />
                       <span className="text-xs text-white/80">XOR {layer.xor}</span>
@@ -710,27 +710,27 @@ export function AddressGraphScene() {
           {/* Statistics */}
           <CollapsiblePanel title="Statistics" defaultOpen={false}>
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-white/5 rounded-lg p-3">
-                <div className="text-lg font-semibold text-cyan-400">{vipNodes.length}</div>
+              <div className="bg-white/5 p-3">
+                <div className="text-lg font-semibold text-[#D4AF37]">{vipNodes.length}</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">VIP Addresses</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-lg font-semibold text-white/80">{matrixNodes.length.toLocaleString()}</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">Matrix Nodes</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-lg font-semibold text-white/60">{data.edges.length}</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">Connections</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-lg font-semibold text-white/60">5</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-wider">XOR Layers</div>
               </div>
             </div>
-            <div className="mt-3 pt-3 border-t border-white/10">
+            <div className="mt-3 pt-3 border-t border-white/[0.04]">
               <div className="text-[10px] text-white/40 uppercase tracking-wider mb-2">Mathematical Basis</div>
               <p className="text-[11px] text-white/60 leading-relaxed">
-                Addresses derived from Anna Matrix (128×128) using SHA-256 → RIPEMD-160 → XOR transformation with 5 distinct XOR values (0, 7, 13, 27, 33).
+                Addresses derived from Anna Matrix (128x128) using SHA-256 &rarr; RIPEMD-160 &rarr; XOR transformation with 5 distinct XOR values (0, 7, 13, 27, 33).
               </p>
             </div>
           </CollapsiblePanel>
@@ -742,59 +742,59 @@ export function AddressGraphScene() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl p-4 space-y-2"
+          className="bg-[#050505] backdrop-blur-xl border border-white/[0.04] p-4 space-y-2"
         >
           <div className="text-[10px] text-white/40 uppercase tracking-wider mb-3">View Controls</div>
 
           <button
             onClick={() => setViewState(s => ({ ...s, showEdges: !s.showEdges }))}
-            className={`w-full flex items-center justify-between px-3 py-2 text-xs rounded-lg transition-all ${
-              viewState.showEdges ? 'bg-cyan-500/20 text-cyan-400' : 'bg-white/5 text-white/60 hover:bg-white/10'
+            className={`w-full flex items-center justify-between px-3 py-2 text-xs transition-all ${
+              viewState.showEdges ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'bg-white/5 text-white/60 hover:bg-white/10'
             }`}
           >
             <span className="flex items-center gap-2">
               {viewState.showEdges ? <Eye size={14} /> : <EyeOff size={14} />}
               Edges
             </span>
-            <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5 rounded">E</kbd>
+            <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5">E</kbd>
           </button>
 
           <button
             onClick={() => setFilters(f => ({ ...f, showVIPOnly: !f.showVIPOnly }))}
-            className={`w-full flex items-center justify-between px-3 py-2 text-xs rounded-lg transition-all ${
-              filters.showVIPOnly ? 'bg-amber-500/20 text-amber-400' : 'bg-white/5 text-white/60 hover:bg-white/10'
+            className={`w-full flex items-center justify-between px-3 py-2 text-xs transition-all ${
+              filters.showVIPOnly ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'bg-white/5 text-white/60 hover:bg-white/10'
             }`}
           >
             <span className="flex items-center gap-2">
               <Layers size={14} />
               VIP Only
             </span>
-            <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5 rounded">V</kbd>
+            <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5">V</kbd>
           </button>
 
-          <div className="border-t border-white/10 pt-2 mt-2">
+          <div className="border-t border-white/[0.04] pt-2 mt-2">
             <button
               onClick={resetCamera}
-              className="w-full flex items-center justify-between px-3 py-2 text-xs bg-white/5 text-white/60 rounded-lg hover:bg-white/10 transition-all"
+              className="w-full flex items-center justify-between px-3 py-2 text-xs bg-white/5 text-white/60 hover:bg-white/10 transition-all"
             >
               <span className="flex items-center gap-2">
                 <RotateCcw size={14} />
                 Reset View
               </span>
-              <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5 rounded">R</kbd>
+              <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5">R</kbd>
             </button>
           </div>
 
-          <div className="border-t border-white/10 pt-2 mt-2">
+          <div className="border-t border-white/[0.04] pt-2 mt-2">
             <button
               onClick={() => setShowShortcuts(true)}
-              className="w-full flex items-center justify-between px-3 py-2 text-xs bg-white/5 text-white/60 rounded-lg hover:bg-white/10 transition-all"
+              className="w-full flex items-center justify-between px-3 py-2 text-xs bg-white/5 text-white/60 hover:bg-white/10 transition-all"
             >
               <span className="flex items-center gap-2">
                 <Keyboard size={14} />
                 Shortcuts
               </span>
-              <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5 rounded">?</kbd>
+              <kbd className="text-[9px] bg-black/50 px-1.5 py-0.5">?</kbd>
             </button>
           </div>
         </motion.div>
@@ -813,9 +813,9 @@ export function AddressGraphScene() {
             value={searchQuery}
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search address..."
-            className="w-full pl-10 pr-12 py-3 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/20 transition-colors"
+            className="w-full pl-10 pr-12 py-3 bg-[#050505] backdrop-blur-xl border border-white/[0.04] text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/[0.04] transition-colors"
           />
-          <kbd className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-white/30 bg-white/5 px-2 py-0.5 rounded">/</kbd>
+          <kbd className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-white/30 bg-white/5 px-2 py-0.5">/</kbd>
         </motion.div>
       </div>
 
@@ -826,7 +826,7 @@ export function AddressGraphScene() {
           animate={{ opacity: 1, scale: 1 }}
           className="absolute bottom-20 left-1/2 -translate-x-1/2"
         >
-          <div className="bg-black/80 backdrop-blur px-4 py-2 rounded-full border border-white/10">
+          <div className="bg-black/80 backdrop-blur px-4 py-2 border border-white/[0.04]">
             <span className="text-xs text-white/60">Active Layer: </span>
             <span className="text-xs font-medium" style={{ color: LAYER_CONFIG.find(l => l.xor === activeLayer)?.color }}>
               XOR {activeLayer}

@@ -1,0 +1,322 @@
+{
+  "title": "POCC/HASV Honest Reanalysis",
+  "timestamp": "2026-02-24T17:41:10.634622",
+  "seed": 42,
+  "n_simulations": 100000,
+  "sections": {
+    "basic_calculations": {
+      "pocc_char_sum": 612,
+      "hasv_char_sum": 750,
+      "char_diff": 138,
+      "pocc_diag_sum": -1231,
+      "hasv_diag_sum": -555,
+      "diag_diff": 676,
+      "all_match": true
+    },
+    "random_pair_test": {
+      "n_simulations": 100000,
+      "observed_diff": 676,
+      "fraction_ge_676": 0.44103,
+      "p_value": 0.44103,
+      "significant": false,
+      "abs_diff_mean": 698.61591,
+      "abs_diff_median": 590.0,
+      "abs_diff_std": 528.14698676114,
+      "abs_diff_p5": 54.0,
+      "abs_diff_p95": 1715.0,
+      "verdict": "NOT SIGNIFICANT"
+    },
+    "permutation_test": {
+      "n_simulations": 100000,
+      "exact_676_count": 37,
+      "p_exact_676": 0.00037,
+      "abs_ge_676_count": 41610,
+      "p_abs_ge_676": 0.4161,
+      "perm_diff_mean": 1.3121,
+      "perm_diff_std": 810.0401723331936,
+      "significant": false,
+      "verdict": "NOT SIGNIFICANT"
+    },
+    "independence_audit": {
+      "total_claims": 15,
+      "independent_count": 2,
+      "derived_count": 13,
+      "significant_count": 0,
+      "claims": [
+        {
+          "id": 1,
+          "claim": "Character sum difference = 138",
+          "math_correct": true,
+          "independent": true,
+          "significant": false,
+          "explanation": "True: HASV(750) - POCC(612) = 138. However, this is just the difference in letter-value sums for two specific addresses. Any address pair has SOME difference. Not inherently meaningful."
+        },
+        {
+          "id": 2,
+          "claim": "138 mod 6 = 0",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #1. 138 = 6 * 23. Any number divisible by 6 has this property. 1 in 6 random integers satisfy this. Not independent information."
+        },
+        {
+          "id": 3,
+          "claim": "138 mod 23 = 0",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #1. 138 = 6 * 23. This is just the factorization of 138, not new information."
+        },
+        {
+          "id": 4,
+          "claim": "138 = 2 * 3 * 23 (prime factorization)",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #1. Every integer has a unique prime factorization. This is just a mathematical fact about 138."
+        },
+        {
+          "id": 5,
+          "claim": "Diagonal difference = 676 = 26^2",
+          "math_correct": true,
+          "independent": true,
+          "significant": false,
+          "explanation": "True: HASV_diag(-555) - POCC_diag(-1231) = 676 = 26^2. The math is correct. However, as shown in Section 2, p = 0.44 -- about 44% of random pairs achieve this or larger. NOT SIGNIFICANT."
+        },
+        {
+          "id": 6,
+          "claim": "676 = 26^2 (perfect square of alphabet size)",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #5. 676 is 26^2 as a mathematical fact. The connection to alphabet size is numerological pattern-matching, not statistical evidence."
+        },
+        {
+          "id": 7,
+          "claim": "sqrt(676) = 26 = number of letters in alphabet",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #6. Same fact restated. sqrt(676) = 26 is just the definition of 676 = 26^2."
+        },
+        {
+          "id": 8,
+          "claim": "HASV 1-based char sum = 810",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #1. If A=0 sum is 750, then A=1 sum is 750 + 60 = 810. No new information."
+        },
+        {
+          "id": 9,
+          "claim": "POCC 1-based char sum = 672 ~ 676",
+          "math_correct": false,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED and WRONG. 672 is NOT 676. The claim that they are 'close' (0.59% error) is numerological. In mathematics, close does not equal equal. Many random addresses have 1-based sums within 4 of 676."
+        },
+        {
+          "id": 10,
+          "claim": "HASV char sum = 750 = expected value for random 60-char string",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED observation. E[sum] = 60 * 12.5 = 750. HASV hitting the expected value exactly is mildly interesting but p ~ 1/57 (one sigma bin) -- many addresses do this."
+        },
+        {
+          "id": 11,
+          "claim": "676 / 138 = 4.8986... (claimed meaningful ratio)",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claims #1 and #5. Any two numbers have a ratio. 4.8986... is not a notable mathematical constant."
+        },
+        {
+          "id": 12,
+          "claim": "POCC diagonal sum = -1231 (claimed significant)",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED component of claim #5. The individual diagonal sums are determined by letter frequencies and diagonal values. Not independently testable without claim #5."
+        },
+        {
+          "id": 13,
+          "claim": "HASV diagonal sum = -555 (claimed triple-5 pattern)",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED component of claim #5. The repeated digit pattern (-555) is numerological. In base 10, getting three identical digits in a three-digit number has p ~ 10/900 ~ 0.011 -- mildly unlikely but common enough with multiple looks."
+        },
+        {
+          "id": 14,
+          "claim": "Multiple modular arithmetic properties of 676",
+          "math_correct": true,
+          "independent": false,
+          "significant": false,
+          "explanation": "DERIVED from claim #5. Every number has modular properties. 676 mod 26 = 0, 676 mod 13 = 0, etc. These are consequences of 676 = 26^2, not independent facts."
+        },
+        {
+          "id": 15,
+          "claim": "Combined probability of all properties is astronomically low",
+          "math_correct": false,
+          "independent": false,
+          "significant": false,
+          "explanation": "INCORRECT. This claim multiplies p-values of DERIVED properties as if they were independent, which drastically underestimates the true probability. Most 'properties' are mathematical consequences of just 1-2 base facts. The combined probability is driven entirely by the few independent claims, which are individually not significant."
+        }
+      ]
+    },
+    "expected_value_analysis": {
+      "expected_one_char": 12.5,
+      "expected_sum_60": 750.0,
+      "var_one_char": 56.25,
+      "std_sum_60": 58.09475019311125,
+      "hasv_z_score": 0.0,
+      "pocc_z_score": -2.3754297856738824,
+      "pocc_sigma_below_mean": 2.3754297856738824,
+      "empirical_frac_le_612": 0.00912,
+      "empirical_frac_eq_750": 0.0065
+    },
+    "one_based_sum_claim": {
+      "pocc_sum_1based": 672,
+      "hasv_sum_1based": 810,
+      "difference_from_676": 4,
+      "error_percent": 0.591715976331361,
+      "frac_within_4_of_676": 0.00412,
+      "frac_within_10_of_676": 0.01049,
+      "verdict": "NOT SIGNIFICANT - 672 != 676"
+    },
+    "summary_table": [
+      {
+        "id": 1,
+        "claim": "Character sum difference = 138",
+        "math_correct": true,
+        "significant": false,
+        "independent": true,
+        "verdict": "NOT SIGNIFICANT"
+      },
+      {
+        "id": 2,
+        "claim": "138 mod 6 = 0",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 3,
+        "claim": "138 mod 23 = 0",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 4,
+        "claim": "138 = 2 * 3 * 23 (prime factorization)",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 5,
+        "claim": "Diagonal difference = 676 = 26^2",
+        "math_correct": true,
+        "significant": false,
+        "independent": true,
+        "verdict": "NOT SIGNIFICANT"
+      },
+      {
+        "id": 6,
+        "claim": "676 = 26^2 (perfect square of alphabet size)",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 7,
+        "claim": "sqrt(676) = 26 = number of letters in alphabet",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 8,
+        "claim": "HASV 1-based char sum = 810",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 9,
+        "claim": "POCC 1-based char sum = 672 ~ 676",
+        "math_correct": false,
+        "significant": false,
+        "independent": false,
+        "verdict": "INVALID"
+      },
+      {
+        "id": 10,
+        "claim": "HASV char sum = 750 = expected value for random 60-char string",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 11,
+        "claim": "676 / 138 = 4.8986... (claimed meaningful ratio)",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 12,
+        "claim": "POCC diagonal sum = -1231 (claimed significant)",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 13,
+        "claim": "HASV diagonal sum = -555 (claimed triple-5 pattern)",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 14,
+        "claim": "Multiple modular arithmetic properties of 676",
+        "math_correct": true,
+        "significant": false,
+        "independent": false,
+        "verdict": "DERIVED (redundant)"
+      },
+      {
+        "id": 15,
+        "claim": "Combined probability of all properties is astronomically low",
+        "math_correct": false,
+        "significant": false,
+        "independent": false,
+        "verdict": "INVALID"
+      }
+    ]
+  },
+  "final_verdict": {
+    "mathematically_correct": true,
+    "statistically_significant": false,
+    "p_value_random_pairs": 0.44103,
+    "p_value_permutation": 0.4161,
+    "independent_claims": 2,
+    "derived_claims": 13,
+    "invalid_claims": 2,
+    "significant_claims": 0,
+    "conclusion": "The POCC/HASV 676 finding is a coincidence, not evidence of design."
+  }
+}

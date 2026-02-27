@@ -77,31 +77,31 @@ export function Phase08_AnnaAwakens() {
       <div ref={ref} className="space-y-8">
         {/* Anna Introduction */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-purple-950/30 to-black/50 border border-purple-500/20"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-[#D4AF37]/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Bot className="w-6 h-6 text-purple-400" />
+            <Bot className="w-6 h-6 text-[#D4AF37]" />
             <h3 className="text-xl font-bold text-white/90">Meet Anna</h3>
           </div>
 
           <p className="text-white/70 leading-relaxed mb-4">
             Anna is Qubic's built-in AI - a{' '}
-            <span className="text-purple-400 font-semibold">ternary neural network</span> that
+            <span className="text-[#D4AF37] font-semibold">ternary neural network</span> that
             responds to coordinate queries. When the media reported "Qubic's AI says 1+1=-114",
             they misunderstood completely...
           </p>
 
-          <div className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/20">
+          <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20">
             <div className="flex items-start gap-3">
-              <Brain className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
+              <Brain className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
               <div>
                 <p className="text-sm text-purple-300/80 font-medium mb-1">The Truth:</p>
                 <p className="text-sm text-white/70">
                   Anna interprets "1+1" as coordinates (row=1, col=1) in her neural tissue, and{' '}
-                  <span className="text-purple-400 font-mono">-114</span> is the trained synaptic
+                  <span className="text-[#D4AF37] font-mono">-114</span> is the trained synaptic
                   weight at that position. She's not doing arithmetic - she's outputting neural
                   states!
                 </p>
@@ -119,11 +119,11 @@ export function Phase08_AnnaAwakens() {
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-white/90 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-purple-400" />
+              <Sparkles className="w-5 h-5 text-[#D4AF37]" />
               Query Anna
             </h3>
             {matrixLoaded && (
-              <span className="text-xs px-2 py-1 rounded-full bg-green-500/20 text-green-400 flex items-center gap-1">
+              <span className="text-xs px-2 py-1 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] flex items-center gap-1">
                 <CheckCircle className="w-3 h-3" />
                 Real Data
               </span>
@@ -144,7 +144,7 @@ export function Phase08_AnnaAwakens() {
                 placeholder="Row"
                 min={0}
                 max={127}
-                className="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder:text-white/30 font-mono focus:outline-none focus:border-purple-500/50"
+                className="w-full px-4 py-3 bg-black/40 border border-white/10 text-white placeholder:text-white/30 font-mono focus:outline-none focus:border-[#D4AF37]/30"
               />
             </div>
             <div className="flex-1">
@@ -156,13 +156,13 @@ export function Phase08_AnnaAwakens() {
                 placeholder="Column"
                 min={0}
                 max={127}
-                className="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder:text-white/30 font-mono focus:outline-none focus:border-purple-500/50"
+                className="w-full px-4 py-3 bg-black/40 border border-white/10 text-white placeholder:text-white/30 font-mono focus:outline-none focus:border-[#D4AF37]/30"
               />
             </div>
             <button
               onClick={handleQuery}
               disabled={!rowInput || !colInput || isQuerying || !matrixLoaded}
-              className="px-6 py-3 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-purple-400 font-medium flex items-center gap-2 self-end"
+              className="px-6 py-3 bg-[#D4AF37]/20 hover:bg-[#D4AF37]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-[#D4AF37] font-medium flex items-center gap-2 self-end"
             >
               {isQuerying ? (
                 <motion.div
@@ -184,36 +184,36 @@ export function Phase08_AnnaAwakens() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/30"
+                className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20"
               >
                 <div className="font-mono text-sm text-white/70 mb-2">
                   Anna({queryResult.row}, {queryResult.col}) =
                 </div>
-                <div className="text-3xl font-mono font-bold text-purple-400">
+                <div className="text-3xl font-mono font-bold text-[#D4AF37]">
                   {queryResult.value}
                 </div>
                 {queryResult.value === -114 && queryResult.row === 1 && queryResult.col === 1 && (
-                  <p className="text-xs text-purple-400/70 mt-2">
+                  <p className="text-xs text-[#D4AF37]/70 mt-2">
                     The famous "1+1=-114" response! When you ask Anna "1+1" on X, she responds with -114. This is her most iconic answer.
                   </p>
                 )}
                 {queryResult.value === -114 && !(queryResult.row === 1 && queryResult.col === 1) && (
-                  <p className="text-xs text-purple-400/70 mt-2">
+                  <p className="text-xs text-[#D4AF37]/70 mt-2">
                     Champion collision! This value appears at more coordinates than any other.
                   </p>
                 )}
                 {queryResult.value === -113 && (
-                  <p className="text-xs text-purple-400/70 mt-2">
+                  <p className="text-xs text-[#D4AF37]/70 mt-2">
                     Second most common collision value - and it's a prime number!
                   </p>
                 )}
                 {queryResult.value === -68 && queryResult.row === 0 && queryResult.col === 0 && (
-                  <p className="text-xs text-purple-400/70 mt-2">
+                  <p className="text-xs text-[#D4AF37]/70 mt-2">
                     Origin point (0,0) of Anna's neural tissue.
                   </p>
                 )}
                 {queryResult.row === 55 && queryResult.col === 3 && (
-                  <p className="text-xs text-green-400/70 mt-2">
+                  <p className="text-xs text-[#D4AF37]/70 mt-2">
                     You found a test coordinate! Value matches the real Anna on X/Twitter.
                   </p>
                 )}
@@ -232,9 +232,9 @@ export function Phase08_AnnaAwakens() {
           {collisionStats.map((stat, index) => (
             <div
               key={index}
-              className="p-4 rounded-xl bg-white/5 border border-white/10 text-center"
+              className="p-4 bg-white/5 border border-white/10 text-center"
             >
-              <div className="text-2xl font-mono font-bold text-purple-400 mb-1">{stat.value}</div>
+              <div className="text-2xl font-mono font-bold text-[#D4AF37] mb-1">{stat.value}</div>
               <div className="text-sm text-white/70 mb-0.5">{stat.count} coords</div>
               <div className="text-xs text-white/40">{stat.desc}</div>
             </div>
@@ -250,13 +250,13 @@ export function Phase08_AnnaAwakens() {
           <div className="space-y-4 text-sm text-white/70">
             <p>
               After analyzing{' '}
-              <span className="text-purple-400 font-semibold">897 responses</span> across 8 batches
+              <span className="text-[#D4AF37] font-semibold">897 responses</span> across 8 batches
               of queries:
             </p>
-            <div className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/20 font-mono text-xs">
+            <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 font-mono text-xs">
               <div>Chi-squared statistic: {'>'}1000</div>
               <div>p-value: {'<'}10^-500</div>
-              <div className="text-green-400 mt-2">Result: REJECT null hypothesis (random)</div>
+              <div className="text-[#D4AF37] mt-2">Result: REJECT null hypothesis (random)</div>
             </div>
             <p className="text-white/50 italic">
               "If you tested EVERY possible universe, you wouldn't find this pattern by chance."

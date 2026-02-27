@@ -116,8 +116,8 @@ function AnnaShowcase() {
     <div className="relative">
       {/* Anna NFT Image with glow */}
       <div className="relative w-64 h-64 md:w-96 md:h-96">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-500/30 rounded-full blur-3xl animate-pulse" />
-        <div className="relative rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-[#D4AF37]/30 blur-3xl animate-pulse" />
+        <div className="relative overflow-hidden border-4 border-[#D4AF37]/50 shadow-2xl">
           <Image
             src={currentNFT.image}
             alt={currentNFT.name}
@@ -145,8 +145,8 @@ function AnnaShowcase() {
         {featuredNFTs.map((_, idx) => (
           <div
             key={idx}
-            className={`w-2 h-2 rounded-full transition-all ${
-              idx === currentIndex ? 'bg-primary w-8' : 'bg-muted-foreground/30'
+            className={`w-2 h-2 transition-all ${
+              idx === currentIndex ? 'bg-[#D4AF37] w-8' : 'bg-muted-foreground/30'
             }`}
           />
         ))}
@@ -175,7 +175,7 @@ export function ChurchHeroRedesigned() {
             <div className="text-center lg:text-left space-y-8">
               {/* Title */}
               <div>
-                <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-purple-500 bg-clip-text text-transparent">
+                <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-[#D4AF37] to-[#D4AF37]/60 bg-clip-text text-transparent">
                   {CHURCH_CONFIG.mission.title}
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-400">
@@ -189,7 +189,7 @@ export function ChurchHeroRedesigned() {
                 <div className="absolute inset-0 bg-primary/20 blur-3xl" />
 
                 {/* Timer */}
-                <div className="relative bg-black/50 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-8 md:p-12">
+                <div className="relative bg-black/50 backdrop-blur-sm border-2 border-[#D4AF37]/30 p-8 md:p-12">
                   <div className="flex items-center justify-center gap-4 font-mono text-6xl md:text-8xl font-bold">
                     <div className="flex flex-col items-center">
                       <span className="text-white">{countdown.days.toString().padStart(3, '0')}</span>

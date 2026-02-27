@@ -47,10 +47,10 @@ export function HistoricalTimelineDiagram() {
                 fill="currentColor"
                 className={
                   event.color === 'orange'
-                    ? 'text-orange-500'
+                    ? 'text-[#D4AF37]'
                     : event.color === 'purple'
-                    ? 'text-purple-500'
-                    : 'text-green-500'
+                    ? 'text-[#D4AF37]'
+                    : 'text-[#D4AF37]'
                 }
               />
 

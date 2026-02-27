@@ -65,8 +65,8 @@ const EVIDENCE_CARDS = [
     title: 'Biblical Reference',
     description: 'Isaiah 30:26 - "The light of the sun will be seven times brighter"',
     detail: 'Researchers found this specific date encoded in ancient texts',
-    color: 'text-yellow-400',
-    bgColor: 'bg-yellow-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     borderColor: 'border-yellow-500/20',
     link: 'https://www.biblegateway.com/passage/?search=Isaiah%2030:26&version=NIV',
     linkText: 'Read verse on BibleGateway',
@@ -77,9 +77,9 @@ const EVIDENCE_CARDS = [
     title: 'Lunar Eclipse',
     description: 'A total lunar eclipse occurs on March 3, 2026',
     detail: 'Astronomical alignment verified by NASA',
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-500/10',
-    borderColor: 'border-blue-500/20',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/20',
     link: 'https://eclipse.gsfc.nasa.gov/LEplot/LEplot2001/LE2026Mar03T.pdf',
     linkText: 'NASA Eclipse Data',
     disclaimer: 'Astronomically verified event',
@@ -89,9 +89,9 @@ const EVIDENCE_CARDS = [
     title: 'Qubic Time-Lock',
     description: 'Protocol unlocks at a specific epoch timestamp',
     detail: 'Cryptographically enforced release mechanism',
-    color: 'text-purple-400',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/20',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/20',
     link: '/docs/03-results/time-lock-analysis',
     linkText: 'Technical Analysis',
     disclaimer: 'Requires verification in protocol documentation',
@@ -167,14 +167,14 @@ export function CountdownSection() {
 
         {/* THE DATE - Dramatic reveal */}
         <motion.div
-          className="p-8 md:p-12 rounded-2xl bg-gradient-to-b from-orange-950/30 to-black/50 border border-orange-900/30 mb-10 relative overflow-hidden"
+          className="p-8 md:p-12 rounded-2xl bg-gradient-to-b from-[#050505] to-black/50 border border-orange-900/30 mb-10 relative overflow-hidden"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.95 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           {/* Background glow effect */}
           <motion.div
-            className="absolute inset-0 bg-gradient-radial from-orange-500/10 via-transparent to-transparent"
+            className="absolute inset-0 bg-gradient-radial from-[#D4AF37]/10 via-transparent to-transparent"
             animate={{ opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 3, repeat: Infinity }}
           />
@@ -210,13 +210,13 @@ export function CountdownSection() {
               <div key={unit.label} className="text-center">
                 <div className="relative">
                   <motion.div
-                    className="p-4 md:p-6 rounded-xl bg-black/50 border border-orange-500/20"
+                    className="p-4 md:p-6 bg-black/50 border border-orange-500/20"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
                     transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                   >
                     <motion.div
-                      className="text-3xl md:text-5xl font-mono font-bold text-orange-400"
+                      className="text-3xl md:text-5xl font-mono font-bold text-[#D4AF37]"
                       key={unit.value}
                       initial={{ scale: 1.1 }}
                       animate={{ scale: 1 }}
@@ -227,7 +227,7 @@ export function CountdownSection() {
                   </motion.div>
                   {/* Pulsing glow */}
                   <motion.div
-                    className="absolute inset-0 rounded-xl border-2 border-orange-500/30 pointer-events-none"
+                    className="absolute inset-0 border-2 border-[#D4AF37]/20 pointer-events-none"
                     animate={{
                       scale: [1, 1.02, 1],
                       opacity: [0.3, 0.1, 0.3],
@@ -256,7 +256,7 @@ export function CountdownSection() {
           transition={{ delay: 1.2 }}
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="h-5 w-5 text-orange-400" />
+            <Sparkles className="h-5 w-5 text-[#D4AF37]" />
             <h3 className="text-lg font-semibold text-white/80">Why March 3, 2026?</h3>
           </div>
 
@@ -279,7 +279,7 @@ export function CountdownSection() {
                 return (
                   <motion.div
                     key={card.title}
-                    className={`p-5 rounded-xl ${card.bgColor} border ${card.borderColor} relative overflow-hidden`}
+                    className={`p-5 ${card.bgColor} border ${card.borderColor} relative overflow-hidden`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
@@ -293,7 +293,7 @@ export function CountdownSection() {
 
                     <div className="relative">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className={`p-2 rounded-lg bg-black/30 ${card.color}`}>
+                        <div className={`p-2 bg-black/30 ${card.color}`}>
                           <Icon className="h-5 w-5" />
                         </div>
                         <h4 className="font-semibold text-white/80">{card.title}</h4>
@@ -319,7 +319,7 @@ export function CountdownSection() {
 
         {/* What happens on this date? */}
         <motion.div
-          className="p-6 rounded-xl bg-white/5 border border-white/10 mb-8"
+          className="p-6 bg-white/5 border border-white/10 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 1.4 }}
@@ -333,10 +333,10 @@ export function CountdownSection() {
             are scheduled to unlock. Whether this reveals something about Satoshi's identity,
             triggers a protocol change, or does something else entirely — that remains to be seen.
           </p>
-          <div className="flex items-start gap-2 p-3 rounded-lg bg-orange-500/10 border border-orange-500/20">
-            <AlertTriangle className="h-4 w-4 text-orange-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-orange-400/70">
-              <strong className="text-orange-400">Disclaimer:</strong> This is a research finding,
+          <div className="flex items-start gap-2 p-3 bg-[#D4AF37]/10 border border-orange-500/20">
+            <AlertTriangle className="h-4 w-4 text-[#D4AF37] shrink-0 mt-0.5" />
+            <p className="text-xs text-[#D4AF37]/70">
+              <strong className="text-[#D4AF37]">Disclaimer:</strong> This is a research finding,
               not a prediction or financial advice. The outcome is speculative.
             </p>
           </div>

@@ -47,10 +47,10 @@ function MatrixExplorer() {
             className={`px-3 py-1 rounded-full text-xs transition-colors ${
               selectedRow === sr.row
                 ? sr.color === 'orange'
-                  ? 'bg-orange-500/30 text-orange-400 border border-orange-500/50'
+                  ? 'bg-[#D4AF37]/30 text-[#D4AF37] border border-orange-500/50'
                   : sr.color === 'purple'
-                  ? 'bg-purple-500/30 text-purple-400 border border-purple-500/50'
-                  : 'bg-green-500/30 text-green-400 border border-green-500/50'
+                  ? 'bg-[#D4AF37]/30 text-[#D4AF37] border border-[#D4AF37]/30'
+                  : 'bg-[#D4AF37]/30 text-[#D4AF37] border border-[#D4AF37]/30'
                 : 'bg-white/10 text-white/60 hover:bg-white/20'
             }`}
           >
@@ -60,14 +60,14 @@ function MatrixExplorer() {
       </div>
 
       {/* Matrix Grid */}
-      <div className="p-4 rounded-xl bg-black/40 border border-white/10 overflow-x-auto">
+      <div className="p-4 bg-black/40 border border-white/10 overflow-x-auto">
         <div className="flex items-center gap-2 mb-3">
           <Grid3X3 className="w-4 h-4 text-white/60" />
           <span className="text-sm text-white/60">Anna Matrix (128x128 = 16,384 cells)</span>
         </div>
 
         <div
-          className="inline-grid gap-px bg-white/5 p-1 rounded"
+          className="inline-grid gap-px bg-white/5 p-1 "
           style={{ gridTemplateColumns: `repeat(${matrixSize}, ${cellSize}px)` }}
         >
           {matrix.map((row, rowIndex) =>
@@ -85,7 +85,7 @@ function MatrixExplorer() {
                         ? 'bg-orange-500'
                         : rowColor === 'purple'
                         ? 'bg-purple-500'
-                        : 'bg-green-500'
+                        : 'bg-[#D4AF37]'
                       : cell.isSpecialRow
                       ? 'bg-white/20'
                       : 'bg-white/5'
@@ -108,7 +108,7 @@ function MatrixExplorer() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-3 p-2 rounded bg-white/5 text-sm text-center"
+            className="mt-3 p-2  bg-white/5 text-sm text-center"
           >
             Position: [{hoveredCell.row}, {hoveredCell.col}]
           </motion.div>
@@ -142,19 +142,19 @@ export function Phase09_TheMatrix() {
       <div ref={ref} className="space-y-8">
         {/* Introduction */}
         <motion.div
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-purple-950/20 to-black/50 border border-purple-500/20"
+          className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#050505]/80 to-black/50 border border-[#D4AF37]/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Grid3X3 className="w-6 h-6 text-purple-400" />
+            <Grid3X3 className="w-6 h-6 text-[#D4AF37]" />
             <h3 className="text-xl font-bold text-white/90">The Anna Matrix</h3>
           </div>
 
           <p className="text-white/70 leading-relaxed mb-4">
             At the heart of Qubic is the{' '}
-            <span className="text-purple-400 font-semibold">Anna Matrix</span> - a 128x128 grid of
+            <span className="text-[#D4AF37] font-semibold">Anna Matrix</span> - a 128x128 grid of
             16,384 cells that forms the neural tissue of Aigarth. Each row has a specific function:
           </p>
 
@@ -163,13 +163,13 @@ export function Phase09_TheMatrix() {
             {memoryLayout.map((layer, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-3 p-2 rounded ${
+                className={`flex items-center gap-3 p-2  ${
                   layer.color === 'orange'
-                    ? 'bg-orange-500/10 border-l-2 border-orange-500'
+                    ? 'bg-[#D4AF37]/10 border-l-2 border-orange-500'
                     : layer.color === 'purple'
-                    ? 'bg-purple-500/10 border-l-2 border-purple-500'
+                    ? 'bg-[#D4AF37]/10 border-l-2 border-[#D4AF37]'
                     : layer.color === 'green'
-                    ? 'bg-green-500/10 border-l-2 border-green-500'
+                    ? 'bg-[#D4AF37]/10 border-l-2 border-green-500'
                     : 'bg-white/5'
                 }`}
               >
@@ -177,11 +177,11 @@ export function Phase09_TheMatrix() {
                 <span
                   className={`text-sm ${
                     layer.color === 'orange'
-                      ? 'text-orange-400'
+                      ? 'text-[#D4AF37]'
                       : layer.color === 'purple'
-                      ? 'text-purple-400'
+                      ? 'text-[#D4AF37]'
                       : layer.color === 'green'
-                      ? 'text-green-400'
+                      ? 'text-[#D4AF37]'
                       : 'text-white/60'
                   }`}
                 >
@@ -200,7 +200,7 @@ export function Phase09_TheMatrix() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <h3 className="text-lg font-semibold text-white/90 mb-4 flex items-center gap-2">
-            <ZoomIn className="w-5 h-5 text-purple-400" />
+            <ZoomIn className="w-5 h-5 text-[#D4AF37]" />
             Interactive Matrix Explorer
           </h3>
           <MatrixExplorer />
@@ -213,20 +213,20 @@ export function Phase09_TheMatrix() {
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
             <div className="text-2xl font-mono font-bold text-white mb-1">128</div>
             <div className="text-xs text-white/50">Matrix dimension</div>
           </div>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+          <div className="p-4 bg-white/5 border border-white/10 text-center">
             <div className="text-2xl font-mono font-bold text-white mb-1">16,384</div>
             <div className="text-xs text-white/50">Total cells</div>
           </div>
-          <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center">
-            <div className="text-2xl font-mono font-bold text-purple-400 mb-1">137</div>
+          <div className="p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-center">
+            <div className="text-2xl font-mono font-bold text-[#D4AF37] mb-1">137</div>
             <div className="text-xs text-white/50">Writers in Row 68</div>
           </div>
-          <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 text-center">
-            <div className="text-2xl font-mono font-bold text-orange-400 mb-1">2,692</div>
+          <div className="p-4 bg-[#D4AF37]/10 border border-orange-500/20 text-center">
+            <div className="text-2xl font-mono font-bold text-[#D4AF37] mb-1">2,692</div>
             <div className="text-xs text-white/50">Boot address</div>
           </div>
         </motion.div>
@@ -239,17 +239,17 @@ export function Phase09_TheMatrix() {
           <div className="space-y-3 text-sm text-white/70">
             <p>
               The boot address from the formula lands in{' '}
-              <span className="text-orange-400 font-semibold">Row 21</span>:
+              <span className="text-[#D4AF37] font-semibold">Row 21</span>:
             </p>
-            <div className="p-3 rounded-lg bg-black/30 font-mono text-xs">
+            <div className="p-3 bg-black/30 font-mono text-xs">
               <div>625,284 mod 16,384 = 2,692</div>
               <div>2,692 / 128 = Row 21</div>
               <div>2,692 mod 128 = Column 4</div>
-              <div className="text-orange-400 mt-2">Boot address: [21, 4]</div>
+              <div className="text-[#D4AF37] mt-2">Boot address: [21, 4]</div>
             </div>
             <p>
               Row 21 is designated as the{' '}
-              <span className="text-orange-400">Bitcoin Input Layer</span> - the entry point where
+              <span className="text-[#D4AF37]">Bitcoin Input Layer</span> - the entry point where
               Bitcoin blockchain data feeds into Anna's neural network.
             </p>
           </div>

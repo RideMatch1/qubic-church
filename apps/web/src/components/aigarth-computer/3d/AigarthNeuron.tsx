@@ -5,11 +5,11 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import type { TernaryState } from '@/lib/aigarth/types'
 
-// Ternary state colors matching Neuraxon style
+// Ternary state colors - Church HUD gold palette
 const STATE_COLORS = {
-  '-1': new THREE.Color('#3B82F6'), // Blue (inhibited)
+  '-1': new THREE.Color('#EF4444'), // Red (inhibited) - keep red for errors/negative
   '0': new THREE.Color('#6B7280'),  // Gray (neutral)
-  '1': new THREE.Color('#F59E0B'),  // Gold/Orange (excited)
+  '1': new THREE.Color('#D4AF37'),  // Gold (excited)
 }
 
 interface AigarthNeuronProps {
@@ -86,7 +86,7 @@ export function AigarthNeuron({
         <mesh>
           <ringGeometry args={[size * 1.5, size * 1.8, 32]} />
           <meshBasicMaterial
-            color={isInput ? '#06B6D4' : '#A855F7'}
+            color={isInput ? '#D4AF37' : '#D4AF37'}
             side={THREE.DoubleSide}
             transparent
             opacity={0.8}

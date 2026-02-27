@@ -14,8 +14,8 @@ const EVIDENCE_TIERS = [
     name: 'Cryptographically Verified',
     confidence: '99%+',
     count: 5,
-    color: 'text-green-400',
-    bgColor: 'bg-green-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     borderColor: 'border-green-500/20',
     description: 'Directly verifiable on the blockchain — anyone can check these',
     items: [
@@ -31,9 +31,9 @@ const EVIDENCE_TIERS = [
     name: 'Mathematical Proofs',
     confidence: '95%+',
     count: 8,
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-500/10',
-    borderColor: 'border-blue-500/20',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/20',
     description: 'Mathematical relationships that can be calculated and verified',
     items: [
       'Formula: 625,284 = 283 × 47² + 137',
@@ -47,9 +47,9 @@ const EVIDENCE_TIERS = [
     name: 'Pattern Analysis',
     confidence: '90%+',
     count: 12,
-    color: 'text-purple-400',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/20',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/20',
     description: 'Patterns discovered through forensic blockchain analysis',
     items: [
       'ZgZ palindrome in CFB address',
@@ -63,8 +63,8 @@ const EVIDENCE_TIERS = [
     name: 'Research Hypotheses',
     confidence: '70%+',
     count: 21,
-    color: 'text-orange-400',
-    bgColor: 'bg-orange-500/10',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10',
     borderColor: 'border-orange-500/20',
     description: 'Speculative connections requiring further investigation',
     items: [
@@ -108,7 +108,7 @@ function TierCard({ tier, index, isExpanded, onToggle, onTierView, isInView }: T
         aria-controls={`tier-${tier.tier}-content`}
       >
         <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-lg bg-black/30 flex items-center justify-center`}>
+          <div className={`w-10 h-10 bg-black/30 flex items-center justify-center`}>
             {tier.tier <= 2 ? (
               <CheckCircle className={`h-5 w-5 ${tier.color}`} />
             ) : (
@@ -155,7 +155,7 @@ function TierCard({ tier, index, isExpanded, onToggle, onTierView, isInView }: T
                 {tier.items.map((item, i) => (
                   <motion.div
                     key={i}
-                    className="flex items-start gap-2 p-2 rounded-lg bg-black/20"
+                    className="flex items-start gap-2 p-2 bg-black/20"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
@@ -283,7 +283,7 @@ export function EvidenceSection() {
 
           {/* What is confidence - Quick explainer */}
           <motion.div
-            className="inline-flex items-start gap-3 px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-left max-w-lg mx-auto"
+            className="inline-flex items-start gap-3 px-4 py-3 bg-white/5 border border-white/10 text-left max-w-lg mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ delay: 0.5 }}
@@ -311,7 +311,7 @@ export function EvidenceSection() {
           {EVIDENCE_TIERS.map((tier) => (
             <motion.button
               key={tier.tier}
-              className={`p-3 rounded-lg ${tier.bgColor} border ${tier.borderColor} text-center cursor-pointer`}
+              className={`p-3 ${tier.bgColor} border ${tier.borderColor} text-center cursor-pointer`}
               onClick={() => setExpandedTier(expandedTier === tier.tier ? null : tier.tier)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -344,13 +344,13 @@ export function EvidenceSection() {
 
         {/* Verification Notice */}
         <motion.div
-          className="p-5 rounded-xl bg-white/5 border border-white/10"
+          className="p-5 bg-white/5 border border-white/10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ delay: 0.8 }}
         >
           <div className="flex items-start gap-4">
-            <Shield className="h-8 w-8 text-green-400 shrink-0" />
+            <Shield className="h-8 w-8 text-[#D4AF37] shrink-0" />
             <div className="flex-1">
               <h4 className="font-medium text-white/80 mb-1">Our Verification Standards</h4>
               <p className="text-sm text-white/50 mb-3">
@@ -358,13 +358,13 @@ export function EvidenceSection() {
                 mathematical proofs, or on-chain verification steps that you can check yourself.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 rounded bg-green-500/10 text-xs text-green-400/80">
+                <span className="px-2 py-1  bg-[#D4AF37]/10 text-xs text-[#D4AF37]/80">
                   Open Source
                 </span>
-                <span className="px-2 py-1 rounded bg-green-500/10 text-xs text-green-400/80">
+                <span className="px-2 py-1  bg-[#D4AF37]/10 text-xs text-[#D4AF37]/80">
                   Reproducible
                 </span>
-                <span className="px-2 py-1 rounded bg-green-500/10 text-xs text-green-400/80">
+                <span className="px-2 py-1  bg-[#D4AF37]/10 text-xs text-[#D4AF37]/80">
                   Peer-Reviewable
                 </span>
               </div>
@@ -381,7 +381,7 @@ export function EvidenceSection() {
         >
           <Link
             href="/evidence"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-green-500/10 hover:bg-green-500/20 transition-all text-green-400 font-medium group"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 transition-all text-[#D4AF37] font-medium group"
           >
             <FileSearch className="h-4 w-4" />
             Explore All {totalFindings} Findings

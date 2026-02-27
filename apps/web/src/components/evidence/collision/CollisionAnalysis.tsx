@@ -116,7 +116,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
     return (
       <div className="flex items-center justify-center h-[500px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-2 border-primary border-t-transparent animate-spin" />
           <p className="text-muted-foreground">Analyzing for collisions...</p>
         </div>
       </div>
@@ -128,7 +128,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-500">
+          <div className="p-2 bg-gradient-to-br from-[#D4AF37] to-[#D4AF37]">
             <AlertTriangle className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -139,7 +139,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
           </div>
         </div>
 
-        <div className="p-4 bg-muted/30 rounded-lg border border-border">
+        <div className="p-4 bg-muted/30 border border-border">
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div className="flex-1">
@@ -168,43 +168,43 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
           label="Total Addresses"
           value={addresses.length.toLocaleString()}
           icon={Hash}
-          color="text-blue-500"
-          bgColor="bg-blue-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
         <StatCard
           label="Collisions Found"
           value={stats.total.toLocaleString()}
           icon={AlertTriangle}
-          color={stats.total > 0 ? 'text-yellow-500' : 'text-green-500'}
-          bgColor={stats.total > 0 ? 'bg-yellow-500/10' : 'bg-green-500/10'}
+          color={stats.total > 0 ? 'text-[#D4AF37]' : 'text-[#D4AF37]'}
+          bgColor={stats.total > 0 ? 'bg-[#D4AF37]/10' : 'bg-[#D4AF37]/10'}
         />
         <StatCard
           label="Suspicious"
           value={stats.suspicious.toLocaleString()}
           subtitle="&gt;2 occurrences"
           icon={Shield}
-          color={stats.suspicious > 0 ? 'text-red-500' : 'text-green-500'}
-          bgColor={stats.suspicious > 0 ? 'bg-red-500/10' : 'bg-green-500/10'}
+          color={stats.suspicious > 0 ? 'text-red-500' : 'text-[#D4AF37]'}
+          bgColor={stats.suspicious > 0 ? 'bg-red-500/10' : 'bg-[#D4AF37]/10'}
         />
         <StatCard
           label="Max Collisions"
           value={stats.maxCount.toString()}
           subtitle="Same address"
           icon={TrendingUp}
-          color="text-purple-500"
-          bgColor="bg-purple-500/10"
+          color="text-[#D4AF37]"
+          bgColor="bg-[#D4AF37]/10"
         />
       </motion.div>
 
       {/* Collision Status */}
       {stats.total === 0 ? (
-        <Card className="p-6 bg-green-500/10 border-green-500/30">
+        <Card className="p-6 bg-[#D4AF37]/10 border-[#D4AF37]/30">
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-full bg-green-500">
+            <div className="p-3 bg-[#D4AF37]">
               <Shield className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-green-400 mb-2">
+              <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
                 ✓ No Collisions Detected
               </h3>
               <p className="text-foreground mb-3">
@@ -218,13 +218,13 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
           </div>
         </Card>
       ) : (
-        <Card className="p-6 bg-yellow-500/10 border-yellow-500/30">
+        <Card className="p-6 bg-[#D4AF37]/10 border-[#D4AF37]/30">
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-full bg-yellow-500">
+            <div className="p-3 bg-[#D4AF37]">
               <AlertTriangle className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-yellow-400 mb-2">
+              <h3 className="text-xl font-bold text-[#D4AF37] mb-2">
                 ⚠️ {stats.total} Collision(s) Detected
               </h3>
               <p className="text-foreground mb-3">
@@ -236,7 +236,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
               </p>
 
               {stats.suspicious > 0 && (
-                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <div className="p-3 bg-red-500/10 border border-red-500/30">
                   <p className="text-sm font-medium text-red-400">
                     🚨 {stats.suspicious} highly suspicious collision(s) detected (&gt;2
                     occurrences)
@@ -265,16 +265,16 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
                 {(stats.avgProbability * 100).toExponential(2)}%
               </span>
             </div>
-            <div className="h-2 bg-muted rounded-full overflow-hidden">
+            <div className="h-2 bg-muted overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${Math.min(stats.avgProbability * 100, 100)}%` }}
-                className="h-full bg-gradient-to-r from-green-500 to-yellow-500"
+                className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]"
               />
             </div>
           </div>
 
-          <div className="p-4 bg-muted/30 rounded-lg">
+          <div className="p-4 bg-muted/30">
             <p className="text-sm text-muted-foreground mb-2">
               <strong className="text-foreground">Birthday Attack:</strong> The probability that
               at least two addresses in a set will collide (be identical) based on the address
@@ -293,7 +293,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
       {collisions.length > 0 && (
         <Card className="p-6">
           <h4 className="font-semibold mb-4 flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-yellow-500" />
+            <AlertTriangle className="w-5 h-5 text-[#D4AF37]" />
             Collision Details ({collisions.length})
           </h4>
 
@@ -343,7 +343,7 @@ export function CollisionAnalysis({ addresses = [] }: CollisionAnalysisProps) {
         <Button onClick={analyzeCollisions} disabled={analyzing} className="gap-2">
           {analyzing ? (
             <>
-              <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-current border-t-transparent animate-spin" />
               Re-analyzing...
             </>
           ) : (
@@ -403,26 +403,26 @@ function CollisionCard({ collision }: { collision: CollisionData }) {
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      className={`p-4 rounded-lg border-2 ${
+      className={`p-4 border-2 ${
         collision.isSuspicious
           ? 'bg-red-500/10 border-red-500/30'
-          : 'bg-yellow-500/10 border-yellow-500/30'
+          : 'bg-[#D4AF37]/10 border-[#D4AF37]/30'
       }`}
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <span
-              className={`px-2 py-0.5 rounded text-xs font-medium ${
+              className={`px-2 py-0.5 text-xs font-medium ${
                 collision.isSuspicious
                   ? 'bg-red-500/20 text-red-400'
-                  : 'bg-yellow-500/20 text-yellow-400'
+                  : 'bg-[#D4AF37]/20 text-[#D4AF37]'
               }`}
             >
               {collision.count}× Collision
             </span>
             {collision.isSuspicious && (
-              <span className="px-2 py-0.5 rounded text-xs font-medium bg-red-500 text-white">
+              <span className="px-2 py-0.5 text-xs font-medium bg-red-500 text-white">
                 SUSPICIOUS
               </span>
             )}
@@ -432,10 +432,10 @@ function CollisionCard({ collision }: { collision: CollisionData }) {
             <span className="font-mono text-sm truncate">{collision.address}</span>
             <button
               onClick={handleCopy}
-              className="shrink-0 p-1 hover:bg-muted rounded transition-colors"
+              className="shrink-0 p-1 hover:bg-muted transition-colors"
             >
               {copied ? (
-                <span className="text-xs text-green-500">✓</span>
+                <span className="text-xs text-[#D4AF37]">✓</span>
               ) : (
                 <Copy className="w-3 h-3 text-muted-foreground" />
               )}
@@ -444,7 +444,7 @@ function CollisionCard({ collision }: { collision: CollisionData }) {
               href={`https://blockchair.com/bitcoin/address/${collision.address}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 p-1 hover:bg-muted rounded transition-colors"
+              className="shrink-0 p-1 hover:bg-muted transition-colors"
             >
               <ExternalLink className="w-3 h-3 text-muted-foreground" />
             </a>

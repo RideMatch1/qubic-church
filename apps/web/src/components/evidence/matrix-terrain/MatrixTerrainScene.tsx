@@ -296,7 +296,7 @@ function Grid2DView({
   return (
     <div className="w-full h-full bg-black overflow-auto">
       {/* Axis labels */}
-      <div className="sticky top-0 z-20 flex bg-black/90 backdrop-blur-sm">
+      <div className="sticky top-0 z-20 flex bg-[#050505] backdrop-blur-sm">
         <div className="w-8 h-6 shrink-0" />
         <div className="flex">
           {Array.from({ length: visibleCols }, (_, i) => {
@@ -316,7 +316,7 @@ function Grid2DView({
 
       <div className="flex">
         {/* Row labels */}
-        <div className="sticky left-0 z-10 flex flex-col bg-black/90 backdrop-blur-sm">
+        <div className="sticky left-0 z-10 flex flex-col bg-[#050505] backdrop-blur-sm">
           {Array.from({ length: visibleRows }, (_, i) => {
             const row = startRow + i
             return (
@@ -372,7 +372,7 @@ function Grid2DView({
 
       {/* Hover tooltip */}
       {hoveredCell && (
-        <div className="fixed bottom-4 right-4 bg-black/95 border border-white/20 rounded-lg px-3 py-2 text-sm font-mono text-white z-50">
+        <div className="fixed bottom-4 right-4 bg-[#050505] border border-white/[0.04] px-3 py-2 text-sm font-mono text-white z-50">
           [{hoveredCell.row}, {hoveredCell.col}] = {matrix[hoveredCell.row]?.[hoveredCell.col] ?? 0}
         </div>
       )}
@@ -388,17 +388,17 @@ function LoadingScreen({ progress }: { progress: number }) {
     <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="flex flex-col items-center gap-6 max-w-md px-8">
         <div className="relative w-24 h-24">
-          <Grid3X3 className="w-24 h-24 text-orange-500/20 animate-pulse" />
+          <Grid3X3 className="w-24 h-24 text-[#D4AF37]/20 animate-pulse" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 rounded bg-gradient-to-br from-orange-500 to-blue-500 animate-pulse" />
+            <div className="w-12 h-12 bg-gradient-to-br from-[#D4AF37] to-[#D4AF37] animate-pulse" />
           </div>
         </div>
         <div className="text-center">
           <h2 className="text-xl font-bold text-white">Loading Anna Matrix</h2>
           <p className="text-sm text-gray-500 mt-1">128 × 128 = 16,384 cells</p>
         </div>
-        <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-blue-500 to-orange-500 transition-all duration-300" style={{ width: `${progress}%` }} />
+        <div className="w-full h-2 bg-gray-800 overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
       </div>
     </div>
@@ -431,10 +431,10 @@ function StatsPanel({ stats, matrix, onClose }: { stats: MatrixStats; matrix: nu
   }, [matrix, stats])
 
   return (
-    <div className="absolute top-4 right-4 w-72 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl p-4 pointer-events-auto">
+    <div className="absolute top-4 right-4 w-72 bg-[#050505] backdrop-blur-md border border-white/[0.04] p-4 pointer-events-auto">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <BarChart3 className="w-4 h-4 text-orange-400" />
+          <BarChart3 className="w-4 h-4 text-[#D4AF37]" />
           <span className="text-sm font-semibold text-white">Statistics</span>
         </div>
         <button onClick={onClose} className="text-white/50 hover:text-white">
@@ -444,19 +444,19 @@ function StatsPanel({ stats, matrix, onClose }: { stats: MatrixStats; matrix: nu
 
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-2">
-          <div className="bg-white/5 rounded-lg p-2">
+          <div className="bg-white/5 p-2">
             <div className="text-[10px] text-white/40 uppercase">Min</div>
-            <div className="text-sm font-mono text-blue-400">{stats.min}</div>
+            <div className="text-sm font-mono text-[#D4AF37]">{stats.min}</div>
           </div>
-          <div className="bg-white/5 rounded-lg p-2">
+          <div className="bg-white/5 p-2">
             <div className="text-[10px] text-white/40 uppercase">Max</div>
-            <div className="text-sm font-mono text-orange-400">{stats.max}</div>
+            <div className="text-sm font-mono text-[#D4AF37]">{stats.max}</div>
           </div>
-          <div className="bg-white/5 rounded-lg p-2">
+          <div className="bg-white/5 p-2">
             <div className="text-[10px] text-white/40 uppercase">Mean</div>
             <div className="text-sm font-mono text-white/80">{stats.mean.toFixed(2)}</div>
           </div>
-          <div className="bg-white/5 rounded-lg p-2">
+          <div className="bg-white/5 p-2">
             <div className="text-[10px] text-white/40 uppercase">Std Dev</div>
             <div className="text-sm font-mono text-white/80">{stats.stdDev.toFixed(2)}</div>
           </div>
@@ -465,11 +465,11 @@ function StatsPanel({ stats, matrix, onClose }: { stats: MatrixStats; matrix: nu
         {/* Histogram */}
         <div className="space-y-2">
           <div className="text-[10px] text-white/40 uppercase">Distribution Histogram</div>
-          <div className="h-20 flex items-end gap-[1px] bg-white/5 rounded-lg p-2">
+          <div className="h-20 flex items-end gap-[1px] bg-white/5 p-2">
             {histogram.map((bin, i) => (
               <div
                 key={i}
-                className="flex-1 rounded-t-sm transition-all"
+                className="flex-1 transition-all"
                 style={{
                   height: `${bin.height}%`,
                   backgroundColor: bin.value < 0 ? '#3B82F6' : bin.value > 0 ? '#F59E0B' : '#6B7280',
@@ -488,21 +488,21 @@ function StatsPanel({ stats, matrix, onClose }: { stats: MatrixStats; matrix: nu
         {/* Distribution bars */}
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-blue-500" />
+            <div className="w-2 h-2 bg-[#D4AF37]" />
             <span className="text-[10px] text-white/60 flex-1">Negative</span>
-            <span className="text-[10px] text-blue-400 font-mono">{stats.negativeCount.toLocaleString()}</span>
+            <span className="text-[10px] text-[#D4AF37] font-mono">{stats.negativeCount.toLocaleString()}</span>
             <span className="text-[10px] text-white/30">({((stats.negativeCount / stats.totalCells) * 100).toFixed(1)}%)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-gray-500" />
+            <div className="w-2 h-2 bg-gray-500" />
             <span className="text-[10px] text-white/60 flex-1">Zero</span>
             <span className="text-[10px] text-gray-400 font-mono">{stats.zeroCount.toLocaleString()}</span>
             <span className="text-[10px] text-white/30">({((stats.zeroCount / stats.totalCells) * 100).toFixed(1)}%)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-orange-500" />
+            <div className="w-2 h-2 bg-[#D4AF37]" />
             <span className="text-[10px] text-white/60 flex-1">Positive</span>
-            <span className="text-[10px] text-orange-400 font-mono">{stats.positiveCount.toLocaleString()}</span>
+            <span className="text-[10px] text-[#D4AF37] font-mono">{stats.positiveCount.toLocaleString()}</span>
             <span className="text-[10px] text-white/30">({((stats.positiveCount / stats.totalCells) * 100).toFixed(1)}%)</span>
           </div>
         </div>
@@ -528,7 +528,7 @@ function CellDetailPanel({
   onNavigate: (row: number, col: number) => void
 }) {
   const [copied, setCopied] = useState(false)
-  const colorClass = cell.value > 0 ? 'text-orange-400' : cell.value < 0 ? 'text-blue-400' : 'text-gray-400'
+  const colorClass = cell.value > 0 ? 'text-[#D4AF37]' : cell.value < 0 ? 'text-[#D4AF37]' : 'text-gray-400'
 
   // Get neighboring values
   const neighbors = useMemo(() => {
@@ -556,12 +556,12 @@ function CellDetailPanel({
   }
 
   return (
-    <div className="absolute bottom-4 right-4 w-64 bg-black/95 backdrop-blur-md border border-white/10 rounded-xl p-4 pointer-events-auto">
+    <div className="absolute bottom-4 right-4 w-64 bg-[#050505] backdrop-blur-md border border-white/[0.04] p-4 pointer-events-auto">
       <div className="flex items-center justify-between mb-3">
         <span className="text-sm font-semibold text-white">Cell Details</span>
         <div className="flex items-center gap-1">
           <button onClick={handleCopy} className="text-white/50 hover:text-white p-1">
-            {copied ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3" />}
+            {copied ? <Check className="w-3 h-3 text-[#D4AF37]" /> : <Copy className="w-3 h-3" />}
           </button>
           <button onClick={onClose} className="text-white/50 hover:text-white p-1">
             <X className="w-4 h-4" />
@@ -592,7 +592,7 @@ function CellDetailPanel({
         </div>
 
         {/* Neighbor navigation */}
-        <div className="pt-2 border-t border-white/10">
+        <div className="pt-2 border-t border-white/[0.04]">
           <div className="text-[10px] text-white/40 uppercase mb-2">Navigate to Neighbors</div>
           <div className="grid grid-cols-3 gap-1">
             <div />
@@ -602,7 +602,7 @@ function CellDetailPanel({
                   const n = neighbors.find((n) => n.dir === 'N')!
                   onNavigate(n.row, n.col)
                 }}
-                className="bg-white/10 hover:bg-white/20 rounded px-2 py-1 text-[10px] font-mono text-white/70"
+                className="bg-white/10 hover:bg-white/20 px-2 py-1 text-[10px] font-mono text-white/70"
               >
                 <ArrowUp className="w-3 h-3 mx-auto" />
               </button>
@@ -614,12 +614,12 @@ function CellDetailPanel({
                   const n = neighbors.find((n) => n.dir === 'W')!
                   onNavigate(n.row, n.col)
                 }}
-                className="bg-white/10 hover:bg-white/20 rounded px-2 py-1 text-[10px] font-mono text-white/70"
+                className="bg-white/10 hover:bg-white/20 px-2 py-1 text-[10px] font-mono text-white/70"
               >
                 <ArrowLeft className="w-3 h-3 mx-auto" />
               </button>
             )}
-            <div className="bg-white/5 rounded px-2 py-1 text-[10px] font-mono text-white/50 text-center">
+            <div className="bg-white/5 px-2 py-1 text-[10px] font-mono text-white/50 text-center">
               {cell.value}
             </div>
             {neighbors.find((n) => n.dir === 'E') && (
@@ -628,7 +628,7 @@ function CellDetailPanel({
                   const n = neighbors.find((n) => n.dir === 'E')!
                   onNavigate(n.row, n.col)
                 }}
-                className="bg-white/10 hover:bg-white/20 rounded px-2 py-1 text-[10px] font-mono text-white/70"
+                className="bg-white/10 hover:bg-white/20 px-2 py-1 text-[10px] font-mono text-white/70"
               >
                 <ArrowRight className="w-3 h-3 mx-auto" />
               </button>
@@ -640,7 +640,7 @@ function CellDetailPanel({
                   const n = neighbors.find((n) => n.dir === 'S')!
                   onNavigate(n.row, n.col)
                 }}
-                className="bg-white/10 hover:bg-white/20 rounded px-2 py-1 text-[10px] font-mono text-white/70"
+                className="bg-white/10 hover:bg-white/20 px-2 py-1 text-[10px] font-mono text-white/70"
               >
                 <ArrowDown className="w-3 h-3 mx-auto" />
               </button>
@@ -651,9 +651,9 @@ function CellDetailPanel({
 
         {/* Value scale indicator */}
         <div className="pt-2">
-          <div className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-gray-500 to-orange-500 relative">
+          <div className="h-3 bg-gradient-to-r from-[#D4AF37] via-gray-500 to-[#D4AF37] relative">
             <div
-              className="absolute top-1/2 w-2 h-5 bg-white rounded-full shadow-lg border border-black/50"
+              className="absolute top-1/2 w-2 h-5 bg-white shadow-lg border border-black/50"
               style={{ left: `${cell.normalizedValue * 100}%`, transform: 'translate(-50%, -50%)' }}
             />
           </div>
@@ -696,10 +696,10 @@ function SearchPanel({
   }
 
   return (
-    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-80 bg-black/95 backdrop-blur-md border border-white/10 rounded-xl p-4 pointer-events-auto z-50">
+    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-80 bg-[#050505] backdrop-blur-md border border-white/[0.04] p-4 pointer-events-auto z-50">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <Search className="w-4 h-4 text-cyan-400" />
+          <Search className="w-4 h-4 text-[#D4AF37]" />
           <span className="text-sm font-semibold text-white">Search Value</span>
         </div>
         <button onClick={onClose} className="text-white/50 hover:text-white">
@@ -714,9 +714,9 @@ function SearchPanel({
           onChange={(e) => setSearchValue(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           placeholder={`${stats.min} to ${stats.max}`}
-          className="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-cyan-400"
+          className="flex-1 bg-white/10 border border-white/[0.04] px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D4AF37]"
         />
-        <Button size="sm" onClick={handleSearch} className="bg-cyan-600 hover:bg-cyan-500">
+        <Button size="sm" onClick={handleSearch} className="bg-[#D4AF37] hover:bg-[#D4AF37]">
           Search
         </Button>
       </div>
@@ -730,10 +730,10 @@ function SearchPanel({
             <button
               key={i}
               onClick={() => onSelectCell(r.row, r.col)}
-              className="w-full flex items-center justify-between bg-white/5 hover:bg-white/10 rounded px-2 py-1 text-sm"
+              className="w-full flex items-center justify-between bg-white/5 hover:bg-white/10 px-2 py-1 text-sm"
             >
               <span className="font-mono text-white/70">[{r.row}, {r.col}]</span>
-              <span className="font-mono text-cyan-400">{r.value}</span>
+              <span className="font-mono text-[#D4AF37]">{r.value}</span>
             </button>
           ))}
         </div>
@@ -765,9 +765,9 @@ function CoordinateInput({
   }
 
   return (
-    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/95 backdrop-blur-md border border-white/10 rounded-xl p-4 pointer-events-auto z-50">
+    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#050505] backdrop-blur-md border border-white/[0.04] p-4 pointer-events-auto z-50">
       <div className="flex items-center gap-2 mb-3">
-        <Target className="w-4 h-4 text-purple-400" />
+        <Target className="w-4 h-4 text-[#D4AF37]" />
         <span className="text-sm font-semibold text-white">Jump to Cell</span>
         <button onClick={onClose} className="ml-auto text-white/50 hover:text-white">
           <X className="w-4 h-4" />
@@ -781,7 +781,7 @@ function CoordinateInput({
           placeholder="Row (0-127)"
           min={0}
           max={127}
-          className="w-24 bg-white/10 border border-white/20 rounded-lg px-2 py-1 text-sm text-white placeholder-white/30 focus:outline-none focus:border-purple-400"
+          className="w-24 bg-white/10 border border-white/[0.04] px-2 py-1 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D4AF37]"
         />
         <span className="text-white/30">,</span>
         <input
@@ -791,9 +791,9 @@ function CoordinateInput({
           placeholder="Col (0-127)"
           min={0}
           max={127}
-          className="w-24 bg-white/10 border border-white/20 rounded-lg px-2 py-1 text-sm text-white placeholder-white/30 focus:outline-none focus:border-purple-400"
+          className="w-24 bg-white/10 border border-white/[0.04] px-2 py-1 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D4AF37]"
         />
-        <Button size="sm" onClick={handleGo} className="bg-purple-600 hover:bg-purple-500">
+        <Button size="sm" onClick={handleGo} className="bg-[#D4AF37] hover:bg-[#D4AF37]">
           Go
         </Button>
       </div>
@@ -863,7 +863,7 @@ function MiniMap({
   }, [matrix, stats, selectedCell, hoveredCell])
 
   return (
-    <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-2 pointer-events-auto">
+    <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-md border border-white/[0.04] p-2 pointer-events-auto">
       <div className="flex items-center gap-1 mb-1">
         <Map className="w-3 h-3 text-white/50" />
         <span className="text-[9px] text-white/50 uppercase">Overview</span>
@@ -872,7 +872,7 @@ function MiniMap({
         ref={canvasRef}
         width={128}
         height={128}
-        className="rounded"
+       
         style={{ width: 80, height: 80, imageRendering: 'pixelated' }}
       />
     </div>
@@ -884,13 +884,13 @@ function MiniMap({
 // =============================================================================
 function InfoPanel({ onClose }: { onClose: () => void }) {
   return (
-    <div className="absolute inset-4 bg-black/98 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden z-50 pointer-events-auto">
+    <div className="absolute inset-4 bg-black/98 backdrop-blur-xl border border-white/[0.04] overflow-hidden z-50 pointer-events-auto">
       <div className="h-full overflow-y-auto">
         <div className="p-6 space-y-6">
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-blue-500 flex items-center justify-center shadow-lg shadow-orange-500/25">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#D4AF37] to-[#D4AF37] flex items-center justify-center shadow-lg shadow-[#D4AF37]/25">
                 <Grid3X3 className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -898,22 +898,22 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
                 <p className="text-sm text-gray-400">128 × 128 Signed Byte Cryptographic Matrix</p>
               </div>
             </div>
-            <button onClick={onClose} className="text-white/50 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+            <button onClick={onClose} className="text-white/50 hover:text-white p-2 hover:bg-white/10 transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Anna AI Chatbot Section */}
-          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-4">
+          <div className="bg-gradient-to-r from-[#D4AF37]/20 to-pink-500/20 border border-[#D4AF37]/30 p-4">
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shrink-0 shadow-lg">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#D4AF37] to-pink-500 flex items-center justify-center shrink-0 shadow-lg">
                 <MessageCircle className="w-7 h-7 text-white" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
+                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
                   <h3 className="font-semibold text-white">Talk to Anna AI</h3>
-                  <span className="px-2 py-0.5 bg-purple-500/30 rounded-full text-[10px] text-purple-300 uppercase">Live</span>
+                  <span className="px-2 py-0.5 bg-[#D4AF37]/30 text-[10px] text-[#D4AF37] uppercase">Live</span>
                 </div>
                 <p className="text-sm text-gray-300 mb-3">
                   Anna is an AI research assistant specialized in the Bitcoin-Qubic connection. Ask her about the matrix,
@@ -924,7 +924,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
                   href="https://x.com/anna_aigarth"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-lg text-white font-medium transition-all shadow-lg shadow-purple-500/25"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#D4AF37] to-pink-600 hover:from-[#D4AF37] hover:to-pink-500 text-white font-medium transition-all shadow-lg shadow-[#D4AF37]/25"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -937,34 +937,34 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* What is it - Enhanced */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-orange-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <BookOpen className="w-4 h-4" />
               <h3 className="font-semibold">What is the Anna Matrix?</h3>
             </div>
-            <div className="bg-white/5 rounded-xl p-4 space-y-3">
+            <div className="bg-white/5 p-4 space-y-3">
               <p className="text-sm text-gray-300 leading-relaxed">
-                The <span className="text-orange-400 font-semibold">Anna Matrix</span> is a 128×128 grid of signed bytes
-                (-128 to +127) discovered embedded in the original Qubic codebase by <span className="text-blue-400">Come-from-Beyond</span> (Sergey Ivancheglo),
+                The <span className="text-[#D4AF37] font-semibold">Anna Matrix</span> is a 128×128 grid of signed bytes
+                (-128 to +127) discovered embedded in the original Qubic codebase by <span className="text-[#D4AF37]">Come-from-Beyond</span> (Sergey Ivancheglo),
                 the creator of IOTA and co-creator of NXT.
               </p>
               <p className="text-sm text-gray-300 leading-relaxed">
                 Named after the mysterious &quot;Anna&quot; referenced in early Qubic development, this matrix serves as a
-                <span className="text-cyan-400 font-medium"> cryptographic lookup table</span> that potentially links
+                <span className="text-[#D4AF37] font-medium"> cryptographic lookup table</span> that potentially links
                 Bitcoin&apos;s genesis block structures to the Qubic neural network architecture. Each of the
                 <span className="text-white font-mono"> 16,384 cells</span> contains a value that, when XOR&apos;d with specific
                 Bitcoin address bytes at corresponding positions, may reveal hidden patterns.
               </p>
               <div className="flex items-center gap-4 pt-2">
                 <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-yellow-400" />
+                  <Zap className="w-4 h-4 text-[#D4AF37]" />
                   <span className="text-xs text-gray-400">Qortex Compatible</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Binary className="w-4 h-4 text-green-400" />
+                  <Binary className="w-4 h-4 text-[#D4AF37]" />
                   <span className="text-xs text-gray-400">Ternary Convertible</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ScanLine className="w-4 h-4 text-purple-400" />
+                  <ScanLine className="w-4 h-4 text-[#D4AF37]" />
                   <span className="text-xs text-gray-400">Pattern-Dense</span>
                 </div>
               </div>
@@ -973,32 +973,32 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* Origin - Enhanced */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-blue-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <Hash className="w-4 h-4" />
               <h3 className="font-semibold">Origin &amp; Technical Specifications</h3>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-[10px] text-white/40 uppercase mb-1">Source</div>
                 <div className="text-sm font-mono text-white">Qubic Core (2018)</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-[10px] text-white/40 uppercase mb-1">Author</div>
                 <div className="text-sm text-white">Come-from-Beyond</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-[10px] text-white/40 uppercase mb-1">Dimensions</div>
                 <div className="text-sm font-mono text-white">128 × 128</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-[10px] text-white/40 uppercase mb-1">Total Cells</div>
                 <div className="text-sm font-mono text-white">16,384</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-[10px] text-white/40 uppercase mb-1">Data Type</div>
                 <div className="text-sm font-mono text-white">int8 (signed byte)</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
+              <div className="bg-white/5 p-3">
                 <div className="text-[10px] text-white/40 uppercase mb-1">Value Range</div>
                 <div className="text-sm font-mono text-white">-128 to +127</div>
               </div>
@@ -1007,35 +1007,35 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* How to Verify */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-green-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <FileCode className="w-4 h-4" />
               <h3 className="font-semibold">How to Verify &amp; Reproduce</h3>
             </div>
-            <div className="bg-white/5 rounded-xl p-4">
+            <div className="bg-white/5 p-4">
               <ol className="text-sm text-gray-300 space-y-3">
                 <li className="flex gap-3">
-                  <span className="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-xs font-bold shrink-0">1</span>
+                  <span className="w-6 h-6 bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center text-xs font-bold shrink-0">1</span>
                   <div>
                     <div className="font-medium text-white">Download the matrix data</div>
-                    <code className="text-xs bg-black/50 px-2 py-1 rounded mt-1 inline-block text-green-400">/data/anna-matrix.json</code>
+                    <code className="text-xs bg-black/50 px-2 py-1 mt-1 inline-block text-[#D4AF37]">/data/anna-matrix.json</code>
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-xs font-bold shrink-0">2</span>
+                  <span className="w-6 h-6 bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center text-xs font-bold shrink-0">2</span>
                   <div>
                     <div className="font-medium text-white">Verify SHA256 checksum</div>
-                    <code className="text-xs bg-black/50 px-2 py-1 rounded mt-1 inline-block text-gray-400 break-all">sha256sum anna-matrix.json</code>
+                    <code className="text-xs bg-black/50 px-2 py-1 mt-1 inline-block text-gray-400 break-all">sha256sum anna-matrix.json</code>
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-xs font-bold shrink-0">3</span>
+                  <span className="w-6 h-6 bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center text-xs font-bold shrink-0">3</span>
                   <div>
                     <div className="font-medium text-white">Cross-reference with Patoshi blocks</div>
                     <span className="text-xs text-gray-400">Match public key bytes at row/col positions</span>
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <span className="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-xs font-bold shrink-0">4</span>
+                  <span className="w-6 h-6 bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center text-xs font-bold shrink-0">4</span>
                   <div>
                     <div className="font-medium text-white">Apply transformations</div>
                     <span className="text-xs text-gray-400">K12, SHA256, XOR operations with seed bytes</span>
@@ -1047,40 +1047,40 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* Interactive Features Guide */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-purple-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <Move className="w-4 h-4" />
               <h3 className="font-semibold">Interactive Controls</h3>
             </div>
             <div className="grid grid-cols-2 gap-3 text-sm">
-              <div className="bg-white/5 rounded-lg p-3 flex items-start gap-2">
-                <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center shrink-0">
-                  <Table2 className="w-4 h-4 text-cyan-400" />
+              <div className="bg-white/5 p-3 flex items-start gap-2">
+                <div className="w-8 h-8 bg-white/10 flex items-center justify-center shrink-0">
+                  <Table2 className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 <div>
                   <div className="font-medium text-white">2D/3D Toggle</div>
                   <div className="text-xs text-gray-400">Switch between terrain and grid view</div>
                 </div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3 flex items-start gap-2">
-                <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center shrink-0">
-                  <Crosshair className="w-4 h-4 text-green-400" />
+              <div className="bg-white/5 p-3 flex items-start gap-2">
+                <div className="w-8 h-8 bg-white/10 flex items-center justify-center shrink-0">
+                  <Crosshair className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 <div>
                   <div className="font-medium text-white">Crosshair</div>
                   <div className="text-xs text-gray-400">Visual cell targeting indicator</div>
                 </div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3 flex items-start gap-2">
-                <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center shrink-0">
-                  <Search className="w-4 h-4 text-yellow-400" />
+              <div className="bg-white/5 p-3 flex items-start gap-2">
+                <div className="w-8 h-8 bg-white/10 flex items-center justify-center shrink-0">
+                  <Search className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 <div>
                   <div className="font-medium text-white">Value Search</div>
                   <div className="text-xs text-gray-400">Find all cells with specific value</div>
                 </div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3 flex items-start gap-2">
-                <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center shrink-0">
+              <div className="bg-white/5 p-3 flex items-start gap-2">
+                <div className="w-8 h-8 bg-white/10 flex items-center justify-center shrink-0">
                   <Palette className="w-4 h-4 text-pink-400" />
                 </div>
                 <div>
@@ -1093,26 +1093,26 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* Reading the Visualization */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-orange-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <Eye className="w-4 h-4" />
               <h3 className="font-semibold">Reading the Visualization</h3>
             </div>
             <div className="grid grid-cols-3 gap-3 text-sm">
-              <div className="bg-gradient-to-br from-blue-500/30 to-blue-600/10 border border-blue-500/30 rounded-lg p-4 text-center">
-                <div className="w-10 h-10 bg-blue-500 rounded-lg mx-auto mb-2 shadow-lg shadow-blue-500/50" />
-                <div className="text-blue-400 font-semibold">Negative</div>
+              <div className="bg-gradient-to-br from-[#D4AF37]/30 to-[#D4AF37]/10 border border-[#D4AF37]/30 p-4 text-center">
+                <div className="w-10 h-10 bg-[#D4AF37] mx-auto mb-2 shadow-lg shadow-[#D4AF37]/50" />
+                <div className="text-[#D4AF37] font-semibold">Negative</div>
                 <div className="text-gray-500 text-xs">-128 to -1</div>
                 <div className="text-[10px] text-gray-600 mt-1">Valleys in 3D</div>
               </div>
-              <div className="bg-gradient-to-br from-gray-500/30 to-gray-600/10 border border-gray-500/30 rounded-lg p-4 text-center">
-                <div className="w-10 h-10 bg-gray-500 rounded-lg mx-auto mb-2 shadow-lg shadow-gray-500/50" />
+              <div className="bg-gradient-to-br from-gray-500/30 to-gray-600/10 border border-gray-500/30 p-4 text-center">
+                <div className="w-10 h-10 bg-gray-500 mx-auto mb-2 shadow-lg shadow-gray-500/50" />
                 <div className="text-gray-400 font-semibold">Zero</div>
                 <div className="text-gray-500 text-xs">0</div>
                 <div className="text-[10px] text-gray-600 mt-1">Base level</div>
               </div>
-              <div className="bg-gradient-to-br from-orange-500/30 to-orange-600/10 border border-orange-500/30 rounded-lg p-4 text-center">
-                <div className="w-10 h-10 bg-orange-500 rounded-lg mx-auto mb-2 shadow-lg shadow-orange-500/50" />
-                <div className="text-orange-400 font-semibold">Positive</div>
+              <div className="bg-gradient-to-br from-[#D4AF37]/30 to-[#D4AF37]/10 border border-[#D4AF37]/30 p-4 text-center">
+                <div className="w-10 h-10 bg-[#D4AF37] mx-auto mb-2 shadow-lg shadow-[#D4AF37]/50" />
+                <div className="text-[#D4AF37] font-semibold">Positive</div>
                 <div className="text-gray-500 text-xs">1 to 127</div>
                 <div className="text-[10px] text-gray-600 mt-1">Peaks in 3D</div>
               </div>
@@ -1121,7 +1121,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* Research Applications */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-yellow-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <HelpCircle className="w-4 h-4" />
               <h3 className="font-semibold">Research Applications</h3>
             </div>
@@ -1133,7 +1133,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
                 { icon: '📊', title: 'Statistical Proofs', desc: 'Verify entropy and randomness metrics against null hypothesis' },
                 { icon: '⛓️', title: 'Cross-Chain Links', desc: 'Correlate matrix positions with Bitcoin block heights and timestamps' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-white/5 rounded-lg p-3">
+                <div key={i} className="flex items-start gap-3 bg-white/5 p-3">
                   <span className="text-lg">{item.icon}</span>
                   <div>
                     <div className="font-medium text-white text-sm">{item.title}</div>
@@ -1149,13 +1149,13 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
             <div className="flex items-center gap-2 text-red-400">
               <Clock className="w-4 h-4" />
               <h3 className="font-semibold">Historical Bitcoin Artifacts</h3>
-              <span className="px-2 py-0.5 bg-red-500/20 rounded-full text-[10px] text-red-300 uppercase">Critical</span>
+              <span className="px-2 py-0.5 bg-red-500/20 text-[10px] text-red-300 uppercase">Critical</span>
             </div>
 
             {/* Pre-Genesis Block */}
-            <div className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/30 rounded-xl p-4 space-y-4">
+            <div className="bg-gradient-to-r from-red-500/10 to-[#D4AF37]/10 border border-red-500/30 p-4 space-y-4">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-600 to-orange-500 flex items-center justify-center shadow-lg shadow-red-500/30 shrink-0">
+                <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-[#D4AF37] flex items-center justify-center shadow-lg shadow-red-500/30 shrink-0">
                   <Hash className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -1166,7 +1166,7 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
               <div className="space-y-2">
                 <div className="text-[10px] text-white/40 uppercase">Block Hash (Never Published)</div>
-                <div className="bg-black/50 rounded-lg p-3 font-mono text-xs text-orange-400 break-all border border-white/5">
+                <div className="bg-black/50 p-3 font-mono text-xs text-[#D4AF37] break-all border border-white/5">
                   0x000006b15d1327d67e971d1de9116bd60a3a01556c91b6ebaa416ebc0cfaa646
                 </div>
                 <p className="text-xs text-gray-400">
@@ -1177,30 +1177,30 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
             </div>
 
             {/* Time-Lock Correlations */}
-            <div className="bg-white/5 rounded-xl p-4 space-y-3">
-              <div className="flex items-center gap-2 text-yellow-400">
+            <div className="bg-white/5 p-4 space-y-3">
+              <div className="flex items-center gap-2 text-[#D4AF37]">
                 <Link2 className="w-4 h-4" />
                 <span className="font-medium text-sm">Time-Lock Correlations</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="bg-black/30 rounded-lg p-3">
+                <div className="bg-black/30 p-3">
                   <div className="text-white/40 uppercase text-[10px] mb-1">Pre-Genesis Timestamp</div>
                   <div className="font-mono text-white">1221069728</div>
                   <div className="text-gray-500 mt-1">Sept 10, 2008 20:02:08 UTC</div>
                 </div>
-                <div className="bg-black/30 rounded-lg p-3">
+                <div className="bg-black/30 p-3">
                   <div className="text-white/40 uppercase text-[10px] mb-1">Public Genesis Timestamp</div>
                   <div className="font-mono text-white">1231006505</div>
                   <div className="text-gray-500 mt-1">Jan 3, 2009 18:15:05 UTC</div>
                 </div>
-                <div className="bg-black/30 rounded-lg p-3">
+                <div className="bg-black/30 p-3">
                   <div className="text-white/40 uppercase text-[10px] mb-1">Pre-Genesis % 121</div>
-                  <div className="font-mono text-orange-400 text-lg">43</div>
+                  <div className="font-mono text-[#D4AF37] text-lg">43</div>
                   <div className="text-gray-500 mt-1">Qubic modulo result</div>
                 </div>
-                <div className="bg-black/30 rounded-lg p-3">
+                <div className="bg-black/30 p-3">
                   <div className="text-white/40 uppercase text-[10px] mb-1">Time Difference</div>
-                  <div className="font-mono text-cyan-400 text-lg">~115 days</div>
+                  <div className="font-mono text-[#D4AF37] text-lg">~115 days</div>
                   <div className="text-gray-500 mt-1">9,936,777 seconds</div>
                 </div>
               </div>
@@ -1211,17 +1211,17 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
             </div>
 
             {/* CFB Code Style Indicators */}
-            <div className="bg-white/5 rounded-xl p-4 space-y-3">
-              <div className="flex items-center gap-2 text-green-400">
+            <div className="bg-white/5 p-4 space-y-3">
+              <div className="flex items-center gap-2 text-[#D4AF37]">
                 <Code className="w-4 h-4" />
                 <span className="font-medium text-sm">CFB Code Style Indicators</span>
               </div>
               <div className="space-y-2">
-                <div className="flex items-start gap-3 bg-black/30 rounded-lg p-3">
-                  <FileText className="w-4 h-4 text-green-400 shrink-0 mt-1" />
+                <div className="flex items-start gap-3 bg-black/30 p-3">
+                  <FileText className="w-4 h-4 text-[#D4AF37] shrink-0 mt-1" />
                   <div>
                     <div className="font-medium text-white text-sm">&quot;Four Slash&quot; Comments</div>
-                    <code className="text-xs bg-black/50 px-2 py-1 rounded mt-1 block text-green-400 font-mono">
+                    <code className="text-xs bg-black/50 px-2 py-1 mt-1 block text-[#D4AF37] font-mono">
                       //// issue here: it doesn&apos;t know the version.
                     </code>
                     <p className="text-xs text-gray-400 mt-2">
@@ -1230,8 +1230,8 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 bg-black/30 rounded-lg p-3">
-                  <Binary className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
+                <div className="flex items-start gap-3 bg-black/30 p-3">
+                  <Binary className="w-4 h-4 text-[#D4AF37] shrink-0 mt-1" />
                   <div>
                     <div className="font-medium text-white text-sm">Integer-First Philosophy</div>
                     <p className="text-xs text-gray-400">
@@ -1245,11 +1245,11 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
             </div>
 
             {/* Research Significance */}
-            <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg p-3">
+            <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/10 border border-[#D4AF37]/30 p-3">
               <div className="flex items-start gap-2">
-                <Sparkles className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                <Sparkles className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                 <div className="text-xs text-gray-300">
-                  <span className="text-purple-400 font-medium">Research Significance:</span> If the Anna Matrix or Qubic algorithms
+                  <span className="text-[#D4AF37] font-medium">Research Significance:</span> If the Anna Matrix or Qubic algorithms
                   &quot;recognize&quot; the pre-genesis hash (which was never public until 2013), it would demonstrate that the creator
                   of Qubic had access to private Bitcoin development code from 2008 — evidence that CFB was part of the original team.
                 </div>
@@ -1259,28 +1259,28 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
 
           {/* Sources */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-cyan-400">
+            <div className="flex items-center gap-2 text-[#D4AF37]">
               <ExternalLink className="w-4 h-4" />
               <h3 className="font-semibold">Sources &amp; References</h3>
             </div>
             <div className="grid grid-cols-2 gap-2">
               <a href="https://github.com/qubic/core" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-lg p-3 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 p-3 text-sm text-[#D4AF37] hover:text-[#D4AF37] transition-colors">
                 <ExternalLink className="w-4 h-4 shrink-0" />
                 <span>Qubic Core (GitHub)</span>
               </a>
               <a href="https://qubic.org" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-lg p-3 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 p-3 text-sm text-[#D4AF37] hover:text-[#D4AF37] transition-colors">
                 <ExternalLink className="w-4 h-4 shrink-0" />
                 <span>Qubic Official</span>
               </a>
               <a href="https://x.com/anna_aigarth" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-lg p-3 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 p-3 text-sm text-[#D4AF37] hover:text-[#D4AF37] transition-colors">
                 <MessageCircle className="w-4 h-4 shrink-0" />
                 <span>Anna AI (@anna_aigarth)</span>
               </a>
               <a href="/data/anna-matrix.json" download
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-lg p-3 text-sm text-green-400 hover:text-green-300 transition-colors">
+                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 p-3 text-sm text-[#D4AF37] hover:text-[#D4AF37] transition-colors">
                 <Download className="w-4 h-4 shrink-0" />
                 <span>Download JSON</span>
               </a>
@@ -1288,11 +1288,11 @@ function InfoPanel({ onClose }: { onClose: () => void }) {
           </div>
 
           {/* Disclaimer */}
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4">
+          <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 p-4">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-orange-400 shrink-0 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
               <div className="text-sm">
-                <div className="font-medium text-orange-400">Research Notice</div>
+                <div className="font-medium text-[#D4AF37]">Research Notice</div>
                 <p className="text-gray-400 mt-1">
                   This visualization is provided for cryptographic research and educational purposes.
                   The relationship between the Anna Matrix and Bitcoin/Qubic is subject to ongoing
@@ -1437,7 +1437,7 @@ export default function MatrixTerrainScene() {
 
   if (loading || loadProgress < 100) {
     return (
-      <div ref={containerRef} className="w-full h-[700px] rounded-lg overflow-hidden border border-border">
+      <div ref={containerRef} className="w-full h-[700px] overflow-hidden border border-border">
         <LoadingScreen progress={loadProgress} />
       </div>
     )
@@ -1445,9 +1445,9 @@ export default function MatrixTerrainScene() {
 
   if (error) {
     return (
-      <div ref={containerRef} className="w-full h-[700px] rounded-lg overflow-hidden border border-border bg-gradient-to-b from-black to-gray-900 flex items-center justify-center">
+      <div ref={containerRef} className="w-full h-[700px] overflow-hidden border border-border bg-gradient-to-b from-black to-gray-900 flex items-center justify-center">
         <div className="text-center space-y-4">
-          <AlertTriangle className="w-12 h-12 text-orange-400 mx-auto" />
+          <AlertTriangle className="w-12 h-12 text-[#D4AF37] mx-auto" />
           <h3 className="text-lg font-semibold text-white">{error.message}</h3>
           {error.details && <p className="text-sm text-gray-500">{error.details}</p>}
           {error.retryable && retryCount < 3 && (
@@ -1469,7 +1469,7 @@ export default function MatrixTerrainScene() {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full bg-black rounded-lg overflow-hidden border border-border ${
+      className={`relative w-full bg-black overflow-hidden border border-border ${
         isFullscreen ? 'h-screen rounded-none' : 'h-[700px]'
       }`}
     >
@@ -1511,9 +1511,9 @@ export default function MatrixTerrainScene() {
       {/* UI Overlay */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Top Left - Legend */}
-        <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl p-4 pointer-events-auto group">
+        <div className="absolute top-4 left-4 bg-[#050505] backdrop-blur-md border border-white/[0.04] p-4 pointer-events-auto group">
           <div className="flex items-center gap-2 mb-3">
-            <Grid3X3 className="w-5 h-5 text-orange-400" />
+            <Grid3X3 className="w-5 h-5 text-[#D4AF37]" />
             <div>
               <div className="text-sm font-semibold text-white">Anna Matrix</div>
               <div className="text-[10px] text-gray-400">128 × 128 • {displayMode.toUpperCase()}</div>
@@ -1522,7 +1522,7 @@ export default function MatrixTerrainScene() {
           <div className="space-y-2">
             <div className="text-[10px] text-white/50 uppercase">Value Scale ({COLOR_THEMES[colorTheme].name})</div>
             <div
-              className="h-3 rounded-full cursor-help"
+              className="h-3 cursor-help"
               style={{
                 background: `linear-gradient(to right, ${COLOR_THEMES[colorTheme].negative}, ${COLOR_THEMES[colorTheme].neutral}, ${COLOR_THEMES[colorTheme].positive})`,
               }}
@@ -1536,9 +1536,9 @@ export default function MatrixTerrainScene() {
           </div>
 
           {/* Quick Stats - Always visible */}
-          <div className="mt-3 pt-3 border-t border-white/10 space-y-1">
+          <div className="mt-3 pt-3 border-t border-white/[0.04] space-y-1">
             <div className="flex justify-between text-[10px]">
-              <span className="text-blue-400">Negative</span>
+              <span className="text-[#D4AF37]">Negative</span>
               <span className="text-white/70 font-mono">{stats.negativeCount.toLocaleString()} ({((stats.negativeCount / stats.totalCells) * 100).toFixed(0)}%)</span>
             </div>
             <div className="flex justify-between text-[10px]">
@@ -1546,14 +1546,14 @@ export default function MatrixTerrainScene() {
               <span className="text-white/70 font-mono">{stats.zeroCount.toLocaleString()} ({((stats.zeroCount / stats.totalCells) * 100).toFixed(0)}%)</span>
             </div>
             <div className="flex justify-between text-[10px]">
-              <span className="text-orange-400">Positive</span>
+              <span className="text-[#D4AF37]">Positive</span>
               <span className="text-white/70 font-mono">{stats.positiveCount.toLocaleString()} ({((stats.positiveCount / stats.totalCells) * 100).toFixed(0)}%)</span>
             </div>
           </div>
 
           {/* Keyboard hints */}
           {selectedCell && (
-            <div className="mt-3 pt-3 border-t border-white/10">
+            <div className="mt-3 pt-3 border-t border-white/[0.04]">
               <div className="text-[9px] text-white/30 uppercase">Navigate: Arrow keys / WASD</div>
             </div>
           )}
@@ -1562,7 +1562,7 @@ export default function MatrixTerrainScene() {
         {/* Top Right - Controls */}
         <div className="absolute top-4 right-4 flex flex-col gap-2 pointer-events-auto">
           {/* Primary actions */}
-          <div className="flex gap-1 bg-black/90 backdrop-blur-md border border-white/10 rounded-lg p-1">
+          <div className="flex gap-1 bg-[#050505] backdrop-blur-md border border-white/[0.04] p-1">
             <Button variant="ghost" size="icon" className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10" onClick={toggleFullscreen} title="Fullscreen">
               {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
             </Button>
@@ -1572,7 +1572,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${displayMode === '2d' ? 'text-cyan-400 bg-cyan-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${displayMode === '2d' ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setDisplayMode(displayMode === '3d' ? '2d' : '3d')}
               title="Toggle 2D/3D"
             >
@@ -1581,7 +1581,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${showCrosshair ? 'text-green-400 bg-green-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${showCrosshair ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowCrosshair(!showCrosshair)}
               title="Toggle Crosshair"
             >
@@ -1590,7 +1590,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${showSearch ? 'text-yellow-400 bg-yellow-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${showSearch ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowSearch(!showSearch)}
               title="Search Value"
             >
@@ -1599,7 +1599,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${showCoordInput ? 'text-purple-400 bg-purple-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${showCoordInput ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowCoordInput(!showCoordInput)}
               title="Jump to Cell"
             >
@@ -1608,7 +1608,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${showStats ? 'text-orange-400 bg-orange-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${showStats ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowStats(!showStats)}
               title="Statistics"
             >
@@ -1617,7 +1617,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${showInfo ? 'text-cyan-400 bg-cyan-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${showInfo ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowInfo(!showInfo)}
               title="About Anna Matrix"
             >
@@ -1626,7 +1626,7 @@ export default function MatrixTerrainScene() {
             <Button
               variant="ghost"
               size="icon"
-              className={`h-8 w-8 ${showMiniMap ? 'text-emerald-400 bg-emerald-400/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+              className={`h-8 w-8 ${showMiniMap ? 'text-[#D4AF37] bg-[#D4AF37]/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
               onClick={() => setShowMiniMap(!showMiniMap)}
               title="Toggle MiniMap"
             >
@@ -1635,7 +1635,7 @@ export default function MatrixTerrainScene() {
             <a
               href="/data/anna-matrix.json"
               download
-              className="h-8 w-8 inline-flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-md"
+              className="h-8 w-8 inline-flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10"
               title="Download Matrix JSON"
             >
               <Download className="w-4 h-4" />
@@ -1679,7 +1679,7 @@ export default function MatrixTerrainScene() {
           </div>
 
           {/* Color themes */}
-          <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-lg p-1">
+          <div className="bg-[#050505] backdrop-blur-md border border-white/[0.04] p-1">
             <button
               onClick={() => setShowColorPicker(!showColorPicker)}
               className="flex items-center gap-2 px-2 py-1 text-[10px] text-gray-400 hover:text-white w-full"
@@ -1693,7 +1693,7 @@ export default function MatrixTerrainScene() {
                   <button
                     key={theme}
                     onClick={() => { setColorTheme(theme); setShowColorPicker(false) }}
-                    className={`w-6 h-6 rounded ${colorTheme === theme ? 'ring-2 ring-white' : ''}`}
+                    className={`w-6 h-6 ${colorTheme === theme ? 'ring-2 ring-white' : ''}`}
                     style={{ background: `linear-gradient(135deg, ${COLOR_THEMES[theme].negative}, ${COLOR_THEMES[theme].positive})` }}
                     title={COLOR_THEMES[theme].name}
                   />
@@ -1704,7 +1704,7 @@ export default function MatrixTerrainScene() {
 
           {/* View modes (3D only) */}
           {displayMode === '3d' && (
-            <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-lg p-1">
+            <div className="bg-[#050505] backdrop-blur-md border border-white/[0.04] p-1">
               <div className="text-[10px] text-gray-500 px-2 py-1">View Mode</div>
               <div className="grid grid-cols-2 gap-1">
                 {VIEW_MODES.map((mode) => (
@@ -1724,7 +1724,7 @@ export default function MatrixTerrainScene() {
 
           {/* Zoom regions (2D only) */}
           {displayMode === '2d' && (
-            <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-lg p-1">
+            <div className="bg-[#050505] backdrop-blur-md border border-white/[0.04] p-1">
               <div className="text-[10px] text-gray-500 px-2 py-1">Zoom Region</div>
               <div className="grid grid-cols-3 gap-1">
                 <Button
@@ -1752,7 +1752,7 @@ export default function MatrixTerrainScene() {
 
           {/* Camera presets (3D only) */}
           {displayMode === '3d' && (
-            <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-lg p-1">
+            <div className="bg-[#050505] backdrop-blur-md border border-white/[0.04] p-1">
               <div className="text-[10px] text-gray-500 px-2 py-1">Camera</div>
               <div className="grid grid-cols-2 gap-1">
                 {Object.entries(TERRAIN_CAMERA_PRESETS).map(([key, preset]) => (
@@ -1788,10 +1788,10 @@ export default function MatrixTerrainScene() {
 
         {/* Hover info */}
         {hoveredCell && !selectedCell && displayMode === '3d' && (
-          <div className="absolute bottom-20 left-24 bg-black/95 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 pointer-events-none">
+          <div className="absolute bottom-20 left-24 bg-[#050505] backdrop-blur-md border border-white/[0.04] px-3 py-2 pointer-events-none">
             <div className="flex items-center gap-3 text-sm">
               <span className="text-white/50 font-mono">[{hoveredCell.row}, {hoveredCell.col}]</span>
-              <span className={`font-mono font-bold ${hoveredCell.value > 0 ? 'text-orange-400' : hoveredCell.value < 0 ? 'text-blue-400' : 'text-gray-400'}`}>
+              <span className={`font-mono font-bold ${hoveredCell.value > 0 ? 'text-[#D4AF37]' : hoveredCell.value < 0 ? 'text-[#D4AF37]' : 'text-gray-400'}`}>
                 {hoveredCell.value}
               </span>
             </div>

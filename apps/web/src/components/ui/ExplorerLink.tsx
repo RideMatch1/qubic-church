@@ -39,8 +39,8 @@ const chainIcons = {
 }
 
 const chainColors = {
-  bitcoin: 'text-bitcoin-orange hover:text-bitcoin-orange-light',
-  qubic: 'text-qubic-purple hover:text-qubic-purple-light',
+  bitcoin: 'text-[#D4AF37] hover:text-[#D4AF37]/80',
+  qubic: 'text-[#D4AF37]/80 hover:text-[#D4AF37]',
 }
 
 export function ExplorerLink({
@@ -106,7 +106,7 @@ export function ExplorerLink({
       {showCopy && (
         <motion.button
           onClick={handleCopy}
-          className="p-1 rounded hover:bg-muted transition-colors flex-shrink-0"
+          className="p-1 hover:bg-white/[0.06] transition-colors flex-shrink-0"
           whileTap={{ scale: 0.9 }}
           title={copied ? 'Copied!' : 'Copy to clipboard'}
         >
@@ -159,7 +159,7 @@ export function AddressDisplay({
         </div>
       )}
 
-      <div className="flex items-center gap-2 p-3 bg-muted/30 rounded-lg border border-border/50">
+      <div className="flex items-center gap-2 p-3 bg-white/[0.02] border border-white/[0.04]">
         <code className="flex-1 font-mono text-xs break-all select-all">
           {address}
         </code>
@@ -167,7 +167,7 @@ export function AddressDisplay({
         <div className="flex items-center gap-1 flex-shrink-0">
           <motion.button
             onClick={handleCopy}
-            className="p-2 rounded-md hover:bg-muted transition-colors"
+            className="p-2 hover:bg-white/[0.06] transition-colors"
             whileTap={{ scale: 0.9 }}
             title={copied ? 'Copied!' : 'Copy address'}
           >
@@ -183,7 +183,7 @@ export function AddressDisplay({
               href={explorers[chain].address(address)}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-md hover:bg-muted transition-colors"
+              className="p-2 hover:bg-white/[0.06] transition-colors"
               title="View on explorer"
             >
               <ExternalLink className="h-4 w-4 text-muted-foreground" />

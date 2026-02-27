@@ -60,26 +60,26 @@ export function AddressDetailPanel({
 
   return (
     <motion.div
-      className="absolute top-0 right-0 h-full w-96 bg-gray-950/95 border-l border-white/10 backdrop-blur-xl overflow-hidden flex flex-col"
+      className="absolute top-0 right-0 h-full w-96 bg-gray-950/95 border-l border-white/[0.04] backdrop-blur-xl overflow-hidden flex flex-col"
       initial={{ x: 400, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 400, opacity: 0 }}
       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
     >
       {/* Header */}
-      <div className="p-4 border-b border-white/10 flex-shrink-0">
+      <div className="p-4 border-b border-white/[0.04] flex-shrink-0">
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-2">
               <div
-                className="w-4 h-4 rounded-full flex-shrink-0"
+                className="w-4 h-4 flex-shrink-0"
                 style={{ backgroundColor: node.color }}
               />
               <span className="text-sm font-medium" style={{ color: config.color }}>
                 {config.label}
               </span>
               {node.isVIP && (
-                <span className="px-1.5 py-0.5 text-[10px] bg-orange-500/20 text-orange-400 rounded">
+                <span className="px-1.5 py-0.5 text-[10px] bg-[#D4AF37]/20 text-[#D4AF37]">
                   VIP
                 </span>
               )}
@@ -94,10 +94,10 @@ export function AddressDetailPanel({
               </code>
               <button
                 onClick={() => handleCopy(node.address, 'address')}
-                className="p-1 hover:bg-white/10 rounded transition-colors flex-shrink-0"
+                className="p-1 hover:bg-white/10 transition-colors flex-shrink-0"
               >
                 {copiedField === 'address' ? (
-                  <CheckCircle2 className="w-3.5 h-3.5 text-green-400" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
                 ) : (
                   <Copy className="w-3.5 h-3.5 text-gray-500" />
                 )}
@@ -117,29 +117,29 @@ export function AddressDetailPanel({
 
         {/* Quick stats */}
         <div className="grid grid-cols-3 gap-2 mt-4">
-          <div className="p-2 bg-white/5 rounded-lg text-center">
+          <div className="p-2 bg-white/5 text-center">
             <div className="text-lg font-bold text-white">{totalConnections}</div>
             <div className="text-[10px] text-gray-500">Connections</div>
           </div>
           {node.blockHeight !== undefined && (
-            <div className="p-2 bg-white/5 rounded-lg text-center">
-              <div className="text-lg font-bold text-orange-400">
+            <div className="p-2 bg-white/5 text-center">
+              <div className="text-lg font-bold text-[#D4AF37]">
                 {node.blockHeight.toLocaleString()}
               </div>
               <div className="text-[10px] text-gray-500">Block</div>
             </div>
           )}
           {node.amount !== undefined && (
-            <div className="p-2 bg-white/5 rounded-lg text-center">
-              <div className="text-lg font-bold text-green-400">
+            <div className="p-2 bg-white/5 text-center">
+              <div className="text-lg font-bold text-[#D4AF37]">
                 {node.amount.toFixed(2)}
               </div>
               <div className="text-[10px] text-gray-500">BTC</div>
             </div>
           )}
           {node.xorRings > 0 && (
-            <div className="p-2 bg-white/5 rounded-lg text-center">
-              <div className="text-lg font-bold text-purple-400">{node.xorRings}</div>
+            <div className="p-2 bg-white/5 text-center">
+              <div className="text-lg font-bold text-[#D4AF37]">{node.xorRings}</div>
               <div className="text-[10px] text-gray-500">XOR Rings</div>
             </div>
           )}
@@ -148,7 +148,7 @@ export function AddressDetailPanel({
 
       {/* Tabs */}
       <Tabs defaultValue="identity" className="flex-1 flex flex-col overflow-hidden">
-        <TabsList className="w-full justify-start px-4 pt-2 bg-transparent border-b border-white/10 rounded-none flex-shrink-0">
+        <TabsList className="w-full justify-start px-4 pt-2 bg-transparent border-b border-white/[0.04] rounded-none flex-shrink-0">
           <TabsTrigger
             value="identity"
             className="data-[state=active]:bg-white/10 data-[state=active]:text-white"
@@ -177,7 +177,7 @@ export function AddressDetailPanel({
                 <button
                   onClick={refetch}
                   disabled={isLoading}
-                  className="p-1 hover:bg-white/10 rounded transition-colors disabled:opacity-50"
+                  className="p-1 hover:bg-white/10 transition-colors disabled:opacity-50"
                   title="Refresh blockchain data"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 text-gray-500 ${isLoading ? 'animate-spin' : ''}`} />
@@ -186,13 +186,13 @@ export function AddressDetailPanel({
 
               {isLoading && (
                 <div className="flex items-center justify-center py-8">
-                  <Loader2 className="w-5 h-5 text-blue-400 animate-spin" />
+                  <Loader2 className="w-5 h-5 text-[#D4AF37] animate-spin" />
                   <span className="ml-2 text-sm text-gray-400">Fetching data...</span>
                 </div>
               )}
 
               {error && (
-                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <div className="p-3 bg-red-500/10 border border-red-500/30">
                   <div className="flex items-center gap-2 mb-1">
                     <AlertCircle className="w-3.5 h-3.5 text-red-400" />
                     <span className="text-xs text-red-400 font-medium">Error</span>
@@ -204,27 +204,27 @@ export function AddressDetailPanel({
               {blockchainData && !isLoading && (
                 <div className="space-y-3">
                   {/* Address Status Badge */}
-                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                  <div className="flex items-center justify-between p-3 bg-white/5 border border-white/[0.04]">
                     <div className="flex items-center gap-2">
                       <Activity className="w-4 h-4 text-gray-500" />
                       <span className="text-xs text-gray-400">Status</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div
-                        className={`w-2 h-2 rounded-full ${
+                        className={`w-2 h-2 ${
                           blockchainData.balance > 0
-                            ? 'bg-green-400'
+                            ? 'bg-[#D4AF37]'
                             : blockchainData.hasTransactions
-                            ? 'bg-orange-400'
+                            ? 'bg-[#D4AF37]'
                             : 'bg-gray-600'
                         }`}
                       />
                       <span
                         className={`text-xs font-medium ${
                           blockchainData.balance > 0
-                            ? 'text-green-400'
+                            ? 'text-[#D4AF37]'
                             : blockchainData.hasTransactions
-                            ? 'text-orange-400'
+                            ? 'text-[#D4AF37]'
                             : 'text-gray-500'
                         }`}
                       >
@@ -234,33 +234,33 @@ export function AddressDetailPanel({
                   </div>
 
                   {/* Balance */}
-                  <div className="p-3 bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 rounded-lg">
+                  <div className="p-3 bg-gradient-to-br from-[#D4AF37]/10 to-[#D4AF37]/5 border border-[#D4AF37]/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Coins className="w-4 h-4 text-green-400" />
-                      <span className="text-xs text-green-400/80">Current Balance</span>
+                      <Coins className="w-4 h-4 text-[#D4AF37]" />
+                      <span className="text-xs text-[#D4AF37]/80">Current Balance</span>
                     </div>
-                    <div className="text-2xl font-bold text-green-400">
+                    <div className="text-2xl font-bold text-[#D4AF37]">
                       {formatBTC(blockchainData.balance, 8)}
                     </div>
                   </div>
 
                   {/* Transaction Stats */}
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="p-2.5 bg-white/5 rounded-lg">
+                    <div className="p-2.5 bg-white/5">
                       <div className="flex items-center gap-1.5 mb-1">
-                        <TrendingUp className="w-3.5 h-3.5 text-blue-400" />
+                        <TrendingUp className="w-3.5 h-3.5 text-[#D4AF37]" />
                         <span className="text-[10px] text-gray-500">Received</span>
                       </div>
-                      <div className="text-sm font-semibold text-blue-400">
+                      <div className="text-sm font-semibold text-[#D4AF37]">
                         {formatBTC(blockchainData.totalReceived, 4)}
                       </div>
                     </div>
-                    <div className="p-2.5 bg-white/5 rounded-lg">
+                    <div className="p-2.5 bg-white/5">
                       <div className="flex items-center gap-1.5 mb-1">
-                        <TrendingDown className="w-3.5 h-3.5 text-purple-400" />
+                        <TrendingDown className="w-3.5 h-3.5 text-[#D4AF37]" />
                         <span className="text-[10px] text-gray-500">Sent</span>
                       </div>
-                      <div className="text-sm font-semibold text-purple-400">
+                      <div className="text-sm font-semibold text-[#D4AF37]">
                         {formatBTC(blockchainData.totalSent, 4)}
                       </div>
                     </div>
@@ -299,12 +299,12 @@ export function AddressDetailPanel({
                   )}
 
                   {/* Data Source */}
-                  <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                  <div className="flex items-center justify-between p-2 bg-white/5">
                     <span className="text-xs text-gray-500">Source</span>
                     <div className="flex items-center gap-1.5">
                       <span className="text-xs text-gray-400 capitalize">{blockchainData._source}</span>
                       {blockchainData._source === 'cache' && (
-                        <span className="px-1.5 py-0.5 text-[9px] bg-blue-500/20 text-blue-400 rounded">
+                        <span className="px-1.5 py-0.5 text-[9px] bg-[#D4AF37]/20 text-[#D4AF37]">
                           Cached
                         </span>
                       )}
@@ -373,13 +373,13 @@ export function AddressDetailPanel({
                   />
                 )}
                 {node.derivationMethod && (
-                  <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                  <div className="flex items-center justify-between p-2 bg-white/5">
                     <div className="flex items-center gap-2">
                       <Layers className="w-3.5 h-3.5 text-gray-500" />
                       <span className="text-xs text-gray-400">Method</span>
                     </div>
                     <div
-                      className="px-2 py-0.5 rounded text-xs font-medium"
+                      className="px-2 py-0.5 text-xs font-medium"
                       style={{
                         backgroundColor: `${METHOD_CONFIG[node.derivationMethod]?.color}20`,
                         color: METHOD_CONFIG[node.derivationMethod]?.color,
@@ -390,13 +390,13 @@ export function AddressDetailPanel({
                   </div>
                 )}
                 {node.xorVariant !== undefined && node.xorVariant > 0 && (
-                  <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                  <div className="flex items-center justify-between p-2 bg-white/5">
                     <div className="flex items-center gap-2">
                       <Hash className="w-3.5 h-3.5 text-gray-500" />
                       <span className="text-xs text-gray-400">XOR Variant</span>
                     </div>
                     <div
-                      className="px-2 py-0.5 rounded text-xs font-medium"
+                      className="px-2 py-0.5 text-xs font-medium"
                       style={{
                         backgroundColor: `${XOR_RING_CONFIG[node.xorVariant]?.color || '#fff'}20`,
                         color: XOR_RING_CONFIG[node.xorVariant]?.color || '#fff',
@@ -469,10 +469,10 @@ export function AddressDetailPanel({
                   />
                 )}
                 {node.seedValidated !== undefined && (
-                  <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                  <div className="flex items-center justify-between p-2 bg-white/5">
                     <div className="flex items-center gap-2">
                       {node.seedValidated ? (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-400" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
                       ) : (
                         <XCircle className="w-3.5 h-3.5 text-red-400" />
                       )}
@@ -480,7 +480,7 @@ export function AddressDetailPanel({
                     </div>
                     <span
                       className={`text-xs font-medium ${
-                        node.seedValidated ? 'text-green-400' : 'text-red-400'
+                        node.seedValidated ? 'text-[#D4AF37]' : 'text-red-400'
                       }`}
                     >
                       {node.seedValidated ? 'Verified Match' : 'Mismatch'}
@@ -497,10 +497,10 @@ export function AddressDetailPanel({
               <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
                 Derived Bitcoin Address
               </h3>
-              <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+              <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <Hash className="w-3.5 h-3.5 text-green-400" />
-                  <span className="text-xs text-green-400 font-medium">P2PKH Address</span>
+                  <Hash className="w-3.5 h-3.5 text-[#D4AF37]" />
+                  <span className="text-xs text-[#D4AF37] font-medium">P2PKH Address</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <code className="text-sm font-mono text-white break-all">
@@ -508,16 +508,16 @@ export function AddressDetailPanel({
                   </code>
                   <button
                     onClick={() => handleCopy(node.derivedAddress!, 'derivedAddress')}
-                    className="p-1 hover:bg-white/10 rounded transition-colors flex-shrink-0"
+                    className="p-1 hover:bg-white/10 transition-colors flex-shrink-0"
                   >
                     {copiedField === 'derivedAddress' ? (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-green-400" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
                     ) : (
                       <Copy className="w-3.5 h-3.5 text-gray-500" />
                     )}
                   </button>
                 </div>
-                <p className="text-[10px] text-green-400/60 mt-2">
+                <p className="text-[10px] text-[#D4AF37]/60 mt-2">
                   This is the P2PKH address derived from the original P2PK public key
                 </p>
               </div>
@@ -540,7 +540,7 @@ export function AddressDetailPanel({
                       href={isValidAddress ? `https://www.blockchain.com/btc/address/${lookupAddress}` : '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs transition-colors ${
                         isValidAddress
                           ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'
                           : 'bg-gray-800/50 text-gray-600 cursor-not-allowed'
@@ -554,7 +554,7 @@ export function AddressDetailPanel({
                       href={isValidAddress ? `https://mempool.space/address/${lookupAddress}` : '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs transition-colors ${
                         isValidAddress
                           ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'
                           : 'bg-gray-800/50 text-gray-600 cursor-not-allowed'
@@ -568,7 +568,7 @@ export function AddressDetailPanel({
                       href={isValidAddress ? `https://blockchair.com/bitcoin/address/${lookupAddress}` : '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs transition-colors ${
                         isValidAddress
                           ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'
                           : 'bg-gray-800/50 text-gray-600 cursor-not-allowed'
@@ -678,7 +678,7 @@ function DataRow({
   copiedField,
 }: DataRowProps) {
   return (
-    <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg group">
+    <div className="flex items-center justify-between p-2 bg-white/5 group">
       <div className="flex items-center gap-2">
         <span className="text-gray-500">{icon}</span>
         <span className="text-xs text-gray-400">{label}</span>
@@ -688,10 +688,10 @@ function DataRow({
         {copyable && onCopy && (
           <button
             onClick={() => onCopy(fullValue || value, label)}
-            className="p-1 hover:bg-white/10 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+            className="p-1 hover:bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
           >
             {copiedField === label ? (
-              <CheckCircle2 className="w-3 h-3 text-green-400" />
+              <CheckCircle2 className="w-3 h-3 text-[#D4AF37]" />
             ) : (
               <Copy className="w-3 h-3 text-gray-500" />
             )}
@@ -730,17 +730,17 @@ function ConnectionRow({
   return (
     <button
       onClick={() => onClick(targetNode)}
-      className="w-full flex items-center gap-3 p-2 bg-white/5 hover:bg-white/10 rounded-lg transition-colors text-left group"
+      className="w-full flex items-center gap-3 p-2 bg-white/5 hover:bg-white/10 transition-colors text-left group"
     >
       {/* Direction indicator */}
       <div
-        className={`w-6 h-6 rounded-full flex items-center justify-center ${
-          direction === 'out' ? 'bg-blue-500/20' : 'bg-purple-500/20'
+        className={`w-6 h-6 flex items-center justify-center ${
+          direction === 'out' ? 'bg-[#D4AF37]/20' : 'bg-[#D4AF37]/20'
         }`}
       >
         <ChevronRight
           className={`w-3.5 h-3.5 ${
-            direction === 'out' ? 'text-blue-400' : 'text-purple-400 rotate-180'
+            direction === 'out' ? 'text-[#D4AF37]' : 'text-[#D4AF37] rotate-180'
           }`}
         />
       </div>
@@ -749,7 +749,7 @@ function ConnectionRow({
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
           <div
-            className="w-2 h-2 rounded-full flex-shrink-0"
+            className="w-2 h-2 flex-shrink-0"
             style={{ backgroundColor: targetNode.color }}
           />
           <code className="text-xs font-mono text-white truncate">
@@ -761,7 +761,7 @@ function ConnectionRow({
         <div className="flex items-center gap-2 mt-0.5">
           <span className="text-[10px] text-gray-500">{nodeConfig.label}</span>
           <span
-            className="text-[10px] px-1.5 py-0.5 rounded"
+            className="text-[10px] px-1.5 py-0.5"
             style={{
               backgroundColor: `${edgeConfig.color}20`,
               color: edgeConfig.color,
