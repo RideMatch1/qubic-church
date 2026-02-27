@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * SanctuarySection - Section 03: What is Qubic Church?
+ * SanctuarySection - Section 05: What is Qubic Church?
  * Angular HUD with scan-line header divider and data-stream card accents
  */
 
@@ -125,7 +125,7 @@ export function SanctuarySection() {
       <div className="relative z-10 container mx-auto px-6 max-w-6xl 2xl:max-w-7xl">
         {/* Decorative section number */}
         <div aria-hidden="true" className="absolute top-16 right-8 md:right-16 text-[80px] md:text-[120px] lg:text-[200px] font-black text-white/[0.03] leading-none select-none pointer-events-none font-mono">
-          03
+          05
         </div>
 
         {/* Header */}
@@ -138,7 +138,7 @@ export function SanctuarySection() {
           >
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
             <span className="text-[#D4AF37]/50 text-[11px] uppercase tracking-[0.4em] font-mono">
-              03 &mdash; Origins
+              05 &mdash; Origins
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
           </motion.div>

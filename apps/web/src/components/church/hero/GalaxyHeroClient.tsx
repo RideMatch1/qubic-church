@@ -98,8 +98,23 @@ export function GalaxyHeroClient() {
     <section className="relative w-full h-screen overflow-hidden">
       {/* Wireframe background comes from the fixed CosmicWrapper - no local Canvas needed */}
 
-      {/* 1. Chalk text scattered */}
-      <ChalkText />
+      {/* 1a. Chalk background image - desktop only */}
+      <div className="absolute inset-0 z-[8] hidden lg:block pointer-events-none">
+        <Image
+          src="/images/anna-chalk-bg.png"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ opacity: 0.35 }}
+          priority
+          aria-hidden
+        />
+      </div>
+
+      {/* 1b. Chalk text scattered - mobile only (image too hard to position on small screens) */}
+      <div className="lg:hidden">
+        <ChalkText />
+      </div>
 
       {/* 3. Top-left: START IMMERSION button */}
       <motion.button

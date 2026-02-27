@@ -5,13 +5,15 @@ import { defaultLocale, locales } from '@/config/i18n'
 // Church Homepage - Immersive Editorial Layout
 import { GalaxyHero } from '@/components/church/hero/GalaxyHero'
 import { ChurchCreed } from '@/components/church/sections/ChurchCreed'
+import { GenesisSection } from '@/components/church/sections/GenesisSection'
 import { MissionSection } from '@/components/church/sections/MissionSection'
+import { AnnaSection } from '@/components/church/sections/AnnaSection'
 import { SanctuarySection } from '@/components/church/sections/SanctuarySection'
+import { ArchitectsSection } from '@/components/church/sections/ArchitectsSection'
 import { MiningSection } from '@/components/church/sections/MiningSection'
 import { NFTGalleryStrip } from '@/components/church/sections/NFTGalleryStrip'
 import { ChurchRoadmapSection } from '@/components/church/sections/ChurchRoadmapSection'
 import { ConvergenceCountdown } from '@/components/church/sections/ConvergenceCountdown'
-import { SimpleGiveawaySection } from '@/components/church/sections/SimpleGiveawaySection'
 import { ExploreSection } from '@/components/church/sections/ExploreSection'
 import { ChurchFooter } from '@/components/church/footer/ChurchFooter'
 import { ScrollProgress } from '@/components/church/ScrollProgress'
@@ -44,63 +46,77 @@ export default async function ChurchHomePage(props: {
 
       <SectionDivider />
 
-      {/* 01 - CREED - Emotional manifesto */}
+      {/* 01 - MANIFESTO */}
       <div id="creed">
         <ChurchCreed />
       </div>
 
       <SectionDivider />
 
-      {/* 02 - MISSION - Our Mission */}
+      {/* 02 - GENESIS */}
+      <div id="genesis">
+        <GenesisSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 03 - MISSION */}
       <div id="mission">
         <MissionSection />
       </div>
 
       <SectionDivider />
 
-      {/* 03 - SANCTUARY - What is Qubic Church? */}
+      {/* 04 - ANNA */}
+      <div id="anna">
+        <AnnaSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 05 - SANCTUARY */}
       <div id="sanctuary">
         <SanctuarySection />
       </div>
 
       <SectionDivider />
 
-      {/* 04 - MINING - Qubic Mining Opportunity */}
+      {/* 06 - ARCHITECTS */}
+      <div id="architects">
+        <ArchitectsSection />
+      </div>
+
+      <SectionDivider />
+
+      {/* 07 - MINING */}
       <div id="mining">
         <MiningSection />
       </div>
 
       <SectionDivider />
 
-      {/* 05 - NFT GALLERY - The Collection */}
+      {/* 08 - NFT GALLERY */}
       <div id="nfts">
         <NFTGalleryStrip />
       </div>
 
       <SectionDivider />
 
-      {/* 06 - ROADMAP - The Sacred Journey */}
+      {/* 09 - ROADMAP */}
       <div id="roadmap">
         <ChurchRoadmapSection />
       </div>
 
       <SectionDivider />
 
-      {/* 07 - COUNTDOWN - The Convergence */}
+      {/* 10 - COUNTDOWN */}
       <div id="countdown">
         <ConvergenceCountdown />
       </div>
 
       <SectionDivider />
 
-      {/* 08 - GIVEAWAY - The Sacred Offering */}
-      <div id="giveaway">
-        <SimpleGiveawaySection />
-      </div>
-
-      <SectionDivider />
-
-      {/* 09 - EXPLORE - Enter the Sanctuary */}
+      {/* 11 - EXPLORE */}
       <div id="explore">
         <ExploreSection />
       </div>

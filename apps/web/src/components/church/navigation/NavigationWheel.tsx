@@ -5,11 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import {
   BookOpen,
-  Scroll,
-  Users,
-  Map,
   Sparkles,
   Target,
+  Scroll,
+  Map,
+  FileText,
+  Compass,
+  Users,
+  Milestone,
+  Cpu,
+  Wallet,
   X,
   type LucideIcon,
 } from 'lucide-react'
@@ -19,14 +24,54 @@ interface WheelSegment {
   href: string
   icon: LucideIcon
   description: string
+  isHighlighted?: boolean
 }
 
 const SEGMENTS: WheelSegment[] = [
+  // Philosophy (scroll to sections)
   {
-    label: 'RESEARCH',
+    label: 'COME FROM BEYOND',
     href: '/docs',
-    icon: BookOpen,
+    icon: Sparkles,
     description: 'Sacred Archive',
+    isHighlighted: true,
+  },
+  {
+    label: 'MANIFESTO',
+    href: '/#creed',
+    icon: FileText,
+    description: 'Our Declaration',
+  },
+  {
+    label: 'GENESIS',
+    href: '/#genesis',
+    icon: Compass,
+    description: 'Origin Story',
+  },
+  {
+    label: 'MISSION',
+    href: '/#mission',
+    icon: Target,
+    description: '9 Objectives',
+  },
+  {
+    label: 'FOUNDERS',
+    href: '/#nfts',
+    icon: Users,
+    description: 'Become a Founder',
+  },
+  {
+    label: 'ROADMAP',
+    href: '/#roadmap',
+    icon: Milestone,
+    description: 'The Path',
+  },
+  // Practical (page navigation)
+  {
+    label: 'DASHBOARD',
+    href: '/monitoring',
+    icon: Map,
+    description: 'Live Data',
   },
   {
     label: 'ANNA MATRIX',
@@ -37,26 +82,20 @@ const SEGMENTS: WheelSegment[] = [
   {
     label: 'MINE QUBIC',
     href: '/mine-qubic',
-    icon: Target,
+    icon: Cpu,
     description: 'Start Mining',
   },
   {
     label: 'GET QUBIC',
     href: '/get-qubic',
-    icon: Scroll,
+    icon: Wallet,
     description: 'Exchanges',
   },
   {
-    label: 'DASHBOARD',
-    href: '/monitoring',
-    icon: Map,
-    description: 'Live Data',
-  },
-  {
-    label: 'GIVEAWAY',
-    href: '/#giveaway',
-    icon: Users,
-    description: '676M Prize',
+    label: 'RESEARCH',
+    href: '/docs',
+    icon: BookOpen,
+    description: 'Documentation',
   },
 ]
 
@@ -106,15 +145,15 @@ function DesktopWheel({
 }) {
   const [hovered, setHovered] = useState<number | null>(null)
 
-  const cx = 200
-  const cy = 200
-  const innerR = 60
-  const outerR = 170
+  const cx = 220
+  const cy = 220
+  const innerR = 65
+  const outerR = 195
   const segmentAngle = 360 / SEGMENTS.length
-  const gap = 1.5 // degree gap between segments
+  const gap = 1.2
 
   return (
-    <svg viewBox="0 0 400 400" className="w-[340px] h-[340px] md:w-[420px] md:h-[420px]">
+    <svg viewBox="0 0 440 440" className="w-[380px] h-[380px] md:w-[460px] md:h-[460px]">
       {/* Outer ring */}
       <circle
         cx={cx}
@@ -134,6 +173,7 @@ function DesktopWheel({
         const midR = (innerR + outerR) / 2
         const anchor = polarToCartesian(cx, cy, midR, midAngle)
         const isHovered = hovered === i
+        const isHighlighted = seg.isHighlighted
         const Icon = seg.icon
 
         return (
@@ -155,41 +195,53 @@ function DesktopWheel({
           >
             <path
               d={arcPath(cx, cy, innerR, outerR, startAngle, endAngle)}
-              fill={isHovered ? `${GOLD}15` : `${DARK}cc`}
-              stroke={isHovered ? GOLD : GOLD_DIM}
-              strokeWidth={isHovered ? 1 : 0.5}
-              strokeOpacity={isHovered ? 0.8 : 0.3}
+              fill={isHovered ? `${GOLD}15` : isHighlighted ? `${GOLD}08` : `${DARK}cc`}
+              stroke={isHovered || isHighlighted ? GOLD : GOLD_DIM}
+              strokeWidth={isHovered ? 1 : isHighlighted ? 0.8 : 0.5}
+              strokeOpacity={isHovered ? 0.8 : isHighlighted ? 0.5 : 0.3}
               style={{ transition: 'all 0.3s ease' }}
             />
 
-            {/* Icon - centered above label */}
+            {/* Glow for highlighted (CfB) segment */}
+            {isHighlighted && !isHovered && (
+              <path
+                d={arcPath(cx, cy, innerR, outerR, startAngle, endAngle)}
+                fill="none"
+                stroke={GOLD}
+                strokeWidth={2}
+                strokeOpacity={0.1}
+                style={{ filter: 'blur(4px)' }}
+              />
+            )}
+
+            {/* Icon */}
             <foreignObject
-              x={anchor.x - 10}
-              y={anchor.y - 18}
-              width={20}
-              height={20}
+              x={anchor.x - 9}
+              y={anchor.y - 16}
+              width={18}
+              height={18}
             >
               <div className="flex items-center justify-center w-full h-full">
                 <Icon
-                  size={15}
+                  size={13}
                   strokeWidth={1.5}
                   style={{
-                    color: isHovered ? GOLD : `${GOLD}80`,
+                    color: isHovered ? GOLD : isHighlighted ? `${GOLD}cc` : `${GOLD}70`,
                     transition: 'color 0.3s ease',
                   }}
                 />
               </div>
             </foreignObject>
 
-            {/* Label - centered below icon */}
+            {/* Label */}
             <text
               x={anchor.x}
-              y={anchor.y + 8}
+              y={anchor.y + 6}
               textAnchor="middle"
-              fill={isHovered ? GOLD : `${GOLD}99`}
-              fontSize="7.5"
+              fill={isHovered ? GOLD : isHighlighted ? `${GOLD}bb` : `${GOLD}80`}
+              fontSize="6"
               fontWeight="500"
-              letterSpacing="0.12em"
+              letterSpacing="0.1em"
               style={{
                 fontFamily: 'system-ui, sans-serif',
                 transition: 'fill 0.3s ease',
@@ -215,7 +267,7 @@ function DesktopWheel({
       {/* Center icon */}
       <foreignObject x={cx - 10} y={cy - 22} width={20} height={20}>
         <div className="flex items-center justify-center w-full h-full">
-          <Target size={13} strokeWidth={1.5} style={{ color: `${GOLD}80` }} />
+          <Scroll size={13} strokeWidth={1.5} style={{ color: `${GOLD}80` }} />
         </div>
       </foreignObject>
 
@@ -226,7 +278,7 @@ function DesktopWheel({
         textAnchor="middle"
         dominantBaseline="central"
         fill={GOLD}
-        fontSize="8"
+        fontSize="7.5"
         fontWeight="600"
         letterSpacing="0.2em"
         style={{ fontFamily: 'system-ui, sans-serif' }}
@@ -239,8 +291,8 @@ function DesktopWheel({
         textAnchor="middle"
         dominantBaseline="central"
         fill={`${GOLD}70`}
-        fontSize="5.5"
-        letterSpacing="0.15em"
+        fontSize="5"
+        letterSpacing="0.12em"
         style={{ fontFamily: 'system-ui, sans-serif' }}
       >
         {hovered !== null && SEGMENTS[hovered] ? SEGMENTS[hovered].description.toUpperCase() : 'SELECT PATH'}
@@ -255,26 +307,26 @@ function MobileNavGrid({
   onNavigate: (href: string) => void
 }) {
   return (
-    <div className="grid grid-cols-2 gap-3 px-6 max-w-sm mx-auto">
+    <div className="grid grid-cols-2 gap-2 px-4 max-w-sm mx-auto max-h-[70vh] overflow-y-auto">
       {SEGMENTS.map((seg) => {
         const Icon = seg.icon
         return (
           <button
-            key={seg.label}
+            key={`${seg.label}-${seg.href}`}
             onClick={() => onNavigate(seg.href)}
-            className="p-4 border transition-all text-center
-                       bg-[#050505] border-[#D4AF37]/15
-                       hover:border-[#D4AF37]/40 hover:bg-[#D4AF37]/5
-                       active:scale-95"
+            className={`p-3 border transition-all text-center
+                       bg-[#050505] hover:bg-[#D4AF37]/5 active:scale-95
+                       ${seg.isHighlighted ? 'border-[#D4AF37]/25' : 'border-[#D4AF37]/15'}
+                       hover:border-[#D4AF37]/40`}
           >
-            <Icon className="w-5 h-5 mx-auto mb-2" style={{ color: `${GOLD}80` }} />
+            <Icon className="w-4 h-4 mx-auto mb-1.5" style={{ color: `${GOLD}80` }} />
             <span
-              className="text-[10px] font-medium uppercase tracking-[0.15em]"
+              className="text-[9px] font-medium uppercase tracking-[0.1em] block"
               style={{ color: `${GOLD}cc` }}
             >
               {seg.label}
             </span>
-            <span className="block text-[9px] text-white/30 mt-0.5">
+            <span className="block text-[8px] text-white/25 mt-0.5">
               {seg.description}
             </span>
           </button>
@@ -296,6 +348,14 @@ export function NavigationWheel({
   const handleNavigate = useCallback(
     (href: string) => {
       onClose()
+      if (href.startsWith('/#')) {
+        const hash = href.replace('/', '')
+        const el = document.querySelector(hash)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+          return
+        }
+      }
       router.push(href)
     },
     [onClose, router]
